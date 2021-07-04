@@ -1,0 +1,97 @@
+{
+  "main": {
+    "id": "11789fa5ac33fe34",
+    "type": "split",
+    "children": [
+      {
+        "id": "6f6c93a29e63547f",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "2 - Dissection (UX)/Visuals.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f5bb359f757490fa",
+    "type": "split",
+    "children": [
+      {
+        "id": "7cfbb6bc860bfb4a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "04caa104087659ae",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "ce6827ae279607f3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0c665158294df3b7",
+    "type": "split",
+    "children": [
+      {
+        "id": "075b8d8dc382af13",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a3560a013509c21a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "2 - Dissection (UX)/Visuals.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "6f6c93a29e63547f",
+  "lastOpenFiles": [
+    "2 - Dissection (UX)/Untitled.md",
+    "Untitled.md",
+    "5 - Components (Bricks)/Untitled.md",
+    "3 - Foundation (Basics)/Untitled.md",
+    "1 - Introduction/Untitled.md"
+  ]
+}
