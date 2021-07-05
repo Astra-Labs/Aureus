@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "2 - Dissection (UX)/Visuals.md",
+            "file": "1 - Introduction/Meet Aureus..md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2 - Dissection (UX)/Visuals.md",
+                "file": "1 - Introduction/Meet Aureus..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,6 +88,10 @@
   },
   "active": "6f6c93a29e63547f",
   "lastOpenFiles": [
+    "1 - Introduction/Meet Aureus..md",
+    "1 - Introduction/Foundation..md",
+    "1 - Introduction/Contributing.md",
+    "2 - Dissection (UX)/Visuals.md",
     "2 - Dissection (UX)/Untitled.md",
     "Untitled.md",
     "5 - Components (Bricks)/Untitled.md",
