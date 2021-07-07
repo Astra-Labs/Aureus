@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "1 - Introduction/Meet Aureus..md",
+            "file": "4 - Elements (Materials)/User Input/Singular Data Type.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1 - Introduction/Meet Aureus..md",
+                "file": "4 - Elements (Materials)/User Input/Singular Data Type.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,14 +88,15 @@
   },
   "active": "6f6c93a29e63547f",
   "lastOpenFiles": [
-    "1 - Introduction/Meet Aureus..md",
-    "1 - Introduction/Foundation..md",
-    "1 - Introduction/Contributing.md",
-    "2 - Dissection (UX)/Visuals.md",
-    "2 - Dissection (UX)/Untitled.md",
-    "Untitled.md",
-    "5 - Components (Bricks)/Untitled.md",
-    "3 - Foundation (Basics)/Untitled.md",
-    "1 - Introduction/Untitled.md"
+    "4 - Elements (Materials)/User Input/Singular Data Type.md",
+    "4 - Elements (Materials)/User Input/Multiple Data Type.md",
+    "4 - Elements (Materials)/Misc/Timer.md",
+    "4 - Elements (Materials)/Misc/Slider.md",
+    "4 - Elements (Materials)/Labels/Subheaders.md",
+    "4 - Elements (Materials)/Labels/Mission Headers.md",
+    "4 - Elements (Materials)/Cards/Usage.md",
+    "4 - Elements (Materials)/Cards/Standard Cards.md",
+    "4 - Elements (Materials)/Cards/Pastel Cards.md",
+    "4 - Elements (Materials)/Cards/Glass Cards.md"
   ]
 }
