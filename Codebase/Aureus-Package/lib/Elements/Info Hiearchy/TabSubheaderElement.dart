@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-class SliderElement extends CupertinoSlider {
-  SliderElement() : super(onChanged: , value: );
-
+class TabSubheaderElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     throw UnimplementedError();
   }
-
 }
