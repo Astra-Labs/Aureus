@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class detailCarouselComponent extends StatefulWidget {
+class LongInputFormComponent extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
