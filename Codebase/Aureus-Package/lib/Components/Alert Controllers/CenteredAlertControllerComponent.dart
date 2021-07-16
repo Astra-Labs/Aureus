@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A vertically & horizontally centered alert controller
+//Doc Link:
+
 class CenteredAlertControllerComponent extends StatefulWidget {
 
   @override

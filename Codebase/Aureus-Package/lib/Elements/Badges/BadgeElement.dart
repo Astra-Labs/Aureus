@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A circle with an icon that is meant to act as a category label, but not as a button.
+//Doc Link:
+
 class BadgeElement extends StatelessWidget {
 
   @override

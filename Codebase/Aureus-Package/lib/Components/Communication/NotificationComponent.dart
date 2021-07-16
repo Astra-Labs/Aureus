@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A notification card that describes a message to the user
+//Doc Link:
+
 class NotificationComponent extends StatefulWidget {
 
   @override

@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A small, rounded tab button
+//Doc Link:
+
 class SmolButtonElement extends StatefulWidget {
 
   @override

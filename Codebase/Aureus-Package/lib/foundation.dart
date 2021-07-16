@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'product.dart';
 
 //All Variables for the UDS Elements
+//Doc Link:
 
 class UDSVariables {
 
-  Gradient icyBoi1() {
+   Gradient icyBoi1() {
     return LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,

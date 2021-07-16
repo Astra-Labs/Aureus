@@ -1,5 +1,8 @@
 import 'package/flutter/cupertino.dart';
 
+//A full width button that acts as the main CTA
+//Doc Link:
+
 class FullWidthButtonElement extends StatefulWidget {
 
   @override

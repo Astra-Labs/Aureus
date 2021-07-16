@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A full width centered alert controller that sticks to the bottom of the screen
+//Doc Link:
+
 class FullWidthAlertControllerComponent extends StatefulWidget {
 
   @override

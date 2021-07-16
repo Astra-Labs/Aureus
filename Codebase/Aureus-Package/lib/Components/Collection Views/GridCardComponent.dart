@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A grid collection view that scrolls vertically
+//Doc Link:
+
 class GridCardComponent extends StatefulWidget {
 
   @override

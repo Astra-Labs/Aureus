@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A text input and search button that constitutes a search bar
+//Doc Link:
+
 class SearchBarComponent extends StatefulWidget {
 
   @override

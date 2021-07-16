@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A carousel that contains an icon and label to describe the details of an object
+//Doc Link:
+
 class detailCarouselComponent extends StatefulWidget {
 
   @override

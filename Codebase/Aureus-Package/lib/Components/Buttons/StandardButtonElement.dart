@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A 80% width button that acts as a standard button for the UDS
+//Doc Link:
+
 class StandardButtonElement extends StatefulWidget {
 
   @override

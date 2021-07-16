@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A text field and icon button used to send communications to a receipent
+//Doc Link:
+
 class SendFieldComponent extends StatefulWidget {
 
   @override

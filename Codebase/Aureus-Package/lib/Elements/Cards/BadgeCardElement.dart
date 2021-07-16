@@ -1,3 +1,8 @@
+import 'package:flutter/cupertino.dart';
+
+//A card that contains a badge and label to describe what the card represents
+//Doc Link:
+
 class BadgeCardElement extends StatelessWidget {
 
   @override

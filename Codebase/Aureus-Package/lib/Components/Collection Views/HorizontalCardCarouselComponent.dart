@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A horizontally scrolling card carousel
+//Doc Link:
+
 class HorizontalCardCarouselComponent extends StatefulWidget {
 
   @override

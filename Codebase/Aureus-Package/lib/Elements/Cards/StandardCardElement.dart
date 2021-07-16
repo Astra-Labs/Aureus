@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A standardized card element that can be glass, pastel, or white that contains a header that describes the card.
+//Doc Link:
+
 class StandardCardElement extends StatelessWidget {
 
   @override

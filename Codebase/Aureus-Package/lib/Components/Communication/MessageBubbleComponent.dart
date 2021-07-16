@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+//A bubble that contains a text message from a sender or a receiver
+//Doc Link:
+
 class MessageBubbleComponent extends StatefulWidget {
 
   @override
