@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:aureus/product.dart';
+import 'package:aureus/foundation.dart';
 
 //An input form that takes multiple kinds of different data types (e.g: Time AND text AND password)
 //Doc Link:

@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:aureus/product.dart';
+import 'package:aureus/foundation.dart';
 
 //A carousel that contains an icon and label to describe the details of an object
 //Doc Link:

@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:aureus/product.dart';
+import 'package:aureus/foundation.dart';
 
 //A vertically & horizontally centered alert controller
 //Doc Link:

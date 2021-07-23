@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:aureus/product.dart';
+import 'package:aureus/foundation.dart';
 
 //An icon tabbing bar and card that acts as an onboarding walkthrough
 //Doc Link:

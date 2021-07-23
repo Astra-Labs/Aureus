@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:aureus/product.dart';
+import 'package:aureus/foundation.dart';
 
 //A text / input form that only takes ONE kind of data (text/numbers/time, etc)
 //Doc Link:
