@@ -19,8 +19,7 @@ Aureus is different from other design systems by:
 
 Basically, if you're looking for an ethical design system while you build a tech-for-good product: Aureus is your friend. Building ethical tech is hard. Aureus is a culmination of those learnings from our years, and sharing them with you so that you have a starting point for what ethical tech looks like. 
 
-#### Learning Aureus.
+#### Phases 
+Phases are how we're building the first round of the UDS. Each phase is a chunk of the codebase, being developed in order of Element -> Component -> View.
 
-#### How to get started. 
-
-#### How to contribute.
+Each phase will have its' own branch while being developed, and will get merged into Master after a basic code review.

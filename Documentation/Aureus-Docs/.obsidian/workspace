@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Change Log.md",
-            "mode": "preview"
+            "file": "6 - Views (Building)/Sign Up.md",
+            "mode": "source"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Change Log.md",
+                "file": "6 - Views (Building)/Sign Up.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "6f6c93a29e63547f",
   "lastOpenFiles": [
-    "Change Log.md",
+    "6 - Views (Building)/Sign Up.md",
+    "6 - Views (Building)/Sign In.md",
     "6 - Views (Building)/Safety Check.md",
-    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md",
-    "5 - Components (Bricks)/Tabbing Bars/Nav Bars.md",
-    "5 - Components (Bricks)/Input Forms/Long Input Form.md",
-    "5 - Components (Bricks)/Input Forms/Basic Input Form.md",
-    "4 - Elements (Materials)/User Input/Multiple Data Type.md",
-    "4 - Elements (Materials)/User Input/Singular Data Type.md",
-    "4 - Elements (Materials)/Badges/All.md",
-    "3 - Foundation (Basics)/Product Variations.md"
+    "6 - Views (Building)/Onboarding.md",
+    "6 - Views (Building)/Help Center Detail.md",
+    "6 - Views (Building)/Help Center.md",
+    "6 - Views (Building)/Data Consent Screen.md",
+    "6 - Views (Building)/2FA Verification.md",
+    "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
+    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md"
   ]
 }

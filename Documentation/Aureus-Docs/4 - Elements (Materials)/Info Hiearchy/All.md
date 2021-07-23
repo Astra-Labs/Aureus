@@ -1,14 +1,21 @@
 # Information Hierachy
+### Source Code
+[Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
 
-| Key | Value |
+### Properties
+* Text
+
+### I/O
+#### Input
+| Input | Type |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| |     |
+
+
+#### Output
+| Output | Type |
+|-----|-------|
+|  |      |
 
 ### Variant | Header / Subheader 
 
