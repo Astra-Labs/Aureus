@@ -22,6 +22,9 @@ class BadgeCardElement extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: udsVariables.icyBoi1(),
           borderRadius: BorderRadius.all(Radius.circular(10)),
+          border: Border.all(
+            color: Color.fromRGBO(184, 192, 214, 1.0),
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(
@@ -40,7 +43,7 @@ class BadgeCardElement extends StatelessWidget {
                 ),
                 width: 39,
                 height: 39,
-                child: Icon(cardIcon),
+                child: cardIcon,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
