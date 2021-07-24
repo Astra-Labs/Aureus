@@ -46,7 +46,8 @@ class BadgeCardElement extends StatelessWidget {
                 child: cardIcon,
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(
+                    bottom: 10), //TODO need to confirm the padding here
                 child: Text(
                   cardLabel,
                   style: udsVariables.body2(),
