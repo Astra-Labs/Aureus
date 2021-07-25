@@ -21,10 +21,10 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC |   Black    |
+| BRC |   N/A    |
+| TCR |   White    |
+| TS  |   Heading 1    |
+| TC  |   N/A    |
+| CR  |   height / 2 (pill)    |
+| EL  |   Icon Button (Secondary)    |

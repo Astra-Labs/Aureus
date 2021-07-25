@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "5 - Components (Bricks)/Buttons/Standard Buttons.md",
+            "file": "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "5 - Components (Bricks)/Buttons/Standard Buttons.md",
+                "file": "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "6f6c93a29e63547f",
   "lastOpenFiles": [
-    "5 - Components (Bricks)/Buttons/Standard Buttons.md",
-    "5 - Components (Bricks)/Buttons/Smol Buttons.md",
-    "5 - Components (Bricks)/Buttons/Icon Buttons.md",
-    "5 - Components (Bricks)/Buttons/Full Width Buttons.md",
-    "4 - Elements (Materials)/Misc/Tab Subheader.md",
-    "4 - Elements (Materials)/Cards/Badge Cards.md",
-    "4 - Elements (Materials)/Misc/Untitled.md",
-    "4 - Elements (Materials)/Info Hiearchy/All.md",
-    "4 - Elements (Materials)/User Input/Multiple Data Type.md",
-    "4 - Elements (Materials)/Misc/Timer.md"
+    "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
+    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md",
+    "5 - Components (Bricks)/Tabbing Bars/Nav Bars.md",
+    "5 - Components (Bricks)/Tabbing Bars/Icon Tabbing Bar.md",
+    "5 - Components (Bricks)/Communication/Send Field.md",
+    "5 - Components (Bricks)/Input Forms/Basic Input Form.md",
+    "5 - Components (Bricks)/Input Forms/Long Input Form.md",
+    "5 - Components (Bricks)/Communication/Search Bar.md",
+    "5 - Components (Bricks)/Communication/Notification.md",
+    "5 - Components (Bricks)/Communication/Message Bubble.md"
   ]
 }
