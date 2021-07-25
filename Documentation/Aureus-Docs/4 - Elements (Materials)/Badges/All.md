@@ -19,46 +19,46 @@
 |-----|-------|
 | N/A |   N/A    |
 
-### Variant | Dark - White
+### Variant | Dark White
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC | white      |
+| BRC | white      |
+| TCR | NA      |
+| TS  | NA    |
+| TC  | NA    |
+| CR  | NA    |
 
-### Variant | Lavender
-
-| Key | Value |
-|-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-
-### Variant | Gray
+### Variant | Light Icy Boi
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC | icy boi 3      |
+| BRC | NA      |
+| TCR | NA      |
+| TS  | NA      |
+| TC  | NA      |
+| CR  | NA      |
 
-### Variant | Icy Boi
+### Variant | Carbon
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC | carbon |
+| BRC | NA      |
+| TCR | NA      |
+| TS  | NA      |
+| TC  | NA      |
+| CR  | NA      |
+
+### Variant | Dark Icy Boi
+
+| Key | Value |
+|-----|-------|
+| BGC | dark icy boi |
+| BRC |  NA     |
+| TCR |  NA     |
+| TS  |  NA     |
+| TC  |  NA     |
+| CR  |  NA     |

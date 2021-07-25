@@ -4,14 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6f6c93a29e63547f",
+        "id": "a4f090b52864a08e",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "1 - Introduction/Contributing.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -68,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1 - Introduction/Contributing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,17 +82,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6f6c93a29e63547f",
+  "active": "a4f090b52864a08e",
   "lastOpenFiles": [
-    "1 - Introduction/Contributing.md",
-    "4 - Elements (Materials)/Info Hiearchy/All.md",
-    "4 - Elements (Materials)/Cards/Standard Cards.md",
-    "4 - Elements (Materials)/Cards/Pastel Cards.md",
-    "4 - Elements (Materials)/Cards/Glass Cards.md",
-    "4 - Elements (Materials)/Cards/Badge Cards.md",
-    "4 - Elements (Materials)/Cards/Usage.md",
-    "4 - Elements (Materials)/Badges/All.md",
-    "3 - Foundation (Basics)/Typography.md",
-    "3 - Foundation (Basics)/Themes.md"
+    "5 - Components (Bricks)/Buttons/Standard Buttons.md",
+    "5 - Components (Bricks)/Collection Views/Horizontal Card Carousel.md",
+    "5 - Components (Bricks)/Collection Views/Grid Cards.md",
+    "5 - Components (Bricks)/Collection Views/Detail Carousel.md",
+    "5 - Components (Bricks)/Buttons/Smol Buttons.md",
+    "5 - Components (Bricks)/Buttons/Icon Buttons.md",
+    "5 - Components (Bricks)/Buttons/Full Width Buttons.md",
+    "5 - Components (Bricks)/Alert Controllers/Full Width Alert Controller.md",
+    "5 - Components (Bricks)/Alert Controllers/Centered Alert Controller.md",
+    "4 - Elements (Materials)/Misc/Slider.md"
   ]
 }

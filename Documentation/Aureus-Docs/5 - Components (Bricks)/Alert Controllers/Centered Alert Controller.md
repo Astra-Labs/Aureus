@@ -21,10 +21,4 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| child	| secondary icon button, badging dark variant, Heading 3, Body 1, q[Standard Button]|

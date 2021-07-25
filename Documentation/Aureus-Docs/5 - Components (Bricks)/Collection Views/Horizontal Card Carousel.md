@@ -21,22 +21,16 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC | product gradient |
+| BRC | steel |
+| CR  | 10 |
+| EL  | Heading 3, Body Text |
 
-### Variant - With Badges
+### Variant | With Badges
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC | product gradient |
+| BRC | steel |
+| CR  | 10 |
+| EL  | Heading 3, Steel Icon Badge, Body Text |
