@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "6 - Views (Building)/Sign Up.md",
+            "file": "5 - Components (Bricks)/Buttons/Standard Buttons.md",
             "mode": "source"
           }
         }
@@ -52,7 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 274
   },
   "right": {
     "id": "0c665158294df3b7",
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "6 - Views (Building)/Sign Up.md",
+                "file": "5 - Components (Bricks)/Buttons/Standard Buttons.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "6f6c93a29e63547f",
   "lastOpenFiles": [
-    "6 - Views (Building)/Sign Up.md",
-    "6 - Views (Building)/Sign In.md",
-    "6 - Views (Building)/Safety Check.md",
-    "6 - Views (Building)/Onboarding.md",
-    "6 - Views (Building)/Help Center Detail.md",
-    "6 - Views (Building)/Help Center.md",
-    "6 - Views (Building)/Data Consent Screen.md",
-    "6 - Views (Building)/2FA Verification.md",
-    "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
-    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md"
+    "5 - Components (Bricks)/Buttons/Standard Buttons.md",
+    "5 - Components (Bricks)/Buttons/Smol Buttons.md",
+    "5 - Components (Bricks)/Buttons/Icon Buttons.md",
+    "5 - Components (Bricks)/Buttons/Full Width Buttons.md",
+    "4 - Elements (Materials)/Misc/Tab Subheader.md",
+    "4 - Elements (Materials)/Cards/Badge Cards.md",
+    "4 - Elements (Materials)/Misc/Untitled.md",
+    "4 - Elements (Materials)/Info Hiearchy/All.md",
+    "4 - Elements (Materials)/User Input/Multiple Data Type.md",
+    "4 - Elements (Materials)/Misc/Timer.md"
   ]
 }
