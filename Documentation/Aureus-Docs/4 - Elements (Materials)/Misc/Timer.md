@@ -21,9 +21,9 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC |   frost    |
+| BRC |   n/a if inactive, steel if active    |
+| TCR |   black    |
+| TS  |   heading 1    |
+| TC  |   N/A    |
+| CR  |   1/2 width     |

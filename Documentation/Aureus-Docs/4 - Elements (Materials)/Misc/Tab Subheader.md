@@ -1,4 +1,4 @@
-# Multiple Data Type
+# Badge Cards 
 ### Source Code
 [Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
 
@@ -9,7 +9,7 @@
 #### Input
 | Input | Type |
 |-----|-------|
-| |     |
+| Text |  String   |
 
 
 #### Output
@@ -19,14 +19,11 @@
 
 ### UI
 
-
 | Key | Value |
 |-----|-------|
-| BGC |   ice    |
-| BRC |   steel    |
-| TCR |   iron    |
-| TS  |   body 1    |
-| TC  |   camel case    |
-| CR  |   10    |
-| Child  |   Subheading Tab    |
-
+| BGC |   Product Gradient    |
+| BRC |   N/A    |
+| TCR |   Black    |
+| TS  |   Subheading    |
+| TC  |   Uppercase    |
+| CR  |   23 (Pill)    |
