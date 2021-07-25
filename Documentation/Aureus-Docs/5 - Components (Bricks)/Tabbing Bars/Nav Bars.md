@@ -19,12 +19,12 @@
 
 ### UI
 
+**Highlighted Icon**
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| Child  | Q[Highlighted Image]    |
+
+**Inactive Icon**
+| Key | Value |
+|-----|-------|
+| Child  |   Q[Inactive Image]    |

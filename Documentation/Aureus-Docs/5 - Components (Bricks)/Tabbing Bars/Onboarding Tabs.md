@@ -21,10 +21,4 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| EL  |  Heading 2, Subheading, [[Icon Tabbing Bar]] with card  |

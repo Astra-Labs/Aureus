@@ -7,8 +7,6 @@
         "id": "a4f090b52864a08e",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
         }
       }
     ],
@@ -49,7 +47,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 274
   },
   "right": {
     "id": "0c665158294df3b7",
@@ -65,6 +63,7 @@
             "state": {
               "type": "backlink",
               "state": {
+
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,15 +83,16 @@
   },
   "active": "a4f090b52864a08e",
   "lastOpenFiles": [
-    "5 - Components (Bricks)/Buttons/Standard Buttons.md",
-    "5 - Components (Bricks)/Collection Views/Horizontal Card Carousel.md",
-    "5 - Components (Bricks)/Collection Views/Grid Cards.md",
-    "5 - Components (Bricks)/Collection Views/Detail Carousel.md",
-    "5 - Components (Bricks)/Buttons/Smol Buttons.md",
-    "5 - Components (Bricks)/Buttons/Icon Buttons.md",
-    "5 - Components (Bricks)/Buttons/Full Width Buttons.md",
-    "5 - Components (Bricks)/Alert Controllers/Full Width Alert Controller.md",
-    "5 - Components (Bricks)/Alert Controllers/Centered Alert Controller.md",
-    "4 - Elements (Materials)/Misc/Slider.md"
+
+    "6 - Views (Building)/Sign In.md",
+    "6 - Views (Building)/Sign Up.md",
+    "6 - Views (Building)/2FA Verification.md",
+    "6 - Views (Building)/Data Consent Screen.md",
+    "6 - Views (Building)/Help Center.md",
+    "6 - Views (Building)/Help Center Detail.md",
+    "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
+    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md",
+    "5 - Components (Bricks)/Tabbing Bars/Nav Bars.md",
+    "5 - Components (Bricks)/Tabbing Bars/Icon Tabbing Bar.md"
   ]
 }
