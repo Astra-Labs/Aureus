@@ -23,22 +23,10 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| child | standard backing, secondary icon button, dark badge, heading 3, body 1, q[standard button]|
 
 ### Variant | One CTA
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| child | standard backing, secondary icon button, dark badge, heading 3, body 1, full width button|

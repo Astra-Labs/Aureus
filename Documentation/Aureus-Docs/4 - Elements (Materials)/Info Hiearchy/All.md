@@ -11,7 +11,6 @@
 |-----|-------|
 | |     |
 
-
 #### Output
 | Output | Type |
 |-----|-------|
@@ -21,46 +20,30 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| TS  | Heading 1, Subheader |
+
 
 ### Variant | Header / Subheader / Body
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| TS  | Heading 1, Subheading, Body 1 |
 
 ### Variant |  Header / Subheader / Body / Action
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| TS  | Heading 1, Subheading, Body 1 |
+
+### Variant |  Header / Action Buttons
+
+| Key | Value |
+|-----|-------|
+| TS  | Heading 1  |
+
 
 ### Variant |  Blank Screen
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| TS  |  Heading 1, Body 1 |
