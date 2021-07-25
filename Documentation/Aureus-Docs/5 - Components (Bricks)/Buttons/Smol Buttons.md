@@ -9,7 +9,8 @@
 #### Input
 | Input | Type |
 |-----|-------|
-| |     |
+| Text | String  |
+| Handler |  |
 
 
 #### Output
@@ -21,9 +22,9 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC |    white   |
+| BRC |    iron   |
+| TCR |    carbon   |
+| TS  |    body 1   |
+| TC  |    black   |
+| CR  |    height / 2 (pill)   |

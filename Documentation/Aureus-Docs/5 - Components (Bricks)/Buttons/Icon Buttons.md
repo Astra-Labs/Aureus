@@ -9,7 +9,8 @@
 #### Input
 | Input | Type |
 |-----|-------|
-| |     |
+| Image |  Image   |
+| Handler |     |
 
 
 #### Output
@@ -19,11 +20,24 @@
 
 ### UI
 
+Primary
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC |   Product Gradient    |
+| BRC |   Steel    |
+| TCR |   N/A    |
+| TS  |   N/A    |
+| TC  |   N/A    |
+| CR  |   1/2 Width (Circle)    |
+| Child  |   Image    |
+
+Secondary
+| Key | Value |
+|-----|-------|
+| BGC |   ice    |
+| BRC |   steel    |
+| TCR |   N/A    |
+| TS  |   N/A    |
+| TC  |   N/A    |
+| CR  |   1/2 Width (Circle)    |
+| Child  |   Image    |

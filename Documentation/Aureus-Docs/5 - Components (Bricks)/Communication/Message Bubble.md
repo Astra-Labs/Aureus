@@ -23,22 +23,22 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC |   Ice    |
+| BRC |   Steel    |
+| TCR |   Black    |
+| TS  |   N/A    |
+| TC  |   N/A    |
+| CR  |   27    |
+| EL  |   Body 1 IH  |
 
 ### Variant | Sender
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC |   Product Gradient    |
+| BRC |   Iron    |
+| TCR |   Black    |
+| TS  |   N/A    |
+| TC  |   N/A    |
+| CR  |   27    |
+| EL  |   Body 1 IH    |
