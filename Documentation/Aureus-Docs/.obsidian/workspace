@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "6 - Views (Building)/Sign Up.md",
+            "file": "1 - Introduction/Contributing.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "6 - Views (Building)/Sign Up.md",
+                "file": "1 - Introduction/Contributing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "6f6c93a29e63547f",
   "lastOpenFiles": [
-    "6 - Views (Building)/Sign Up.md",
-    "6 - Views (Building)/Sign In.md",
-    "6 - Views (Building)/Safety Check.md",
-    "6 - Views (Building)/Onboarding.md",
-    "6 - Views (Building)/Help Center Detail.md",
-    "6 - Views (Building)/Help Center.md",
-    "6 - Views (Building)/Data Consent Screen.md",
-    "6 - Views (Building)/2FA Verification.md",
-    "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
-    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md"
+    "1 - Introduction/Contributing.md",
+    "4 - Elements (Materials)/Info Hiearchy/All.md",
+    "4 - Elements (Materials)/Cards/Standard Cards.md",
+    "4 - Elements (Materials)/Cards/Pastel Cards.md",
+    "4 - Elements (Materials)/Cards/Glass Cards.md",
+    "4 - Elements (Materials)/Cards/Badge Cards.md",
+    "4 - Elements (Materials)/Cards/Usage.md",
+    "4 - Elements (Materials)/Badges/All.md",
+    "3 - Foundation (Basics)/Typography.md",
+    "3 - Foundation (Basics)/Themes.md"
   ]
 }
