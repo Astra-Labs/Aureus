@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
+            "file": "6 - Views (Building)/Sign In.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
+                "file": "6 - Views (Building)/Sign In.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "6f6c93a29e63547f",
   "lastOpenFiles": [
+    "6 - Views (Building)/Sign In.md",
+    "6 - Views (Building)/Sign Up.md",
+    "6 - Views (Building)/2FA Verification.md",
+    "6 - Views (Building)/Data Consent Screen.md",
+    "6 - Views (Building)/Help Center.md",
+    "6 - Views (Building)/Help Center Detail.md",
     "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
     "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md",
     "5 - Components (Bricks)/Tabbing Bars/Nav Bars.md",
-    "5 - Components (Bricks)/Tabbing Bars/Icon Tabbing Bar.md",
-    "5 - Components (Bricks)/Communication/Send Field.md",
-    "5 - Components (Bricks)/Input Forms/Basic Input Form.md",
-    "5 - Components (Bricks)/Input Forms/Long Input Form.md",
-    "5 - Components (Bricks)/Communication/Search Bar.md",
-    "5 - Components (Bricks)/Communication/Notification.md",
-    "5 - Components (Bricks)/Communication/Message Bubble.md"
+    "5 - Components (Bricks)/Tabbing Bars/Icon Tabbing Bar.md"
   ]
 }
