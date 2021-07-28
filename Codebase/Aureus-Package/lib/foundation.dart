@@ -76,18 +76,18 @@ class UDSVariables {
 //Text Styles
   TextStyle heading1() {
     return TextStyle(
-      fontSize: 21,
+      fontSize: 26,
       fontWeight: FontWeight.w300,
-      letterSpacing: 1.5,
+      letterSpacing: 0.2,
       fontFamily: "Exo",
     );
   }
 
   TextStyle heading2() {
     return TextStyle(
-      fontSize: 17,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 1.5,
+      fontSize: 21,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
@@ -96,21 +96,21 @@ class UDSVariables {
     return TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w500,
-      letterSpacing: 1.5,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
 
   TextStyle heading4() {
     return TextStyle(
-      fontSize: 17,
+      fontSize: 14,
       fontWeight: FontWeight.w600,
-      letterSpacing: 1.5,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
 
-  TextStyle body1() {
+  TextStyle subheading() {
     return TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w300,
@@ -119,20 +119,56 @@ class UDSVariables {
     );
   }
 
+  TextStyle body1() {
+    return TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w300,
+      letterSpacing: 0.2,
+      fontFamily: "Exo",
+    );
+  }
+
   TextStyle body2() {
     return TextStyle(
-      fontSize: 17,
+      fontSize: 14,
       fontWeight: FontWeight.w500,
       letterSpacing: 0.2,
       fontFamily: "Exo",
     );
   }
 
-  TextStyle subheading() {
+  TextStyle button1() {
+    return TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.0,
+      fontFamily: "Exo",
+    );
+  }
+
+  TextStyle button2() {
+    return TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 1.0,
+      fontFamily: "Exo",
+    );
+  }
+
+  TextStyle tag1() {
     return TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w600,
       letterSpacing: 1.5,
+      fontFamily: "Exo",
+    );
+  }
+
+  TextStyle tag2() {
+    return TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
