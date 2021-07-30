@@ -9,18 +9,18 @@ import 'package:flutter/material.dart';
 class BadgeCardElement extends StatelessWidget {
   final String cardLabel;
   final Icon cardIcon;
+  final foundation = UDSVariables();
 
   BadgeCardElement(this.cardLabel, this.cardIcon);
 
   @override
   Widget build(BuildContext context) {
-    UDSVariables udsVariables = new UDSVariables();
     return Container(
       height: 164,
       width: 144.12,
       child: Container(
         decoration: BoxDecoration(
-          gradient: udsVariables.icyBoi1(),
+          gradient: foundation.icyBoi1(),
           borderRadius: BorderRadius.all(Radius.circular(10)),
           border: Border.all(
             color: Color.fromRGBO(184, 192, 214, 1.0),
@@ -36,9 +36,9 @@ class BadgeCardElement extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: udsVariables.melt(),
+                  color: foundation.melt(),
                   border: Border.all(
-                    color: udsVariables.iron(),
+                    color: foundation.iron(),
                   ),
                 ),
                 width: 39,
@@ -49,8 +49,9 @@ class BadgeCardElement extends StatelessWidget {
                 padding: const EdgeInsets.only(
                     bottom: 10), //TODO need to confirm the padding here
                 child: Text(
+                  //TODO waiting until info hierarchy makes in to update
                   cardLabel,
-                  style: udsVariables.body2(),
+                  style: foundation.body1(),
                 ),
               ),
             ],
