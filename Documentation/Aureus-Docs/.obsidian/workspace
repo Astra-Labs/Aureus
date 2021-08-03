@@ -4,14 +4,9 @@
     "type": "split",
     "children": [
       {
-        "id": "6f6c93a29e63547f",
+        "id": "a4f090b52864a08e",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "6 - Views (Building)/Sign Up.md",
-            "mode": "source"
-          }
         }
       }
     ],
@@ -52,7 +47,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 274
   },
   "right": {
     "id": "0c665158294df3b7",
@@ -68,7 +63,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "6 - Views (Building)/Sign Up.md",
+
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,17 +81,18 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6f6c93a29e63547f",
+  "active": "a4f090b52864a08e",
   "lastOpenFiles": [
-    "6 - Views (Building)/Sign Up.md",
+
     "6 - Views (Building)/Sign In.md",
-    "6 - Views (Building)/Safety Check.md",
-    "6 - Views (Building)/Onboarding.md",
-    "6 - Views (Building)/Help Center Detail.md",
-    "6 - Views (Building)/Help Center.md",
-    "6 - Views (Building)/Data Consent Screen.md",
+    "6 - Views (Building)/Sign Up.md",
     "6 - Views (Building)/2FA Verification.md",
+    "6 - Views (Building)/Data Consent Screen.md",
+    "6 - Views (Building)/Help Center.md",
+    "6 - Views (Building)/Help Center Detail.md",
     "5 - Components (Bricks)/Tabbing Bars/Text Tabbing Bar.md",
-    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md"
+    "5 - Components (Bricks)/Tabbing Bars/Onboarding Tabs.md",
+    "5 - Components (Bricks)/Tabbing Bars/Nav Bars.md",
+    "5 - Components (Bricks)/Tabbing Bars/Icon Tabbing Bar.md"
   ]
 }

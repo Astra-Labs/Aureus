@@ -21,9 +21,9 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC |   white    |
+| BRC |   iron    |
+| TCR |   carbon    |
+| TS  |   body 1    |
+| TC  |   title casing    |
+| CR  |   10    |

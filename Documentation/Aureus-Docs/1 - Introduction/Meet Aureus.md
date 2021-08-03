@@ -46,34 +46,34 @@ For the sake of brevity, most of the information in the keys are abbreviated int
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC |    Background Color   |
+| BRC |    Border Color   |
+| TCR |    Text Color   |
+| TS  |    Text Style   |
+| TC  |    Text Casing   |
+| CR  |    Corner Radius   |
 
 ##### Components
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC |   Background Color   |
+| BRC |   Border Color    |
+| TCR |   Text Color    |
+| TS  |   Text Style    |
+| TC  |   Text Casing    |
+| CR  |   Corner Radius    |
+| EL  |   Child Elements    |
 
 ##### Views
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
-| CMP |       |
+| BGC |   Background Color    |
+| BRC |   Border Color    |
+| TCR |   Text Color    |
+| TS  |   Text Style    |
+| TC  |   Text Casing    |
+| CR  |   Corner Radius    |
+| EL  |   Child Elements    |
+| CMP |   Child Components    |
