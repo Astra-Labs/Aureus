@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 
 //A set of texts / label styles that acts as the typographic foundation for the rest of the UDS
 //Doc Link:
 
-var foundation = UDSVariables();
+final foundation = UDSVariables();
 
 class HeadingOneText extends Text {
-  HeadingOneText(String data) : super(data);
+  HeadingOneText(String data) : super(data, style: foundation.heading1());
 }
 
 class HeadingTwoText extends Text {
