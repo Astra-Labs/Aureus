@@ -1,6 +1,6 @@
 # Glass Cards 
 ### Source Code
-[Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
+[Source Code](https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Glass%20Cards.md)
 
 ### Properties
 * 
