@@ -1,20 +1,23 @@
+import 'package:aureus/Elements/Info%20Hiearchy/InfoHierarchyElements.dart';
+import 'package:aureus/TitleCase.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 import 'package:flutter/material.dart';
 
 //A card that contains a badge and label to describe what the card represents
-//Doc Link:
+//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Badge%20Cards.md
 
 class BadgeCardElement extends StatelessWidget {
   final String cardLabel;
-  final Icon cardIcon;
+  final IconData cardIcon;
   final foundation = UDSVariables();
 
   BadgeCardElement(this.cardLabel, this.cardIcon);
 
   @override
   Widget build(BuildContext context) {
+    String titleCaseLabel = TitleCase.convertToTitleCase(cardLabel);
+
     return Container(
       height: 164,
       width: 144.12,
@@ -23,12 +26,11 @@ class BadgeCardElement extends StatelessWidget {
           gradient: foundation.icyBoi1(),
           borderRadius: BorderRadius.all(Radius.circular(10)),
           border: Border.all(
-            color: Color.fromRGBO(184, 192, 214, 1.0),
+            color: foundation.steel(),
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(
-              15), //TODO need to confirm what the spacing is
+          padding: const EdgeInsets.all(12),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,16 +45,11 @@ class BadgeCardElement extends StatelessWidget {
                 ),
                 width: 39,
                 height: 39,
-                child: cardIcon,
+                child: Icon(cardIcon),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 10), //TODO need to confirm the padding here
-                child: Text(
-                  //TODO waiting until info hierarchy makes in to update
-                  cardLabel,
-                  style: foundation.body1(),
-                ),
+                padding: const EdgeInsets.only(bottom: 13),
+                child: BodyOneText(titleCaseLabel, Colors.black),
               ),
             ],
           ),
