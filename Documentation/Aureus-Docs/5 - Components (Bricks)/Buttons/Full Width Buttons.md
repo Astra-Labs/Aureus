@@ -19,11 +19,24 @@
 
 ### UI
 
+Inactive
+
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC |  Frost    |
+| BRC |  N/A     |
+| TCR |  Black  |
+| TS  |  Heading 2.1     |
+| TC  |  Uppercase     |
+| CR  |  N/A     |
+
+Active State 
+
+| Key | Value |
+|-----|-------|
+| BGC |  Product Gradient     |
+| BRC |  N/A     |
+| TCR |  Black     |
+| TS  |  Heading 2.2     |
+| TC  |  Uppercase     |
+| CR  |  N/A     |

@@ -21,9 +21,10 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC |   iron    |
+| Foreground |   frost    |
+| BRC |  N/A     |
+| TCR |   carbon    |
+| TS  |   Body 1    |
+| TC  |   None    |
+| CR  |   N/A    |

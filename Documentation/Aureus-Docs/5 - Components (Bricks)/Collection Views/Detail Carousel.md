@@ -21,10 +21,8 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC | steel |
+| BRC | carbon |
+| TCR | black |
+| CR  | 6 |
+| EL  | Icon Image, Text Widget |

@@ -9,7 +9,7 @@
 #### Input
 | Input | Type |
 |Card label|String|
-|Card icon |Icon  |
+|Card icon |IconData  |
 
 
 #### Output
@@ -20,9 +20,9 @@
 
 | Key | Value |
 |-----|-------|
-| BGC | icy boi 1  |
-| BRC | steel |
-| TCR | black |
-| TS  | body 2 |
-| TC  | Title Casing |
-| CR  | 10    |
+| BGC | product gradient |
+| BRC | steel      |
+| TCR | black      |
+| TS  | body 2      |
+| TC  | Camel Case |
+| CR  | 10 |

@@ -21,9 +21,9 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC | Custom FFFFFF from 15% to 15% to 0% Linear Diagonal topL to botR |
+| BRC | Custom FFFFFF from 100% to 17% Linear Diagonal topL to botR |
+| TCR |   NA   |
+| TS  |   NA  |
+| TC  |   NA  |
+| CR  |   27    |

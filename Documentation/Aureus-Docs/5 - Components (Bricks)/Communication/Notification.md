@@ -19,12 +19,19 @@
 
 ### UI
 
+Card
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
-| EL  |       |
+| BGC |   Ice    |
+| BRC |   Iron    |
+| TCR |   Child    |
+| TS  |   Child    |
+| TC  |   Black    |
+| CR  |   27    |
+| EL  |   Subheader, Subheader, Heading 2.2, Body 1 |
+
+Read Indicator
+| Key | Value |
+|-----|-------|
+| BGC |   Iron    |
+| CR  |   height / 2 (Circle)    |

@@ -29,7 +29,3 @@
 | CR  |       |
 | EL  |       |
 | CMP |       |
-
-#### Variant | Mobile
-
-#### Variant | Desktop

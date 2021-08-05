@@ -21,9 +21,9 @@
 
 | Key | Value |
 |-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+| BGC | product gradient   |
+| BRC | steel      |
+| TCR | black      |
+| TS  | body 2      |
+| TC  | Camel Case      |
+| CR  | 10      |
