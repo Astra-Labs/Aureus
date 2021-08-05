@@ -23,6 +23,7 @@ class GlassCardElement extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
+            //the "card" for the border
             child: Container(
               height: 192,
               width: 189,
@@ -33,6 +34,7 @@ class GlassCardElement extends StatelessWidget {
             ),
           ),
           Positioned(
+            //the "card" for the inner
             child: Padding(
               padding: const EdgeInsets.all(1.0),
               child: Container(
