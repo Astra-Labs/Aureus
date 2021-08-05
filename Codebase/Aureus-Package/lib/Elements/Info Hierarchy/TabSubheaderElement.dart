@@ -6,7 +6,6 @@ import 'package:aureus/foundation.dart';
 //Doc Link:
 
 class TabSubheaderElement extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

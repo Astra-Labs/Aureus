@@ -1,6 +1,6 @@
 # Badge Cards 
 ### Source Code
-[Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
+[Source Code](https://github.com/Astra-Labs/Aureus/blob/main/Codebase/Aureus-Package/lib/Elements/Cards/BadgeCardElement.dart)
 
 ### Properties
 * 
@@ -8,14 +8,13 @@
 ### I/O
 #### Input
 | Input | Type |
-|-----|-------|
-| |     |
+|Card label|String|
+|Card icon |IconData  |
 
 
 #### Output
 | Output | Type |
-|-----|-------|
-|  |      |
+|Badge Card | Container |
 
 ### UI
 
