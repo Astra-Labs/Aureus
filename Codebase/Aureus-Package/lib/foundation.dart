@@ -6,8 +6,7 @@ import 'product.dart';
 //Doc Link:
 
 class UDSVariables {
-
-   Gradient icyBoi1() {
+  Gradient icyBoi1() {
     return LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
@@ -49,6 +48,10 @@ class UDSVariables {
 
 //Colors
 
+  Color lavender() {
+    return Color.fromRGBO(184, 195, 236, 1.0);
+  }
+
   Color ice() {
     return Color.fromRGBO(241, 243, 251, 1.0);
   }
@@ -76,18 +79,18 @@ class UDSVariables {
 //Text Styles
   TextStyle heading1() {
     return TextStyle(
-      fontSize: 21,
+      fontSize: 26,
       fontWeight: FontWeight.w300,
-      letterSpacing: 1.5,
+      letterSpacing: 0.2,
       fontFamily: "Exo",
     );
   }
 
   TextStyle heading2() {
     return TextStyle(
-      fontSize: 17,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 1.5,
+      fontSize: 21,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
@@ -96,21 +99,21 @@ class UDSVariables {
     return TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w500,
-      letterSpacing: 1.5,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
 
   TextStyle heading4() {
     return TextStyle(
-      fontSize: 17,
+      fontSize: 14,
       fontWeight: FontWeight.w600,
-      letterSpacing: 1.5,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
 
-  TextStyle body1() {
+  TextStyle subheading() {
     return TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w300,
@@ -119,20 +122,58 @@ class UDSVariables {
     );
   }
 
+  TextStyle body1() {
+    return TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w300,
+      letterSpacing: 0.2,
+      fontFamily: "Exo",
+    );
+  }
+
   TextStyle body2() {
     return TextStyle(
-      fontSize: 17,
+      fontSize: 14,
       fontWeight: FontWeight.w500,
       letterSpacing: 0.2,
       fontFamily: "Exo",
     );
   }
 
-  TextStyle subheading() {
+  TextStyle button1() {
     return TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.0,
+      fontFamily: "Exo",
+    );
+  }
+
+  TextStyle button2() {
+    return TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 1.0,
+      fontFamily: "Exo",
+    );
+  }
+
+  TextStyle tag1({color: Color}) {
+    return TextStyle(
+      color: color,
       fontSize: 12,
       fontWeight: FontWeight.w600,
       letterSpacing: 1.5,
+      fontFamily: "Exo",
+    );
+  }
+
+  TextStyle tag2({color: Color}) {
+    return TextStyle(
+      color: color,
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.0,
       fontFamily: "Exo",
     );
   }
