@@ -6,16 +6,25 @@ import 'package:aureus/foundation.dart';
 //Doc Link:
 
 class TimerElement extends StatefulWidget {
+  var foundation = UDSVariables();
+
+  @override
+  _TimerElementState createState() => _TimerElementState();
+}
+
+class _TimerElementState extends State<TimerElement> {
+  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+    return Container(
+        width: 245,
+        height: 245,
+        alignment: Alignment.center,
+        child: Text('00:00:00', style: foundation.heading1()),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(255, 255, 255, 1),
+          borderRadius: BorderRadius.all(Radius.elliptical(245, 245)),
+        ));
   }
 }

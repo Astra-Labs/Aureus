@@ -6,8 +6,7 @@ import 'product.dart';
 //Doc Link:
 
 class UDSVariables {
-
-   Gradient icyBoi1() {
+  Gradient icyBoi1() {
     return LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
@@ -48,6 +47,10 @@ class UDSVariables {
   }
 
 //Colors
+
+  Color lavender() {
+    return Color.fromRGBO(184, 195, 236, 1.0);
+  }
 
   Color ice() {
     return Color.fromRGBO(241, 243, 251, 1.0);
@@ -155,8 +158,9 @@ class UDSVariables {
     );
   }
 
-  TextStyle tag1() {
+  TextStyle tag1({color: Color}) {
     return TextStyle(
+      color: color,
       fontSize: 12,
       fontWeight: FontWeight.w600,
       letterSpacing: 1.5,
@@ -164,8 +168,9 @@ class UDSVariables {
     );
   }
 
-  TextStyle tag2() {
+  TextStyle tag2({color: Color}) {
     return TextStyle(
+      color: color,
       fontSize: 12,
       fontWeight: FontWeight.w600,
       letterSpacing: 1.0,
