@@ -22,6 +22,9 @@ export 'Elements/Info Hiearchy/TabSubheaderElement.dart';
 export 'Elements/Misc/SliderElement.dart';
 export 'Elements/Misc/TimerElement.dart';
 
+export 'Elements/User Input/MultipleDataTypeUserInputElement.dart';
+export 'Elements/User Input/SingleDataTypeUserInputElement.dart';
+
 //Exporting lib components
 //export 'Components/';
 
