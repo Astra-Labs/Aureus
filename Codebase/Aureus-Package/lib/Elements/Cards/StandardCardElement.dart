@@ -13,8 +13,6 @@ class StandardCardElement extends StatelessWidget {
   StandardCardElement(this._cardLabel);
   @override
   Widget build(BuildContext context) {
-    String titleCaseCardLabel = TitleCase.convertToTitleCase(_cardLabel);
-
     return Container(
       height: 164,
       width: 144.12,
@@ -29,7 +27,7 @@ class StandardCardElement extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 14, top: 20),
-        child: BodyOneText(titleCaseCardLabel, Colors.black),
+        child: BodyOneText(_cardLabel, Colors.black),
       ),
     );
   }
