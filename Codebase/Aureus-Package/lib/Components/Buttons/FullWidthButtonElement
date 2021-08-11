@@ -6,16 +6,27 @@ import 'package:aureus/foundation.dart';
 //Doc Link:
 
 class FullWidthButtonElement extends StatefulWidget {
+  
+  final enum buttonVariants {
+    inactive
+    lightActive
+    darkActive
+  }
+
+  final buttonVariants currentVariant;
+
+  const FullWidthButtonElement({required this.currentVariant});
+
+  @override
+  _FullWidthButtonElementState createState() => _FullWidthButtonElementState();
+}
+
+class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
+  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+    
+    
   }
 }
