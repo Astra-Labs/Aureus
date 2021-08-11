@@ -207,27 +207,32 @@ final titleCase = TitleCase();
 
 class HeadingOneText extends Text {
   HeadingOneText(String data, Color color)
-      : super(TitleCase.convertToTitleCase(data), style: foundation.heading1().copyWith(color: color));
+      : super(TitleCase.convertToTitleCase(data),
+            style: foundation.heading1().copyWith(color: color));
 }
 
 class HeadingTwoText extends Text {
   HeadingTwoText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.heading2().copyWith(color: color));
+      : super(data.toUpperCase(),
+            style: foundation.heading2().copyWith(color: color));
 }
 
 class HeadingThreeText extends Text {
   HeadingThreeText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.heading3().copyWith(color: color));
+      : super(data.toUpperCase(),
+            style: foundation.heading3().copyWith(color: color));
 }
 
 class HeadingFourText extends Text {
   HeadingFourText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.heading4().copyWith(color: color));
+      : super(data.toUpperCase(),
+            style: foundation.heading4().copyWith(color: color));
 }
 
 class SubheaderText extends Text {
   SubheaderText(String data, Color color)
-      : super(TitleCase.convertToTitleCase(data), style: foundation.subheading().copyWith(color: color));
+      : super(TitleCase.convertToTitleCase(data),
+            style: foundation.subheading().copyWith(color: color));
 }
 
 class BodyOneText extends Text {
@@ -242,21 +247,26 @@ class BodyTwoText extends Text {
 
 class ButtonOneText extends Text {
   ButtonOneText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.button1().copyWith(color: color));
+      : super(data.toUpperCase(),
+            style: foundation.button1().copyWith(color: color));
 }
 
 class ButtonTwoText extends Text {
   ButtonTwoText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.button2().copyWith(color: color));
+      : super(data.toUpperCase(),
+            style: foundation.button2().copyWith(color: color));
 }
 
 class TagOneText extends Text {
   TagOneText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.tag1().copyWith(color: color));
+      : super(data.toUpperCase(),
+            style: foundation.tag1().copyWith(color: color));
 }
 
 class TagTwoText extends Text {
   TagTwoText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.tag2().copyWith(color: color));
+      : super(data.toUpperCase(),
+            style: foundation.tag2().copyWith(color: color));
 }
 
+enum CardType { standard, badge }

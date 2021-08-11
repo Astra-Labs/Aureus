@@ -12,7 +12,7 @@
 | heading | String |
 | cardLabels | List<String> |
 | cardIcons (optional) | List<IconData> |
-| cardType | String |
+| cardType | CardType (enum) |
 
 
 #### Output

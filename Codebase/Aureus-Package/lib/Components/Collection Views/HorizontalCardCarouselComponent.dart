@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 class HorizontalCardCarouselComponent extends StatefulWidget {
   final String heading;
   final List<String> cardLabels;
-  List<IconData>? cardIcons = [];
-  final String cardType;
+  final List<IconData>? cardIcons;
+  final CardType cardType;
 
   HorizontalCardCarouselComponent(this.heading, this.cardType, this.cardLabels,
       [this.cardIcons]);
@@ -40,7 +40,7 @@ class _HorizontalCardCarouselComponentState
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 14.0),
-                child: widget.cardType.toUpperCase() == "STANDARD"
+                child: widget.cardType == CardType.standard
                     ? StandardCardElement(widget.cardLabels[index])
                     : BadgeCardElement(
                         widget.cardLabels[index],
