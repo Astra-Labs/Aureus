@@ -1,3 +1,4 @@
+import 'package:aureus/Elements/Cards/BadgeCardElement.dart';
 import 'package:aureus/Elements/Cards/StandardCardElement.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:aureus/foundation.dart';
@@ -9,8 +10,11 @@ import 'package:flutter/material.dart';
 class HorizontalCardCarouselComponent extends StatefulWidget {
   final String heading;
   final List<String> cardLabels;
+  List<IconData>? cardIcons = [];
+  final String cardType;
 
-  HorizontalCardCarouselComponent(this.heading, this.cardLabels);
+  HorizontalCardCarouselComponent(this.heading, this.cardType, this.cardLabels,
+      [this.cardIcons]);
 
   @override
   _HorizontalCardCarouselComponentState createState() =>
@@ -24,7 +28,7 @@ class _HorizontalCardCarouselComponentState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HeadingThreeText(widget.heading.toUpperCase(), Colors.black),
+        HeadingThreeText(widget.heading, Colors.black),
         SizedBox(
           height: 29,
         ),
@@ -36,7 +40,12 @@ class _HorizontalCardCarouselComponentState
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 14.0),
-                child: StandardCardElement(widget.cardLabels[index]),
+                child: widget.cardType.toUpperCase() == "STANDARD"
+                    ? StandardCardElement(widget.cardLabels[index])
+                    : BadgeCardElement(
+                        widget.cardLabels[index],
+                        widget.cardIcons![index],
+                      ),
               );
             },
           ),
