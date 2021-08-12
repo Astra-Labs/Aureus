@@ -36,14 +36,13 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
         //inactive primary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: foundation.melt().withOpacity(0.5),
                 shape: BoxShape.circle),
             width: 80.0,
             height: 80.0,
-            child: Center(
+            child: Expanded(
                 child: IconButton(
                     icon: widget.buttonIcon,
                     iconSize: 30,
@@ -58,15 +57,14 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
         //light active primary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                gradient: foundation.mediumGradient,
+                gradient: foundation.mediumGradient(),
                 border: Border.all(color: foundation.steel(), width: 1),
                 shape: BoxShape.circle),
             width: 80.0,
             height: 80.0,
-            child: Center(
+            child: Expanded(
                 child: IconButton(
                     icon: widget.buttonIcon,
                     iconSize: 30,
@@ -81,15 +79,14 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
         //dark active primary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                gradient: foundation.darkGradient,
+                gradient: foundation.darkGradient(),
                 border: Border.all(color: foundation.steel(), width: 1),
                 shape: BoxShape.circle),
             width: 80.0,
             height: 80.0,
-            child: Center(
+            child: Expanded(
                 child: IconButton(
                     icon: widget.buttonIcon,
                     iconSize: 30,
@@ -137,14 +134,13 @@ class _SecondaryIconButtonElementState
         //inactive secondary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: foundation.melt().withOpacity(0.5),
                 shape: BoxShape.circle),
             width: 40.0,
             height: 40.0,
-            child: Center(
+            child: Expanded(
                 child: IconButton(
                     icon: widget.buttonIcon,
                     iconSize: 15,
@@ -159,15 +155,14 @@ class _SecondaryIconButtonElementState
         //light active secondary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: foundation.ice(),
                 border: Border.all(color: foundation.steel(), width: 1),
                 shape: BoxShape.circle),
             width: 40.0,
             height: 40.0,
-            child: Center(
+            child: Expanded(
                 child: IconButton(
                     icon: widget.buttonIcon,
                     iconSize: 15,
@@ -182,15 +177,14 @@ class _SecondaryIconButtonElementState
         //dark active secondary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: foundation.carbon(),
                 border: Border.all(color: foundation.steel(), width: 1),
                 shape: BoxShape.circle),
             width: 40.0,
             height: 40.0,
-            child: Center(
+            child: Expanded(
                 child: IconButton(
                     icon: widget.buttonIcon,
                     iconSize: 15,

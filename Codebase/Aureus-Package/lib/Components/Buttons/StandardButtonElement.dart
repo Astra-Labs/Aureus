@@ -31,10 +31,11 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
             constraints: BoxConstraints(
                 minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
             child: Container(
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    color: foundation.white().withOpacity(0.4)),
-                child: Center(
+                    color: foundation.carbon().withOpacity(0.4)),
+                child: Expanded(
                     child: TextButton(
                         onPressed: null,
                         child: Text(widget.buttonTitle),
@@ -53,11 +54,12 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
             constraints: BoxConstraints(
                 minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
             child: Container(
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
-                    border: Border.all(color: foundation.iron(), width: 1),
+                    color: foundation.white(),
+                    border: Border.all(color: foundation.steel(), width: 1),
                     borderRadius: BorderRadius.circular(10.0)),
-                color: foundation.white(),
-                child: Center(
+                child: Expanded(
                     child: TextButton(
                         onPressed: widget.buttonAction,
                         child: Text(widget.buttonTitle),
@@ -76,13 +78,14 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
             constraints: BoxConstraints(
                 minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
             child: Container(
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
-                    border: Border.all(color: foundation.iron(), width: 1),
+                    color: foundation.carbon(),
+                    border: Border.all(color: foundation.steel(), width: 1),
                     borderRadius: BorderRadius.circular(10.0)),
-                color: foundation.carbon(),
-                child: Center(
+                child: Expanded(
                     child: TextButton(
-                        onPressed: null,
+                        onPressed: widget.buttonAction,
                         child: Text(widget.buttonTitle),
                         style: TextButton.styleFrom(
                             textStyle: foundation

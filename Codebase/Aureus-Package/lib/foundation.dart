@@ -12,28 +12,28 @@ class UDSVariables {
 
   final Color prodColor;
   final String prodName;
-  final Gradient lightGradient;
-  final Gradient mediumGradient;
-  final Gradient darkGradient;
+  final Gradient lightGrad;
+  final Gradient mediumGrad;
+  final Gradient darkGrad;
 
   const UDSVariables(
       {this.prodColor = const Color.fromRGBO(181, 190, 242, 1.0),
       this.prodName = 'Aureus',
-      this.lightGradient = const LinearGradient(
+      this.lightGrad = const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
             Colors.white,
             Color.fromRGBO(227, 231, 248, 1.0),
           ]),
-      this.mediumGradient = const LinearGradient(
+      this.mediumGrad = const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
             Color.fromRGBO(212, 219, 244, 1.0),
             Color.fromRGBO(184, 195, 236, 1.0),
           ]),
-      this.darkGradient = const LinearGradient(
+      this.darkGrad = const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
@@ -41,7 +41,25 @@ class UDSVariables {
             const Color.fromRGBO(219, 225, 246, 1.0),
           ])});
 
+//Global Gradients
+
+  Gradient lightGradient() {
+    return lightGrad;
+  }
+
+  Gradient mediumGradient() {
+    return mediumGrad;
+  }
+
+  Gradient darkGradient() {
+    return darkGrad;
+  }
+
 //Global Colors
+
+  Color productColor() {
+    return prodColor;
+  }
 
   Color white() {
     return Color.fromRGBO(255, 255, 255, 1.0);
@@ -141,7 +159,7 @@ class UDSVariables {
 
   TextStyle button1() {
     return TextStyle(
-      fontSize: 17,
+      fontSize: 12,
       fontWeight: FontWeight.w600,
       letterSpacing: 1.0,
       fontFamily: "Exo",
@@ -150,7 +168,7 @@ class UDSVariables {
 
   TextStyle button2() {
     return TextStyle(
-      fontSize: 12,
+      fontSize: 17,
       fontWeight: FontWeight.w400,
       letterSpacing: 1.0,
       fontFamily: "Exo",
@@ -175,5 +193,15 @@ class UDSVariables {
       letterSpacing: 1.0,
       fontFamily: "Exo",
     );
+  }
+
+  //Global Theme Data
+
+  CupertinoThemeData cupertinoThemeData() {
+    return CupertinoThemeData();
+  }
+
+  ThemeData productTheme() {
+    return ThemeData();
   }
 }

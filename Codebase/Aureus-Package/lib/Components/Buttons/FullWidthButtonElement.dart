@@ -33,13 +33,12 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
         //inactive full width button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.only(top: 15),
             padding: EdgeInsets.all(15),
             decoration:
                 BoxDecoration(color: foundation.melt().withOpacity(0.5)),
             width: MediaQuery.of(context).size.width,
             height: (MediaQuery.of(context).size.height / 7),
-            child: Center(
+            child: Expanded(
                 child: TextButton(
                     onPressed: widget.buttonAction,
                     child: Text(widget.buttonTitle),
@@ -48,8 +47,6 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
                             .button2()
                             .copyWith(color: foundation.iron()),
                         padding: EdgeInsets.all(10),
-                        minimumSize: Size(150, 50),
-                        tapTargetSize: MaterialTapTargetSize.padded,
                         enableFeedback: true))));
 
         break;
@@ -59,15 +56,14 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
         //light active full width button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.only(top: 15),
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 border: Border(
                     top: BorderSide(width: 1, color: foundation.steel())),
-                gradient: foundation.mediumGradient),
+                gradient: foundation.mediumGradient()),
             width: MediaQuery.of(context).size.width,
             height: (MediaQuery.of(context).size.height / 7),
-            child: Center(
+            child: Expanded(
                 child: TextButton(
                     onPressed: widget.buttonAction,
                     child: Text(widget.buttonTitle),
@@ -76,8 +72,6 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
                             .button2()
                             .copyWith(color: foundation.carbon()),
                         padding: EdgeInsets.all(10),
-                        minimumSize: Size(150, 50),
-                        tapTargetSize: MaterialTapTargetSize.padded,
                         enableFeedback: true))));
 
         break;
@@ -87,15 +81,14 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
         //dark active full width button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.only(top: 15),
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 border: Border(
                     top: BorderSide(width: 1, color: foundation.carbon())),
-                gradient: foundation.darkGradient),
+                gradient: foundation.darkGradient()),
             width: MediaQuery.of(context).size.width,
             height: (MediaQuery.of(context).size.height / 7),
-            child: Center(
+            child: Expanded(
                 child: TextButton(
                     onPressed: widget.buttonAction,
                     child: Text(widget.buttonTitle),
@@ -104,8 +97,6 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
                             .button2()
                             .copyWith(color: foundation.melt()),
                         padding: EdgeInsets.all(10),
-                        minimumSize: Size(150, 50),
-                        tapTargetSize: MaterialTapTargetSize.padded,
                         enableFeedback: true))));
 
         break;
