@@ -3,7 +3,7 @@ import 'package:aureus/foundation.dart';
 import 'package:flutter/material.dart';
 
 //A carousel that contains an icon and label to describe the details of an object
-//Doc Link:
+//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/5%20-%20Components%20(Bricks)/Collection%20Views/Detail%20Carousel.md
 
 var foundation = UDSVariables();
 
