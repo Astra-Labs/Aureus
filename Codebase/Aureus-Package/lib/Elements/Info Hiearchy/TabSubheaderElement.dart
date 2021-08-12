@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 
 //A label that has a rounded backing and acts as a category subheader

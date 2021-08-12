@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 
 //A notification card that describes a message to the user

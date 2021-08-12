@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 
 //A text input and search button that constitutes a search bar

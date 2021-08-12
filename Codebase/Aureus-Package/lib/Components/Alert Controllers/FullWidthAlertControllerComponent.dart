@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 
 //A full width centered alert controller that sticks to the bottom of the screen

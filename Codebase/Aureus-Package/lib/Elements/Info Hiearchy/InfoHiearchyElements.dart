@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 
 //A set of texts / label styles that acts as the typographic foundation for the rest of the UDS

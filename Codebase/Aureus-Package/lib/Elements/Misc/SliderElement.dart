@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:aureus/product.dart';
 import 'package:aureus/foundation.dart';
 
 //A blank card that looks like a "pane" of glass
 //Doc Link:
 
 class SliderElement extends StatefulWidget {
-
   final variables = UDSVariables();
 
   @override
@@ -23,7 +21,7 @@ class _SliderElementState extends State<SliderElement> {
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
-          activeTrackColor: variables.lavender(),
+          activeTrackColor: variables.prodColor,
           inactiveTrackColor: variables.melt(),
           trackShape: RoundedRectSliderTrackShape(),
           trackHeight: 3.0,

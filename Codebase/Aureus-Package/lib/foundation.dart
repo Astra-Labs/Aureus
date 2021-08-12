@@ -1,55 +1,54 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'product.dart';
 
 //All Variables for the UDS Elements
 //Doc Link:
 
+//Global Foundational Enums go here since Dart doesn't support nested types
+enum buttonVariants { inactive, lightActive, darkActive }
+
 class UDSVariables {
-  Gradient icyBoi1() {
-    return LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Colors.white,
-          Color.fromRGBO(227, 231, 248, 1.0),
-        ]);
+//Global Product Variations
+
+  final Color prodColor;
+  final String prodName;
+  final Gradient lightGradient;
+  final Gradient mediumGradient;
+  final Gradient darkGradient;
+
+  const UDSVariables(
+      {this.prodColor = const Color.fromRGBO(181, 190, 242, 1.0),
+      this.prodName = 'Aureus',
+      this.lightGradient = const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.white,
+            Color.fromRGBO(227, 231, 248, 1.0),
+          ]),
+      this.mediumGradient = const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.fromRGBO(212, 219, 244, 1.0),
+            Color.fromRGBO(184, 195, 236, 1.0),
+          ]),
+      this.darkGradient = const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            const Color.fromRGBO(241, 243, 251, 1.0),
+            const Color.fromRGBO(219, 225, 246, 1.0),
+          ])});
+
+//Global Colors
+
+  Color white() {
+    return Color.fromRGBO(255, 255, 255, 1.0);
   }
 
-  Gradient icyBoi2() {
-    return LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Color.fromRGBO(212, 219, 244, 1.0),
-          Color.fromRGBO(184, 195, 236, 1.0),
-        ]);
-  }
-
-  Gradient icyBoi3() {
-    return LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          ice(),
-          Color.fromRGBO(219, 225, 246, 1.0),
-        ]);
-  }
-
-  Gradient darkIcyBoi() {
-    return LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Color.fromRGBO(129, 134, 150, 1.0),
-          Color.fromRGBO(51, 61, 98, 1.0),
-        ]);
-  }
-
-//Colors
-
-  Color lavender() {
-    return Color.fromRGBO(184, 195, 236, 1.0);
+  Color black() {
+    return Color.fromRGBO(0, 0, 0, 1.0);
   }
 
   Color ice() {
@@ -76,7 +75,7 @@ class UDSVariables {
     return Color.fromRGBO(77, 79, 90, 1.0);
   }
 
-//Text Styles
+// Global Text Styles
   TextStyle heading1() {
     return TextStyle(
       fontSize: 26,

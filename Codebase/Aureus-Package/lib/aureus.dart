@@ -6,7 +6,6 @@ export 'package:flutter/cupertino.dart';
 
 //Exporting base / prod variables
 export 'foundation.dart';
-export 'product.dart';
 
 //Exporting lib elements
 //export 'Elements/Badges/BadgeElement.dart';
@@ -26,7 +25,10 @@ export 'Elements/User Input/MultipleDataTypeUserInputElement.dart';
 export 'Elements/User Input/SingleDataTypeUserInputElement.dart';
 
 //Exporting lib components
-//export 'Components/';
+export 'Components/Buttons/FullWidthButtonElement.dart';
+export 'Components/Buttons/IconButtonElement.dart';
+export 'Components/Buttons/SmolButtonElement.dart';
+export 'Components/Buttons/StandardButtonElement.dart';
 
 //Exporting lib views
 //export 'Views/';
