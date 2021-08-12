@@ -259,14 +259,12 @@ class ButtonTwoText extends Text {
 
 class TagOneText extends Text {
   TagOneText(String data, Color color)
-      : super(data.toUpperCase(),
-            style: foundation.tag1().copyWith(color: color));
+      : super(data.toUpperCase(), style: foundation.tag1(color: color));
 }
 
 class TagTwoText extends Text {
   TagTwoText(String data, Color color)
-      : super(data.toUpperCase(),
-            style: foundation.tag2().copyWith(color: color));
+      : super(data.toUpperCase(), style: foundation.tag2(color: color));
 }
 
 enum CardType { standard, badge }

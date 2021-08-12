@@ -9,13 +9,14 @@
 #### Input
 | Input | Type |
 |-----|-------|
-| |     |
+| cardLabels | List<String> |
+| cardIcons  | List<IconData> |
 
 
 #### Output
 | Output | Type |
 |-----|-------|
-|  |      |
+| detail carousel | Container |
 
 ### UI
 
