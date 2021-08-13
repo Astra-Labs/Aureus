@@ -8,12 +8,11 @@ import 'package:flutter/material.dart';
 final foundation = UDSVariables();
 
 class PastelCardElement extends StatelessWidget {
-  final String cardLabel;
+  final String _cardLabel;
 
-  PastelCardElement(this.cardLabel);
+  PastelCardElement(this._cardLabel);
   @override
   Widget build(BuildContext context) {
-    String titleCaseCardLabel = TitleCase.convertToTitleCase(cardLabel);
     return Container(
       height: 192,
       width: 189,
@@ -28,7 +27,7 @@ class PastelCardElement extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 13, top: 35),
-        child: BodyOneText(titleCaseCardLabel, Colors.black),
+        child: BodyOneText(_cardLabel, Colors.black),
       ),
     );
   }
