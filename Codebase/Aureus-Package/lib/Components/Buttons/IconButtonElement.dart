@@ -30,6 +30,11 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.
     Container variantButton;
 
+    //variables that change how the variants are displayed in build time
+    bool isButtonEnabled;
+    BoxDecoration buttonDecoration;
+    Color iconColor;
+
     switch (widget.currentVariant) {
       case buttonVariants.inactive:
 
@@ -126,75 +131,60 @@ class _SecondaryIconButtonElementState
   @override
   Widget build(BuildContext context) {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.
-    Container variantButton;
+
+    //variables that change how the variants are displayed in build time
+    bool isButtonEnabled;
+    BoxDecoration buttonDecoration;
+    Color iconColor;
 
     switch (widget.currentVariant) {
       case buttonVariants.inactive:
 
-        //inactive secondary icon button
-        variantButton = Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                color: foundation.melt().withOpacity(0.5),
-                shape: BoxShape.circle),
-            width: 40.0,
-            height: 40.0,
-            child: Expanded(
-                child: IconButton(
-                    icon: widget.buttonIcon,
-                    iconSize: 15,
-                    color: foundation.steel(),
-                    tooltip: widget.buttonTooltip,
-                    onPressed: null)));
+        //variables that define the variant 'inactive' for secondary icon buttons
+        isButtonEnabled = false;
+        buttonDecoration = BoxDecoration(
+            color: foundation.melt().withOpacity(0.5), shape: BoxShape.circle);
+        iconColor = foundation.steel();
 
         break;
 
       case buttonVariants.lightActive:
 
-        //light active secondary icon button
-        variantButton = Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                color: foundation.ice(),
-                border: Border.all(color: foundation.steel(), width: 1),
-                shape: BoxShape.circle),
-            width: 40.0,
-            height: 40.0,
-            child: Expanded(
-                child: IconButton(
-                    icon: widget.buttonIcon,
-                    iconSize: 15,
-                    color: foundation.black(),
-                    tooltip: widget.buttonTooltip,
-                    onPressed: widget.buttonAction)));
+        //variables that define the variant 'light active' for secondary icon buttons
+        isButtonEnabled = true;
+        buttonDecoration = BoxDecoration(
+            color: foundation.ice(),
+            border: Border.all(color: foundation.steel(), width: 1),
+            shape: BoxShape.circle);
+        iconColor = foundation.black();
 
         break;
 
       case buttonVariants.darkActive:
 
-        //dark active secondary icon button
-        variantButton = Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                color: foundation.carbon(),
-                border: Border.all(color: foundation.steel(), width: 1),
-                shape: BoxShape.circle),
-            width: 40.0,
-            height: 40.0,
-            child: Expanded(
-                child: IconButton(
-                    icon: widget.buttonIcon,
-                    iconSize: 15,
-                    color: foundation.white(),
-                    tooltip: widget.buttonTooltip,
-                    onPressed: widget.buttonAction)));
+        //variables that define the variant 'dark active' for secondary icon buttons
+        isButtonEnabled = true;
+        buttonDecoration = BoxDecoration(
+            color: foundation.carbon(),
+            border: Border.all(color: foundation.steel(), width: 1),
+            shape: BoxShape.circle);
+        iconColor = foundation.white();
 
         break;
     }
 
-    return variantButton;
+    return Container(
+        alignment: Alignment.bottomCenter,
+        padding: EdgeInsets.all(15),
+        decoration: buttonDecoration,
+        width: 40.0,
+        height: 40.0,
+        child: Expanded(
+            child: IconButton(
+                icon: widget.buttonIcon,
+                iconSize: 15,
+                color: iconColor,
+                tooltip: widget.buttonTooltip,
+                onPressed: isButtonEnabled ? widget.buttonAction : null)));
   }
 }

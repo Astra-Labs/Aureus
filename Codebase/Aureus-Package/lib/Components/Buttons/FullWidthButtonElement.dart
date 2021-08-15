@@ -26,19 +26,15 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
   Widget build(BuildContext context) {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.
 
-    //the basic "design" of the button background & border
+    //variables that change how the variants are displayed in build time
     BoxDecoration buttonDecoration;
-
-    //the variable that checks if the button should be active or not
     bool isButtonEnabled;
-
-    //the text color of the button
     Color buttonTextColor;
 
     switch (widget.currentVariant) {
       case buttonVariants.inactive:
 
-        //inactive full width button
+        //variables that define the variant 'inactive' for full width buttons
         isButtonEnabled = false;
         buttonTextColor = foundation.iron();
         buttonDecoration =
@@ -48,7 +44,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
 
       case buttonVariants.lightActive:
 
-        //light active full width button
+        //variables that define the variant 'light active' for full width buttons
         isButtonEnabled = true;
         buttonTextColor = foundation.carbon();
         buttonDecoration = BoxDecoration(
@@ -60,7 +56,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
 
       case buttonVariants.darkActive:
 
-        //dark active full width button
+        //variables that define the variant 'dark active' for full width buttons
         isButtonEnabled = true;
         buttonTextColor = foundation.melt();
         buttonDecoration = BoxDecoration(
