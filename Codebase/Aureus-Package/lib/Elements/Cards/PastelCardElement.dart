@@ -17,7 +17,7 @@ class PastelCardElement extends StatelessWidget {
       height: 192,
       width: 189,
       decoration: BoxDecoration(
-        gradient: foundation.icyBoi2(),
+        gradient: foundation.mediumGradient(),
         borderRadius: BorderRadius.all(
           Radius.circular(10),
         ),

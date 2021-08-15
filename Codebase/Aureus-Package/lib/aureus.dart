@@ -16,7 +16,7 @@ export 'foundation.dart';
 //export 'Elements/Cards/StandardCardElement.dart';
 
 //export 'Elements/Info Hiearchy/InfoHiearchyElements.dart';
-export 'Elements/Info Hiearchy/TabSubheaderElement.dart';
+export 'Elements/Info Hierarchy/TabSubheaderElement.dart';
 
 export 'Elements/Misc/SliderElement.dart';
 export 'Elements/Misc/TimerElement.dart';
