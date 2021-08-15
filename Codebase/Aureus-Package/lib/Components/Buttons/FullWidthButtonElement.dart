@@ -25,83 +25,66 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
   @override
   Widget build(BuildContext context) {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.
-    Container variantButton;
+
+    //the basic "design" of the button background & border
+    BoxDecoration buttonDecoration;
+
+    //the variable that checks if the button should be active or not
+    bool isButtonEnabled;
+
+    //the text color of the button
+    Color buttonTextColor;
 
     switch (widget.currentVariant) {
       case buttonVariants.inactive:
 
         //inactive full width button
-        variantButton = Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
-            decoration:
-                BoxDecoration(color: foundation.melt().withOpacity(0.5)),
-            width: MediaQuery.of(context).size.width,
-            height: (MediaQuery.of(context).size.height / 7),
-            child: Expanded(
-                child: TextButton(
-                    onPressed: widget.buttonAction,
-                    child: Text(widget.buttonTitle),
-                    style: TextButton.styleFrom(
-                        textStyle: foundation
-                            .button2()
-                            .copyWith(color: foundation.iron()),
-                        padding: EdgeInsets.all(10),
-                        enableFeedback: true))));
+        isButtonEnabled = false;
+        buttonTextColor = foundation.iron();
+        buttonDecoration =
+            BoxDecoration(color: foundation.melt().withOpacity(0.5));
 
         break;
 
       case buttonVariants.lightActive:
 
         //light active full width button
-        variantButton = Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                border: Border(
-                    top: BorderSide(width: 1, color: foundation.steel())),
-                gradient: foundation.mediumGradient()),
-            width: MediaQuery.of(context).size.width,
-            height: (MediaQuery.of(context).size.height / 7),
-            child: Expanded(
-                child: TextButton(
-                    onPressed: widget.buttonAction,
-                    child: Text(widget.buttonTitle),
-                    style: TextButton.styleFrom(
-                        textStyle: foundation
-                            .button2()
-                            .copyWith(color: foundation.carbon()),
-                        padding: EdgeInsets.all(10),
-                        enableFeedback: true))));
+        isButtonEnabled = true;
+        buttonTextColor = foundation.carbon();
+        buttonDecoration = BoxDecoration(
+            border:
+                Border(top: BorderSide(width: 1, color: foundation.steel())),
+            gradient: foundation.mediumGradient());
 
         break;
 
       case buttonVariants.darkActive:
 
         //dark active full width button
-        variantButton = Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                border: Border(
-                    top: BorderSide(width: 1, color: foundation.carbon())),
-                gradient: foundation.darkGradient()),
-            width: MediaQuery.of(context).size.width,
-            height: (MediaQuery.of(context).size.height / 7),
-            child: Expanded(
-                child: TextButton(
-                    onPressed: widget.buttonAction,
-                    child: Text(widget.buttonTitle),
-                    style: TextButton.styleFrom(
-                        textStyle: foundation
-                            .button2()
-                            .copyWith(color: foundation.melt()),
-                        padding: EdgeInsets.all(10),
-                        enableFeedback: true))));
+        isButtonEnabled = true;
+        buttonTextColor = foundation.melt();
+        buttonDecoration = BoxDecoration(
+            border:
+                Border(top: BorderSide(width: 1, color: foundation.carbon())),
+            gradient: foundation.darkGradient());
 
         break;
     }
 
-    return variantButton;
+    return Container(
+        alignment: Alignment.bottomCenter,
+        padding: EdgeInsets.all(15),
+        decoration: buttonDecoration,
+        width: MediaQuery.of(context).size.width,
+        height: (MediaQuery.of(context).size.height / 7),
+        child: Expanded(
+            child: TextButton(
+                onPressed: isButtonEnabled ? widget.buttonAction : null,
+                child: Text(widget.buttonTitle),
+                style: TextButton.styleFrom(
+                    textStyle:
+                        foundation.button2().copyWith(color: buttonTextColor),
+                    padding: EdgeInsets.all(10),
+                    enableFeedback: true))));
   }
 }
