@@ -25,79 +25,64 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
   Widget build(BuildContext context) {
     ConstrainedBox variableButton;
 
+    //variables that change how the variants are displayed in build time
+    BoxDecoration buttonDecoration;
+    bool isButtonEnabled;
+    Color buttonTextColor;
+
     switch (widget.currentVariant) {
       case buttonVariants.inactive:
-        variableButton = ConstrainedBox(
-            constraints: BoxConstraints(
-                minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
-            child: Container(
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: foundation.carbon().withOpacity(0.4)),
-                child: Expanded(
-                    child: TextButton(
-                        onPressed: null,
-                        child: Text(widget.buttonTitle),
-                        style: TextButton.styleFrom(
-                            textStyle: foundation
-                                .button1()
-                                .copyWith(color: foundation.iron()),
-                            padding: EdgeInsets.all(10),
-                            tapTargetSize: MaterialTapTargetSize.padded,
-                            enableFeedback: true)))));
+
+        //variables that define the variant 'inactive' for standard buttons
+        isButtonEnabled = false;
+        buttonTextColor = foundation.iron();
+        buttonDecoration = BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: foundation.carbon().withOpacity(0.4));
 
         break;
 
       case buttonVariants.lightActive:
-        variableButton = ConstrainedBox(
-            constraints: BoxConstraints(
-                minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
-            child: Container(
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    color: foundation.white(),
-                    border: Border.all(color: foundation.steel(), width: 1),
-                    borderRadius: BorderRadius.circular(10.0)),
-                child: Expanded(
-                    child: TextButton(
-                        onPressed: widget.buttonAction,
-                        child: Text(widget.buttonTitle),
-                        style: TextButton.styleFrom(
-                            textStyle: foundation
-                                .button1()
-                                .copyWith(color: foundation.carbon()),
-                            padding: EdgeInsets.all(10),
-                            tapTargetSize: MaterialTapTargetSize.padded,
-                            enableFeedback: true)))));
+
+        //variables that define the variant 'light active' for standard buttons
+        isButtonEnabled = true;
+        buttonTextColor = foundation.carbon();
+        buttonDecoration = BoxDecoration(
+            color: foundation.white(),
+            border: Border.all(color: foundation.steel(), width: 1),
+            borderRadius: BorderRadius.circular(10.0));
 
         break;
 
       case buttonVariants.darkActive:
-        variableButton = ConstrainedBox(
-            constraints: BoxConstraints(
-                minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
-            child: Container(
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    color: foundation.carbon(),
-                    border: Border.all(color: foundation.steel(), width: 1),
-                    borderRadius: BorderRadius.circular(10.0)),
-                child: Expanded(
-                    child: TextButton(
-                        onPressed: widget.buttonAction,
-                        child: Text(widget.buttonTitle),
-                        style: TextButton.styleFrom(
-                            textStyle: foundation
-                                .button1()
-                                .copyWith(color: foundation.white()),
-                            padding: EdgeInsets.all(10),
-                            tapTargetSize: MaterialTapTargetSize.padded,
-                            enableFeedback: true)))));
+
+        //variables that define the variant 'light active' for standard buttons
+        isButtonEnabled = true;
+        buttonTextColor = foundation.white();
+        buttonDecoration = BoxDecoration(
+            color: foundation.carbon(),
+            border: Border.all(color: foundation.steel(), width: 1),
+            borderRadius: BorderRadius.circular(10.0));
 
         break;
     }
 
-    return variableButton;
+    return ConstrainedBox(
+        constraints: BoxConstraints(
+            minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
+        child: Container(
+            padding: EdgeInsets.all(10.0),
+            decoration: buttonDecoration,
+            child: Expanded(
+                child: TextButton(
+                    onPressed: isButtonEnabled ? widget.buttonAction : null,
+                    child: Text(widget.buttonTitle),
+                    style: TextButton.styleFrom(
+                        textStyle: foundation
+                            .button1()
+                            .copyWith(color: buttonTextColor),
+                        padding: EdgeInsets.all(10),
+                        tapTargetSize: MaterialTapTargetSize.padded,
+                        enableFeedback: true)))));
   }
 }

@@ -55,7 +55,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
 
       case buttonVariants.darkActive:
 
-        //variables that define the variant 'light active' for smol buttons
+        //variables that define the variant 'dark active' for smol buttons
         isButtonEnabled = true;
         buttonTextColor = foundation.white();
         buttonDecoration = BoxDecoration(
