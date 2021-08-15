@@ -21,7 +21,7 @@ class BadgeCardElement extends StatelessWidget {
       width: 144.12,
       child: Container(
         decoration: BoxDecoration(
-          gradient: foundation.icyBoi1(),
+          gradient: foundation.lightGradient(),
           borderRadius: BorderRadius.all(Radius.circular(10)),
           border: Border.all(
             color: foundation.steel(),

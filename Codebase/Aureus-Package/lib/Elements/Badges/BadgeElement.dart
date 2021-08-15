@@ -12,7 +12,7 @@ class BadgeElementDarkWhite extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white,
+        color: foundation.white(),
       ),
       width: 157,
       height: 156,
@@ -26,7 +26,7 @@ class BadgeElementLightIcyBoi extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: foundation.icyBoi3(),
+        gradient: foundation.lightGradient(),
         boxShadow: [
           BoxShadow(
             color: Color.fromRGBO(184, 195, 236, 0.51),
@@ -62,7 +62,7 @@ class BadgeElementDarkIcyBoi extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: foundation.darkIcyBoi(),
+        gradient: foundation.darkGradient(),
         boxShadow: [
           BoxShadow(
             color: Color.fromRGBO(113, 136, 218, 0.4),

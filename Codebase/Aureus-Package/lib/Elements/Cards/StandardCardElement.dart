@@ -17,7 +17,7 @@ class StandardCardElement extends StatelessWidget {
       height: 164,
       width: 144.12,
       decoration: BoxDecoration(
-        gradient: foundation.icyBoi1(),
+        gradient: foundation.lightGradient(),
         borderRadius: BorderRadius.all(
           Radius.circular(10),
         ),
