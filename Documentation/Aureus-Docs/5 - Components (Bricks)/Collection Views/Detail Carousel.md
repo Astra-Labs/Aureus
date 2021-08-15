@@ -1,6 +1,6 @@
 # Detail Carousel
 ### Source Code
-[Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
+[Source Code](https://github.com/Astra-Labs/Aureus/blob/main/Codebase/Aureus-Package/lib/Components/Collection%20Views/DetailCarouselComponent.dart)
 
 ### Properties
 * 
@@ -9,13 +9,14 @@
 #### Input
 | Input | Type |
 |-----|-------|
-| |     |
+| cardLabels | List<String> |
+| cardIcons  | List<IconData> |
 
 
 #### Output
 | Output | Type |
 |-----|-------|
-|  |      |
+| Detail carousel | Container |
 
 ### UI
 
