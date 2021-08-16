@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 //Doc Link:
 
 //Global Foundational Enums go here since Dart doesn't support nested types
+enum modeVariants { light, dark }
 enum buttonVariants { inactive, lightActive, darkActive }
+enum messagingVariants { sender, receiver }
+enum communicationStatus { sending, delivered, failed }
 
 class UDSVariables {
 //Global Product Variations
