@@ -5,31 +5,41 @@ import 'package:flutter/material.dart';
 /*
 
 Description: 
-An object that contains all of the lower level objects 
+The top level class that contains all of the onboarding detail objects
 
 Details:
--If only one category is passed, Help Center will just display the list view of articles.
--If multiple categories are passed, Help Center will display a grid list of categories, and then a detailed list of articles.
+-A minimum of 2 onboarding details are required to build an onboarding object. 
 
 */
 class OnboardingObject {
+  final List<OnboardingDetail> onboardingItems;
 
-  
+  const OnboardingObject({required this.onboardingItems})
+      : assert(onboardingItems.length >= 2);
 }
 
 /*--------- LEVEL 1 --------*/
 /*
 
 Description: 
-An object that contains all of the lower level objects 
+An object that contains information to be shown in a category as a user is tabbing through the onboarding view. 
 
 Details:
--If only one category is passed, Help Center will just display the list view of articles.
--If multiple categories are passed, Help Center will display a grid list of categories, and then a detailed list of articles.
+-All variables are required to be passed as non-null in the constructor. 
 
 */
 
 class OnboardingDetail {
+  final String detailTitle;
+  final String detailBody;
+  final Image detailImage;
+  final Image detailCategoryIcon;
 
-
+  const OnboardingDetail(
+      {required this.detailTitle,
+      required this.detailBody,
+      required this.detailImage,
+      required this.detailCategoryIcon})
+      : assert(detailTitle != ''),
+        assert(detailBody != '');
 }
