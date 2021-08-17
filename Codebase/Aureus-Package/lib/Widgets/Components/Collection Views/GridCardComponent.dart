@@ -1,5 +1,5 @@
-import 'package:aureus/Elements/Cards/BadgeCardElement.dart';
-import 'package:aureus/Elements/Cards/StandardCardElement.dart';
+import 'package:aureus/Widgets/Elements/Cards/BadgeCardElement.dart';
+import 'package:aureus/Widgets/Elements/Cards/StandardCardElement.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:aureus/foundation.dart';
 
