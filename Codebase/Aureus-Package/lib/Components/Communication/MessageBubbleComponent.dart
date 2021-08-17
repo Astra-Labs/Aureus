@@ -47,6 +47,6 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
         }
     }
 
-    return Container;
+    return Container(width: 300, height: , decoration: , child: Center(child: BodyTwoText(widget.messageBody, foundation.black())));
   }
 }

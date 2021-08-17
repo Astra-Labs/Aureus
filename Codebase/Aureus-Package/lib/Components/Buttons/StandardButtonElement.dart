@@ -19,7 +19,6 @@ class StandardButtonElement extends StatefulWidget {
 }
 
 class _StandardButtonElementState extends State<StandardButtonElement> {
-  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {

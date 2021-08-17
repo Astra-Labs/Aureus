@@ -19,8 +19,6 @@ class SingleDataTypeUserInputElement extends StatefulWidget {
 
 class _SingleDataTypeUserInputElementState
     extends State<SingleDataTypeUserInputElement> {
-  var variables = UDSVariables();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,9 +27,9 @@ class _SingleDataTypeUserInputElementState
           width: 250,
           height: 60,
           decoration: BoxDecoration(
-            border: Border.all(color: variables.steel(), width: 1.0),
+            border: Border.all(color: foundation.steel(), width: 1.0),
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: variables.ice(),
+            color: foundation.ice(),
           ),
           child: Center(
               child: Padding(
@@ -43,7 +41,7 @@ class _SingleDataTypeUserInputElementState
                     enabledBorder: InputBorder.none,
                     errorBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
-                    hintStyle: variables.body1(),
+                    hintStyle: foundation.body1(),
                     hintText: widget.dataPlaceholder),
                 autocorrect: false,
                 textAlign: TextAlign.left,

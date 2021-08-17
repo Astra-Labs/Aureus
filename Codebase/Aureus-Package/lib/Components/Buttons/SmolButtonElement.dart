@@ -21,7 +21,6 @@ class SmolButtonElement extends StatefulWidget {
 }
 
 class _SmolButtonElementState extends State<SmolButtonElement> {
-  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {

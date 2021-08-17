@@ -12,7 +12,6 @@ class TabSubheaderElement extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    var variables = UDSVariables();
 
     return Container(
       decoration: BoxDecoration(
@@ -22,7 +21,7 @@ class TabSubheaderElement extends StatelessWidget {
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
         ),
-        color: variables.carbon(),
+        color: foundation.carbon(),
       ),
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       child: Row(
@@ -30,7 +29,7 @@ class TabSubheaderElement extends StatelessWidget {
         children: <Widget>[
           Text(title,
               textAlign: TextAlign.center,
-              style: variables.tag1(color: variables.melt())),
+              style: foundation.tag1(color: foundation.melt())),
         ],
       ),
     );

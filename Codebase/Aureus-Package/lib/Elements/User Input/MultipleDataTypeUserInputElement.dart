@@ -24,8 +24,6 @@ class MultipleDataTypeUserInputElement extends StatefulWidget {
 
 class _MultipleDataTypeUserInputElementState
     extends State<MultipleDataTypeUserInputElement> {
-  var variables = UDSVariables();
-
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -38,9 +36,9 @@ class _MultipleDataTypeUserInputElementState
             width: 250,
             height: 60,
             decoration: BoxDecoration(
-              border: Border.all(color: variables.steel(), width: 1.0),
+              border: Border.all(color: foundation.steel(), width: 1.0),
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: variables.ice(),
+              color: foundation.ice(),
             ),
             child: Center(
                 child: Padding(
@@ -52,7 +50,7 @@ class _MultipleDataTypeUserInputElementState
                       enabledBorder: InputBorder.none,
                       errorBorder: InputBorder.none,
                       disabledBorder: InputBorder.none,
-                      hintStyle: variables.body1(),
+                      hintStyle: foundation.body1(),
                       hintText: widget.dataPlaceholder),
                   autocorrect: false,
                   textAlign: TextAlign.left,

@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 class BadgeCardElement extends StatelessWidget {
   final String cardLabel;
   final IconData cardIcon;
-  final foundation = UDSVariables();
 
   BadgeCardElement(this.cardLabel, this.cardIcon);
 

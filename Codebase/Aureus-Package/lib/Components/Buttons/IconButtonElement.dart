@@ -23,7 +23,6 @@ class PrimaryIconButtonElement extends StatefulWidget {
 }
 
 class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
-  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +125,6 @@ class SecondaryIconButtonElement extends StatefulWidget {
 
 class _SecondaryIconButtonElementState
     extends State<SecondaryIconButtonElement> {
-  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {

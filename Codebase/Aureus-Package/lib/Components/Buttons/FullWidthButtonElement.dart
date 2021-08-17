@@ -20,7 +20,6 @@ class FullWidthButtonElement extends StatefulWidget {
 }
 
 class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
-  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {

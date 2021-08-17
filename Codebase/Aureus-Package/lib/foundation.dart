@@ -1,5 +1,8 @@
+import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 //All Variables for the UDS Elements
 //Doc Link:
@@ -9,6 +12,7 @@ enum modeVariants { light, dark }
 enum buttonVariants { inactive, lightActive, darkActive }
 enum messagingVariants { sender, receiver }
 enum communicationStatus { sending, delivered, failed }
+enum CardType { standard, badge }
 
 class UDSVariables {
 //Global Product Variations
@@ -98,104 +102,67 @@ class UDSVariables {
 
 // Global Text Styles
   TextStyle heading1() {
-    return TextStyle(
-      fontSize: 26,
-      fontWeight: FontWeight.w300,
-      letterSpacing: 0.2,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 26, fontWeight: FontWeight.w300, letterSpacing: 0.2);
   }
 
   TextStyle heading2() {
-    return TextStyle(
+    return GoogleFonts.exo(
       fontSize: 21,
       fontWeight: FontWeight.w500,
       letterSpacing: 1.0,
-      fontFamily: "Exo",
     );
   }
 
   TextStyle heading3() {
-    return TextStyle(
-      fontSize: 17,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 1.0,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 17, fontWeight: FontWeight.w500, letterSpacing: 1.0);
   }
 
   TextStyle heading4() {
-    return TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 1.0,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 1.0);
   }
 
   TextStyle subheading() {
-    return TextStyle(
-      fontSize: 17,
-      fontWeight: FontWeight.w300,
-      letterSpacing: 0.2,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 17, fontWeight: FontWeight.w300, letterSpacing: 0.2);
   }
 
   TextStyle body1() {
-    return TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w300,
-      letterSpacing: 0.2,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 14, fontWeight: FontWeight.w300, letterSpacing: 0.2);
   }
 
   TextStyle body2() {
-    return TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.2,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.2);
   }
 
   TextStyle button1() {
-    return TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 1.0,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.0);
   }
 
   TextStyle button2() {
-    return TextStyle(
-      fontSize: 17,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 1.0,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        fontSize: 17, fontWeight: FontWeight.w400, letterSpacing: 1.0);
   }
 
   TextStyle tag1({color: Color}) {
-    return TextStyle(
-      color: color,
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 1.5,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        color: color,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 1.5);
   }
 
   TextStyle tag2({color: Color}) {
-    return TextStyle(
-      color: color,
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 1.0,
-      fontFamily: "Exo",
-    );
+    return GoogleFonts.exo(
+        color: color,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 1.0);
   }
 
   //Global Theme Data
@@ -227,6 +194,25 @@ class TitleCase {
     });
 
     return capitalizedWords.join(' ');
+  }
+}
+
+class Accessibility {
+  //returns the proper sizing of a string for a given text style with regards to the scale factor to accomodate dynamic text sizing.
+  Size textStringSize(
+      {required String textInput,
+      required TextStyle textStyle,
+      required TextDirection textDirection,
+      required MediaQueryData query}) {
+    //creates variable that contains MediaQuery information that will be used to return proper sizing
+    TextPainter textPainter = TextPainter(
+        text: TextSpan(text: textInput, style: textStyle),
+        maxLines: 1,
+        textScaleFactor: query.textScaleFactor,
+        textDirection: textDirection)
+      ..layout();
+
+    return textPainter.size;
   }
 }
 
@@ -296,5 +282,3 @@ class TagTwoText extends Text {
   TagTwoText(String data, Color color)
       : super(data.toUpperCase(), style: foundation.tag2(color: color));
 }
-
-enum CardType { standard, badge }
