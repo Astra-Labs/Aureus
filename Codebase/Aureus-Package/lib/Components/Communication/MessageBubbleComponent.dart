@@ -32,7 +32,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
           //variables that define the variant 'receiver' for message bubble component
           backingDecoration = BoxDecoration();
           boxAlignment = Alignment.bottomLeft;
-          deliveryStatus = "";
+          deliveryStatus = '';
 
           break;
         }
@@ -42,7 +42,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
           //variables that define the variant 'sender' for message bubble component
           backingDecoration = BoxDecoration();
           boxAlignment = Alignment.bottomLeft;
-          deliveryStatus = widget.currentStatus;
+          deliveryStatus = '$widget.currentStatus';
           break;
         }
     }
