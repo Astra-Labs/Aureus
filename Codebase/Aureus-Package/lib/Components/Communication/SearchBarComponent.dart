@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 
 class SearchBarComponent extends StatefulWidget {
   final VoidCallback onSearch;
+  final modeVariants barVariant;
 
-  const SearchBarComponent({required this.onSearch});
+  const SearchBarComponent({required this.onSearch, required this.barVariant});
 
   @override
   _SearchBarComponentState createState() => _SearchBarComponentState();
@@ -17,6 +18,21 @@ class SearchBarComponent extends StatefulWidget {
 class _SearchBarComponentState extends State<SearchBarComponent> {
   @override
   Widget build(BuildContext context) {
+    BoxDecoration searchBarBackingDecoration = BoxDecoration();
+    Color textColor = foundation.black();
+
+    if (widget.barVariant == modeVariants.light) {
+      searchBarBackingDecoration = BoxDecoration(
+        border: Border.all(color: foundation.steel(), width: 1.0),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: foundation.ice(),
+      );
+      textColor = foundation.carbon();
+    } else if (widget.barVariant == modeVariants.dark) {
+      searchBarBackingDecoration = BoxDecoration();
+      textColor = foundation.melt();
+    }
+
     return AspectRatio(
         aspectRatio: 585 / 73,
         child: Container(
@@ -35,6 +51,8 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                       child: Padding(
                     padding: const EdgeInsets.only(left: 5.0),
                     child: TextFormField(
+                        style: foundation.heading2().copyWith(color: textColor),
+                        maxLines: 1,
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -52,7 +70,8 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: foundation.mediumGradient()),
+                      gradient: foundation.mediumGradient(),
+                      border: Border.all(color: foundation.steel(), width: 1)),
                   width: 73.0,
                   height: 73.0,
                   child: Expanded(
