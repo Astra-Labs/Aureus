@@ -1,5 +1,6 @@
+import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
 
 //A circle with an icon that is meant to act as a category label, but not as a button.
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Badges/All.md

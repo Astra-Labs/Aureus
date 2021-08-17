@@ -1,5 +1,6 @@
+import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
 
 //A full width centered alert controller that sticks to the bottom of the screen
 //Doc Link:

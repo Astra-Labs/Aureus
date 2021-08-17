@@ -6,8 +6,6 @@ export 'Core/accessibility.dart';
 export 'Core/foundation.dart';
 export 'Core/safety.dart';
 
-export 'core.dart';
-
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
 
@@ -60,3 +58,14 @@ export 'Widgets/Components/Communication/SendFieldComponent.dart';
 //Exporting lib widget views
 //export 'Views/';
 export '/Widgets/Views/HelpCenterView.dart';
+
+/* ------------------ CORE GLOBALS -------------------- */
+/* Where the widgets that Aureus builds from the objects are contained */
+
+import 'package:aureus/Core/accessibility.dart';
+import 'package:aureus/Core/foundation.dart';
+import 'package:aureus/Core/safety.dart';
+
+var foundation = UDSVariables();
+var accessibility = Accessibility();
+var safety = Safety();

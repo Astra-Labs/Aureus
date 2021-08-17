@@ -1,5 +1,6 @@
+import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
 
 //A group of icon buttons on a card that acts as a tabbing bar to change data
 //Doc Link:

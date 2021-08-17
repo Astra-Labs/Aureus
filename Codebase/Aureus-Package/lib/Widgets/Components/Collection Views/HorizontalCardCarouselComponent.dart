@@ -1,8 +1,6 @@
-import 'package:aureus/Widgets/Elements/Cards/BadgeCardElement.dart';
-import 'package:aureus/Widgets/Elements/Cards/StandardCardElement.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 //A horizontally scrolling card carousel
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/5%20-%20Components%20(Bricks)/Collection%20Views/Horizontal%20Card%20Carousel.md

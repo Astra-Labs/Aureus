@@ -1,5 +1,6 @@
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
-import 'package:aureus/core.dart';
+import 'package:flutter/cupertino.dart';
 
 //A 80% width button that acts as a standard button for the UDS
 //Doc Link:

@@ -1,5 +1,6 @@
+import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
 
 //A visual divider that breaks up space
 //Doc Link:

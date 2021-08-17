@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 //A card that contains a badge and label to describe what the card represents
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Badge%20Cards.md

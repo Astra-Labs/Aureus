@@ -1,7 +1,6 @@
-import 'package:aureus/Widgets/Elements/Cards/BadgeCardElement.dart';
-import 'package:aureus/Widgets/Elements/Cards/StandardCardElement.dart';
+import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
 
 //A grid collection view that scrolls vertically
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/5%20-%20Components%20(Bricks)/Collection%20Views/Grid%20Cards.md

@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:aureus/core.dart';
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 //A full width button that acts as the main CTA
 //Doc Link:

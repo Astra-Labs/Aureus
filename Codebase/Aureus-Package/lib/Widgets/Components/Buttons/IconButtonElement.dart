@@ -1,5 +1,6 @@
-import 'package:aureus/core.dart';
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 //A small, circular button that uses an icon to communicate its' purpose
 //Doc Link:

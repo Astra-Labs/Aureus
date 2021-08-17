@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/cupertino.dart';
 
 /*--------- IMPORTANT ----------
 
