@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 import 'package:aureus/Objects/Views/HelpCenterObjects.dart';
 
 //
@@ -15,22 +15,22 @@ class HelpCenter extends StatefulWidget {
   _HelpCenterState createState() => _HelpCenterState();
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container HelpCenterLandingView() {
+  Container helpCenterLandingView() {
     return Container();
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container HelpCenterGridView() {
+  Container helpCenterGridView() {
     return Container();
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container HelpCenterListView() {
+  Container helpCenterListView() {
     return Container();
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container HelpCenterDetailView() {
+  Container helpCenterDetailView() {
     return Container();
   }
 }

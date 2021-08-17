@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 
 //A 80% width button that acts as a standard button for the UDS
 //Doc Link:
@@ -19,7 +19,6 @@ class StandardButtonElement extends StatefulWidget {
 }
 
 class _StandardButtonElementState extends State<StandardButtonElement> {
-
   @override
   Widget build(BuildContext context) {
     ConstrainedBox variableButton;

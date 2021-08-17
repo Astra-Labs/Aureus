@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 import 'package:flutter/material.dart';
 
 //A card that contains a badge and label to describe what the card represents

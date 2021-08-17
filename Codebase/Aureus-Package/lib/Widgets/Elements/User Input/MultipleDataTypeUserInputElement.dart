@@ -1,6 +1,6 @@
 import 'package:aureus/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

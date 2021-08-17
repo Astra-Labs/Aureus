@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 
 //A blank card that looks like a "pane" of glass
 //Doc Link:
 
 class SliderElement extends StatefulWidget {
-
   @override
   _SliderElementState createState() => _SliderElementState();
 }

@@ -1,18 +1,16 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 
 //A label that has a rounded backing and acts as a category subheader
 //Doc Link:
 
 class TabSubheaderElement extends StatelessWidget {
-
   final String title;
 
   const TabSubheaderElement({Key? key, required this.title}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(

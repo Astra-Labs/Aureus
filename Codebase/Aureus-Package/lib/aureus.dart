@@ -1,7 +1,12 @@
 library aureus;
 
-//Exporting base / prod variables
-export 'foundation.dart';
+/* ------------------ CORE -------------------- */
+/* Where all of the global foundations, classes, and variables that Aureus is built on are stored. */
+export 'Core/accessibility.dart';
+export 'Core/foundation.dart';
+export 'Core/safety.dart';
+
+export 'core.dart';
 
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */

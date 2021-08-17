@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 
 //A vertically & horizontally centered alert controller
 //Doc Link:
 
 class CenteredAlertControllerComponent extends StatefulWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

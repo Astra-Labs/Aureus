@@ -1,7 +1,7 @@
 import 'package:aureus/Widgets/Elements/Cards/BadgeCardElement.dart';
 import 'package:aureus/Widgets/Elements/Cards/StandardCardElement.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 import 'package:flutter/material.dart';
 
 //A horizontally scrolling card carousel

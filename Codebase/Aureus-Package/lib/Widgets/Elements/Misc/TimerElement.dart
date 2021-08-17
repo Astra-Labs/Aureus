@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 
 //A blank card that looks like a "pane" of glass
 //Doc Link:
 
 class TimerElement extends StatefulWidget {
-
   @override
   _TimerElementState createState() => _TimerElementState();
 }
 
 class _TimerElementState extends State<TimerElement> {
-  
   @override
   Widget build(BuildContext context) {
     return Container(

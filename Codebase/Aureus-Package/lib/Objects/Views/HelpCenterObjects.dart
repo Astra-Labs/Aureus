@@ -1,4 +1,4 @@
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 import 'package:flutter/material.dart';
 
 /*--------- LEVEL 0 --------*/

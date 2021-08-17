@@ -1,4 +1,4 @@
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 import 'package:flutter/material.dart';
 
 //A small, circular button that uses an icon to communicate its' purpose
@@ -23,7 +23,6 @@ class PrimaryIconButtonElement extends StatefulWidget {
 }
 
 class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
-
   @override
   Widget build(BuildContext context) {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.
@@ -125,7 +124,6 @@ class SecondaryIconButtonElement extends StatefulWidget {
 
 class _SecondaryIconButtonElementState
     extends State<SecondaryIconButtonElement> {
-
   @override
   Widget build(BuildContext context) {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.

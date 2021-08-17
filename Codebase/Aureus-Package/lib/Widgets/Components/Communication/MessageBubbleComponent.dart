@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 
 //A bubble that contains a text message from a sender or a receiver
 //Doc Link:

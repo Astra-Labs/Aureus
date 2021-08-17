@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 
 //An icon tabbing bar and card that acts as an onboarding walkthrough
 //Doc Link:
 
 class OnboardingTabbingComponent extends StatefulWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

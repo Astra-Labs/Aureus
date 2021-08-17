@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:aureus/foundation.dart';
+import 'package:aureus/core.dart';
 import 'package:flutter/material.dart';
 
 //A full width button that acts as the main CTA
@@ -20,7 +20,6 @@ class FullWidthButtonElement extends StatefulWidget {
 }
 
 class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
-
   @override
   Widget build(BuildContext context) {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.
