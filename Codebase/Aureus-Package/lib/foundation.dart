@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -199,8 +197,9 @@ class TitleCase {
 
 class Accessibility {
   //returns the proper sizing of a string for a given text style with regards to the scale factor to accomodate dynamic text sizing.
-  Size textStringSize(
-      {required String textInput,
+  static Size textStringSize(
+      {required double widthLimit,
+      required String textInput,
       required TextStyle textStyle,
       required TextDirection textDirection,
       required MediaQueryData query}) {
@@ -210,7 +209,7 @@ class Accessibility {
         maxLines: 1,
         textScaleFactor: query.textScaleFactor,
         textDirection: textDirection)
-      ..layout();
+      ..layout(maxWidth: widthLimit);
 
     return textPainter.size;
   }
