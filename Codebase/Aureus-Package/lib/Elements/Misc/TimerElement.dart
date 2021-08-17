@@ -5,15 +5,13 @@ import 'package:aureus/foundation.dart';
 //Doc Link:
 
 class TimerElement extends StatefulWidget {
-  var foundation = UDSVariables();
 
   @override
   _TimerElementState createState() => _TimerElementState();
 }
 
 class _TimerElementState extends State<TimerElement> {
-  var foundation = UDSVariables();
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(

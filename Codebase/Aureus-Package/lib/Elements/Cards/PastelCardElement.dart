@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 //A blank card that is a pastel version of the product color
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Pastel%20Cards.md
 
-final foundation = UDSVariables();
-
 class PastelCardElement extends StatelessWidget {
   final String _cardLabel;
 

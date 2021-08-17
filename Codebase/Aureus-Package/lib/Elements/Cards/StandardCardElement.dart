@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 //A standardized card element that can be glass, pastel, or white that contains a header that describes the card.
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Standard%20Cards.md
 
-final foundation = UDSVariables();
-
 class StandardCardElement extends StatelessWidget {
   final String _cardLabel;
 

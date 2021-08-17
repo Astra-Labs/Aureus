@@ -4,8 +4,6 @@ import 'package:aureus/foundation.dart';
 //A circle with an icon that is meant to act as a category label, but not as a button.
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Badges/All.md
 
-final foundation = UDSVariables();
-
 class BadgeElementDarkWhite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

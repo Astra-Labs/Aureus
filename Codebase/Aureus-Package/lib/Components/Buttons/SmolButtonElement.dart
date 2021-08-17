@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 //Doc Link:
 
 class SmolButtonElement extends StatefulWidget {
+
   final buttonVariants currentVariant;
   final String buttonTitle;
   final VoidCallback buttonAction;
@@ -20,10 +21,10 @@ class SmolButtonElement extends StatefulWidget {
 }
 
 class _SmolButtonElementState extends State<SmolButtonElement> {
-  var foundation = UDSVariables();
 
   @override
   Widget build(BuildContext context) {
+    
     //variables that change how the variants are displayed in build time
     BoxDecoration buttonDecoration;
     bool isButtonEnabled;
