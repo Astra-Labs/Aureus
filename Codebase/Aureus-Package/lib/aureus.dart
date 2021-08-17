@@ -15,6 +15,7 @@ export 'Objects/Components/NotificationObject.dart';
 
 //MARK: - View Objects
 export 'Objects/Views/HelpCenterObjects.dart';
+export 'Objects/Views/OnboardingObjects.dart';
 
 /* ------------------ WIDGETS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
