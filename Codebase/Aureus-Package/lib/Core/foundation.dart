@@ -12,10 +12,10 @@ enum buttonVariants { inactive, lightActive, darkActive }
 enum messagingVariants { sender, receiver }
 enum communicationStatus { sending, delivered, failed }
 enum CardType { standard, badge }
+enum userInputType { singleDataType, multiDataType }
+enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
 
 class UDSVariables {
-//Global Product Variations
-
   final Color prodColor;
   final String prodName;
   final Gradient lightGrad;
@@ -193,6 +193,137 @@ class TitleCase {
     });
 
     return capitalizedWords.join(' ');
+  }
+}
+
+//
+class Sizing {
+  double heightOf({context: MediaQueryData, weight: sizingWeight}) {
+    double screenWeightedHeight = 0.0;
+
+    switch (weight) {
+
+      //MINIMUM WIDTH OF ITEM - 5%
+      case sizingWeight.w0:
+        screenWeightedHeight = (context.size.height) * 0.05;
+        break;
+
+      //10% of screen height
+      case sizingWeight.w1:
+        screenWeightedHeight = (context.size.height) * 0.1;
+        break;
+
+      //20% of screen height
+      case sizingWeight.w2:
+        screenWeightedHeight = (context.size.height) * 0.2;
+        break;
+
+      //30% of screen height
+      case sizingWeight.w3:
+        screenWeightedHeight = (context.size.height) * 0.3;
+        break;
+
+      //40% of screen height
+      case sizingWeight.w4:
+        screenWeightedHeight = (context.size.height) * 0.4;
+        break;
+
+      //50% of screen height
+      case sizingWeight.w5:
+        screenWeightedHeight = (context.size.height) * 0.5;
+        break;
+
+      //60% of screen height
+      case sizingWeight.w6:
+        screenWeightedHeight = (context.size.height) * 0.6;
+        break;
+
+      //70% of screen height
+      case sizingWeight.w7:
+        screenWeightedHeight = (context.size.height) * 0.7;
+        break;
+
+      //80% of screen height
+      case sizingWeight.w8:
+        screenWeightedHeight = (context.size.height) * 0.8;
+        break;
+
+      //90% of screen height
+      case sizingWeight.w9:
+        screenWeightedHeight = (context.size.height) * 0.9;
+        break;
+
+      //100% of screen height
+      case sizingWeight.w10:
+        screenWeightedHeight = (context.size.height);
+        break;
+    }
+
+    return screenWeightedHeight;
+  }
+
+  double widthOf({context: MediaQueryData, weight: sizingWeight}) {
+    double screenWeightedWidth = 0.0;
+
+    switch (weight) {
+
+      //MINIMUM WIDTH OF ITEM - 5%
+      case sizingWeight.w0:
+        screenWeightedWidth = (context.size.width) * 0.05;
+        break;
+
+      //10% of width
+      case sizingWeight.w1:
+        screenWeightedWidth = (context.size.width) * 0.1;
+        break;
+
+      //20% of width
+      case sizingWeight.w2:
+        screenWeightedWidth = (context.size.width) * 0.2;
+        break;
+
+      //30% of width
+      case sizingWeight.w3:
+        screenWeightedWidth = (context.size.width) * 0.3;
+        break;
+
+      //40% of width
+      case sizingWeight.w4:
+        screenWeightedWidth = (context.size.width) * 0.4;
+        break;
+
+      //50% of width
+      case sizingWeight.w5:
+        screenWeightedWidth = (context.size.width) * 0.5;
+        break;
+
+      //60% of width
+      case sizingWeight.w6:
+        screenWeightedWidth = (context.size.width) * 0.6;
+        break;
+
+      //70% of width
+      case sizingWeight.w7:
+        screenWeightedWidth = (context.size.width) * 0.7;
+        break;
+
+      //80% of width
+      case sizingWeight.w8:
+        screenWeightedWidth = (context.size.width) * 0.8;
+        break;
+
+      //90% of width
+      case sizingWeight.w9:
+        screenWeightedWidth = (context.size.width) * 0.9;
+        break;
+
+      //100% of width
+      case sizingWeight.w10:
+        screenWeightedWidth = (context.size.width);
+        break;
+    }
+
+    return screenWeightedWidth;
   }
 }
 

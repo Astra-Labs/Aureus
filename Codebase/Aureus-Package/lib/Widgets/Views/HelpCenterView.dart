@@ -15,23 +15,23 @@ class HelpCenter extends StatefulWidget {
   _HelpCenterState createState() => _HelpCenterState();
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container helpCenterLandingView() {
-    return Container();
+  Expanded helpCenterLandingView() {
+    return Expanded(child: Container());
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container helpCenterGridView() {
-    return Container();
+  Expanded helpCenterGridView() {
+    return Expanded(child: Container());
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container helpCenterListView() {
-    return Container();
+  Expanded helpCenterListView() {
+    return Expanded(child: Container());
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Container helpCenterDetailView() {
-    return Container();
+  Expanded helpCenterDetailView() {
+    return Expanded(child: Container());
   }
 }
 
