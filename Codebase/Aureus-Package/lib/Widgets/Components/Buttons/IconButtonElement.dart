@@ -108,7 +108,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
 //tiny babey icon buttons that are 60x60 or less.
 class SecondaryIconButtonElement extends StatefulWidget {
   final buttonVariants currentVariant;
-  final Image buttonIcon;
+  final Icon buttonIcon;
   final String buttonTooltip;
   final VoidCallback buttonAction;
 

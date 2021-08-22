@@ -296,7 +296,7 @@ class TagTwoText extends Text {
 //MARK: - Sizing
 /* ------------------ SIZING -------------------- */
 class Sizing {
-  double heightOf({context: MediaQueryData, weight: sizingWeight}) {
+  static double heightOf({context: MediaQueryData, weight: sizingWeight}) {
     double screenWeightedHeight = 0.0;
 
     switch (weight) {
@@ -360,7 +360,7 @@ class Sizing {
     return screenWeightedHeight;
   }
 
-  double widthOf({context: MediaQueryData, weight: sizingWeight}) {
+  static double widthOf({context: MediaQueryData, weight: sizingWeight}) {
     double screenWeightedWidth = 0.0;
 
     switch (weight) {
