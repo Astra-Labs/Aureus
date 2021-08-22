@@ -131,7 +131,7 @@ class UDSVariables {
   }
 
   Border universalBorder() {
-    return Border.all(color: steel(), width: 1);
+    return Border.all(color: steel().withOpacity(0.6), width: 1);
   }
 
   Border pastelBorder() {
@@ -472,7 +472,7 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-      decorationFill = foundation.steel();
+      decorationFill = foundation.steel().withOpacity(0.5);
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
       if (mode == modeVariants.light) {
@@ -520,18 +520,22 @@ class LayerBackingDecoration extends BaseBackingDecoration {
     }
 
     //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
+    if (priority == decorationPriority.important) {
       //defining variants for the specific mode
+      decorationFill = foundation.prodColor.withOpacity(0.4);
+
       if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
-    } else if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
+        decorationHaze = foundation.lightHaze();
+      } else if (mode == modeVariants.dark) {
+        decorationHaze = foundation.darkHaze();
+      }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
+        decorationFill = foundation.ice();
+      } else if (mode == modeVariants.dark) {
+        decorationFill = foundation.carbon();
+      }
     }
 
     return BoxDecoration(
@@ -560,12 +564,31 @@ class CardBackingDecoration extends BaseBackingDecoration {
       decorationCornerRadius = 5.0;
     }
 
-    //defining variants for the specific mode
-    if (mode == modeVariants.light) {
-      decorationBorder = foundation.universalBorder();
-    } else if (mode == modeVariants.dark) {}
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+      decorationFill = foundation.steel().withOpacity(0.5);
+    } else if (priority == decorationPriority.important) {
+      decorationGradient = foundation.mediumGradient();
+      decorationBorder = foundation.pastelBorder();
+    } else if (priority == decorationPriority.standard) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+        decorationGradient = foundation.lightGradient();
+        decorationBorder = foundation.universalBorder();
+      } else if (mode == modeVariants.dark) {
+        decorationGradient = foundation.darkGradient();
+        decorationBorder = foundation.universalBorder();
+      }
+    }
 
-    return BoxDecoration();
+    return BoxDecoration(
+        color: decorationFill,
+        gradient: decorationGradient,
+        border: decorationBorder,
+        shape: decorationShape,
+        boxShadow: [decorationHaze],
+        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
   }
 }
 
@@ -617,7 +640,7 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-      decorationFill = foundation.steel();
+      decorationFill = foundation.steel().withOpacity(0.5);
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
 
