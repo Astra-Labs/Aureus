@@ -1,6 +1,6 @@
 name: aureus
-description: A new Flutter package project.
-version: 0.0.1
+description: A design system for ethical tech use cases involving sensitive populations / functionality
+version: 0.0.0
 homepage:
 
 environment:
@@ -12,6 +12,12 @@ dependencies:
     sdk: flutter
   google_fonts: ^2.1.0
   flutter_secure_storage: ^4.2.1
+
+flutter:
+   fonts:
+    - family:  Aureus
+      fonts:
+       - asset: fonts/Aureus.ttf
 
 dev_dependencies:
   flutter_test:
