@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 //All Variables for the UDS Elements
 //Doc Link:
 
+/* ------------------ ENUMS -------------------- */
 //Global Foundational Enums go here since Dart doesn't support nested types
 enum modeVariants { light, dark }
 enum buttonVariants { inactive, lightActive, darkActive }
@@ -14,7 +15,6 @@ enum communicationStatus { sending, delivered, failed }
 enum CardType { standard, badge }
 enum userInputType { singleDataType, multiDataType }
 enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
-
 enum decorationPriority { standard, important, inactive }
 enum buttonDecorationVariants {
   roundedPill,
@@ -26,6 +26,7 @@ enum layerDecorationVariants { rounded, edged }
 enum cardDecorationVariants { pilledRectangle, roundedRectangle }
 enum tabItemDecorationVariants { circle, roundedRectangle }
 
+/* ------------------ GLOBAL VARIABLES -------------------- */
 class UDSVariables {
   final Color prodColor;
   final String prodName;
@@ -110,19 +111,20 @@ class UDSVariables {
     return Color.fromRGBO(77, 79, 90, 1.0);
   }
 
-  Shadow lightHaze() {
-    return Shadow(
+  BoxShadow lightHaze() {
+    return BoxShadow(
         color: steel().withOpacity(0.4),
         offset: Offset(0.0, 3.0),
         blurRadius: 30.0);
   }
 
-  Shadow darkHaze() {
-    return Shadow(color: carbon(), offset: Offset(0.0, 3.0), blurRadius: 30.0);
+  BoxShadow darkHaze() {
+    return BoxShadow(
+        color: carbon(), offset: Offset(0.0, 3.0), blurRadius: 30.0);
   }
 
-  Shadow pastelHaze() {
-    return Shadow(
+  BoxShadow pastelHaze() {
+    return BoxShadow(
         color: prodColor.withOpacity(0.4),
         offset: Offset(0.0, 3.0),
         blurRadius: 30.0);
@@ -200,187 +202,9 @@ class UDSVariables {
         fontWeight: FontWeight.w600,
         letterSpacing: 1.0);
   }
-
-  //Global Theme Data
-
-  CupertinoThemeData cupertinoThemeData() {
-    return CupertinoThemeData();
-  }
-
-  ThemeData productTheme() {
-    return ThemeData();
-  }
-
-  BoxDecoration buttonDecoration(
-      {variant: buttonDecorationVariants,
-      mode: modeVariants,
-      priority: decorationPriority}) {
-    //variables for box decoration
-    Border decorationBorder;
-    Color decorationFill;
-    Gradient decorationGradient;
-    double decorationCornerRadius;
-    BoxShape decorationShape;
-
-    //defining variants for the specific item
-    if (variant == buttonDecorationVariants.circle) {
-      decorationShape = BoxShape.circle;
-      decorationCornerRadius = 0.0;
-    } else if (variant == buttonDecorationVariants.edgedRectangle) {
-      decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = 0.0;
-    } else if (variant == buttonDecorationVariants.roundedPill) {
-      decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = BorderRadius.circular(30.0) as double;
-    } else if (variant == buttonDecorationVariants.roundedRectangle) {
-      decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = 7.0;
-    }
-
-    //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
-    } else if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
-    } else if (priority == decorationPriority.standard) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
-    }
-
-    return BoxDecoration();
-  }
-
-  BoxDecoration layerDecoration(
-      {variant: layerDecorationVariants,
-      mode: modeVariants,
-      priority: decorationPriority}) {
-    //variables for box decoration
-
-    Color decorationFill;
-    double decorationCornerRadius;
-    BoxShape decorationShape = BoxShape.rectangle;
-    Shadow decorationShadow;
-
-    //defining variants for the specific item
-    if (variant == layerDecorationVariants.edged) {
-      decorationCornerRadius = 0.0;
-    } else if (variant == layerDecorationVariants.rounded) {
-      decorationCornerRadius = 5.0;
-    }
-
-    //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-
-        
-      } else if (mode == modeVariants.dark) {
-
-      }
-    } else if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
-    } else if (priority == decorationPriority.standard) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-      } else if (mode == modeVariants.dark) {}
-    }
-
-    return BoxDecoration();
-  }
-
-  BoxDecoration cardDecoration(
-      {variant: cardDecorationVariants, mode: modeVariants}) {
-    //variables for box decoration
-    Border decorationBorder;
-    Color decorationFill;
-    Gradient decorationGradient;
-    double decorationCornerRadius;
-    BoxShape decorationShape = BoxShape.rectangle;
-
-    //defining variants for the specific item
-    if (variant == cardDecorationVariants.pilledRectangle) {
-      decorationCornerRadius = 20.0;
-    } else if (variant == cardDecorationVariants.roundedRectangle) {
-      decorationCornerRadius = 5.0;
-    }
-
-    //defining variants for the specific mode
-    if (mode == modeVariants.light) {
-      decorationBorder = universalBorder();
-    } else if (mode == modeVariants.dark) {}
-
-    return BoxDecoration();
-  }
-
-  BoxDecoration inputDecoration({mode: modeVariants}) {
-    //variables for box decoration
-    Border decorationBorder;
-    Color decorationFill;
-    double decorationCornerRadius;
-    BoxShape decorationShape = BoxShape.rectangle;
-
-    //defining variants for the specific mode
-    if (mode == modeVariants.light) {
-      decorationFill = melt();
-      decorationBorder = universalBorder();
-    } else if (mode == modeVariants.dark) {
-      decorationFill = carbon();
-      decorationBorder = universalBorder();
-    }
-
-    decorationCornerRadius = 7.0;
-    decorationShape = BoxShape.rectangle;
-
-    return BoxDecoration();
-  }
-
-  BoxDecoration tabItemDecoration(
-      {variant: tabItemDecorationVariants,
-      mode: modeVariants,
-      priority: decorationPriority}) {
-    //variables for box decoration
-    Border decorationBorder;
-    Color decorationFill;
-    double decorationCornerRadius;
-    Gradient decorationGradient;
-    BoxShape decorationShape;
-    Shadow decorationShadow;
-
-    //defining variants for the specific item
-    if (variant == tabItemDecorationVariants.circle) {
-      decorationShape = BoxShape.circle;
-    } else if (variant == tabItemDecorationVariants.roundedRectangle) {
-      decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = BorderRadius.circular(30.0) as double;
-    }
-
-    //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
-      //defining variants for the specific mode
-      decorationFill = steel();
-    } else if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
-
-      decorationGradient = mediumGradient();
-      decorationBorder = pastelBorder();
-
-      if (mode == modeVariants.light) {
-        decorationShadow = pastelHaze();
-      } else if (mode == modeVariants.dark) {
-        decorationShadow = darkHaze();
-      }
-    }
-
-    return BoxDecoration();
-  }
 }
+
+/* ------------------ TEXT CLASSES -------------------- */
 
 class TitleCase {
   static String convertToTitleCase(String text) {
@@ -404,7 +228,73 @@ class TitleCase {
   }
 }
 
-//
+//Info Hiearchy - A set of texts / label styles that acts as the typographic foundation for the rest of the UDS
+final titleCase = TitleCase();
+
+class HeadingOneText extends Text {
+  HeadingOneText(String data, Color color)
+      : super(TitleCase.convertToTitleCase(data),
+            style: foundation.heading1().copyWith(color: color));
+}
+
+class HeadingTwoText extends Text {
+  HeadingTwoText(String data, Color color)
+      : super(data.toUpperCase(),
+            style: foundation.heading2().copyWith(color: color));
+}
+
+class HeadingThreeText extends Text {
+  HeadingThreeText(String data, Color color)
+      : super(data.toUpperCase(),
+            style: foundation.heading3().copyWith(color: color));
+}
+
+class HeadingFourText extends Text {
+  HeadingFourText(String data, Color color)
+      : super(data.toUpperCase(),
+            style: foundation.heading4().copyWith(color: color));
+}
+
+class SubheaderText extends Text {
+  SubheaderText(String data, Color color)
+      : super(TitleCase.convertToTitleCase(data),
+            style: foundation.subheading().copyWith(color: color));
+}
+
+class BodyOneText extends Text {
+  BodyOneText(String data, Color color)
+      : super(data, style: foundation.body1().copyWith(color: color));
+}
+
+class BodyTwoText extends Text {
+  BodyTwoText(String data, Color color)
+      : super(data, style: foundation.body2().copyWith(color: color));
+}
+
+class ButtonOneText extends Text {
+  ButtonOneText(String data, Color color)
+      : super(data.toUpperCase(),
+            style: foundation.button1().copyWith(color: color));
+}
+
+class ButtonTwoText extends Text {
+  ButtonTwoText(String data, Color color)
+      : super(data.toUpperCase(),
+            style: foundation.button2().copyWith(color: color));
+}
+
+class TagOneText extends Text {
+  TagOneText(String data, Color color)
+      : super(data.toUpperCase(), style: foundation.tag1(color: color));
+}
+
+class TagTwoText extends Text {
+  TagTwoText(String data, Color color)
+      : super(data.toUpperCase(), style: foundation.tag2(color: color));
+}
+
+//MARK: - Sizing
+/* ------------------ SIZING -------------------- */
 class Sizing {
   double heightOf({context: MediaQueryData, weight: sizingWeight}) {
     double screenWeightedHeight = 0.0;
@@ -535,67 +425,310 @@ class Sizing {
   }
 }
 
-//Info Hiearchy - A set of texts / label styles that acts as the typographic foundation for the rest of the UDS
-final titleCase = TitleCase();
+class BaseBackingDecoration {
+  final modeVariants mode;
+  final decorationPriority priority;
 
-class HeadingOneText extends Text {
-  HeadingOneText(String data, Color color)
-      : super(TitleCase.convertToTitleCase(data),
-            style: foundation.heading1().copyWith(color: color));
+  BaseBackingDecoration({required this.mode, required this.priority});
+
+  Border decorationBorder =
+      Border.all(color: foundation.white().withOpacity(0.0));
+  Color decorationFill = foundation.white().withOpacity(0.0);
+  late Gradient decorationGradient;
+  double decorationCornerRadius = 0.0;
+  BoxShape decorationShape = BoxShape.rectangle;
+  BoxShadow decorationHaze = BoxShadow();
+
+  //this should always be overriden by the child classes, so this will throw an error because it is not implemented.
+  BoxDecoration buildBacking() {
+    throw UnimplementedError();
+  }
 }
 
-class HeadingTwoText extends Text {
-  HeadingTwoText(String data, Color color)
-      : super(data.toUpperCase(),
-            style: foundation.heading2().copyWith(color: color));
+class ButtonBackingDecoration extends BaseBackingDecoration {
+  final buttonDecorationVariants variant;
+
+  ButtonBackingDecoration(
+      {required this.variant, required mode, required priority})
+      : super(mode: mode, priority: priority);
+
+  @override
+  BoxDecoration buildBacking() {
+    //defining variants for the specific item
+    if (variant == buttonDecorationVariants.circle) {
+      decorationShape = BoxShape.circle;
+      decorationCornerRadius = 0.0;
+    } else if (variant == buttonDecorationVariants.edgedRectangle) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = 0.0;
+    } else if (variant == buttonDecorationVariants.roundedPill) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = BorderRadius.circular(30.0) as double;
+    } else if (variant == buttonDecorationVariants.roundedRectangle) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = 7.0;
+    }
+
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+      decorationFill = foundation.steel();
+    } else if (priority == decorationPriority.important) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+        decorationGradient = foundation.lightGradient();
+        decorationBorder = foundation.pastelBorder();
+      } else if (mode == modeVariants.dark) {
+        decorationGradient = foundation.darkGradient();
+        decorationBorder = foundation.pastelBorder();
+      }
+    } else if (priority == decorationPriority.standard) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+        decorationFill = foundation.frost();
+        decorationBorder = foundation.universalBorder();
+      } else if (mode == modeVariants.dark) {
+        decorationFill = foundation.carbon();
+        decorationBorder = foundation.universalBorder();
+      }
+    }
+
+    return BoxDecoration(
+        color: decorationFill,
+        gradient: decorationGradient,
+        border: decorationBorder,
+        shape: decorationShape,
+        boxShadow: [decorationHaze],
+        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+  }
 }
 
-class HeadingThreeText extends Text {
-  HeadingThreeText(String data, Color color)
-      : super(data.toUpperCase(),
-            style: foundation.heading3().copyWith(color: color));
+class LayerBackingDecoration extends BaseBackingDecoration {
+  final layerDecorationVariants variant;
+
+  LayerBackingDecoration(
+      {required this.variant, required mode, required priority})
+      : super(mode: mode, priority: priority);
+
+  @override
+  BoxDecoration buildBacking() {
+    //defining variants for the specific item
+    if (variant == layerDecorationVariants.edged) {
+      decorationCornerRadius = 0.0;
+    } else if (variant == layerDecorationVariants.rounded) {
+      decorationCornerRadius = 5.0;
+    }
+
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    } else if (priority == decorationPriority.important) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    } else if (priority == decorationPriority.standard) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    }
+
+    return BoxDecoration(
+        color: decorationFill,
+        gradient: decorationGradient,
+        border: decorationBorder,
+        shape: decorationShape,
+        boxShadow: [decorationHaze],
+        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+  }
 }
 
-class HeadingFourText extends Text {
-  HeadingFourText(String data, Color color)
-      : super(data.toUpperCase(),
-            style: foundation.heading4().copyWith(color: color));
+class CardBackingDecoration extends BaseBackingDecoration {
+  final cardDecorationVariants variant;
+
+  CardBackingDecoration(
+      {required this.variant, required mode, required priority})
+      : super(mode: mode, priority: priority);
+
+  @override
+  BoxDecoration buildBacking() {
+    //defining variants for the specific item
+    if (variant == cardDecorationVariants.pilledRectangle) {
+      decorationCornerRadius = 20.0;
+    } else if (variant == cardDecorationVariants.roundedRectangle) {
+      decorationCornerRadius = 5.0;
+    }
+
+    //defining variants for the specific mode
+    if (mode == modeVariants.light) {
+      decorationBorder = foundation.universalBorder();
+    } else if (mode == modeVariants.dark) {}
+
+    return BoxDecoration();
+  }
 }
 
-class SubheaderText extends Text {
-  SubheaderText(String data, Color color)
-      : super(TitleCase.convertToTitleCase(data),
-            style: foundation.subheading().copyWith(color: color));
+class InputBackingDecoration extends BaseBackingDecoration {
+  InputBackingDecoration({required mode, required priority})
+      : super(mode: mode, priority: priority);
+
+  @override
+  BoxDecoration buildBacking() {
+    //defining variants for the specific mode
+    if (mode == modeVariants.light) {
+      decorationFill = foundation.melt();
+      decorationBorder = foundation.universalBorder();
+    } else if (mode == modeVariants.dark) {
+      decorationFill = foundation.carbon();
+      decorationBorder = foundation.universalBorder();
+    }
+
+    decorationCornerRadius = 7.0;
+    decorationShape = BoxShape.rectangle;
+
+    return BoxDecoration(
+        color: decorationFill,
+        gradient: decorationGradient,
+        border: decorationBorder,
+        shape: decorationShape,
+        boxShadow: [decorationHaze],
+        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+  }
 }
 
-class BodyOneText extends Text {
-  BodyOneText(String data, Color color)
-      : super(data, style: foundation.body1().copyWith(color: color));
+class TabItemBackingDecoration extends BaseBackingDecoration {
+  final tabItemDecorationVariants variant;
+
+  TabItemBackingDecoration(
+      {required this.variant, required mode, required priority})
+      : super(mode: mode, priority: priority);
+
+  @override
+  BoxDecoration buildBacking() {
+    //defining variants for the specific item
+    if (variant == tabItemDecorationVariants.circle) {
+      decorationShape = BoxShape.circle;
+    } else if (variant == tabItemDecorationVariants.roundedRectangle) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = BorderRadius.circular(30.0) as double;
+    }
+
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+      decorationFill = foundation.steel();
+    } else if (priority == decorationPriority.important) {
+      //defining variants for the specific mode
+
+      decorationGradient = foundation.mediumGradient();
+      decorationBorder = foundation.pastelBorder();
+
+      if (mode == modeVariants.light) {
+        decorationHaze = foundation.pastelHaze();
+      } else if (mode == modeVariants.dark) {
+        decorationHaze = foundation.darkHaze();
+      }
+    }
+
+    return BoxDecoration(
+        color: decorationFill,
+        gradient: decorationGradient,
+        border: decorationBorder,
+        shape: decorationShape,
+        boxShadow: [decorationHaze],
+        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+  }
 }
 
-class BodyTwoText extends Text {
-  BodyTwoText(String data, Color color)
-      : super(data, style: foundation.body2().copyWith(color: color));
-}
+/// Flutter icons
+/// Copyright (C) 2021 by original authors @ fluttericon.com, fontello.com
+/// This font was generated by FlutterIcon.com, which is derived from Fontello.
 
-class ButtonOneText extends Text {
-  ButtonOneText(String data, Color color)
-      : super(data.toUpperCase(),
-            style: foundation.button1().copyWith(color: color));
-}
+class Assets {
+  Assets._();
 
-class ButtonTwoText extends Text {
-  ButtonTwoText(String data, Color color)
-      : super(data.toUpperCase(),
-            style: foundation.button2().copyWith(color: color));
-}
+  static const _kFontFam = 'Aureus';
+  static const String? _kFontPkg = null;
 
-class TagOneText extends Text {
-  TagOneText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.tag1(color: color));
-}
-
-class TagTwoText extends Text {
-  TagTwoText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.tag2(color: color));
+  static const IconData add =
+      IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData alert =
+      IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData alertmessage =
+      IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData android =
+      IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData apple =
+      IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData babycarriage =
+      IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData back =
+      IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData body =
+      IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData brain =
+      IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData camera =
+      IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData expand =
+      IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData hamburgermenu =
+      IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData icon =
+      IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData link =
+      IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData location =
+      IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData lock =
+      IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mail =
+      IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData medicine =
+      IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData money =
+      IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData more1 =
+      IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData more2 =
+      IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData next =
+      IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData no =
+      IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paperplane =
+      IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData partnership =
+      IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pause =
+      IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pencil =
+      IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData people =
+      IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData person =
+      IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData phone =
+      IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData play =
+      IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData settings =
+      IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData snowflake =
+      IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData speedometer =
+      IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData stethoscope =
+      IconData(0xe822, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData stop =
+      IconData(0xe823, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData time =
+      IconData(0xe824, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData window =
+      IconData(0xe825, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData wrench =
+      IconData(0xe826, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData yes =
+      IconData(0xe827, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
