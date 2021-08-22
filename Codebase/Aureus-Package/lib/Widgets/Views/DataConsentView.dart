@@ -5,4 +5,14 @@ import 'package:flutter/cupertino.dart';
 //
 //Doc Link:
 
-class DataConsentView extends Container {}
+class DataOptInView extends StatefulWidget {
+  @override
+  _DataOptInViewState createState() => _DataOptInViewState();
+}
+
+class _DataOptInViewState extends State<DataOptInView> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(); 
+  }
+}

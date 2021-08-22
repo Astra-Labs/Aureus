@@ -7,14 +7,16 @@ import 'package:flutter/cupertino.dart';
 
 class OnboardingTabbingComponent extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  _OnboardingTabbingComponentState createState() =>
+      _OnboardingTabbingComponentState();
+}
 
+class _OnboardingTabbingComponentState
+    extends State<OnboardingTabbingComponent> {
+      
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+  Widget build(BuildContext context) {
+
+    return Container(); 
   }
 }

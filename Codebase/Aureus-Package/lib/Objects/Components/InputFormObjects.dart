@@ -31,19 +31,25 @@ class SingleUserInputTypeObject extends BaseUserInputObject {
 }
 
 class MultiUserInputTypeObject extends BaseUserInputObject {
-  userInputType typeVariance = userInputType.multiDataType;
+  final String dataLabel;
+  final String placeholder;
+  final String accessibilityHint;
+  final TextInputType textInputType;
 
   MultiUserInputTypeObject(
-      placeholder, accessibilityHint, textInputType, typeVariance)
-      : super(
+      {required this.dataLabel,
+      required this.placeholder,
+      required this.accessibilityHint,
+      required this.textInputType})
+      : assert(dataLabel != ''),
+        super(
             placeholder: placeholder,
             accessibilityHint: accessibilityHint,
             textInputType: textInputType,
-            dataTypeInputVariance: typeVariance);
+            dataTypeInputVariance: userInputType.multiDataType);
 }
 
 class LongInputFormGroupingObject {
-  
   final String sectionHeader;
   final userInputType typeVariance;
   final List<BaseUserInputObject> inputObjects;

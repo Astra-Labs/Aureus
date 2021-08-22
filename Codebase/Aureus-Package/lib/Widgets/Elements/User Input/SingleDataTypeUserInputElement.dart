@@ -27,7 +27,7 @@ class _SingleDataTypeUserInputElementState
           width: 250,
           height: 60,
           decoration: BoxDecoration(
-            border: Border.all(color: foundation.steel(), width: 1.0),
+            border: foundation.universalBorder(),
             borderRadius: BorderRadius.all(Radius.circular(10)),
             color: foundation.ice(),
           ),

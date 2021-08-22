@@ -23,7 +23,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
 
     if (widget.barVariant == modeVariants.light) {
       searchBarBackingDecoration = BoxDecoration(
-        border: Border.all(color: foundation.steel(), width: 1.0),
+        border: foundation.universalBorder(),
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: foundation.ice(),
       );
@@ -43,7 +43,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                   width: 250,
                   height: 60,
                   decoration: BoxDecoration(
-                    border: Border.all(color: foundation.steel(), width: 1.0),
+                    border: foundation.universalBorder(),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: foundation.ice(),
                   ),
@@ -71,7 +71,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: foundation.mediumGradient(),
-                      border: Border.all(color: foundation.steel(), width: 1)),
+                      border: foundation.universalBorder()),
                   width: 73.0,
                   height: 73.0,
                   child: Expanded(

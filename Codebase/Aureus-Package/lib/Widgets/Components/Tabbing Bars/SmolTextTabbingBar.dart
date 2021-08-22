@@ -7,14 +7,14 @@ import 'package:flutter/cupertino.dart';
 
 class SmolTextTabbingBarComponent extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  _SmolTextTabbingBarComponentState createState() =>
+      _SmolTextTabbingBarComponentState();
+}
 
+class _SmolTextTabbingBarComponentState
+    extends State<SmolTextTabbingBarComponent> {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

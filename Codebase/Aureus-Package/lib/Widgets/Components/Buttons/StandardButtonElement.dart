@@ -48,7 +48,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
         buttonTextColor = foundation.carbon();
         buttonDecoration = BoxDecoration(
             color: foundation.white(),
-            border: Border.all(color: foundation.steel(), width: 1),
+            border: foundation.universalBorder(),
             borderRadius: BorderRadius.circular(10.0));
 
         break;
@@ -60,7 +60,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
         buttonTextColor = foundation.white();
         buttonDecoration = BoxDecoration(
             color: foundation.carbon(),
-            border: Border.all(color: foundation.steel(), width: 1),
+            border: foundation.universalBorder(),
             borderRadius: BorderRadius.circular(10.0));
 
         break;

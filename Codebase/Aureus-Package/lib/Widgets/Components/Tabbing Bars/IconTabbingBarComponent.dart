@@ -6,15 +6,19 @@ import 'package:flutter/cupertino.dart';
 //Doc Link:
 
 class IconTabbingBarComponent extends StatefulWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  final List<TabObject> tabObjects;
+
+  const IconTabbingBarComponent({required this.tabObjects})
+      : assert(tabObjects.length >= 2);
 
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+  _IconTabbingBarComponentState createState() =>
+      _IconTabbingBarComponentState();
+}
+
+class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

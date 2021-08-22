@@ -43,8 +43,8 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
 
   @override
   Widget build(BuildContext context) {
-    ListView inputList;
-    Color textColor;
+    ListView inputList = ListView();
+    Color textColor = foundation.white();
 
     if (widget.formVariant == modeVariants.dark) {
       textColor = foundation.melt();
@@ -57,20 +57,36 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
       //Input form is made of up multi-variance objects
 
       inputList = ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: widget.multiVarianceInputObjects.length,
+          itemBuilder: (BuildContext context, int index) {
+            MultiUserInputTypeObject currentObject =
+                widget.multiVarianceInputObjects[index];
 
-        scrollDirection: Axis.vertical,
-        itemCount: widget.multiVarianceInputObjects.length,
-        itemBuilder: 
-      );
-
+            return Padding(
+                padding: EdgeInsets.all(10),
+                child: MultipleDataTypeUserInputElement(
+                    dataLabel: currentObject.dataLabel,
+                    dataPlaceholder: currentObject.placeholder,
+                    dataTextType: currentObject.textInputType));
+          });
     } else if (widget.singleVarianceInputObjects != [] &&
         widget.multiVarianceInputObjects == []) {
       //Input form is made up of single variance objects
 
-      inputList = ListView.builder(context, index) {
+      inputList = ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: widget.multiVarianceInputObjects.length,
+          itemBuilder: (BuildContext context, int index) {
+            SingleUserInputTypeObject currentObject =
+                widget.singleVarianceInputObjects[index];
 
-        return 
-      });
+            return Padding(
+                padding: EdgeInsets.all(10),
+                child: SingleDataTypeUserInputElement(
+                    dataPlaceholder: currentObject.placeholder,
+                    dataTextType: currentObject.textInputType));
+          });
     }
 
     //Builds a one section list view from inputted objects

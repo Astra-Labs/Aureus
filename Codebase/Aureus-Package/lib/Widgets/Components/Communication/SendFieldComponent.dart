@@ -24,13 +24,13 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
     if (widget.fieldVariant == modeVariants.light) {
       fieldBackingDecoration = BoxDecoration(
           color: foundation.white(),
-          border: Border.all(color: foundation.steel(), width: 1),
+          border: foundation.universalBorder(),
           borderRadius: BorderRadius.circular(10.0));
       textColor = foundation.carbon();
     } else if (widget.fieldVariant == modeVariants.dark) {
       fieldBackingDecoration = BoxDecoration(
           color: foundation.carbon(),
-          border: Border.all(color: foundation.steel(), width: 1),
+          border: foundation.universalBorder(),
           borderRadius: BorderRadius.circular(10.0));
       textColor = foundation.melt();
     }
@@ -39,7 +39,7 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
       Container(
           width: 250,
           decoration: BoxDecoration(
-            border: Border.all(color: foundation.steel(), width: 1.0),
+            border: foundation.universalBorder(),
             borderRadius: BorderRadius.all(Radius.circular(10)),
             color: foundation.ice(),
           ),
@@ -67,7 +67,7 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: foundation.mediumGradient(),
-              border: Border.all(color: foundation.steel(), width: 1)),
+              border: foundation.universalBorder()),
           width: 73.0,
           height: 73.0,
           child: Expanded(

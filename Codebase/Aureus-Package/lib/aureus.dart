@@ -15,6 +15,7 @@ export 'Objects/Elements/AlertControllerObjects.dart';
 //MARK: - Component Objects
 export 'Objects/Components/InputFormObjects.dart';
 export 'Objects/Components/NotificationObject.dart';
+export 'Objects/Components/TabbingBarObjects.dart';
 
 //MARK: - View Objects
 export 'Objects/Views/HelpCenterObjects.dart';

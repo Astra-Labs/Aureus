@@ -15,6 +15,17 @@ enum CardType { standard, badge }
 enum userInputType { singleDataType, multiDataType }
 enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
 
+enum decorationPriority { standard, important, inactive }
+enum buttonDecorationVariants {
+  roundedPill,
+  roundedRectangle,
+  edgedRectangle,
+  circle
+}
+enum layerDecorationVariants { rounded, edged }
+enum cardDecorationVariants { pilledRectangle, roundedRectangle }
+enum tabItemDecorationVariants { circle, roundedRectangle }
+
 class UDSVariables {
   final Color prodColor;
   final String prodName;
@@ -99,6 +110,32 @@ class UDSVariables {
     return Color.fromRGBO(77, 79, 90, 1.0);
   }
 
+  Shadow lightHaze() {
+    return Shadow(
+        color: steel().withOpacity(0.4),
+        offset: Offset(0.0, 3.0),
+        blurRadius: 30.0);
+  }
+
+  Shadow darkHaze() {
+    return Shadow(color: carbon(), offset: Offset(0.0, 3.0), blurRadius: 30.0);
+  }
+
+  Shadow pastelHaze() {
+    return Shadow(
+        color: prodColor.withOpacity(0.4),
+        offset: Offset(0.0, 3.0),
+        blurRadius: 30.0);
+  }
+
+  Border universalBorder() {
+    return Border.all(color: steel(), width: 1);
+  }
+
+  Border pastelBorder() {
+    return Border.all(color: prodColor.withOpacity(0.4), width: 1);
+  }
+
 // Global Text Styles
   TextStyle heading1() {
     return GoogleFonts.exo(
@@ -173,6 +210,176 @@ class UDSVariables {
   ThemeData productTheme() {
     return ThemeData();
   }
+
+  BoxDecoration buttonDecoration(
+      {variant: buttonDecorationVariants,
+      mode: modeVariants,
+      priority: decorationPriority}) {
+    //variables for box decoration
+    Border decorationBorder;
+    Color decorationFill;
+    Gradient decorationGradient;
+    double decorationCornerRadius;
+    BoxShape decorationShape;
+
+    //defining variants for the specific item
+    if (variant == buttonDecorationVariants.circle) {
+      decorationShape = BoxShape.circle;
+      decorationCornerRadius = 0.0;
+    } else if (variant == buttonDecorationVariants.edgedRectangle) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = 0.0;
+    } else if (variant == buttonDecorationVariants.roundedPill) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = BorderRadius.circular(30.0) as double;
+    } else if (variant == buttonDecorationVariants.roundedRectangle) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = 7.0;
+    }
+
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    } else if (priority == decorationPriority.important) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    } else if (priority == decorationPriority.standard) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    }
+
+    return BoxDecoration();
+  }
+
+  BoxDecoration layerDecoration(
+      {variant: layerDecorationVariants,
+      mode: modeVariants,
+      priority: decorationPriority}) {
+    //variables for box decoration
+
+    Color decorationFill;
+    double decorationCornerRadius;
+    BoxShape decorationShape = BoxShape.rectangle;
+    Shadow decorationShadow;
+
+    //defining variants for the specific item
+    if (variant == layerDecorationVariants.edged) {
+      decorationCornerRadius = 0.0;
+    } else if (variant == layerDecorationVariants.rounded) {
+      decorationCornerRadius = 5.0;
+    }
+
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+
+        
+      } else if (mode == modeVariants.dark) {
+
+      }
+    } else if (priority == decorationPriority.important) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    } else if (priority == decorationPriority.standard) {
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+      } else if (mode == modeVariants.dark) {}
+    }
+
+    return BoxDecoration();
+  }
+
+  BoxDecoration cardDecoration(
+      {variant: cardDecorationVariants, mode: modeVariants}) {
+    //variables for box decoration
+    Border decorationBorder;
+    Color decorationFill;
+    Gradient decorationGradient;
+    double decorationCornerRadius;
+    BoxShape decorationShape = BoxShape.rectangle;
+
+    //defining variants for the specific item
+    if (variant == cardDecorationVariants.pilledRectangle) {
+      decorationCornerRadius = 20.0;
+    } else if (variant == cardDecorationVariants.roundedRectangle) {
+      decorationCornerRadius = 5.0;
+    }
+
+    //defining variants for the specific mode
+    if (mode == modeVariants.light) {
+      decorationBorder = universalBorder();
+    } else if (mode == modeVariants.dark) {}
+
+    return BoxDecoration();
+  }
+
+  BoxDecoration inputDecoration({mode: modeVariants}) {
+    //variables for box decoration
+    Border decorationBorder;
+    Color decorationFill;
+    double decorationCornerRadius;
+    BoxShape decorationShape = BoxShape.rectangle;
+
+    //defining variants for the specific mode
+    if (mode == modeVariants.light) {
+      decorationFill = melt();
+      decorationBorder = universalBorder();
+    } else if (mode == modeVariants.dark) {
+      decorationFill = carbon();
+      decorationBorder = universalBorder();
+    }
+
+    decorationCornerRadius = 7.0;
+    decorationShape = BoxShape.rectangle;
+
+    return BoxDecoration();
+  }
+
+  BoxDecoration tabItemDecoration(
+      {variant: tabItemDecorationVariants,
+      mode: modeVariants,
+      priority: decorationPriority}) {
+    //variables for box decoration
+    Border decorationBorder;
+    Color decorationFill;
+    double decorationCornerRadius;
+    Gradient decorationGradient;
+    BoxShape decorationShape;
+    Shadow decorationShadow;
+
+    //defining variants for the specific item
+    if (variant == tabItemDecorationVariants.circle) {
+      decorationShape = BoxShape.circle;
+    } else if (variant == tabItemDecorationVariants.roundedRectangle) {
+      decorationShape = BoxShape.rectangle;
+      decorationCornerRadius = BorderRadius.circular(30.0) as double;
+    }
+
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+      decorationFill = steel();
+    } else if (priority == decorationPriority.important) {
+      //defining variants for the specific mode
+
+      decorationGradient = mediumGradient();
+      decorationBorder = pastelBorder();
+
+      if (mode == modeVariants.light) {
+        decorationShadow = pastelHaze();
+      } else if (mode == modeVariants.dark) {
+        decorationShadow = darkHaze();
+      }
+    }
+
+    return BoxDecoration();
+  }
 }
 
 class TitleCase {
@@ -189,10 +396,11 @@ class TitleCase {
 
         return '$firstLetter$remainingLetters';
       }
+
       return '';
     });
 
-    return capitalizedWords.join(' ');
+    return capitalizedWords.join('');
   }
 }
 

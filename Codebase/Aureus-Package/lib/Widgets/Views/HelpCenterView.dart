@@ -6,14 +6,16 @@ import 'package:flutter/cupertino.dart';
 //Doc Link:
 
 //The main container for the entire Help Center functionality that controls the layout, views, and more.
-class HelpCenter extends StatefulWidget {
+class HelpCenterView extends StatefulWidget {
   final HelpCenterObject helpCenter;
 
-  const HelpCenter({required this.helpCenter});
+  const HelpCenterView({required this.helpCenter});
 
   @override
-  _HelpCenterState createState() => _HelpCenterState();
+  _HelpCenterViewState createState() => _HelpCenterViewState();
+}
 
+class _HelpCenterViewState extends State<HelpCenterView> {
   //the container that draws the first screen that someone will see when they enter the Help Center.
   Expanded helpCenterLandingView() {
     return Expanded(child: Container());
@@ -33,12 +35,9 @@ class HelpCenter extends StatefulWidget {
   Expanded helpCenterDetailView() {
     return Expanded(child: Container());
   }
-}
 
-class _HelpCenterState extends State<HelpCenter> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Container(); 
   }
 }

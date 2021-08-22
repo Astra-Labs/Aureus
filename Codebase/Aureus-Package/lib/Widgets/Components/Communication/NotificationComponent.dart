@@ -35,7 +35,7 @@ class _NotificationComponentState extends State<NotificationComponent> {
     if (widget.hasNotificationBeenRead) {
       boxDecoration = BoxDecoration(
           color: foundation.white(),
-          border: Border.all(color: foundation.steel(), width: 1),
+          border: foundation.universalBorder(),
           borderRadius: BorderRadius.circular(10.0));
       readIndicatorDecoration =
           BoxDecoration(shape: BoxShape.circle, color: foundation.white());
@@ -45,7 +45,7 @@ class _NotificationComponentState extends State<NotificationComponent> {
     } else {
       boxDecoration = BoxDecoration(
           gradient: foundation.lightGradient(),
-          border: Border.all(color: foundation.steel(), width: 1),
+          border: foundation.universalBorder(),
           borderRadius: BorderRadius.circular(10.0));
       readIndicatorDecoration =
           BoxDecoration(shape: BoxShape.circle, color: foundation.carbon());
