@@ -6,6 +6,10 @@ import 'package:flutter/cupertino.dart';
 //Doc Link:
 
 class DataOptInView extends StatefulWidget {
+  final modeVariants viewMode;
+
+  const DataOptInView({required this.viewMode});
+
   @override
   _DataOptInViewState createState() => _DataOptInViewState();
 }
@@ -13,6 +17,11 @@ class DataOptInView extends StatefulWidget {
 class _DataOptInViewState extends State<DataOptInView> {
   @override
   Widget build(BuildContext context) {
-    return Container(); 
+    return Container(
+        width: Sizing.widthOf(context: context, weight: sizingWeight.w10),
+        height: Sizing.heightOf(context: context, weight: sizingWeight.w10),
+        decoration: BoxDecoration(),
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: []));
   }
 }

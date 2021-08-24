@@ -13,6 +13,11 @@ class SafetyPlanView extends StatefulWidget {
 class _SafetyPlanViewState extends State<SafetyPlanView> {
   @override
   Widget build(BuildContext context) {
-    return Container(); 
+    return Container(
+        width: Sizing.widthOf(context: context, weight: sizingWeight.w10),
+        height: Sizing.heightOf(context: context, weight: sizingWeight.w10),
+        decoration: BoxDecoration(),
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: []));
   }
 }

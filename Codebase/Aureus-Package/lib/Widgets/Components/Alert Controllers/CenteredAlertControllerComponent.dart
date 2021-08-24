@@ -17,8 +17,6 @@ class CenteredAlertControllerComponent extends StatefulWidget {
 
 class _CenteredAlertControllerComponentState
     extends State<CenteredAlertControllerComponent> {
-  var currentContext = MediaQuery.of(context);
-
   @override
   Widget build(BuildContext context) {
     Expanded alertControllerActions;
@@ -34,7 +32,7 @@ class _CenteredAlertControllerComponentState
         buttonTitle: actionItem.actionName,
         currentVariant: buttonVariants.darkActive,
       ));
-    } else if (widget.alertData.actions.length > 1) {
+    } else if (widget.alertData.actions.length >= 2) {
       //needs stacked standards button built to severity
       alertControllerActions = Expanded(
           child: ListView.builder(
@@ -55,10 +53,8 @@ class _CenteredAlertControllerComponentState
     }
 
     return Container(
-        width:
-            Sizing.widthOf(context: currentContext, weight: sizingWeight.w10),
-        height:
-            Sizing.heightOf(context: currentContext, weight: sizingWeight.w10),
+        width: Sizing.widthOf(context: context, weight: sizingWeight.w10),
+        height: Sizing.heightOf(context: context, weight: sizingWeight.w10),
         padding: EdgeInsets.all(10),
         decoration: LayerBackingDecoration(
             mode: modeVariants.dark,
@@ -81,7 +77,7 @@ class _CenteredAlertControllerComponentState
                           widget.alertData.alertTitle, foundation.black()),
                       BodyOneText(
                           widget.alertData.alertBody, foundation.black()),
-                      ListView()
+                      alertControllerActions,
                     ]))));
   }
 }
