@@ -16,6 +16,7 @@ It is HIGHLY recommended that you do not alter the implementation and ONLY local
 */
 
 enum SafetyPlanOptions {
+  
   disableNotifications, //doesn't allow app to send notifications
   disableBiometrics, //disables biometrics as a log-in method
   enable2FA, //enables 2FA with a passcode

@@ -19,7 +19,9 @@ class _CenteredAlertControllerComponentState
     extends State<CenteredAlertControllerComponent> {
   @override
   Widget build(BuildContext context) {
-    Expanded alertControllerActions;
+
+    Expanded alertControllerActions =
+        Expanded(child: Container(width: 10, height: 10));
 
     if (widget.alertData.actions.length == 1) {
       //needs a single full width button
@@ -58,8 +60,8 @@ class _CenteredAlertControllerComponentState
         padding: EdgeInsets.all(10),
         decoration: LayerBackingDecoration(
             mode: modeVariants.dark,
-            priority: decorationPriority.important,
-            variant: layerDecorationVariants.rounded) as Decoration,
+            priority: decorationPriority.inactive,
+            variant: layerDecorationVariants.edged) as Decoration,
         child: Center(
             child: Container(
                 //this will be the rounded card backing
