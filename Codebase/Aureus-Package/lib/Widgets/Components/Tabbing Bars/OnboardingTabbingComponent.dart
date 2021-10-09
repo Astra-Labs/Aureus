@@ -13,10 +13,8 @@ class OnboardingTabbingComponent extends StatefulWidget {
 
 class _OnboardingTabbingComponentState
     extends State<OnboardingTabbingComponent> {
-      
   @override
   Widget build(BuildContext context) {
-
-    return Container(); 
+    return Container();
   }
 }

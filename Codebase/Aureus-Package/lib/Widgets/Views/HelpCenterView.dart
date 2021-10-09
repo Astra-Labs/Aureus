@@ -8,8 +8,13 @@ import 'package:flutter/cupertino.dart';
 //The main container for the entire Help Center functionality that controls the layout, views, and more.
 class HelpCenterView extends StatefulWidget {
   final HelpCenterObject helpCenter;
+  final modeVariants viewMode;
+  final deviceVariants deviceType;
 
-  const HelpCenterView({required this.helpCenter});
+  const HelpCenterView(
+      {required this.helpCenter,
+      required this.viewMode,
+      required this.deviceType});
 
   @override
   _HelpCenterViewState createState() => _HelpCenterViewState();
@@ -39,10 +44,17 @@ class _HelpCenterViewState extends State<HelpCenterView> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        padding: EdgeInsets.fromLTRB(
+            Sizing.widthOf(context: context, weight: sizingWeight.w0),
+            Sizing.heightOf(context: context, weight: sizingWeight.w1),
+            Sizing.widthOf(context: context, weight: sizingWeight.w0),
+            Sizing.heightOf(context: context, weight: sizingWeight.w0)),
         width: Sizing.widthOf(context: context, weight: sizingWeight.w10),
         height: Sizing.heightOf(context: context, weight: sizingWeight.w10),
-        decoration: BoxDecoration(),
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.center, children: []));
+        decoration: LayerBackingDecoration(
+            mode: widget.viewMode,
+            priority: decorationPriority.standard,
+            variant: layerDecorationVariants.edged) as Decoration,
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: []));
   }
 }

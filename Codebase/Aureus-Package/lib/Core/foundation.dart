@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 /* ------------------ ENUMS -------------------- */
 //Global Foundational Enums go here since Dart doesn't support nested types
+enum deviceVariants { mobile, desktop, tablet }
 enum modeVariants { light, dark }
 enum buttonVariants { inactive, lightActive, darkActive }
 enum messagingVariants { sender, receiver }
