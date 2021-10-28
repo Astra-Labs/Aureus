@@ -22,9 +22,7 @@ class BadgeCardElement extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: foundation.lightGradient(),
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          border: Border.all(
-            color: foundation.steel(),
-          ),
+          border: foundation.universalBorder(),
         ),
         child: Padding(
           padding: const EdgeInsets.all(12),
@@ -36,9 +34,7 @@ class BadgeCardElement extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: foundation.melt(),
-                  border: Border.all(
-                    color: foundation.iron(),
-                  ),
+                  border: foundation.universalBorder(),
                 ),
                 width: 39,
                 height: 39,

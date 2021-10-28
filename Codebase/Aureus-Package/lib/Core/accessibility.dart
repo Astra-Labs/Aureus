@@ -9,6 +9,7 @@ A class that contains variables, methods, and other items to ensure full accessi
 */
 
 class Accessibility {
+  
   //returns the proper sizing of a string for a given text style with regards to the scale factor to accomodate dynamic text sizing.
   static Size textStringSize(
       {required double widthLimit,

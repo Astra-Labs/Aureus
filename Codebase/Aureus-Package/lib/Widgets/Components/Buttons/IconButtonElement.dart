@@ -64,7 +64,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 gradient: foundation.mediumGradient(),
-                border: Border.all(color: foundation.steel(), width: 1),
+                border: foundation.universalBorder(),
                 shape: BoxShape.circle),
             width: 80.0,
             height: 80.0,
@@ -86,7 +86,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 gradient: foundation.darkGradient(),
-                border: Border.all(color: foundation.steel(), width: 1),
+                border: foundation.universalBorder(),
                 shape: BoxShape.circle),
             width: 80.0,
             height: 80.0,
@@ -108,7 +108,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
 //tiny babey icon buttons that are 60x60 or less.
 class SecondaryIconButtonElement extends StatefulWidget {
   final buttonVariants currentVariant;
-  final Image buttonIcon;
+  final Icon buttonIcon;
   final String buttonTooltip;
   final VoidCallback buttonAction;
 
@@ -151,7 +151,7 @@ class _SecondaryIconButtonElementState
         isButtonEnabled = true;
         buttonDecoration = BoxDecoration(
             color: foundation.ice(),
-            border: Border.all(color: foundation.steel(), width: 1),
+            border: foundation.universalBorder(),
             shape: BoxShape.circle);
         iconColor = foundation.black();
 
@@ -163,7 +163,7 @@ class _SecondaryIconButtonElementState
         isButtonEnabled = true;
         buttonDecoration = BoxDecoration(
             color: foundation.carbon(),
-            border: Border.all(color: foundation.steel(), width: 1),
+            border: foundation.universalBorder(),
             shape: BoxShape.circle);
         iconColor = foundation.white();
 

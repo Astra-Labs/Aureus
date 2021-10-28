@@ -19,9 +19,7 @@ class PastelCardElement extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(10),
         ),
-        border: Border.all(
-          color: foundation.steel(),
-        ),
+        border: foundation.universalBorder(),
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 13, top: 35),

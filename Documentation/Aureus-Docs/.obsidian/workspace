@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "3 - Foundation (Basics)/Typography.md",
+            "file": "3 - Foundation (Basics)/Base Colors.md",
             "mode": "preview"
           }
         }
@@ -52,7 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 100
+    "width": 247
   },
   "right": {
     "id": "0c665158294df3b7",
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3 - Foundation (Basics)/Typography.md",
+                "file": "3 - Foundation (Basics)/Base Colors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "a4f090b52864a08e",
   "lastOpenFiles": [
-    "3 - Foundation (Basics)/Typography.md",
-    "4 - Elements (Materials)/Cards/Badge Cards.md",
-    "4 - Elements (Materials)/Badges/All.md",
-    "3 - Foundation (Basics)/Themes.md",
     "3 - Foundation (Basics)/Base Colors.md",
+    "5 - Components (Bricks)/Alert Controllers/Centered Alert Controller.md",
+    "1 - Introduction/Meet Aureus.md",
+    "2 - Dissection (UX)/Visuals.md",
+    "2 - Dissection (UX)/Sensory.md",
+    "2 - Dissection (UX)/Experience.md",
+    "2 - Dissection (UX)/Details.md",
     "2 - Dissection (UX)/Animations.md",
-    "5 - Components (Bricks)/Communication/Search Bar.md",
-    "5 - Components (Bricks)/Communication/Notification.md",
-    "5 - Components (Bricks)/Alert Controllers/Full Width Alert Controller.md",
-    "5 - Components (Bricks)/Alert Controllers/Centered Alert Controller.md"
+    "3 - Foundation (Basics)/Typography.md",
+    "4 - Elements (Materials)/Cards/Badge Cards.md"
   ]
 }

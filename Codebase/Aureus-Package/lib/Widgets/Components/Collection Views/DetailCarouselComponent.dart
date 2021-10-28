@@ -32,9 +32,7 @@ class _DetailCarouselComponentState extends State<DetailCarouselComponent> {
                   borderRadius: BorderRadius.all(
                     Radius.circular(6),
                   ),
-                  border: Border.all(
-                    color: foundation.frost(),
-                  ),
+                  border: foundation.pastelBorder(),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 5),
                 child: Container(
