@@ -5,17 +5,17 @@ import 'package:flutter/cupertino.dart';
 //
 //Doc Link:
 
-class SignInView extends StatefulWidget {
+class SignUpView extends StatefulWidget {
   final modeVariants viewMode;
   final deviceVariants deviceType;
 
-  const SignInView({required this.viewMode, required this.deviceType});
+  const SignUpView({required this.viewMode, required this.deviceType});
 
   @override
-  _SignInViewState createState() => _SignInViewState();
+  _SignUpViewState createState() => _SignUpViewState();
 }
 
-class _SignInViewState extends State<SignInView> {
+class _SignUpViewState extends State<SignUpView> {
   modeVariants _getPillModeVariant() {
     switch (widget.viewMode) {
       case modeVariants.light:
