@@ -20,7 +20,6 @@ class FullWidthButtonElement extends StatefulWidget {
 }
 
 class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
-  final foundation = new UDSVariables();
   @override
   Widget build(BuildContext context) {
     //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.

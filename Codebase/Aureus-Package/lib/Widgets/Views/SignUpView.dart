@@ -2,15 +2,14 @@ import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+//
+//Doc Link:
+
 class SignInView extends StatefulWidget {
   final modeVariants viewMode;
   final deviceVariants deviceType;
-  final List<SingleUserInputTypeObject> listOfUserInputElements;
 
-  const SignInView(
-      {required this.viewMode,
-      required this.deviceType,
-      required this.listOfUserInputElements});
+  const SignInView({required this.viewMode, required this.deviceType});
 
   @override
   _SignInViewState createState() => _SignInViewState();

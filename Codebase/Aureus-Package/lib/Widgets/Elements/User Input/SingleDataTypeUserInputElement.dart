@@ -19,7 +19,6 @@ class SingleDataTypeUserInputElement extends StatefulWidget {
 
 class _SingleDataTypeUserInputElementState
     extends State<SingleDataTypeUserInputElement> {
-  final foundation = new UDSVariables();
   @override
   Widget build(BuildContext context) {
     return Padding(
