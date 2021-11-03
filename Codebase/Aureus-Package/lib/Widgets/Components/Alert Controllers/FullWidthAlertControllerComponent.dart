@@ -5,81 +5,82 @@ import 'package:flutter/cupertino.dart';
 //A full width centered alert controller that sticks to the bottom of the screen
 //Doc Link:
 
-class FullWidthButtonElement extends StatefulWidget {
-  final String buttonTitle;
-  final buttonVariants currentVariant;
-  final VoidCallback buttonAction;
+class FullWidthAlertControllerComponent extends StatefulWidget {
+  final AlertControllerObject alertData;
 
-  const FullWidthButtonElement(
-      {required this.buttonTitle,
-      required this.currentVariant,
-      required this.buttonAction});
+  const FullWidthAlertControllerComponent({required this.alertData});
 
   @override
-  _FullWidthButtonElementState createState() => _FullWidthButtonElementState();
+  _FullWidthAlertControllerComponentState createState() =>
+      _FullWidthAlertControllerComponentState();
 }
 
-class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
-  final foundation = new UDSVariables();
+class _FullWidthAlertControllerComponentState
+    extends State<FullWidthAlertControllerComponent> {
   @override
   Widget build(BuildContext context) {
-    //to fully have the custom functionality wanted, buttons needed to be a pressable container that holds a text button instead of a stock button widget.
+    Expanded alertControllerActions =
+        Expanded(child: Container(width: 10, height: 10));
 
-    //variables that change how the variants are displayed in build time
-    BoxDecoration buttonDecoration;
-    bool isButtonEnabled;
-    Color buttonTextColor;
+    if (widget.alertData.actions.length == 1) {
+      //needs a single full width button
 
-    switch (widget.currentVariant) {
-      case buttonVariants.inactive:
+      var actionItem = widget.alertData.actions[0];
 
-        //variables that define the variant 'inactive' for full width buttons
-        isButtonEnabled = false;
-        buttonTextColor = foundation.iron();
-        buttonDecoration =
-            BoxDecoration(color: foundation.melt().withOpacity(0.5));
+      alertControllerActions = Expanded(
+          child: FullWidthButtonElement(
+        buttonAction: actionItem.onSelection,
+        buttonTitle: actionItem.actionName,
+        currentVariant: buttonVariants.darkActive,
+      ));
+    } else if (widget.alertData.actions.length >= 2) {
+      //needs stacked standards button built to severity
+      alertControllerActions = Expanded(
+          child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: widget.alertData.actions.length,
+              itemBuilder: (BuildContext context, int index) {
+                AlertControllerAction actionItem =
+                    widget.alertData.actions[index];
 
-        break;
-
-      case buttonVariants.lightActive:
-
-        //variables that define the variant 'light active' for full width buttons
-        isButtonEnabled = true;
-        buttonTextColor = foundation.carbon();
-        buttonDecoration = BoxDecoration(
-            border:
-                Border(top: BorderSide(width: 1, color: foundation.steel())),
-            gradient: foundation.mediumGradient());
-
-        break;
-
-      case buttonVariants.darkActive:
-
-        //variables that define the variant 'dark active' for full width buttons
-        isButtonEnabled = true;
-        buttonTextColor = foundation.melt();
-        buttonDecoration = BoxDecoration(
-            border:
-                Border(top: BorderSide(width: 1, color: foundation.carbon())),
-            gradient: foundation.darkGradient());
-
-        break;
+                return Padding(
+                    padding: EdgeInsets.all(10),
+                    child: StandardButtonElement(
+                      buttonAction: actionItem.onSelection,
+                      buttonTitle: actionItem.actionName,
+                      currentVariant: buttonVariants.darkActive,
+                    ));
+              }));
     }
 
     return Container(
-        alignment: Alignment.bottomCenter,
-        padding: EdgeInsets.all(15),
-        decoration: buttonDecoration,
-        width: MediaQuery.of(context).size.width,
-        height: (MediaQuery.of(context).size.height / 10),
-        child: Expanded(
-            child: TextButton(
-                onPressed: isButtonEnabled ? widget.buttonAction : null,
-                child: Text(widget.buttonTitle),
-                style: TextButton.styleFrom(
-                    textStyle:
-                        foundation.button2().copyWith(color: buttonTextColor),
-                    padding: EdgeInsets.all(10),
-                    enableFeedback: true))));
+        width: Sizing.widthOf(context: context, weight: sizingWeight.w10),
+        height: Sizing.heightOf(context: context, weight: sizingWeight.w10),
+        padding: EdgeInsets.all(10),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+              //acts as the "cover" of to the pre-existing view
+              decoration: LayerBackingDecoration(
+                  mode: modeVariants.dark,
+                  priority: decorationPriority.inactive,
+                  variant: layerDecorationVariants.edged) as Decoration),
+          Container(
+              //this will be the rounded card backing
+              height:
+                  Sizing.heightOf(context: context, weight: sizingWeight.w3),
+              child:
+                  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                SecondaryIconButtonElement(
+                    currentVariant: buttonVariants.lightActive,
+                    buttonIcon: Assets.no as Icon,
+                    buttonTooltip: 'Exit',
+                    buttonAction: widget.alertData.onCancellation),
+                BadgeElementDarkIcyBoi(),
+                HeadingThreeText(
+                    widget.alertData.alertTitle, foundation.black()),
+                BodyOneText(widget.alertData.alertBody, foundation.black()),
+                alertControllerActions,
+              ]))
+        ]));
   }
 }
