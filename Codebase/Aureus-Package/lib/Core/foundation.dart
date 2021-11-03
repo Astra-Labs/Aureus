@@ -464,7 +464,7 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       decorationCornerRadius = 0.0;
     } else if (variant == buttonDecorationVariants.roundedPill) {
       decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = BorderRadius.circular(30.0) as double;
+      decorationCornerRadius = 30.0;
     } else if (variant == buttonDecorationVariants.roundedRectangle) {
       decorationShape = BoxShape.rectangle;
       decorationCornerRadius = 7.0;
@@ -488,9 +488,11 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       if (mode == modeVariants.light) {
         decorationFill = foundation.frost();
         decorationBorder = foundation.universalBorder();
+        decorationGradient = foundation.lightGradient();
       } else if (mode == modeVariants.dark) {
         decorationFill = foundation.carbon();
         decorationBorder = foundation.universalBorder();
+        decorationGradient = foundation.darkGradient();
       }
     }
 
