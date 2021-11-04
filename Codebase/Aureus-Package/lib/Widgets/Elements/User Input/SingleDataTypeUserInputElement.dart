@@ -24,8 +24,9 @@ class _SingleDataTypeUserInputElementState
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: Container(
-          width: 250,
-          height: 60,
+          width: Sizing.widthOf(
+              context: MediaQuery.of(context), weight: sizingWeight.w8),
+          height: MediaQuery.of(context).size.height * 0.06,
           decoration: BoxDecoration(
             border: foundation.universalBorder(),
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -46,7 +47,7 @@ class _SingleDataTypeUserInputElementState
                     hintStyle: foundation.body1(),
                     hintText: widget.dataPlaceholder),
                 autocorrect: false,
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 keyboardType: widget.dataTextType),
           ))),
     );
