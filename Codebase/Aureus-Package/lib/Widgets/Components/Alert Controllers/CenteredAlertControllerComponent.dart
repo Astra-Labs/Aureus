@@ -19,7 +19,6 @@ class _CenteredAlertControllerComponentState
     extends State<CenteredAlertControllerComponent> {
   @override
   Widget build(BuildContext context) {
-
     Expanded alertControllerActions =
         Expanded(child: Container(width: 10, height: 10));
 

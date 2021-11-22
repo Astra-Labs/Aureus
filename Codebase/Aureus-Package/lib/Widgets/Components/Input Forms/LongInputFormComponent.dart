@@ -32,10 +32,21 @@ class _LongInputFormComponentState extends State<LongInputFormComponent> {
 
                   return Padding(
                       padding: EdgeInsets.all(10),
+
+                      //layer two list view
                       child: ListView.builder(
                           scrollDirection: Axis.vertical,
-                          itemCount: currentObject.inputObjects.length,
-                          itemBuilder: (BuildContext context, int index) {}));
+                          itemCount: layer1Object.inputObjects.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            BaseUserInputObject currentObject =
+                                layer1Object.inputObjects[index];
+
+                            return Padding(
+                                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                                child: SingleDataTypeUserInputElement(
+                                    dataPlaceholder: currentObject.placeholder,
+                                    dataTextType: currentObject.textInputType));
+                          }));
                 }));
   }
 }

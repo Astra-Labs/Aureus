@@ -30,6 +30,9 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
             mode: widget.viewMode,
             priority: decorationPriority.standard,
             variant: layerDecorationVariants.edged) as Decoration,
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: []));
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          HeadingTwoText('',  foundation.), 
+
+        ]));
   }
 }

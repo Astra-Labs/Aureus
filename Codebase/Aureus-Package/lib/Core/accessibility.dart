@@ -9,7 +9,6 @@ A class that contains variables, methods, and other items to ensure full accessi
 */
 
 class Accessibility {
-  
   //returns the proper sizing of a string for a given text style with regards to the scale factor to accomodate dynamic text sizing.
   static Size textStringSize(
       {required double widthLimit,
@@ -26,5 +25,35 @@ class Accessibility {
       ..layout(maxWidth: widthLimit);
 
     return textPainter.size;
+  }
+}
+
+/*
+
+Description: 
+A class that takes variables into consideration to properly color the text of different items to match contrsst standards
+*/
+
+class Coloration {
+  //the color returned for all general text in Aureus.
+  Color universalTextColor(modeVariants modeVariant) {
+    if (modeVariant == modeVariants.light) {
+      return foundation.black();
+    } else if (modeVariant == modeVariants.dark) {
+      return foundation.white();
+    }
+    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+    throw UnimplementedError();
+  }
+
+  //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
+  Color contrastTextColor(modeVariants modeVariant) {
+    if (modeVariant == modeVariants.light) {
+      return foundation.white();
+    } else if (modeVariant == modeVariants.dark) {
+      return foundation.black();
+    }
+    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+    throw UnimplementedError();
   }
 }

@@ -231,67 +231,92 @@ class TitleCase {
 
 //Info Hiearchy - A set of texts / label styles that acts as the typographic foundation for the rest of the UDS
 final titleCase = TitleCase();
+final coloration = Coloration();
 
 class HeadingOneText extends Text {
-  HeadingOneText(String data, Color color)
+  HeadingOneText(String data, modeVariants variants)
       : super(TitleCase.convertToTitleCase(data),
-            style: foundation.heading1().copyWith(color: color));
+            style: foundation
+                .heading1()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class HeadingTwoText extends Text {
-  HeadingTwoText(String data, Color color)
+  HeadingTwoText(String data, modeVariants variants)
       : super(data.toUpperCase(),
-            style: foundation.heading2().copyWith(color: color));
+            style: foundation
+                .heading2()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class HeadingThreeText extends Text {
-  HeadingThreeText(String data, Color color)
+  HeadingThreeText(String data, modeVariants variants)
       : super(data.toUpperCase(),
-            style: foundation.heading3().copyWith(color: color));
+            style: foundation
+                .heading3()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class HeadingFourText extends Text {
-  HeadingFourText(String data, Color color)
+  HeadingFourText(String data, modeVariants variants)
       : super(data.toUpperCase(),
-            style: foundation.heading4().copyWith(color: color));
+            style: foundation
+                .heading4()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class SubheaderText extends Text {
-  SubheaderText(String data, Color color)
+  SubheaderText(String data, modeVariants variants)
       : super(TitleCase.convertToTitleCase(data),
-            style: foundation.subheading().copyWith(color: color));
+            style: foundation
+                .subheading()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class BodyOneText extends Text {
-  BodyOneText(String data, Color color)
-      : super(data, style: foundation.body1().copyWith(color: color));
+  BodyOneText(String data, modeVariants variants)
+      : super(data,
+            style: foundation
+                .body1()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class BodyTwoText extends Text {
-  BodyTwoText(String data, Color color)
-      : super(data, style: foundation.body2().copyWith(color: color));
+  BodyTwoText(String data, modeVariants variants)
+      : super(data,
+            style: foundation
+                .body2()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class ButtonOneText extends Text {
-  ButtonOneText(String data, Color color)
+  ButtonOneText(String data, modeVariants variants)
       : super(data.toUpperCase(),
-            style: foundation.button1().copyWith(color: color));
+            style: foundation
+                .button1()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class ButtonTwoText extends Text {
-  ButtonTwoText(String data, Color color)
+  ButtonTwoText(String data, modeVariants variants)
       : super(data.toUpperCase(),
-            style: foundation.button2().copyWith(color: color));
+            style: foundation
+                .button2()
+                .copyWith(color: coloration.universalTextColor(variants)));
 }
 
 class TagOneText extends Text {
-  TagOneText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.tag1(color: color));
+  TagOneText(String data, modeVariants variants)
+      : super(data.toUpperCase(),
+            style: foundation.tag1(
+                color: coloration.universalTextColor(variants)));
 }
 
 class TagTwoText extends Text {
-  TagTwoText(String data, Color color)
-      : super(data.toUpperCase(), style: foundation.tag2(color: color));
+  TagTwoText(String data, modeVariants variants)
+      : super(data.toUpperCase(),
+            style: foundation.tag2(
+                color: coloration.universalTextColor(variants)));
 }
 
 //MARK: - Sizing
@@ -425,6 +450,9 @@ class Sizing {
     return screenWeightedWidth;
   }
 }
+
+//MARK: - Decorations
+/* ------------------ DECORATIONS -------------------- */
 
 class BaseBackingDecoration {
   final modeVariants mode;
