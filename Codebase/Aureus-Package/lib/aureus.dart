@@ -1,72 +1,99 @@
 library aureus;
 
-/* ------------------ CORE -------------------- */
-/* Where all of the global foundations, classes, and variables that Aureus is built on are stored. */
-export 'Core/accessibility.dart';
-export 'Core/foundation.dart';
-export 'Core/safety.dart';
+export 'package:flutter/material.dart';
+export 'package:google_fonts/google_fonts.dart';
+
+/* ------------------ CORE GLOBALS -------------------- */
+/* Where the widgets that Aureus builds from the objects are contained */
+
+export '/src/Core/foundation.dart';
+export 'src/Core/accessibility.dart';
+export '/src/Core/safety.dart';
 
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
 
 //MARK: - Element Objects
-export 'Objects/Elements/AlertControllerObjects.dart';
+export 'src/Objects/Elements/AlertControllerObjects.dart';
 
 //MARK: - Component Objects
-export 'Objects/Components/InputFormObjects.dart';
-export 'Objects/Components/NotificationObject.dart';
-export 'Objects/Components/TabbingBarObjects.dart';
+export 'src/Objects/Components/InputFormObjects.dart';
+export 'src/Objects/Components/NotificationObject.dart';
+export 'src/Objects/Components/TabbingBarObjects.dart';
 
 //MARK: - View Objects
-export 'Objects/Views/HelpCenterObjects.dart';
-export 'Objects/Views/OnboardingObjects.dart';
+export 'src/Objects/Views/HelpCenterObjects.dart';
+export 'src/Objects/Views/OnboardingObjects.dart';
 
 /* ------------------ WIDGETS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
 
 //MARK: - Widget Elements
-export 'Widgets/Elements/Badges/BadgeElement.dart';
+export 'src/Widgets/Elements/Badges/BadgeElement.dart';
 
-export 'Widgets/Elements/Cards/BadgeCardElement.dart';
-export 'Widgets/Elements/Cards/GlassCardElement.dart';
-export 'Widgets/Elements/Cards/PastelCardElement.dart';
-export 'Widgets/Elements/Cards/StandardCardElement.dart';
+export 'src/Widgets/Elements/Cards/BadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/GlassCardElement.dart';
+export 'src/Widgets/Elements/Cards/PastelCardElement.dart';
+export 'src/Widgets/Elements/Cards/StandardCardElement.dart';
 
-export 'Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
-export 'Widgets/Elements/Info Hierarchy/DividerElement.dart';
+export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
+export 'src/Widgets/Elements/Info Hierarchy/DividerElement.dart';
 
-export 'Widgets/Elements/Misc/SliderElement.dart';
-export 'Widgets/Elements/Misc/TimerElement.dart';
+export 'src/Widgets/Elements/Misc/SliderElement.dart';
+export 'src/Widgets/Elements/Misc/TimerElement.dart';
 
-export 'Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
-export 'Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
+export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
+export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
 
 //Exporting lib widget components
-export 'Widgets/Components/Buttons/FullWidthButtonElement.dart';
-export 'Widgets/Components/Buttons/IconButtonElement.dart';
-export 'Widgets/Components/Buttons/SmolButtonElement.dart';
-export 'Widgets/Components/Buttons/StandardButtonElement.dart';
+export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
+export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
+export 'src/Widgets/Components/Buttons/SmolButtonElement.dart';
+export 'src/Widgets/Components/Buttons/StandardButtonElement.dart';
 
-export 'Widgets/Components/Collection Views/DetailCarouselComponent.dart';
-export 'Widgets/Components/Collection Views/GridCardComponent.dart';
-export 'Widgets/Components/Collection Views/HorizontalCardCarouselComponent.dart';
+export 'src/Widgets/Components/Collection Views/DetailCarouselComponent.dart';
+export 'src/Widgets/Components/Collection Views/GridCardComponent.dart';
+export 'src/Widgets/Components/Collection Views/HorizontalCardCarouselComponent.dart';
 
-export 'Widgets/Components/Communication/MessageBubbleComponent.dart';
-export 'Widgets/Components/Communication/NotificationComponent.dart';
-export 'Widgets/Components/Communication/SearchBarComponent.dart';
-export 'Widgets/Components/Communication/SendFieldComponent.dart';
+export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';
+export 'src/Widgets/Components/Communication/NotificationComponent.dart';
+export 'src/Widgets/Components/Communication/SearchBarComponent.dart';
+export 'src/Widgets/Components/Communication/SendFieldComponent.dart';
+
+export '/src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
+export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';
+
+export 'src/Widgets/Components/Tabbing Bars/IconTabbingBarComponent.dart';
+export 'src/Widgets/Components/Tabbing Bars/NavBarComponent.dart';
+export 'src/Widgets/Components/Tabbing Bars/OnboardingTabbingComponent.dart';
+export 'src/Widgets/Components/Tabbing Bars/SmolTextTabbingBarComponent.dart';
 
 //Exporting lib widget views
 //export 'Views/';
-export '/Widgets/Views/HelpCenterView.dart';
+export 'src/Widgets/Views/DataConsentView.dart';
+export 'src/Widgets/Views/HelpCenterView.dart';
+export 'src/Widgets/Views/OnboardingView.dart';
+export 'src/Widgets/Views/SafetyPlanView.dart';
+export 'src/Widgets/Views/SignInView.dart';
+export 'src/Widgets/Views/SignUpView.dart';
 
-/* ------------------ CORE GLOBALS -------------------- */
-/* Where the widgets that Aureus builds from the objects are contained */
-
-import 'package:aureus/Core/accessibility.dart';
-import 'package:aureus/Core/foundation.dart';
-import 'package:aureus/Core/safety.dart';
-
-var foundation = UDSVariables();
-var accessibility = Accessibility();
-var safety = Safety();
+/* ------------------ ENUMS -------------------- */
+//Global Foundational Enums go here since Dart doesn't support nested types
+enum deviceVariants { mobile, desktop, tablet }
+enum modeVariants { light, dark }
+enum buttonVariants { inactive, lightActive, darkActive }
+enum messagingVariants { sender, receiver }
+enum communicationStatus { sending, delivered, failed }
+enum CardType { standard, badge }
+enum userInputType { singleDataType, multiDataType }
+enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
+enum decorationPriority { standard, important, inactive }
+enum buttonDecorationVariants {
+  roundedPill,
+  roundedRectangle,
+  edgedRectangle,
+  circle
+}
+enum layerDecorationVariants { rounded, edged }
+enum cardDecorationVariants { pilledRectangle, roundedRectangle }
+enum tabItemDecorationVariants { circle, roundedRectangle }

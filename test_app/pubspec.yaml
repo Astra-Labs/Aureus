@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   aureus:
-    path: /Users/amandasouthworth/Desktop/Aureus/Codebase/Aureus-Package
+    path: /Users/amandasouthworth/Desktop/astra/Aureus/Codebase/Aureus-Package
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -46,6 +46,6 @@ assets:
   fonts:
     - family: Exo
       fonts:
-        - asset: /Users/amandasouthworth/Desktop/Aureus/Assets/Fonts/Exo-Light.ttf
-        - asset: /Users/amandasouthworth/Desktop/Aureus/Assets/Fonts/Exo-Regular.ttf
-        - asset: /Users/amandasouthworth/Desktop/Aureus/Assets/Fonts/Exo-Medium.ttf
+        - asset: /Users/amandasouthworth/Desktop/astra/Aureus/Assets/Fonts/Exo-Light.ttf
+        - asset: /Users/amandasouthworth/Desktop/astra/Aureus/Assets/Fonts/Exo-Regular.ttf
+        - asset: /Users/amandasouthworth/Desktop/astra/Aureus/Assets/Fonts/Exo-Medium.ttf
