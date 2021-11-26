@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:aureus/aureus.dart';
+import 'package:test_app/src/aur-lib.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         lightGrad: gradient1,
         mediumGrad: gradient2,
         darkGrad: gradient3);
-    return CupertinoApp(home: MyHomePage());
+    return MaterialApp(home: MyHomePage());
   }
 }
 
@@ -45,50 +47,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: ListView(children: <Widget>[
-      StandardButtonElement(
-          currentVariant: buttonVariants.inactive,
-          buttonTitle: 'This is an inactive standard button',
-          buttonAction: () {
-            print('inactive standard button works!');
-          }),
-      StandardButtonElement(
-          currentVariant: buttonVariants.lightActive,
-          buttonTitle: 'This is an light active standard button',
-          buttonAction: () {
-            print('inactive standard button works!');
-          }),
-      StandardButtonElement(
-          currentVariant: buttonVariants.darkActive,
-          buttonTitle: 'This is an dark active standard button',
-          buttonAction: () {
-            print('inactive standard button works!');
-          }),
-      SmolButtonElement(
-          currentVariant: buttonVariants.inactive,
-          buttonTitle: 'inactive',
-          buttonAction: () {
-            print('inactive smol button works!');
-          }),
-      SmolButtonElement(
-          currentVariant: buttonVariants.lightActive,
-          buttonTitle: 'light',
-          buttonAction: () {
-            print('light smol button works!');
-          }),
-      SmolButtonElement(
-          currentVariant: buttonVariants.darkActive,
-          buttonTitle: 'dark',
-          buttonAction: () {
-            print('dark smol button works!');
-          }),
-      FullWidthButtonElement(
-          buttonTitle: 'Full Width Button',
-          currentVariant: buttonVariants.lightActive,
-          buttonAction: () {
-            print('full width button works!');
-          })
-    ]));
+    return Scaffold(
+        backgroundColor: foundation.white(),
+        body: ListView(children: libElements));
   }
 }

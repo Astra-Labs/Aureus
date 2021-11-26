@@ -6,7 +6,7 @@ import 'package:aureus/aureus.dart';
 //big circular icon buttons that are greater than 70x70 and are intended to be the main action of the page (e.g: add, message, etc).
 class PrimaryIconButtonElement extends StatefulWidget {
   final buttonVariants currentVariant;
-  final Image buttonIcon;
+  final Icon buttonIcon;
   final String buttonTooltip;
   final VoidCallback buttonAction;
 

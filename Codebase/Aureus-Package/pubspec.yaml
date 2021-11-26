@@ -17,7 +17,7 @@ flutter:
    fonts:
     - family:  Aureus
       fonts:
-       - asset: fonts/Aureus.ttf
+       - asset: lib/src/Aureus.ttf
 
 dev_dependencies:
   flutter_test:
