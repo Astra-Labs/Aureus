@@ -54,18 +54,14 @@ class SafetyPlanCheck {
 }
 
 class SafetyPlanFallback {
-  SafetyPlanOptions safetyOption;
+  SafetyPlanOptions safetyOption SafetyPlanOptions.;
   SafetyFallBackOptions fallbackOptions;
   VoidCallback fallbackCode;
 
-  const SafetyPlanFallback(this.safetyOption);
-
-  SafetyPlanFallback.withErrorController(SafetyPlanFallback another)
-      : safetyOption = another.safetyOption;
+  SafetyPlanFallback.withErrorController(this.safetyOption);
 
   SafetyPlanFallback.withAlternateExecution(
-      SafetyPlanFallback another, this.fallbackCode)
-      : safetyOption = another.safetyOption;
+      this.safetyOption, this.fallbackCode);
 }
 
 class SafetyPlanObject {

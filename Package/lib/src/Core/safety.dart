@@ -17,15 +17,20 @@ enum SafetyPlanOptions {
   disableScreenshots, //stops screen recordings and screenshots
   deviceSandbox, //stops the resources from using other features on the device that can be logged (e.g: opening a browser or sending a message)
   logFailedAttempts //keeps track of all of the failed log in attempts for the user to review.
-
 }
 
 class Safety {
-  final bool isSafetyPlanEnabled;
-  final Map<SafetyPlanOptions, bool> eligiblePlanOptions;
+  // a map that contains Safety Plan options that ALL software can complete.
+  final Map<SafetyPlanOptions, bool> basePlanOptions = {
+    SafetyPlanOptions.deviceSandbox: true,
+    SafetyPlanOptions.exitBar: true,
+    SafetyPlanOptions.disableScreenshots: true
+  };
 
-  const Safety(
-      {required this.isSafetyPlanEnabled, required this.eligiblePlanOptions});
+  //a map that contains product specific Safety Plan options aside from the base options
+  final List<SafetyPlanOptions> productEligiblePlanOptions;
+
+  const Safety({required this.productEligiblePlanOptions});
 
   //A method for implementation of a safety plan check to check and run code that may interfere with an SP option. If the option is true, then the fallback code is completed.
 
