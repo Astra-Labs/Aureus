@@ -7,9 +7,15 @@ import 'package:flutter/rendering.dart';
 
 class ContainerView extends StatefulWidget {
   final modeVariants modeVariant;
+  final decorationPriority decorationVariant;
+  final List<Widget> childrenWidgets;
   final bool hasExitBar;
 
-  const ContainerView({required this.modeVariant, required this.hasExitBar});
+  const ContainerView(
+      {required this.modeVariant,
+      required this.decorationVariant,
+      required this.childrenWidgets,
+      required this.hasExitBar});
 
   @override
   _ContainerViewState createState() => _ContainerViewState();
@@ -18,6 +24,17 @@ class ContainerView extends StatefulWidget {
 class _ContainerViewState extends State<ContainerView> {
   @override
   Widget build(BuildContext context) {
+    BoxDecoration containerBacking() {
+      if (widget.modeVariant == modeVariants.light) {
+        if (widget.decorationVariant == decorationPriority.important) {
+        } else if (widget.decorationVariant == decorationPriority.standard) {}
+      } else if (widget.modeVariant == modeVariants.dark) {
+        if (widget.decorationVariant == decorationPriority.important) {
+        } else if (widget.decorationVariant == decorationPriority.standard) {}
+      }
+      return BoxDecoration();
+    }
+
     Container defaultContainer = Container(
         padding: size.containerPadding(),
         alignment: Alignment.center,

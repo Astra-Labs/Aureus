@@ -4,56 +4,66 @@ import 'dart:ui';
 //All Variables for the UDS Elements
 //Doc Link:
 
-var foundation = UDSVariables();
+var foundation = Aureus();
 var size = Sizing();
 
 /* ------------------ GLOBAL VARIABLES -------------------- */
-class UDSVariables {
+class Aureus {
   final Color prodColor;
   final String prodName;
-  final Gradient lightGrad;
-  final Gradient mediumGrad;
-  final Gradient darkGrad;
 
-  const UDSVariables(
+  const Aureus(
       {this.prodColor = const Color.fromRGBO(181, 190, 242, 1.0),
-      this.prodName = 'Aureus',
-      this.lightGrad = const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Colors.white,
-            Color.fromRGBO(227, 231, 248, 1.0),
-          ]),
-      this.mediumGrad = const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromRGBO(212, 219, 244, 1.0),
-            Color.fromRGBO(181, 190, 242, 1.0),
-            Color.fromRGBO(184, 195, 236, 1.0)
-          ]),
-      this.darkGrad = const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            const Color.fromRGBO(241, 243, 251, 1.0),
-            const Color.fromRGBO(0, 0, 0, 1.0),
-            const Color.fromRGBO(219, 225, 246, 1.0)
-          ])});
+      this.prodName = 'Aureus'});
 
 //Global Gradients
 
   Gradient lightGradient() {
-    return lightGrad;
+    return LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Colors.white,
+          Color.fromRGBO(227, 231, 248, 1.0),
+        ]);
   }
 
   Gradient mediumGradient() {
-    return mediumGrad;
+    return LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Color.fromRGBO(212, 219, 244, 1.0),
+          Color.fromRGBO(181, 190, 242, 1.0),
+          Color.fromRGBO(184, 195, 236, 1.0)
+        ]);
   }
 
   Gradient darkGradient() {
-    return darkGrad;
+    return LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          const Color.fromRGBO(241, 243, 251, 1.0),
+          const Color.fromRGBO(0, 0, 0, 1.0),
+          const Color.fromRGBO(219, 225, 246, 1.0)
+        ]);
+  }
+
+  BoxDecoration lightBlur() {
+    return BoxDecoration();
+  }
+
+  BoxDecoration darkBlur() {
+    return BoxDecoration();
+  }
+
+  Image lightFluid() {
+    return Image.asset('');
+  }
+
+  Image darkFluid() {
+    return Image.asset('');
   }
 
 //Global Colors

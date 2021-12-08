@@ -16,23 +16,45 @@ class IconBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color iconColor() {
+      if (modeVariant == modeVariants.light) {
+        return foundation.white();
+      } else if (modeVariant == modeVariants.dark) {
+        return foundation.black();
+      }
 
-      
+      return foundation.white();
     }
 
     Color badgeFill() {
+      if (modeVariant == modeVariants.light) {
+        return foundation.carbon();
+      } else if (modeVariant == modeVariants.dark) {
+        return foundation.melt();
+      }
 
-      return 
+      return foundation.white();
     }
+
     Gradient badgeGradient() {
-      return LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Colors.purple, Colors.blue]);
+      if (modeVariant == modeVariants.light) {
+        return foundation.darkGradient();
+      } else if (modeVariant == modeVariants.dark) {
+        return foundation.lightGradient();
+      }
+
+      return LinearGradient(colors: []);
     }
 
     BoxShadow badgeShadow() {
-      return foundation.darkShadow();
+      if (modeVariant == modeVariants.light &&
+          badgePriority == decorationPriority.important) {
+        return foundation.darkShadow();
+      } else if (modeVariant == modeVariants.dark &&
+          badgePriority == decorationPriority.important) {
+        return foundation.lightShadow();
+      }
+
+      return BoxShadow();
     }
 
     return AspectRatio(
@@ -46,9 +68,10 @@ class IconBadge extends StatelessWidget {
               maxWidth: size.widthOf(weight: sizingWeight.w4)),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: badgeFill,
-              gradient: badgeGradient),
-          child: Icon(badgeIcon, color: iconColor),
+              color: badgeFill(),
+              gradient: badgeGradient(),
+              boxShadow: [badgeShadow()]),
+          child: Icon(badgeIcon, color: iconColor()),
         ));
   }
 }

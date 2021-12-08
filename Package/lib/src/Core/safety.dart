@@ -22,12 +22,15 @@ enum SafetyPlanOptions {
 
 class Safety {
   final bool isSafetyPlanEnabled;
+  final Map<SafetyPlanOptions, bool> eligiblePlanOptions;
 
-  const Safety({this.isSafetyPlanEnabled = false});
+  const Safety(
+      {required this.isSafetyPlanEnabled, required this.eligiblePlanOptions});
 
   //A method for implementation of a safety plan check to check and run code that may interfere with an SP option. If the option is true, then the fallback code is completed.
 
-  Future safetyPlanHandling({check: SafetyPlanCheck, execute: VoidCallback}) {
+  Future<void> safetyPlanHandling(
+      {check: SafetyPlanCheck, execute: VoidCallback}) {
     //checks to see if a Safety Plan option is enabled, and runs the primary or fallback code depending on if option is enabled or not.
   }
 }
