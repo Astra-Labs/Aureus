@@ -27,10 +27,18 @@ class _ContainerViewState extends State<ContainerView> {
     BoxDecoration containerBacking() {
       if (widget.modeVariant == modeVariants.light) {
         if (widget.decorationVariant == decorationPriority.important) {
-        } else if (widget.decorationVariant == decorationPriority.standard) {}
+          //returns light fluid
+
+        } else if (widget.decorationVariant == decorationPriority.standard) {
+          //returns light blur
+        }
       } else if (widget.modeVariant == modeVariants.dark) {
         if (widget.decorationVariant == decorationPriority.important) {
-        } else if (widget.decorationVariant == decorationPriority.standard) {}
+          //returns dark fluid
+
+        } else if (widget.decorationVariant == decorationPriority.standard) {
+          //returns dark blur
+        }
       }
       return BoxDecoration();
     }
@@ -40,7 +48,7 @@ class _ContainerViewState extends State<ContainerView> {
         alignment: Alignment.center,
         width: size.widthOf(weight: sizingWeight.w10),
         height: size.heightOf(weight: sizingWeight.w10),
-        color: coloration.modeColor(widget.modeVariant));
+        decoration: containerBacking());
 
     Container exitBarContainer = Container(
       width: size.widthOf(weight: sizingWeight.w10),

@@ -44,12 +44,28 @@ class _SafetyPlan {
   void updateSafetySettings() {}
 }
 
-class SafetyPlanCheck {
-  final SafetyPlanOptions safetyOption;
-  final VoidCallback safetyFallback;
+enum SafetyFallBackOptions { errorController, alternateCode }
 
-  const SafetyPlanCheck(
-      {required this.safetyOption, required this.safetyFallback});
+class SafetyPlanCheck {
+  final List<SafetyPlanFallback> fallbackItems;
+
+  const SafetyPlanCheck({required this.fallbackItems})
+      : assert(fallbackItems != []);
+}
+
+class SafetyPlanFallback {
+  SafetyPlanOptions safetyOption;
+  SafetyFallBackOptions fallbackOptions;
+  VoidCallback fallbackCode;
+
+  const SafetyPlanFallback(this.safetyOption);
+
+  SafetyPlanFallback.withErrorController(SafetyPlanFallback another)
+      : safetyOption = another.safetyOption;
+
+  SafetyPlanFallback.withAlternateExecution(
+      SafetyPlanFallback another, this.fallbackCode)
+      : safetyOption = another.safetyOption;
 }
 
 class SafetyPlanObject {
