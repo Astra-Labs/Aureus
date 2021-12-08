@@ -49,7 +49,7 @@ class Coloration {
   }
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
-  Color contrastTextColor(modeVariants modeVariant) {
+  Color modeColor(modeVariants modeVariant) {
     if (modeVariant == modeVariants.light) {
       return foundation.white();
     } else if (modeVariant == modeVariants.dark) {

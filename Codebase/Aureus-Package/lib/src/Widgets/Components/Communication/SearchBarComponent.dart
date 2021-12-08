@@ -47,7 +47,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                   ),
                   child: Center(
                       child: Padding(
-                    padding: const EdgeInsets.only(left: 5.0),
+                    padding: size.universalPadding(),
                     child: TextFormField(
                         style: foundation.heading2().copyWith(color: textColor),
                         maxLines: 1,
@@ -65,7 +65,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                   ))),
               Container(
                   alignment: Alignment.centerRight,
-                  padding: EdgeInsets.all(5),
+                  padding: size.universalPadding(),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: foundation.mediumGradient(),

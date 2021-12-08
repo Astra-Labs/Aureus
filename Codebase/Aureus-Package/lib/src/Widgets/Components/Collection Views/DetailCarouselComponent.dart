@@ -8,7 +8,10 @@ class DetailCarouselComponent extends StatefulWidget {
   final List<IconData> cardIcons;
   final modeVariants viewMode;
 
-  DetailCarouselComponent(this.cardLabels, this.cardIcons, this.viewMode);
+  DetailCarouselComponent(
+      {required this.cardLabels,
+      required this.cardIcons,
+      required this.viewMode});
 
   @override
   _DetailCarouselComponentState createState() =>
@@ -25,7 +28,7 @@ class _DetailCarouselComponentState extends State<DetailCarouselComponent> {
         itemBuilder: (BuildContext context, int index) {
           return Container(
             child: Padding(
-              padding: const EdgeInsets.only(right: 8.72),
+              padding: size.universalPadding(),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(

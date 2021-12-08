@@ -63,7 +63,7 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
                 widget.multiVarianceInputObjects[index];
 
             return Padding(
-                padding: EdgeInsets.all(10),
+                padding: size.universalPadding(),
                 child: MultipleDataTypeUserInputElement(
                     dataLabel: currentObject.dataLabel,
                     dataPlaceholder: currentObject.placeholder,
@@ -81,7 +81,7 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
                 widget.singleVarianceInputObjects[index];
 
             return Padding(
-                padding: EdgeInsets.all(10),
+                padding: size.universalPadding(),
                 child: SingleDataTypeUserInputElement(
                     dataPlaceholder: currentObject.placeholder,
                     dataTextType: currentObject.textInputType));
@@ -94,11 +94,11 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-              padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+              padding: size.containerPadding(),
               child:
                   HeadingThreeText(widget.inputFormName, widget.formVariant)),
           Padding(
-              padding: EdgeInsets.fromLTRB(10, 20, 10, 20), child: inputList)
+              padding: size.containerPadding(), child: inputList)
         ]);
   }
 }

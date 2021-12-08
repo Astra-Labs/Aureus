@@ -7,7 +7,7 @@ class BadgeCardElement extends StatelessWidget {
   final String cardLabel;
   final IconData cardIcon;
 
-  BadgeCardElement(this.cardLabel, this.cardIcon);
+  const BadgeCardElement({required this.cardLabel, required this.cardIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class BadgeCardElement extends StatelessWidget {
           border: foundation.universalBorder(),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: size.universalPadding(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,

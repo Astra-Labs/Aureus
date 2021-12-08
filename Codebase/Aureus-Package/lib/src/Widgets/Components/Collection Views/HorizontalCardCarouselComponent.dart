@@ -39,9 +39,8 @@ class _HorizontalCardCarouselComponentState
                 child: widget.cardType == CardType.standard
                     ? StandardCardElement(widget.cardLabels[index])
                     : BadgeCardElement(
-                        widget.cardLabels[index],
-                        widget.cardIcons![index],
-                      ),
+                        cardLabel: widget.cardLabels[index],
+                        cardIcon: widget.cardIcons![index]),
               );
             },
           ),

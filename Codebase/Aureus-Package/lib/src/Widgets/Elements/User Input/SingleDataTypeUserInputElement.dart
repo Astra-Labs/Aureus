@@ -20,7 +20,7 @@ class _SingleDataTypeUserInputElementState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: size.universalPadding(),
       child: Container(
           width: 250,
           height: 60,

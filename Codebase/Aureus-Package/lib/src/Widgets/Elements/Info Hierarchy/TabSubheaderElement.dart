@@ -10,21 +10,18 @@ class TabSubheaderElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String upperCaseLabel = title.toUpperCase();
+
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-          bottomLeft: Radius.circular(30),
-          bottomRight: Radius.circular(30),
-        ),
+        borderRadius: BorderRadius.circular(30),
         color: foundation.carbon(),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: size.universalPadding(),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text(title,
+          Text(upperCaseLabel,
               textAlign: TextAlign.center,
               style: foundation.tag1(color: foundation.melt())),
         ],

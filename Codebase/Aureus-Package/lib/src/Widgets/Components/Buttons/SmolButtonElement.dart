@@ -66,16 +66,14 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         constraints: BoxConstraints(
             minWidth: 60, minHeight: 40, maxWidth: 300, maxHeight: 70),
         child: Container(
-            padding: EdgeInsets.all(10.0),
+            padding: size.universalPadding(),
             decoration: buttonDecoration,
             child: Expanded(
                 child: TextButton(
                     onPressed: isButtonEnabled ? widget.buttonAction : null,
                     child: Text(widget.buttonTitle),
                     style: TextButton.styleFrom(
-                        textStyle: foundation
-                            .button1()
-                            .copyWith(color: buttonTextColor),
+                        textStyle: foundation.button1(),
                         padding: EdgeInsets.all(10),
                         tapTargetSize: MaterialTapTargetSize.padded,
                         enableFeedback: true)))));

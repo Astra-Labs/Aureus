@@ -3,73 +3,52 @@ import 'package:aureus/aureus.dart';
 //A circle with an icon that is meant to act as a category label, but not as a button.
 //Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Badges/All.md
 
-class BadgeElementDarkWhite extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: foundation.white(),
-      ),
-      width: 157,
-      height: 156,
-    );
-  }
-}
+class IconBadge extends StatelessWidget {
+  final IconData badgeIcon;
+  final decorationPriority badgePriority;
+  final modeVariants modeVariant;
 
-class BadgeElementLightIcyBoi extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: foundation.lightGradient(),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromRGBO(184, 195, 236, 0.51),
-            spreadRadius: 5,
-            blurRadius: 50,
-            offset: Offset(0, 9),
-          ),
-        ],
-      ),
-      width: 159,
-      height: 155,
-    );
-  }
-}
+  const IconBadge(
+      {required this.badgeIcon,
+      required this.badgePriority,
+      required this.modeVariant});
 
-class BadgeElementCarbon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: foundation.carbon(),
-      ),
-      width: 157,
-      height: 155,
-    );
-  }
-}
+    Color iconColor() {
 
-class BadgeElementDarkIcyBoi extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: foundation.darkGradient(),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromRGBO(113, 136, 218, 0.4),
-            blurRadius: 43,
-            offset: Offset(0, 5),
-          ),
-        ],
-      ),
-      width: 159,
-      height: 155,
-    );
+      
+    }
+
+    Color badgeFill() {
+
+      return 
+    }
+    Gradient badgeGradient() {
+      return LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.purple, Colors.blue]);
+    }
+
+    BoxShadow badgeShadow() {
+      return foundation.darkShadow();
+    }
+
+    return AspectRatio(
+        aspectRatio: 1 / 1,
+        child: Container(
+          constraints: BoxConstraints(
+              //sets minimum size of 25x25 and max size of 40% of screen width.
+              minHeight: 25,
+              minWidth: 25,
+              maxHeight: size.widthOf(weight: sizingWeight.w4),
+              maxWidth: size.widthOf(weight: sizingWeight.w4)),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: badgeFill,
+              gradient: badgeGradient),
+          child: Icon(badgeIcon, color: iconColor),
+        ));
   }
 }

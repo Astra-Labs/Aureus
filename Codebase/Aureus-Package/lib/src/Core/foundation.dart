@@ -1,9 +1,11 @@
 import 'package:aureus/aureus.dart';
+import 'dart:ui';
 
 //All Variables for the UDS Elements
 //Doc Link:
 
 var foundation = UDSVariables();
+var size = Sizing();
 
 /* ------------------ GLOBAL VARIABLES -------------------- */
 class UDSVariables {
@@ -66,6 +68,10 @@ class UDSVariables {
     return Color.fromRGBO(0, 0, 0, 1.0);
   }
 
+  Color lavender() {
+    return Color.fromRGBO(181, 190, 242, 1.0);
+  }
+
   Color ice() {
     return Color.fromRGBO(241, 243, 251, 1.0);
   }
@@ -90,21 +96,29 @@ class UDSVariables {
     return Color.fromRGBO(77, 79, 90, 1.0);
   }
 
-  BoxShadow lightHaze() {
+  Color lightModeFill() {
+    return black().withOpacity(0.10);
+  }
+
+  Color darkModeFill() {
+    return white().withOpacity(0.10);
+  }
+
+  BoxShadow lightShadow() {
     return BoxShadow(
         color: steel().withOpacity(0.4),
         offset: Offset(0.0, 3.0),
         blurRadius: 30.0);
   }
 
-  BoxShadow darkHaze() {
+  BoxShadow darkShadow() {
     return BoxShadow(
         color: carbon(), offset: Offset(0.0, 3.0), blurRadius: 30.0);
   }
 
-  BoxShadow pastelHaze() {
+  BoxShadow pastelShadow() {
     return BoxShadow(
-        color: prodColor.withOpacity(0.4),
+        color: melt().withOpacity(0.4),
         offset: Offset(0.0, 3.0),
         blurRadius: 30.0);
   }
@@ -114,7 +128,15 @@ class UDSVariables {
   }
 
   Border pastelBorder() {
-    return Border.all(color: prodColor.withOpacity(0.4), width: 1);
+    return Border.all(color: white().withOpacity(0.15), width: 1);
+  }
+
+  Border lightModeBorder() {
+    return Border.all(color: black().withOpacity(0.15), width: 1);
+  }
+
+  Border darkModeBorder() {
+    return Border.all(color: white().withOpacity(0.15), width: 1);
   }
 
 // Global Text Styles
@@ -302,128 +324,159 @@ class TagTwoText extends Text {
 //MARK: - Sizing
 /* ------------------ SIZING -------------------- */
 class Sizing {
-  static double heightOf({context: MediaQueryData, weight: sizingWeight}) {
+  //Pixel Ratio of a given device
+  final pixelRatio = window.devicePixelRatio;
+
+  //Size in physical pixels
+  final physicalScreenSize = window.physicalSize;
+
+  late var physicalWidth = physicalScreenSize.width;
+  late var physicalHeight = physicalScreenSize.height;
+
+  //Size in logical pixels
+  late var logicalScreenSize = window.physicalSize / pixelRatio;
+  late var logicalWidth = logicalScreenSize.width;
+  late var logicalHeight = logicalScreenSize.height;
+
+//Creates universal padding for all items based on the screen size.
+  EdgeInsets universalPadding() {
+    return EdgeInsets.fromLTRB(
+        widthOf(weight: sizingWeight.w0),
+        heightOf(weight: sizingWeight.w0),
+        widthOf(weight: sizingWeight.w0),
+        heightOf(weight: sizingWeight.w0));
+  }
+
+  EdgeInsets containerPadding() {
+    return EdgeInsets.fromLTRB(
+        widthOf(weight: sizingWeight.w1),
+        heightOf(weight: sizingWeight.w1),
+        widthOf(weight: sizingWeight.w1),
+        heightOf(weight: sizingWeight.w1));
+  }
+
+  double heightOf({weight: sizingWeight}) {
     double screenWeightedHeight = 0.0;
 
     switch (weight) {
 
       //MINIMUM WIDTH OF ITEM - 5%
       case sizingWeight.w0:
-        screenWeightedHeight = (context.size.height) * 0.05;
+        screenWeightedHeight = (logicalHeight) * 0.05;
         break;
 
       //10% of screen height
       case sizingWeight.w1:
-        screenWeightedHeight = (context.size.height) * 0.1;
+        screenWeightedHeight = (logicalHeight) * 0.1;
         break;
 
       //20% of screen height
       case sizingWeight.w2:
-        screenWeightedHeight = (context.size.height) * 0.2;
+        screenWeightedHeight = (logicalHeight) * 0.2;
         break;
 
       //30% of screen height
       case sizingWeight.w3:
-        screenWeightedHeight = (context.size.height) * 0.3;
+        screenWeightedHeight = (logicalHeight) * 0.3;
         break;
 
       //40% of screen height
       case sizingWeight.w4:
-        screenWeightedHeight = (context.size.height) * 0.4;
+        screenWeightedHeight = (logicalHeight) * 0.4;
         break;
 
       //50% of screen height
       case sizingWeight.w5:
-        screenWeightedHeight = (context.size.height) * 0.5;
+        screenWeightedHeight = (logicalHeight) * 0.5;
         break;
 
       //60% of screen height
       case sizingWeight.w6:
-        screenWeightedHeight = (context.size.height) * 0.6;
+        screenWeightedHeight = (logicalHeight) * 0.6;
         break;
 
       //70% of screen height
       case sizingWeight.w7:
-        screenWeightedHeight = (context.size.height) * 0.7;
+        screenWeightedHeight = (logicalHeight) * 0.7;
         break;
 
       //80% of screen height
       case sizingWeight.w8:
-        screenWeightedHeight = (context.size.height) * 0.8;
+        screenWeightedHeight = (logicalHeight) * 0.8;
         break;
 
       //90% of screen height
       case sizingWeight.w9:
-        screenWeightedHeight = (context.size.height) * 0.9;
+        screenWeightedHeight = (logicalHeight) * 0.9;
         break;
 
       //100% of screen height
       case sizingWeight.w10:
-        screenWeightedHeight = (context.size.height);
+        screenWeightedHeight = (logicalHeight);
         break;
     }
 
     return screenWeightedHeight;
   }
 
-  static double widthOf({context: MediaQueryData, weight: sizingWeight}) {
+  double widthOf({weight: sizingWeight}) {
     double screenWeightedWidth = 0.0;
 
     switch (weight) {
 
       //MINIMUM WIDTH OF ITEM - 5%
       case sizingWeight.w0:
-        screenWeightedWidth = (context.size.width) * 0.05;
+        screenWeightedWidth = (logicalWidth) * 0.05;
         break;
 
       //10% of width
       case sizingWeight.w1:
-        screenWeightedWidth = (context.size.width) * 0.1;
+        screenWeightedWidth = (logicalWidth) * 0.1;
         break;
 
       //20% of width
       case sizingWeight.w2:
-        screenWeightedWidth = (context.size.width) * 0.2;
+        screenWeightedWidth = (logicalWidth) * 0.2;
         break;
 
       //30% of width
       case sizingWeight.w3:
-        screenWeightedWidth = (context.size.width) * 0.3;
+        screenWeightedWidth = (logicalWidth) * 0.3;
         break;
 
       //40% of width
       case sizingWeight.w4:
-        screenWeightedWidth = (context.size.width) * 0.4;
+        screenWeightedWidth = (logicalWidth) * 0.4;
         break;
 
       //50% of width
       case sizingWeight.w5:
-        screenWeightedWidth = (context.size.width) * 0.5;
+        screenWeightedWidth = (logicalWidth) * 0.5;
         break;
 
       //60% of width
       case sizingWeight.w6:
-        screenWeightedWidth = (context.size.width) * 0.6;
+        screenWeightedWidth = (logicalWidth) * 0.6;
         break;
 
       //70% of width
       case sizingWeight.w7:
-        screenWeightedWidth = (context.size.width) * 0.7;
+        screenWeightedWidth = (logicalWidth) * 0.7;
         break;
 
       //80% of width
       case sizingWeight.w8:
-        screenWeightedWidth = (context.size.width) * 0.8;
+        screenWeightedWidth = (logicalWidth) * 0.8;
         break;
 
       //90% of width
       case sizingWeight.w9:
-        screenWeightedWidth = (context.size.width) * 0.9;
+        screenWeightedWidth = (logicalWidth) * 0.9;
         break;
 
       //100% of width
       case sizingWeight.w10:
-        screenWeightedWidth = (context.size.width);
+        screenWeightedWidth = (logicalWidth);
         break;
     }
 
@@ -444,7 +497,7 @@ class BaseBackingDecoration {
       Border.all(color: foundation.white().withOpacity(0.0));
   Color decorationFill = foundation.white().withOpacity(0.0);
   late Gradient decorationGradient;
-  double decorationCornerRadius = 0.0;
+  BorderRadius decorationCornerRadius = BorderRadius.zero;
   BoxShape decorationShape = BoxShape.rectangle;
   BoxShadow decorationHaze = BoxShadow();
 
@@ -466,16 +519,16 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
     //defining variants for the specific item
     if (variant == buttonDecorationVariants.circle) {
       decorationShape = BoxShape.circle;
-      decorationCornerRadius = 0.0;
+      decorationCornerRadius = BorderRadius.zero;
     } else if (variant == buttonDecorationVariants.edgedRectangle) {
       decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = 0.0;
+      decorationCornerRadius = BorderRadius.zero;
     } else if (variant == buttonDecorationVariants.roundedPill) {
       decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = BorderRadius.circular(30.0) as double;
+      decorationCornerRadius = BorderRadius.circular(30.0);
     } else if (variant == buttonDecorationVariants.roundedRectangle) {
       decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = 7.0;
+      decorationCornerRadius = BorderRadius.circular(7.0);
     }
 
     //defining variants for the specific priority
@@ -486,19 +539,19 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
       if (mode == modeVariants.light) {
         decorationGradient = foundation.lightGradient();
-        decorationBorder = foundation.pastelBorder();
+        decorationBorder = foundation.universalBorder();
       } else if (mode == modeVariants.dark) {
         decorationGradient = foundation.darkGradient();
-        decorationBorder = foundation.pastelBorder();
+        decorationBorder = foundation.universalBorder();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       if (mode == modeVariants.light) {
-        decorationFill = foundation.frost();
-        decorationBorder = foundation.universalBorder();
+        decorationFill = foundation.lightModeFill();
+        decorationBorder = foundation.lightModeBorder();
       } else if (mode == modeVariants.dark) {
-        decorationFill = foundation.carbon();
-        decorationBorder = foundation.universalBorder();
+        decorationFill = foundation.darkModeFill();
+        decorationBorder = foundation.darkModeBorder();
       }
     }
 
@@ -508,7 +561,7 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
         border: decorationBorder,
         shape: decorationShape,
         boxShadow: [decorationHaze],
-        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+        borderRadius: decorationCornerRadius);
   }
 }
 
@@ -522,38 +575,35 @@ class LayerBackingDecoration extends BaseBackingDecoration {
   @override
   BoxDecoration buildBacking() {
     //defining variants for the specific item
-    if (variant == layerDecorationVariants.edged) {
-      decorationCornerRadius = 0.0;
-    } else if (variant == layerDecorationVariants.rounded) {
-      decorationCornerRadius = 5.0;
+    if (variant == layerDecorationVariants.rounded) {
+      decorationCornerRadius = BorderRadius.circular(5.0);
     }
 
     //defining variants for the specific priority
     if (priority == decorationPriority.important) {
       //defining variants for the specific mode
-      decorationFill = foundation.prodColor.withOpacity(0.4);
-
       if (mode == modeVariants.light) {
-        decorationHaze = foundation.lightHaze();
+        decorationFill = foundation.lightModeFill();
+        decorationHaze = foundation.darkShadow();
       } else if (mode == modeVariants.dark) {
-        decorationHaze = foundation.darkHaze();
+        decorationFill = foundation.darkModeFill();
+        decorationHaze = foundation.lightShadow();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       if (mode == modeVariants.light) {
-        decorationFill = foundation.ice();
+        decorationFill = foundation.lightModeFill();
       } else if (mode == modeVariants.dark) {
-        decorationFill = foundation.carbon();
+        decorationFill = foundation.darkModeFill();
       }
     }
 
     return BoxDecoration(
         color: decorationFill,
-        gradient: decorationGradient,
         border: decorationBorder,
         shape: decorationShape,
         boxShadow: [decorationHaze],
-        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+        borderRadius: decorationCornerRadius);
   }
 }
 
@@ -568,9 +618,9 @@ class CardBackingDecoration extends BaseBackingDecoration {
   BoxDecoration buildBacking() {
     //defining variants for the specific item
     if (variant == cardDecorationVariants.pilledRectangle) {
-      decorationCornerRadius = 20.0;
+      decorationCornerRadius = BorderRadius.circular(20.0);
     } else if (variant == cardDecorationVariants.roundedRectangle) {
-      decorationCornerRadius = 5.0;
+      decorationCornerRadius = BorderRadius.circular(5.0);
     }
 
     //defining variants for the specific priority
@@ -578,16 +628,22 @@ class CardBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
       decorationFill = foundation.steel().withOpacity(0.5);
     } else if (priority == decorationPriority.important) {
-      decorationGradient = foundation.mediumGradient();
-      decorationBorder = foundation.pastelBorder();
+      //defining variants for the specific mode
+      if (mode == modeVariants.light) {
+        decorationGradient = foundation.darkGradient();
+        decorationBorder = foundation.lightModeBorder();
+      } else if (mode == modeVariants.dark) {
+        decorationGradient = foundation.lightGradient();
+        decorationBorder = foundation.darkModeBorder();
+      }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       if (mode == modeVariants.light) {
-        decorationGradient = foundation.lightGradient();
-        decorationBorder = foundation.universalBorder();
+        decorationFill = foundation.lightModeFill();
+        decorationBorder = foundation.lightModeBorder();
       } else if (mode == modeVariants.dark) {
-        decorationGradient = foundation.darkGradient();
-        decorationBorder = foundation.universalBorder();
+        decorationFill = foundation.darkModeFill();
+        decorationBorder = foundation.darkModeBorder();
       }
     }
 
@@ -597,7 +653,7 @@ class CardBackingDecoration extends BaseBackingDecoration {
         border: decorationBorder,
         shape: decorationShape,
         boxShadow: [decorationHaze],
-        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+        borderRadius: decorationCornerRadius);
   }
 }
 
@@ -609,23 +665,21 @@ class InputBackingDecoration extends BaseBackingDecoration {
   BoxDecoration buildBacking() {
     //defining variants for the specific mode
     if (mode == modeVariants.light) {
-      decorationFill = foundation.melt();
-      decorationBorder = foundation.universalBorder();
+      decorationFill = foundation.lightModeFill();
+      decorationBorder = foundation.lightModeBorder();
     } else if (mode == modeVariants.dark) {
-      decorationFill = foundation.carbon();
-      decorationBorder = foundation.universalBorder();
+      decorationFill = foundation.darkModeFill();
+      decorationBorder = foundation.darkModeBorder();
     }
 
-    decorationCornerRadius = 7.0;
+    decorationCornerRadius = BorderRadius.circular(7.0);
     decorationShape = BoxShape.rectangle;
 
     return BoxDecoration(
         color: decorationFill,
-        gradient: decorationGradient,
         border: decorationBorder,
         shape: decorationShape,
-        boxShadow: [decorationHaze],
-        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+        borderRadius: decorationCornerRadius);
   }
 }
 
@@ -643,23 +697,37 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
       decorationShape = BoxShape.circle;
     } else if (variant == tabItemDecorationVariants.roundedRectangle) {
       decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = BorderRadius.circular(30.0) as double;
+      decorationCornerRadius = BorderRadius.circular(30.0);
     }
 
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-      decorationFill = foundation.steel().withOpacity(0.5);
+      if (mode == modeVariants.light) {
+        decorationFill = foundation.lightModeFill();
+      } else if (mode == modeVariants.dark) {
+        decorationFill = foundation.darkModeFill();
+      }
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
 
-      decorationGradient = foundation.mediumGradient();
-      decorationBorder = foundation.pastelBorder();
-
       if (mode == modeVariants.light) {
-        decorationHaze = foundation.pastelHaze();
+        decorationGradient = foundation.darkGradient();
+        decorationBorder = foundation.universalBorder();
+        decorationHaze = foundation.darkShadow();
       } else if (mode == modeVariants.dark) {
-        decorationHaze = foundation.darkHaze();
+        decorationGradient = foundation.lightGradient();
+        decorationHaze = foundation.lightShadow();
+      } else if (priority == decorationPriority.standard) {
+        //defining variants for the specific mode
+
+        if (mode == modeVariants.light) {
+          decorationFill = foundation.lightModeFill();
+          decorationBorder = foundation.lightModeBorder();
+        } else if (mode == modeVariants.dark) {
+          decorationFill = foundation.darkModeFill();
+          decorationBorder = foundation.darkModeBorder();
+        }
       }
     }
 
@@ -669,7 +737,7 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
         border: decorationBorder,
         shape: decorationShape,
         boxShadow: [decorationHaze],
-        borderRadius: BorderRadius.all(decorationCornerRadius as Radius));
+        borderRadius: decorationCornerRadius);
   }
 }
 

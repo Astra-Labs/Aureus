@@ -24,7 +24,7 @@ class _MultipleDataTypeUserInputElementState
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
-          padding: EdgeInsets.all(5.0),
+          padding: size.universalPadding(),
           child: TabSubheaderElement(title: widget.dataLabel)),
       Padding(
         padding: EdgeInsets.all(5.0),
@@ -38,7 +38,7 @@ class _MultipleDataTypeUserInputElementState
             ),
             child: Center(
                 child: Padding(
-              padding: const EdgeInsets.only(left: 5.0),
+              padding: size.universalPadding(),
               child: TextFormField(
                   style:
                       foundation.heading2().copyWith(color: foundation.black()),

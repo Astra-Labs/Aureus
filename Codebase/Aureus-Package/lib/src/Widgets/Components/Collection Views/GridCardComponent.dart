@@ -34,9 +34,8 @@ class _State extends State<GridCardComponent> {
                             widget.cardLabels[index],
                           )
                         : BadgeCardElement(
-                            widget.cardLabels[index],
-                            widget.cardIcons![index],
-                          ),
+                            cardLabel: widget.cardLabels[index],
+                            cardIcon: widget.cardIcons![index]),
                   );
                 }),
           ),

@@ -6,9 +6,9 @@ export 'package:google_fonts/google_fonts.dart';
 /* ------------------ CORE GLOBALS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
 
-export '/src/Core/foundation.dart';
+export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
-export '/src/Core/safety.dart';
+export 'src/Core/safety.dart';
 
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
@@ -59,6 +59,7 @@ export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';
 export 'src/Widgets/Components/Communication/NotificationComponent.dart';
 export 'src/Widgets/Components/Communication/SearchBarComponent.dart';
 export 'src/Widgets/Components/Communication/SendFieldComponent.dart';
+export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
 
 export '/src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
 export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';
@@ -70,10 +71,12 @@ export 'src/Widgets/Components/Tabbing Bars/SmolTextTabbingBarComponent.dart';
 
 //Exporting lib widget views
 //export 'Views/';
+
+export 'src/Widgets/Views/ContainerView.dart';
 export 'src/Widgets/Views/DataConsentView.dart';
 export 'src/Widgets/Views/HelpCenterView.dart';
 export 'src/Widgets/Views/OnboardingView.dart';
-export 'src/Widgets/Views/SafetyPlanView.dart';
+export 'src/Widgets/Views/SafetyPlanOptInView.dart';
 export 'src/Widgets/Views/SignInView.dart';
 export 'src/Widgets/Views/SignUpView.dart';
 

@@ -75,7 +75,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
       Container(
           alignment: Alignment.centerLeft,
           width: 300,
-          padding: EdgeInsets.all(10),
+          padding: size.universalPadding(),
           decoration: backingDecoration,
           child: Center(
               child: SizedBox(
@@ -84,7 +84,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
                   child: BodyTwoText(widget.messageBody, modeVariants.light)))),
       Container(
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.all(10),
+          padding: size.universalPadding(),
           width: 300,
           child: TagOneText(deliveryStatus, modeVariants.light))
     ]);

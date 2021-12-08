@@ -42,7 +42,7 @@ class _CenteredAlertControllerComponentState
                     widget.alertData.actions[index];
 
                 return Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: size.universalPadding(),
                     child: StandardButtonElement(
                       buttonAction: actionItem.onSelection,
                       buttonTitle: actionItem.actionName,
@@ -52,8 +52,8 @@ class _CenteredAlertControllerComponentState
     }
 
     return Container(
-        width: Sizing.widthOf(context: context, weight: sizingWeight.w10),
-        height: Sizing.heightOf(context: context, weight: sizingWeight.w10),
+        width: size.widthOf(weight: sizingWeight.w10),
+        height: size.heightOf(weight: sizingWeight.w10),
         padding: EdgeInsets.all(10),
         decoration: LayerBackingDecoration(
             mode: modeVariants.dark,
@@ -62,7 +62,7 @@ class _CenteredAlertControllerComponentState
         child: Center(
             child: Container(
                 //this will be the rounded card backing
-                width: Sizing.widthOf(),
+                width: size.widthOf(),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

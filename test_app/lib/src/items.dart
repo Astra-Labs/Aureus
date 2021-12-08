@@ -32,7 +32,8 @@ void fillerAction() {
 }
 
 /* ELEMENTS */
-var badgeCard = BadgeCardElement(fillerTextCardName, fillerIcon1);
+var badgeCard =
+    BadgeCardElement(cardLabel: fillerTextCardName, cardIcon: fillerIcon1);
 var glassCard = GlassCardElement();
 var pastelCard = PastelCardElement(fillerTextCardName);
 var standardCard = StandardCardElement(fillerTextCardName);
@@ -133,11 +134,6 @@ var inactiveStandardButton = StandardButtonElement(
     buttonAction: fillerAction);
 
 /* COMPONENTS */
-var lightDetailCarousel =
-    DetailCarouselComponent(fillerLabels, fillerIcons, modeVariants.light);
-
-var darkDetailCarousel =
-    DetailCarouselComponent(fillerLabels, fillerIcons, modeVariants.dark);
 
 var badgeGridCarousel = GridCardComponent(fillerLabels, CardType.badge);
 var standardGridCarousel = GridCardComponent(fillerLabels, CardType.standard);
@@ -191,6 +187,10 @@ var lightSendField =
     SendFieldComponent(onSend: fillerAction, fieldVariant: modeVariants.light);
 
 /* VIEWS */
+var darkContainerView =
+    ContainerView(modeVariant: modeVariants.dark, hasExitBar: true);
+var lightContainerView =
+    ContainerView(modeVariant: modeVariants.light, hasExitBar: true);
 
 /* MISC */
 
@@ -230,9 +230,10 @@ List<Widget> libElements = [
   darkReceiverMessageBubble,
   lightSenderMessageBubble,
   darkSenderMessageBubble,
-  notification*/
+  notification,
   darkSearchBar,
   lightSearchBar,
   darkSendField,
-  lightSendField
+  lightSendField*/
+  lightContainerView
 ];

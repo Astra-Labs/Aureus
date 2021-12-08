@@ -68,7 +68,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
         constraints: BoxConstraints(
             minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
         child: Container(
-            padding: EdgeInsets.all(10.0),
+            padding: size.universalPadding(),
             decoration: buttonDecoration,
             child: Expanded(
                 child: TextButton(
@@ -78,7 +78,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
                         textStyle: foundation
                             .button1()
                             .copyWith(color: buttonTextColor),
-                        padding: EdgeInsets.all(10),
+                        padding: size.universalPadding(),
                         tapTargetSize: MaterialTapTargetSize.padded,
                         enableFeedback: true)))));
   }

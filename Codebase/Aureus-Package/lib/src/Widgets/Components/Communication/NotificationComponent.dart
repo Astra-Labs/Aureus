@@ -54,7 +54,7 @@ class _NotificationComponentState extends State<NotificationComponent> {
         aspectRatio: 3 / 1,
         child: Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.all(5),
+            padding: size.universalPadding(),
             decoration: boxDecoration,
             width: 350,
             height: 125,

@@ -43,12 +43,12 @@ class _HelpCenterViewState extends State<HelpCenterView> {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.fromLTRB(
-            Sizing.widthOf(context: context, weight: sizingWeight.w0),
-            Sizing.heightOf(context: context, weight: sizingWeight.w1),
-            Sizing.widthOf(context: context, weight: sizingWeight.w0),
-            Sizing.heightOf(context: context, weight: sizingWeight.w0)),
-        width: Sizing.widthOf(context: context, weight: sizingWeight.w10),
-        height: Sizing.heightOf(context: context, weight: sizingWeight.w10),
+            size.widthOf(weight: sizingWeight.w0),
+            size.heightOf(weight: sizingWeight.w1),
+            size.widthOf(weight: sizingWeight.w0),
+            size.heightOf(weight: sizingWeight.w0)),
+        width: size.widthOf(weight: sizingWeight.w10),
+        height: size.heightOf(weight: sizingWeight.w10),
         decoration: LayerBackingDecoration(
             mode: widget.viewMode,
             priority: decorationPriority.standard,

@@ -65,7 +65,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
 
     return Container(
         alignment: Alignment.bottomCenter,
-        padding: EdgeInsets.all(15),
+        padding: size.universalPadding(),
         decoration: buttonDecoration,
         width: MediaQuery.of(context).size.width,
         height: (MediaQuery.of(context).size.height / 7),
@@ -76,7 +76,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
                 style: TextButton.styleFrom(
                     textStyle:
                         foundation.button2().copyWith(color: buttonTextColor),
-                    padding: EdgeInsets.all(10),
+                    padding: size.universalPadding(),
                     enableFeedback: true))));
   }
 }

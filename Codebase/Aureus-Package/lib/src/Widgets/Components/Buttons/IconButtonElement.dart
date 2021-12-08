@@ -38,7 +38,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
         //inactive primary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
+            padding: size.universalPadding(),
             decoration: BoxDecoration(
                 color: foundation.melt().withOpacity(0.5),
                 shape: BoxShape.circle),
@@ -59,7 +59,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
         //light active primary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
+            padding: size.universalPadding(),
             decoration: BoxDecoration(
                 gradient: foundation.mediumGradient(),
                 border: foundation.universalBorder(),
@@ -81,7 +81,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
         //dark active primary icon button
         variantButton = Container(
             alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.all(15),
+            padding: size.universalPadding(),
             decoration: BoxDecoration(
                 gradient: foundation.darkGradient(),
                 border: foundation.universalBorder(),

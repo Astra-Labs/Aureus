@@ -31,7 +31,7 @@ class _LongInputFormComponentState extends State<LongInputFormComponent> {
                       widget.formGroupingObject[index];
 
                   return Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: size.universalPadding(),
 
                       //layer two list view
                       child: ListView.builder(
@@ -42,7 +42,7 @@ class _LongInputFormComponentState extends State<LongInputFormComponent> {
                                 layer1Object.inputObjects[index];
 
                             return Padding(
-                                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                                padding: size.universalPadding(),
                                 child: SingleDataTypeUserInputElement(
                                     dataPlaceholder: currentObject.placeholder,
                                     dataTextType: currentObject.textInputType));
