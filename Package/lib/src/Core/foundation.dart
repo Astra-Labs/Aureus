@@ -727,9 +727,22 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
       } else if (mode == modeVariants.dark) {
         decorationFill = foundation.darkModeFill();
       }
-    } else if (priority == decorationPriority.important) {
+    }
+
+    if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
 
+      if (mode == modeVariants.light) {
+        decorationFill = foundation.lightModeFill();
+        decorationBorder = foundation.lightModeBorder();
+      } else if (mode == modeVariants.dark) {
+        decorationFill = foundation.darkModeFill();
+        decorationBorder = foundation.darkModeBorder();
+      }
+    }
+
+    if (priority == decorationPriority.important) {
+      //defining variants for the specific mode
       decorationBorder = foundation.universalBorder();
 
       if (mode == modeVariants.light) {
@@ -738,16 +751,6 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
       } else if (mode == modeVariants.dark) {
         decorationGradient = foundation.lightGradient();
         decorationHaze = foundation.pastelShadow();
-      } else if (priority == decorationPriority.standard) {
-        //defining variants for the specific mode
-
-        if (mode == modeVariants.light) {
-          decorationFill = foundation.lightModeFill();
-          decorationBorder = foundation.lightModeBorder();
-        } else if (mode == modeVariants.dark) {
-          decorationFill = foundation.darkModeFill();
-          decorationBorder = foundation.darkModeBorder();
-        }
       }
     }
   }

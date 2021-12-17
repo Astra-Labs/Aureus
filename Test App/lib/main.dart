@@ -412,7 +412,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     List<Decoration> inputBackings = [inputBack1, inputBack2];
     List<Decoration> tabBackings = [
-      cardBack1,
+      tabBack1,
       tabBack2,
       tabBack3,
       tabBack4,
@@ -535,7 +535,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Container(
       width: size.widthOf(weight: sizingWeight.w10),
       height: size.heightOf(weight: sizingWeight.w10),
-      color: foundation.black(),
+      color: foundation.white(),
       child: tabBackingTest,
     ));
   }
