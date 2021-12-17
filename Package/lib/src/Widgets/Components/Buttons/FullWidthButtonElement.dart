@@ -5,7 +5,7 @@ import 'package:aureus/aureus.dart';
 
 class FullWidthButtonElement extends StatefulWidget {
   final String buttonTitle;
-  final buttonVariants currentVariant;
+  final decorationPriority currentVariant;
   final VoidCallback buttonAction;
 
   const FullWidthButtonElement(
@@ -28,7 +28,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
     Color buttonTextColor;
 
     switch (widget.currentVariant) {
-      case buttonVariants.inactive:
+      case decorationPriority.inactive:
 
         //variables that define the variant 'inactive' for full width buttons
         isButtonEnabled = false;
@@ -38,7 +38,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
 
         break;
 
-      case buttonVariants.lightActive:
+      case decorationPriority.standard:
 
         //variables that define the variant 'light active' for full width buttons
         isButtonEnabled = true;
@@ -50,7 +50,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
 
         break;
 
-      case buttonVariants.darkActive:
+      case decorationPriority.important:
 
         //variables that define the variant 'dark active' for full width buttons
         isButtonEnabled = true;

@@ -5,7 +5,7 @@ import 'package:aureus/aureus.dart';
 
 //big circular icon buttons that are greater than 70x70 and are intended to be the main action of the page (e.g: add, message, etc).
 class PrimaryIconButtonElement extends StatefulWidget {
-  final buttonVariants currentVariant;
+  final decorationPriority currentVariant;
   final Icon buttonIcon;
   final String buttonTooltip;
   final VoidCallback buttonAction;
@@ -33,7 +33,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
     Color iconColor;
 
     switch (widget.currentVariant) {
-      case buttonVariants.inactive:
+      case decorationPriority.inactive:
 
         //inactive primary icon button
         variantButton = Container(
@@ -54,7 +54,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
 
         break;
 
-      case buttonVariants.lightActive:
+      case decorationPriority.standard:
 
         //light active primary icon button
         variantButton = Container(
@@ -76,7 +76,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
 
         break;
 
-      case buttonVariants.darkActive:
+      case decorationPriority.important:
 
         //dark active primary icon button
         variantButton = Container(
@@ -105,7 +105,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
 
 //tiny babey icon buttons that are 60x60 or less.
 class SecondaryIconButtonElement extends StatefulWidget {
-  final buttonVariants currentVariant;
+  final decorationPriority currentVariant;
   final Icon buttonIcon;
   final String buttonTooltip;
   final VoidCallback buttonAction;
@@ -133,7 +133,7 @@ class _SecondaryIconButtonElementState
     Color iconColor;
 
     switch (widget.currentVariant) {
-      case buttonVariants.inactive:
+      case decorationPriority.inactive:
 
         //variables that define the variant 'inactive' for secondary icon buttons
         isButtonEnabled = false;
@@ -143,7 +143,7 @@ class _SecondaryIconButtonElementState
 
         break;
 
-      case buttonVariants.lightActive:
+      case decorationPriority.standard:
 
         //variables that define the variant 'light active' for secondary icon buttons
         isButtonEnabled = true;
@@ -155,7 +155,7 @@ class _SecondaryIconButtonElementState
 
         break;
 
-      case buttonVariants.darkActive:
+      case decorationPriority.important:
 
         //variables that define the variant 'dark active' for secondary icon buttons
         isButtonEnabled = true;

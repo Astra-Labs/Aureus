@@ -51,8 +51,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
         height: size.heightOf(weight: sizingWeight.w10),
         decoration: LayerBackingDecoration(
             mode: widget.viewMode,
-            priority: decorationPriority.standard,
-            variant: layerDecorationVariants.edged) as Decoration,
+            priority: decorationPriority.standard) as Decoration,
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: []));
   }
 }

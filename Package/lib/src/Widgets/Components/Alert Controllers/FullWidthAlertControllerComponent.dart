@@ -29,7 +29,7 @@ class _FullWidthAlertControllerComponentState
           child: FullWidthButtonElement(
         buttonAction: actionItem.onSelection,
         buttonTitle: actionItem.actionName,
-        currentVariant: buttonVariants.darkActive,
+        currentVariant: decorationPriority.standard,
       ));
     } else if (widget.alertData.actions.length >= 2) {
       //needs stacked standards button built to severity
@@ -46,7 +46,7 @@ class _FullWidthAlertControllerComponentState
                     child: StandardButtonElement(
                       buttonAction: actionItem.onSelection,
                       buttonTitle: actionItem.actionName,
-                      currentVariant: buttonVariants.darkActive,
+                      currentVariant: decorationPriority.standard,
                     ));
               }));
     }
@@ -60,15 +60,14 @@ class _FullWidthAlertControllerComponentState
               //acts as the "cover" of to the pre-existing view
               decoration: LayerBackingDecoration(
                   mode: modeVariants.dark,
-                  priority: decorationPriority.inactive,
-                  variant: layerDecorationVariants.edged) as Decoration),
+                  priority: decorationPriority.inactive) as Decoration),
           Container(
               //this will be the rounded card backing
               height: size.heightOf(weight: sizingWeight.w3),
               child:
                   Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 SecondaryIconButtonElement(
-                    currentVariant: buttonVariants.lightActive,
+                    currentVariant: decorationPriority.standard,
                     buttonIcon: Assets.no as Icon,
                     buttonTooltip: 'Exit',
                     buttonAction: widget.alertData.onCancellation),

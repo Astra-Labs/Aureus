@@ -29,7 +29,7 @@ class _CenteredAlertControllerComponentState
           child: FullWidthButtonElement(
         buttonAction: actionItem.onSelection,
         buttonTitle: actionItem.actionName,
-        currentVariant: buttonVariants.darkActive,
+        currentVariant: decorationPriority.standard,
       ));
     } else if (widget.alertData.actions.length >= 2) {
       //needs stacked standards button built to severity
@@ -46,7 +46,7 @@ class _CenteredAlertControllerComponentState
                     child: StandardButtonElement(
                       buttonAction: actionItem.onSelection,
                       buttonTitle: actionItem.actionName,
-                      currentVariant: buttonVariants.darkActive,
+                      currentVariant: decorationPriority.standard,
                     ));
               }));
     }
@@ -57,8 +57,7 @@ class _CenteredAlertControllerComponentState
         padding: EdgeInsets.all(10),
         decoration: LayerBackingDecoration(
             mode: modeVariants.dark,
-            priority: decorationPriority.inactive,
-            variant: layerDecorationVariants.edged) as Decoration,
+            priority: decorationPriority.inactive) as Decoration,
         child: Center(
             child: Container(
                 //this will be the rounded card backing
@@ -67,7 +66,7 @@ class _CenteredAlertControllerComponentState
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SecondaryIconButtonElement(
-                          currentVariant: buttonVariants.lightActive,
+                          currentVariant: decorationPriority.standard,
                           buttonIcon: Assets.no as Icon,
                           buttonTooltip: 'Exit',
                           buttonAction: widget.alertData.onCancellation),

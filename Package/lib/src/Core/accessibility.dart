@@ -9,6 +9,7 @@ A class that contains variables, methods, and other items to ensure full accessi
 
 var accessibility = Accessibility();
 
+// 🛑
 class Accessibility {
   //returns the proper sizing of a string for a given text style with regards to the scale factor to accomodate dynamic text sizing.
   static Size textStringSize(
@@ -35,6 +36,7 @@ Description:
 A class that takes variables into consideration to properly color the text of different items to match contrsst standards
 */
 
+// 🛑
 class Coloration {
   //the color returned for all general text in Aureus.
   Color universalTextColor(modeVariants modeVariant) {

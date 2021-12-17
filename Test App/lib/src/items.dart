@@ -54,82 +54,82 @@ var multiInput = MultipleDataTypeUserInputElement(
 
 var darkFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
-    currentVariant: buttonVariants.darkActive,
+    currentVariant: decorationPriority.standard,
     buttonAction: fillerAction);
 
 var lightFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
-    currentVariant: buttonVariants.lightActive,
+    currentVariant: decorationPriority.standard,
     buttonAction: fillerAction);
 
 var inactiveFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
-    currentVariant: buttonVariants.inactive,
+    currentVariant: decorationPriority.inactive,
     buttonAction: fillerAction);
 
 var darkPrimaryIconButton = PrimaryIconButtonElement(
-    currentVariant: buttonVariants.darkActive,
+    currentVariant: decorationPriority.standard,
     buttonIcon: Icon(fillerIcon1, color: foundation.white()),
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction);
 
 var lightPrimaryIconButton = PrimaryIconButtonElement(
-    currentVariant: buttonVariants.lightActive,
+    currentVariant: decorationPriority.standard,
     buttonIcon: Icon(fillerIcon1, color: foundation.black()),
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction);
 
 var inactivePrimaryIconButton = PrimaryIconButtonElement(
-    currentVariant: buttonVariants.inactive,
+    currentVariant: decorationPriority.inactive,
     buttonIcon: Icon(fillerIcon1, color: foundation.steel()),
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction);
 
 var darkSecondaryIconButton = SecondaryIconButtonElement(
-    currentVariant: buttonVariants.darkActive,
+    currentVariant: decorationPriority.standard,
     buttonIcon: Icon(fillerIcon1, color: foundation.white()),
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction);
 
 var lightSecondaryIconButton = SecondaryIconButtonElement(
-    currentVariant: buttonVariants.lightActive,
+    currentVariant: decorationPriority.standard,
     buttonIcon: Icon(fillerIcon1, color: foundation.black()),
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction);
 
 var inactiveSecondaryIconButton = SecondaryIconButtonElement(
-    currentVariant: buttonVariants.inactive,
+    currentVariant: decorationPriority.inactive,
     buttonIcon: Icon(fillerIcon1, color: foundation.steel()),
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction);
 
 var darkSmolButton = SmolButtonElement(
-    currentVariant: buttonVariants.darkActive,
+    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction);
 
 var lightSmolButton = SmolButtonElement(
-    currentVariant: buttonVariants.lightActive,
+    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction);
 
 var inactiveSmolButton = SmolButtonElement(
-    currentVariant: buttonVariants.inactive,
+    currentVariant: decorationPriority.inactive,
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction);
 
 var darkStandardButton = StandardButtonElement(
-    currentVariant: buttonVariants.darkActive,
+    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction);
 
 var lightStandardButton = StandardButtonElement(
-    currentVariant: buttonVariants.lightActive,
+    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction);
 
 var inactiveStandardButton = StandardButtonElement(
-    currentVariant: buttonVariants.inactive,
+    currentVariant: decorationPriority.inactive,
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction);
 

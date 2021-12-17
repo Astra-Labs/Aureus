@@ -4,7 +4,7 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class SmolButtonElement extends StatefulWidget {
-  final buttonVariants currentVariant;
+  final decorationPriority currentVariant;
   final String buttonTitle;
   final VoidCallback buttonAction;
 
@@ -26,7 +26,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
     Color buttonTextColor;
 
     switch (widget.currentVariant) {
-      case buttonVariants.inactive:
+      case decorationPriority.inactive:
 
         //variables that define the variant 'inactive' for smol buttons
         isButtonEnabled = false;
@@ -37,7 +37,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
 
         break;
 
-      case buttonVariants.lightActive:
+      case decorationPriority.standard:
 
         //variables that define the variant 'light active' for smol buttons
         isButtonEnabled = true;
@@ -49,7 +49,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
 
         break;
 
-      case buttonVariants.darkActive:
+      case decorationPriority.important:
 
         //variables that define the variant 'dark active' for smol buttons
         isButtonEnabled = true;

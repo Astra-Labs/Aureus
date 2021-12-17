@@ -10,6 +10,7 @@ var foundation = Aureus(
 var size = Sizing();
 
 /* ------------------ GLOBAL VARIABLES -------------------- */
+// 🛑
 class Aureus {
   Color prodColor;
   String prodName;
@@ -28,32 +29,26 @@ class Aureus {
     return LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: [
-          foundation.melt(),
-          Colors.white,
-          foundation.lavender(),
-        ]);
+        colors: [Colors.white, Color.fromRGBO(199, 208, 241, 1.0)]);
   }
 
   Gradient mediumGradient() {
     return LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
         colors: [
-          Color.fromRGBO(212, 219, 244, 1.0),
-          Color.fromRGBO(181, 190, 242, 1.0),
-          Color.fromRGBO(184, 195, 236, 1.0)
+          Color.fromRGBO(185, 195, 237, 1.0),
+          Color.fromRGBO(216, 222, 244, 1.0)
         ]);
   }
 
   Gradient darkGradient() {
     return LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
         colors: [
-          const Color.fromRGBO(241, 243, 251, 1.0),
-          const Color.fromRGBO(0, 0, 0, 1.0),
-          const Color.fromRGBO(219, 225, 246, 1.0)
+          const Color.fromRGBO(4, 4, 6, 1.0),
+          const Color.fromRGBO(67, 72, 109, 1.0)
         ]);
   }
 
@@ -144,12 +139,14 @@ class Aureus {
 
   BoxShadow darkShadow() {
     return BoxShadow(
-        color: carbon(), offset: Offset(0.0, 3.0), blurRadius: 30.0);
+        color: carbon().withOpacity(0.2),
+        offset: Offset(0.0, 3.0),
+        blurRadius: 30.0);
   }
 
   BoxShadow pastelShadow() {
     return BoxShadow(
-        color: melt().withOpacity(0.4),
+        color: lavender().withOpacity(0.3),
         offset: Offset(0.0, 3.0),
         blurRadius: 30.0);
   }
@@ -238,6 +235,7 @@ class Aureus {
 
 /* ------------------ TEXT CLASSES -------------------- */
 
+// 🛑
 class TitleCase {
   static String convertToTitleCase(String text) {
     if (text.length <= 1) {
@@ -264,10 +262,12 @@ class TitleCase {
 final titleCase = TitleCase();
 final coloration = Coloration();
 
+// 🛑
 Color universalTextColoration(modeVariant) {
   return coloration.universalTextColor(modeVariant);
 }
 
+// 🛑
 class HeadingOneText extends Text {
   HeadingOneText(String data, modeVariants variants)
       : super(TitleCase.convertToTitleCase(data),
@@ -276,6 +276,7 @@ class HeadingOneText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class HeadingTwoText extends Text {
   HeadingTwoText(String data, modeVariants variants)
       : super(data.toUpperCase(),
@@ -284,6 +285,7 @@ class HeadingTwoText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class HeadingThreeText extends Text {
   HeadingThreeText(String data, modeVariants variants)
       : super(data.toUpperCase(),
@@ -292,6 +294,7 @@ class HeadingThreeText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class HeadingFourText extends Text {
   HeadingFourText(String data, modeVariants variants)
       : super(data.toUpperCase(),
@@ -300,6 +303,7 @@ class HeadingFourText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class SubheaderText extends Text {
   SubheaderText(String data, modeVariants variants)
       : super(TitleCase.convertToTitleCase(data),
@@ -308,6 +312,7 @@ class SubheaderText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class BodyOneText extends Text {
   BodyOneText(String data, modeVariants variants)
       : super(data,
@@ -316,6 +321,7 @@ class BodyOneText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class BodyTwoText extends Text {
   BodyTwoText(String data, modeVariants variants)
       : super(data,
@@ -324,6 +330,7 @@ class BodyTwoText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class ButtonOneText extends Text {
   ButtonOneText(String data, modeVariants variants)
       : super(data.toUpperCase(),
@@ -332,6 +339,7 @@ class ButtonOneText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class ButtonTwoText extends Text {
   ButtonTwoText(String data, modeVariants variants)
       : super(data.toUpperCase(),
@@ -340,12 +348,14 @@ class ButtonTwoText extends Text {
                 .copyWith(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class TagOneText extends Text {
   TagOneText(String data, modeVariants variants)
       : super(data.toUpperCase(),
             style: foundation.tag1(color: universalTextColoration(variants)));
 }
 
+// 🛑
 class TagTwoText extends Text {
   TagTwoText(String data, modeVariants variants)
       : super(data.toUpperCase(),
@@ -353,6 +363,7 @@ class TagTwoText extends Text {
 }
 
 /* ------------------ SIZING -------------------- */
+// 🛑
 class Sizing {
   //Pixel Ratio of a given device
   final pixelRatio = window.devicePixelRatio;
@@ -517,47 +528,58 @@ class Sizing {
 //MARK: - Decorations
 /* ------------------ DECORATIONS -------------------- */
 
+// 🛑
 class BaseBackingDecoration {
   final modeVariants mode;
   final decorationPriority priority;
 
   BaseBackingDecoration({required this.mode, required this.priority});
 
-  Border decorationBorder =
-      Border.all(color: foundation.white().withOpacity(0.0));
-  Color decorationFill = foundation.white().withOpacity(0.0);
-  late Gradient decorationGradient;
-  BorderRadius decorationCornerRadius = BorderRadius.zero;
-  BoxShape decorationShape = BoxShape.rectangle;
-  BoxShadow decorationHaze = BoxShadow();
+  Border? decorationBorder;
+  Color? decorationFill;
+  Gradient? decorationGradient;
+  BorderRadius? decorationCornerRadius;
+  BoxShape? decorationShape;
+  BoxShadow? decorationHaze;
 
-  //this should always be overriden by the child classes, so this will throw an error because it is not implemented.
   BoxDecoration buildBacking() {
-    throw UnimplementedError();
+    print('Returning button backing decoration with the following values:');
+    print(
+        'color is $decorationFill, gradient is $decorationGradient, border is $decorationBorder, shape is $decorationShape, haze is $decorationHaze, radius is $decorationCornerRadius');
+
+    //performs null safety check on backing shadow and passes an empty list if null
+    List<BoxShadow> backingShadow =
+        decorationHaze != null ? [decorationHaze!] : [];
+
+    return BoxDecoration(
+        color: decorationFill,
+        gradient: decorationGradient,
+        border: decorationBorder,
+        shape: decorationShape ?? BoxShape.rectangle,
+        boxShadow: backingShadow,
+        borderRadius: decorationCornerRadius);
   }
 }
 
+// 🛑
+//
 class ButtonBackingDecoration extends BaseBackingDecoration {
   final buttonDecorationVariants variant;
 
   ButtonBackingDecoration(
       {required this.variant, required mode, required priority})
-      : super(mode: mode, priority: priority);
-
-  @override
-  BoxDecoration buildBacking() {
+      : super(mode: mode, priority: priority) {
     //defining variants for the specific item
     if (variant == buttonDecorationVariants.circle) {
-      decorationShape = BoxShape.circle;
-      decorationCornerRadius = BorderRadius.zero;
+      print('item is circle');
+      decorationCornerRadius = BorderRadius.circular(100);
     } else if (variant == buttonDecorationVariants.edgedRectangle) {
-      decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = BorderRadius.zero;
+      //decorationShape = BoxShape.rectangle;
     } else if (variant == buttonDecorationVariants.roundedPill) {
-      decorationShape = BoxShape.rectangle;
+      //decorationShape = BoxShape.rectangle;
       decorationCornerRadius = BorderRadius.circular(30.0);
     } else if (variant == buttonDecorationVariants.roundedRectangle) {
-      decorationShape = BoxShape.rectangle;
+      //decorationShape = BoxShape.rectangle;
       decorationCornerRadius = BorderRadius.circular(7.0);
     }
 
@@ -584,90 +606,77 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
         decorationBorder = foundation.darkModeBorder();
       }
     }
-
-    return BoxDecoration(
-        color: decorationFill,
-        gradient: decorationGradient,
-        border: decorationBorder,
-        shape: decorationShape,
-        boxShadow: [decorationHaze],
-        borderRadius: decorationCornerRadius);
   }
 }
 
+// 🛑
 class LayerBackingDecoration extends BaseBackingDecoration {
-  final layerDecorationVariants variant;
-
-  LayerBackingDecoration(
-      {required this.variant, required mode, required priority})
-      : super(mode: mode, priority: priority);
-
-  @override
-  BoxDecoration buildBacking() {
+  LayerBackingDecoration({required mode, required priority})
+      : super(mode: mode, priority: priority) {
     //defining variants for the specific item
-    if (variant == layerDecorationVariants.rounded) {
-      decorationCornerRadius = BorderRadius.circular(5.0);
-    }
-
-    //defining variants for the specific priority
-    if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-        decorationFill = foundation.lightModeFill();
-        decorationHaze = foundation.darkShadow();
-      } else if (mode == modeVariants.dark) {
-        decorationFill = foundation.darkModeFill();
-        decorationHaze = foundation.lightShadow();
-      }
-    } else if (priority == decorationPriority.standard) {
-      //defining variants for the specific mode
-      if (mode == modeVariants.light) {
-        decorationFill = foundation.lightModeFill();
-      } else if (mode == modeVariants.dark) {
-        decorationFill = foundation.darkModeFill();
-      }
-    }
-
-    return BoxDecoration(
-        color: decorationFill,
-        border: decorationBorder,
-        shape: decorationShape,
-        boxShadow: [decorationHaze],
-        borderRadius: decorationCornerRadius);
-  }
-}
-
-class CardBackingDecoration extends BaseBackingDecoration {
-  final cardDecorationVariants variant;
-
-  CardBackingDecoration(
-      {required this.variant, required mode, required priority})
-      : super(mode: mode, priority: priority);
-
-  @override
-  BoxDecoration buildBacking() {
-    //defining variants for the specific item
-    if (variant == cardDecorationVariants.pilledRectangle) {
-      decorationCornerRadius = BorderRadius.circular(20.0);
-    } else if (variant == cardDecorationVariants.roundedRectangle) {
-      decorationCornerRadius = BorderRadius.circular(5.0);
-    }
 
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-      decorationFill = foundation.steel().withOpacity(0.5);
-    } else if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
+
+      decorationCornerRadius = BorderRadius.circular(10.0);
+
       if (mode == modeVariants.light) {
-        decorationGradient = foundation.darkGradient();
-        decorationBorder = foundation.lightModeBorder();
+        decorationFill = foundation.lightModeFill();
       } else if (mode == modeVariants.dark) {
-        decorationGradient = foundation.lightGradient();
-        decorationBorder = foundation.darkModeBorder();
+        decorationFill = foundation.darkModeFill();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
+      decorationCornerRadius = BorderRadius.circular(20.0);
+
+      if (mode == modeVariants.light) {
+        decorationFill = foundation.lightModeFill();
+        decorationBorder = foundation.lightModeBorder();
+      } else if (mode == modeVariants.dark) {
+        decorationFill = foundation.darkModeFill();
+        decorationBorder = foundation.darkModeBorder();
+      }
+    } else if (priority == decorationPriority.important) {
+      decorationCornerRadius = BorderRadius.circular(20.0);
+
+      if (mode == modeVariants.light) {
+        decorationGradient = foundation.lightGradient();
+        decorationBorder = foundation.universalBorder();
+        decorationHaze = foundation.darkShadow();
+      } else if (mode == modeVariants.dark) {
+        decorationGradient = foundation.darkGradient();
+        decorationBorder = foundation.universalBorder();
+        decorationHaze = foundation.pastelShadow();
+      }
+    }
+  }
+}
+
+// 🛑
+class CardBackingDecoration extends BaseBackingDecoration {
+  CardBackingDecoration({required mode, required priority})
+      : super(mode: mode, priority: priority) {
+    //defining variants for the specific priority
+    if (priority == decorationPriority.inactive) {
+      //defining variants for the specific mode
+
+      decorationCornerRadius = BorderRadius.circular(10.0);
+      decorationFill = foundation.steel().withOpacity(0.3);
+    } else if (priority == decorationPriority.important) {
+      decorationCornerRadius = BorderRadius.circular(20.0);
+      decorationBorder = foundation.universalBorder();
+
+      if (mode == modeVariants.light) {
+        decorationGradient = foundation.darkGradient();
+        decorationHaze = foundation.darkShadow();
+      } else if (mode == modeVariants.dark) {
+        decorationGradient = foundation.lightGradient();
+        decorationHaze = foundation.pastelShadow();
+      }
+    } else if (priority == decorationPriority.standard) {
+      //defining variants for the specific mode
+      decorationCornerRadius = BorderRadius.circular(20.0);
       if (mode == modeVariants.light) {
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
@@ -676,23 +685,13 @@ class CardBackingDecoration extends BaseBackingDecoration {
         decorationBorder = foundation.darkModeBorder();
       }
     }
-
-    return BoxDecoration(
-        color: decorationFill,
-        gradient: decorationGradient,
-        border: decorationBorder,
-        shape: decorationShape,
-        boxShadow: [decorationHaze],
-        borderRadius: decorationCornerRadius);
   }
 }
 
+// 🛑
 class InputBackingDecoration extends BaseBackingDecoration {
-  InputBackingDecoration({required mode, required priority})
-      : super(mode: mode, priority: priority);
-
-  @override
-  BoxDecoration buildBacking() {
+  InputBackingDecoration({required mode})
+      : super(mode: mode, priority: decorationPriority.standard) {
     //defining variants for the specific mode
     if (mode == modeVariants.light) {
       decorationFill = foundation.lightModeFill();
@@ -701,30 +700,20 @@ class InputBackingDecoration extends BaseBackingDecoration {
       decorationFill = foundation.darkModeFill();
       decorationBorder = foundation.darkModeBorder();
     }
-
     decorationCornerRadius = BorderRadius.circular(7.0);
-    decorationShape = BoxShape.rectangle;
-
-    return BoxDecoration(
-        color: decorationFill,
-        border: decorationBorder,
-        shape: decorationShape,
-        borderRadius: decorationCornerRadius);
   }
 }
 
+// 🛑
 class TabItemBackingDecoration extends BaseBackingDecoration {
   final tabItemDecorationVariants variant;
 
   TabItemBackingDecoration(
       {required this.variant, required mode, required priority})
-      : super(mode: mode, priority: priority);
-
-  @override
-  BoxDecoration buildBacking() {
+      : super(mode: mode, priority: priority) {
     //defining variants for the specific item
     if (variant == tabItemDecorationVariants.circle) {
-      decorationShape = BoxShape.circle;
+      decorationCornerRadius = BorderRadius.circular(100);
     } else if (variant == tabItemDecorationVariants.roundedRectangle) {
       decorationShape = BoxShape.rectangle;
       decorationCornerRadius = BorderRadius.circular(30.0);
@@ -741,13 +730,14 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
 
+      decorationBorder = foundation.universalBorder();
+
       if (mode == modeVariants.light) {
         decorationGradient = foundation.darkGradient();
-        decorationBorder = foundation.universalBorder();
         decorationHaze = foundation.darkShadow();
       } else if (mode == modeVariants.dark) {
         decorationGradient = foundation.lightGradient();
-        decorationHaze = foundation.lightShadow();
+        decorationHaze = foundation.pastelShadow();
       } else if (priority == decorationPriority.standard) {
         //defining variants for the specific mode
 
@@ -760,14 +750,6 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
         }
       }
     }
-
-    return BoxDecoration(
-        color: decorationFill,
-        gradient: decorationGradient,
-        border: decorationBorder,
-        shape: decorationShape,
-        boxShadow: [decorationHaze],
-        borderRadius: decorationCornerRadius);
   }
 }
 
@@ -775,6 +757,7 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
 /// Copyright (C) 2021 by original authors @ fluttericon.com, fontello.com
 /// This font was generated by FlutterIcon.com, which is derived from Fontello.
 
+// 🛑
 class Assets {
   Assets._();
 

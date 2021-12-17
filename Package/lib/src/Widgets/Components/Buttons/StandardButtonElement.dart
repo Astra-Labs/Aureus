@@ -4,7 +4,7 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class StandardButtonElement extends StatefulWidget {
-  final buttonVariants currentVariant;
+  final decorationPriority currentVariant;
   final String buttonTitle;
   final VoidCallback buttonAction;
 
@@ -28,7 +28,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
     Color buttonTextColor;
 
     switch (widget.currentVariant) {
-      case buttonVariants.inactive:
+      case decorationPriority.inactive:
 
         //variables that define the variant 'inactive' for standard buttons
         isButtonEnabled = false;
@@ -39,7 +39,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
 
         break;
 
-      case buttonVariants.lightActive:
+      case decorationPriority.standard:
 
         //variables that define the variant 'light active' for standard buttons
         isButtonEnabled = true;
@@ -51,7 +51,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
 
         break;
 
-      case buttonVariants.darkActive:
+      case decorationPriority.important:
 
         //variables that define the variant 'light active' for standard buttons
         isButtonEnabled = true;

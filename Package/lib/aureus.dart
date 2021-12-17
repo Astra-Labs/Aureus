@@ -88,7 +88,6 @@ export 'src/Widgets/Views/SignUpView.dart';
 //Global Foundational Enums go here since Dart doesn't support nested types
 enum deviceVariants { mobile, desktop, tablet }
 enum modeVariants { light, dark }
-enum buttonVariants { inactive, lightActive, darkActive }
 enum messagingVariants { sender, receiver }
 enum communicationStatus { sending, delivered, failed }
 enum CardType { standard, badge }
@@ -101,6 +100,4 @@ enum buttonDecorationVariants {
   edgedRectangle,
   circle
 }
-enum layerDecorationVariants { rounded, edged }
-enum cardDecorationVariants { pilledRectangle, roundedRectangle }
 enum tabItemDecorationVariants { circle, roundedRectangle }

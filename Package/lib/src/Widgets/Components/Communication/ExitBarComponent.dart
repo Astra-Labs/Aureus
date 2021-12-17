@@ -15,16 +15,14 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
   @override
   Widget build(BuildContext context) {
     LayerBackingDecoration barBacking = LayerBackingDecoration(
-        variant: layerDecorationVariants.edged,
-        mode: modeVariants.dark,
-        priority: decorationPriority.important);
+        mode: modeVariants.dark, priority: decorationPriority.important);
 
-    buttonVariants buttonVariant = buttonVariants.inactive;
+    decorationPriority buttonVariant = decorationPriority.inactive;
 
     if (widget.modeVariant == modeVariants.dark) {
-      buttonVariant = buttonVariants.darkActive;
+      buttonVariant = decorationPriority.inactive;
     } else if (widget.modeVariant == modeVariants.light) {
-      buttonVariant = buttonVariants.lightActive;
+      buttonVariant = decorationPriority.standard;
     }
 
     return Container(
