@@ -11,7 +11,7 @@ packages:
   aureus:
     dependency: "direct main"
     description:
-      path: "/Users/amandasouthworth/Desktop/astra/Aureus/Codebase/Aureus-Package"
+      path: "/Users/amandasouthworth/Desktop/astra/Aureus/Package"
       relative: false
     source: path
     version: "0.0.0"

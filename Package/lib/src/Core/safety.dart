@@ -6,6 +6,11 @@ This functionality holds data about the safety of vulnerable populations. Tamper
 
 */
 
+enum SafetyProductOptions {
+  singleUse, //software is used once, but doesn't have an account linked to it or isn't intended for long term visits. (e.g: Zenith)
+  recurringUse //user has account with software, and is required to register to use.
+}
+
 enum SafetyPlanOptions {
   disableNotifications, //doesn't allow app to send notifications
   disableBiometrics, //disables biometrics as a log-in method
@@ -21,7 +26,7 @@ enum SafetyPlanOptions {
 
 class Safety {
   // a map that contains Safety Plan options that ALL software can complete.
-  final Map<SafetyPlanOptions, bool> basePlanOptions = {
+  static Map<SafetyPlanOptions, bool> basePlanOptions = {
     SafetyPlanOptions.deviceSandbox: true,
     SafetyPlanOptions.exitBar: true,
     SafetyPlanOptions.disableScreenshots: true
@@ -29,13 +34,10 @@ class Safety {
 
   //a map that contains product specific Safety Plan options aside from the base options
   final List<SafetyPlanOptions> productEligiblePlanOptions;
+  final SafetyProductOptions frequencyUsage;
 
-  const Safety({required this.productEligiblePlanOptions});
+  const Safety(
+      {required this.frequencyUsage, required this.productEligiblePlanOptions});
 
-  //A method for implementation of a safety plan check to check and run code that may interfere with an SP option. If the option is true, then the fallback code is completed.
-
-  Future<void> safetyPlanHandling(
-      {check: SafetyPlanCheck, execute: VoidCallback}) {
-    //checks to see if a Safety Plan option is enabled, and runs the primary or fallback code depending on if option is enabled or not.
-  }
+  //If software is single use, settings are created automatically to show exit bar.
 }

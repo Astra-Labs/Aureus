@@ -187,10 +187,25 @@ var lightSendField =
     SendFieldComponent(onSend: fillerAction, fieldVariant: modeVariants.light);
 
 /* VIEWS */
-var darkContainerView =
-    ContainerView(modeVariant: modeVariants.dark, hasExitBar: true);
-var lightContainerView =
-    ContainerView(modeVariant: modeVariants.light, hasExitBar: true);
+var darkStandardContainerView = ContainerView(
+    modeVariant: modeVariants.dark,
+    decorationVariant: decorationPriority.standard,
+    childrenWidgets: []);
+
+var darkImportantContainerView = ContainerView(
+    modeVariant: modeVariants.dark,
+    decorationVariant: decorationPriority.important,
+    childrenWidgets: []);
+
+var lightStandardContainerView = ContainerView(
+    modeVariant: modeVariants.light,
+    decorationVariant: decorationPriority.standard,
+    childrenWidgets: []);
+
+var lightImportantContainerView = ContainerView(
+    modeVariant: modeVariants.light,
+    decorationVariant: decorationPriority.important,
+    childrenWidgets: []);
 
 /* MISC */
 
@@ -235,5 +250,4 @@ List<Widget> libElements = [
   lightSearchBar,
   darkSendField,
   lightSendField*/
-  lightContainerView
 ];

@@ -1,28 +1,12 @@
 # Badge Cards 
-### Source Code
-[Source Code](https://github.com/Astra-Labs/Aureus/blob/main/Codebase/Aureus-Package/lib/Elements/Cards/BadgeCardElement.dart)
+### Example
 
-### Properties
-* 
+### Links
+[Figma Frame]()
+[Source Code]()
 
-### I/O
-#### Input
-| Input | Type |
-|Card label|String|
-|Card icon |IconData  |
+### Usage
 
+### Implementation
 
-#### Output
-| Output | Type |
-|Badge Card | Container |
-
-### UI
-
-| Key | Value |
-|-----|-------|
-| BGC | product gradient |
-| BRC | steel      |
-| TCR | black      |
-| TS  | body 2      |
-| TC  | Camel Case |
-| CR  | 10 |
+### Details

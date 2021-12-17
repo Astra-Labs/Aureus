@@ -1,24 +1,12 @@
 # Onboarding Tabs
-### Source Code
-[Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
+### Example
 
-### Properties
-* 
+### Links
+[Figma Frame]()
+[Source Code]()
 
-### I/O
-#### Input
-| Input | Type |
-|-----|-------|
-| |     |
+### Usage
 
+### Implementation
 
-#### Output
-| Output | Type |
-|-----|-------|
-|  |      |
-
-### UI
-
-| Key | Value |
-|-----|-------|
-| EL  |  Heading 2, Subheading, [[Icon Tabbing Bar]] with card  |
+### Details

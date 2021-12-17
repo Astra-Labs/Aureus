@@ -72,7 +72,10 @@ class _FullWidthAlertControllerComponentState
                     buttonIcon: Assets.no as Icon,
                     buttonTooltip: 'Exit',
                     buttonAction: widget.alertData.onCancellation),
-                BadgeElementDarkIcyBoi(),
+                IconBadge(
+                    badgeIcon: Icons.ac_unit,
+                    badgePriority: decorationPriority.standard,
+                    modeVariant: modeVariants.light),
                 HeadingThreeText(
                     widget.alertData.alertTitle, modeVariants.light),
                 BodyOneText(widget.alertData.alertBody, modeVariants.light),

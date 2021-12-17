@@ -1,29 +1,12 @@
 # Pastel Cards 
-### Source Code
-[Source Code](https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Pastel%20Cards.md)
+### Example
 
-### Properties
-* 
+### Links
+[Figma Frame]()
+[Source Code]()
 
-### I/O
-#### Input
-| Input | Type |
-|-----|-------|
-| Card label| String |
+### Usage
 
+### Implementation
 
-#### Output
-| Output | Type |
-|-----|-------|
-| Pastel card | Container |
-
-### UI
-
-| Key | Value |
-|-----|-------|
-| BGC | product gradient   |
-| BRC | steel      |
-| TCR | black      |
-| TS  | body 2      |
-| TC  | Camel Case      |
-| CR  | 10      |
+### Details

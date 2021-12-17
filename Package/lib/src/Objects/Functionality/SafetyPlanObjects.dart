@@ -1,47 +1,32 @@
 import 'package:aureus/aureus.dart';
 
 class _SafetyPlan {
-  SafetyPlanObject _accountSafetyObject() {
-    Map<SafetyPlanOptions, bool> safetyMap = {
+  Map<SafetyPlanOptions, bool> get readSettings {
+    // pull most local settings from local storage here and return false if not written
+
+    return {
       SafetyPlanOptions.onlyNeccessaryEmails: false,
       SafetyPlanOptions.disableNotifications: false,
       SafetyPlanOptions.disableBiometrics: false,
-      SafetyPlanOptions.enable2FA: false
-    };
-
-    return SafetyPlanObject(settings: safetyMap);
-  }
-
-  SafetyPlanObject _dataSafetyObject() {
-    Map<SafetyPlanOptions, bool> safetyMap = {
+      SafetyPlanOptions.enable2FA: false,
       SafetyPlanOptions.localDataStorage: false,
-      SafetyPlanOptions.failedPasscodeDataDeletion: false
-    };
-
-    return SafetyPlanObject(settings: safetyMap);
-  }
-
-  SafetyPlanObject _functionalitySafetyObject() {
-    Map<SafetyPlanOptions, bool> safetyMap = {
+      SafetyPlanOptions.failedPasscodeDataDeletion: false,
       SafetyPlanOptions.exitBar: false,
       SafetyPlanOptions.disableScreenshots: false,
-      SafetyPlanOptions.deviceSandbox: false
-    };
-
-    return SafetyPlanObject(settings: safetyMap);
-  }
-
-  SafetyPlanObject _loggingSafetyObject() {
-    Map<SafetyPlanOptions, bool> safetyMap = {
+      SafetyPlanOptions.deviceSandbox: false,
       SafetyPlanOptions.logFailedAttempts: false
     };
-
-    return SafetyPlanObject(settings: safetyMap);
   }
 
-  void pullSafetySettings() {}
+  set writeSettings(Map<SafetyPlanOptions, bool> newSettings) {
+    writeSettings = newSettings;
 
-  void updateSafetySettings() {}
+    //write settings directly to local storage
+  }
+
+  bool readSafetyOption(SafetyPlanOptions option) {
+    return readSettings[option]!;
+  }
 }
 
 enum SafetyFallBackOptions { errorController, alternateCode }
@@ -50,18 +35,18 @@ class SafetyPlanCheck {
   final List<SafetyPlanFallback> fallbackItems;
 
   const SafetyPlanCheck({required this.fallbackItems})
-      : assert(fallbackItems != []);
+      : assert(fallbackItems.length >= 1);
 }
 
 class SafetyPlanFallback {
-  SafetyPlanOptions safetyOption SafetyPlanOptions.;
-  SafetyFallBackOptions fallbackOptions;
-  VoidCallback fallbackCode;
+  final SafetyPlanOptions safetyOption;
+  final SafetyFallBackOptions fallbackOption;
+  final VoidCallback? fallbackCode;
 
-  SafetyPlanFallback.withErrorController(this.safetyOption);
-
-  SafetyPlanFallback.withAlternateExecution(
-      this.safetyOption, this.fallbackCode);
+  const SafetyPlanFallback(this.safetyOption, this.fallbackOption,
+      [this.fallbackCode])
+      : assert(fallbackOption == SafetyFallBackOptions.alternateCode ||
+            fallbackOption == SafetyFallBackOptions.errorController);
 }
 
 class SafetyPlanObject {

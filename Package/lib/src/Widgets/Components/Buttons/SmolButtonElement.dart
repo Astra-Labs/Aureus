@@ -68,14 +68,13 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         child: Container(
             padding: size.universalPadding(),
             decoration: buttonDecoration,
-            child: Expanded(
-                child: TextButton(
-                    onPressed: isButtonEnabled ? widget.buttonAction : null,
-                    child: Text(widget.buttonTitle),
-                    style: TextButton.styleFrom(
-                        textStyle: foundation.button1(),
-                        padding: EdgeInsets.all(10),
-                        tapTargetSize: MaterialTapTargetSize.padded,
-                        enableFeedback: true)))));
+            child: TextButton(
+                onPressed: isButtonEnabled ? widget.buttonAction : null,
+                child: Text(widget.buttonTitle),
+                style: TextButton.styleFrom(
+                    textStyle: foundation.button1(),
+                    padding: EdgeInsets.all(10),
+                    tapTargetSize: MaterialTapTargetSize.padded,
+                    enableFeedback: true))));
   }
 }

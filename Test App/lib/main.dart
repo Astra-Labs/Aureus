@@ -25,16 +25,15 @@ class MyApp extends StatelessWidget {
     Color.fromRGBO(77, 79, 90, 1.0)
   ]);
 
-  late UDSVariables foundation;
+  late Aureus foundation;
 
   @override
   Widget build(BuildContext context) {
-    foundation = UDSVariables(
+    foundation = Aureus(
         prodColor: productColor,
         prodName: productName,
-        lightGrad: gradient1,
-        mediumGrad: gradient2,
-        darkGrad: gradient3);
+        lightFluidImage: Image.asset('assets/Light-Mesh.png'),
+        darkFluidImage: Image.asset('assets/Dark-Mesh.png'));
     return MaterialApp(home: MyHomePage());
   }
 }
@@ -47,7 +46,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: foundation.white(), body: lightContainerView);
+    return Scaffold(body: darkStandardContainerView);
   }
 }

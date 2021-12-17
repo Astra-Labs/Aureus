@@ -1,30 +1,12 @@
 # Smol Buttons
-### Source Code
-[Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
+### Example
 
-### Properties
-* 
+### Links
+[Figma Frame]()
+[Source Code]()
 
-### I/O
-#### Input
-| Input | Type |
-|-----|-------|
-| Text | String  |
-| Handler |  |
+### Usage
 
+### Implementation
 
-#### Output
-| Output | Type |
-|-----|-------|
-|  |      |
-
-### UI
-
-| Key | Value |
-|-----|-------|
-| BGC |    white   |
-| BRC |    iron   |
-| TCR |    carbon   |
-| TS  |    body 1   |
-| TC  |    black   |
-| CR  |    height / 2 (pill)   |
+### Details

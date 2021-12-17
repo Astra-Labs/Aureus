@@ -9,13 +9,11 @@ class ContainerView extends StatefulWidget {
   final modeVariants modeVariant;
   final decorationPriority decorationVariant;
   final List<Widget> childrenWidgets;
-  final bool hasExitBar;
 
   const ContainerView(
       {required this.modeVariant,
       required this.decorationVariant,
-      required this.childrenWidgets,
-      required this.hasExitBar});
+      required this.childrenWidgets});
 
   @override
   _ContainerViewState createState() => _ContainerViewState();
@@ -24,20 +22,37 @@ class ContainerView extends StatefulWidget {
 class _ContainerViewState extends State<ContainerView> {
   @override
   Widget build(BuildContext context) {
+    //pull exit bar setting status from Safety Plan
+    const bool hasExitBar = false;
+
     BoxDecoration containerBacking() {
       if (widget.modeVariant == modeVariants.light) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns light fluid
 
+          return BoxDecoration(
+            image: DecorationImage(
+              image: foundation.lightFluidImage.image,
+              fit: BoxFit.cover,
+            ),
+          );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns light blur
+          return BoxDecoration(gradient: foundation.lightGradient());
         }
       } else if (widget.modeVariant == modeVariants.dark) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns dark fluid
 
+          return BoxDecoration(
+            image: DecorationImage(
+              image: foundation.darkFluidImage.image,
+              fit: BoxFit.cover,
+            ),
+          );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns dark blur
+          return BoxDecoration(gradient: foundation.darkGradient());
         }
       }
       return BoxDecoration();
@@ -47,29 +62,28 @@ class _ContainerViewState extends State<ContainerView> {
         padding: size.containerPadding(),
         alignment: Alignment.center,
         width: size.widthOf(weight: sizingWeight.w10),
-        height: size.heightOf(weight: sizingWeight.w10),
         decoration: containerBacking());
 
     Container exitBarContainer = Container(
-      width: size.widthOf(weight: sizingWeight.w10),
-      height: size.heightOf(weight: sizingWeight.w10),
-      alignment: Alignment.center,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        ExitBarComponent(modeVariant: widget.modeVariant),
-        defaultContainer
-      ]),
-      decoration: LayerBackingDecoration(
-              variant: layerDecorationVariants.edged,
-              mode: widget.modeVariant,
-              priority: decorationPriority.inactive)
-          .buildBacking(),
-    );
+        width: size.widthOf(weight: sizingWeight.w10),
+        height: size.heightOf(weight: sizingWeight.w10),
+        alignment: Alignment.center,
+        decoration: containerBacking(),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          ExitBarComponent(modeVariant: widget.modeVariant),
+          defaultContainer
+        ]));
 
-    // A bug in flutter is preventing this from being a ternary operator. At a later date, switch to ternary.
-    if (widget.hasExitBar == true) {
-      return exitBarContainer;
-    } else if (widget.hasExitBar == false) {
-      return defaultContainer;
+    if (hasExitBar == true) {
+      return SizedBox(
+          width: size.widthOf(weight: sizingWeight.w10),
+          height: size.heightOf(weight: sizingWeight.w10),
+          child: exitBarContainer);
+    } else if (hasExitBar == false) {
+      return SizedBox(
+          width: size.widthOf(weight: sizingWeight.w10),
+          height: size.heightOf(weight: sizingWeight.w10),
+          child: defaultContainer);
     }
 
     throw ErrorDescription('Exit bar value not given.');

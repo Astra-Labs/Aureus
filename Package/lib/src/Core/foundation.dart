@@ -4,17 +4,23 @@ import 'dart:ui';
 //All Variables for the UDS Elements
 //Doc Link:
 
-var foundation = Aureus();
+var foundation = Aureus(
+    lightFluidImage: Image.asset('Light-Mesh'),
+    darkFluidImage: Image.asset('Dark-Mesh'));
 var size = Sizing();
 
 /* ------------------ GLOBAL VARIABLES -------------------- */
 class Aureus {
-  final Color prodColor;
-  final String prodName;
+  Color prodColor;
+  String prodName;
+  Image darkFluidImage = Image.asset('');
+  Image lightFluidImage = Image.asset('');
 
-  const Aureus(
+  Aureus(
       {this.prodColor = const Color.fromRGBO(181, 190, 242, 1.0),
-      this.prodName = 'Aureus'});
+      this.prodName = 'Aureus',
+      required this.darkFluidImage,
+      required this.lightFluidImage});
 
 //Global Gradients
 
@@ -23,8 +29,9 @@ class Aureus {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
+          foundation.melt(),
           Colors.white,
-          Color.fromRGBO(227, 231, 248, 1.0),
+          foundation.lavender(),
         ]);
   }
 
@@ -50,20 +57,32 @@ class Aureus {
         ]);
   }
 
-  BoxDecoration lightBlur() {
+  Container lightBlur() {
+    RadialGradient topLeftGradient =
+        RadialGradient(colors: [], center: Alignment.topLeft);
+    RadialGradient bottomRightGradient =
+        RadialGradient(colors: [], center: Alignment.topLeft);
+
+    return Container(
+        child: Container(
+            decoration:
+                BoxDecoration(gradient: topLeftGradient, color: Colors.white)),
+        decoration:
+            BoxDecoration(gradient: bottomRightGradient, color: Colors.white),
+        width: size.widthOf(weight: sizingWeight.w10),
+        height: size.heightOf(weight: sizingWeight.w10));
+  }
+
+  Container darkBlur() {
+    return Container();
+  }
+
+  BoxDecoration lightFluid() {
     return BoxDecoration();
   }
 
-  BoxDecoration darkBlur() {
+  BoxDecoration darkFluid() {
     return BoxDecoration();
-  }
-
-  Image lightFluid() {
-    return Image.asset('');
-  }
-
-  Image darkFluid() {
-    return Image.asset('');
   }
 
 //Global Colors
