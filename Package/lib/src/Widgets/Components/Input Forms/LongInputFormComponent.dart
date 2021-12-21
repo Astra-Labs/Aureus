@@ -17,9 +17,6 @@ class LongInputFormComponent extends StatefulWidget {
 class _LongInputFormComponentState extends State<LongInputFormComponent> {
   @override
   Widget build(BuildContext context) {
-    ListView inputList = ListView();
-    Color textColor = foundation.white();
-
     return Container(
         child:
             //layer one list view that contains lists of all of the sections

@@ -25,66 +25,42 @@ class _NotificationComponentState extends State<NotificationComponent> {
   @override
   Widget build(BuildContext context) {
     //variables that determine how the notification will be displayed
-    BoxDecoration boxDecoration;
-    BoxDecoration readIndicatorDecoration;
-    Color textColor;
 
-    //changes variables to show read variant
-    if (widget.hasNotificationBeenRead) {
-      boxDecoration = BoxDecoration(
-          color: foundation.white(),
-          border: foundation.universalBorder(),
-          borderRadius: BorderRadius.circular(10.0));
-      readIndicatorDecoration =
-          BoxDecoration(shape: BoxShape.circle, color: foundation.white());
-      textColor = foundation.iron();
+    BoxDecoration boxDecoration = LayerBackingDecoration(
+            priority: widget.hasNotificationBeenRead
+                ? decorationPriority.inactive
+                : decorationPriority.important)
+        .buildBacking();
+    BoxDecoration readIndicatorDecoration = widget.hasNotificationBeenRead
+        ? LayerBackingDecoration(priority: decorationPriority.important)
+            .buildBacking()
+        : BoxDecoration(color: foundation.white().withOpacity(0.0));
 
-      //changes variables to show unread variant
-    } else {
-      boxDecoration = BoxDecoration(
-          gradient: foundation.lightGradient(),
-          border: foundation.universalBorder(),
-          borderRadius: BorderRadius.circular(10.0));
-      readIndicatorDecoration =
-          BoxDecoration(shape: BoxShape.circle, color: foundation.carbon());
-      textColor = foundation.black();
-    }
-
-    return AspectRatio(
-        aspectRatio: 3 / 1,
-        child: Container(
-            alignment: Alignment.center,
-            padding: size.universalPadding(),
-            decoration: boxDecoration,
-            width: 350,
-            height: 125,
-            child: Center(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                  //first row, contains subcategory and time stamp
-                  Row(
-                    children: [
-                      TagOneText(
-                          widget.notificationSubCategory, modeVariants.light),
-                      TagOneText(
-                          '$widget.notificationReceived', modeVariants.light)
-                    ],
-                  ),
-                  //second row, contains subcategory header and read indicator
-                  Row(children: [
-                    HeadingTwoText(
-                        widget.notificationHeader, modeVariants.light),
-                    Container(
-                        width: 25,
-                        height: 25,
-                        alignment: Alignment.centerRight,
-                        decoration: readIndicatorDecoration)
-                  ]),
-                  //third row, body text
-                  Row(children: [
-                    BodyTwoText(widget.notificationBody, modeVariants.light)
-                  ])
-                ]))));
+    return Container(
+        alignment: Alignment.center,
+        padding: size.universalPadding(),
+        decoration: boxDecoration,
+        child: Center(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          //first row, contains subcategory and time stamp
+          Row(
+            children: [
+              TagOneText(widget.notificationSubCategory),
+              TagOneText('$widget.notificationReceived')
+            ],
+          ),
+          //second row, contains subcategory header and read indicator
+          Row(children: [
+            HeadingTwoText(widget.notificationHeader),
+            Container(
+                width: 25,
+                height: 25,
+                alignment: Alignment.centerRight,
+                decoration: readIndicatorDecoration)
+          ]),
+          //third row, body text
+          Row(children: [BodyTwoText(widget.notificationBody)])
+        ])));
   }
 }

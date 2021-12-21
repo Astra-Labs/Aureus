@@ -46,7 +46,7 @@ class _CenteredAlertControllerComponentState
                     child: StandardButtonElement(
                       buttonAction: actionItem.onSelection,
                       buttonTitle: actionItem.actionName,
-                      currentVariant: decorationPriority.standard,
+                      decorationVariant: decorationPriority.standard,
                     ));
               }));
     }
@@ -55,9 +55,9 @@ class _CenteredAlertControllerComponentState
         width: size.widthOf(weight: sizingWeight.w10),
         height: size.heightOf(weight: sizingWeight.w10),
         padding: EdgeInsets.all(10),
-        decoration: LayerBackingDecoration(
-            mode: modeVariants.dark,
-            priority: decorationPriority.inactive) as Decoration,
+        decoration:
+            LayerBackingDecoration(priority: decorationPriority.inactive)
+                as Decoration,
         child: Center(
             child: Container(
                 //this will be the rounded card backing
@@ -66,18 +66,15 @@ class _CenteredAlertControllerComponentState
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SecondaryIconButtonElement(
-                          currentVariant: decorationPriority.standard,
+                          decorationVariant: decorationPriority.standard,
                           buttonIcon: Assets.no as Icon,
                           buttonTooltip: 'Exit',
                           buttonAction: widget.alertData.onCancellation),
                       IconBadge(
                           badgeIcon: Icons.ac_unit,
-                          badgePriority: decorationPriority.standard,
-                          modeVariant: modeVariants.light),
-                      HeadingThreeText(
-                          widget.alertData.alertTitle, modeVariants.light),
-                      BodyOneText(
-                          widget.alertData.alertBody, modeVariants.light),
+                          badgePriority: decorationPriority.important),
+                      HeadingThreeText(widget.alertData.alertTitle),
+                      BodyOneText(widget.alertData.alertBody),
                       alertControllerActions,
                     ]))));
   }

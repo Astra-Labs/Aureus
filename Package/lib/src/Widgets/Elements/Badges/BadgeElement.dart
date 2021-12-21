@@ -6,19 +6,15 @@ import 'package:aureus/aureus.dart';
 class IconBadge extends StatelessWidget {
   final IconData badgeIcon;
   final decorationPriority badgePriority;
-  final modeVariants modeVariant;
 
-  const IconBadge(
-      {required this.badgeIcon,
-      required this.badgePriority,
-      required this.modeVariant});
+  const IconBadge({required this.badgeIcon, required this.badgePriority});
 
   @override
   Widget build(BuildContext context) {
     Color iconColor() {
-      if (modeVariant == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         return foundation.white();
-      } else if (modeVariant == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         return foundation.black();
       }
 
@@ -26,9 +22,9 @@ class IconBadge extends StatelessWidget {
     }
 
     Color badgeFill() {
-      if (modeVariant == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         return foundation.carbon();
-      } else if (modeVariant == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         return foundation.melt();
       }
 
@@ -36,9 +32,9 @@ class IconBadge extends StatelessWidget {
     }
 
     Gradient badgeGradient() {
-      if (modeVariant == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         return foundation.darkGradient();
-      } else if (modeVariant == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         return foundation.lightGradient();
       }
 
@@ -46,10 +42,10 @@ class IconBadge extends StatelessWidget {
     }
 
     BoxShadow badgeShadow() {
-      if (modeVariant == modeVariants.light &&
+      if (ThemeMode.system == ThemeMode.light &&
           badgePriority == decorationPriority.important) {
         return foundation.darkShadow();
-      } else if (modeVariant == modeVariants.dark &&
+      } else if (ThemeMode.system == ThemeMode.dark &&
           badgePriority == decorationPriority.important) {
         return foundation.lightShadow();
       }

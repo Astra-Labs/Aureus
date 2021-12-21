@@ -69,10 +69,9 @@ class _ContainerViewState extends State<ContainerView> {
         height: size.heightOf(weight: sizingWeight.w10),
         alignment: Alignment.center,
         decoration: containerBacking(),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ExitBarComponent(modeVariant: widget.modeVariant),
-          defaultContainer
-        ]));
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [ExitBarComponent(), defaultContainer]));
 
     if (hasExitBar == true) {
       return SizedBox(

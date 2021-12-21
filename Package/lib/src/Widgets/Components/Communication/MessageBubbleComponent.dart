@@ -4,14 +4,12 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class MessageBubbleComponent extends StatefulWidget {
-  final modeVariants modeVariant;
   final messagingVariants messageVariant;
   final String messageBody;
   final communicationStatus currentStatus;
 
   const MessageBubbleComponent(
-      {required this.modeVariant,
-      required this.messageVariant,
+      {required this.messageVariant,
       required this.messageBody,
       required this.currentStatus});
 
@@ -24,45 +22,16 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
   Widget build(BuildContext context) {
     //variables that change how the variants are displayed in build time
 
-    BoxDecoration backingDecoration = BoxDecoration();
-    Color textColor = foundation.black();
-    String deliveryStatus = '';
+    decorationPriority bubblePriority = decorationPriority.standard;
 
-    //if the message bubble is being received by the user on light mode
-    if (widget.modeVariant == modeVariants.light &&
-        widget.messageVariant == messagingVariants.receiver) {
-      backingDecoration = BoxDecoration(
-          color: foundation.frost(), borderRadius: BorderRadius.circular(20.0));
-      deliveryStatus = '';
-      textColor = foundation.black();
-
-      //if the message bubble is being received by the user on dark mode
-    } else if (widget.modeVariant == modeVariants.dark &&
-        widget.messageVariant == messagingVariants.receiver) {
-      backingDecoration = BoxDecoration(
-          color: foundation.carbon(),
-          borderRadius: BorderRadius.circular(20.0));
-      deliveryStatus = '';
-      textColor = foundation.frost();
-
-      //if the message bubble is being sent by the user on light mode
-    } else if (widget.modeVariant == modeVariants.light &&
-        widget.messageVariant == messagingVariants.sender) {
-      backingDecoration = BoxDecoration(
-          gradient: foundation.lightGradient(),
-          borderRadius: BorderRadius.circular(20.0));
-      deliveryStatus = '$widget.currentStatus';
-      textColor = foundation.black();
-
-      //if the message bubble is being received by the user on dark mode
-    } else if (widget.modeVariant == modeVariants.light &&
-        widget.messageVariant == messagingVariants.sender) {
-      backingDecoration = BoxDecoration(
-          gradient: foundation.darkGradient(),
-          borderRadius: BorderRadius.circular(20.0));
-      deliveryStatus = '$widget.currentStatus';
-      textColor = foundation.frost();
+    if (widget.messageVariant == messagingVariants.receiver) {
+      bubblePriority = decorationPriority.important;
+    } else if (widget.messageVariant == messagingVariants.sender) {
+      bubblePriority = decorationPriority.inactive;
     }
+
+    BoxDecoration backingDecoration =
+        LayerBackingDecoration(priority: bubblePriority).buildBacking();
 
     Size bodyTextSizing = Accessibility.textStringSize(
         textInput: widget.messageBody,
@@ -81,12 +50,12 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
               child: SizedBox(
                   width: bodyTextSizing.width,
                   height: bodyTextSizing.height,
-                  child: BodyTwoText(widget.messageBody, modeVariants.light)))),
+                  child: BodyTwoText(widget.messageBody)))),
       Container(
           alignment: Alignment.centerLeft,
           padding: size.universalPadding(),
           width: 300,
-          child: TagOneText(deliveryStatus, modeVariants.light))
+          child: TagOneText('$widget.currentStatus'))
     ]);
   }
 }

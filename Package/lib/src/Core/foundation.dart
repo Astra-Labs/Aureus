@@ -254,7 +254,7 @@ class TitleCase {
       return '';
     });
 
-    return capitalizedWords.join('');
+    return capitalizedWords.join(' ');
   }
 }
 
@@ -262,108 +262,89 @@ class TitleCase {
 final titleCase = TitleCase();
 final coloration = Coloration();
 
-// 🛑
-Color universalTextColoration(modeVariant) {
-  return coloration.universalTextColor(modeVariant);
-}
-
-// 🛑
 class HeadingOneText extends Text {
-  HeadingOneText(String data, modeVariants variants)
+  HeadingOneText(String data)
       : super(TitleCase.convertToTitleCase(data),
             style: foundation
                 .heading1()
-                .copyWith(color: universalTextColoration(variants)));
+                .copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class HeadingTwoText extends Text {
-  HeadingTwoText(String data, modeVariants variants)
+  HeadingTwoText(String data)
       : super(data.toUpperCase(),
             style: foundation
                 .heading2()
-                .copyWith(color: universalTextColoration(variants)));
+                .copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class HeadingThreeText extends Text {
-  HeadingThreeText(String data, modeVariants variants)
+  HeadingThreeText(String data)
       : super(data.toUpperCase(),
             style: foundation
                 .heading3()
-                .copyWith(color: universalTextColoration(variants)));
+                .copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class HeadingFourText extends Text {
-  HeadingFourText(String data, modeVariants variants)
+  HeadingFourText(String data)
       : super(data.toUpperCase(),
             style: foundation
                 .heading4()
-                .copyWith(color: universalTextColoration(variants)));
+                .copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class SubheaderText extends Text {
-  SubheaderText(String data, modeVariants variants)
+  SubheaderText(String data)
       : super(TitleCase.convertToTitleCase(data),
             style: foundation
                 .subheading()
-                .copyWith(color: universalTextColoration(variants)));
+                .copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class BodyOneText extends Text {
-  BodyOneText(String data, modeVariants variants)
+  BodyOneText(String data)
       : super(data,
-            style: foundation
-                .body1()
-                .copyWith(color: universalTextColoration(variants)));
+            style:
+                foundation.body1().copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class BodyTwoText extends Text {
-  BodyTwoText(String data, modeVariants variants)
+  BodyTwoText(String data)
       : super(data,
-            style: foundation
-                .body2()
-                .copyWith(color: universalTextColoration(variants)));
+            style:
+                foundation.body2().copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class ButtonOneText extends Text {
-  ButtonOneText(String data, modeVariants variants)
+  ButtonOneText(String data)
       : super(data.toUpperCase(),
             style: foundation
                 .button1()
-                .copyWith(color: universalTextColoration(variants)));
+                .copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class ButtonTwoText extends Text {
-  ButtonTwoText(String data, modeVariants variants)
+  ButtonTwoText(String data)
       : super(data.toUpperCase(),
             style: foundation
                 .button2()
-                .copyWith(color: universalTextColoration(variants)));
+                .copyWith(color: coloration.contrastColor()));
 }
 
-// 🛑
 class TagOneText extends Text {
-  TagOneText(String data, modeVariants variants)
+  TagOneText(String data)
       : super(data.toUpperCase(),
-            style: foundation.tag1(color: universalTextColoration(variants)));
+            style: foundation.tag1(color: coloration.contrastColor()));
 }
 
-// 🛑
 class TagTwoText extends Text {
-  TagTwoText(String data, modeVariants variants)
+  TagTwoText(String data)
       : super(data.toUpperCase(),
-            style: foundation.tag2(color: universalTextColoration(variants)));
+            style: foundation.tag2(color: coloration.contrastColor()));
 }
 
 /* ------------------ SIZING -------------------- */
-// 🛑
 class Sizing {
   //Pixel Ratio of a given device
   final pixelRatio = window.devicePixelRatio;
@@ -530,10 +511,9 @@ class Sizing {
 
 // 🛑
 class BaseBackingDecoration {
-  final modeVariants mode;
   final decorationPriority priority;
 
-  BaseBackingDecoration({required this.mode, required this.priority});
+  BaseBackingDecoration({required this.priority});
 
   Border? decorationBorder;
   Color? decorationFill;
@@ -566,9 +546,8 @@ class BaseBackingDecoration {
 class ButtonBackingDecoration extends BaseBackingDecoration {
   final buttonDecorationVariants variant;
 
-  ButtonBackingDecoration(
-      {required this.variant, required mode, required priority})
-      : super(mode: mode, priority: priority) {
+  ButtonBackingDecoration({required this.variant, required priority})
+      : super(priority: priority) {
     //defining variants for the specific item
     if (variant == buttonDecorationVariants.circle) {
       print('item is circle');
@@ -589,19 +568,19 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       decorationFill = foundation.steel().withOpacity(0.5);
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationGradient = foundation.lightGradient();
         decorationBorder = foundation.universalBorder();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationGradient = foundation.darkGradient();
         decorationBorder = foundation.universalBorder();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }
@@ -611,8 +590,7 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
 
 // 🛑
 class LayerBackingDecoration extends BaseBackingDecoration {
-  LayerBackingDecoration({required mode, required priority})
-      : super(mode: mode, priority: priority) {
+  LayerBackingDecoration({required priority}) : super(priority: priority) {
     //defining variants for the specific item
 
     //defining variants for the specific priority
@@ -621,30 +599,30 @@ class LayerBackingDecoration extends BaseBackingDecoration {
 
       decorationCornerRadius = BorderRadius.circular(10.0);
 
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationFill = foundation.lightModeFill();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationFill = foundation.darkModeFill();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       decorationCornerRadius = BorderRadius.circular(20.0);
 
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }
     } else if (priority == decorationPriority.important) {
       decorationCornerRadius = BorderRadius.circular(20.0);
 
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationGradient = foundation.lightGradient();
         decorationBorder = foundation.universalBorder();
         decorationHaze = foundation.darkShadow();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationGradient = foundation.darkGradient();
         decorationBorder = foundation.universalBorder();
         decorationHaze = foundation.pastelShadow();
@@ -655,8 +633,7 @@ class LayerBackingDecoration extends BaseBackingDecoration {
 
 // 🛑
 class CardBackingDecoration extends BaseBackingDecoration {
-  CardBackingDecoration({required mode, required priority})
-      : super(mode: mode, priority: priority) {
+  CardBackingDecoration({required priority}) : super(priority: priority) {
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
@@ -667,20 +644,20 @@ class CardBackingDecoration extends BaseBackingDecoration {
       decorationCornerRadius = BorderRadius.circular(20.0);
       decorationBorder = foundation.universalBorder();
 
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationGradient = foundation.darkGradient();
         decorationHaze = foundation.darkShadow();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationGradient = foundation.lightGradient();
         decorationHaze = foundation.pastelShadow();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       decorationCornerRadius = BorderRadius.circular(20.0);
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }
@@ -690,13 +667,12 @@ class CardBackingDecoration extends BaseBackingDecoration {
 
 // 🛑
 class InputBackingDecoration extends BaseBackingDecoration {
-  InputBackingDecoration({required mode})
-      : super(mode: mode, priority: decorationPriority.standard) {
+  InputBackingDecoration() : super(priority: decorationPriority.standard) {
     //defining variants for the specific mode
-    if (mode == modeVariants.light) {
+    if (ThemeMode.system == ThemeMode.light) {
       decorationFill = foundation.lightModeFill();
       decorationBorder = foundation.lightModeBorder();
-    } else if (mode == modeVariants.dark) {
+    } else if (ThemeMode.system == ThemeMode.dark) {
       decorationFill = foundation.darkModeFill();
       decorationBorder = foundation.darkModeBorder();
     }
@@ -708,9 +684,8 @@ class InputBackingDecoration extends BaseBackingDecoration {
 class TabItemBackingDecoration extends BaseBackingDecoration {
   final tabItemDecorationVariants variant;
 
-  TabItemBackingDecoration(
-      {required this.variant, required mode, required priority})
-      : super(mode: mode, priority: priority) {
+  TabItemBackingDecoration({required this.variant, required priority})
+      : super(priority: priority) {
     //defining variants for the specific item
     if (variant == tabItemDecorationVariants.circle) {
       decorationCornerRadius = BorderRadius.circular(100);
@@ -722,9 +697,9 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationFill = foundation.lightModeFill();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationFill = foundation.darkModeFill();
       }
     }
@@ -732,10 +707,10 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
     if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
 
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }
@@ -745,10 +720,10 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
       decorationBorder = foundation.universalBorder();
 
-      if (mode == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         decorationGradient = foundation.darkGradient();
         decorationHaze = foundation.darkShadow();
-      } else if (mode == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         decorationGradient = foundation.lightGradient();
         decorationHaze = foundation.pastelShadow();
       }

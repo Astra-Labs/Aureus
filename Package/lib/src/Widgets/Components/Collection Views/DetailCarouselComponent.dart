@@ -6,12 +6,8 @@ import 'package:aureus/aureus.dart';
 class DetailCarouselComponent extends StatefulWidget {
   final List<String> cardLabels;
   final List<IconData> cardIcons;
-  final modeVariants viewMode;
 
-  DetailCarouselComponent(
-      {required this.cardLabels,
-      required this.cardIcons,
-      required this.viewMode});
+  DetailCarouselComponent({required this.cardLabels, required this.cardIcons});
 
   @override
   _DetailCarouselComponentState createState() =>
@@ -49,7 +45,7 @@ class _DetailCarouselComponentState extends State<DetailCarouselComponent> {
                       SizedBox(
                         width: 5,
                       ),
-                      TagTwoText(widget.cardLabels[index], widget.viewMode),
+                      TagTwoText(widget.cardLabels[index]),
                     ],
                   ),
                 ),

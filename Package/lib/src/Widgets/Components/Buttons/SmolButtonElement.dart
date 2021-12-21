@@ -4,12 +4,12 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class SmolButtonElement extends StatefulWidget {
-  final decorationPriority currentVariant;
+  final decorationPriority decorationVariant;
   final String buttonTitle;
   final VoidCallback buttonAction;
 
   const SmolButtonElement(
-      {required this.currentVariant,
+      {required this.decorationVariant,
       required this.buttonTitle,
       required this.buttonAction});
 
@@ -21,46 +21,13 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
   @override
   Widget build(BuildContext context) {
     //variables that change how the variants are displayed in build time
-    BoxDecoration buttonDecoration;
-    bool isButtonEnabled;
-    Color buttonTextColor;
+    bool isButtonEnabled =
+        widget.decorationVariant == decorationPriority.inactive ? true : false;
 
-    switch (widget.currentVariant) {
-      case decorationPriority.inactive:
-
-        //variables that define the variant 'inactive' for smol buttons
-        isButtonEnabled = false;
-        buttonTextColor = foundation.iron();
-        buttonDecoration = BoxDecoration(
-            color: foundation.white().withOpacity(0.4),
-            borderRadius: BorderRadius.circular(40.0));
-
-        break;
-
-      case decorationPriority.standard:
-
-        //variables that define the variant 'light active' for smol buttons
-        isButtonEnabled = true;
-        buttonTextColor = foundation.black();
-        buttonDecoration = BoxDecoration(
-            color: foundation.white(),
-            border: foundation.universalBorder(),
-            borderRadius: BorderRadius.circular(40.0));
-
-        break;
-
-      case decorationPriority.important:
-
-        //variables that define the variant 'dark active' for smol buttons
-        isButtonEnabled = true;
-        buttonTextColor = foundation.white();
-        buttonDecoration = BoxDecoration(
-            color: foundation.carbon(),
-            border: foundation.universalBorder(),
-            borderRadius: BorderRadius.circular(40.0));
-
-        break;
-    }
+    BoxDecoration buttonDecoration = ButtonBackingDecoration(
+            variant: buttonDecorationVariants.roundedPill,
+            priority: widget.decorationVariant)
+        .buildBacking();
 
     return ConstrainedBox(
         constraints: BoxConstraints(
@@ -72,7 +39,6 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
                 onPressed: isButtonEnabled ? widget.buttonAction : null,
                 child: Text(widget.buttonTitle),
                 style: TextButton.styleFrom(
-                    textStyle: foundation.button1(),
                     padding: EdgeInsets.all(10),
                     tapTargetSize: MaterialTapTargetSize.padded,
                     enableFeedback: true))));

@@ -3,9 +3,7 @@ import 'package:aureus/aureus.dart';
 //An exit bar that stays at the top of the user's screen and exits the screen when pressed.
 
 class ExitBarComponent extends StatefulWidget {
-  final modeVariants modeVariant;
-
-  const ExitBarComponent({required this.modeVariant});
+  const ExitBarComponent();
 
   @override
   _ExitBarComponentState createState() => _ExitBarComponentState();
@@ -14,14 +12,14 @@ class ExitBarComponent extends StatefulWidget {
 class _ExitBarComponentState extends State<ExitBarComponent> {
   @override
   Widget build(BuildContext context) {
-    LayerBackingDecoration barBacking = LayerBackingDecoration(
-        mode: modeVariants.dark, priority: decorationPriority.important);
+    LayerBackingDecoration barBacking =
+        LayerBackingDecoration(priority: decorationPriority.important);
 
     decorationPriority buttonVariant = decorationPriority.inactive;
 
-    if (widget.modeVariant == modeVariants.dark) {
+    if (ThemeMode.system == ThemeMode.dark) {
       buttonVariant = decorationPriority.inactive;
-    } else if (widget.modeVariant == modeVariants.light) {
+    } else if (ThemeMode.system == ThemeMode.light) {
       buttonVariant = decorationPriority.standard;
     }
 
@@ -33,10 +31,9 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
             padding: size.universalPadding(),
             child:
                 Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              BodyTwoText(
-                  'Tap the button to quickly exit.', widget.modeVariant),
+              BodyTwoText('Tap the button to quickly exit.'),
               SmolButtonElement(
-                  currentVariant: buttonVariant,
+                  decorationVariant: buttonVariant,
                   buttonTitle: 'Exit',
                   buttonAction: () => {print('pressed exit')})
             ])),

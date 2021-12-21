@@ -21,7 +21,7 @@ class PastelCardElement extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 13, top: 35),
-        child: BodyOneText(_cardLabel, modeVariants.light),
+        child: BodyOneText(_cardLabel),
       ),
     );
   }

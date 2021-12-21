@@ -9,20 +9,15 @@ class BasicInputFormComponent extends StatefulWidget {
   final String inputFormName;
   List<SingleUserInputTypeObject> singleVarianceInputObjects = [];
   List<MultiUserInputTypeObject> multiVarianceInputObjects = [];
-  final modeVariants formVariant;
 
   BasicInputFormComponent.singleDataType(
-      {required this.inputFormName,
-      required this.singleVarianceInputObjects,
-      required this.formVariant})
+      {required this.inputFormName, required this.singleVarianceInputObjects})
       : assert(inputFormName != ''),
         assert(singleVarianceInputObjects != [] &&
             singleVarianceInputObjects.length >= 2);
 
   BasicInputFormComponent.multiDataType(
-      {required this.inputFormName,
-      required this.multiVarianceInputObjects,
-      required this.formVariant})
+      {required this.inputFormName, required this.multiVarianceInputObjects})
       : assert(inputFormName != ''),
         assert(multiVarianceInputObjects != [] &&
             multiVarianceInputObjects.length >= 2);
@@ -43,13 +38,6 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
   @override
   Widget build(BuildContext context) {
     ListView inputList = ListView();
-    Color textColor = foundation.white();
-
-    if (widget.formVariant == modeVariants.dark) {
-      textColor = foundation.melt();
-    } else if (widget.formVariant == modeVariants.light) {
-      textColor = foundation.black();
-    }
 
     if (widget.multiVarianceInputObjects != [] &&
         widget.singleVarianceInputObjects == []) {
@@ -95,10 +83,8 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
         children: [
           Padding(
               padding: size.containerPadding(),
-              child:
-                  HeadingThreeText(widget.inputFormName, widget.formVariant)),
-          Padding(
-              padding: size.containerPadding(), child: inputList)
+              child: HeadingThreeText(widget.inputFormName)),
+          Padding(padding: size.containerPadding(), child: inputList)
         ]);
   }
 }

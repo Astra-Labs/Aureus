@@ -24,7 +24,7 @@ class _HorizontalCardCarouselComponentState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HeadingThreeText(widget.heading, modeVariants.light),
+        HeadingThreeText(widget.heading),
         SizedBox(
           height: 29,
         ),

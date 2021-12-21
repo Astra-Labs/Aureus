@@ -39,10 +39,32 @@ A class that takes variables into consideration to properly color the text of di
 // 🛑
 class Coloration {
   //the color returned for all general text in Aureus.
-  Color universalTextColor(modeVariants modeVariant) {
-    if (modeVariant == modeVariants.light) {
+
+  Color decorationColor(decorationPriority decorationVariant,
+      {priority: decorationPriority}) {
+    Color priorityColor = foundation.black();
+
+    switch (priority) {
+      case decorationPriority.important:
+        priorityColor = sameColor();
+        break;
+
+      case decorationPriority.inactive:
+        priorityColor = inactiveColor();
+        break;
+
+      case decorationPriority.standard:
+        priorityColor = contrastColor();
+        break;
+    }
+
+    return priorityColor;
+  }
+
+  Color contrastColor() {
+    if (ThemeMode.system == ThemeMode.light) {
       return foundation.black();
-    } else if (modeVariant == modeVariants.dark) {
+    } else if (ThemeMode.system == ThemeMode.dark) {
       return foundation.white();
     }
 
@@ -51,11 +73,22 @@ class Coloration {
   }
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
-  Color modeColor(modeVariants modeVariant) {
-    if (modeVariant == modeVariants.light) {
+  Color sameColor() {
+    if (ThemeMode.system == ThemeMode.light) {
       return foundation.white();
-    } else if (modeVariant == modeVariants.dark) {
+    } else if (ThemeMode.system == ThemeMode.dark) {
       return foundation.black();
+    }
+    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+    throw UnimplementedError();
+  }
+
+  //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
+  Color inactiveColor() {
+    if (ThemeMode.system == ThemeMode.light) {
+      return foundation.iron();
+    } else if (ThemeMode.system == ThemeMode.dark) {
+      return foundation.steel();
     }
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
     throw UnimplementedError();

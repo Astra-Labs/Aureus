@@ -46,7 +46,7 @@ class _FullWidthAlertControllerComponentState
                     child: StandardButtonElement(
                       buttonAction: actionItem.onSelection,
                       buttonTitle: actionItem.actionName,
-                      currentVariant: decorationPriority.standard,
+                      decorationVariant: decorationPriority.standard,
                     ));
               }));
     }
@@ -58,26 +58,24 @@ class _FullWidthAlertControllerComponentState
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
               //acts as the "cover" of to the pre-existing view
-              decoration: LayerBackingDecoration(
-                  mode: modeVariants.dark,
-                  priority: decorationPriority.inactive) as Decoration),
+              decoration:
+                  LayerBackingDecoration(priority: decorationPriority.inactive)
+                      as Decoration),
           Container(
               //this will be the rounded card backing
               height: size.heightOf(weight: sizingWeight.w3),
               child:
                   Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 SecondaryIconButtonElement(
-                    currentVariant: decorationPriority.standard,
+                    decorationVariant: decorationPriority.standard,
                     buttonIcon: Assets.no as Icon,
                     buttonTooltip: 'Exit',
                     buttonAction: widget.alertData.onCancellation),
                 IconBadge(
                     badgeIcon: Icons.ac_unit,
-                    badgePriority: decorationPriority.standard,
-                    modeVariant: modeVariants.light),
-                HeadingThreeText(
-                    widget.alertData.alertTitle, modeVariants.light),
-                BodyOneText(widget.alertData.alertBody, modeVariants.light),
+                    badgePriority: decorationPriority.important),
+                HeadingThreeText(widget.alertData.alertTitle),
+                BodyOneText(widget.alertData.alertBody),
                 alertControllerActions,
               ]))
         ]));

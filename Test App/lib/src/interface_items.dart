@@ -1,4 +1,6 @@
-part of 'aur-lib.dart';
+import 'package:aureus/aureus.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 //where all items in aureus are initiated for testing
 
@@ -59,7 +61,7 @@ var darkFullWidthButton = FullWidthButtonElement(
 
 var lightFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
-    currentVariant: decorationPriority.standard,
+    currentVariant: decorationPriority.important,
     buttonAction: fillerAction);
 
 var inactiveFullWidthButton = FullWidthButtonElement(
@@ -74,7 +76,7 @@ var darkPrimaryIconButton = PrimaryIconButtonElement(
     buttonAction: fillerAction);
 
 var lightPrimaryIconButton = PrimaryIconButtonElement(
-    currentVariant: decorationPriority.standard,
+    currentVariant: decorationPriority.important,
     buttonIcon: Icon(fillerIcon1, color: foundation.black()),
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction);
@@ -211,18 +213,18 @@ var lightImportantContainerView = ContainerView(
 
 //array of all elements available in aureus
 List<Widget> libElements = [
-  /* badgeCard,
+  /*badgeCard,
   glassCard,
   pastelCard,
   standardCard,
   tabSubheader,
   divider,
-  timer,
+  timer, */
   singleInput,
   multiInput,
   darkFullWidthButton,
   lightFullWidthButton,
-  inactiveFullWidthButton
+  inactiveFullWidthButton,
   darkPrimaryIconButton,
   lightPrimaryIconButton,
   inactivePrimaryIconButton,
@@ -231,12 +233,10 @@ List<Widget> libElements = [
   inactiveSecondaryIconButton,
   darkSmolButton,
   lightSmolButton,
-  inactiveSmolButton
+  inactiveSmolButton,
   darkStandardButton,
   lightStandardButton,
   inactiveStandardButton,
-  lightDetailCarousel,
-  darkDetailCarousel
   badgeGridCarousel,
   standardGridCarousel,
   badgeHorizontalCardCarousel,
@@ -249,5 +249,5 @@ List<Widget> libElements = [
   darkSearchBar,
   lightSearchBar,
   darkSendField,
-  lightSendField*/
+  lightSendField
 ];
