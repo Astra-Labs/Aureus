@@ -6,7 +6,7 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class BasicInputFormComponent extends StatefulWidget {
-  final String inputFormName;
+  String inputFormName;
   List<SingleUserInputTypeObject> singleVarianceInputObjects = [];
   List<MultiUserInputTypeObject> multiVarianceInputObjects = [];
 

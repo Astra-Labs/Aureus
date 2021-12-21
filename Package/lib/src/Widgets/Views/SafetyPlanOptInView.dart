@@ -4,10 +4,7 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class SafetyPlanOptInView extends StatefulWidget {
-  final modeVariants viewMode;
-  final deviceVariants deviceType;
-
-  const SafetyPlanOptInView({required this.viewMode, required this.deviceType});
+  const SafetyPlanOptInView();
 
   @override
   _SafetyPlanOptInViewState createState() => _SafetyPlanOptInViewState();
@@ -16,6 +13,12 @@ class SafetyPlanOptInView extends StatefulWidget {
 class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    LayoutBuilder viewLayout = LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

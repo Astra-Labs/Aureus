@@ -6,14 +6,10 @@ import 'package:flutter/rendering.dart';
 //Doc Link:
 
 class ContainerView extends StatefulWidget {
-  final modeVariants modeVariant;
   final decorationPriority decorationVariant;
-  final List<Widget> childrenWidgets;
+  final LayoutBuilder builder;
 
-  const ContainerView(
-      {required this.modeVariant,
-      required this.decorationVariant,
-      required this.childrenWidgets});
+  const ContainerView({required this.decorationVariant, required this.builder});
 
   @override
   _ContainerViewState createState() => _ContainerViewState();
@@ -26,7 +22,7 @@ class _ContainerViewState extends State<ContainerView> {
     const bool hasExitBar = false;
 
     BoxDecoration containerBacking() {
-      if (widget.modeVariant == modeVariants.light) {
+      if (ThemeMode.system == ThemeMode.light) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns light fluid
 
@@ -40,7 +36,7 @@ class _ContainerViewState extends State<ContainerView> {
           //returns light blur
           return BoxDecoration(gradient: foundation.lightGradient());
         }
-      } else if (widget.modeVariant == modeVariants.dark) {
+      } else if (ThemeMode.system == ThemeMode.dark) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns dark fluid
 

@@ -17,9 +17,12 @@ class TFAVerificationView extends StatefulWidget {
 class _TFAVerificationViewState extends State<TFAVerificationView> {
   @override
   Widget build(BuildContext context) {
+    LayoutBuilder viewLayout = LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
+
     return ContainerView(
-        modeVariant: widget.modeVariant,
-        decorationVariant: decorationPriority.standard,
-        childrenWidgets: []);
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

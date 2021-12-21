@@ -37,7 +37,6 @@ export 'src/Objects/Functionality/SafetyPlanObjects.dart';
 export 'src/Widgets/Elements/Badges/BadgeElement.dart';
 
 export 'src/Widgets/Elements/Cards/BadgeCardElement.dart';
-export 'src/Widgets/Elements/Cards/GlassCardElement.dart';
 export 'src/Widgets/Elements/Cards/PastelCardElement.dart';
 export 'src/Widgets/Elements/Cards/StandardCardElement.dart';
 

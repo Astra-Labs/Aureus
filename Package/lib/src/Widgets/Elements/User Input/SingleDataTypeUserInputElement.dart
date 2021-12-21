@@ -17,24 +17,21 @@ class SingleDataTypeUserInputElement extends StatefulWidget {
 
 class _SingleDataTypeUserInputElementState
     extends State<SingleDataTypeUserInputElement> {
+  BoxDecoration userInputBacking = InputBackingDecoration().buildBacking();
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: size.universalPadding(),
+    return AspectRatio(
+      aspectRatio: 4 / 1,
       child: Container(
-          width: 250,
-          height: 60,
-          decoration: BoxDecoration(
-            border: foundation.universalBorder(),
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: foundation.ice(),
-          ),
+          decoration: userInputBacking,
           child: Center(
               child: Padding(
-            padding: const EdgeInsets.only(left: 5.0),
+            padding: size.universalPadding(),
             child: TextFormField(
-                style:
-                    foundation.heading2().copyWith(color: foundation.black()),
+                style: foundation
+                    .heading2()
+                    .copyWith(color: coloration.contrastColor()),
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,

@@ -11,14 +11,16 @@ class TimerElement extends StatefulWidget {
 class _TimerElementState extends State<TimerElement> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 245,
-        height: 245,
-        alignment: Alignment.center,
-        child: Text('00:00:00', style: foundation.heading1()),
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 1),
-          borderRadius: BorderRadius.all(Radius.elliptical(245, 245)),
-        ));
+    return AspectRatio(
+        aspectRatio: 1.0,
+        child: Container(
+            width: 245,
+            height: 245,
+            alignment: Alignment.center,
+            child: Text('00:00:00', style: foundation.heading1()),
+            decoration: ButtonBackingDecoration(
+                    variant: buttonDecorationVariants.circle,
+                    priority: decorationPriority.inactive)
+                .buildBacking()));
   }
 }

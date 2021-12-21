@@ -41,17 +41,12 @@ class _HelpCenterViewState extends State<HelpCenterView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.fromLTRB(
-            size.widthOf(weight: sizingWeight.w0),
-            size.heightOf(weight: sizingWeight.w1),
-            size.widthOf(weight: sizingWeight.w0),
-            size.heightOf(weight: sizingWeight.w0)),
-        width: size.widthOf(weight: sizingWeight.w10),
-        height: size.heightOf(weight: sizingWeight.w10),
-        decoration:
-            LayerBackingDecoration(priority: decorationPriority.standard)
-                as Decoration,
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: []));
+    LayoutBuilder viewLayout = LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

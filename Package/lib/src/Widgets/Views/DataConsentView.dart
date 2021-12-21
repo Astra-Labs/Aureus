@@ -4,10 +4,7 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class DataOptInView extends StatefulWidget {
-  final modeVariants viewMode;
-  final deviceVariants deviceType;
-
-  const DataOptInView({required this.viewMode, required this.deviceType});
+  const DataOptInView();
 
   @override
   _DataOptInViewState createState() => _DataOptInViewState();
@@ -16,6 +13,12 @@ class DataOptInView extends StatefulWidget {
 class _DataOptInViewState extends State<DataOptInView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    LayoutBuilder viewLayout = LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

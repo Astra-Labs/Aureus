@@ -4,10 +4,7 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class SignInView extends StatefulWidget {
-  final modeVariants viewMode;
-  final deviceVariants deviceType;
-
-  const SignInView({required this.viewMode, required this.deviceType});
+  const SignInView();
 
   @override
   _SignInViewState createState() => _SignInViewState();
@@ -16,6 +13,12 @@ class SignInView extends StatefulWidget {
 class _SignInViewState extends State<SignInView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    LayoutBuilder viewLayout = LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
+
+    return ContainerView(
+        decorationVariant: decorationPriority.important, builder: viewLayout);
   }
 }

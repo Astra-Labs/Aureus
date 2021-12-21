@@ -16,17 +16,17 @@ class _SliderElementState extends State<SliderElement> {
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
-          activeTrackColor: foundation.prodColor,
-          inactiveTrackColor: foundation.melt(),
+          activeTrackColor: coloration.contrastColor(),
+          inactiveTrackColor: coloration.inactiveColor(),
           trackShape: RoundedRectSliderTrackShape(),
           trackHeight: 3.0,
           thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
-          thumbColor: foundation.iron(),
-          overlayColor: foundation.melt(),
+          thumbColor: foundation.prodColor,
+          overlayColor: foundation.prodColor,
           overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
           tickMarkShape: RoundSliderTickMarkShape(),
-          activeTickMarkColor: foundation.melt(),
-          inactiveTickMarkColor: foundation.melt(),
+          activeTickMarkColor: coloration.contrastColor(),
+          inactiveTickMarkColor: coloration.contrastColor(),
           valueIndicatorShape: SliderComponentShape.noOverlay),
       child: Slider(
         value: slideValue,
