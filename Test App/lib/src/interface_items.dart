@@ -34,6 +34,24 @@ void fillerAction() {
   print('Action completed');
 }
 
+var testAlertControllerAction = AlertControllerAction(
+    actionName: 'Yee the haw',
+    actionSeverity: AlertControllerActionSeverity.confirm,
+    onSelection: () => {print('yee haw!')});
+
+var testAlertControllerAction2 = AlertControllerAction(
+    actionName: 'Haw the yee',
+    actionSeverity: AlertControllerActionSeverity.destruct,
+    onSelection: () => {print('haw yee!')});
+
+late AlertControllerObject testAlertControllerObject =
+    AlertControllerObject.singleAction(
+        onCancellation: () => {print('cancelled')},
+        alertTitle: 'Would you like to yee?',
+        alertBody: 'Haw. Haw Haw Haw Haw.',
+        actions: [testAlertControllerAction],
+        alertIcon: Icons.access_alarm);
+
 /* ELEMENTS */
 var badgeCard =
     BadgeCardElement(cardLabel: fillerTextCardName, cardIcon: fillerIcon1);
@@ -54,12 +72,12 @@ var multiInput = MultipleDataTypeUserInputElement(
     dataPlaceholder: fillerPlaceholder,
     dataTextType: TextInputType.name);
 
-var darkFullWidthButton = FullWidthButtonElement(
+var standardFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
     currentVariant: decorationPriority.standard,
     buttonAction: fillerAction);
 
-var lightFullWidthButton = FullWidthButtonElement(
+var importantFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
     currentVariant: decorationPriority.important,
     buttonAction: fillerAction);
@@ -73,7 +91,7 @@ var darkPrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.standard);
 
 var lightPrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
@@ -91,7 +109,7 @@ var darkSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.standard);
 
 var lightSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
@@ -103,12 +121,12 @@ var inactiveSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.inactive);
 
 var darkSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.standard);
 
 var lightSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
@@ -118,12 +136,12 @@ var lightSmolButton = SmolButtonElement(
 var inactiveSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.inactive);
 
 var darkStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.standard);
 
 var lightStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
@@ -133,7 +151,7 @@ var lightStandardButton = StandardButtonElement(
 var inactiveStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.inactive);
 
 /* COMPONENTS */
 
@@ -155,16 +173,6 @@ var lightSenderMessageBubble = MessageBubbleComponent(
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
 
-var darkReceiverMessageBubble = MessageBubbleComponent(
-    messageVariant: messagingVariants.receiver,
-    messageBody: fillerTextBody,
-    currentStatus: communicationStatus.delivered);
-
-var darkSenderMessageBubble = MessageBubbleComponent(
-    messageVariant: messagingVariants.sender,
-    messageBody: fillerTextBody,
-    currentStatus: communicationStatus.delivered);
-
 var notification = NotificationComponent(
     notificationSubCategory: fillerTextSubheader,
     notificationReceived: DateTime.now(),
@@ -174,19 +182,15 @@ var notification = NotificationComponent(
 
 var darkSearchBar = SearchBarComponent(onSearch: fillerAction);
 
-var lightSearchBar = SearchBarComponent(onSearch: fillerAction);
-
 var darkSendField = SendFieldComponent(onSend: fillerAction);
-
-var lightSendField = SendFieldComponent(onSend: fillerAction);
 
 /* VIEWS */
 
 /* Test Builder */
 LayoutBuilder landing1 =
     LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  var testController = CenteredAlertControllerComponent(
-      alertData: Playground().testAlertControllerObject);
+  var testController =
+      CenteredAlertControllerComponent(alertData: testAlertControllerObject);
   return testController;
 });
 
@@ -221,30 +225,21 @@ LayoutBuilder landing2 =
 var darkStandardContainerView = ContainerView(
     decorationVariant: decorationPriority.standard, builder: landing1);
 
-var darkImportantContainerView = ContainerView(
-    decorationVariant: decorationPriority.standard, builder: landing1);
-
 var lightStandardContainerView = ContainerView(
-    decorationVariant: decorationPriority.important, builder: landing1);
-
-var lightImportantContainerView = ContainerView(
     decorationVariant: decorationPriority.important, builder: landing1);
 
 /* MISC */
 
 //array of all elements available in aureus
 List<Widget> libElements = [
-  /*badgeCard,
-  glassCard,
+  badgeCard,
   pastelCard,
   standardCard,
   tabSubheader,
   divider,
-  timer, */
+  timer,
   singleInput,
   multiInput,
-  darkFullWidthButton,
-  lightFullWidthButton,
   inactiveFullWidthButton,
   darkPrimaryIconButton,
   lightPrimaryIconButton,
@@ -263,12 +258,8 @@ List<Widget> libElements = [
   badgeHorizontalCardCarousel,
   standardHorizontalCardCarousel,
   lightReceiverMessageBubble,
-  darkReceiverMessageBubble,
   lightSenderMessageBubble,
-  darkSenderMessageBubble,
   notification,
   darkSearchBar,
-  lightSearchBar,
-  darkSendField,
-  lightSendField
+  darkSendField
 ];
