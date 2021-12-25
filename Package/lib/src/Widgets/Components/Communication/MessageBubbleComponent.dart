@@ -50,12 +50,13 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
               child: SizedBox(
                   width: bodyTextSizing.width,
                   height: bodyTextSizing.height,
-                  child: BodyTwoText(widget.messageBody)))),
+                  child: BodyTwoText(widget.messageBody, bubblePriority)))),
       Container(
           alignment: Alignment.centerLeft,
           padding: size.universalPadding(),
           width: 300,
-          child: TagOneText('$widget.currentStatus'))
+          child:
+              TagOneText('$widget.currentStatus', decorationPriority.standard))
     ]);
   }
 }

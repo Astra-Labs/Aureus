@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 //where all text related items in aureus are initiated for testing
 
-Text text1 = HeadingOneText('Text goes here!');
-Text text2 = HeadingTwoText('Text goes here!');
-Text text3 = HeadingThreeText('Text goes here!');
-Text text4 = HeadingFourText('Text goes here!');
-Text text5 = SubheaderText('Text goes here!');
-Text text6 = BodyOneText('Text goes here!');
-Text text7 = BodyTwoText('Text goes here!');
-Text text8 = ButtonOneText('Text goes here!');
-Text text9 = ButtonTwoText('Text goes here!');
-Text text10 = TagOneText('Text goes here!');
-Text text11 = TagTwoText('Text goes here!');
+Text text1 = HeadingOneText('Text goes here!', decorationPriority.standard);
+Text text2 = HeadingTwoText('Text goes here!', decorationPriority.standard);
+Text text3 = HeadingThreeText('Text goes here!', decorationPriority.standard);
+Text text4 = HeadingFourText('Text goes here!', decorationPriority.standard);
+Text text5 = SubheaderText('Text goes here!', decorationPriority.standard);
+Text text6 = BodyOneText('Text goes here!', decorationPriority.standard);
+Text text7 = BodyTwoText('Text goes here!', decorationPriority.standard);
+Text text8 = ButtonOneText('Text goes here!', decorationPriority.standard);
+Text text9 = ButtonTwoText('Text goes here!', decorationPriority.standard);
+Text text10 = TagOneText('Text goes here!', decorationPriority.standard);
+Text text11 = TagTwoText('Text goes here!', decorationPriority.standard);
 
 List<Text> textTesting = [
   text1,

@@ -12,16 +12,11 @@ class PastelCardElement extends StatelessWidget {
     return Container(
       height: 192,
       width: 189,
-      decoration: BoxDecoration(
-        gradient: foundation.mediumGradient(),
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
-        ),
-        border: foundation.universalBorder(),
-      ),
+      decoration: CardBackingDecoration(priority: decorationPriority.important)
+          .buildBacking(),
       child: Padding(
         padding: const EdgeInsets.only(left: 13, top: 35),
-        child: BodyOneText(_cardLabel),
+        child: BodyOneText(_cardLabel, decorationPriority.important),
       ),
     );
   }

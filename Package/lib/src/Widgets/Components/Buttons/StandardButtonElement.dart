@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/gestures.dart';
 
 //A 80% width button that acts as a standard button for the UDS
 //Doc Link:
@@ -25,22 +26,23 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
             variant: buttonDecorationVariants.roundedRectangle,
             priority: widget.decorationVariant)
         .buildBacking();
-    bool isButtonEnabled =
-        widget.decorationVariant == decorationPriority.inactive ? true : false;
 
-    return ConstrainedBox(
-        constraints: BoxConstraints(
-            minWidth: 100, minHeight: 60, maxWidth: 600, maxHeight: 200),
+    //bool isButtonEnabled = widget.decorationVariant == decorationPriority.inactive ? true : false;
+
+    Size minimumButtonTextSize = Accessibility.textStringSize(
+        widthLimit: 300,
+        textInput: widget.buttonTitle,
+        textStyle: foundation.button2(),
+        textDirection: TextDirection.ltr,
+        query: MediaQuery.of(context));
+
+    return SizedBox(
+        width: minimumButtonTextSize.width * 3,
+        height: minimumButtonTextSize.height * 3,
         child: Container(
-            padding: size.universalPadding(),
             decoration: buttonDecoration,
-            child: Expanded(
-                child: TextButton(
-                    onPressed: isButtonEnabled ? widget.buttonAction : null,
-                    child: Text(widget.buttonTitle),
-                    style: TextButton.styleFrom(
-                        padding: size.universalPadding(),
-                        tapTargetSize: MaterialTapTargetSize.padded,
-                        enableFeedback: true)))));
+            child: Center(
+                child: ButtonTwoText(
+                    widget.buttonTitle, widget.decorationVariant))));
   }
 }

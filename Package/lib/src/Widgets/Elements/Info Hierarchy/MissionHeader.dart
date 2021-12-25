@@ -8,7 +8,7 @@ class MissionHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        HeadingOneText('How can I help?'),
+        HeadingOneText('How can I help?', decorationPriority.standard),
         Image.asset(''),
       ],
     );

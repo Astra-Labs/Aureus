@@ -12,9 +12,6 @@ class ExitBarComponent extends StatefulWidget {
 class _ExitBarComponentState extends State<ExitBarComponent> {
   @override
   Widget build(BuildContext context) {
-    LayerBackingDecoration barBacking =
-        LayerBackingDecoration(priority: decorationPriority.important);
-
     decorationPriority buttonVariant = decorationPriority.inactive;
 
     if (foundation.brightness == Brightness.dark) {
@@ -31,12 +28,15 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
             padding: size.universalPadding(),
             child:
                 Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              BodyTwoText('Tap the button to quickly exit.'),
+              BodyTwoText('Tap the button to quickly exit.',
+                  decorationPriority.important),
               SmolButtonElement(
                   decorationVariant: buttonVariant,
                   buttonTitle: 'Exit',
                   buttonAction: () => {print('pressed exit')})
             ])),
-        decoration: barBacking.buildBacking());
+        decoration:
+            LayerBackingDecoration(priority: decorationPriority.important)
+                .buildBacking());
   }
 }

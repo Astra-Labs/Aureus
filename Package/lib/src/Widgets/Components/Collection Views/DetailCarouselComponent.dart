@@ -26,12 +26,10 @@ class _DetailCarouselComponentState extends State<DetailCarouselComponent> {
             child: Padding(
               padding: size.universalPadding(),
               child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(6),
-                  ),
-                  border: foundation.pastelBorder(),
-                ),
+                decoration: TabItemBackingDecoration(
+                        variant: tabItemDecorationVariants.roundedRectangle,
+                        priority: decorationPriority.standard)
+                    .buildBacking(),
                 padding: EdgeInsets.symmetric(horizontal: 5),
                 child: Container(
                   alignment: Alignment.center,
@@ -45,7 +43,8 @@ class _DetailCarouselComponentState extends State<DetailCarouselComponent> {
                       SizedBox(
                         width: 5,
                       ),
-                      TagTwoText(widget.cardLabels[index]),
+                      TagTwoText(widget.cardLabels[index],
+                          decorationPriority.standard),
                     ],
                   ),
                 ),

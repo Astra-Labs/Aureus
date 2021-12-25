@@ -31,7 +31,7 @@ class BadgeCardElement extends StatelessWidget {
                   badgePriority: decorationPriority.standard),
               Padding(
                   padding: const EdgeInsets.only(bottom: 13),
-                  child: BodyOneText(cardLabel)),
+                  child: BodyOneText(cardLabel, decorationPriority.standard)),
             ],
           ),
         ),

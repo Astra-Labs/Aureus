@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/gestures.dart';
 
 //A small, rounded tab button
 //Doc Link:
@@ -22,25 +23,31 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
   Widget build(BuildContext context) {
     //variables that change how the variants are displayed in build time
     bool isButtonEnabled =
-        widget.decorationVariant == decorationPriority.inactive ? true : false;
+        (widget.decorationVariant == decorationPriority.inactive
+            ? true
+            : false);
 
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedPill,
             priority: widget.decorationVariant)
         .buildBacking();
 
-    return ConstrainedBox(
-        constraints: BoxConstraints(
-            minWidth: 60, minHeight: 40, maxWidth: 300, maxHeight: 70),
+    Size minimumButtonTextSize = Accessibility.textStringSize(
+        widthLimit: 300,
+        textInput: widget.buttonTitle,
+        textStyle: foundation.tag1(),
+        textDirection: TextDirection.ltr,
+        query: MediaQuery.of(context));
+
+    print('size of smol button element is ${minimumButtonTextSize}');
+
+    return SizedBox(
+        width: minimumButtonTextSize.width * 2,
+        height: minimumButtonTextSize.height * 2,
         child: Container(
-            padding: size.universalPadding(),
             decoration: buttonDecoration,
-            child: TextButton(
-                onPressed: isButtonEnabled ? widget.buttonAction : null,
-                child: Text(widget.buttonTitle),
-                style: TextButton.styleFrom(
-                    padding: EdgeInsets.all(10),
-                    tapTargetSize: MaterialTapTargetSize.padded,
-                    enableFeedback: true))));
+            child: Center(
+                child:
+                    TagOneText(widget.buttonTitle, widget.decorationVariant))));
   }
 }

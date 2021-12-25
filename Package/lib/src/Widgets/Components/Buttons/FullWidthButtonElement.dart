@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/gestures.dart';
 
 //A full width button that acts as the main CTA
 //Doc Link:
@@ -25,20 +26,23 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
             variant: buttonDecorationVariants.edgedRectangle,
             priority: widget.currentVariant)
         .buildBacking();
-    bool isButtonEnabled =
-        widget.currentVariant == decorationPriority.inactive ? true : false;
 
-    return Container(
-        alignment: Alignment.bottomCenter,
-        padding: size.universalPadding(),
-        decoration: buttonDecoration,
-        width: MediaQuery.of(context).size.width,
-        height: (MediaQuery.of(context).size.height / 7),
-        child: Expanded(
-            child: TextButton(
-                onPressed: isButtonEnabled ? widget.buttonAction : null,
-                child: Text(widget.buttonTitle),
-                style: TextButton.styleFrom(
-                    padding: size.universalPadding(), enableFeedback: true))));
+    //bool isButtonEnabled = widget.currentVariant == decorationPriority.inactive ? true : false;
+
+    Size minimumButtonTextSize = Accessibility.textStringSize(
+        widthLimit: size.widthOf(weight: sizingWeight.w5),
+        textInput: widget.buttonTitle,
+        textStyle: foundation.button1(),
+        textDirection: TextDirection.ltr,
+        query: MediaQuery.of(context));
+
+    return SizedBox(
+        width: size.widthOf(weight: sizingWeight.w10),
+        height: minimumButtonTextSize.height * 5,
+        child: Container(
+            decoration: buttonDecoration,
+            child: Center(
+                child:
+                    ButtonOneText(widget.buttonTitle, widget.currentVariant))));
   }
 }

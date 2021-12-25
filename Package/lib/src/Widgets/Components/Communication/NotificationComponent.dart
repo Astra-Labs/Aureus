@@ -26,11 +26,12 @@ class _NotificationComponentState extends State<NotificationComponent> {
   Widget build(BuildContext context) {
     //variables that determine how the notification will be displayed
 
-    BoxDecoration boxDecoration = LayerBackingDecoration(
-            priority: widget.hasNotificationBeenRead
-                ? decorationPriority.standard
-                : decorationPriority.important)
-        .buildBacking();
+    decorationPriority notificationPriority = widget.hasNotificationBeenRead
+        ? decorationPriority.standard
+        : decorationPriority.important;
+
+    BoxDecoration boxDecoration =
+        LayerBackingDecoration(priority: notificationPriority).buildBacking();
     BoxDecoration readIndicatorDecoration = widget.hasNotificationBeenRead
         ? LayerBackingDecoration(priority: decorationPriority.important)
             .buildBacking()
@@ -46,13 +47,13 @@ class _NotificationComponentState extends State<NotificationComponent> {
           //first row, contains subcategory and time stamp
           Row(
             children: [
-              TagOneText(widget.notificationSubCategory),
-              TagOneText('$widget.notificationReceived')
+              TagOneText(widget.notificationSubCategory, notificationPriority),
+              TagOneText('$widget.notificationReceived', notificationPriority)
             ],
           ),
           //second row, contains subcategory header and read indicator
           Row(children: [
-            HeadingTwoText(widget.notificationHeader),
+            HeadingTwoText(widget.notificationHeader, notificationPriority),
             Container(
                 width: 10,
                 height: 10,
@@ -60,7 +61,9 @@ class _NotificationComponentState extends State<NotificationComponent> {
                 decoration: readIndicatorDecoration)
           ]),
           //third row, body text
-          Row(children: [BodyTwoText(widget.notificationBody)])
+          Row(children: [
+            BodyTwoText(widget.notificationBody, notificationPriority)
+          ])
         ])));
   }
 }

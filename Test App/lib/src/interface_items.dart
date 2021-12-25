@@ -1,6 +1,7 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/src/playground.dart';
 
 //where all items in aureus are initiated for testing
 
@@ -69,37 +70,37 @@ var inactiveFullWidthButton = FullWidthButtonElement(
     buttonAction: fillerAction);
 
 var darkPrimaryIconButton = PrimaryIconButtonElement(
-    buttonIcon: Icon(fillerIcon1, color: foundation.white()),
+    buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var lightPrimaryIconButton = PrimaryIconButtonElement(
-    buttonIcon: Icon(fillerIcon1, color: foundation.black()),
+    buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var inactivePrimaryIconButton = PrimaryIconButtonElement(
-    buttonIcon: Icon(fillerIcon1, color: foundation.steel()),
+    buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var darkSecondaryIconButton = SecondaryIconButtonElement(
-    buttonIcon: Icon(fillerIcon1, color: foundation.white()),
+    buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var lightSecondaryIconButton = SecondaryIconButtonElement(
-    buttonIcon: Icon(fillerIcon1, color: foundation.black()),
+    buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var inactiveSecondaryIconButton = SecondaryIconButtonElement(
-    buttonIcon: Icon(fillerIcon1, color: foundation.steel()),
+    buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
@@ -184,18 +185,8 @@ var lightSendField = SendFieldComponent(onSend: fillerAction);
 /* Test Builder */
 LayoutBuilder landing1 =
     LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  var testAction = AlertControllerAction(
-      actionName: 'Yee the haw',
-      actionSeverity: AlertControllerActionSeverity.destruct,
-      onSelection: () => {print('yee haw!')});
-
-  var testObject = AlertControllerObject.singleAction(
-      onCancellation: () => {print('cancelled')},
-      alertTitle: 'Would you like to yee?',
-      alertBody: 'Haw. Haw Haw Haw Haw.',
-      actions: [testAction]);
-
-  return CenteredAlertControllerComponent(alertData: testObject);
+  var testController = Playground().centeredAlertController();
+  return testController;
 });
 
 LayoutBuilder landing2 =

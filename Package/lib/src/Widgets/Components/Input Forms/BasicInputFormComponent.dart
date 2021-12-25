@@ -83,7 +83,8 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
         children: [
           Padding(
               padding: size.containerPadding(),
-              child: HeadingThreeText(widget.inputFormName)),
+              child: HeadingThreeText(
+                  widget.inputFormName, decorationPriority.standard)),
           Padding(padding: size.containerPadding(), child: inputList)
         ]);
   }

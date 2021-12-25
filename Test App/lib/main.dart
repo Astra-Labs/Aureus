@@ -39,10 +39,20 @@ class MyApp extends StatelessWidget {
         lightFluidImage: Image.asset('assets/Light-Mesh.png'),
         darkFluidImage: Image.asset('assets/Dark-Mesh.png'));
 
-    var testingAlertController = Playground().centeredAlertController();
+    print('platform brightness is ${foundation.brightness}');
 
-    print(foundation.brightness);
-    return MaterialApp(home: testingAlertController);
+    Color backgroundColor = foundation.lavender();
+
+    if (foundation.brightness == Brightness.dark) {
+      backgroundColor = foundation.black();
+    } else if (foundation.brightness == Brightness.light) {
+      backgroundColor = foundation.white();
+    }
+
+    //var testingAlertController = Playground().centeredAlertController();
+    return MaterialApp(
+        home: MyHomePage(),
+        theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
 
@@ -52,10 +62,37 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var testingAlertController = Playground().centeredAlertController();
+  var testAlertController = Playground().centeredAlertController();
+
+  var testButton1 = StandardButtonElement(
+      decorationVariant: decorationPriority.inactive,
+      buttonTitle: 'Standard Button',
+      buttonAction: fillerAction);
+
+  var testButton2 = FullWidthButtonElement(
+      buttonTitle: 'Full Button',
+      currentVariant: decorationPriority.inactive,
+      buttonAction: fillerAction);
+
+  var testButton3 = SmolButtonElement(
+      decorationVariant: decorationPriority.inactive,
+      buttonTitle: 'Smol Button',
+      buttonAction: fillerAction);
+
+  var testButton4 = PrimaryIconButtonElement(
+      decorationVariant: decorationPriority.inactive,
+      buttonIcon: Icons.add,
+      buttonTooltip: 'Add button!',
+      buttonAction: fillerAction);
+
+  var testButton5 = SecondaryIconButtonElement(
+      decorationVariant: decorationPriority.inactive,
+      buttonIcon: Icons.add,
+      buttonTooltip: 'Add button!',
+      buttonAction: fillerAction);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: testingAlertController);
+    return Scaffold(body: Center(child: landing1));
   }
 }

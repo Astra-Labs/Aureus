@@ -21,7 +21,6 @@ class Accessibility {
     //creates variable that contains MediaQuery information that will be used to return proper sizing
     TextPainter textPainter = TextPainter(
         text: TextSpan(text: textInput, style: textStyle),
-        maxLines: 1,
         textScaleFactor: query.textScaleFactor,
         textDirection: textDirection)
       ..layout(maxWidth: widthLimit);
@@ -40,27 +39,17 @@ A class that takes variables into consideration to properly color the text of di
 class Coloration {
   //the color returned for all general text in Aureus.
 
-  Color decorationColor(decorationPriority decorationVariant,
-      {priority: decorationPriority}) {
-    print('coloration for decoration color! brightness is');
-    print(foundation.brightness);
-    Color priorityColor = foundation.black();
-
-    switch (priority) {
+  Color decorationColor({required decorationPriority decorationVariant}) {
+    switch (decorationVariant) {
       case decorationPriority.important:
-        priorityColor = sameColor();
-        break;
+        return sameColor();
 
       case decorationPriority.inactive:
-        priorityColor = inactiveColor();
-        break;
+        return contrastColor().withOpacity(0.5);
 
       case decorationPriority.standard:
-        priorityColor = contrastColor();
-        break;
+        return contrastColor();
     }
-
-    return priorityColor;
   }
 
   Color contrastColor() {
@@ -91,14 +80,12 @@ class Coloration {
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
   Color inactiveColor() {
-    print('coloration for inactive! brightness is');
-    print(foundation.brightness);
     if (foundation.brightness == Brightness.light) {
-      return foundation.iron();
+      return foundation.frost();
     } else if (foundation.brightness == Brightness.dark) {
-      return foundation.steel();
+      return foundation.carbon().withOpacity(0.5);
     }
-    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+
     return foundation.steel();
   }
 }

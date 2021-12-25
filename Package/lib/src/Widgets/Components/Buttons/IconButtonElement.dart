@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/gestures.dart';
 
 //A small, circular button that uses an icon to communicate its' purpose
 //Doc Link:
@@ -6,7 +7,7 @@ import 'package:aureus/aureus.dart';
 //big circular icon buttons that are greater than 70x70 and are intended to be the main action of the page (e.g: add, message, etc).
 class PrimaryIconButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
-  final Icon buttonIcon;
+  final IconData buttonIcon;
   final String buttonTooltip;
   final VoidCallback buttonAction;
 
@@ -31,26 +32,26 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
             priority: widget.decorationVariant)
         .buildBacking();
 
-    return Container(
-        alignment: Alignment.center,
-        padding: size.universalPadding(),
-        decoration: buttonBacking,
+    return SizedBox(
         width: 80.0,
         height: 80.0,
-        child: Expanded(
-            child: IconButton(
-                icon: widget.buttonIcon,
-                iconSize: 30,
-                color: coloration.decorationColor(widget.decorationVariant),
-                tooltip: widget.buttonTooltip,
-                onPressed: isButtonEnabled ? widget.buttonAction : null)));
+        child: Container(
+          decoration: buttonBacking,
+          child: Center(
+            child: Icon(widget.buttonIcon,
+                color: coloration.decorationColor(
+                    decorationVariant: widget.decorationVariant),
+                semanticLabel: widget.buttonTooltip,
+                size: 60.0),
+          ),
+        ));
   }
 }
 
 //tiny babey icon buttons that are 60x60 or less.
 class SecondaryIconButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
-  final Icon buttonIcon;
+  final IconData buttonIcon;
   final String buttonTooltip;
   final VoidCallback buttonAction;
 
@@ -71,23 +72,22 @@ class _SecondaryIconButtonElementState
   Widget build(BuildContext context) {
     bool isButtonEnabled =
         widget.decorationVariant == decorationPriority.inactive ? true : false;
-    BoxDecoration buttonBacking = ButtonBackingDecoration(
-            variant: buttonDecorationVariants.circle,
-            priority: widget.decorationVariant)
-        .buildBacking();
 
-    return Container(
-        alignment: Alignment.center,
-        padding: size.universalPadding(),
-        decoration: buttonBacking,
-        width: 40.0,
-        height: 40.0,
-        child: Expanded(
-            child: IconButton(
-                icon: widget.buttonIcon,
-                iconSize: 30,
-                color: coloration.decorationColor(widget.decorationVariant),
-                tooltip: widget.buttonTooltip,
-                onPressed: isButtonEnabled ? widget.buttonAction : null)));
+    var buttonBackingDecoration = ButtonBackingDecoration(
+        variant: buttonDecorationVariants.circle,
+        priority: widget.decorationVariant);
+
+    return SizedBox(
+      width: 40.0,
+      height: 40.0,
+      child: Container(
+        decoration: buttonBackingDecoration.buildBacking(),
+        child: Icon(widget.buttonIcon,
+            color: coloration.decorationColor(
+                decorationVariant: widget.decorationVariant),
+            semanticLabel: widget.buttonTooltip,
+            size: 30.0),
+      ),
+    );
   }
 }

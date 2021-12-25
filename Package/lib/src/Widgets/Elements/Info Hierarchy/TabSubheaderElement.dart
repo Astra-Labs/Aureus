@@ -11,14 +11,14 @@ class TabSubheaderElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: LayerBackingDecoration(priority: decorationPriority.standard)
+      decoration: LayerBackingDecoration(priority: decorationPriority.important)
           .buildBacking(),
       padding: size.universalPadding(),
       height: size.heightOf(weight: sizingWeight.w2),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          TagOneText('$title'),
+          TagOneText('$title', decorationPriority.important),
         ],
       ),
     );

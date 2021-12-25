@@ -65,68 +65,6 @@ Decoration buttonBack12 = ButtonBackingDecoration(
         priority: decorationPriority.important)
     .buildBacking();
 
-//DARK MODE BUTTONS
-
-Decoration buttonBack13 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.circle,
-        priority: decorationPriority.inactive)
-    .buildBacking();
-
-Decoration buttonBack14 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.circle,
-        priority: decorationPriority.standard)
-    .buildBacking();
-
-Decoration buttonBack15 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.circle,
-        priority: decorationPriority.important)
-    .buildBacking();
-
-Decoration buttonBack16 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.edgedRectangle,
-        priority: decorationPriority.inactive)
-    .buildBacking();
-
-Decoration buttonBack17 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.edgedRectangle,
-        priority: decorationPriority.standard)
-    .buildBacking();
-
-Decoration buttonBack18 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.edgedRectangle,
-        priority: decorationPriority.important)
-    .buildBacking();
-
-Decoration buttonBack19 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.roundedPill,
-        priority: decorationPriority.inactive)
-    .buildBacking();
-
-Decoration buttonBack20 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.roundedPill,
-        priority: decorationPriority.standard)
-    .buildBacking();
-
-Decoration buttonBack21 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.roundedPill,
-        priority: decorationPriority.important)
-    .buildBacking();
-
-Decoration buttonBack22 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.roundedRectangle,
-        priority: decorationPriority.inactive)
-    .buildBacking();
-
-Decoration buttonBack23 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.roundedRectangle,
-        priority: decorationPriority.standard)
-    .buildBacking();
-
-Decoration buttonBack24 = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.roundedRectangle,
-        priority: decorationPriority.important)
-    .buildBacking();
-
 /*  ---------------------------------- LAYER BACKING  ---------------------------------- */
 
 Decoration layerBack1 =
@@ -138,20 +76,6 @@ Decoration layerBack2 =
         .buildBacking();
 
 Decoration layerBack3 =
-    LayerBackingDecoration(priority: decorationPriority.important)
-        .buildBacking();
-
-// DARK MODE LAYERS
-
-Decoration layerBack4 =
-    LayerBackingDecoration(priority: decorationPriority.standard)
-        .buildBacking();
-
-Decoration layerBack5 =
-    LayerBackingDecoration(priority: decorationPriority.inactive)
-        .buildBacking();
-
-Decoration layerBack6 =
     LayerBackingDecoration(priority: decorationPriority.important)
         .buildBacking();
 
@@ -177,35 +101,9 @@ Decoration cardBack6 =
     CardBackingDecoration(priority: decorationPriority.important)
         .buildBacking();
 
-// DARK MODE
-
-Decoration cardBack7 =
-    CardBackingDecoration(priority: decorationPriority.inactive).buildBacking();
-
-Decoration cardBack8 =
-    CardBackingDecoration(priority: decorationPriority.standard).buildBacking();
-
-Decoration cardBack9 =
-    CardBackingDecoration(priority: decorationPriority.important)
-        .buildBacking();
-
-Decoration cardBack10 =
-    CardBackingDecoration(priority: decorationPriority.inactive).buildBacking();
-
-Decoration cardBack11 =
-    CardBackingDecoration(priority: decorationPriority.standard).buildBacking();
-
-Decoration cardBack12 =
-    CardBackingDecoration(priority: decorationPriority.important)
-        .buildBacking();
-
 /*  ---------------------------------- INPUT BACKING  ---------------------------------- */
 
 Decoration inputBack1 = InputBackingDecoration().buildBacking();
-
-//DARK MODE
-
-Decoration inputBack2 = InputBackingDecoration().buildBacking();
 
 /*  ---------------------------------- TAB BACKING  ---------------------------------- */
 
@@ -239,38 +137,6 @@ Decoration tabBack6 = TabItemBackingDecoration(
         priority: decorationPriority.important)
     .buildBacking();
 
-//DARK MODE
-
-Decoration tabBack7 = TabItemBackingDecoration(
-        variant: tabItemDecorationVariants.circle,
-        priority: decorationPriority.inactive)
-    .buildBacking();
-
-Decoration tabBack8 = TabItemBackingDecoration(
-        variant: tabItemDecorationVariants.circle,
-        priority: decorationPriority.standard)
-    .buildBacking();
-
-Decoration tabBack9 = TabItemBackingDecoration(
-        variant: tabItemDecorationVariants.circle,
-        priority: decorationPriority.important)
-    .buildBacking();
-
-Decoration tabBack10 = TabItemBackingDecoration(
-        variant: tabItemDecorationVariants.roundedRectangle,
-        priority: decorationPriority.inactive)
-    .buildBacking();
-
-Decoration tabBack11 = TabItemBackingDecoration(
-        variant: tabItemDecorationVariants.roundedRectangle,
-        priority: decorationPriority.standard)
-    .buildBacking();
-
-Decoration tabBack12 = TabItemBackingDecoration(
-        variant: tabItemDecorationVariants.roundedRectangle,
-        priority: decorationPriority.important)
-    .buildBacking();
-
 List<Decoration> buttonBackings = [
   buttonBack1,
   buttonBack2,
@@ -283,29 +149,10 @@ List<Decoration> buttonBackings = [
   buttonBack9,
   buttonBack10,
   buttonBack11,
-  buttonBack12,
-  buttonBack13,
-  buttonBack14,
-  buttonBack15,
-  buttonBack16,
-  buttonBack17,
-  buttonBack18,
-  buttonBack19,
-  buttonBack20,
-  buttonBack21,
-  buttonBack22,
-  buttonBack23,
-  buttonBack24
+  buttonBack12
 ];
 
-List<Decoration> layerBackings = [
-  layerBack1,
-  layerBack2,
-  layerBack3,
-  layerBack4,
-  layerBack5,
-  layerBack6
-];
+List<Decoration> layerBackings = [layerBack1, layerBack2, layerBack3];
 
 List<Decoration> cardBackings = [
   cardBack1,
@@ -313,29 +160,17 @@ List<Decoration> cardBackings = [
   cardBack3,
   cardBack4,
   cardBack5,
-  cardBack6,
-  cardBack7,
-  cardBack8,
-  cardBack9,
-  cardBack10,
-  cardBack11,
-  cardBack12
+  cardBack6
 ];
 
-List<Decoration> inputBackings = [inputBack1, inputBack2];
+List<Decoration> inputBackings = [inputBack1];
 List<Decoration> tabBackings = [
   tabBack1,
   tabBack2,
   tabBack3,
   tabBack4,
   tabBack5,
-  tabBack6,
-  tabBack7,
-  tabBack8,
-  tabBack9,
-  tabBack10,
-  tabBack11,
-  tabBack12
+  tabBack6
 ];
 
 //24 options
@@ -352,7 +187,8 @@ var buttonBackingTest = ListView.separated(
               width: 350,
               height: 50,
               decoration: buttonBackings[index],
-              child: Center(child: Text('$index', style: foundation.body1())))),
+              child: Center(
+                  child: BodyOneText('$index', decorationPriority.standard)))),
     );
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),
@@ -372,7 +208,8 @@ var layerBackingTest = ListView.separated(
               width: 350,
               height: 50,
               decoration: layerBackings[index],
-              child: Center(child: Text('$index', style: foundation.body1())))),
+              child: Center(
+                  child: BodyOneText('$index', decorationPriority.standard)))),
     );
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),
@@ -392,7 +229,8 @@ var cardBackingTest = ListView.separated(
               width: 350,
               height: 50,
               decoration: cardBackings[index],
-              child: Center(child: Text('$index', style: foundation.body1())))),
+              child: Center(
+                  child: BodyOneText('$index', decorationPriority.standard)))),
     );
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),
@@ -412,7 +250,8 @@ var inputBackingTest = ListView.separated(
               width: 350,
               height: 50,
               decoration: inputBackings[index],
-              child: Center(child: Text('$index', style: foundation.body1())))),
+              child: Center(
+                  child: BodyOneText('$index', decorationPriority.standard)))),
     );
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),
@@ -432,7 +271,8 @@ ListView tabBackingTest = ListView.separated(
               width: 350,
               height: 50,
               decoration: tabBackings[index],
-              child: Center(child: Text('$index', style: foundation.body1())))),
+              child: Center(
+                  child: BodyOneText('$index', decorationPriority.standard)))),
     );
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),

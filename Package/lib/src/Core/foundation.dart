@@ -135,11 +135,11 @@ class Aureus {
   }
 
   Color lightModeFill() {
-    return black().withOpacity(0.10);
+    return black().withOpacity(0.15);
   }
 
   Color darkModeFill() {
-    return white().withOpacity(0.10);
+    return white().withOpacity(0.15);
   }
 
   BoxShadow lightShadow() {
@@ -176,7 +176,7 @@ class Aureus {
   }
 
   Border darkModeBorder() {
-    return Border.all(color: white().withOpacity(0.30), width: 1);
+    return Border.all(color: white().withOpacity(0.20), width: 1);
   }
 
 // Global Text Styles
@@ -220,28 +220,22 @@ class Aureus {
 
   TextStyle button1() {
     return GoogleFonts.exo(
-        fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.0);
+        fontSize: 17, fontWeight: FontWeight.w600, letterSpacing: 1.0);
   }
 
   TextStyle button2() {
     return GoogleFonts.exo(
-        fontSize: 17, fontWeight: FontWeight.w400, letterSpacing: 1.0);
+        fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
   }
 
-  TextStyle tag1({color: Color}) {
+  TextStyle tag1() {
     return GoogleFonts.exo(
-        color: color,
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 1.5);
+        fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.5);
   }
 
-  TextStyle tag2({color: Color}) {
+  TextStyle tag2() {
     return GoogleFonts.exo(
-        color: color,
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 1.0);
+        fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.0);
   }
 }
 
@@ -275,85 +269,91 @@ final titleCase = TitleCase();
 final coloration = Coloration();
 
 class HeadingOneText extends Text {
-  HeadingOneText(String data)
+  HeadingOneText(String data, decorationPriority textColor)
       : super(TitleCase.convertToTitleCase(data),
-            style: foundation
-                .heading1()
-                .copyWith(color: coloration.contrastColor()));
+            style: foundation.heading1().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class HeadingTwoText extends Text {
-  HeadingTwoText(String data)
+  HeadingTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation
-                .heading2()
-                .copyWith(color: coloration.contrastColor()));
+            style: foundation.heading2().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class HeadingThreeText extends Text {
-  HeadingThreeText(String data)
+  HeadingThreeText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation
-                .heading3()
-                .copyWith(color: coloration.contrastColor()));
+            style: foundation.heading3().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class HeadingFourText extends Text {
-  HeadingFourText(String data)
+  HeadingFourText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation
-                .heading4()
-                .copyWith(color: coloration.contrastColor()));
+            style: foundation.heading4().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class SubheaderText extends Text {
-  SubheaderText(String data)
+  SubheaderText(String data, decorationPriority textColor)
       : super(TitleCase.convertToTitleCase(data),
-            style: foundation
-                .subheading()
-                .copyWith(color: coloration.contrastColor()));
+            style: foundation.subheading().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class BodyOneText extends Text {
-  BodyOneText(String data)
+  BodyOneText(String data, decorationPriority textColor)
       : super(data,
-            style:
-                foundation.body1().copyWith(color: coloration.contrastColor()));
+            style: foundation.body1().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class BodyTwoText extends Text {
-  BodyTwoText(String data)
+  BodyTwoText(String data, decorationPriority textColor)
       : super(data,
-            style:
-                foundation.body2().copyWith(color: coloration.contrastColor()));
+            style: foundation.body2().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class ButtonOneText extends Text {
-  ButtonOneText(String data)
+  ButtonOneText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation
-                .button1()
-                .copyWith(color: coloration.contrastColor()));
+            style: foundation.button1().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class ButtonTwoText extends Text {
-  ButtonTwoText(String data)
+  ButtonTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation
-                .button2()
-                .copyWith(color: coloration.contrastColor()));
+            style: foundation.button2().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class TagOneText extends Text {
-  TagOneText(String data)
+  TagOneText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.tag1(color: coloration.contrastColor()));
+            style: foundation.tag1().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 class TagTwoText extends Text {
-  TagTwoText(String data)
+  TagTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.tag2(color: coloration.contrastColor()));
+            style: foundation.tag2().copyWith(
+                color:
+                    coloration.decorationColor(decorationVariant: textColor)));
 }
 
 /* ------------------ SIZING -------------------- */
@@ -564,35 +564,35 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
     if (variant == buttonDecorationVariants.circle) {
       print('item is circle');
       decorationCornerRadius = BorderRadius.circular(100);
-    } else if (variant == buttonDecorationVariants.edgedRectangle) {
-      //decorationShape = BoxShape.rectangle;
     } else if (variant == buttonDecorationVariants.roundedPill) {
-      //decorationShape = BoxShape.rectangle;
       decorationCornerRadius = BorderRadius.circular(30.0);
     } else if (variant == buttonDecorationVariants.roundedRectangle) {
-      //decorationShape = BoxShape.rectangle;
       decorationCornerRadius = BorderRadius.circular(7.0);
     }
 
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-      decorationFill = foundation.steel().withOpacity(0.5);
+      decorationFill = coloration.inactiveColor();
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
       if (foundation.brightness == Brightness.light) {
-        decorationGradient = foundation.lightGradient();
+        print('is light!');
+        decorationGradient = foundation.darkGradient();
         decorationBorder = foundation.universalBorder();
       } else if (foundation.brightness == Brightness.dark) {
-        decorationGradient = foundation.darkGradient();
+        print('is dark!');
+        decorationGradient = foundation.lightGradient();
         decorationBorder = foundation.universalBorder();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       if (foundation.brightness == Brightness.light) {
+        print('is light!');
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
       } else if (foundation.brightness == Brightness.dark) {
+        print('is dark!');
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }
@@ -603,39 +603,29 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
 // 🛑
 class LayerBackingDecoration extends BaseBackingDecoration {
   LayerBackingDecoration({required priority}) : super(priority: priority) {
-    //defining variants for the specific item
-
+    decorationCornerRadius = BorderRadius.circular(10.0);
     //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
+    if (priority == decorationPriority.inactive ||
+        priority == decorationPriority.standard) {
       //defining variants for the specific mode
 
-      decorationCornerRadius = BorderRadius.circular(10.0);
-
+      //layers do not show inactive colors because layers aren't interactable by definition, so one statement covers standard & inactive.
       if (foundation.brightness == Brightness.light) {
+        print('is light layer!');
         decorationFill = foundation.lightModeFill();
       } else if (foundation.brightness == Brightness.dark) {
+        print('is dark layer!');
         decorationFill = foundation.darkModeFill();
-      }
-    } else if (priority == decorationPriority.standard) {
-      //defining variants for the specific mode
-      decorationCornerRadius = BorderRadius.circular(20.0);
-
-      if (foundation.brightness == Brightness.light) {
-        decorationFill = foundation.lightModeFill();
-        decorationBorder = foundation.lightModeBorder();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationFill = foundation.darkModeFill();
-        decorationBorder = foundation.darkModeBorder();
       }
     } else if (priority == decorationPriority.important) {
-      decorationCornerRadius = BorderRadius.circular(20.0);
-
       if (foundation.brightness == Brightness.light) {
-        decorationGradient = foundation.lightGradient();
+        print('is light layer!');
+        decorationGradient = foundation.darkGradient();
         decorationBorder = foundation.universalBorder();
         decorationHaze = foundation.darkShadow();
       } else if (foundation.brightness == Brightness.dark) {
-        decorationGradient = foundation.darkGradient();
+        print('is dark layer!');
+        decorationGradient = foundation.lightGradient();
         decorationBorder = foundation.universalBorder();
         decorationHaze = foundation.pastelShadow();
       }
@@ -649,17 +639,19 @@ class CardBackingDecoration extends BaseBackingDecoration {
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-
+      print('is inactive card');
       decorationCornerRadius = BorderRadius.circular(10.0);
-      decorationFill = foundation.steel().withOpacity(0.3);
+      decorationFill = coloration.inactiveColor();
     } else if (priority == decorationPriority.important) {
       decorationCornerRadius = BorderRadius.circular(20.0);
       decorationBorder = foundation.universalBorder();
 
       if (foundation.brightness == Brightness.light) {
+        print('is light and important card!');
         decorationGradient = foundation.darkGradient();
         decorationHaze = foundation.darkShadow();
       } else if (foundation.brightness == Brightness.dark) {
+        print('is dark and important card!');
         decorationGradient = foundation.lightGradient();
         decorationHaze = foundation.pastelShadow();
       }
@@ -667,9 +659,11 @@ class CardBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
       decorationCornerRadius = BorderRadius.circular(20.0);
       if (foundation.brightness == Brightness.light) {
+        print('is light and standard card!');
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
       } else if (foundation.brightness == Brightness.dark) {
+        print('is dark and standard card!');
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }
@@ -708,12 +702,7 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
 
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
-      //defining variants for the specific mode
-      if (foundation.brightness == Brightness.light) {
-        decorationFill = foundation.lightModeFill();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationFill = foundation.darkModeFill();
-      }
+      decorationFill = coloration.inactiveColor();
     }
 
     if (priority == decorationPriority.standard) {

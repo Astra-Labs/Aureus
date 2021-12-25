@@ -21,7 +21,7 @@ class StandardCardElement extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 14, top: 20),
-        child: BodyOneText(_cardLabel),
+        child: BodyOneText(_cardLabel, decorationPriority.standard),
       ),
     );
   }
