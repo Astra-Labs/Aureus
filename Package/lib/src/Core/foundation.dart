@@ -139,7 +139,7 @@ class Aureus {
   }
 
   Color lightModeFill() {
-    return black().withOpacity(0.15);
+    return black().withOpacity(0.10);
   }
 
   Color darkModeFill() {
@@ -192,8 +192,8 @@ class Aureus {
   TextStyle heading2() {
     return GoogleFonts.exo(
       fontSize: 21,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 1.0,
+      fontWeight: FontWeight.w300,
+      letterSpacing: 1.2,
     );
   }
 

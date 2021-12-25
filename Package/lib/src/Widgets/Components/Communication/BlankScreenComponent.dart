@@ -36,8 +36,8 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
               children: [
                 IconBadge(
                     badgeIcon: widget.componentIcon,
-                    badgePriority: decorationPriority.standard),
-                HeadingThreeText(widget.cardTitle, decorationPriority.standard),
+                    badgePriority: decorationPriority.important),
+                HeadingTwoText(widget.cardTitle, decorationPriority.standard),
                 BodyOneText(widget.cardBody, decorationPriority.standard),
               ]),
         ));

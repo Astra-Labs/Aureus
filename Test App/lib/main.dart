@@ -99,6 +99,12 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
               //write item to be tested here.
+              return BlankScreenComponent(
+                componentIcon: Icons.add_a_photo,
+                cardTitle: 'No photos.',
+                cardBody:
+                    'Please press the button at the bottom right to add a photo.',
+              );
             })));
   }
 }
