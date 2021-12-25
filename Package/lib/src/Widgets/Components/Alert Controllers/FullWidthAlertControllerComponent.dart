@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:aureus/src/Objects/Components/Icons.dart';
 
 //A full width centered alert controller that sticks to the bottom of the screen
 //Doc Link:

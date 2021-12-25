@@ -22,7 +22,7 @@ class _ContainerViewState extends State<ContainerView> {
     const bool hasExitBar = false;
 
     BoxDecoration containerBacking() {
-      if (ThemeMode.system == ThemeMode.light) {
+      if (foundation.brightness == Brightness.light) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns light fluid
 
@@ -36,7 +36,7 @@ class _ContainerViewState extends State<ContainerView> {
           //returns light blur
           return BoxDecoration(gradient: foundation.lightGradient());
         }
-      } else if (ThemeMode.system == ThemeMode.dark) {
+      } else if (foundation.brightness == Brightness.dark) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns dark fluid
 

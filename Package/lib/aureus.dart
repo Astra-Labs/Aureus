@@ -9,7 +9,6 @@ export 'package:google_fonts/google_fonts.dart';
 export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
 export 'src/Core/safety.dart';
-//export 'fonts/Aureus.ttf';
 
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
@@ -19,6 +18,7 @@ export 'src/Objects/Elements/AlertControllerObjects.dart';
 
 //MARK: - Component Objects
 export 'src/Objects/Components/InputFormObjects.dart';
+export 'src/Objects/Components/Icons.dart';
 export 'src/Objects/Components/NotificationObject.dart';
 export 'src/Objects/Components/TabbingBarObjects.dart';
 
@@ -50,6 +50,9 @@ export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
 
 //Exporting lib widget components
+export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
+export 'src/Widgets/Components/Alert Controllers/FullWidthAlertControllerComponent.dart';
+
 export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
 export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
 export 'src/Widgets/Components/Buttons/SmolButtonElement.dart';

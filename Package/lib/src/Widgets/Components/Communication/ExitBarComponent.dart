@@ -17,9 +17,9 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
 
     decorationPriority buttonVariant = decorationPriority.inactive;
 
-    if (ThemeMode.system == ThemeMode.dark) {
+    if (foundation.brightness == Brightness.dark) {
       buttonVariant = decorationPriority.inactive;
-    } else if (ThemeMode.system == ThemeMode.light) {
+    } else if (foundation.brightness == Brightness.light) {
       buttonVariant = decorationPriority.standard;
     }
 

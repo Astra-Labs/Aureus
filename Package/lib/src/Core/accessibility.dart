@@ -42,6 +42,8 @@ class Coloration {
 
   Color decorationColor(decorationPriority decorationVariant,
       {priority: decorationPriority}) {
+    print('coloration for decoration color! brightness is');
+    print(foundation.brightness);
     Color priorityColor = foundation.black();
 
     switch (priority) {
@@ -62,35 +64,41 @@ class Coloration {
   }
 
   Color contrastColor() {
-    if (ThemeMode.system == ThemeMode.light) {
+    print('coloration for contrast color! brightness is');
+    print(foundation.brightness);
+    if (foundation.brightness == Brightness.light) {
       return foundation.black();
-    } else if (ThemeMode.system == ThemeMode.dark) {
+    } else if (foundation.brightness == Brightness.dark) {
       return foundation.white();
     }
 
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
-    throw UnimplementedError();
+    return foundation.steel();
   }
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
   Color sameColor() {
-    if (ThemeMode.system == ThemeMode.light) {
+    print('coloration for same color! brightness is');
+    print(foundation.brightness);
+    if (foundation.brightness == Brightness.light) {
       return foundation.white();
-    } else if (ThemeMode.system == ThemeMode.dark) {
+    } else if (foundation.brightness == Brightness.dark) {
       return foundation.black();
     }
-    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
-    throw UnimplementedError();
+
+    return foundation.steel();
   }
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
   Color inactiveColor() {
-    if (ThemeMode.system == ThemeMode.light) {
+    print('coloration for inactive! brightness is');
+    print(foundation.brightness);
+    if (foundation.brightness == Brightness.light) {
       return foundation.iron();
-    } else if (ThemeMode.system == ThemeMode.dark) {
+    } else if (foundation.brightness == Brightness.dark) {
       return foundation.steel();
     }
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
-    throw UnimplementedError();
+    return foundation.steel();
   }
 }

@@ -12,9 +12,9 @@ class IconBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color iconColor() {
-      if (ThemeMode.system == ThemeMode.light) {
+      if (foundation.brightness == Brightness.light) {
         return foundation.white();
-      } else if (ThemeMode.system == ThemeMode.dark) {
+      } else if (foundation.brightness == Brightness.dark) {
         return foundation.black();
       }
 
@@ -22,9 +22,9 @@ class IconBadge extends StatelessWidget {
     }
 
     Color badgeFill() {
-      if (ThemeMode.system == ThemeMode.light) {
+      if (foundation.brightness == Brightness.light) {
         return foundation.carbon();
-      } else if (ThemeMode.system == ThemeMode.dark) {
+      } else if (foundation.brightness == Brightness.dark) {
         return foundation.melt();
       }
 
@@ -32,9 +32,9 @@ class IconBadge extends StatelessWidget {
     }
 
     Gradient badgeGradient() {
-      if (ThemeMode.system == ThemeMode.light) {
+      if (foundation.brightness == Brightness.light) {
         return foundation.darkGradient();
-      } else if (ThemeMode.system == ThemeMode.dark) {
+      } else if (foundation.brightness == Brightness.dark) {
         return foundation.lightGradient();
       }
 
@@ -42,10 +42,10 @@ class IconBadge extends StatelessWidget {
     }
 
     BoxShadow badgeShadow() {
-      if (ThemeMode.system == ThemeMode.light &&
+      if (foundation.brightness == Brightness.light &&
           badgePriority == decorationPriority.important) {
         return foundation.darkShadow();
-      } else if (ThemeMode.system == ThemeMode.dark &&
+      } else if (foundation.brightness == Brightness.dark &&
           badgePriority == decorationPriority.important) {
         return foundation.lightShadow();
       }
@@ -60,8 +60,8 @@ class IconBadge extends StatelessWidget {
               //sets minimum size of 25x25 and max size of 40% of screen width.
               minHeight: 25,
               minWidth: 25,
-              maxHeight: size.widthOf(weight: sizingWeight.w4),
-              maxWidth: size.widthOf(weight: sizingWeight.w4)),
+              maxHeight: size.widthOf(weight: sizingWeight.w1),
+              maxWidth: size.widthOf(weight: sizingWeight.w1)),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: badgeFill(),

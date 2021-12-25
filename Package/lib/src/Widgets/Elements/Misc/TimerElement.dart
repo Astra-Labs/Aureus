@@ -1,6 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//A blank card that looks like a "pane" of glass
+//A backing that acts as a timer.
 //Doc Link:
 
 class TimerElement extends StatefulWidget {

@@ -36,7 +36,6 @@ void fillerAction() {
 /* ELEMENTS */
 var badgeCard =
     BadgeCardElement(cardLabel: fillerTextCardName, cardIcon: fillerIcon1);
-var glassCard = GlassCardElement();
 var pastelCard = PastelCardElement(fillerTextCardName);
 var standardCard = StandardCardElement(fillerTextCardName);
 
@@ -70,70 +69,70 @@ var inactiveFullWidthButton = FullWidthButtonElement(
     buttonAction: fillerAction);
 
 var darkPrimaryIconButton = PrimaryIconButtonElement(
-    currentVariant: decorationPriority.standard,
     buttonIcon: Icon(fillerIcon1, color: foundation.white()),
     buttonTooltip: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var lightPrimaryIconButton = PrimaryIconButtonElement(
-    currentVariant: decorationPriority.important,
     buttonIcon: Icon(fillerIcon1, color: foundation.black()),
     buttonTooltip: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var inactivePrimaryIconButton = PrimaryIconButtonElement(
-    currentVariant: decorationPriority.inactive,
     buttonIcon: Icon(fillerIcon1, color: foundation.steel()),
     buttonTooltip: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var darkSecondaryIconButton = SecondaryIconButtonElement(
-    currentVariant: decorationPriority.standard,
     buttonIcon: Icon(fillerIcon1, color: foundation.white()),
     buttonTooltip: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var lightSecondaryIconButton = SecondaryIconButtonElement(
-    currentVariant: decorationPriority.standard,
     buttonIcon: Icon(fillerIcon1, color: foundation.black()),
     buttonTooltip: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var inactiveSecondaryIconButton = SecondaryIconButtonElement(
-    currentVariant: decorationPriority.inactive,
     buttonIcon: Icon(fillerIcon1, color: foundation.steel()),
     buttonTooltip: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var darkSmolButton = SmolButtonElement(
-    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var lightSmolButton = SmolButtonElement(
-    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var inactiveSmolButton = SmolButtonElement(
-    currentVariant: decorationPriority.inactive,
     buttonTitle: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var darkStandardButton = StandardButtonElement(
-    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var lightStandardButton = StandardButtonElement(
-    currentVariant: decorationPriority.standard,
     buttonTitle: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 var inactiveStandardButton = StandardButtonElement(
-    currentVariant: decorationPriority.inactive,
     buttonTitle: fillerTextButton,
-    buttonAction: fillerAction);
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
 
 /* COMPONENTS */
 
@@ -146,25 +145,21 @@ var standardHorizontalCardCarousel = HorizontalCardCarouselComponent(
     fillerTextHeader, CardType.standard, fillerLabels);
 
 var lightReceiverMessageBubble = MessageBubbleComponent(
-    modeVariant: modeVariants.light,
     messageVariant: messagingVariants.receiver,
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
 
 var lightSenderMessageBubble = MessageBubbleComponent(
-    modeVariant: modeVariants.light,
     messageVariant: messagingVariants.sender,
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
 
 var darkReceiverMessageBubble = MessageBubbleComponent(
-    modeVariant: modeVariants.dark,
     messageVariant: messagingVariants.receiver,
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
 
 var darkSenderMessageBubble = MessageBubbleComponent(
-    modeVariant: modeVariants.dark,
     messageVariant: messagingVariants.sender,
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
@@ -176,38 +171,72 @@ var notification = NotificationComponent(
     notificationBody: fillerTextBody,
     hasNotificationBeenRead: false);
 
-var darkSearchBar =
-    SearchBarComponent(onSearch: fillerAction, barVariant: modeVariants.dark);
+var darkSearchBar = SearchBarComponent(onSearch: fillerAction);
 
-var lightSearchBar =
-    SearchBarComponent(onSearch: fillerAction, barVariant: modeVariants.light);
+var lightSearchBar = SearchBarComponent(onSearch: fillerAction);
 
-var darkSendField =
-    SendFieldComponent(onSend: fillerAction, fieldVariant: modeVariants.dark);
+var darkSendField = SendFieldComponent(onSend: fillerAction);
 
-var lightSendField =
-    SendFieldComponent(onSend: fillerAction, fieldVariant: modeVariants.light);
+var lightSendField = SendFieldComponent(onSend: fillerAction);
 
 /* VIEWS */
+
+/* Test Builder */
+LayoutBuilder landing1 =
+    LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+  var testAction = AlertControllerAction(
+      actionName: 'Yee the haw',
+      actionSeverity: AlertControllerActionSeverity.destruct,
+      onSelection: () => {print('yee haw!')});
+
+  var testObject = AlertControllerObject.singleAction(
+      onCancellation: () => {print('cancelled')},
+      alertTitle: 'Would you like to yee?',
+      alertBody: 'Haw. Haw Haw Haw Haw.',
+      actions: [testAction]);
+
+  return CenteredAlertControllerComponent(alertData: testObject);
+});
+
+LayoutBuilder landing2 =
+    LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+  NotificationComponent notification1 = NotificationComponent(
+      notificationSubCategory: 'Hi!',
+      notificationReceived: DateTime.now(),
+      notificationHeader: 'Kill me now.',
+      notificationBody: 'Let me out of this codebase cursed body.',
+      hasNotificationBeenRead: true);
+
+  NotificationComponent notification2 = NotificationComponent(
+      notificationSubCategory: 'SCREM',
+      notificationReceived: DateTime.now(),
+      notificationHeader: 'If there is a god.',
+      notificationBody: 'he is not on my side..',
+      hasNotificationBeenRead: false);
+
+  NotificationComponent notification3 = NotificationComponent(
+      notificationSubCategory: 'pls',
+      notificationReceived: DateTime.now(),
+      notificationHeader: 'salt chip.',
+      notificationBody: 'salt ,, vinegar chip ,, provide ,, provide me salt ',
+      hasNotificationBeenRead: false);
+
+  return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [notification1, notification2, notification3]);
+});
+
 var darkStandardContainerView = ContainerView(
-    modeVariant: modeVariants.dark,
-    decorationVariant: decorationPriority.standard,
-    childrenWidgets: []);
+    decorationVariant: decorationPriority.standard, builder: landing1);
 
 var darkImportantContainerView = ContainerView(
-    modeVariant: modeVariants.dark,
-    decorationVariant: decorationPriority.important,
-    childrenWidgets: []);
+    decorationVariant: decorationPriority.standard, builder: landing1);
 
 var lightStandardContainerView = ContainerView(
-    modeVariant: modeVariants.light,
-    decorationVariant: decorationPriority.standard,
-    childrenWidgets: []);
+    decorationVariant: decorationPriority.important, builder: landing1);
 
 var lightImportantContainerView = ContainerView(
-    modeVariant: modeVariants.light,
-    decorationVariant: decorationPriority.important,
-    childrenWidgets: []);
+    decorationVariant: decorationPriority.important, builder: landing1);
 
 /* MISC */
 

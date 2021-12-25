@@ -28,7 +28,7 @@ class _NotificationComponentState extends State<NotificationComponent> {
 
     BoxDecoration boxDecoration = LayerBackingDecoration(
             priority: widget.hasNotificationBeenRead
-                ? decorationPriority.inactive
+                ? decorationPriority.standard
                 : decorationPriority.important)
         .buildBacking();
     BoxDecoration readIndicatorDecoration = widget.hasNotificationBeenRead
@@ -54,9 +54,9 @@ class _NotificationComponentState extends State<NotificationComponent> {
           Row(children: [
             HeadingTwoText(widget.notificationHeader),
             Container(
-                width: 25,
-                height: 25,
-                alignment: Alignment.centerRight,
+                width: 10,
+                height: 10,
+                alignment: Alignment.center,
                 decoration: readIndicatorDecoration)
           ]),
           //third row, body text

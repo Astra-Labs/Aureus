@@ -2,6 +2,7 @@ import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/src/backing_items.dart';
+import 'package:test_app/src/playground.dart';
 import 'src/text_items.dart';
 import 'src/interface_items.dart';
 import 'src/functionality_items.dart';
@@ -37,7 +38,11 @@ class MyApp extends StatelessWidget {
         prodName: productName,
         lightFluidImage: Image.asset('assets/Light-Mesh.png'),
         darkFluidImage: Image.asset('assets/Dark-Mesh.png'));
-    return MaterialApp(home: MyHomePage());
+
+    var testingAlertController = Playground().centeredAlertController();
+
+    print(foundation.brightness);
+    return MaterialApp(home: testingAlertController);
   }
 }
 
@@ -47,21 +52,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var testingAlertController = Playground().centeredAlertController();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-            width: size.widthOf(weight: sizingWeight.w10),
-            height: size.heightOf(weight: sizingWeight.w10),
-            color: foundation.white(),
-            child: ListView.separated(
-              padding: const EdgeInsets.all(8),
-              itemCount: libElements.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Center(child: libElements[index]);
-              },
-              separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(),
-            )));
+    return Scaffold(body: testingAlertController);
   }
 }
