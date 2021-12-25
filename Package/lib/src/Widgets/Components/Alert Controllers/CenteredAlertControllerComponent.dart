@@ -57,17 +57,20 @@ class _CenteredAlertControllerComponentState
           BaseBackingDecoration(priority: decorationPriority.standard);
 
       Gradient backingGradient = LinearGradient(colors: []);
+      BoxShadow backingHaze = BoxShadow();
 
       if (foundation.brightness == Brightness.dark) {
         backingGradient = foundation.darkGradient();
+        backingHaze = foundation.pastelShadow();
       } else if (foundation.brightness == Brightness.light) {
         backingGradient = foundation.lightGradient();
+        backingHaze = foundation.darkShadow();
       }
 
       customAlertBacking.decorationCornerRadius = BorderRadius.circular(10.0);
       customAlertBacking.decorationGradient = backingGradient;
       customAlertBacking.decorationBorder = foundation.universalBorder();
-      customAlertBacking.decorationHaze = foundation.pastelShadow();
+      customAlertBacking.decorationHaze = backingHaze;
 
       return customAlertBacking.buildBacking();
     }

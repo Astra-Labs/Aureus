@@ -19,7 +19,7 @@ class _ContainerViewState extends State<ContainerView> {
   @override
   Widget build(BuildContext context) {
     //pull exit bar setting status from Safety Plan
-    const bool hasExitBar = false;
+    const bool hasExitBar = true;
 
     BoxDecoration containerBacking() {
       if (foundation.brightness == Brightness.light) {
@@ -54,31 +54,22 @@ class _ContainerViewState extends State<ContainerView> {
       return BoxDecoration();
     }
 
-    Container defaultContainer = Container(
+    Container backingContainer = Container(
         padding: size.containerPadding(),
         alignment: Alignment.center,
         width: size.widthOf(weight: sizingWeight.w10),
-        decoration: containerBacking());
-
-    Container exitBarContainer = Container(
-        width: size.widthOf(weight: sizingWeight.w10),
-        height: size.heightOf(weight: sizingWeight.w10),
-        alignment: Alignment.center,
         decoration: containerBacking(),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [ExitBarComponent(), defaultContainer]));
+        child: Center(child: widget.builder));
 
     if (hasExitBar == true) {
-      return SizedBox(
-          width: size.widthOf(weight: sizingWeight.w10),
-          height: size.heightOf(weight: sizingWeight.w10),
-          child: exitBarContainer);
+      return Scaffold(
+          body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: [ExitBarComponent(), Expanded(child: backingContainer)],
+      ));
     } else if (hasExitBar == false) {
-      return SizedBox(
-          width: size.widthOf(weight: sizingWeight.w10),
-          height: size.heightOf(weight: sizingWeight.w10),
-          child: defaultContainer);
+      return Scaffold(body: Expanded(child: backingContainer));
     }
 
     throw ErrorDescription('Exit bar value not given.');

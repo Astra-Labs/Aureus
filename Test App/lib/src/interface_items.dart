@@ -185,7 +185,8 @@ var lightSendField = SendFieldComponent(onSend: fillerAction);
 /* Test Builder */
 LayoutBuilder landing1 =
     LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  var testController = Playground().centeredAlertController();
+  var testController = CenteredAlertControllerComponent(
+      alertData: Playground().testAlertControllerObject);
   return testController;
 });
 

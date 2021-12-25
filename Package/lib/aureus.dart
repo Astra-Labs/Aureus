@@ -51,7 +51,6 @@ export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
 
 //Exporting lib widget components
 export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
-export 'src/Widgets/Components/Alert Controllers/FullWidthAlertControllerComponent.dart';
 
 export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
 export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
@@ -66,6 +65,7 @@ export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';
 export 'src/Widgets/Components/Communication/NotificationComponent.dart';
 export 'src/Widgets/Components/Communication/SearchBarComponent.dart';
 export 'src/Widgets/Components/Communication/SendFieldComponent.dart';
+export 'src/Widgets/Components/Communication/BlankScreenComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
 
 export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';

@@ -134,6 +134,10 @@ class Aureus {
     return Color.fromRGBO(77, 79, 90, 1.0);
   }
 
+  Color onyx() {
+    return Color.fromRGBO(56, 56, 56, 1.0);
+  }
+
   Color lightModeFill() {
     return black().withOpacity(0.15);
   }
@@ -374,11 +378,7 @@ class Sizing {
 
 //Creates universal padding for all items based on the screen size.
   EdgeInsets universalPadding() {
-    return EdgeInsets.fromLTRB(
-        widthOf(weight: sizingWeight.w0),
-        heightOf(weight: sizingWeight.w0),
-        widthOf(weight: sizingWeight.w0),
-        heightOf(weight: sizingWeight.w0));
+    return EdgeInsets.fromLTRB(20, 10, 20, 10);
   }
 
   EdgeInsets containerPadding() {

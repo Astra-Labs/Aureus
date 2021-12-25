@@ -93,6 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: landing1));
+    return Scaffold(
+        body: ContainerView(
+            decorationVariant: decorationPriority.standard,
+            builder: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+              //write item to be tested here.
+            })));
   }
 }

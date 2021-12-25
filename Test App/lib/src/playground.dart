@@ -17,11 +17,12 @@ class Playground {
       onSelection: () => {print('haw yee!')});
 
   late AlertControllerObject testAlertControllerObject =
-      AlertControllerObject.multipleActions(
+      AlertControllerObject.singleAction(
           onCancellation: () => {print('cancelled')},
           alertTitle: 'Would you like to yee?',
           alertBody: 'Haw. Haw Haw Haw Haw.',
-          actions: [testAlertControllerAction, testAlertControllerAction2]);
+          actions: [testAlertControllerAction],
+          alertIcon: Icons.access_alarm);
 
   Container centeredAlertController() {
     Widget alertControllerActions = Container();
