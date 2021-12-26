@@ -31,39 +31,60 @@ class _NotificationComponentState extends State<NotificationComponent> {
         : decorationPriority.important;
 
     BoxDecoration boxDecoration =
-        LayerBackingDecoration(priority: notificationPriority).buildBacking();
+        CardBackingDecoration(priority: notificationPriority).buildBacking();
     BoxDecoration readIndicatorDecoration = widget.hasNotificationBeenRead
-        ? LayerBackingDecoration(priority: decorationPriority.important)
-            .buildBacking()
-        : BoxDecoration(color: foundation.white().withOpacity(0.0));
+        ? BoxDecoration(color: foundation.white().withOpacity(0.0))
+        : BoxDecoration(color: coloration.sameColor(), shape: BoxShape.circle);
 
-    return Container(
-        alignment: Alignment.center,
-        padding: size.universalPadding(),
-        decoration: boxDecoration,
-        child: Center(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          //first row, contains subcategory and time stamp
-          Row(
+    ListView notificationContent =
+        ListView(shrinkWrap: true, children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TagOneText(widget.notificationSubCategory, notificationPriority),
+            TagOneText(
+                '${widget.notificationReceived.month}/${widget.notificationReceived.day}/${widget.notificationReceived.year}',
+                notificationPriority)
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              TagOneText(widget.notificationSubCategory, notificationPriority),
-              TagOneText('$widget.notificationReceived', notificationPriority)
-            ],
-          ),
-          //second row, contains subcategory header and read indicator
-          Row(children: [
-            HeadingTwoText(widget.notificationHeader, notificationPriority),
-            Container(
-                width: 10,
-                height: 10,
-                alignment: Alignment.center,
-                decoration: readIndicatorDecoration)
-          ]),
-          //third row, body text
-          Row(children: [
-            BodyTwoText(widget.notificationBody, notificationPriority)
-          ])
-        ])));
+              HeadingThreeText(widget.notificationHeader, notificationPriority),
+              Container(
+                  width: 10,
+                  height: 10,
+                  alignment: Alignment.center,
+                  decoration: readIndicatorDecoration)
+            ]),
+      ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              BodyTwoText(widget.notificationBody, notificationPriority)
+            ]),
+      )
+    ]);
+    return SizedBox(
+      width: size.widthOf(weight: sizingWeight.w4),
+      child: Container(
+          alignment: Alignment.center,
+          padding: size.universalPadding(),
+          decoration: boxDecoration,
+          child: Center(child: notificationContent)),
+    );
   }
 }

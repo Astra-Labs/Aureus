@@ -87,13 +87,13 @@ var inactiveFullWidthButton = FullWidthButtonElement(
     currentVariant: decorationPriority.inactive,
     buttonAction: fillerAction);
 
-var darkPrimaryIconButton = PrimaryIconButtonElement(
+var standardPrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.standard);
 
-var lightPrimaryIconButton = PrimaryIconButtonElement(
+var importantPrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
@@ -103,15 +103,15 @@ var inactivePrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.inactive);
 
-var darkSecondaryIconButton = SecondaryIconButtonElement(
+var standardSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.standard);
 
-var lightSecondaryIconButton = SecondaryIconButtonElement(
+var importantSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
     buttonTooltip: fillerTextButton,
     buttonAction: fillerAction,
@@ -123,12 +123,12 @@ var inactiveSecondaryIconButton = SecondaryIconButtonElement(
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.inactive);
 
-var darkSmolButton = SmolButtonElement(
+var standardSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.standard);
 
-var lightSmolButton = SmolButtonElement(
+var importantSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
@@ -138,12 +138,12 @@ var inactiveSmolButton = SmolButtonElement(
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.inactive);
 
-var darkStandardButton = StandardButtonElement(
+var standardStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.standard);
 
-var lightStandardButton = StandardButtonElement(
+var importantStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
@@ -163,12 +163,12 @@ var badgeHorizontalCardCarousel = HorizontalCardCarouselComponent(
 var standardHorizontalCardCarousel = HorizontalCardCarouselComponent(
     fillerTextHeader, CardType.standard, fillerLabels);
 
-var lightReceiverMessageBubble = MessageBubbleComponent(
+var receiverMessageBubble = MessageBubbleComponent(
     messageVariant: messagingVariants.receiver,
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
 
-var lightSenderMessageBubble = MessageBubbleComponent(
+var senderMessageBubble = MessageBubbleComponent(
     messageVariant: messagingVariants.sender,
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
@@ -180,9 +180,9 @@ var notification = NotificationComponent(
     notificationBody: fillerTextBody,
     hasNotificationBeenRead: false);
 
-var darkSearchBar = SearchBarComponent(onSearch: fillerAction);
+var searchBar = SearchBarComponent(onSearch: fillerAction);
 
-var darkSendField = SendFieldComponent(onSend: fillerAction);
+var sendField = SendFieldComponent(onSend: fillerAction);
 
 /* VIEWS */
 
@@ -241,25 +241,25 @@ List<Widget> libElements = [
   singleInput,
   multiInput,
   inactiveFullWidthButton,
-  darkPrimaryIconButton,
-  lightPrimaryIconButton,
+  standardPrimaryIconButton,
+  importantPrimaryIconButton,
   inactivePrimaryIconButton,
-  darkSecondaryIconButton,
-  lightSecondaryIconButton,
+  standardSecondaryIconButton,
+  importantSecondaryIconButton,
   inactiveSecondaryIconButton,
-  darkSmolButton,
-  lightSmolButton,
+  standardSmolButton,
+  importantSmolButton,
   inactiveSmolButton,
-  darkStandardButton,
-  lightStandardButton,
+  standardStandardButton,
+  importantStandardButton,
   inactiveStandardButton,
   badgeGridCarousel,
   standardGridCarousel,
   badgeHorizontalCardCarousel,
   standardHorizontalCardCarousel,
-  lightReceiverMessageBubble,
-  lightSenderMessageBubble,
+  receiverMessageBubble,
+  senderMessageBubble,
   notification,
-  darkSearchBar,
-  darkSendField
+  searchBar,
+  sendField
 ];

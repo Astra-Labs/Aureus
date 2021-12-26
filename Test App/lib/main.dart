@@ -62,8 +62,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var testAlertController = Playground().centeredAlertController();
-
   var testButton1 = StandardButtonElement(
       decorationVariant: decorationPriority.inactive,
       buttonTitle: 'Standard Button',
@@ -95,16 +93,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ContainerView(
-            decorationVariant: decorationPriority.standard,
-            builder: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
-              //write item to be tested here.
-              return BlankScreenComponent(
-                componentIcon: Icons.add_a_photo,
-                cardTitle: 'No photos.',
-                cardBody:
-                    'Please press the button at the bottom right to add a photo.',
-              );
-            })));
+      decorationVariant: decorationPriority.standard,
+      builder: landing2,
+    ));
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      padding: const EdgeInsets.all(8),
+      shrinkWrap: true,
+      itemCount: libElements.length,
+      itemBuilder: (BuildContext context, int index) {
+        return libElements[index];
+      },
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+    );
   }
 }
