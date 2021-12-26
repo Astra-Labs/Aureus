@@ -15,8 +15,56 @@ class IconTabbingBarComponent extends StatefulWidget {
 }
 
 class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
+  List<bool> tabActives = [];
+
+  VoidCallback? resetActiveItems() {
+    for (int i = 0; tabActives.length < widget.tabObjects.length; i++) {
+      tabActives.add(false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    //keeps track of every active / inactive item
+    ListView tabItems = ListView.builder(
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemCount: widget.tabObjects.length,
+      itemBuilder: (BuildContext context, int index) {
+        bool isItemActive = tabActives[index];
+
+        decorationPriority tabPriority() {
+          if (isItemActive == true) {
+            return decorationPriority.important;
+          } else if (isItemActive == false) {
+            return decorationPriority.standard;
+          }
+          return decorationPriority.inactive;
+        }
+
+        return Padding(
+          padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
+          child: SecondaryIconButtonElement(
+              buttonAction: () => {
+                    if (tabPriority() != decorationPriority.inactive)
+                      {
+                        resetActiveItems(),
+                        tabActives.insert(index, true),
+                        widget.tabObjects[index].onTabSelection
+                      }
+                  },
+              decorationVariant: tabPriority(),
+              buttonTooltip: widget.tabObjects[index].accessibilityHint,
+              buttonIcon: widget.tabObjects[index].tabIcon),
+        );
+      },
+    );
+
+    return Container(
+        padding: EdgeInsets.all(8),
+        decoration:
+            LayerBackingDecoration(priority: decorationPriority.inactive)
+                .buildBacking(),
+        child: SizedBox(height: 40.0, child: tabItems));
   }
 }

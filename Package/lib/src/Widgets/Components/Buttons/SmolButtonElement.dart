@@ -23,9 +23,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
   Widget build(BuildContext context) {
     //variables that change how the variants are displayed in build time
     bool isButtonEnabled =
-        (widget.decorationVariant == decorationPriority.inactive
-            ? true
-            : false);
+        widget.decorationVariant == decorationPriority.inactive ? false : true;
 
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedPill,
@@ -39,15 +37,20 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    print('size of smol button element is ${minimumButtonTextSize}');
-
-    return SizedBox(
-        width: minimumButtonTextSize.width * 2,
-        height: minimumButtonTextSize.height * 2,
-        child: Container(
-            decoration: buttonDecoration,
-            child: Center(
-                child:
-                    TagOneText(widget.buttonTitle, widget.decorationVariant))));
+    return InkWell(
+        onTap: () {
+          print('button tapped!');
+          if (isButtonEnabled == true) {
+            widget.buttonAction();
+          }
+        },
+        child: SizedBox(
+            width: minimumButtonTextSize.width * 2,
+            height: minimumButtonTextSize.height * 2,
+            child: Container(
+                decoration: buttonDecoration,
+                child: Center(
+                    child: TagOneText(
+                        widget.buttonTitle, widget.decorationVariant)))));
   }
 }

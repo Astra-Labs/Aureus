@@ -27,7 +27,8 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
             priority: widget.decorationVariant)
         .buildBacking();
 
-    //bool isButtonEnabled = widget.decorationVariant == decorationPriority.inactive ? true : false;
+    bool isButtonEnabled =
+        widget.decorationVariant == decorationPriority.inactive ? false : true;
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
         widthLimit: 300,
@@ -36,13 +37,20 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return SizedBox(
-        width: minimumButtonTextSize.width * 3,
-        height: minimumButtonTextSize.height * 3,
-        child: Container(
-            decoration: buttonDecoration,
-            child: Center(
-                child: ButtonTwoText(
-                    widget.buttonTitle, widget.decorationVariant))));
+    return InkWell(
+        onTap: () {
+          print('button tapped!');
+          if (isButtonEnabled == true) {
+            widget.buttonAction();
+          }
+        },
+        child: SizedBox(
+            width: minimumButtonTextSize.width * 3,
+            height: minimumButtonTextSize.height * 3,
+            child: Container(
+                decoration: buttonDecoration,
+                child: Center(
+                    child: ButtonTwoText(
+                        widget.buttonTitle, widget.decorationVariant)))));
   }
 }

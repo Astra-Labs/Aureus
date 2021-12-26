@@ -535,10 +535,6 @@ class BaseBackingDecoration {
   BoxShadow? decorationHaze;
 
   BoxDecoration buildBacking() {
-    print('Returning backing decoration with the following values:');
-    print(
-        'color is $decorationFill, gradient is $decorationGradient, border is $decorationBorder, shape is $decorationShape, haze is $decorationHaze, radius is $decorationCornerRadius');
-
     //performs null safety check on backing shadow and passes an empty list if null
     List<BoxShadow> backingShadow =
         decorationHaze != null ? [decorationHaze!] : [];
@@ -562,7 +558,6 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       : super(priority: priority) {
     //defining variants for the specific item
     if (variant == buttonDecorationVariants.circle) {
-      print('item is circle');
       decorationCornerRadius = BorderRadius.circular(100);
     } else if (variant == buttonDecorationVariants.roundedPill) {
       decorationCornerRadius = BorderRadius.circular(30.0);
@@ -577,22 +572,18 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
       if (foundation.brightness == Brightness.light) {
-        print('is light!');
         decorationGradient = foundation.darkGradient();
         decorationBorder = foundation.universalBorder();
       } else if (foundation.brightness == Brightness.dark) {
-        print('is dark!');
         decorationGradient = foundation.lightGradient();
         decorationBorder = foundation.universalBorder();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       if (foundation.brightness == Brightness.light) {
-        print('is light!');
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
       } else if (foundation.brightness == Brightness.dark) {
-        print('is dark!');
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }
@@ -611,20 +602,16 @@ class LayerBackingDecoration extends BaseBackingDecoration {
 
       //layers do not show inactive colors because layers aren't interactable by definition, so one statement covers standard & inactive.
       if (foundation.brightness == Brightness.light) {
-        print('is light layer!');
         decorationFill = foundation.lightModeFill();
       } else if (foundation.brightness == Brightness.dark) {
-        print('is dark layer!');
         decorationFill = foundation.darkModeFill();
       }
     } else if (priority == decorationPriority.important) {
       if (foundation.brightness == Brightness.light) {
-        print('is light layer!');
         decorationGradient = foundation.darkGradient();
         decorationBorder = foundation.universalBorder();
         decorationHaze = foundation.darkShadow();
       } else if (foundation.brightness == Brightness.dark) {
-        print('is dark layer!');
         decorationGradient = foundation.lightGradient();
         decorationBorder = foundation.universalBorder();
         decorationHaze = foundation.pastelShadow();
@@ -639,7 +626,7 @@ class CardBackingDecoration extends BaseBackingDecoration {
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-      print('is inactive card');
+
       decorationCornerRadius = BorderRadius.circular(10.0);
       decorationFill = coloration.inactiveColor();
     } else if (priority == decorationPriority.important) {
@@ -647,11 +634,9 @@ class CardBackingDecoration extends BaseBackingDecoration {
       decorationBorder = foundation.universalBorder();
 
       if (foundation.brightness == Brightness.light) {
-        print('is light and important card!');
         decorationGradient = foundation.darkGradient();
         decorationHaze = foundation.darkShadow();
       } else if (foundation.brightness == Brightness.dark) {
-        print('is dark and important card!');
         decorationGradient = foundation.lightGradient();
         decorationHaze = foundation.pastelShadow();
       }
@@ -659,11 +644,9 @@ class CardBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
       decorationCornerRadius = BorderRadius.circular(20.0);
       if (foundation.brightness == Brightness.light) {
-        print('is light and standard card!');
         decorationFill = foundation.lightModeFill();
         decorationBorder = foundation.lightModeBorder();
       } else if (foundation.brightness == Brightness.dark) {
-        print('is dark and standard card!');
         decorationFill = foundation.darkModeFill();
         decorationBorder = foundation.darkModeBorder();
       }

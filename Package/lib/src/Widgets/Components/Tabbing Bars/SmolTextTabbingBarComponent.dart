@@ -4,6 +4,11 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class SmolTextTabbingBarComponent extends StatefulWidget {
+  final List<TabObject> tabObjects;
+
+  const SmolTextTabbingBarComponent({required this.tabObjects})
+      : assert(tabObjects.length >= 2);
+
   @override
   _SmolTextTabbingBarComponentState createState() =>
       _SmolTextTabbingBarComponentState();

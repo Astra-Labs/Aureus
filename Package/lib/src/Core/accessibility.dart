@@ -53,8 +53,6 @@ class Coloration {
   }
 
   Color contrastColor() {
-    print('coloration for contrast color! brightness is');
-    print(foundation.brightness);
     if (foundation.brightness == Brightness.light) {
       return foundation.black();
     } else if (foundation.brightness == Brightness.dark) {
@@ -67,8 +65,6 @@ class Coloration {
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
   Color sameColor() {
-    print('coloration for same color! brightness is');
-    print(foundation.brightness);
     if (foundation.brightness == Brightness.light) {
       return foundation.white();
     } else if (foundation.brightness == Brightness.dark) {

@@ -18,7 +18,11 @@ class NavBarComponent extends StatefulWidget {
 class _NavBarComponentState extends State<NavBarComponent> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    Container activeIndicator = Container(
+        width: 1,
+        color: coloration.decorationColor(
+            decorationVariant: decorationPriority.important));
+
+    return Container();
   }
 }

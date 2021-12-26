@@ -94,15 +94,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: ContainerView(
       decorationVariant: decorationPriority.standard,
-      builder: landing2,
+      builder: landing1,
     ));
   }
 }
 
-class NewWidget extends StatelessWidget {
-  const NewWidget({
-    Key? key,
-  }) : super(key: key);
+class TestingListView extends StatelessWidget {
+  const TestingListView();
 
   @override
   Widget build(BuildContext context) {

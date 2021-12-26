@@ -189,9 +189,22 @@ var sendField = SendFieldComponent(onSend: fillerAction);
 /* Test Builder */
 LayoutBuilder landing1 =
     LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  var testController =
-      CenteredAlertControllerComponent(alertData: testAlertControllerObject);
-  return testController;
+  List<TabObject> testingTabbingObjects = [
+    TabObject.forIconTabbing(
+        tabIcon: Icons.ac_unit,
+        onTabSelection: fillerAction,
+        accessibilityHint: 'Accessibility Hint'),
+    TabObject.forIconTabbing(
+        tabIcon: Icons.airline_seat_flat_angled,
+        onTabSelection: fillerAction,
+        accessibilityHint: 'Accessibility Hint'),
+    TabObject.forIconTabbing(
+        tabIcon: Icons.calculate,
+        onTabSelection: fillerAction,
+        accessibilityHint: 'Accessibility Hint')
+  ];
+
+  return IconTabbingBarComponent(tabObjects: testingTabbingObjects);
 });
 
 LayoutBuilder landing2 =

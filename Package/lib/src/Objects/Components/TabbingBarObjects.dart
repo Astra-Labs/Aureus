@@ -8,7 +8,7 @@ class TabbingBarObject {
 }
 
 class TabObject {
-  late Icon tabIcon;
+  late IconData tabIcon;
   late VoidCallback onTabSelection;
   late String tabTitle;
   late String accessibilityHint;

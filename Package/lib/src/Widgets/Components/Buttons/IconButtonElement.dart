@@ -32,19 +32,26 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
             priority: widget.decorationVariant)
         .buildBacking();
 
-    return SizedBox(
-        width: 80.0,
-        height: 80.0,
-        child: Container(
-          decoration: buttonBacking,
-          child: Center(
-            child: Icon(widget.buttonIcon,
-                color: coloration.decorationColor(
-                    decorationVariant: widget.decorationVariant),
-                semanticLabel: widget.buttonTooltip,
-                size: 60.0),
-          ),
-        ));
+    return InkWell(
+        onTap: () {
+          print('button tapped!');
+          if (isButtonEnabled == true) {
+            widget.buttonAction();
+          }
+        },
+        child: SizedBox(
+            width: 80.0,
+            height: 80.0,
+            child: Container(
+              decoration: buttonBacking,
+              child: Center(
+                child: Icon(widget.buttonIcon,
+                    color: coloration.decorationColor(
+                        decorationVariant: widget.decorationVariant),
+                    semanticLabel: widget.buttonTooltip,
+                    size: 60.0),
+              ),
+            )));
   }
 }
 
@@ -71,23 +78,29 @@ class _SecondaryIconButtonElementState
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
-        widget.decorationVariant == decorationPriority.inactive ? true : false;
+        widget.decorationVariant == decorationPriority.inactive ? false : true;
 
     var buttonBackingDecoration = ButtonBackingDecoration(
         variant: buttonDecorationVariants.circle,
         priority: widget.decorationVariant);
 
-    return SizedBox(
-      width: 40.0,
-      height: 40.0,
-      child: Container(
-        decoration: buttonBackingDecoration.buildBacking(),
-        child: Icon(widget.buttonIcon,
-            color: coloration.decorationColor(
-                decorationVariant: widget.decorationVariant),
-            semanticLabel: widget.buttonTooltip,
-            size: 30.0),
-      ),
-    );
+    return InkWell(
+        onTap: () {
+          if (isButtonEnabled == true) {
+            widget.buttonAction();
+          }
+        },
+        child: SizedBox(
+          width: 40.0,
+          height: 40.0,
+          child: Container(
+            decoration: buttonBackingDecoration.buildBacking(),
+            child: Icon(widget.buttonIcon,
+                color: coloration.decorationColor(
+                    decorationVariant: widget.decorationVariant),
+                semanticLabel: widget.buttonTooltip,
+                size: 30.0),
+          ),
+        ));
   }
 }
