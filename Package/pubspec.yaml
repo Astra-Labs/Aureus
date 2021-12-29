@@ -14,13 +14,12 @@ dependencies:
   flutter_secure_storage: ^4.2.1
 
 flutter:
-   assets:
-    - assets/Dark-Mesh.png
-    - assets/Light-Mesh.png
-   fonts:
+    assets:
+    - lib/assets/
+    fonts:
     - family: Aureus
       fonts:
-       - asset: fonts/Aureus.ttf
+       - asset: lib/fonts/Aureus.ttf
 
 dev_dependencies:
   flutter_test:

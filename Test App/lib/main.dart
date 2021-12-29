@@ -33,11 +33,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    foundation = Aureus(
-        prodColor: productColor,
-        prodName: productName,
-        lightFluidImage: Image.asset('assets/Light-Mesh.png'),
-        darkFluidImage: Image.asset('assets/Dark-Mesh.png'));
+    foundation = Aureus();
 
     print('platform brightness is ${foundation.brightness}');
 

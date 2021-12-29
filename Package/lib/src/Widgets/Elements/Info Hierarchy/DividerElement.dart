@@ -9,8 +9,8 @@ class DividerElement extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
         child: Container(
-            width: (MediaQuery.of(context).size.width - 30),
-            height: 2,
-            decoration: BoxDecoration(color: foundation.steel())));
+            width: size.widthOf(weight: sizingWeight.w8),
+            height: 1,
+            decoration: BoxDecoration(color: coloration.inactiveColor())));
   }
 }

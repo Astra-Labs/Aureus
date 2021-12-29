@@ -28,13 +28,18 @@ class _ContainerViewState extends State<ContainerView> {
 
           return BoxDecoration(
             image: DecorationImage(
-              image: foundation.lightFluidImage.image,
+              image: aureusVariables.lightFluidImage.image,
               fit: BoxFit.cover,
             ),
           );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns light blur
-          return BoxDecoration(gradient: foundation.lightGradient());
+          return BoxDecoration(
+            image: DecorationImage(
+              image: aureusVariables.lightBlurImage.image,
+              fit: BoxFit.cover,
+            ),
+          );
         }
       } else if (foundation.brightness == Brightness.dark) {
         if (widget.decorationVariant == decorationPriority.important) {
@@ -42,13 +47,18 @@ class _ContainerViewState extends State<ContainerView> {
 
           return BoxDecoration(
             image: DecorationImage(
-              image: foundation.darkFluidImage.image,
+              image: aureusVariables.darkFluidImage.image,
               fit: BoxFit.cover,
             ),
           );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns dark blur
-          return BoxDecoration(gradient: foundation.darkGradient());
+          return BoxDecoration(
+            image: DecorationImage(
+              image: aureusVariables.darkBlurImage.image,
+              fit: BoxFit.cover,
+            ),
+          );
         }
       }
       return BoxDecoration();

@@ -6,25 +6,33 @@ import 'package:flutter/scheduler.dart';
 //All Variables for the UDS Elements
 //Doc Link:
 
-var foundation = Aureus(
-    lightFluidImage: Image.asset('Light-Mesh'),
-    darkFluidImage: Image.asset('Dark-Mesh'));
+var foundation = Aureus();
+var aureusVariables = AurVariables();
 var size = Sizing();
 
 /* ------------------ GLOBAL VARIABLES -------------------- */
 // 🛑
+
+class AurVariables {
+  Color prodColor = const Color.fromRGBO(181, 190, 242, 1.0);
+  String prodName = 'Aureus';
+  Image darkFluidImage = Image.asset('Dark Fluid - Portrait.png');
+  Image lightFluidImage = Image.asset('Light Fluid - Portrait.png');
+  Image darkBlurImage = Image.asset('Dark Blur - Portrait.png');
+  Image lightBlurImage = Image.asset('Light Blur - Portrait.png');
+  Image lightLogo = Image.asset('Icon - Light Mode.png');
+  Image darkLogo = Image.asset('Icon - Dark Mode.png');
+
+  AurVariables(
+      [prodColor,
+      prodName,
+      darkFluidImage,
+      lightFluidImage,
+      lightLogo,
+      darkLogo]);
+}
+
 class Aureus {
-  Color prodColor;
-  String prodName;
-  Image darkFluidImage = Image.asset('');
-  Image lightFluidImage = Image.asset('');
-
-  Aureus(
-      {this.prodColor = const Color.fromRGBO(181, 190, 242, 1.0),
-      this.prodName = 'Aureus',
-      required this.darkFluidImage,
-      required this.lightFluidImage});
-
   var brightness = SchedulerBinding.instance!.window.platformBrightness;
 
 //Global Gradients
@@ -90,12 +98,6 @@ class Aureus {
 
   Container darkBlur() {
     return Container();
-  }
-
-//Global Colors
-
-  Color productColor() {
-    return prodColor;
   }
 
   Color white() {

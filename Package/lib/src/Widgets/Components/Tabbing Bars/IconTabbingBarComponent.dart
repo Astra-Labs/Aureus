@@ -15,13 +15,7 @@ class IconTabbingBarComponent extends StatefulWidget {
 }
 
 class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
-  List<bool> tabActives = [];
-
-  VoidCallback? resetActiveItems() {
-    for (int i = 0; tabActives.length < widget.tabObjects.length; i++) {
-      tabActives.add(false);
-    }
-  }
+  Map<int, bool> tabActives = {};
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +25,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
       scrollDirection: Axis.horizontal,
       itemCount: widget.tabObjects.length,
       itemBuilder: (BuildContext context, int index) {
-        bool isItemActive = tabActives[index];
+        bool isItemActive = tabActives[index]!;
 
         decorationPriority tabPriority() {
           if (isItemActive == true) {
@@ -47,11 +41,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
           child: SecondaryIconButtonElement(
               buttonAction: () => {
                     if (tabPriority() != decorationPriority.inactive)
-                      {
-                        resetActiveItems(),
-                        tabActives.insert(index, true),
-                        widget.tabObjects[index].onTabSelection
-                      }
+                      {widget.tabObjects[index].onTabSelection}
                   },
               decorationVariant: tabPriority(),
               buttonTooltip: widget.tabObjects[index].accessibilityHint,

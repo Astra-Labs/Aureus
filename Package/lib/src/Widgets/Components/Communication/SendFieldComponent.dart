@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:aureus/src/Widgets/Components/Input%20Forms/TextFieldComponent.dart';
 
 //A text field and icon button used to send communications to a receipent
 //Doc Link:
@@ -13,52 +14,37 @@ class SendFieldComponent extends StatefulWidget {
 }
 
 class _SendFieldComponentState extends State<SendFieldComponent> {
+  TextEditingController sendFieldController = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) {
-    BoxDecoration barBackingDecoration =
-        LayerBackingDecoration(priority: decorationPriority.standard)
-            .buildBacking();
-
     return Container(
-        width: 585,
-        height: 73,
-        child: Row(children: [
-          Container(
-              decoration: barBackingDecoration,
-              child: Center(
-                  child: Padding(
-                padding: size.universalPadding(),
-                child: TextFormField(
-                    style: foundation
-                        .heading2()
-                        .copyWith(color: coloration.contrastColor()),
-                    maxLines: 1,
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        hintStyle: foundation.body1(),
-                        hintText: 'Write your message here.'),
-                    autocorrect: false,
-                    textAlign: TextAlign.left,
-                    keyboardType: TextInputType.text),
-              ))),
-          Container(
-              alignment: Alignment.centerRight,
-              padding: size.universalPadding(),
-              decoration: ButtonBackingDecoration(
-                      priority: decorationPriority.important,
-                      variant: buttonDecorationVariants.circle)
-                  .buildBacking(),
-              child: Expanded(
-                  child: IconButton(
-                      icon: Image.asset(''),
-                      iconSize: 50,
-                      color: coloration.sameColor(),
-                      tooltip: 'Send Button',
-                      onPressed: widget.onSend)))
-        ]));
+        constraints: BoxConstraints(
+            minWidth: size.widthOf(weight: sizingWeight.w3),
+            maxWidth: size.widthOf(weight: sizingWeight.w7),
+            minHeight: size.heightOf(weight: sizingWeight.w0),
+            maxHeight: size.widthOf(weight: sizingWeight.w3)),
+        decoration: InputBackingDecoration().buildBacking(),
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: PrimaryTextFieldComponent(
+                    decorationVariant: decorationPriority.standard,
+                    hintText: 'Write message here.',
+                    textFieldController: sendFieldController),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: SecondaryIconButtonElement(
+                    buttonIcon: Icons.airplanemode_active,
+                    buttonAction: widget.onSend,
+                    buttonTooltip: 'Send Button',
+                    decorationVariant: decorationPriority.important),
+              )
+            ]));
   }
 }

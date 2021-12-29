@@ -189,22 +189,17 @@ var sendField = SendFieldComponent(onSend: fillerAction);
 /* Test Builder */
 LayoutBuilder landing1 =
     LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  List<TabObject> testingTabbingObjects = [
-    TabObject.forIconTabbing(
-        tabIcon: Icons.ac_unit,
-        onTabSelection: fillerAction,
-        accessibilityHint: 'Accessibility Hint'),
-    TabObject.forIconTabbing(
-        tabIcon: Icons.airline_seat_flat_angled,
-        onTabSelection: fillerAction,
-        accessibilityHint: 'Accessibility Hint'),
-    TabObject.forIconTabbing(
-        tabIcon: Icons.calculate,
-        onTabSelection: fillerAction,
-        accessibilityHint: 'Accessibility Hint')
-  ];
+  List<Widget> landingTestWidget = [searchBar];
 
-  return IconTabbingBarComponent(tabObjects: testingTabbingObjects);
+  return ListView.separated(
+    padding: const EdgeInsets.all(8),
+    shrinkWrap: true,
+    itemCount: landingTestWidget.length,
+    itemBuilder: (BuildContext context, int index) {
+      return Container(child: Center(child: landingTestWidget[index]));
+    },
+    separatorBuilder: (BuildContext context, int index) => const Divider(),
+  );
 });
 
 LayoutBuilder landing2 =
