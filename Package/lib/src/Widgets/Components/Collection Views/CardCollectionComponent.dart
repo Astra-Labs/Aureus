@@ -1,57 +1,29 @@
 import 'package:aureus/aureus.dart';
-import 'package:test_app/src/interface_items.dart';
 
-//where all sizing items in aureus are initiated for testing
+//A carousel that contains an icon and label to describe the details of an object
+//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/5%20-%20Components%20(Bricks)/Collection%20Views/Detail%20Carousel.md
 
-class Playground {
-  CardObject standardCardObject = CardObject.standard(
-      decorationPriority.standard, fillerTextHeader, fillerAction);
+class CardCollectionComponent extends StatefulWidget {
+  final List<CardObject> cardObjects;
+  final cardType cardVariant;
+  final Axis collectionDirection;
 
-  CardObject standardIconCardObject = CardObject.standardIcon(
-      decorationPriority.standard, fillerTextHeader, fillerIcon1, fillerAction);
+  CardCollectionComponent(
+      {required this.cardObjects,
+      required this.cardVariant,
+      required this.collectionDirection})
+      : assert(cardObjects.isNotEmpty == true);
 
-  CardObject detailCardObject = CardObject.detailed(decorationPriority.standard,
-      fillerTextHeader, fillerTextBody, fillerAction);
+  @override
+  _CardCollectionComponentState createState() =>
+      _CardCollectionComponentState();
+}
 
-  CardObject detailIconCardObject = CardObject.detailedIcon(
-      decorationPriority.standard,
-      fillerTextHeader,
-      fillerTextBody,
-      fillerIcon1,
-      fillerAction);
+class _CardCollectionComponentState extends State<CardCollectionComponent> {
+  Widget filledCardObject({required CardObject cardData}) {
+    switch (widget.cardVariant) {
 
-  CardObject complexCardObject = CardObject.complex(
-      decorationPriority.standard,
-      fillerTextHeader,
-      fillerTextBody,
-      {
-        'Detail 1': fillerIcon1,
-        'Detail 2': fillerIcon2,
-        'Detail 3': fillerIcon3,
-        'Detail 4': fillerIcon4,
-      },
-      fillerAction);
-
-  CardObject complexIconCardObject = CardObject.complexIcon(
-      decorationPriority.standard,
-      fillerTextHeader,
-      fillerTextBody,
-      fillerIcon1,
-      {
-        'Detail 1': fillerIcon1,
-        'Detail 2': fillerIcon2,
-        'Detail 3': fillerIcon3,
-        'Detail 4': fillerIcon4,
-      },
-      fillerAction);
-
-  //Takes a card object & variant and returns filled out card
-
-  Widget filledCardObject(
-      {required cardType cardVariant, required CardObject cardData}) {
-    switch (cardVariant) {
-
-      //should be card object type of: standard
+      //should be card object type of:
       case cardType.StandardCard:
         {
           return StandardCardElement(
@@ -59,7 +31,7 @@ class Playground {
               cardLabel: cardData.cardLabel!);
         }
 
-      //should be card object type of: standardIcon
+      //should be card object type of:
       case cardType.StandardBadgeCard:
         {
           return StandardBadgeCardElement(
@@ -68,7 +40,7 @@ class Playground {
               cardIcon: cardData.cardIcon!);
         }
 
-      //should be card object type of: detailed
+      //should be card object type of:
       case cardType.DetailCard:
         {
           return DetailCardElement(
@@ -77,7 +49,7 @@ class Playground {
               cardBody: cardData.cardBody!);
         }
 
-      //should be card object type of: detailedIcon
+      //should be card object type of:
       case cardType.DetailBadgeCard:
         {
           return DetailBadgeCardElement(
@@ -87,14 +59,14 @@ class Playground {
               cardIcon: cardData.cardIcon!);
         }
 
-      //should be card object type of: standardIcon
+      //should be card object type of:
       case cardType.DetailCarouselCard:
         {
           return DetailCarouselCardElement(
               cardLabel: cardData.cardLabel!, cardIcon: cardData.cardIcon!);
         }
 
-      //should be card object type of: complex
+      //should be card object type of:
       case cardType.ComplexCard:
         {
           return ComplexCardElement(
@@ -104,7 +76,7 @@ class Playground {
               cardDetailCarousel: cardData.cardDetailCarousel!);
         }
 
-      //should be card object type of: complexIcon
+      //should be card object type of:
       case cardType.ComplexBadgeCard:
         {
           return ComplexBadgeCardElement(
@@ -115,7 +87,7 @@ class Playground {
               cardIcon: cardData.cardIcon!);
         }
 
-      //should be card object type of: complex
+      //should be card object type of:
       case cardType.CategoryIconDetailCard:
         {
           return CategoryIconDetailCardElement(
@@ -125,5 +97,25 @@ class Playground {
               cardIcon: cardData.cardIcon!);
         }
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: ListView.builder(
+            scrollDirection: widget.collectionDirection,
+            itemBuilder: (BuildContext context, int index) {
+              var currentItem = widget.cardObjects[index];
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                    splashColor: aureusVariables.prodColor,
+                    onTap: currentItem.decorationVariant !=
+                            decorationPriority.inactive
+                        ? currentItem.cardAction
+                        : null,
+                    child: filledCardObject(cardData: currentItem)),
+              );
+            }));
   }
 }

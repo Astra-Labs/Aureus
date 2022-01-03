@@ -23,7 +23,9 @@ class Accessibility {
         text: TextSpan(text: textInput, style: textStyle),
         textScaleFactor: query.textScaleFactor,
         textDirection: textDirection)
-      ..layout(maxWidth: widthLimit);
+      ..layout(
+          maxWidth: widthLimit,
+          minWidth: size.widthOf(weight: sizingWeight.w0));
 
     return textPainter.size;
   }

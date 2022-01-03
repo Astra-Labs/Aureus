@@ -17,6 +17,7 @@ export 'src/Core/safety.dart';
 export 'src/Objects/Elements/AlertControllerObjects.dart';
 
 //MARK: - Component Objects
+export 'src/Objects/Components/CardObjects.dart';
 export 'src/Objects/Components/InputFormObjects.dart';
 export 'src/Objects/Components/Icons.dart';
 export 'src/Objects/Components/NotificationObject.dart';
@@ -36,9 +37,14 @@ export 'src/Objects/Functionality/SafetyPlanObjects.dart';
 //MARK: - Widget Elements
 export 'src/Widgets/Elements/Badges/BadgeElement.dart';
 
-export 'src/Widgets/Elements/Cards/BadgeCardElement.dart';
-export 'src/Widgets/Elements/Cards/PastelCardElement.dart';
 export 'src/Widgets/Elements/Cards/StandardCardElement.dart';
+export 'src/Widgets/Elements/Cards/StandardBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/DetailCardElement.dart';
+export 'src/Widgets/Elements/Cards/DetailBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/DetailCarouselCardElement.dart';
+export 'src/Widgets/Elements/Cards/ComplexCardElement.dart';
+export 'src/Widgets/Elements/Cards/ComplexBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/CategoryIconDetailCardElement.dart';
 
 export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/DividerElement.dart';
@@ -57,9 +63,8 @@ export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
 export 'src/Widgets/Components/Buttons/SmolButtonElement.dart';
 export 'src/Widgets/Components/Buttons/StandardButtonElement.dart';
 
-export 'src/Widgets/Components/Collection Views/DetailCarouselComponent.dart';
-export 'src/Widgets/Components/Collection Views/GridCardComponent.dart';
-export 'src/Widgets/Components/Collection Views/HorizontalCardCarouselComponent.dart';
+export 'src/Widgets/Components/Collection Views/CardCollectionComponent.dart';
+export 'src/Widgets/Components/Collection Views/DetailCardCarouselComponent.dart';
 
 export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';
 export 'src/Widgets/Components/Communication/NotificationComponent.dart';
@@ -103,3 +108,13 @@ enum buttonDecorationVariants {
   circle
 }
 enum tabItemDecorationVariants { circle, roundedRectangle }
+enum cardType {
+  StandardCard,
+  StandardBadgeCard,
+  DetailCard,
+  DetailBadgeCard,
+  DetailCarouselCard,
+  ComplexCard,
+  ComplexBadgeCard,
+  CategoryIconDetailCard,
+}

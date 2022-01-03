@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:test_app/src/backing_items.dart';
 import 'package:test_app/src/playground.dart';
 import 'src/text_items.dart';
@@ -58,40 +56,71 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var testButton1 = StandardButtonElement(
-      decorationVariant: decorationPriority.inactive,
-      buttonTitle: 'Standard Button',
-      buttonAction: fillerAction);
+  /*
+  Widget testStandardCard = Playground().filledCardObject(
+      cardVariant: cardType.StandardCard,
+      cardData: Playground().standardCardObject);
 
-  var testButton2 = FullWidthButtonElement(
-      buttonTitle: 'Full Button',
-      currentVariant: decorationPriority.inactive,
-      buttonAction: fillerAction);
+  Widget testStandardIconCard = Playground().filledCardObject(
+      cardVariant: cardType.StandardBadgeCard,
+      cardData: Playground().standardIconCardObject);
 
-  var testButton3 = SmolButtonElement(
-      decorationVariant: decorationPriority.inactive,
-      buttonTitle: 'Smol Button',
-      buttonAction: fillerAction);
+  Widget testDetailCard = Playground().filledCardObject(
+      cardVariant: cardType.DetailCard,
+      cardData: Playground().detailCardObject);
 
-  var testButton4 = PrimaryIconButtonElement(
-      decorationVariant: decorationPriority.inactive,
-      buttonIcon: Icons.add,
-      buttonTooltip: 'Add button!',
-      buttonAction: fillerAction);
+  Widget testDetailIconCard = Playground().filledCardObject(
+      cardVariant: cardType.DetailBadgeCard,
+      cardData: Playground().detailIconCardObject);
 
-  var testButton5 = SecondaryIconButtonElement(
-      decorationVariant: decorationPriority.inactive,
-      buttonIcon: Icons.add,
-      buttonTooltip: 'Add button!',
-      buttonAction: fillerAction);
+  Widget testDetailCarouselCard = Playground().filledCardObject(
+      cardVariant: cardType.DetailCarouselCard,
+      cardData: Playground().standardIconCardObject);
+
+  Widget testComplexCard = Playground().filledCardObject(
+      cardVariant: cardType.ComplexCard,
+      cardData: Playground().complexCardObject);
+
+  Widget testComplexIconCard = Playground().filledCardObject(
+      cardVariant: cardType.ComplexBadgeCard,
+      cardData: Playground().complexIconCardObject);
+
+  Widget testCategoryCard = Playground().filledCardObject(
+      cardVariant: cardType.CategoryIconDetailCard,
+      cardData: Playground().complexIconCardObject);*/
 
   @override
   Widget build(BuildContext context) {
+    /*
+    List<Widget> testingCards = [
+      testStandardCard,
+      testStandardIconCard,
+      testDetailCard,
+      testDetailIconCard,
+      testDetailCarouselCard,
+      testComplexCard,
+      testComplexIconCard,
+      testCategoryCard
+    ];
+
+    ListView cardTester = ListView.separated(
+      padding: const EdgeInsets.all(8),
+      shrinkWrap: true,
+      itemCount: testingCards.length,
+      itemBuilder: (BuildContext context, int index) {
+        return testingCards[index];
+      },
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+    );*/
+
     return Scaffold(
-        body: ContainerView(
-      decorationVariant: decorationPriority.standard,
-      builder: landing1,
-    ));
+        body: Center(
+            child: ComplexCardElement(
+      decorationVariant: decorationPriority.important,
+      cardDetailCarousel: Playground().complexCardObject.cardDetailCarousel!,
+      cardBody: Playground().complexCardObject.cardBody!,
+      cardLabel: Playground().complexCardObject.cardLabel!,
+    )));
   }
 }
 

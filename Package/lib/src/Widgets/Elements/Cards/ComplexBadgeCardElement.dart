@@ -1,0 +1,24 @@
+import 'package:aureus/aureus.dart';
+
+//A card that contains a badge and label to describe what the card represents
+//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Badge%20Cards.md
+
+class ComplexBadgeCardElement extends StatelessWidget {
+  final decorationPriority decorationVariant;
+  final String cardLabel;
+  final String cardBody;
+  final Map<String, IconData> cardDetailCarousel;
+  final IconData cardIcon;
+
+  const ComplexBadgeCardElement(
+      {required this.decorationVariant,
+      required this.cardLabel,
+      required this.cardBody,
+      required this.cardDetailCarousel,
+      required this.cardIcon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

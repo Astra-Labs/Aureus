@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:test_app/src/playground.dart';
 
 //where all items in aureus are initiated for testing
@@ -8,18 +6,19 @@ import 'package:test_app/src/playground.dart';
 //FILLER DATA
 var fillerTextHeader = 'Header';
 var fillerTextSubheader = 'Subheader';
-var fillerTextBody = 'This is body text.';
+var fillerTextBody =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 var fillerTextButton = 'Press here.';
 var fillerTextAlert = 'Action completed.';
 var fillerTextMissionLabel = 'How can I help?';
-var fillerTextCardName = 'Card';
+var fillerTextCardName = 'Card Item';
 var fillerPlaceholder = 'Item';
 
-var fillerIcon1 = Assets.add;
-var fillerIcon2 = Assets.alert;
-var fillerIcon3 = Assets.speedometer;
-var fillerIcon4 = Assets.apple;
-var fillerIcon5 = Assets.brain;
+var fillerIcon1 = Icons.add;
+var fillerIcon2 = Icons.center_focus_weak_sharp;
+var fillerIcon3 = Icons.deck;
+var fillerIcon4 = Icons.keyboard;
+var fillerIcon5 = Icons.pages;
 
 var fillerLabels = ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5'];
 var fillerIcons = [
@@ -53,10 +52,6 @@ late AlertControllerObject testAlertControllerObject =
         alertIcon: Icons.access_alarm);
 
 /* ELEMENTS */
-var badgeCard =
-    BadgeCardElement(cardLabel: fillerTextCardName, cardIcon: fillerIcon1);
-var pastelCard = PastelCardElement(fillerTextCardName);
-var standardCard = StandardCardElement(fillerTextCardName);
 
 var tabSubheader = TabSubheaderElement(title: fillerTextSubheader);
 var divider = DividerElement();
@@ -155,14 +150,6 @@ var inactiveStandardButton = StandardButtonElement(
 
 /* COMPONENTS */
 
-var badgeGridCarousel = GridCardComponent(fillerLabels, CardType.badge);
-var standardGridCarousel = GridCardComponent(fillerLabels, CardType.standard);
-
-var badgeHorizontalCardCarousel = HorizontalCardCarouselComponent(
-    fillerTextHeader, CardType.badge, fillerLabels, fillerIcons);
-var standardHorizontalCardCarousel = HorizontalCardCarouselComponent(
-    fillerTextHeader, CardType.standard, fillerLabels);
-
 var receiverMessageBubble = MessageBubbleComponent(
     messageVariant: messagingVariants.receiver,
     messageBody: fillerTextBody,
@@ -189,14 +176,14 @@ var sendField = SendFieldComponent(onSend: fillerAction);
 /* Test Builder */
 LayoutBuilder landing1 =
     LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  List<Widget> landingTestWidget = [searchBar];
+  List<Widget> testCards = [];
 
   return ListView.separated(
     padding: const EdgeInsets.all(8),
     shrinkWrap: true,
-    itemCount: landingTestWidget.length,
+    itemCount: testCards.length,
     itemBuilder: (BuildContext context, int index) {
-      return Container(child: Center(child: landingTestWidget[index]));
+      return Container(child: Center(child: testCards[index]));
     },
     separatorBuilder: (BuildContext context, int index) => const Divider(),
   );
@@ -230,19 +217,16 @@ LayoutBuilder landing2 =
       children: [notification1, notification2, notification3]);
 });
 
-var darkStandardContainerView = ContainerView(
+var standardContainerView = ContainerView(
     decorationVariant: decorationPriority.standard, builder: landing1);
 
-var lightStandardContainerView = ContainerView(
+var importantContainerView = ContainerView(
     decorationVariant: decorationPriority.important, builder: landing1);
 
 /* MISC */
 
 //array of all elements available in aureus
 List<Widget> libElements = [
-  badgeCard,
-  pastelCard,
-  standardCard,
   tabSubheader,
   divider,
   timer,
@@ -261,10 +245,6 @@ List<Widget> libElements = [
   standardStandardButton,
   importantStandardButton,
   inactiveStandardButton,
-  badgeGridCarousel,
-  standardGridCarousel,
-  badgeHorizontalCardCarousel,
-  standardHorizontalCardCarousel,
   receiverMessageBubble,
   senderMessageBubble,
   notification,

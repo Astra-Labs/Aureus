@@ -241,7 +241,7 @@ class Aureus {
 
   TextStyle tag2() {
     return GoogleFonts.exo(
-        fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.0);
+        fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
   }
 }
 
@@ -377,6 +377,18 @@ class Sizing {
   late var logicalScreenSize = window.physicalSize / pixelRatio;
   late var logicalWidth = logicalScreenSize.width;
   late var logicalHeight = logicalScreenSize.height;
+
+  bool isMobileDisplay() {
+    var shortestSide = logicalScreenSize.shortestSide;
+
+    if (shortestSide >= 550) {
+      return true;
+    } else if (shortestSide < 550) {
+      return false;
+    }
+
+    throw ('oi a fucky wucky happened');
+  }
 
 //Creates universal padding for all items based on the screen size.
   EdgeInsets universalPadding() {
@@ -517,6 +529,41 @@ class Sizing {
     }
 
     return screenWeightedWidth;
+  }
+
+  //returns a maximum width accounting for padding, given how many rows, and depending on device type.
+  double screenLayoutItemWidth(int sections, Size area) {
+    double sizingWidth = 0.0;
+
+    if (sections == 1) {
+      //item needs to be full width with w1 padding
+
+      isMobileDisplay()
+          ? (sizingWidth = area.width * 0.782)
+          : (sizingWidth = area.width * 0.586);
+    } else if (sections == 2) {
+      //item needs to be 1/2 width for 2 sections
+
+      isMobileDisplay()
+          ? (sizingWidth = area.width * 0.384)
+          : (sizingWidth = area.width * 0.289);
+    } else if (sections == 3) {
+      //item needs to be 1/3 width for 3 sections
+      isMobileDisplay()
+          ? (sizingWidth = area.width * 1)
+          : (sizingWidth = area.width * 0.25);
+    } else if (sections == 4) {
+      //item needs to be 1/4 width for 4 sections
+      isMobileDisplay()
+          ? (sizingWidth = area.width * 1)
+          : (sizingWidth = area.width * 1);
+    } else if (sections <= 5) {
+      //item needs to be 1/5 width for 5 sections
+      isMobileDisplay()
+          ? (sizingWidth = area.width * 1)
+          : (sizingWidth = area.width * 1);
+    }
+    return sizingWidth;
   }
 }
 

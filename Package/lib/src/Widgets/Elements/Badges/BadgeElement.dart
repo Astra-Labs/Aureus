@@ -11,17 +11,35 @@ class IconBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: 60,
-        height: 60,
-        child: Container(
-          decoration: LayerBackingDecoration(priority: badgePriority)
-              .buildBacking()
-              .copyWith(borderRadius: BorderRadius.circular(40)),
-          child: Icon(badgeIcon,
-              color:
-                  coloration.decorationColor(decorationVariant: badgePriority),
-              size: 35.0),
-        ));
+    var customBadgeBacking =
+        BaseBackingDecoration(priority: decorationPriority.standard);
+
+    Gradient backingGradient = LinearGradient(colors: []);
+    BoxShadow backingHaze = BoxShadow();
+
+    if (foundation.brightness == Brightness.dark) {
+      backingGradient = foundation.darkGradient();
+      backingHaze = foundation.pastelShadow();
+    } else if (foundation.brightness == Brightness.light) {
+      backingGradient = foundation.lightGradient();
+      backingHaze = foundation.darkShadow();
+    }
+
+    customBadgeBacking.decorationCornerRadius = BorderRadius.circular(10.0);
+    customBadgeBacking.decorationGradient = backingGradient;
+    customBadgeBacking.decorationBorder = foundation.universalBorder();
+    customBadgeBacking.decorationHaze = backingHaze;
+
+    return Container(
+      constraints: BoxConstraints(
+          minHeight: 10, minWidth: 10, maxHeight: 70, maxWidth: 70),
+      decoration: customBadgeBacking
+          .buildBacking()
+          .copyWith(borderRadius: BorderRadius.circular(40)),
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Icon(badgeIcon, color: coloration.contrastColor()),
+      ),
+    );
   }
 }

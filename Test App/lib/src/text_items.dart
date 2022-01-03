@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 //where all text related items in aureus are initiated for testing
 
