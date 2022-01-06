@@ -23,10 +23,8 @@ class StandardCardElement extends StatelessWidget {
 
     return Container(
         constraints: BoxConstraints(
-            minWidth: labelSize.width * 1.5,
-            minHeight: labelSize.height * 2,
-            maxWidth: labelSize.width * 1.9,
-            maxHeight: labelSize.height * 7),
+            maxWidth: size.layoutItemWidth(4, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         child: Padding(

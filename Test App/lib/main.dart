@@ -91,35 +91,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /*
-    List<Widget> testingCards = [
-      testStandardCard,
-      testStandardIconCard,
-      testDetailCard,
-      testDetailIconCard,
-      testDetailCarouselCard,
-      testComplexCard,
-      testComplexIconCard,
-      testCategoryCard
-    ];
-
-    ListView cardTester = ListView.separated(
-      padding: const EdgeInsets.all(8),
-      shrinkWrap: true,
-      itemCount: testingCards.length,
-      itemBuilder: (BuildContext context, int index) {
-        return testingCards[index];
-      },
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
-    );*/
-
     return Scaffold(
         body: Center(
-            child: ComplexCardElement(
-      decorationVariant: decorationPriority.important,
-      cardDetailCarousel: Playground().complexCardObject.cardDetailCarousel!,
-      cardBody: Playground().complexCardObject.cardBody!,
-      cardLabel: Playground().complexCardObject.cardLabel!,
+            child: CardCollectionComponent(
+      cardObjects: [
+        Playground().detailCardObject,
+        Playground().detailCardObject,
+        Playground().detailCardObject,
+      ],
+      cardVariant: cardType.DetailCard,
+      collectionDirection: Axis.horizontal,
     )));
   }
 }

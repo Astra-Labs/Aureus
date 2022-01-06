@@ -532,7 +532,7 @@ class Sizing {
   }
 
   //returns a maximum width accounting for padding, given how many rows, and depending on device type.
-  double screenLayoutItemWidth(int sections, Size area) {
+  double layoutItemWidth(int sections, Size area) {
     double sizingWidth = 0.0;
 
     if (sections == 1) {
@@ -540,30 +540,65 @@ class Sizing {
 
       isMobileDisplay()
           ? (sizingWidth = area.width * 0.782)
-          : (sizingWidth = area.width * 0.586);
+          : (sizingWidth = area.width * 0.391);
     } else if (sections == 2) {
       //item needs to be 1/2 width for 2 sections
 
       isMobileDisplay()
           ? (sizingWidth = area.width * 0.384)
-          : (sizingWidth = area.width * 0.289);
+          : (sizingWidth = area.width * 0.192);
     } else if (sections == 3) {
       //item needs to be 1/3 width for 3 sections
       isMobileDisplay()
-          ? (sizingWidth = area.width * 1)
-          : (sizingWidth = area.width * 0.25);
+          ? (sizingWidth = area.width * 0.25)
+          : (sizingWidth = area.width * 0.125);
     } else if (sections == 4) {
       //item needs to be 1/4 width for 4 sections
       isMobileDisplay()
-          ? (sizingWidth = area.width * 1)
-          : (sizingWidth = area.width * 1);
+          ? (sizingWidth = area.width * 0.184)
+          : (sizingWidth = area.width * 0.92);
     } else if (sections <= 5) {
       //item needs to be 1/5 width for 5 sections
       isMobileDisplay()
-          ? (sizingWidth = area.width * 1)
-          : (sizingWidth = area.width * 1);
+          ? (sizingWidth = area.width * 0.146)
+          : (sizingWidth = area.width * 0.73);
     }
     return sizingWidth;
+  }
+
+  //returns a maximum width accounting for padding, given how many rows, and depending on device type.
+  double layoutItemHeight(int sections, Size area) {
+    double sizingHeight = 0.0;
+
+    if (sections == 1) {
+      //item needs to be full height with w1 padding
+
+      isMobileDisplay()
+          ? (sizingHeight = area.height * 0.806)
+          : (sizingHeight = area.height * 0.89);
+    } else if (sections == 2) {
+      //item needs to be 1/2 height for 2 sections
+
+      isMobileDisplay()
+          ? (sizingHeight = area.height * 0.397)
+          : (sizingHeight = area.height * 0.43);
+    } else if (sections == 3) {
+      //item needs to be 1/3 height for 3 sections
+      isMobileDisplay()
+          ? (sizingHeight = area.height * 0.287)
+          : (sizingHeight = area.height * 0.264);
+    } else if (sections == 4) {
+      //item needs to be 1/4 height for 4 sections
+      isMobileDisplay()
+          ? (sizingHeight = area.height * 0.216)
+          : (sizingHeight = area.height * 0.195);
+    } else if (sections <= 5) {
+      //item needs to be 1/5 height for 5 sections
+      isMobileDisplay()
+          ? (sizingHeight = area.height * 0.168)
+          : (sizingHeight = area.height * 0.155);
+    }
+    return sizingHeight;
   }
 }
 

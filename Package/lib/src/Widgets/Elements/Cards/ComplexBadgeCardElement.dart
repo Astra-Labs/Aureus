@@ -19,6 +19,47 @@ class ComplexBadgeCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    Size labelSize = Accessibility.textStringSize(
+        widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
+        textInput: cardLabel,
+        textStyle: foundation.heading4(),
+        textDirection: TextDirection.ltr,
+        query: MediaQuery.of(context));
+
+    Size bodySize = Accessibility.textStringSize(
+        widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
+        textInput: cardLabel,
+        textStyle: foundation.body1(),
+        textDirection: TextDirection.ltr,
+        query: MediaQuery.of(context));
+
+    return Container(
+        decoration:
+            CardBackingDecoration(priority: decorationVariant).buildBacking(),
+        constraints: BoxConstraints(
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
+        child: Padding(
+            padding: const EdgeInsets.all(13.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    HeadingFourText(cardLabel, decorationVariant),
+                    IconBadge(
+                        badgeIcon: cardIcon, badgePriority: decorationVariant)
+                  ],
+                ),
+                BodyOneText(cardBody, decorationVariant),
+                DetailCardCarouselComponent(
+                    cardDetailCarousel: cardDetailCarousel)
+              ],
+            )));
   }
 }

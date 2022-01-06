@@ -31,9 +31,8 @@ class DetailCardElement extends StatelessWidget {
 
     return Container(
         constraints: BoxConstraints(
-            minWidth: 300,
-            minHeight: 100,
-            maxWidth: size.widthOf(weight: sizingWeight.w5)),
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         child: Padding(

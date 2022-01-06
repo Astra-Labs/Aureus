@@ -18,14 +18,14 @@ class ComplexCardElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size labelSize = Accessibility.textStringSize(
-        widthLimit: size.widthOf(weight: sizingWeight.w3),
+        widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
         textInput: cardLabel,
         textStyle: foundation.heading4(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     Size bodySize = Accessibility.textStringSize(
-        widthLimit: size.widthOf(weight: sizingWeight.w3),
+        widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
         textInput: cardLabel,
         textStyle: foundation.body1(),
         textDirection: TextDirection.ltr,
@@ -34,20 +34,18 @@ class ComplexCardElement extends StatelessWidget {
     return Container(
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
-        constraints: BoxConstraints(minHeight: 193, minWidth: 379),
+        constraints: BoxConstraints(
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
         child: Padding(
             padding: const EdgeInsets.all(13.0),
-            child: Wrap(
-              runSpacing: 4.0,
-              runAlignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.start,
-              alignment: WrapAlignment.spaceEvenly,
-              direction: Axis.vertical,
-              spacing: 10.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 HeadingFourText(cardLabel, decorationVariant),
                 BodyOneText(cardBody, decorationVariant),
-                Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 15)),
                 DetailCardCarouselComponent(
                     cardDetailCarousel: cardDetailCarousel)
               ],

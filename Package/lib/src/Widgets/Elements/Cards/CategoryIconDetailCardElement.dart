@@ -18,14 +18,14 @@ class CategoryIconDetailCardElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size cardLabelSize = Accessibility.textStringSize(
-        widthLimit: 1000,
+        widthLimit: size.widthOf(weight: sizingWeight.w9),
         textInput: cardLabel,
         textStyle: foundation.heading3(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     Size cardBodySize = Accessibility.textStringSize(
-        widthLimit: 1000,
+        widthLimit: size.widthOf(weight: sizingWeight.w9),
         textInput: cardBody,
         textStyle: foundation.body1(),
         textDirection: TextDirection.ltr,
@@ -34,8 +34,8 @@ class CategoryIconDetailCardElement extends StatelessWidget {
     return Container(
         //this will be the rounded card backing
         constraints: BoxConstraints(
-            maxWidth: size.widthOf(weight: sizingWeight.w2),
-            maxHeight: size.widthOf(weight: sizingWeight.w3)),
+            maxWidth: size.layoutItemWidth(2, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         child: Padding(
