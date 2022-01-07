@@ -56,66 +56,41 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget testStandardCard = Playground().filledCardObject(
-      cardVariant: cardType.StandardCard,
-      cardData: Playground().standardCardObject);
-
-  Widget testStandardIconCard = Playground().filledCardObject(
-      cardVariant: cardType.StandardBadgeCard,
-      cardData: Playground().standardIconCardObject);
-
-  Widget testDetailCard = Playground().filledCardObject(
-      cardVariant: cardType.DetailCard,
-      cardData: Playground().detailCardObject);
-
-  Widget testDetailIconCard = Playground().filledCardObject(
-      cardVariant: cardType.DetailBadgeCard,
-      cardData: Playground().detailIconCardObject);
-
-  Widget testDetailCarouselCard = Playground().filledCardObject(
-      cardVariant: cardType.DetailCarouselCard,
-      cardData: Playground().standardIconCardObject);
-
-  Widget testComplexCard = Playground().filledCardObject(
-      cardVariant: cardType.ComplexCard,
-      cardData: Playground().complexCardObject);
-
-  Widget testComplexIconCard = Playground().filledCardObject(
-      cardVariant: cardType.ComplexBadgeCard,
-      cardData: Playground().complexIconCardObject);
-
-  Widget testCategoryCard = Playground().filledCardObject(
-      cardVariant: cardType.CategoryIconDetailCard,
-      cardData: Playground().complexIconCardObject);
-
   @override
   Widget build(BuildContext context) {
+    Widget childWidget1 = Container(color: foundation.lavender());
+    Widget childWidget2 = Container(color: foundation.melt());
+    Widget childWidget3 = Container(color: foundation.ice());
+    Widget childWidget4 = Container(color: foundation.steel());
+
+    TabObject tab1 = TabObject.forIconTabbing(
+        tabIcon: fillerIcon1,
+        childController: childWidget1,
+        tabPriority: decorationPriority.standard,
+        accessibilityHint: 'Lavender');
+
+    TabObject tab2 = TabObject.forIconTabbing(
+        tabIcon: fillerIcon2,
+        childController: childWidget1,
+        tabPriority: decorationPriority.standard,
+        accessibilityHint: 'Melt');
+
+    TabObject tab3 = TabObject.forIconTabbing(
+        tabIcon: fillerIcon3,
+        childController: childWidget1,
+        tabPriority: decorationPriority.standard,
+        accessibilityHint: 'Ice');
+
+    TabObject tab4 = TabObject.forIconTabbing(
+        tabIcon: fillerIcon4,
+        childController: childWidget1,
+        tabPriority: decorationPriority.standard,
+        accessibilityHint: 'Steel');
+
     return Scaffold(
-        body: Center(
-      child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                testStandardCard,
-                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
-                testStandardIconCard,
-                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
-                testDetailCard,
-                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
-                testDetailIconCard,
-                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
-                testDetailCarouselCard,
-                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
-                testComplexCard,
-                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
-                testComplexIconCard,
-                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
-                testCategoryCard
-              ])),
-    ));
+        body: Align(
+            alignment: Alignment.bottomCenter,
+            child: NavBarComponent(tabItems: [tab1, tab2, tab3, tab4])));
   }
 }
 

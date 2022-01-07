@@ -16,42 +16,58 @@ class NavBarComponent extends StatefulWidget {
 }
 
 class _NavBarComponentState extends State<NavBarComponent> {
-  @override
-  Widget build(BuildContext context) {
-    Container navigatorScreen = Container(
-        constraints: BoxConstraints(
-            minWidth: size.widthOf(weight: sizingWeight.w10),
-            minHeight: size.layoutItemWidth(5, size.logicalScreenSize),
-            maxHeight: size.layoutItemWidth(5, size.logicalScreenSize)));
+  Widget tabChild = Container(color: Colors.white);
 
-    Container activeIndicator = Container(
-        width: 1,
+  Container activeIndicator = Container(
+    height: 2,
+    width: 2,
+    decoration: BoxDecoration(
         color: coloration.decorationColor(
-            decorationVariant: decorationPriority.important));
+            decorationVariant: decorationPriority.important),
+        shape: BoxShape.circle),
+  );
 
-    List<Widget> tabObjects = [];
+  List<Widget> tabObjects = [];
 
-    for (var item in widget.tabItems) {
+  for (item in widget) {
       tabObjects.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 20.0),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            setState(() {
+              item.tabPriority = decorationPriority.important;
+              tabChild = item.childController;
+            });
+          },
           child: Icon(item.tabIcon,
-              size: size.widthOf(weight: sizingWeight.w0),
+              size: size.widthOf(weight: sizingWeight.w1),
               color: coloration.decorationColor(
                   decorationVariant: item.tabPriority)),
         ),
       ));
     }
 
-    return Container(
+  @override
+  Widget build(BuildContext context) {
+
+
+    Expanded navigatorScreen = Expanded(
+        child: Container(
+            constraints: BoxConstraints(
+                minWidth: size.widthOf(weight: sizingWeight.w10),
+                minHeight: size.layoutItemWidth(5, size.logicalScreenSize)),
+            child: tabChild));
+
+    var navigatorBar = Container(
         //level 1 - full container that holds nav bar and a secondary widget to contain the widget being selected.
         width: size.widthOf(weight: sizingWeight.w10),
-        height: size.layoutItemWidth(5, size.logicalScreenSize),
+        height: size.layoutItemWidth(4, size.logicalScreenSize),
         child: Container(
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.standard)
-                    .buildBacking(),
+            alignment: Alignment.bottomCenter,
+            decoration: ButtonBackingDecoration(
+                    variant: buttonDecorationVariants.edgedRectangle,
+                    priority: decorationPriority.inactive)
+                .buildBacking(),
             child: Center(
                 child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -63,5 +79,12 @@ class _NavBarComponentState extends State<NavBarComponent> {
                           mainAxisSize: MainAxisSize.min,
                           children: tabObjects),
                     )))));
+
+    return Column(
+      children: [
+        navigatorScreen,
+        navigatorBar,
+      ],
+    );
   }
 }

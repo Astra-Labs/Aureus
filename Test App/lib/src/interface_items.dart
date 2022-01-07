@@ -171,6 +171,61 @@ var searchBar = SearchBarComponent(onSearch: fillerAction);
 
 var sendField = SendFieldComponent(onSend: fillerAction);
 
+Widget testStandardCard = Playground().filledCardObject(
+    cardVariant: cardType.StandardCard,
+    cardData: Playground().standardCardObject);
+
+Widget testStandardIconCard = Playground().filledCardObject(
+    cardVariant: cardType.StandardBadgeCard,
+    cardData: Playground().standardIconCardObject);
+
+Widget testDetailCard = Playground().filledCardObject(
+    cardVariant: cardType.DetailCard, cardData: Playground().detailCardObject);
+
+Widget testDetailIconCard = Playground().filledCardObject(
+    cardVariant: cardType.DetailBadgeCard,
+    cardData: Playground().detailIconCardObject);
+
+Widget testDetailCarouselCard = Playground().filledCardObject(
+    cardVariant: cardType.DetailCarouselCard,
+    cardData: Playground().standardIconCardObject);
+
+Widget testComplexCard = Playground().filledCardObject(
+    cardVariant: cardType.ComplexCard,
+    cardData: Playground().complexCardObject);
+
+Widget testComplexIconCard = Playground().filledCardObject(
+    cardVariant: cardType.ComplexBadgeCard,
+    cardData: Playground().complexIconCardObject);
+
+Widget testCategoryCard = Playground().filledCardObject(
+    cardVariant: cardType.CategoryIconDetailCard,
+    cardData: Playground().complexIconCardObject);
+
+var testingCards = SingleChildScrollView(
+    scrollDirection: Axis.vertical,
+    child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          testStandardCard,
+          Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+          testStandardIconCard,
+          Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+          testDetailCard,
+          Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+          testDetailIconCard,
+          Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+          testDetailCarouselCard,
+          Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+          testComplexCard,
+          Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+          testComplexIconCard,
+          Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+          testCategoryCard
+        ]));
+
 /* VIEWS */
 
 /* Test Builder */
