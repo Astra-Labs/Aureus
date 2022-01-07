@@ -56,7 +56,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  /*
   Widget testStandardCard = Playground().filledCardObject(
       cardVariant: cardType.StandardCard,
       cardData: Playground().standardCardObject);
@@ -87,21 +86,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget testCategoryCard = Playground().filledCardObject(
       cardVariant: cardType.CategoryIconDetailCard,
-      cardData: Playground().complexIconCardObject);*/
+      cardData: Playground().complexIconCardObject);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-            child: CardCollectionComponent(
-      cardObjects: [
-        Playground().detailCardObject,
-        Playground().detailCardObject,
-        Playground().detailCardObject,
-      ],
-      cardVariant: cardType.DetailCard,
-      collectionDirection: Axis.horizontal,
-    )));
+      child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                testStandardCard,
+                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+                testStandardIconCard,
+                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+                testDetailCard,
+                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+                testDetailIconCard,
+                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+                testDetailCarouselCard,
+                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+                testComplexCard,
+                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+                testComplexIconCard,
+                Padding(padding: EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0)),
+                testCategoryCard
+              ])),
+    ));
   }
 }
 

@@ -78,13 +78,13 @@ class _NotificationComponentState extends State<NotificationComponent> {
             ]),
       )
     ]);
-    return SizedBox(
-      width: size.widthOf(weight: sizingWeight.w4),
-      child: Container(
-          alignment: Alignment.center,
-          padding: size.universalPadding(),
-          decoration: boxDecoration,
-          child: Center(child: notificationContent)),
-    );
+    return Container(
+        constraints: BoxConstraints(
+            maxHeight: size.layoutItemHeight(4, size.logicalScreenSize),
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
+        alignment: Alignment.center,
+        padding: size.universalPadding(),
+        decoration: boxDecoration,
+        child: Center(child: notificationContent));
   }
 }

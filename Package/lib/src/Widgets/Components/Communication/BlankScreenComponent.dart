@@ -27,12 +27,10 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
                 .buildBacking(),
         child: Padding(
           padding: const EdgeInsets.all(35.0),
-          child: Wrap(
-              direction: Axis.vertical,
-              spacing: 25,
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              clipBehavior: Clip.hardEdge,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 IconBadge(
                     badgeIcon: widget.componentIcon,

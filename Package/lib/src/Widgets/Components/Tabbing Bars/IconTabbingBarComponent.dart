@@ -39,10 +39,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
         return Padding(
           padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
           child: SecondaryIconButtonElement(
-              buttonAction: () => {
-                    if (tabPriority() != decorationPriority.inactive)
-                      {widget.tabObjects[index].onTabSelection}
-                  },
+              buttonAction: () => {},
               decorationVariant: tabPriority(),
               buttonTooltip: widget.tabObjects[index].accessibilityHint,
               buttonIcon: widget.tabObjects[index].tabIcon),

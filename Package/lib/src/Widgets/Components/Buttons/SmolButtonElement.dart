@@ -45,7 +45,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
           }
         },
         child: SizedBox(
-            width: minimumButtonTextSize.width * 2,
+            width: size.layoutItemWidth(5, size.logicalScreenSize),
             height: minimumButtonTextSize.height * 2,
             child: Container(
                 decoration: buttonDecoration,

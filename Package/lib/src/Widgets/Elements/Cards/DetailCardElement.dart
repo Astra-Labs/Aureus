@@ -31,20 +31,21 @@ class DetailCardElement extends StatelessWidget {
 
     return Container(
         constraints: BoxConstraints(
+            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
+            minHeight: size.layoutItemHeight(5, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(4, size.logicalScreenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
+        clipBehavior: Clip.hardEdge,
         child: Padding(
             padding: const EdgeInsets.all(13.0),
-            child: Wrap(
-                direction: Axis.vertical,
-                spacing: 10,
-                alignment: WrapAlignment.start,
-                crossAxisAlignment: WrapCrossAlignment.start,
-                clipBehavior: Clip.hardEdge,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   HeadingFourText(cardLabel, decorationVariant),
+                  Padding(padding: EdgeInsets.fromLTRB(0, 4.0, 0.0, 4.0)),
                   BodyOneText(cardBody, decorationVariant)
                 ])));
   }

@@ -9,17 +9,20 @@ class TabbingBarObject {
 
 class TabObject {
   late IconData tabIcon;
-  late VoidCallback onTabSelection;
+  late Widget childController;
   late String tabTitle;
+  late decorationPriority tabPriority;
   late String accessibilityHint;
 
   TabObject.forIconTabbing(
       {required this.tabIcon,
-      required this.onTabSelection,
+      required this.childController,
+      required this.tabPriority,
       required this.accessibilityHint});
 
   TabObject.forTextTabbing(
       {required this.tabTitle,
-      required this.onTabSelection,
+      required this.childController,
+      required this.tabPriority,
       required this.accessibilityHint});
 }

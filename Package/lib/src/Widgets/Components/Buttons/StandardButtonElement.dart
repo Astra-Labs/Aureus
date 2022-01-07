@@ -45,7 +45,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
           }
         },
         child: SizedBox(
-            width: minimumButtonTextSize.width * 3,
+            width: size.layoutItemWidth(1, size.logicalScreenSize),
             height: minimumButtonTextSize.height * 3,
             child: Container(
                 decoration: buttonDecoration,

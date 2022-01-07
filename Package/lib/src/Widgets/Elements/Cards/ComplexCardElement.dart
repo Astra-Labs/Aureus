@@ -37,6 +37,7 @@ class ComplexCardElement extends StatelessWidget {
         constraints: BoxConstraints(
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
             maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
+        clipBehavior: Clip.hardEdge,
         child: Padding(
             padding: const EdgeInsets.all(13.0),
             child: Column(

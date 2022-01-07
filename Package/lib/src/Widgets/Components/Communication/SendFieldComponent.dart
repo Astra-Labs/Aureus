@@ -20,10 +20,10 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
   Widget build(BuildContext context) {
     return Container(
         constraints: BoxConstraints(
-            minWidth: size.widthOf(weight: sizingWeight.w3),
-            maxWidth: size.widthOf(weight: sizingWeight.w7),
-            minHeight: size.heightOf(weight: sizingWeight.w0),
-            maxHeight: size.widthOf(weight: sizingWeight.w3)),
+            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            minHeight: size.layoutItemHeight(6, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(5, size.logicalScreenSize)),
         decoration: InputBackingDecoration().buildBacking(),
         child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,

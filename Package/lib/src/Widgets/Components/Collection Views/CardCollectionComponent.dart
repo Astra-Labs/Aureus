@@ -117,7 +117,7 @@ class _CardCollectionComponentState extends State<CardCollectionComponent> {
         constraints: BoxConstraints(
             maxHeight: widget.collectionDirection == Axis.horizontal
                 ? size.layoutItemHeight(4, size.logicalScreenSize)
-                : size.layoutItemHeight(2, size.logicalScreenSize),
+                : size.layoutItemHeight(1, size.logicalScreenSize),
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
         child: ListView.builder(
             scrollDirection: widget.collectionDirection,

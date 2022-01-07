@@ -21,10 +21,13 @@ class DetailCarouselCardElement extends StatelessWidget {
 
     return Container(
       constraints: BoxConstraints(
-          maxWidth: size.layoutItemWidth(5, size.logicalScreenSize),
-          maxHeight: size.layoutItemHeight(5, size.logicalScreenSize)),
+          minWidth: size.layoutItemWidth(2, size.logicalScreenSize),
+          maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+          minHeight: size.heightOf(weight: sizingWeight.w0),
+          maxHeight: size.heightOf(weight: sizingWeight.w1)),
       decoration: CardBackingDecoration(priority: decorationPriority.inactive)
           .buildBacking(),
+      clipBehavior: Clip.hardEdge,
       padding: EdgeInsets.all(8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

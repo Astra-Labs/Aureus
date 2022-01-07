@@ -34,29 +34,41 @@ class CategoryIconDetailCardElement extends StatelessWidget {
     return Container(
         //this will be the rounded card backing
         constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(2, size.logicalScreenSize),
-            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(2, size.logicalScreenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
+        alignment: Alignment.center,
+        clipBehavior: Clip.hardEdge,
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Center(
-            child: Wrap(
-                direction: Axis.vertical,
-                spacing: 25,
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Icon(cardIcon,
-                      size: 80.0,
-                      color: coloration.decorationColor(
-                          decorationVariant: decorationVariant),
-                      // TODO: Add accessibility semantic label support
-                      semanticLabel: 'Icon name'),
-                  HeadingThreeText(cardLabel, decorationVariant),
-                  BodyOneText(cardBody, decorationVariant),
-                ]),
-          ),
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        0.0, size.widthOf(weight: sizingWeight.w1), 0.0, 0.0)),
+                Icon(cardIcon,
+                    size: size.widthOf(weight: sizingWeight.w2),
+                    color: coloration.decorationColor(
+                        decorationVariant: decorationVariant),
+                    // TODO: Add accessibility semantic label support
+                    semanticLabel: 'Icon name'),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      0.0,
+                      size.widthOf(weight: sizingWeight.w1),
+                      0.0,
+                      size.widthOf(weight: sizingWeight.w0)),
+                  child: HeadingThreeText(cardLabel, decorationVariant),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                  child: BodyOneText(cardBody, decorationVariant),
+                ),
+              ]),
         ));
   }
 }

@@ -24,10 +24,13 @@ class StandardBadgeCardElement extends StatelessWidget {
 
     return Container(
         constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(4, size.logicalScreenSize),
+            minWidth: size.layoutItemWidth(2, size.logicalScreenSize),
+            maxWidth: size.layoutItemWidth(2, size.logicalScreenSize),
+            minHeight: size.layoutItemHeight(4, size.logicalScreenSize),
             maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
+        clipBehavior: Clip.hardEdge,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(

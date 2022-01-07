@@ -378,13 +378,13 @@ class Sizing {
   late var logicalWidth = logicalScreenSize.width;
   late var logicalHeight = logicalScreenSize.height;
 
-  bool isMobileDisplay() {
+  bool isDesktopDisplay() {
     var shortestSide = logicalScreenSize.shortestSide;
 
     if (shortestSide >= 550) {
-      return true;
-    } else if (shortestSide < 550) {
       return false;
+    } else if (shortestSide < 550) {
+      return true;
     }
 
     throw ('oi a fucky wucky happened');
@@ -538,29 +538,29 @@ class Sizing {
     if (sections == 1) {
       //item needs to be full width with w1 padding
 
-      isMobileDisplay()
-          ? (sizingWidth = area.width * 0.782)
+      isDesktopDisplay()
+          ? (sizingWidth = area.width * 0.82)
           : (sizingWidth = area.width * 0.391);
     } else if (sections == 2) {
       //item needs to be 1/2 width for 2 sections
 
-      isMobileDisplay()
+      isDesktopDisplay()
           ? (sizingWidth = area.width * 0.384)
           : (sizingWidth = area.width * 0.192);
     } else if (sections == 3) {
       //item needs to be 1/3 width for 3 sections
-      isMobileDisplay()
+      isDesktopDisplay()
           ? (sizingWidth = area.width * 0.25)
           : (sizingWidth = area.width * 0.125);
     } else if (sections == 4) {
       //item needs to be 1/4 width for 4 sections
-      isMobileDisplay()
-          ? (sizingWidth = area.width * 0.184)
+      isDesktopDisplay()
+          ? (sizingWidth = area.width * 0.18)
           : (sizingWidth = area.width * 0.92);
-    } else if (sections <= 5) {
+    } else if (sections == 5) {
       //item needs to be 1/5 width for 5 sections
-      isMobileDisplay()
-          ? (sizingWidth = area.width * 0.146)
+      isDesktopDisplay()
+          ? (sizingWidth = area.width * 0.14)
           : (sizingWidth = area.width * 0.73);
     }
     return sizingWidth;
@@ -573,31 +573,37 @@ class Sizing {
     if (sections == 1) {
       //item needs to be full height with w1 padding
 
-      isMobileDisplay()
+      isDesktopDisplay()
           ? (sizingHeight = area.height * 0.806)
           : (sizingHeight = area.height * 0.89);
     } else if (sections == 2) {
       //item needs to be 1/2 height for 2 sections
 
-      isMobileDisplay()
+      isDesktopDisplay()
           ? (sizingHeight = area.height * 0.397)
           : (sizingHeight = area.height * 0.43);
     } else if (sections == 3) {
       //item needs to be 1/3 height for 3 sections
-      isMobileDisplay()
+      isDesktopDisplay()
           ? (sizingHeight = area.height * 0.287)
           : (sizingHeight = area.height * 0.264);
     } else if (sections == 4) {
       //item needs to be 1/4 height for 4 sections
-      isMobileDisplay()
+      isDesktopDisplay()
           ? (sizingHeight = area.height * 0.216)
           : (sizingHeight = area.height * 0.195);
-    } else if (sections <= 5) {
+    } else if (sections == 5) {
       //item needs to be 1/5 height for 5 sections
-      isMobileDisplay()
+      isDesktopDisplay()
           ? (sizingHeight = area.height * 0.168)
           : (sizingHeight = area.height * 0.155);
+    } else if (sections <= 6) {
+      //item needs to be 1/5 height for 5 sections
+      isDesktopDisplay()
+          ? (sizingHeight = area.height * 0.135)
+          : (sizingHeight = area.height * 0.097);
     }
+
     return sizingHeight;
   }
 }

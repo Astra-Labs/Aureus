@@ -33,7 +33,7 @@ class _CenteredAlertControllerComponentState
     } else if (widget.alertData.actions.length <= 2) {
       //needs stacked standards button built to severity
       alertControllerActions = SizedBox(
-        width: 300,
+        width: size.layoutItemWidth(1, size.logicalScreenSize),
         child: ListView.separated(
             shrinkWrap: true,
             separatorBuilder: (BuildContext context, int index) =>
@@ -78,14 +78,16 @@ class _CenteredAlertControllerComponentState
     return Container(
         //this will be the rounded card backing
         decoration: alertBacking(),
+        constraints: BoxConstraints(
+            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(1, size.logicalScreenSize)),
         child: Padding(
           padding: const EdgeInsets.all(35.0),
-          child: Wrap(
-              direction: Axis.vertical,
-              spacing: 25,
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              clipBehavior: Clip.hardEdge,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 IconBadge(
                     badgeIcon: widget.alertData.alertIcon,
