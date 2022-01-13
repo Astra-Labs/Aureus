@@ -278,6 +278,35 @@ var standardContainerView = ContainerView(
 var importantContainerView = ContainerView(
     decorationVariant: decorationPriority.important, builder: landing1);
 
+Widget childWidget1 = Container(color: lavender());
+Widget childWidget2 = Container(color: melt());
+Widget childWidget3 = Container(color: ice());
+Widget childWidget4 = Container(color: steel());
+
+TabObject tab1 = TabObject.forIconTabbing(
+    tabIcon: fillerIcon1,
+    childController: childWidget1,
+    tabPriority: decorationPriority.standard,
+    accessibilityHint: 'Lavender');
+
+TabObject tab2 = TabObject.forIconTabbing(
+    tabIcon: fillerIcon2,
+    childController: childWidget2,
+    tabPriority: decorationPriority.standard,
+    accessibilityHint: 'Melt');
+
+TabObject tab3 = TabObject.forIconTabbing(
+    tabIcon: fillerIcon3,
+    childController: childWidget3,
+    tabPriority: decorationPriority.standard,
+    accessibilityHint: 'Ice');
+
+TabObject tab4 = TabObject.forIconTabbing(
+    tabIcon: fillerIcon4,
+    childController: childWidget4,
+    tabPriority: decorationPriority.standard,
+    accessibilityHint: 'Steel');
+
 /* MISC */
 
 //array of all elements available in aureus

@@ -22,6 +22,7 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
   Widget build(BuildContext context) {
     return Container(
         //this will be the rounded card backing
+        constraints: BoxConstraints(),
         decoration:
             LayerBackingDecoration(priority: decorationPriority.inactive)
                 .buildBacking(),

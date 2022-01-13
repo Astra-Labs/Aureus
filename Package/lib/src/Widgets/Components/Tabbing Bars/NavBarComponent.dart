@@ -18,39 +18,31 @@ class NavBarComponent extends StatefulWidget {
 class _NavBarComponentState extends State<NavBarComponent> {
   Widget tabChild = Container(color: Colors.white);
 
-  Container activeIndicator = Container(
-    height: 2,
-    width: 2,
-    decoration: BoxDecoration(
-        color: coloration.decorationColor(
-            decorationVariant: decorationPriority.important),
-        shape: BoxShape.circle),
-  );
-
   List<Widget> tabObjects = [];
 
-  for (item in widget) {
+  @override
+  void setState(VoidCallback fn) {
+    widget.tabItems.forEach((element) {
       tabObjects.add(Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 20.0),
         child: InkWell(
           onTap: () {
             setState(() {
-              item.tabPriority = decorationPriority.important;
-              tabChild = item.childController;
+              element.tabPriority = decorationPriority.important;
+              tabChild = element.childController;
             });
           },
-          child: Icon(item.tabIcon,
+          child: Icon(element.tabIcon,
               size: size.widthOf(weight: sizingWeight.w1),
               color: coloration.decorationColor(
-                  decorationVariant: item.tabPriority)),
+                  decorationVariant: element.tabPriority)),
         ),
       ));
-    }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
-
     Expanded navigatorScreen = Expanded(
         child: Container(
             constraints: BoxConstraints(
@@ -79,6 +71,8 @@ class _NavBarComponentState extends State<NavBarComponent> {
                           mainAxisSize: MainAxisSize.min,
                           children: tabObjects),
                     )))));
+
+    setState(() {});
 
     return Column(
       children: [

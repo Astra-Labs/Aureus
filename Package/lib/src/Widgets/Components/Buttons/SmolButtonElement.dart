@@ -33,7 +33,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
     Size minimumButtonTextSize = Accessibility.textStringSize(
         widthLimit: 300,
         textInput: widget.buttonTitle,
-        textStyle: foundation.tag1(),
+        textStyle: tag1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
@@ -44,13 +44,15 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
             widget.buttonAction();
           }
         },
-        child: SizedBox(
-            width: size.layoutItemWidth(5, size.logicalScreenSize),
-            height: minimumButtonTextSize.height * 2,
-            child: Container(
-                decoration: buttonDecoration,
-                child: Center(
-                    child: TagOneText(
-                        widget.buttonTitle, widget.decorationVariant)))));
+        child: Container(
+            constraints: BoxConstraints(
+                minHeight: minimumButtonTextSize.height * 1.4,
+                maxHeight: minimumButtonTextSize.height * 1.6,
+                maxWidth: minimumButtonTextSize.width * 1.6,
+                minWidth: minimumButtonTextSize.width * 1.4),
+            decoration: buttonDecoration,
+            child: Center(
+                child:
+                    TagOneText(widget.buttonTitle, widget.decorationVariant))));
   }
 }

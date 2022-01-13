@@ -22,14 +22,14 @@ class ComplexBadgeCardElement extends StatelessWidget {
     Size labelSize = Accessibility.textStringSize(
         widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
         textInput: cardLabel,
-        textStyle: foundation.heading4(),
+        textStyle: heading4(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     Size bodySize = Accessibility.textStringSize(
         widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
         textInput: cardLabel,
-        textStyle: foundation.body1(),
+        textStyle: body1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 

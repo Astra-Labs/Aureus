@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:aureus/src/Widgets/Components/Communication/ExitBarComponent.dart';
-import 'package:flutter/rendering.dart';
 
 //A container that sets the size for the screen with QA-approved padding, and enables the exit bar at the top of the screen when enabled in the safety plan.
 //Doc Link:
@@ -22,40 +20,47 @@ class _ContainerViewState extends State<ContainerView> {
     const bool hasExitBar = true;
 
     BoxDecoration containerBacking() {
-      if (foundation.brightness == Brightness.light) {
+      if (brightness() == Brightness.light) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns light fluid
 
+          print('should show light fluid');
           return BoxDecoration(
             image: DecorationImage(
-              image: aureusVariables.lightFluidImage.image,
+              image:
+                  Image.network('lib/assets/Light Fluid - Portrait.png').image,
               fit: BoxFit.cover,
             ),
           );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns light blur
+          print('should show light blur');
           return BoxDecoration(
             image: DecorationImage(
-              image: aureusVariables.lightBlurImage.image,
+              image:
+                  Image.network('lib/assets/Light Blur - Portrait.png').image,
               fit: BoxFit.cover,
             ),
           );
         }
-      } else if (foundation.brightness == Brightness.dark) {
+      } else if (brightness() == Brightness.dark) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns dark fluid
 
+          print('should show dark fluid');
           return BoxDecoration(
             image: DecorationImage(
-              image: aureusVariables.darkFluidImage.image,
+              image:
+                  Image.network('lib/assets/Dark Fluid - Portrait.png').image,
               fit: BoxFit.cover,
             ),
           );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns dark blur
+          print('should show dark blur');
           return BoxDecoration(
             image: DecorationImage(
-              image: aureusVariables.darkBlurImage.image,
+              image: Image.network('lib/assets/Dark Blur - Portrait.png').image,
               fit: BoxFit.cover,
             ),
           );

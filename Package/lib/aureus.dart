@@ -3,6 +3,9 @@ library aureus;
 export 'package:flutter/material.dart';
 export 'package:google_fonts/google_fonts.dart';
 
+/* ------------------ ASSETS -------------------- */
+/* Where the widgets that Aureus builds from the objects are contained */
+
 /* ------------------ CORE GLOBALS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
 
@@ -47,6 +50,7 @@ export 'src/Widgets/Elements/Cards/ComplexBadgeCardElement.dart';
 export 'src/Widgets/Elements/Cards/CategoryIconDetailCardElement.dart';
 
 export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
+export 'src/Widgets/Elements/Info Hierarchy/MissionHeader.dart';
 export 'src/Widgets/Elements/Info Hierarchy/DividerElement.dart';
 
 export 'src/Widgets/Elements/Misc/SliderElement.dart';
@@ -87,7 +91,7 @@ export 'src/Widgets/Components/Tabbing Bars/SmolTextTabbingBarComponent.dart';
 export 'src/Widgets/Views/ContainerView.dart';
 export 'src/Widgets/Views/DataConsentView.dart';
 export 'src/Widgets/Views/HelpCenterView.dart';
-export 'src/Widgets/Views/SafetyPlanOptInView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
 export 'src/Widgets/Views/SignInView.dart';
 export 'src/Widgets/Views/SignUpView.dart';
 

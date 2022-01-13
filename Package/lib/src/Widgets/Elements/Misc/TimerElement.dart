@@ -17,7 +17,7 @@ class _TimerElementState extends State<TimerElement> {
             width: 245,
             height: 245,
             alignment: Alignment.center,
-            child: Text('00:00:00', style: foundation.heading1()),
+            child: Text('00:00:00', style: heading1()),
             decoration: ButtonBackingDecoration(
                     variant: buttonDecorationVariants.circle,
                     priority: decorationPriority.inactive)

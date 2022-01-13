@@ -55,35 +55,35 @@ class Coloration {
   }
 
   Color contrastColor() {
-    if (foundation.brightness == Brightness.light) {
-      return foundation.black();
-    } else if (foundation.brightness == Brightness.dark) {
-      return foundation.white();
+    if (brightness() == Brightness.light) {
+      return black();
+    } else if (brightness() == Brightness.dark) {
+      return white();
     }
 
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
-    return foundation.steel();
+    return steel();
   }
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
   Color sameColor() {
-    if (foundation.brightness == Brightness.light) {
-      return foundation.white();
-    } else if (foundation.brightness == Brightness.dark) {
-      return foundation.black();
+    if (brightness() == Brightness.light) {
+      return white();
+    } else if (brightness() == Brightness.dark) {
+      return black();
     }
 
-    return foundation.steel();
+    return steel();
   }
 
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
   Color inactiveColor() {
-    if (foundation.brightness == Brightness.light) {
-      return foundation.frost();
-    } else if (foundation.brightness == Brightness.dark) {
-      return foundation.carbon().withOpacity(0.5);
+    if (brightness() == Brightness.light) {
+      return frost();
+    } else if (brightness() == Brightness.dark) {
+      return carbon().withOpacity(0.5);
     }
 
-    return foundation.steel();
+    return steel();
   }
 }

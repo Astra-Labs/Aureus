@@ -1,248 +1,213 @@
 import 'package:aureus/aureus.dart';
 import 'dart:ui';
-
 import 'package:flutter/scheduler.dart';
 
 //All Variables for the UDS Elements
 //Doc Link:
-
-var foundation = Aureus();
-var aureusVariables = AurVariables();
 var size = Sizing();
+late Aureus apiVariables;
 
 /* ------------------ GLOBAL VARIABLES -------------------- */
 // 🛑
 
-class AurVariables {
-  Color prodColor = const Color.fromRGBO(181, 190, 242, 1.0);
-  String prodName = 'Aureus';
-  Image darkFluidImage = Image.asset('Dark Fluid - Portrait.png');
-  Image lightFluidImage = Image.asset('Light Fluid - Portrait.png');
-  Image darkBlurImage = Image.asset('Dark Blur - Portrait.png');
-  Image lightBlurImage = Image.asset('Light Blur - Portrait.png');
-  Image lightLogo = Image.asset('Icon - Light Mode.png');
-  Image darkLogo = Image.asset('Icon - Dark Mode.png');
+class Aureus {
+  Color? prodColor;
+  String? prodName;
+  Safety? safetyPlan;
+  Image? darkFluidImage;
+  Image? lightFluidImage;
+  Image? darkBlurImage;
+  Image? lightBlurImage;
+  Image? lightLogo;
+  Image? darkLogo;
 
-  AurVariables(
-      [prodColor,
-      prodName,
-      darkFluidImage,
-      lightFluidImage,
-      lightLogo,
-      darkLogo]);
+  Aureus(
+      {required this.prodColor,
+      required this.prodName,
+      required this.safetyPlan,
+      required this.darkFluidImage,
+      required this.lightFluidImage,
+      required this.darkBlurImage,
+      required this.lightBlurImage,
+      required this.lightLogo,
+      required this.darkLogo});
 }
 
-class Aureus {
-  var brightness = SchedulerBinding.instance!.window.platformBrightness;
+Brightness brightness() {
+  return SchedulerBinding.instance!.window.platformBrightness;
+}
 
 //Global Gradients
 
-  Gradient lightGradient() {
-    return LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [Colors.white, Color.fromRGBO(199, 208, 241, 1.0)]);
-  }
+Gradient lightGradient() {
+  return LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [Colors.white, Color.fromRGBO(199, 208, 241, 1.0)]);
+}
 
-  Gradient mediumGradient() {
-    return LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Color.fromRGBO(185, 195, 237, 1.0),
-          Color.fromRGBO(216, 222, 244, 1.0)
-        ]);
-  }
+Gradient mediumGradient() {
+  return LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color.fromRGBO(185, 195, 237, 1.0),
+        Color.fromRGBO(216, 222, 244, 1.0)
+      ]);
+}
 
-  Gradient darkGradient() {
-    return LinearGradient(
-        begin: Alignment.bottomLeft,
-        end: Alignment.topRight,
-        colors: [
-          const Color.fromRGBO(4, 4, 6, 1.0),
-          const Color.fromRGBO(67, 72, 109, 1.0)
-        ]);
-  }
+Gradient darkGradient() {
+  return LinearGradient(
+      begin: Alignment.bottomLeft,
+      end: Alignment.topRight,
+      colors: [
+        const Color.fromRGBO(4, 4, 6, 1.0),
+        const Color.fromRGBO(67, 72, 109, 1.0)
+      ]);
+}
 
-  Container lightBlur() {
-    RadialGradient topLeftGradient = RadialGradient(
-        colors: [foundation.lavender(), Color.fromRGBO(181, 190, 242, 1.0)],
-        stops: [0.0, 1.0],
-        center: Alignment.topLeft);
+Color white() {
+  return Color.fromRGBO(255, 255, 255, 1.0);
+}
 
-    RadialGradient bottomRightGradient = RadialGradient(colors: [
-      Color.fromRGBO(184, 192, 214, 1.0),
-      Color.fromRGBO(181, 190, 242, 1.0)
-    ], stops: [
-      0.0,
-      1.0
-    ], center: Alignment.bottomRight);
+Color black() {
+  return Color.fromRGBO(0, 0, 0, 1.0);
+}
 
-    Container topGradient = Container(
-        decoration: BoxDecoration(gradient: topLeftGradient),
-        width: size.widthOf(weight: sizingWeight.w10),
-        height: size.heightOf(weight: sizingWeight.w10));
+Color lavender() {
+  return Color.fromRGBO(181, 190, 242, 1.0);
+}
 
-    Container bottomGradient = Container(
-        decoration: BoxDecoration(gradient: bottomRightGradient),
-        width: size.widthOf(weight: sizingWeight.w10),
-        height: size.heightOf(weight: sizingWeight.w10));
+Color ice() {
+  return Color.fromRGBO(241, 243, 251, 1.0);
+}
 
-    return topGradient; /*Container(
-        child: Stack(
-          children: [topGradient, bottomGradient],
-        ),
-        width: size.widthOf(weight: sizingWeight.w10),
-        height: size.heightOf(weight: sizingWeight.w10));*/
-  }
+Color melt() {
+  return Color.fromRGBO(234, 237, 250, 1.0);
+}
 
-  Container darkBlur() {
-    return Container();
-  }
+Color frost() {
+  return Color.fromRGBO(214, 215, 222, 1.0);
+}
 
-  Color white() {
-    return Color.fromRGBO(255, 255, 255, 1.0);
-  }
+Color steel() {
+  return Color.fromRGBO(184, 192, 214, 1.0);
+}
 
-  Color black() {
-    return Color.fromRGBO(0, 0, 0, 1.0);
-  }
+Color iron() {
+  return Color.fromRGBO(110, 115, 128, 1.0);
+}
 
-  Color lavender() {
-    return Color.fromRGBO(181, 190, 242, 1.0);
-  }
+Color carbon() {
+  return Color.fromRGBO(77, 79, 90, 1.0);
+}
 
-  Color ice() {
-    return Color.fromRGBO(241, 243, 251, 1.0);
-  }
+Color onyx() {
+  return Color.fromRGBO(56, 56, 56, 1.0);
+}
 
-  Color melt() {
-    return Color.fromRGBO(234, 237, 250, 1.0);
-  }
+Color lightModeFill() {
+  return black().withOpacity(0.10);
+}
 
-  Color frost() {
-    return Color.fromRGBO(214, 215, 222, 1.0);
-  }
+Color darkModeFill() {
+  return white().withOpacity(0.15);
+}
 
-  Color steel() {
-    return Color.fromRGBO(184, 192, 214, 1.0);
-  }
+BoxShadow lightShadow() {
+  return BoxShadow(
+      color: steel().withOpacity(0.4),
+      offset: Offset(0.0, 3.0),
+      blurRadius: 30.0);
+}
 
-  Color iron() {
-    return Color.fromRGBO(110, 115, 128, 1.0);
-  }
+BoxShadow darkShadow() {
+  return BoxShadow(
+      color: carbon().withOpacity(0.2),
+      offset: Offset(0.0, 3.0),
+      blurRadius: 30.0);
+}
 
-  Color carbon() {
-    return Color.fromRGBO(77, 79, 90, 1.0);
-  }
+BoxShadow pastelShadow() {
+  return BoxShadow(
+      color: lavender().withOpacity(0.3),
+      offset: Offset(0.0, 3.0),
+      blurRadius: 30.0);
+}
 
-  Color onyx() {
-    return Color.fromRGBO(56, 56, 56, 1.0);
-  }
+Border universalBorder() {
+  return Border.all(color: steel().withOpacity(0.6), width: 1);
+}
 
-  Color lightModeFill() {
-    return black().withOpacity(0.10);
-  }
+Border pastelBorder() {
+  return Border.all(color: white().withOpacity(0.15), width: 1);
+}
 
-  Color darkModeFill() {
-    return white().withOpacity(0.15);
-  }
+Border lightModeBorder() {
+  return Border.all(color: black().withOpacity(0.20), width: 1);
+}
 
-  BoxShadow lightShadow() {
-    return BoxShadow(
-        color: steel().withOpacity(0.4),
-        offset: Offset(0.0, 3.0),
-        blurRadius: 30.0);
-  }
-
-  BoxShadow darkShadow() {
-    return BoxShadow(
-        color: carbon().withOpacity(0.2),
-        offset: Offset(0.0, 3.0),
-        blurRadius: 30.0);
-  }
-
-  BoxShadow pastelShadow() {
-    return BoxShadow(
-        color: lavender().withOpacity(0.3),
-        offset: Offset(0.0, 3.0),
-        blurRadius: 30.0);
-  }
-
-  Border universalBorder() {
-    return Border.all(color: steel().withOpacity(0.6), width: 1);
-  }
-
-  Border pastelBorder() {
-    return Border.all(color: white().withOpacity(0.15), width: 1);
-  }
-
-  Border lightModeBorder() {
-    return Border.all(color: black().withOpacity(0.20), width: 1);
-  }
-
-  Border darkModeBorder() {
-    return Border.all(color: white().withOpacity(0.20), width: 1);
-  }
+Border darkModeBorder() {
+  return Border.all(color: white().withOpacity(0.20), width: 1);
+}
 
 // Global Text Styles
-  TextStyle heading1() {
-    return GoogleFonts.exo(
-        fontSize: 26, fontWeight: FontWeight.w300, letterSpacing: 0.2);
-  }
+TextStyle heading1() {
+  return GoogleFonts.exo(
+      fontSize: 26, fontWeight: FontWeight.w300, letterSpacing: 0.2);
+}
 
-  TextStyle heading2() {
-    return GoogleFonts.exo(
-      fontSize: 21,
-      fontWeight: FontWeight.w300,
-      letterSpacing: 1.2,
-    );
-  }
+TextStyle heading2() {
+  return GoogleFonts.exo(
+    fontSize: 21,
+    fontWeight: FontWeight.w300,
+    letterSpacing: 1.2,
+  );
+}
 
-  TextStyle heading3() {
-    return GoogleFonts.exo(
-        fontSize: 17, fontWeight: FontWeight.w500, letterSpacing: 1.0);
-  }
+TextStyle heading3() {
+  return GoogleFonts.exo(
+      fontSize: 17, fontWeight: FontWeight.w500, letterSpacing: 1.0);
+}
 
-  TextStyle heading4() {
-    return GoogleFonts.exo(
-        fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 1.0);
-  }
+TextStyle heading4() {
+  return GoogleFonts.exo(
+      fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 1.0);
+}
 
-  TextStyle subheading() {
-    return GoogleFonts.exo(
-        fontSize: 17, fontWeight: FontWeight.w300, letterSpacing: 0.2);
-  }
+TextStyle subheading() {
+  return GoogleFonts.exo(
+      fontSize: 17, fontWeight: FontWeight.w300, letterSpacing: 0.2);
+}
 
-  TextStyle body1() {
-    return GoogleFonts.exo(
-        fontSize: 14, fontWeight: FontWeight.w300, letterSpacing: 0.2);
-  }
+TextStyle body1() {
+  return GoogleFonts.exo(
+      fontSize: 14, fontWeight: FontWeight.w300, letterSpacing: 0.2);
+}
 
-  TextStyle body2() {
-    return GoogleFonts.exo(
-        fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.2);
-  }
+TextStyle body2() {
+  return GoogleFonts.exo(
+      fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.2);
+}
 
-  TextStyle button1() {
-    return GoogleFonts.exo(
-        fontSize: 17, fontWeight: FontWeight.w600, letterSpacing: 1.0);
-  }
+TextStyle button1() {
+  return GoogleFonts.exo(
+      fontSize: 17, fontWeight: FontWeight.w600, letterSpacing: 1.0);
+}
 
-  TextStyle button2() {
-    return GoogleFonts.exo(
-        fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
-  }
+TextStyle button2() {
+  return GoogleFonts.exo(
+      fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
+}
 
-  TextStyle tag1() {
-    return GoogleFonts.exo(
-        fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.5);
-  }
+TextStyle tag1() {
+  return GoogleFonts.exo(
+      fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.5);
+}
 
-  TextStyle tag2() {
-    return GoogleFonts.exo(
-        fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
-  }
+TextStyle tag2() {
+  return GoogleFonts.exo(
+      fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
 }
 
 /* ------------------ TEXT CLASSES -------------------- */
@@ -277,7 +242,7 @@ final coloration = Coloration();
 class HeadingOneText extends Text {
   HeadingOneText(String data, decorationPriority textColor)
       : super(TitleCase.convertToTitleCase(data),
-            style: foundation.heading1().copyWith(
+            style: heading1().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -285,7 +250,7 @@ class HeadingOneText extends Text {
 class HeadingTwoText extends Text {
   HeadingTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.heading2().copyWith(
+            style: heading2().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -293,7 +258,7 @@ class HeadingTwoText extends Text {
 class HeadingThreeText extends Text {
   HeadingThreeText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.heading3().copyWith(
+            style: heading3().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -301,7 +266,7 @@ class HeadingThreeText extends Text {
 class HeadingFourText extends Text {
   HeadingFourText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.heading4().copyWith(
+            style: heading4().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -309,7 +274,7 @@ class HeadingFourText extends Text {
 class SubheaderText extends Text {
   SubheaderText(String data, decorationPriority textColor)
       : super(TitleCase.convertToTitleCase(data),
-            style: foundation.subheading().copyWith(
+            style: subheading().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -317,7 +282,7 @@ class SubheaderText extends Text {
 class BodyOneText extends Text {
   BodyOneText(String data, decorationPriority textColor)
       : super(data,
-            style: foundation.body1().copyWith(
+            style: body1().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -325,7 +290,7 @@ class BodyOneText extends Text {
 class BodyTwoText extends Text {
   BodyTwoText(String data, decorationPriority textColor)
       : super(data,
-            style: foundation.body2().copyWith(
+            style: body2().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -333,7 +298,7 @@ class BodyTwoText extends Text {
 class ButtonOneText extends Text {
   ButtonOneText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.button1().copyWith(
+            style: button1().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -341,7 +306,7 @@ class ButtonOneText extends Text {
 class ButtonTwoText extends Text {
   ButtonTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.button2().copyWith(
+            style: button2().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -349,7 +314,7 @@ class ButtonTwoText extends Text {
 class TagOneText extends Text {
   TagOneText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.tag1().copyWith(
+            style: tag1().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -357,7 +322,7 @@ class TagOneText extends Text {
 class TagTwoText extends Text {
   TagTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
-            style: foundation.tag2().copyWith(
+            style: tag2().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)));
 }
@@ -539,8 +504,8 @@ class Sizing {
       //item needs to be full width with w1 padding
 
       isDesktopDisplay()
-          ? (sizingWidth = area.width * 0.82)
-          : (sizingWidth = area.width * 0.391);
+          ? (sizingWidth = area.width * 0.90)
+          : (sizingWidth = area.width * 0.40);
     } else if (sections == 2) {
       //item needs to be 1/2 width for 2 sections
 
@@ -661,21 +626,21 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       decorationFill = coloration.inactiveColor();
     } else if (priority == decorationPriority.important) {
       //defining variants for the specific mode
-      if (foundation.brightness == Brightness.light) {
-        decorationGradient = foundation.darkGradient();
-        decorationBorder = foundation.universalBorder();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationGradient = foundation.lightGradient();
-        decorationBorder = foundation.universalBorder();
+      if (brightness() == Brightness.light) {
+        decorationGradient = darkGradient();
+        decorationBorder = universalBorder();
+      } else if (brightness() == Brightness.dark) {
+        decorationGradient = lightGradient();
+        decorationBorder = universalBorder();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
-      if (foundation.brightness == Brightness.light) {
-        decorationFill = foundation.lightModeFill();
-        decorationBorder = foundation.lightModeBorder();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationFill = foundation.darkModeFill();
-        decorationBorder = foundation.darkModeBorder();
+      if (brightness() == Brightness.light) {
+        decorationFill = lightModeFill();
+        decorationBorder = lightModeBorder();
+      } else if (brightness() == Brightness.dark) {
+        decorationFill = darkModeFill();
+        decorationBorder = darkModeBorder();
       }
     }
   }
@@ -691,20 +656,20 @@ class LayerBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
 
       //layers do not show inactive colors because layers aren't interactable by definition, so one statement covers standard & inactive.
-      if (foundation.brightness == Brightness.light) {
-        decorationFill = foundation.lightModeFill();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationFill = foundation.darkModeFill();
+      if (brightness() == Brightness.light) {
+        decorationFill = lightModeFill();
+      } else if (brightness() == Brightness.dark) {
+        decorationFill = darkModeFill();
       }
     } else if (priority == decorationPriority.important) {
-      if (foundation.brightness == Brightness.light) {
-        decorationGradient = foundation.darkGradient();
-        decorationBorder = foundation.universalBorder();
-        decorationHaze = foundation.darkShadow();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationGradient = foundation.lightGradient();
-        decorationBorder = foundation.universalBorder();
-        decorationHaze = foundation.pastelShadow();
+      if (brightness() == Brightness.light) {
+        decorationGradient = darkGradient();
+        decorationBorder = universalBorder();
+        decorationHaze = darkShadow();
+      } else if (brightness() == Brightness.dark) {
+        decorationGradient = lightGradient();
+        decorationBorder = universalBorder();
+        decorationHaze = pastelShadow();
       }
     }
   }
@@ -721,24 +686,24 @@ class CardBackingDecoration extends BaseBackingDecoration {
       decorationFill = coloration.inactiveColor();
     } else if (priority == decorationPriority.important) {
       decorationCornerRadius = BorderRadius.circular(20.0);
-      decorationBorder = foundation.universalBorder();
+      decorationBorder = universalBorder();
 
-      if (foundation.brightness == Brightness.light) {
-        decorationGradient = foundation.darkGradient();
-        decorationHaze = foundation.darkShadow();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationGradient = foundation.lightGradient();
-        decorationHaze = foundation.pastelShadow();
+      if (brightness() == Brightness.light) {
+        decorationGradient = darkGradient();
+        decorationHaze = lightShadow();
+      } else if (brightness() == Brightness.dark) {
+        decorationGradient = lightGradient();
+        decorationHaze = lightShadow();
       }
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
       decorationCornerRadius = BorderRadius.circular(20.0);
-      if (foundation.brightness == Brightness.light) {
-        decorationFill = foundation.lightModeFill();
-        decorationBorder = foundation.lightModeBorder();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationFill = foundation.darkModeFill();
-        decorationBorder = foundation.darkModeBorder();
+      if (brightness() == Brightness.light) {
+        decorationFill = lightModeFill();
+        decorationBorder = lightModeBorder();
+      } else if (brightness() == Brightness.dark) {
+        decorationFill = darkModeFill();
+        decorationBorder = darkModeBorder();
       }
     }
   }
@@ -748,12 +713,12 @@ class CardBackingDecoration extends BaseBackingDecoration {
 class InputBackingDecoration extends BaseBackingDecoration {
   InputBackingDecoration() : super(priority: decorationPriority.standard) {
     //defining variants for the specific mode
-    if (foundation.brightness == Brightness.light) {
-      decorationFill = foundation.lightModeFill();
-      decorationBorder = foundation.lightModeBorder();
-    } else if (foundation.brightness == Brightness.dark) {
-      decorationFill = foundation.darkModeFill();
-      decorationBorder = foundation.darkModeBorder();
+    if (brightness() == Brightness.light) {
+      decorationFill = lightModeFill();
+      decorationBorder = lightModeBorder();
+    } else if (brightness() == Brightness.dark) {
+      decorationFill = darkModeFill();
+      decorationBorder = darkModeBorder();
     }
     decorationCornerRadius = BorderRadius.circular(7.0);
   }
@@ -781,25 +746,25 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
     if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
 
-      if (foundation.brightness == Brightness.light) {
-        decorationFill = foundation.lightModeFill();
-        decorationBorder = foundation.lightModeBorder();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationFill = foundation.darkModeFill();
-        decorationBorder = foundation.darkModeBorder();
+      if (brightness() == Brightness.light) {
+        decorationFill = lightModeFill();
+        decorationBorder = lightModeBorder();
+      } else if (brightness() == Brightness.dark) {
+        decorationFill = darkModeFill();
+        decorationBorder = darkModeBorder();
       }
     }
 
     if (priority == decorationPriority.important) {
       //defining variants for the specific mode
-      decorationBorder = foundation.universalBorder();
+      decorationBorder = universalBorder();
 
-      if (foundation.brightness == Brightness.light) {
-        decorationGradient = foundation.darkGradient();
-        decorationHaze = foundation.darkShadow();
-      } else if (foundation.brightness == Brightness.dark) {
-        decorationGradient = foundation.lightGradient();
-        decorationHaze = foundation.pastelShadow();
+      if (brightness() == Brightness.light) {
+        decorationGradient = darkGradient();
+        decorationHaze = darkShadow();
+      } else if (brightness() == Brightness.dark) {
+        decorationGradient = lightGradient();
+        decorationHaze = pastelShadow();
       }
     }
   }

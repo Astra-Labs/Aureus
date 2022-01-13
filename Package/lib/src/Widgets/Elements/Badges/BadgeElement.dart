@@ -17,17 +17,17 @@ class IconBadge extends StatelessWidget {
     Gradient backingGradient = LinearGradient(colors: []);
     BoxShadow backingHaze = BoxShadow();
 
-    if (foundation.brightness == Brightness.dark) {
-      backingGradient = foundation.darkGradient();
-      backingHaze = foundation.pastelShadow();
-    } else if (foundation.brightness == Brightness.light) {
-      backingGradient = foundation.lightGradient();
-      backingHaze = foundation.darkShadow();
+    if (brightness() == Brightness.dark) {
+      backingGradient = darkGradient();
+      backingHaze = pastelShadow();
+    } else if (brightness() == Brightness.light) {
+      backingGradient = lightGradient();
+      backingHaze = darkShadow();
     }
 
     customBadgeBacking.decorationCornerRadius = BorderRadius.circular(10.0);
     customBadgeBacking.decorationGradient = backingGradient;
-    customBadgeBacking.decorationBorder = foundation.universalBorder();
+    customBadgeBacking.decorationBorder = universalBorder();
     customBadgeBacking.decorationHaze = backingHaze;
 
     return Container(

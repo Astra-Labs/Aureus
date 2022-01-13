@@ -129,7 +129,7 @@ class _CardCollectionComponentState extends State<CardCollectionComponent> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
-                    splashColor: aureusVariables.prodColor,
+                    splashColor: apiVariables.prodColor!.withOpacity(0.4),
                     onTap: currentItem.decorationVariant !=
                             decorationPriority.inactive
                         ? currentItem.cardAction

@@ -38,16 +38,15 @@ class _MultipleDataTypeUserInputElementState
                   child: Padding(
                 padding: size.universalPadding(),
                 child: TextFormField(
-                    style: foundation
-                        .heading2()
-                        .copyWith(color: coloration.contrastColor()),
+                    style:
+                        heading2().copyWith(color: coloration.contrastColor()),
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         errorBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
-                        hintStyle: foundation.body1(),
+                        hintStyle: body1(),
                         hintText: widget.dataPlaceholder),
                     autocorrect: false,
                     textAlign: TextAlign.left,

@@ -18,7 +18,7 @@ class StandardBadgeCardElement extends StatelessWidget {
     Size labelSize = Accessibility.textStringSize(
         widthLimit: 300,
         textInput: cardLabel,
-        textStyle: foundation.body2(),
+        textStyle: body2(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 

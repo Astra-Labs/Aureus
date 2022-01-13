@@ -14,12 +14,22 @@ dependencies:
   flutter_secure_storage: ^4.2.1
 
 flutter:
-    assets:
-    - lib/assets/
-    fonts:
+  assets:
+    - lib/assets/Dark Blur - Landscape.png
+    - lib/assets/Dark Blur - Portrait.png
+    - lib/assets/Dark Fluid - Landscape.png
+    - lib/assets/Dark Fluid - Portrait.png
+    - lib/assets/Icon - Dark Mode.png
+    - lib/assets/Icon - Light Mode.png
+    - lib/assets/Light Blur - Landscape.png
+    - lib/assets/Light Blur - Portrait.png
+    - lib/assets/Light Fluid - Landscape.png
+    - lib/assets/Light Fluid - Portrait.png
+
+  fonts:
     - family: Aureus
       fonts:
-       - asset: lib/fonts/Aureus.ttf
+        - asset: lib/fonts/Aureus.ttf
 
 dev_dependencies:
   flutter_test:

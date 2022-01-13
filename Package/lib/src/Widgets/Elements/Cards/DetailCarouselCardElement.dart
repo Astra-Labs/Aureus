@@ -15,7 +15,7 @@ class DetailCarouselCardElement extends StatelessWidget {
     Size labelSize = Accessibility.textStringSize(
         widthLimit: size.widthOf(weight: sizingWeight.w9),
         textInput: cardLabel,
-        textStyle: foundation.tag2(),
+        textStyle: tag2(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
@@ -36,8 +36,7 @@ class DetailCarouselCardElement extends StatelessWidget {
         children: [
           Icon(cardIcon, color: coloration.contrastColor().withOpacity(0.5)),
           Text(cardLabel.toUpperCase(),
-              style:
-                  foundation.tag2().copyWith(color: coloration.contrastColor()),
+              style: tag2().copyWith(color: coloration.contrastColor()),
               textAlign: TextAlign.right)
         ],
       ),

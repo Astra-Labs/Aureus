@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:aureus/src/Objects/Components/Icons.dart';
 
 //A vertically & horizontally centered alert controller
 //Doc Link:
@@ -59,17 +58,17 @@ class _CenteredAlertControllerComponentState
       Gradient backingGradient = LinearGradient(colors: []);
       BoxShadow backingHaze = BoxShadow();
 
-      if (foundation.brightness == Brightness.dark) {
-        backingGradient = foundation.darkGradient();
-        backingHaze = foundation.pastelShadow();
-      } else if (foundation.brightness == Brightness.light) {
-        backingGradient = foundation.lightGradient();
-        backingHaze = foundation.darkShadow();
+      if (brightness() == Brightness.dark) {
+        backingGradient = darkGradient();
+        backingHaze = pastelShadow();
+      } else if (brightness() == Brightness.light) {
+        backingGradient = lightGradient();
+        backingHaze = darkShadow();
       }
 
       customAlertBacking.decorationCornerRadius = BorderRadius.circular(10.0);
       customAlertBacking.decorationGradient = backingGradient;
-      customAlertBacking.decorationBorder = foundation.universalBorder();
+      customAlertBacking.decorationBorder = universalBorder();
       customAlertBacking.decorationHaze = backingHaze;
 
       return customAlertBacking.buildBacking();

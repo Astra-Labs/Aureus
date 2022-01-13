@@ -20,14 +20,14 @@ class DetailBadgeCardElement extends StatelessWidget {
     Size labelSize = Accessibility.textStringSize(
         widthLimit: size.widthOf(weight: sizingWeight.w3),
         textInput: cardLabel,
-        textStyle: foundation.heading4(),
+        textStyle: heading4(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     Size bodySize = Accessibility.textStringSize(
         widthLimit: size.widthOf(weight: sizingWeight.w3),
         textInput: cardLabel,
-        textStyle: foundation.body1(),
+        textStyle: body1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 

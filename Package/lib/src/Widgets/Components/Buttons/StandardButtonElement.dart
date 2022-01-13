@@ -33,7 +33,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
     Size minimumButtonTextSize = Accessibility.textStringSize(
         widthLimit: 300,
         textInput: widget.buttonTitle,
-        textStyle: foundation.button2(),
+        textStyle: button2(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 

@@ -23,7 +23,7 @@ class PrimaryTextFieldComponent extends StatelessWidget {
           minHeight: size.heightOf(weight: sizingWeight.w0),
           maxHeight: size.widthOf(weight: sizingWeight.w2)),
       child: TextFormField(
-          style: foundation.body1().copyWith(
+          style: body1().copyWith(
               color: coloration.decorationColor(
                   decorationVariant: decorationVariant)),
           controller: textFieldController,
@@ -41,8 +41,7 @@ class PrimaryTextFieldComponent extends StatelessWidget {
                   borderSide: BorderSide(
                       color: Color.fromRGBO(255, 178, 178, 1.0), width: 1.0)),
               disabledBorder: InputBorder.none,
-              hintStyle: foundation
-                  .body1()
+              hintStyle: body1()
                   .copyWith(color: coloration.contrastColor().withOpacity(0.5)),
               hintText: hintText),
           autocorrect: false,
@@ -70,7 +69,7 @@ class StandardTextFieldComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        style: foundation.body2().copyWith(
+        style: body2().copyWith(
             color: coloration.decorationColor(
                 decorationVariant: decorationVariant)),
         controller: textFieldController,
@@ -88,7 +87,7 @@ class StandardTextFieldComponent extends StatelessWidget {
                 borderSide: BorderSide(
                     color: Color.fromRGBO(255, 178, 178, 1.0), width: 1.0)),
             disabledBorder: InputBorder.none,
-            hintStyle: foundation.body2(),
+            hintStyle: body2(),
             hintText: hintText),
         autocorrect: false,
         textAlign: TextAlign.center,

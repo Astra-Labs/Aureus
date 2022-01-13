@@ -35,7 +35,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
 
     Size bodyTextSizing = Accessibility.textStringSize(
         textInput: widget.messageBody,
-        textStyle: foundation.body2(),
+        textStyle: body2(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context),
         widthLimit: 270);

@@ -20,14 +20,14 @@ class CategoryIconDetailCardElement extends StatelessWidget {
     Size cardLabelSize = Accessibility.textStringSize(
         widthLimit: size.widthOf(weight: sizingWeight.w9),
         textInput: cardLabel,
-        textStyle: foundation.heading3(),
+        textStyle: heading3(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     Size cardBodySize = Accessibility.textStringSize(
         widthLimit: size.widthOf(weight: sizingWeight.w9),
         textInput: cardBody,
-        textStyle: foundation.body1(),
+        textStyle: body1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 

@@ -33,7 +33,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
     Size minimumButtonTextSize = Accessibility.textStringSize(
         widthLimit: size.widthOf(weight: sizingWeight.w5),
         textInput: widget.buttonTitle,
-        textStyle: foundation.button1(),
+        textStyle: button1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
