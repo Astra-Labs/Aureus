@@ -11,15 +11,19 @@ late Aureus apiVariables;
 // 🛑
 
 class Aureus {
-  Color? prodColor;
-  String? prodName;
-  Safety? safetyPlan;
-  Image? darkFluidImage;
-  Image? lightFluidImage;
-  Image? darkBlurImage;
-  Image? lightBlurImage;
-  Image? lightLogo;
-  Image? darkLogo;
+  Color? prodColor = lavender();
+  String? prodName = 'Aureus';
+  Safety? safetyPlan = Safety(frequencyUsage: SafetyPlanFrequency.singleUse, productEligiblePlanOptions: []);
+  Image? darkFluidImage = Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Fluid%20-%20Portrait.png?raw=true');
+  Image? lightFluidImage = Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Fluid%20-%20Portrait.png?raw=true');
+  Image? darkBlurImage = Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Blur%20-%20Portrait.png?raw=true');
+  Image? lightBlurImage = Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Blur%20-%20Portrait.png?raw=true');
+  Image? lightLogo = ;
+  Image? darkLogo =;
 
   Aureus(
       {required this.prodColor,
@@ -154,12 +158,14 @@ Border darkModeBorder() {
 // Global Text Styles
 TextStyle heading1() {
   return GoogleFonts.exo(
-      fontSize: 26, fontWeight: FontWeight.w300, letterSpacing: 0.2);
+      fontSize: size.responsiveTextSize(26),
+      fontWeight: FontWeight.w300,
+      letterSpacing: 0.4);
 }
 
 TextStyle heading2() {
   return GoogleFonts.exo(
-    fontSize: 21,
+    fontSize: size.responsiveTextSize(21),
     fontWeight: FontWeight.w300,
     letterSpacing: 1.2,
   );
@@ -167,47 +173,65 @@ TextStyle heading2() {
 
 TextStyle heading3() {
   return GoogleFonts.exo(
-      fontSize: 17, fontWeight: FontWeight.w500, letterSpacing: 1.0);
+      fontSize: size.responsiveTextSize(17),
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.0);
 }
 
 TextStyle heading4() {
   return GoogleFonts.exo(
-      fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 1.0);
+      fontSize: size.responsiveTextSize(14),
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.0);
 }
 
 TextStyle subheading() {
   return GoogleFonts.exo(
-      fontSize: 17, fontWeight: FontWeight.w300, letterSpacing: 0.2);
+      fontSize: size.responsiveTextSize(17),
+      fontWeight: FontWeight.w300,
+      letterSpacing: 0.4);
 }
 
 TextStyle body1() {
   return GoogleFonts.exo(
-      fontSize: 14, fontWeight: FontWeight.w300, letterSpacing: 0.2);
+      fontSize: size.responsiveTextSize(14),
+      fontWeight: FontWeight.w200,
+      letterSpacing: 0.4);
 }
 
 TextStyle body2() {
   return GoogleFonts.exo(
-      fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.2);
+      fontSize: size.responsiveTextSize(14),
+      fontWeight: FontWeight.w300,
+      letterSpacing: 0.4);
 }
 
 TextStyle button1() {
   return GoogleFonts.exo(
-      fontSize: 17, fontWeight: FontWeight.w600, letterSpacing: 1.0);
+      fontSize: size.responsiveTextSize(17),
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.0);
 }
 
 TextStyle button2() {
   return GoogleFonts.exo(
-      fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
+      fontSize: size.responsiveTextSize(12),
+      fontWeight: FontWeight.w400,
+      letterSpacing: 1.0);
 }
 
 TextStyle tag1() {
   return GoogleFonts.exo(
-      fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 1.5);
+      fontSize: size.responsiveTextSize(12),
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.5);
 }
 
 TextStyle tag2() {
   return GoogleFonts.exo(
-      fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.0);
+      fontSize: size.responsiveTextSize(12),
+      fontWeight: FontWeight.w400,
+      letterSpacing: 1.0);
 }
 
 /* ------------------ TEXT CLASSES -------------------- */
@@ -344,15 +368,33 @@ class Sizing {
   late var logicalHeight = logicalScreenSize.height;
 
   bool isDesktopDisplay() {
-    var shortestSide = logicalScreenSize.shortestSide;
-
-    if (shortestSide >= 550) {
+    if (logicalScreenSize.width >= logicalScreenSize.height) {
       return false;
-    } else if (shortestSide < 550) {
+    } else if (logicalScreenSize.width < logicalScreenSize.height) {
       return true;
     }
 
     throw ('oi a fucky wucky happened');
+  }
+
+  double responsiveTextSize(double base) {
+    //creates a text scale factor to adjust for size differences between mobile, tablet, and web.
+
+    double scaleFactor = 0.0;
+    double shortSide = logicalScreenSize.shortestSide;
+
+    if (shortSide < 550) {
+      //needs mobile phone scale
+      scaleFactor = 1.0;
+    } else if (shortSide >= 550 && shortSide < 900) {
+      //needs tablet scale
+      scaleFactor = 1.15;
+    } else if (shortSide >= 900) {
+      //needs web phone scale
+      scaleFactor = 1.30;
+    }
+
+    return scaleFactor * base;
   }
 
 //Creates universal padding for all items based on the screen size.
@@ -504,29 +546,29 @@ class Sizing {
       //item needs to be full width with w1 padding
 
       isDesktopDisplay()
-          ? (sizingWidth = area.width * 0.90)
-          : (sizingWidth = area.width * 0.40);
+          ? sizingWidth = area.width * 0.90
+          : sizingWidth = area.width * 0.60;
     } else if (sections == 2) {
       //item needs to be 1/2 width for 2 sections
 
       isDesktopDisplay()
-          ? (sizingWidth = area.width * 0.384)
-          : (sizingWidth = area.width * 0.192);
+          ? sizingWidth = area.width * 0.384
+          : sizingWidth = area.width * 0.30;
     } else if (sections == 3) {
       //item needs to be 1/3 width for 3 sections
       isDesktopDisplay()
-          ? (sizingWidth = area.width * 0.25)
-          : (sizingWidth = area.width * 0.125);
+          ? sizingWidth = area.width * 0.25
+          : sizingWidth = area.width * 0.12;
     } else if (sections == 4) {
       //item needs to be 1/4 width for 4 sections
       isDesktopDisplay()
           ? (sizingWidth = area.width * 0.18)
-          : (sizingWidth = area.width * 0.92);
+          : (sizingWidth = area.width * 0.092);
     } else if (sections == 5) {
       //item needs to be 1/5 width for 5 sections
       isDesktopDisplay()
           ? (sizingWidth = area.width * 0.14)
-          : (sizingWidth = area.width * 0.73);
+          : (sizingWidth = area.width * 0.080);
     }
     return sizingWidth;
   }
@@ -539,34 +581,35 @@ class Sizing {
       //item needs to be full height with w1 padding
 
       isDesktopDisplay()
-          ? (sizingHeight = area.height * 0.806)
-          : (sizingHeight = area.height * 0.89);
+          ? sizingHeight = area.height * 0.89
+          : sizingHeight = area.height * 0.806;
     } else if (sections == 2) {
       //item needs to be 1/2 height for 2 sections
 
       isDesktopDisplay()
-          ? (sizingHeight = area.height * 0.397)
-          : (sizingHeight = area.height * 0.43);
+          ? sizingHeight = area.height * 0.43
+          : sizingHeight = area.height * 0.397;
     } else if (sections == 3) {
       //item needs to be 1/3 height for 3 sections
       isDesktopDisplay()
-          ? (sizingHeight = area.height * 0.287)
-          : (sizingHeight = area.height * 0.264);
+          ? sizingHeight = area.height * 0.287
+          : sizingHeight = area.height * 0.264;
     } else if (sections == 4) {
       //item needs to be 1/4 height for 4 sections
       isDesktopDisplay()
-          ? (sizingHeight = area.height * 0.216)
-          : (sizingHeight = area.height * 0.195);
+          ? sizingHeight = area.height * 0.216
+          : sizingHeight = area.height * 0.195;
     } else if (sections == 5) {
       //item needs to be 1/5 height for 5 sections
       isDesktopDisplay()
-          ? (sizingHeight = area.height * 0.168)
-          : (sizingHeight = area.height * 0.155);
+          ? sizingHeight = area.height * 0.168
+          : sizingHeight = area.height * 0.155;
     } else if (sections <= 6) {
       //item needs to be 1/5 height for 5 sections
+
       isDesktopDisplay()
-          ? (sizingHeight = area.height * 0.135)
-          : (sizingHeight = area.height * 0.097);
+          ? sizingHeight = 0.135
+          : sizingHeight = area.height * 0.097;
     }
 
     return sizingHeight;

@@ -27,6 +27,7 @@ export 'src/Objects/Components/NotificationObject.dart';
 export 'src/Objects/Components/TabbingBarObjects.dart';
 
 //MARK: - View Objects
+export 'src/Objects/Views/DataConsentObjects.dart';
 export 'src/Objects/Views/HelpCenterObjects.dart';
 export 'src/Objects/Views/OnboardingObjects.dart';
 
@@ -48,6 +49,8 @@ export 'src/Widgets/Elements/Cards/DetailCarouselCardElement.dart';
 export 'src/Widgets/Elements/Cards/ComplexCardElement.dart';
 export 'src/Widgets/Elements/Cards/ComplexBadgeCardElement.dart';
 export 'src/Widgets/Elements/Cards/CategoryIconDetailCardElement.dart';
+export 'src/Widgets/Elements/Cards/StandardSwitchCardComponent.dart';
+export 'src/Widgets/Elements/Cards/ComplexSwitchCardComponent.dart';
 
 export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/MissionHeader.dart';
@@ -56,6 +59,7 @@ export 'src/Widgets/Elements/Info Hierarchy/DividerElement.dart';
 export 'src/Widgets/Elements/Misc/SliderElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
 
+export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
 export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
 
@@ -66,6 +70,7 @@ export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
 export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
 export 'src/Widgets/Components/Buttons/SmolButtonElement.dart';
 export 'src/Widgets/Components/Buttons/StandardButtonElement.dart';
+export 'src/Widgets/Components/Buttons/StandardIconButtonElement.dart';
 
 export 'src/Widgets/Components/Collection Views/CardCollectionComponent.dart';
 export 'src/Widgets/Components/Collection Views/DetailCardCarouselComponent.dart';
@@ -79,6 +84,7 @@ export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
 
 export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
 export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';
+export 'src/Widgets/Components/Input Forms/SwitchComponent.dart';
 
 export 'src/Widgets/Components/Tabbing Bars/IconTabbingBarComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/NavBarComponent.dart';
@@ -88,10 +94,16 @@ export 'src/Widgets/Components/Tabbing Bars/SmolTextTabbingBarComponent.dart';
 //Exporting lib widget views
 //export 'Views/';
 
-export 'src/Widgets/Views/ContainerView.dart';
+export 'src/Widgets/Views/Onboarding/OnboardingDemoView.dart';
+export 'src/Widgets/Views/Onboarding/OnboardingInformationView.dart';
+export 'src/Widgets/Views/Onboarding/OnboardingLandingView.dart';
 export 'src/Widgets/Views/DataConsentView.dart';
 export 'src/Widgets/Views/HelpCenterView.dart';
+export 'src/Widgets/Views/ContainerView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanConfirmationView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanFunctionalityView.dart';
+export 'src/Widgets/Views/2FAVerificationView.dart';
 export 'src/Widgets/Views/SignInView.dart';
 export 'src/Widgets/Views/SignUpView.dart';
 

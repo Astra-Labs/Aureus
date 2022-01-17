@@ -5,10 +5,9 @@ import 'package:aureus/aureus.dart';
 
 class SingleDataTypeUserInputElement extends StatefulWidget {
   final String dataPlaceholder;
-  final TextInputType dataTextType;
+  TextEditingController itemTextEditingController = TextEditingController();
 
-  const SingleDataTypeUserInputElement(
-      {required this.dataPlaceholder, required this.dataTextType});
+  SingleDataTypeUserInputElement({required this.dataPlaceholder});
 
   @override
   _SingleDataTypeUserInputElementState createState() =>
@@ -21,27 +20,17 @@ class _SingleDataTypeUserInputElementState
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 4 / 1,
+    return SizedBox(
+      width: size.layoutItemWidth(1, size.logicalScreenSize),
+      height: size.layoutItemHeight(6, size.logicalScreenSize),
       child: Container(
-          decoration: userInputBacking,
+          decoration: InputBackingDecoration().buildBacking(),
           child: Center(
-              child: Padding(
-            padding: size.universalPadding(),
-            child: TextFormField(
-                style: heading2().copyWith(color: coloration.contrastColor()),
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    hintStyle: body1(),
-                    hintText: widget.dataPlaceholder),
-                autocorrect: false,
-                textAlign: TextAlign.left,
-                keyboardType: widget.dataTextType),
-          ))),
+            child: StandardTextFieldComponent(
+                decorationVariant: decorationPriority.standard,
+                hintText: widget.dataPlaceholder,
+                textFieldController: widget.itemTextEditingController),
+          )),
     );
   }
 }

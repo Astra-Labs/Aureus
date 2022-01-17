@@ -13,7 +13,6 @@ class DetailCarouselCardElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size labelSize = Accessibility.textStringSize(
-        widthLimit: size.widthOf(weight: sizingWeight.w9),
         textInput: cardLabel,
         textStyle: tag2(),
         textDirection: TextDirection.ltr,
@@ -21,8 +20,8 @@ class DetailCarouselCardElement extends StatelessWidget {
 
     return Container(
       constraints: BoxConstraints(
-          minWidth: size.layoutItemWidth(2, size.logicalScreenSize),
-          maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+          minWidth: labelSize.width * 2,
+          maxWidth: size.layoutItemWidth(3, size.logicalScreenSize),
           minHeight: size.heightOf(weight: sizingWeight.w0),
           maxHeight: size.heightOf(weight: sizingWeight.w1)),
       decoration: CardBackingDecoration(priority: decorationPriority.inactive)

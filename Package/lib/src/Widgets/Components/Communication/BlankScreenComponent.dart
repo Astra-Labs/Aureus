@@ -22,7 +22,11 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
   Widget build(BuildContext context) {
     return Container(
         //this will be the rounded card backing
-        constraints: BoxConstraints(),
+        constraints: BoxConstraints(
+            minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(2, size.logicalScreenSize),
+            minWidth: size.layoutItemWidth(2, size.logicalScreenSize),
+            maxWidth: size.layoutItemWidth(2, size.logicalScreenSize)),
         decoration:
             LayerBackingDecoration(priority: decorationPriority.inactive)
                 .buildBacking(),
@@ -30,13 +34,13 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
           padding: const EdgeInsets.all(35.0),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconBadge(
                     badgeIcon: widget.componentIcon,
                     badgePriority: decorationPriority.important),
-                HeadingTwoText(widget.cardTitle, decorationPriority.standard),
+                HeadingThreeText(widget.cardTitle, decorationPriority.standard),
                 BodyOneText(widget.cardBody, decorationPriority.standard),
               ]),
         ));

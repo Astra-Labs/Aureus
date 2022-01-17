@@ -2,17 +2,17 @@ import 'package:aureus/aureus.dart';
 
 //where all text related items in aureus are initiated for testing
 
-Text text1 = HeadingOneText('Text goes here!', decorationPriority.standard);
-Text text2 = HeadingTwoText('Text goes here!', decorationPriority.standard);
-Text text3 = HeadingThreeText('Text goes here!', decorationPriority.standard);
-Text text4 = HeadingFourText('Text goes here!', decorationPriority.standard);
-Text text5 = SubheaderText('Text goes here!', decorationPriority.standard);
-Text text6 = BodyOneText('Text goes here!', decorationPriority.standard);
-Text text7 = BodyTwoText('Text goes here!', decorationPriority.standard);
-Text text8 = ButtonOneText('Text goes here!', decorationPriority.standard);
-Text text9 = ButtonTwoText('Text goes here!', decorationPriority.standard);
-Text text10 = TagOneText('Text goes here!', decorationPriority.standard);
-Text text11 = TagTwoText('Text goes here!', decorationPriority.standard);
+Text text1 = HeadingOneText('Heading One', decorationPriority.standard);
+Text text2 = HeadingTwoText('Heading Two', decorationPriority.standard);
+Text text3 = HeadingThreeText('Heading Three', decorationPriority.standard);
+Text text4 = HeadingFourText('Heading Four', decorationPriority.standard);
+Text text5 = SubheaderText('Subheader', decorationPriority.standard);
+Text text6 = BodyOneText('Body One', decorationPriority.standard);
+Text text7 = BodyTwoText('Body Two', decorationPriority.standard);
+Text text8 = ButtonOneText('Button One', decorationPriority.standard);
+Text text9 = ButtonTwoText('Button Two', decorationPriority.standard);
+Text text10 = TagOneText('Tag One', decorationPriority.standard);
+Text text11 = TagTwoText('Tag Two', decorationPriority.standard);
 
 List<Text> textTesting = [
   text1,
@@ -37,10 +37,8 @@ var textTestListView = ListView.separated(
     return Container(
         height: 50,
         width: 350,
-        child: Center(
-          child: Container(
-              width: 350, height: 50, child: Center(child: textTesting[index])),
-        ));
+        child: Container(
+            width: 350, height: 50, child: Center(child: textTesting[index])));
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),
 );

@@ -16,7 +16,6 @@ class StandardBadgeCardElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size labelSize = Accessibility.textStringSize(
-        widthLimit: 300,
         textInput: cardLabel,
         textStyle: body2(),
         textDirection: TextDirection.ltr,
@@ -24,8 +23,8 @@ class StandardBadgeCardElement extends StatelessWidget {
 
     return Container(
         constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(2, size.logicalScreenSize),
-            maxWidth: size.layoutItemWidth(2, size.logicalScreenSize),
+            minWidth: size.layoutItemWidth(4, size.logicalScreenSize),
+            maxWidth: size.layoutItemWidth(3, size.logicalScreenSize),
             minHeight: size.layoutItemHeight(4, size.logicalScreenSize),
             maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
         decoration:

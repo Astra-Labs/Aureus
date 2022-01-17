@@ -57,15 +57,13 @@ var tabSubheader = TabSubheaderElement(title: fillerTextSubheader);
 var divider = DividerElement();
 
 var slider = SliderElement();
-var timer = TimerElement();
+var timer = SliderElement();
 
-var singleInput = SingleDataTypeUserInputElement(
-    dataPlaceholder: fillerPlaceholder, dataTextType: TextInputType.name);
+var singleInput =
+    SingleDataTypeUserInputElement(dataPlaceholder: fillerPlaceholder);
 
 var multiInput = MultipleDataTypeUserInputElement(
-    dataLabel: fillerTextSubheader,
-    dataPlaceholder: fillerPlaceholder,
-    dataTextType: TextInputType.name);
+    dataLabel: fillerTextSubheader, dataPlaceholder: fillerPlaceholder);
 
 var standardFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
@@ -160,12 +158,24 @@ var senderMessageBubble = MessageBubbleComponent(
     messageBody: fillerTextBody,
     currentStatus: communicationStatus.delivered);
 
-var notification = NotificationComponent(
+var blankScreen = BlankScreenComponent(
+    componentIcon: Icons.call_to_action_sharp,
+    cardTitle: 'No data to show.',
+    cardBody: 'Use the button below to add your first item to track.');
+
+var unreadNotification = NotificationComponent(
     notificationSubCategory: fillerTextSubheader,
     notificationReceived: DateTime.now(),
     notificationHeader: fillerTextHeader,
     notificationBody: fillerTextBody,
     hasNotificationBeenRead: false);
+
+var readNotification = NotificationComponent(
+    notificationSubCategory: fillerTextSubheader,
+    notificationReceived: DateTime.now(),
+    notificationHeader: fillerTextHeader,
+    notificationBody: fillerTextBody,
+    hasNotificationBeenRead: true);
 
 var searchBar = SearchBarComponent(onSearch: fillerAction);
 
@@ -202,6 +212,13 @@ Widget testCategoryCard = Playground().filledCardObject(
     cardVariant: cardType.CategoryIconDetailCard,
     cardData: Playground().complexIconCardObject);
 
+Widget testDetailCarousel = DetailCardCarouselComponent(cardDetailCarousel: {
+  'Detail 1': fillerIcon1,
+  'Detail 2': fillerIcon2,
+  'Detail 3': fillerIcon3,
+  'Detail 4': fillerIcon4,
+});
+
 var testingCards = SingleChildScrollView(
     scrollDirection: Axis.vertical,
     child: Column(
@@ -231,17 +248,7 @@ var testingCards = SingleChildScrollView(
 /* Test Builder */
 LayoutBuilder landing1 =
     LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  List<Widget> testCards = [];
-
-  return ListView.separated(
-    padding: const EdgeInsets.all(8),
-    shrinkWrap: true,
-    itemCount: testCards.length,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(child: Center(child: testCards[index]));
-    },
-    separatorBuilder: (BuildContext context, int index) => const Divider(),
-  );
+  return testingCards;
 });
 
 LayoutBuilder landing2 =
@@ -331,7 +338,8 @@ List<Widget> libElements = [
   inactiveStandardButton,
   receiverMessageBubble,
   senderMessageBubble,
-  notification,
+  unreadNotification,
+  readNotification,
   searchBar,
   sendField
 ];

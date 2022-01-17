@@ -18,7 +18,6 @@ class _SignUpViewState extends State<SignUpView> {
       return Container();
     });
 
-    return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+    return viewLayout;
   }
 }

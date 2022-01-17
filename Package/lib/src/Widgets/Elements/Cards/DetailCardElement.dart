@@ -16,14 +16,12 @@ class DetailCardElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size labelSize = Accessibility.textStringSize(
-        widthLimit: size.widthOf(weight: sizingWeight.w3),
         textInput: cardLabel,
         textStyle: heading4(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     Size bodySize = Accessibility.textStringSize(
-        widthLimit: size.widthOf(weight: sizingWeight.w3),
         textInput: cardLabel,
         textStyle: body1(),
         textDirection: TextDirection.ltr,
@@ -33,7 +31,6 @@ class DetailCardElement extends StatelessWidget {
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-            minHeight: size.layoutItemHeight(5, size.logicalScreenSize),
             maxHeight: size.layoutItemHeight(4, size.logicalScreenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
@@ -42,7 +39,7 @@ class DetailCardElement extends StatelessWidget {
             padding: const EdgeInsets.all(13.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   HeadingFourText(cardLabel, decorationVariant),
                   Padding(padding: EdgeInsets.fromLTRB(0, 4.0, 0.0, 4.0)),

@@ -18,14 +18,12 @@ class ComplexCardElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size labelSize = Accessibility.textStringSize(
-        widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
         textInput: cardLabel,
         textStyle: heading4(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     Size bodySize = Accessibility.textStringSize(
-        widthLimit: size.layoutItemWidth(2, size.logicalScreenSize),
         textInput: cardLabel,
         textStyle: body1(),
         textDirection: TextDirection.ltr,

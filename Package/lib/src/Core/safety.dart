@@ -6,7 +6,7 @@ This functionality holds data about the safety of vulnerable populations. Tamper
 
 */
 
-enum SafetyProductOptions {
+enum SafetyPlanFrequency {
   singleUse, //software is used once, but doesn't have an account linked to it or isn't intended for long term visits. (e.g: Zenith)
   recurringUse //user has account with software, and is required to register to use.
 }
@@ -34,7 +34,7 @@ class Safety {
 
   //a map that contains product specific Safety Plan options aside from the base options
   final List<SafetyPlanOptions> productEligiblePlanOptions;
-  final SafetyProductOptions frequencyUsage;
+  final SafetyPlanFrequency frequencyUsage;
 
   const Safety(
       {required this.frequencyUsage, required this.productEligiblePlanOptions});

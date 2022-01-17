@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 import 'package:test_app/src/backing_items.dart';
 import 'package:test_app/src/playground.dart';
+import 'package:test_app/src/test_interface.dart';
+import 'package:test_app/src/view_items.dart';
 import 'src/text_items.dart';
 import 'src/interface_items.dart';
 import 'src/functionality_items.dart';
@@ -14,10 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    imageCache?.clear();
-
-    print('platform brightness is ${brightness}');
-
     Color backgroundColor = lavender();
 
     if (brightness() == Brightness.dark) {
@@ -42,7 +40,9 @@ class MyApp extends StatelessWidget {
         darkLogo: Image.asset('assets/Dark-Logo'));
 
     return MaterialApp(
-        home: MyHomePage(),
+        home: Scaffold(
+          body: DataOptInView(permissionItems: dataPermissions),
+        ),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
@@ -53,26 +53,49 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return ContainerView(
-        decorationVariant: decorationPriority.important, builder: landing1);
+  int _selectedIndex = 0;
+
+  static const List<Widget> _pages = <Widget>[
+    AureusElementsView(),
+    AureusComponentsView(),
+    AureusViewsView()
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
-}
-
-class TestingListView extends StatelessWidget {
-  const TestingListView();
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(8),
-      shrinkWrap: true,
-      itemCount: libElements.length,
-      itemBuilder: (BuildContext context, int index) {
-        return libElements[index];
-      },
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
+    return Scaffold(
+      body: Center(
+        child: _pages.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: carbon(),
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon:
+                Icon(Icons.circle_outlined, color: coloration.contrastColor()),
+            label: 'Elements',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_outlined, color: coloration.contrastColor()),
+            label: 'Components',
+          ),
+          BottomNavigationBarItem(
+            icon:
+                Icon(Icons.window_outlined, color: coloration.contrastColor()),
+            label: 'Views',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }

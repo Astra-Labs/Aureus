@@ -41,8 +41,8 @@ class _LongInputFormComponentState extends State<LongInputFormComponent> {
                             return Padding(
                                 padding: size.universalPadding(),
                                 child: SingleDataTypeUserInputElement(
-                                    dataPlaceholder: currentObject.placeholder,
-                                    dataTextType: currentObject.textInputType));
+                                    dataPlaceholder:
+                                        currentObject.placeholder));
                           }));
                 }));
   }

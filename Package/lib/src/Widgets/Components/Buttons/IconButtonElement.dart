@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter/gestures.dart';
 
 //A small, circular button that uses an icon to communicate its' purpose
 //Doc Link:
@@ -91,8 +90,8 @@ class _SecondaryIconButtonElementState
           }
         },
         child: SizedBox(
-          width: 40.0,
-          height: 40.0,
+          width: 55.0,
+          height: 55.0,
           child: Container(
             decoration: buttonBackingDecoration.buildBacking(),
             child: Icon(widget.buttonIcon,

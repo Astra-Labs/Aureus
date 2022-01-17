@@ -18,7 +18,6 @@ class _OnboardingDemoViewState extends State<OnboardingDemoView> {
       return Container();
     });
 
-    return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewLayout);
+    return viewLayout;
   }
 }

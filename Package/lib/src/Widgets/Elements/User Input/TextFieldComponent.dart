@@ -18,10 +18,9 @@ class PrimaryTextFieldComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-          minWidth: size.widthOf(weight: sizingWeight.w2),
-          maxWidth: size.widthOf(weight: sizingWeight.w5),
-          minHeight: size.heightOf(weight: sizingWeight.w0),
-          maxHeight: size.widthOf(weight: sizingWeight.w2)),
+        maxWidth: size.layoutItemWidth(1, size.logicalScreenSize) * 0.6,
+        maxHeight: size.layoutItemHeight(6, size.logicalScreenSize) * 0.9,
+      ),
       child: TextFormField(
           style: body1().copyWith(
               color: coloration.decorationColor(
@@ -41,8 +40,8 @@ class PrimaryTextFieldComponent extends StatelessWidget {
                   borderSide: BorderSide(
                       color: Color.fromRGBO(255, 178, 178, 1.0), width: 1.0)),
               disabledBorder: InputBorder.none,
-              hintStyle: body1()
-                  .copyWith(color: coloration.contrastColor().withOpacity(0.5)),
+              hintStyle: subheading()
+                  .copyWith(color: coloration.contrastColor().withOpacity(0.7)),
               hintText: hintText),
           autocorrect: false,
           textAlign: TextAlign.left,
@@ -68,29 +67,36 @@ class StandardTextFieldComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-        style: body2().copyWith(
-            color: coloration.decorationColor(
-                decorationVariant: decorationVariant)),
-        controller: textFieldController,
-        decoration: InputDecoration(
-            border: InputBorder.none,
-            focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                    color: coloration
-                        .decorationColor(decorationVariant: decorationVariant)
-                        .withOpacity(0.5),
-                    width: 1.0)),
-            enabledBorder: InputBorder.none,
-            errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: BorderSide(
-                    color: Color.fromRGBO(255, 178, 178, 1.0), width: 1.0)),
-            disabledBorder: InputBorder.none,
-            hintStyle: body2(),
-            hintText: hintText),
-        autocorrect: false,
-        textAlign: TextAlign.center,
-        keyboardType: TextInputType.text);
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: size.layoutItemWidth(1, size.logicalScreenSize) * 0.8,
+        maxHeight: size.layoutItemHeight(6, size.logicalScreenSize) * 0.9,
+      ),
+      child: TextFormField(
+          style: body2().copyWith(
+              color: coloration.decorationColor(
+                  decorationVariant: decorationVariant)),
+          controller: textFieldController,
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                      color: coloration
+                          .decorationColor(decorationVariant: decorationVariant)
+                          .withOpacity(0.5),
+                      width: 1.0)),
+              enabledBorder: InputBorder.none,
+              errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(
+                      color: Color.fromRGBO(255, 178, 178, 1.0), width: 1.0)),
+              disabledBorder: InputBorder.none,
+              hintStyle: subheading()
+                  .copyWith(color: coloration.contrastColor().withOpacity(0.7)),
+              hintText: hintText),
+          autocorrect: false,
+          textAlign: TextAlign.center,
+          keyboardType: TextInputType.text),
+    );
   }
 }

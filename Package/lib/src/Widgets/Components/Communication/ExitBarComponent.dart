@@ -17,38 +17,44 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
       if (brightness() == Brightness.light) {
         return melt();
       } else if (brightness() == Brightness.dark) {
-        return carbon();
+        return onyx();
       }
 
       return white();
     }
 
     Size accessibilitySizing = Accessibility.textStringSize(
-        widthLimit: size.widthOf(weight: sizingWeight.w5),
         textInput: 'Tap the button to quickly exit.',
         textStyle: body1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
     return Container(
-        width: size.widthOf(weight: sizingWeight.w10),
-        height: size.layoutItemHeight(6, size.logicalScreenSize),
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  BodyOneText(
-                      'Tap the button to exit.', decorationPriority.standard),
-                  SmolButtonElement(
-                      decorationVariant: decorationPriority.important,
-                      buttonTitle: 'Exit now.',
-                      buttonAction: () => {print('Exit for user!')})
-                ]),
+        constraints: BoxConstraints(
+            minHeight: accessibilitySizing.height * 4,
+            minWidth: size.widthOf(weight: sizingWeight.w10)),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+                minHeight: accessibilitySizing.height * 3,
+                minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+                maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 10.0),
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    BodyOneText(
+                        'Tap the button to exit.', decorationPriority.standard),
+                    SmolButtonElement(
+                        decorationVariant: decorationPriority.important,
+                        buttonTitle: 'Exit now.',
+                        buttonAction: () => {print('Exit for user!')})
+                  ]),
+            ),
           ),
         ),
         decoration: BoxDecoration(

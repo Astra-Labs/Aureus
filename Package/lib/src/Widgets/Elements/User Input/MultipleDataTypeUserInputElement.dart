@@ -6,12 +6,10 @@ import 'package:aureus/aureus.dart';
 class MultipleDataTypeUserInputElement extends StatefulWidget {
   final String dataLabel;
   final String dataPlaceholder;
-  final TextInputType dataTextType;
+  TextEditingController itemTextEditingController = TextEditingController();
 
-  const MultipleDataTypeUserInputElement(
-      {required this.dataLabel,
-      required this.dataPlaceholder,
-      required this.dataTextType});
+  MultipleDataTypeUserInputElement(
+      {required this.dataLabel, required this.dataPlaceholder});
 
   @override
   _MultipleDataTypeUserInputElementState createState() =>
@@ -25,35 +23,19 @@ class _MultipleDataTypeUserInputElementState
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-          padding: size.universalPadding(),
-          child: TabSubheaderElement(title: widget.dataLabel)),
-      Padding(
-        padding: size.universalPadding(),
-        child: AspectRatio(
-          aspectRatio: 4 / 1,
+      TabSubheaderElement(title: widget.dataLabel),
+      Padding(padding: EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0)),
+      SizedBox(
+          width: size.layoutItemWidth(1, size.logicalScreenSize),
+          height: size.layoutItemHeight(6, size.logicalScreenSize),
           child: Container(
-              decoration: userInputBacking,
+              decoration: InputBackingDecoration().buildBacking(),
               child: Center(
-                  child: Padding(
-                padding: size.universalPadding(),
-                child: TextFormField(
-                    style:
-                        heading2().copyWith(color: coloration.contrastColor()),
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        hintStyle: body1(),
-                        hintText: widget.dataPlaceholder),
-                    autocorrect: false,
-                    textAlign: TextAlign.left,
-                    keyboardType: widget.dataTextType),
-              ))),
-        ),
-      ),
+                child: StandardTextFieldComponent(
+                    decorationVariant: decorationPriority.standard,
+                    hintText: widget.dataPlaceholder,
+                    textFieldController: widget.itemTextEditingController),
+              )))
     ]);
   }
 }

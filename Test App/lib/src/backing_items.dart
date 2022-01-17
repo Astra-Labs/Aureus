@@ -172,31 +172,32 @@ List<Decoration> tabBackings = [
 ];
 
 //24 options
-var buttonBackingTest = ListView.separated(
-  padding: const EdgeInsets.all(8),
-  shrinkWrap: true,
-  itemCount: buttonBackings.length,
-  itemBuilder: (BuildContext context, int index) {
-    return Container(
-      height: 50,
-      width: 350,
-      child: Center(
-          child: Container(
-              width: 350,
-              height: 50,
-              decoration: buttonBackings[index],
-              child: Center(
-                  child: BodyOneText('$index', decorationPriority.standard)))),
-    );
-  },
-  separatorBuilder: (BuildContext context, int index) => const Divider(),
-);
+var buttonBackingTest = ListView.builder(
+    padding: const EdgeInsets.all(8),
+    shrinkWrap: true,
+    itemCount: buttonBackings.length,
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+        height: 100,
+        width: 350,
+        child: Center(
+            child: Container(
+                width: 350,
+                height: 50,
+                decoration: buttonBackings[index],
+                child: Center(
+                    child: BodyOneText(
+                        'Button $index', decorationPriority.standard)))),
+      );
+    });
 
 //4 options
-var layerBackingTest = ListView.separated(
+var layerBackingTest = ListView.builder(
   padding: const EdgeInsets.all(8),
   shrinkWrap: true,
   itemCount: layerBackings.length,
+  scrollDirection: Axis.horizontal,
   itemBuilder: (BuildContext context, int index) {
     return Container(
       height: 50,
@@ -207,71 +208,71 @@ var layerBackingTest = ListView.separated(
               height: 50,
               decoration: layerBackings[index],
               child: Center(
-                  child: BodyOneText('$index', decorationPriority.standard)))),
+                  child: BodyOneText(
+                      'Layer $index', decorationPriority.standard)))),
     );
-  },
-  separatorBuilder: (BuildContext context, int index) => const Divider(),
+  }
 );
 
 //12 options
-var cardBackingTest = ListView.separated(
-  padding: const EdgeInsets.all(8),
-  shrinkWrap: true,
-  itemCount: cardBackings.length,
-  itemBuilder: (BuildContext context, int index) {
-    return Container(
-      height: 50,
-      width: 350,
-      child: Center(
-          child: Container(
-              width: 350,
-              height: 50,
-              decoration: cardBackings[index],
-              child: Center(
-                  child: BodyOneText('$index', decorationPriority.standard)))),
-    );
-  },
-  separatorBuilder: (BuildContext context, int index) => const Divider(),
-);
+var cardBackingTest = ListView.builder(
+    padding: const EdgeInsets.all(8),
+    shrinkWrap: true,
+    itemCount: cardBackings.length,
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+        height: 50,
+        width: 350,
+        child: Center(
+            child: Container(
+                width: 350,
+                height: 50,
+                decoration: cardBackings[index],
+                child: Center(
+                    child: BodyOneText(
+                        'Card $index', decorationPriority.standard)))),
+      );
+    });
 
 //2 options
-var inputBackingTest = ListView.separated(
-  padding: const EdgeInsets.all(8),
-  shrinkWrap: true,
-  itemCount: inputBackings.length,
-  itemBuilder: (BuildContext context, int index) {
-    return Container(
-      height: 50,
-      width: 350,
-      child: Center(
-          child: Container(
-              width: 350,
-              height: 50,
-              decoration: inputBackings[index],
-              child: Center(
-                  child: BodyOneText('$index', decorationPriority.standard)))),
-    );
-  },
-  separatorBuilder: (BuildContext context, int index) => const Divider(),
-);
+var inputBackingTest = ListView.builder(
+    padding: const EdgeInsets.all(8),
+    shrinkWrap: true,
+    itemCount: inputBackings.length,
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+        height: 50,
+        width: 350,
+        child: Center(
+            child: Container(
+                width: 350,
+                height: 50,
+                decoration: inputBackings[index],
+                child: Center(
+                    child: BodyOneText(
+                        'Input $index', decorationPriority.standard)))),
+      );
+    });
 
 //12 options
-ListView tabBackingTest = ListView.separated(
-  padding: const EdgeInsets.all(8),
-  shrinkWrap: true,
-  itemCount: tabBackings.length,
-  itemBuilder: (BuildContext context, int index) {
-    return Container(
-      height: 50,
-      width: 350,
-      child: Center(
-          child: Container(
-              width: 350,
-              height: 50,
-              decoration: tabBackings[index],
-              child: Center(
-                  child: BodyOneText('$index', decorationPriority.standard)))),
-    );
-  },
-  separatorBuilder: (BuildContext context, int index) => const Divider(),
-);
+ListView tabBackingTest = ListView.builder(
+    padding: const EdgeInsets.all(8),
+    shrinkWrap: true,
+    itemCount: tabBackings.length,
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+        height: 50,
+        width: 350,
+        child: Center(
+            child: Container(
+                width: 350,
+                height: 50,
+                decoration: tabBackings[index],
+                child: Center(
+                    child: BodyOneText(
+                        'Tab $index', decorationPriority.standard)))),
+      );
+    });

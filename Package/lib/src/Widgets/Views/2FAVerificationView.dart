@@ -22,7 +22,6 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
       return Container();
     });
 
-    return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewLayout);
+    return viewLayout;
   }
 }

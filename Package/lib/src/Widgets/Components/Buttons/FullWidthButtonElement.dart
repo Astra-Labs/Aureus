@@ -31,7 +31,6 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
         widget.currentVariant == decorationPriority.inactive ? true : false;
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
-        widthLimit: size.widthOf(weight: sizingWeight.w5),
         textInput: widget.buttonTitle,
         textStyle: button1(),
         textDirection: TextDirection.ltr,

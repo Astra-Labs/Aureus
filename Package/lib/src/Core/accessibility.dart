@@ -13,8 +13,7 @@ var accessibility = Accessibility();
 class Accessibility {
   //returns the proper sizing of a string for a given text style with regards to the scale factor to accomodate dynamic text sizing.
   static Size textStringSize(
-      {required double widthLimit,
-      required String textInput,
+      {required String textInput,
       required TextStyle textStyle,
       required TextDirection textDirection,
       required MediaQueryData query}) {
@@ -24,7 +23,7 @@ class Accessibility {
         textScaleFactor: query.textScaleFactor,
         textDirection: textDirection)
       ..layout(
-          maxWidth: widthLimit,
+          maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
           minWidth: size.widthOf(weight: sizingWeight.w0));
 
     return textPainter.size;
@@ -47,11 +46,22 @@ class Coloration {
         return sameColor();
 
       case decorationPriority.inactive:
-        return contrastColor().withOpacity(0.5);
+        return contrastColor().withOpacity(0.6);
 
       case decorationPriority.standard:
         return contrastColor();
     }
+  }
+
+  Color accentColor() {
+    if (brightness() == Brightness.light) {
+      return lavender();
+    } else if (brightness() == Brightness.dark) {
+      return frost();
+    }
+
+    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+    return steel();
   }
 
   Color contrastColor() {
@@ -81,7 +91,7 @@ class Coloration {
     if (brightness() == Brightness.light) {
       return frost();
     } else if (brightness() == Brightness.dark) {
-      return carbon().withOpacity(0.5);
+      return steel().withOpacity(0.3);
     }
 
     return steel();

@@ -32,7 +32,7 @@ Details:
 class HelpCenterCategories {
   final String categoryTitle;
   final List<HelpCenterArticle> categoryArticles;
-  final Image categoryIcon;
+  final IconData categoryIcon;
 
   const HelpCenterCategories(
       {required this.categoryTitle,

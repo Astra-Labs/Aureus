@@ -6,13 +6,8 @@ import 'package:aureus/aureus.dart';
 //The main container for the entire Help Center functionality that controls the layout, views, and more.
 class HelpCenterView extends StatefulWidget {
   final HelpCenterObject helpCenter;
-  final modeVariants viewMode;
-  final deviceVariants deviceType;
 
-  const HelpCenterView(
-      {required this.helpCenter,
-      required this.viewMode,
-      required this.deviceType});
+  const HelpCenterView({required this.helpCenter});
 
   @override
   _HelpCenterViewState createState() => _HelpCenterViewState();
@@ -20,23 +15,35 @@ class HelpCenterView extends StatefulWidget {
 
 class _HelpCenterViewState extends State<HelpCenterView> {
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Expanded helpCenterLandingView() {
-    return Expanded(child: Container());
+  LayoutBuilder helpCenterLandingView() {
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Expanded helpCenterGridView() {
-    return Expanded(child: Container());
+  LayoutBuilder helpCenterGridView() {
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Expanded helpCenterListView() {
-    return Expanded(child: Container());
+  LayoutBuilder helpCenterListView() {
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
   }
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  Expanded helpCenterDetailView() {
-    return Expanded(child: Container());
+  LayoutBuilder helpCenterDetailView() {
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Container();
+    });
   }
 
   @override
@@ -46,7 +53,6 @@ class _HelpCenterViewState extends State<HelpCenterView> {
       return Container();
     });
 
-    return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewLayout);
+    return viewLayout;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter/gestures.dart';
 
 //A small, rounded tab button
 //Doc Link:
@@ -31,7 +30,6 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         .buildBacking();
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
-        widthLimit: 300,
         textInput: widget.buttonTitle,
         textStyle: tag1(),
         textDirection: TextDirection.ltr,
@@ -46,8 +44,8 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         },
         child: Container(
             constraints: BoxConstraints(
-                minHeight: minimumButtonTextSize.height * 1.4,
-                maxHeight: minimumButtonTextSize.height * 1.6,
+                minHeight: minimumButtonTextSize.height * 1.8,
+                maxHeight: minimumButtonTextSize.height * 2,
                 maxWidth: minimumButtonTextSize.width * 1.6,
                 minWidth: minimumButtonTextSize.width * 1.4),
             decoration: buttonDecoration,

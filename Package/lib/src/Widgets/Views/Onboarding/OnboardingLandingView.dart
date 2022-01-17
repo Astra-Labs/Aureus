@@ -15,7 +15,41 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
   Widget build(BuildContext context) {
     LayoutBuilder viewLayout = LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      return Container();
+      return Column(
+        children: [
+          Align(alignment: Alignment.topCenter, child: Image.network('')),
+          Align(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  HeadingThreeText(
+                      "I'm ${}", decorationPriority.standard),
+                  HeadingOneText('', decorationPriority.standard)
+                ],
+              )),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                children: [
+                  StandardIconButtonElement(
+                      decorationVariant: decorationVariant,
+                      buttonTitle: buttonTitle,
+                      buttonIcon: buttonIcon,
+                      buttonAction: buttonAction),
+                  StandardIconButtonElement(
+                      decorationVariant: decorationVariant,
+                      buttonTitle: buttonTitle,
+                      buttonIcon: buttonIcon,
+                      buttonAction: buttonAction),
+                  StandardIconButtonElement(
+                      decorationVariant: decorationVariant,
+                      buttonTitle: buttonTitle,
+                      buttonIcon: buttonIcon,
+                      buttonAction: buttonAction)
+                ],
+              ))
+        ],
+      );
     });
 
     return ContainerView(

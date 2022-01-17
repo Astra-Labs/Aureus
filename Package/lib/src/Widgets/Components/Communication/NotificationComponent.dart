@@ -41,38 +41,49 @@ class _NotificationComponentState extends State<NotificationComponent> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              TagTwoText(widget.notificationSubCategory, notificationPriority),
-              TagTwoText(
-                  '${widget.notificationReceived.month}/${widget.notificationReceived.day}/${widget.notificationReceived.year}',
-                  notificationPriority)
-            ],
-          ),
-          Row(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: [
-                HeadingFourText(
-                    widget.notificationHeader, notificationPriority),
-                Center(
-                  child: Container(
-                      width: 10,
-                      height: 10,
-                      alignment: Alignment.center,
-                      decoration: readIndicatorDecoration),
-                )
-              ]),
-          BodyOneText(widget.notificationBody, notificationPriority)
+                TagTwoText(
+                    widget.notificationSubCategory, notificationPriority),
+                TagTwoText(
+                    '${widget.notificationReceived.month}/${widget.notificationReceived.day}/${widget.notificationReceived.year}',
+                    notificationPriority)
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  HeadingFourText(
+                      widget.notificationHeader, notificationPriority),
+                  Center(
+                    child: Container(
+                        width: 10,
+                        height: 10,
+                        alignment: Alignment.center,
+                        decoration: readIndicatorDecoration),
+                  )
+                ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: BodyOneText(widget.notificationBody, notificationPriority),
+          )
         ]);
     return Container(
         constraints: BoxConstraints(
             minHeight: size.layoutItemHeight(6, size.logicalScreenSize),
-            maxHeight: size.layoutItemHeight(5, size.logicalScreenSize),
+            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize),
+            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
         alignment: Alignment.center,
         padding: size.universalPadding(),

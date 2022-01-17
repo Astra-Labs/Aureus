@@ -27,8 +27,9 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show light fluid');
           return BoxDecoration(
             image: DecorationImage(
-              image:
-                  Image.network('lib/assets/Light Fluid - Portrait.png').image,
+              image: Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Fluid%20-%20Portrait.png?raw=true')
+                  .image,
               fit: BoxFit.cover,
             ),
           );
@@ -37,8 +38,9 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show light blur');
           return BoxDecoration(
             image: DecorationImage(
-              image:
-                  Image.network('lib/assets/Light Blur - Portrait.png').image,
+              image: Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Blur%20-%20Portrait.png?raw=true')
+                  .image,
               fit: BoxFit.cover,
             ),
           );
@@ -50,8 +52,9 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show dark fluid');
           return BoxDecoration(
             image: DecorationImage(
-              image:
-                  Image.network('lib/assets/Dark Fluid - Portrait.png').image,
+              image: Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Fluid%20-%20Portrait.png?raw=true')
+                  .image,
               fit: BoxFit.cover,
             ),
           );
@@ -60,7 +63,9 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show dark blur');
           return BoxDecoration(
             image: DecorationImage(
-              image: Image.network('lib/assets/Dark Blur - Portrait.png').image,
+              image: Image.network(
+                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Blur%20-%20Portrait.png?raw=true')
+                  .image,
               fit: BoxFit.cover,
             ),
           );
@@ -74,7 +79,9 @@ class _ContainerViewState extends State<ContainerView> {
         alignment: Alignment.center,
         width: size.widthOf(weight: sizingWeight.w10),
         decoration: containerBacking(),
-        child: Center(child: widget.builder));
+        child: SizedBox(
+            width: size.layoutItemWidth(1, size.logicalScreenSize),
+            child: Center(child: widget.builder)));
 
     if (hasExitBar == true) {
       return Scaffold(

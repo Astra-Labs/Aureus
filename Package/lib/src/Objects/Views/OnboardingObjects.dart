@@ -10,6 +10,7 @@ Details:
 -A minimum of 2 onboarding details are required to build an onboarding object. 
 
 */
+
 class OnboardingObject {
   final List<OnboardingDetail> onboardingItems;
 

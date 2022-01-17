@@ -10,17 +10,23 @@ class TabSubheaderElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size minimumButtonTextSize = Accessibility.textStringSize(
+        textInput: title,
+        textStyle: tag1(),
+        textDirection: TextDirection.ltr,
+        query: MediaQuery.of(context));
+
     return Container(
-      decoration: LayerBackingDecoration(priority: decorationPriority.important)
-          .buildBacking(),
-      padding: size.universalPadding(),
-      height: size.heightOf(weight: sizingWeight.w2),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          TagOneText('$title', decorationPriority.important),
-        ],
-      ),
-    );
+        constraints: BoxConstraints(
+            minHeight: minimumButtonTextSize.height * 1.8,
+            maxHeight: minimumButtonTextSize.height * 2,
+            maxWidth: minimumButtonTextSize.width * 1.6,
+            minWidth: minimumButtonTextSize.width * 1.4),
+        decoration: ButtonBackingDecoration(
+                variant: buttonDecorationVariants.roundedPill,
+                priority: decorationPriority.inactive)
+            .buildBacking(),
+        child:
+            Center(child: TagOneText('$title', decorationPriority.standard)));
   }
 }
