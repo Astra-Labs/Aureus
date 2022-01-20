@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:aureus/aureus.dart';
 import 'package:flutter/rendering.dart';
 
@@ -18,67 +20,46 @@ class NavBarComponent extends StatefulWidget {
 class _NavBarComponentState extends State<NavBarComponent> {
   Widget tabChild = Container(color: Colors.white);
 
-  List<Widget> tabObjects = [];
+  int _selectedIndex = 0;
 
-  @override
-  void setState(VoidCallback fn) {
-    widget.tabItems.forEach((element) {
-      tabObjects.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 20.0),
-        child: InkWell(
-          onTap: () {
-            setState(() {
-              element.tabPriority = decorationPriority.important;
-              tabChild = element.childController;
-            });
-          },
-          child: Icon(element.tabIcon,
-              size: size.widthOf(weight: sizingWeight.w1),
-              color: coloration.decorationColor(
-                  decorationVariant: element.tabPriority)),
-        ),
-      ));
+  static const List<Widget> _pages = <Widget>[];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Expanded navigatorScreen = Expanded(
-        child: Container(
-            constraints: BoxConstraints(
-                minWidth: size.widthOf(weight: sizingWeight.w10),
-                minHeight: size.layoutItemWidth(5, size.logicalScreenSize)),
-            child: tabChild));
+    List<BottomNavigationBarItem> tabbingArray = [];
 
-    var navigatorBar = Container(
-        //level 1 - full container that holds nav bar and a secondary widget to contain the widget being selected.
-        width: size.widthOf(weight: sizingWeight.w10),
-        height: size.layoutItemWidth(4, size.logicalScreenSize),
-        child: Container(
-            alignment: Alignment.bottomCenter,
-            decoration: ButtonBackingDecoration(
-                    variant: buttonDecorationVariants.edgedRectangle,
-                    priority: decorationPriority.inactive)
-                .buildBacking(),
-            child: Center(
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: SizedBox(
-                      width: size.layoutItemWidth(1, size.logicalScreenSize),
-                      child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          mainAxisSize: MainAxisSize.min,
-                          children: tabObjects),
-                    )))));
+    widget.tabItems.forEach((element) {
+      //checks to see if current index matches index of tab item. if yes, it's enabled.
+      decorationPriority tabPriority = coloration.itemPriority(
+          _selectedIndex == widget.tabItems.indexOf(element) ? true : false);
 
-    setState(() {});
+      var tabItem = BottomNavigationBarItem(
+        icon: Icon(element.tabIcon,
+            color: coloration.decorationColor(decorationVariant: tabPriority)),
+        tooltip: element.accessibilityHint,
+      );
 
-    return Column(
-      children: [
-        navigatorScreen,
-        navigatorBar,
-      ],
+      tabbingArray.add(tabItem);
+    });
+
+    return Scaffold(
+      body: Center(
+        child: _pages.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: carbon(),
+        items: tabbingArray,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }

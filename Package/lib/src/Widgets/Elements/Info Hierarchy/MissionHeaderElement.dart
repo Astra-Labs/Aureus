@@ -3,18 +3,8 @@ import 'package:aureus/aureus.dart';
 //A backing that acts as a timer.
 //Doc Link:
 
-class MissionHeader extends StatelessWidget {
+class MissionHeaderElement extends StatelessWidget {
   Widget build(BuildContext context) {
-    Image resourceLogo() {
-      if (brightness() == Brightness.light) {
-        return apiVariables.darkLogo!;
-      } else if (brightness() == Brightness.dark) {
-        return apiVariables.lightLogo!;
-      }
-
-      throw ('Brightness is having issues');
-    }
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,7 +19,7 @@ class MissionHeader extends StatelessWidget {
                     maxHeight: size.heightOf(weight: sizingWeight.w2),
                     minWidth: size.widthOf(weight: sizingWeight.w0),
                     maxWidth: size.widthOf(weight: sizingWeight.w2)),
-                child: resourceLogo())),
+                child: coloration.resourceLogo())),
       ],
     );
   }

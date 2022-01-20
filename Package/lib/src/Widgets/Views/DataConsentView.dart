@@ -16,45 +16,39 @@ class DataOptInView extends StatefulWidget {
 class _DataOptInViewState extends State<DataOptInView> {
   @override
   Widget build(BuildContext context) {
-    LayoutBuilder viewLayout = LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return SingleChildScrollView(
-        child: Wrap(
-          crossAxisAlignment: WrapCrossAlignment.start,
-          runSpacing: size.heightOf(weight: sizingWeight.w0) / 2,
-          children: [
-            HeadingTwoText('Data opt in', decorationPriority.standard),
-            BodyTwoText(
-                'Your consent is important to us. Please review the permissions below that we want to have access to.',
-                decorationPriority.standard),
-            ListView.builder(
-                physics: ClampingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: widget.permissionItems.length,
-                itemBuilder: (BuildContext context, int index) {
-                  var currentItem = widget.permissionItems[index];
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+      containerVariant: wrapperVariants.stackScroll,
+      children: [
+        HeadingTwoText('Data opt in', decorationPriority.standard),
+        BodyTwoText(
+            'Your consent is important to us. Please review the permissions below that we want to have access to.',
+            decorationPriority.standard),
+        ListView.builder(
+            physics: ClampingScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemCount: widget.permissionItems.length,
+            itemBuilder: (BuildContext context, int index) {
+              var currentItem = widget.permissionItems[index];
 
-                  return Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
-                    child: ComplexSwitchCardElement(
-                        cardLabel: currentItem.permissionName,
-                        cardBody: currentItem.permissionDescription,
-                        cardIcon: currentItem.permissionIcon),
-                  );
-                }),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: PrimaryIconButtonElement(
-                  decorationVariant: decorationPriority.important,
-                  buttonIcon: Icons.navigate_next_outlined,
-                  buttonTooltip: 'Go to next page',
-                  buttonAction: () => {print("go to next!")}),
-            )
-          ],
-        ),
-      );
-    });
+              return Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                child: ComplexSwitchCardElement(
+                    cardLabel: currentItem.permissionName,
+                    cardBody: currentItem.permissionDescription,
+                    cardIcon: currentItem.permissionIcon),
+              );
+            }),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: PrimaryIconButtonElement(
+              decorationVariant: decorationPriority.important,
+              buttonIcon: Icons.navigate_next_outlined,
+              buttonTooltip: 'Go to next page',
+              buttonAction: () => {print("go to next!")}),
+        )
+      ],
+    );
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);

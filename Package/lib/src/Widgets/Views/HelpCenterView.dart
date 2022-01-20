@@ -15,44 +15,38 @@ class HelpCenterView extends StatefulWidget {
 
 class _HelpCenterViewState extends State<HelpCenterView> {
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  LayoutBuilder helpCenterLandingView() {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Container();
-    });
-  }
+  ContainerWrapperElement helpCenterLandingView = ContainerWrapperElement(
+    containerVariant: wrapperVariants.fullScreen,
+    children: [],
+  );
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  LayoutBuilder helpCenterGridView() {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Container();
-    });
-  }
+  ContainerWrapperElement helpCenterGridView = ContainerWrapperElement(
+    containerVariant: wrapperVariants.stackScroll,
+    children: [],
+  );
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  LayoutBuilder helpCenterListView() {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Container();
-    });
-  }
+  ContainerWrapperElement helpCenterListView = ContainerWrapperElement(
+    containerVariant: wrapperVariants.stackScroll,
+    children: [],
+  );
 
   //the container that draws the first screen that someone will see when they enter the Help Center.
-  LayoutBuilder helpCenterDetailView() {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Container();
-    });
-  }
+  ContainerWrapperElement helpCenterDetailView = ContainerWrapperElement(
+    containerVariant: wrapperVariants.stackScroll,
+    children: [],
+  );
 
   @override
+  @override
   Widget build(BuildContext context) {
-    LayoutBuilder viewLayout = LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Container();
-    });
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+      containerVariant: wrapperVariants.fullScreen,
+      children: [],
+    );
 
-    return viewLayout;
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

@@ -8,6 +8,19 @@ import 'src/interface_items.dart';
 import 'src/functionality_items.dart';
 
 void main() {
+  apiVariables = Aureus(
+      prodColor: Color.fromRGBO(255, 255, 255, 1.0),
+      prodName: 'Verena',
+      safetyPlan: Safety(
+          frequencyUsage: SafetyPlanFrequency.singleUse,
+          productEligiblePlanOptions: []),
+      darkFluidImage: Image(image: AssetImage('Dark-Blur.png')),
+      lightFluidImage: Image(image: AssetImage('Light-Fluid.jpg')),
+      darkBlurImage: Image(image: AssetImage('Dark-Blur.png')),
+      lightBlurImage: Image(image: AssetImage('Light-Blur.png')),
+      lightLogo: Image(image: AssetImage('Light-Logo.png')),
+      darkLogo: Image(image: AssetImage('Dark-Logo.png')));
+
   runApp(MyApp());
 }
 
@@ -24,25 +37,8 @@ class MyApp extends StatelessWidget {
       backgroundColor = white();
     }
 
-    var testSafetyPlan = Safety(
-        frequencyUsage: SafetyProductOptions.singleUse,
-        productEligiblePlanOptions: []);
-
-    apiVariables = Aureus(
-        prodColor: Color.fromRGBO(255, 255, 255, 1.0),
-        prodName: 'Aetheria',
-        safetyPlan: testSafetyPlan,
-        darkFluidImage: Image.asset('assets/Dark-Fluid'),
-        lightFluidImage: Image.asset('assets/Light-Fluid'),
-        darkBlurImage: Image.asset('assets/Dark-Blur'),
-        lightBlurImage: Image.asset('assets/Light-Blur'),
-        lightLogo: Image.asset('assets/Light-Logo'),
-        darkLogo: Image.asset('assets/Dark-Logo'));
-
     return MaterialApp(
-        home: Scaffold(
-          body: DataOptInView(permissionItems: dataPermissions),
-        ),
+        home: Scaffold(body: MyHomePage()),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
@@ -76,20 +72,25 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: carbon(),
+        backgroundColor: coloration.decorationColor(
+            decorationVariant: decorationPriority.inactive),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon:
-                Icon(Icons.circle_outlined, color: coloration.contrastColor()),
+            icon: Icon(Icons.circle_outlined,
+                color: coloration.decorationColor(
+                    decorationVariant: decorationPriority.standard)),
             label: 'Elements',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list_outlined, color: coloration.contrastColor()),
+            icon: Icon(Icons.list_outlined,
+                color: coloration.decorationColor(
+                    decorationVariant: decorationPriority.standard)),
             label: 'Components',
           ),
           BottomNavigationBarItem(
-            icon:
-                Icon(Icons.window_outlined, color: coloration.contrastColor()),
+            icon: Icon(Icons.window_outlined,
+                color: coloration.decorationColor(
+                    decorationVariant: decorationPriority.standard)),
             label: 'Views',
           ),
         ],

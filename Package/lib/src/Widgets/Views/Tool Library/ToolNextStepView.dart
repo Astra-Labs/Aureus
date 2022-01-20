@@ -16,6 +16,12 @@ class ToolNextStepsView extends StatefulWidget {
 class _ToolNextStepsViewState extends State<ToolNextStepsView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+      containerVariant: wrapperVariants.fullScreen,
+      children: [],
+    );
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

@@ -40,6 +40,16 @@ A class that takes variables into consideration to properly color the text of di
 class Coloration {
   //the color returned for all general text in Aureus.
 
+  Image resourceLogo() {
+    if (brightness() == Brightness.light) {
+      return apiVariables.darkLogo!;
+    } else if (brightness() == Brightness.dark) {
+      return apiVariables.lightLogo!;
+    }
+
+    throw ('Brightness is having issues');
+  }
+
   Color decorationColor({required decorationPriority decorationVariant}) {
     switch (decorationVariant) {
       case decorationPriority.important:
@@ -95,5 +105,14 @@ class Coloration {
     }
 
     return steel();
+  }
+
+  decorationPriority itemPriority(bool isActive) {
+    if (isActive == true) {
+      return decorationPriority.important;
+    } else if (isActive == false) {
+      return decorationPriority.standard;
+    }
+    return decorationPriority.inactive;
   }
 }

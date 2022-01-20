@@ -25,7 +25,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
-        widget.decorationVariant == decorationPriority.inactive ? true : false;
+        widget.decorationVariant == decorationPriority.inactive ? false : true;
     BoxDecoration buttonBacking = ButtonBackingDecoration(
             variant: buttonDecorationVariants.circle,
             priority: widget.decorationVariant)

@@ -34,6 +34,7 @@ export 'src/Objects/Views/OnboardingObjects.dart';
 //MARK: - Functionality Objects
 export 'src/Objects/Functionality/AccessibilityObjects.dart';
 export 'src/Objects/Functionality/SafetyPlanObjects.dart';
+export 'src/Objects/Functionality/ToolLibraryObjects.dart';
 
 /* ------------------ WIDGETS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
@@ -53,15 +54,17 @@ export 'src/Widgets/Elements/Cards/StandardSwitchCardComponent.dart';
 export 'src/Widgets/Elements/Cards/ComplexSwitchCardComponent.dart';
 
 export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
-export 'src/Widgets/Elements/Info Hierarchy/MissionHeader.dart';
+export 'src/Widgets/Elements/Info Hierarchy/MissionHeaderElement.dart';
+export 'src/Widgets/Elements/Info Hierarchy/PageHeaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/DividerElement.dart';
 
-export 'src/Widgets/Elements/Misc/SliderElement.dart';
+export 'src/Widgets/Elements/Misc/ContainerWrapperElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
 
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
 export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
+export 'src/Widgets/Elements/User Input/SliderElement.dart';
 
 //Exporting lib widget components
 export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
@@ -81,6 +84,7 @@ export 'src/Widgets/Components/Communication/SearchBarComponent.dart';
 export 'src/Widgets/Components/Communication/SendFieldComponent.dart';
 export 'src/Widgets/Components/Communication/BlankScreenComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
+export 'src/Widgets/Components/Communication/ProgressIndicatorComponent.dart';
 
 export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
 export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';
@@ -105,7 +109,6 @@ export 'src/Widgets/Views/Safety Plan/SafetyPlanConfirmationView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanFunctionalityView.dart';
 export 'src/Widgets/Views/2FAVerificationView.dart';
 export 'src/Widgets/Views/SignInView.dart';
-export 'src/Widgets/Views/SignUpView.dart';
 
 /* ------------------ ENUMS -------------------- */
 //Global Foundational Enums go here since Dart doesn't support nested types
@@ -134,3 +137,5 @@ enum cardType {
   ComplexBadgeCard,
   CategoryIconDetailCard,
 }
+
+enum wrapperVariants { stackScroll, fullScreen }

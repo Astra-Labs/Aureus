@@ -4,10 +4,10 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class IconTabbingBarComponent extends StatefulWidget {
-  final List<TabObject> tabObjects;
+  final List<TabObject> tabItems;
 
-  const IconTabbingBarComponent({required this.tabObjects})
-      : assert(tabObjects.length >= 2);
+  const IconTabbingBarComponent({required this.tabItems})
+      : assert(tabItems.length >= 2);
 
   @override
   _IconTabbingBarComponentState createState() =>
@@ -15,43 +15,45 @@ class IconTabbingBarComponent extends StatefulWidget {
 }
 
 class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
-  Map<int, bool> tabActives = {};
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     //keeps track of every active / inactive item
-    ListView tabItems = ListView.builder(
-      shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      itemCount: widget.tabObjects.length,
-      itemBuilder: (BuildContext context, int index) {
-        bool isItemActive = tabActives[index]!;
 
-        decorationPriority tabPriority() {
-          if (isItemActive == true) {
-            return decorationPriority.important;
-          } else if (isItemActive == false) {
-            return decorationPriority.standard;
-          }
-          return decorationPriority.inactive;
-        }
+    List<Widget> tabItems = [];
 
-        return Padding(
-          padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
-          child: SecondaryIconButtonElement(
-              buttonAction: () => {},
-              decorationVariant: tabPriority(),
-              buttonTooltip: widget.tabObjects[index].accessibilityHint,
-              buttonIcon: widget.tabObjects[index].tabIcon),
-        );
-      },
-    );
+    widget.tabItems.forEach((element) {
+      //checks to see if current index matches index of tab item. if yes, it's enabled.
+      decorationPriority tabPriority = coloration.itemPriority(
+          _selectedIndex == widget.tabItems.indexOf(element) ? true : false);
 
-    return Container(
-        padding: EdgeInsets.all(8),
-        decoration:
-            LayerBackingDecoration(priority: decorationPriority.inactive)
-                .buildBacking(),
-        child: SizedBox(height: 40.0, child: tabItems));
+      var tabItem = Padding(
+        padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
+        child: SecondaryIconButtonElement(
+            buttonAction: () => {},
+            decorationVariant: tabPriority,
+            buttonTooltip: element.accessibilityHint,
+            buttonIcon: element.tabIcon),
+      );
+
+      tabItems.add(tabItem);
+    });
+
+    return SizedBox(
+        width: size.layoutItemWidth(1, size.logicalScreenSize),
+        height: size.layoutItemHeight(6, size.logicalScreenSize),
+        child: Container(
+            padding: EdgeInsets.all(8),
+            decoration:
+                LayerBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.min,
+                    children: tabItems))));
   }
 }

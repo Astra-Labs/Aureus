@@ -246,38 +246,32 @@ var testingCards = SingleChildScrollView(
 /* VIEWS */
 
 /* Test Builder */
-LayoutBuilder landing1 =
-    LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  return testingCards;
-});
+ContainerWrapperElement landing1 = ContainerWrapperElement(
+    containerVariant: wrapperVariants.stackScroll, children: [testingCards]);
 
-LayoutBuilder landing2 =
-    LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-  NotificationComponent notification1 = NotificationComponent(
-      notificationSubCategory: 'Hi!',
-      notificationReceived: DateTime.now(),
-      notificationHeader: 'Kill me now.',
-      notificationBody: 'Let me out of this codebase cursed body.',
-      hasNotificationBeenRead: true);
-
-  NotificationComponent notification2 = NotificationComponent(
-      notificationSubCategory: 'SCREM',
-      notificationReceived: DateTime.now(),
-      notificationHeader: 'If there is a god.',
-      notificationBody: 'he is not on my side..',
-      hasNotificationBeenRead: false);
-
-  NotificationComponent notification3 = NotificationComponent(
-      notificationSubCategory: 'pls',
-      notificationReceived: DateTime.now(),
-      notificationHeader: 'salt chip.',
-      notificationBody: 'salt ,, vinegar chip ,, provide ,, provide me salt ',
-      hasNotificationBeenRead: false);
-
-  return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [notification1, notification2, notification3]);
-});
+ContainerWrapperElement landing2 = ContainerWrapperElement(
+    containerVariant: wrapperVariants.fullScreen,
+    children: [
+      NotificationComponent(
+          notificationSubCategory: 'Hi!',
+          notificationReceived: DateTime.now(),
+          notificationHeader: 'Kill me now.',
+          notificationBody: 'Let me out of this codebase cursed body.',
+          hasNotificationBeenRead: true),
+      NotificationComponent(
+          notificationSubCategory: 'SCREM',
+          notificationReceived: DateTime.now(),
+          notificationHeader: 'If there is a god.',
+          notificationBody: 'he is not on my side..',
+          hasNotificationBeenRead: false),
+      NotificationComponent(
+          notificationSubCategory: 'pls',
+          notificationReceived: DateTime.now(),
+          notificationHeader: 'salt chip.',
+          notificationBody:
+              'salt ,, vinegar chip ,, provide ,, provide me salt ',
+          hasNotificationBeenRead: false)
+    ]);
 
 var standardContainerView = ContainerView(
     decorationVariant: decorationPriority.standard, builder: landing1);
@@ -292,25 +286,21 @@ Widget childWidget4 = Container(color: steel());
 
 TabObject tab1 = TabObject.forIconTabbing(
     tabIcon: fillerIcon1,
-    childController: childWidget1,
     tabPriority: decorationPriority.standard,
     accessibilityHint: 'Lavender');
 
 TabObject tab2 = TabObject.forIconTabbing(
     tabIcon: fillerIcon2,
-    childController: childWidget2,
     tabPriority: decorationPriority.standard,
     accessibilityHint: 'Melt');
 
 TabObject tab3 = TabObject.forIconTabbing(
     tabIcon: fillerIcon3,
-    childController: childWidget3,
     tabPriority: decorationPriority.standard,
     accessibilityHint: 'Ice');
 
 TabObject tab4 = TabObject.forIconTabbing(
     tabIcon: fillerIcon4,
-    childController: childWidget4,
     tabPriority: decorationPriority.standard,
     accessibilityHint: 'Steel');
 

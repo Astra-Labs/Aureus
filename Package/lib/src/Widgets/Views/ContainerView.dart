@@ -5,7 +5,7 @@ import 'package:aureus/aureus.dart';
 
 class ContainerView extends StatefulWidget {
   final decorationPriority decorationVariant;
-  final LayoutBuilder builder;
+  final ContainerWrapperElement builder;
 
   const ContainerView({required this.decorationVariant, required this.builder});
 
@@ -27,9 +27,7 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show light fluid');
           return BoxDecoration(
             image: DecorationImage(
-              image: Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Fluid%20-%20Portrait.png?raw=true')
-                  .image,
+              image: apiVariables.lightFluidImage!.image,
               fit: BoxFit.cover,
             ),
           );
@@ -38,9 +36,7 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show light blur');
           return BoxDecoration(
             image: DecorationImage(
-              image: Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Blur%20-%20Portrait.png?raw=true')
-                  .image,
+              image: apiVariables.lightBlurImage!.image,
               fit: BoxFit.cover,
             ),
           );
@@ -52,9 +48,7 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show dark fluid');
           return BoxDecoration(
             image: DecorationImage(
-              image: Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Fluid%20-%20Portrait.png?raw=true')
-                  .image,
+              image: apiVariables.darkFluidImage!.image,
               fit: BoxFit.cover,
             ),
           );
@@ -63,9 +57,7 @@ class _ContainerViewState extends State<ContainerView> {
           print('should show dark blur');
           return BoxDecoration(
             image: DecorationImage(
-              image: Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Blur%20-%20Portrait.png?raw=true')
-                  .image,
+              image: apiVariables.darkBlurImage!.image,
               fit: BoxFit.cover,
             ),
           );
@@ -75,23 +67,32 @@ class _ContainerViewState extends State<ContainerView> {
     }
 
     Container backingContainer = Container(
-        padding: size.containerPadding(),
         alignment: Alignment.center,
         width: size.widthOf(weight: sizingWeight.w10),
         decoration: containerBacking(),
-        child: SizedBox(
+        padding: EdgeInsets.fromLTRB(
+            0.0,
+            size.heightOf(weight: sizingWeight.w0),
+            0.0,
+            size.heightOf(weight: sizingWeight.w0)),
+        child: Container(
             width: size.layoutItemWidth(1, size.logicalScreenSize),
-            child: Center(child: widget.builder)));
+            child: widget.builder));
 
     if (hasExitBar == true) {
-      return Scaffold(
-          body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [ExitBarComponent(), Expanded(child: backingContainer)],
-      ));
+      return SizedBox(
+          height: size.logicalHeight,
+          width: size.logicalWidth,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [ExitBarComponent(), Expanded(child: backingContainer)],
+          ));
     } else if (hasExitBar == false) {
-      return Scaffold(body: Expanded(child: backingContainer));
+      return SizedBox(
+          height: size.logicalHeight,
+          width: size.logicalWidth,
+          child: Expanded(child: backingContainer));
     }
 
     throw ErrorDescription('Exit bar value not given.');

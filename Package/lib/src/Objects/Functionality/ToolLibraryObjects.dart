@@ -8,6 +8,23 @@ USAGE:
 
 */
 
+class CoreTool {
+  final String toolName;
+  final List<String> toolDescription;
+  final List<ToolTemplate> toolCards;
+  final IconData toolIcon;
+  final Widget entrySource;
+  final Widget exitSource;
+
+  const CoreTool(
+      {required this.toolName,
+      required this.toolDescription,
+      required this.toolCards,
+      required this.toolIcon,
+      required this.entrySource,
+      required this.exitSource});
+}
+
 class ToolTemplate {
   final String templatePrompt;
   final List<Widget> templateItems;

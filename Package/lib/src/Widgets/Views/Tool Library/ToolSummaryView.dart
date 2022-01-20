@@ -16,6 +16,12 @@ class ToolSummaryView extends StatefulWidget {
 class _ToolSummaryViewState extends State<ToolSummaryView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+      containerVariant: wrapperVariants.fullScreen,
+      children: [],
+    );
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

@@ -3,16 +3,18 @@ import 'package:aureus/aureus.dart';
 //A 80% width button that acts as a standard button for the UDS
 //Doc Link:
 
-class StandardSwitchCard extends StatefulWidget {
+class StandardSwitchCardComponent extends StatefulWidget {
   final String switchDescription;
 
-  const StandardSwitchCard({required this.switchDescription});
+  const StandardSwitchCardComponent({required this.switchDescription});
 
   @override
-  _StandardSwitchCardState createState() => _StandardSwitchCardState();
+  _StandardSwitchCardComponentState createState() =>
+      _StandardSwitchCardComponentState();
 }
 
-class _StandardSwitchCardState extends State<StandardSwitchCard> {
+class _StandardSwitchCardComponentState
+    extends State<StandardSwitchCardComponent> {
   bool isSwitchEnabled = false;
 
   void toggleSwitch(bool value) {
@@ -20,12 +22,10 @@ class _StandardSwitchCardState extends State<StandardSwitchCard> {
       setState(() {
         isSwitchEnabled = true;
       });
-      print('Switch Button is ON');
     } else {
       setState(() {
         isSwitchEnabled = false;
       });
-      print('Switch Button is OFF');
     }
   }
 

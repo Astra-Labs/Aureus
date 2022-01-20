@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'dart:io' show Platform;
 
 //An exit bar that stays at the top of the user's screen and exits the screen when pressed.
 
@@ -23,6 +24,21 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
       return white();
     }
 
+    Alignment barAlignment() {
+      //centers items on bottom if the user is on a mobile device
+
+      var currentPlatform = Theme.of(context).platform;
+
+      if (currentPlatform == TargetPlatform.android ||
+          currentPlatform == TargetPlatform.iOS) {
+        return Alignment.bottomCenter;
+      }
+
+      //centers items on center if the user is on a website
+
+      return Alignment.center;
+    }
+
     Size accessibilitySizing = Accessibility.textStringSize(
         textInput: 'Tap the button to quickly exit.',
         textStyle: body1(),
@@ -31,30 +47,27 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
 
     return Container(
         constraints: BoxConstraints(
-            minHeight: accessibilitySizing.height * 4,
+            minHeight: accessibilitySizing.height * 5,
             minWidth: size.widthOf(weight: sizingWeight.w10)),
         child: Align(
-          alignment: Alignment.bottomCenter,
+          alignment: barAlignment(),
           child: ConstrainedBox(
             constraints: BoxConstraints(
                 minHeight: accessibilitySizing.height * 3,
                 minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
                 maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 10.0),
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    BodyOneText(
-                        'Tap the button to exit.', decorationPriority.standard),
-                    SmolButtonElement(
-                        decorationVariant: decorationPriority.important,
-                        buttonTitle: 'Exit now.',
-                        buttonAction: () => {print('Exit for user!')})
-                  ]),
-            ),
+            child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  BodyOneText(
+                      'Tap the button to exit.', decorationPriority.standard),
+                  SmolButtonElement(
+                      decorationVariant: decorationPriority.important,
+                      buttonTitle: 'Exit now.',
+                      buttonAction: () => {print('Exit for user!')})
+                ]),
           ),
         ),
         decoration: BoxDecoration(

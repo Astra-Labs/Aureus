@@ -22,10 +22,9 @@ class TabSubheaderElement extends StatelessWidget {
             maxHeight: minimumButtonTextSize.height * 2,
             maxWidth: minimumButtonTextSize.width * 1.6,
             minWidth: minimumButtonTextSize.width * 1.4),
-        decoration: ButtonBackingDecoration(
-                variant: buttonDecorationVariants.roundedPill,
-                priority: decorationPriority.inactive)
-            .buildBacking(),
+        decoration:
+            LayerBackingDecoration(priority: decorationPriority.standard)
+                .buildBacking(),
         child:
             Center(child: TagOneText('$title', decorationPriority.standard)));
   }

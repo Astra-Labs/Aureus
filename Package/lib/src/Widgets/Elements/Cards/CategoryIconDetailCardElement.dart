@@ -38,22 +38,27 @@ class CategoryIconDetailCardElement extends StatelessWidget {
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         alignment: Alignment.center,
         clipBehavior: Clip.hardEdge,
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Icon(cardIcon,
-                    size: size.widthOf(weight: sizingWeight.w0),
-                    color: coloration.decorationColor(
-                        decorationVariant: decorationVariant),
-                    // TODO: Add accessibility semantic label support
-                    semanticLabel: 'Icon name'),
-                HeadingThreeText(cardLabel, decorationVariant),
-                BodyOneText(cardBody, decorationVariant),
-              ]),
-        ));
+        child: SizedBox(
+            width: size.layoutItemWidth(2, size.logicalScreenSize) - 20,
+            height: size.layoutItemHeight(2, size.logicalScreenSize) - 20,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(cardIcon,
+                      size: size.widthOf(weight: sizingWeight.w0),
+                      color: coloration.decorationColor(
+                          decorationVariant: decorationVariant),
+                      // TODO: Add accessibility semantic label support
+                      semanticLabel: 'Icon name'),
+                  HeadingThreeText(cardLabel, decorationVariant),
+                  Text(cardBody,
+                      textAlign: TextAlign.center,
+                      style: body1().copyWith(
+                        color: coloration.decorationColor(
+                            decorationVariant: decorationVariant),
+                      ))
+                ])));
   }
 }

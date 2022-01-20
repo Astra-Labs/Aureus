@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:test_app/src/backing_items.dart';
 import 'package:test_app/src/text_items.dart';
 import 'interface_items.dart';
 import 'view_items.dart';
@@ -49,8 +48,16 @@ Map<String, Widget> aureusComponents = {
 };
 
 Map<String, Widget> aureusViews = {
-  'Onboarding Demo View': OnboardingDemoView(),
-  'Onboarding Information View': OnboardingInformationView(),
+  'Two Factor Authentication': TFAVerificationView(
+      userPhoneNumber: 7142042256,
+      issueVerificationCode: () => {print('verification code issued!')},
+      onUserSubmission: () => {print('user submitted code!')}),
+  'Onboarding Demo View': OnboardingDemoView(
+      toolItems: [demoTool1, demoTool2, demoTool3, demoTool4],
+      exitPoint: OnboardingLandingView()),
+  'Onboarding Information View': OnboardingInformationView(
+    onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
+  ),
   'Onboarding Landing View': OnboardingLandingView(),
   'Data Opt-in View': DataOptInView(permissionItems: dataPermissions),
   'Help Center View': HelpCenterView(helpCenter: helpCenterTest),
@@ -59,8 +66,10 @@ Map<String, Widget> aureusViews = {
   'Safety Plan Opt In View': SafetyPlanOptInView(),
   'Safety Plan Confirmation View': SafetyPlanConfirmationView(),
   'Safety Plan Functionality View': SafetyPlanFunctionalityView(),
-  'Sign In View': SignInView(),
-  'Sign Up View': SignUpView(),
+  'Sign In View': SignInView(
+      onSignIn: fillerAction,
+      onSignup: fillerAction,
+      onResetInformation: fillerAction),
 };
 
 /*  ELEMENTS  */
@@ -102,18 +111,12 @@ class _AureusElementsViewState extends State<AureusElementsView> {
               ]);
         });
 
-    LayoutBuilder viewLayout = LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
-        child: ListView(
-          children: [
-            HeadingOneText('Elements', decorationPriority.standard),
-            elementsList
-          ],
-        ),
-      );
-    });
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+        containerVariant: wrapperVariants.stackScroll,
+        children: [
+          HeadingOneText('Elements', decorationPriority.standard),
+          elementsList
+        ]);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);
@@ -160,18 +163,12 @@ class _AureusComponentsViewState extends State<AureusComponentsView> {
       },
     );
 
-    LayoutBuilder viewLayout = LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
-        child: ListView(
-          children: [
-            HeadingOneText('Components', decorationPriority.standard),
-            componentsList
-          ],
-        ),
-      );
-    });
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+        containerVariant: wrapperVariants.stackScroll,
+        children: [
+          HeadingOneText('Components', decorationPriority.standard),
+          componentsList
+        ]);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);
@@ -206,20 +203,12 @@ class _AureusViewsViewState extends State<AureusViewsView> {
         cardVariant: cardType.StandardCard,
         collectionDirection: Axis.horizontal);
 
-    LayoutBuilder viewLayout = LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 20.0),
-          physics: ClampingScrollPhysics(),
-          children: [
-            HeadingOneText('Views', decorationPriority.standard),
-            viewsCardList
-          ],
-        ),
-      );
-    });
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+        containerVariant: wrapperVariants.stackScroll,
+        children: [
+          HeadingOneText('Views', decorationPriority.standard),
+          viewsCardList
+        ]);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);

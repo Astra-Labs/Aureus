@@ -13,17 +13,21 @@ late Aureus apiVariables;
 class Aureus {
   Color? prodColor = lavender();
   String? prodName = 'Aureus';
-  Safety? safetyPlan = Safety(frequencyUsage: SafetyPlanFrequency.singleUse, productEligiblePlanOptions: []);
+  Safety? safetyPlan = Safety(
+      frequencyUsage: SafetyPlanFrequency.singleUse,
+      productEligiblePlanOptions: []);
   Image? darkFluidImage = Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Fluid%20-%20Portrait.png?raw=true');
+      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Fluid%20-%20Portrait.png?raw=true');
   Image? lightFluidImage = Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Fluid%20-%20Portrait.png?raw=true');
+      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Fluid%20-%20Portrait.png?raw=true');
   Image? darkBlurImage = Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Blur%20-%20Portrait.png?raw=true');
+      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Dark%20Blur%20-%20Portrait.png?raw=true');
   Image? lightBlurImage = Image.network(
-                      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Blur%20-%20Portrait.png?raw=true');
-  Image? lightLogo = ;
-  Image? darkLogo =;
+      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Light%20Blur%20-%20Portrait.png?raw=true');
+  Image? lightLogo = Image.network(
+      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Icon%20-%20Dark%20Mode.png?raw=true');
+  Image? darkLogo = Image.network(
+      'https://github.com/Astra-Labs/Aureus/blob/Amanda-Stable/Package/lib/assets/Icon%20-%20Light%20Mode.png?raw=true');
 
   Aureus(
       {required this.prodColor,
@@ -111,7 +115,7 @@ Color onyx() {
 }
 
 Color lightModeFill() {
-  return black().withOpacity(0.10);
+  return black().withOpacity(0.07);
 }
 
 Color darkModeFill() {
@@ -159,7 +163,7 @@ Border darkModeBorder() {
 TextStyle heading1() {
   return GoogleFonts.exo(
       fontSize: size.responsiveTextSize(26),
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.w200,
       letterSpacing: 0.4);
 }
 

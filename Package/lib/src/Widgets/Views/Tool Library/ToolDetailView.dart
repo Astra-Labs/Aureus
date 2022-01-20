@@ -16,6 +16,12 @@ class ToolDetailView extends StatefulWidget {
 class _ToolDetailViewState extends State<ToolDetailView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+      containerVariant: wrapperVariants.fullScreen,
+      children: [],
+    );
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

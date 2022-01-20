@@ -33,7 +33,7 @@ class OnboardingDetail {
   final String detailTitle;
   final String detailBody;
   final Image detailImage;
-  final Image detailCategoryIcon;
+  final IconData detailCategoryIcon;
 
   const OnboardingDetail(
       {required this.detailTitle,

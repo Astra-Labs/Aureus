@@ -15,10 +15,10 @@ class _SafetyPlanFunctionalityViewState
     extends State<SafetyPlanFunctionalityView> {
   @override
   Widget build(BuildContext context) {
-    LayoutBuilder viewLayout = LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return Container();
-    });
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+      containerVariant: wrapperVariants.stackScroll,
+      children: [],
+    );
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);

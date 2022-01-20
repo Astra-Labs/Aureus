@@ -43,4 +43,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets: 
-    - assets/
+    - assets/Dark-Blur.png
+    - assets/Dark-Fluid.jpg
+    - assets/Dark-Logo.png
+    - assets/Light-Blur.png
+    - assets/Light-Fluid.jpg
+    - assets/Light-Logo.png

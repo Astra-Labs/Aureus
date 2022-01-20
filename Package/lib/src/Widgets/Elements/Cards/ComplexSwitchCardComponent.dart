@@ -32,25 +32,26 @@ class ComplexSwitchCardElement extends StatelessWidget {
             minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
             maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
-        decoration: CardBackingDecoration(priority: decorationPriority.standard)
+        decoration: CardBackingDecoration(priority: decorationPriority.inactive)
             .buildBacking(),
         clipBehavior: Clip.hardEdge,
         child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.topLeft,
                         child: IconBadge(
                             badgeIcon: cardIcon,
                             badgePriority: decorationPriority.important),
                       ),
                       Align(
-                          alignment: Alignment.centerRight,
+                          alignment: Alignment.topRight,
                           child: SwitchComponent())
                     ],
                   ),
