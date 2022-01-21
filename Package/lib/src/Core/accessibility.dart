@@ -99,9 +99,9 @@ class Coloration {
   //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
   Color inactiveColor() {
     if (brightness() == Brightness.light) {
-      return frost();
+      return iron().withOpacity(0.2);
     } else if (brightness() == Brightness.dark) {
-      return steel().withOpacity(0.3);
+      return melt().withOpacity(0.3);
     }
 
     return steel();

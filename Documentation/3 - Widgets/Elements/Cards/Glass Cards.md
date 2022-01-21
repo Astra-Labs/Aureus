@@ -1,12 +1,23 @@
 # Glass Cards 
-### Example
+#### Last Updated: 1/20/2022
+--------------------
 
-### Links
+### Description 
+
+--------------------
+
+#### Usage 
+
+~~~
+
+~~~
+
+------------------
+
+#### Properties
+
+------------------
+
+#### Links
 [Figma Frame]()
 [Source Code]()
-
-### Usage
-
-### Implementation
-
-### Details

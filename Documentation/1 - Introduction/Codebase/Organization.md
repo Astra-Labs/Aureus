@@ -13,4 +13,3 @@ Items in Aureus's codebase are broken up into three parts:
 * Objects: Objects you pass to widgets that display information. Not all widgets will have accompanying objects, but more complex ones will. 
 * Widgets: UI Components that display information & complete functionality.
 
-Items in Aureus’ codebase are to be categorized the same as in the Figma file. If any documentation conflicts, the Figma file is the source of truth.

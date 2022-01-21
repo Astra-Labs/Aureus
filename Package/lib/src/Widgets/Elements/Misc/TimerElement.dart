@@ -18,7 +18,9 @@ class _TimerElementState extends State<TimerElement> {
     var timerBacking =
         LayerBackingDecoration(priority: decorationPriority.inactive)
             .buildBacking()
-            .copyWith(shape: BoxShape.circle);
+            .copyWith(
+              borderRadius: BorderRadius.circular(245),
+            );
 
     return AspectRatio(
         aspectRatio: 1.0,
@@ -26,7 +28,7 @@ class _TimerElementState extends State<TimerElement> {
             width: 245,
             height: 245,
             alignment: Alignment.center,
-            child: Text('$widget.timeAllotment.duration', style: heading1()),
+            child: Text("${widget.timeAllotment.duration}", style: heading1()),
             decoration: timerBacking));
   }
 }

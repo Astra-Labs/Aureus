@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 
 //All Variables for the UDS Elements
 //Doc Link:
+
 var size = Sizing();
 late Aureus apiVariables;
 
@@ -406,14 +407,6 @@ class Sizing {
     return EdgeInsets.fromLTRB(20, 10, 20, 10);
   }
 
-  EdgeInsets containerPadding() {
-    return EdgeInsets.fromLTRB(
-        widthOf(weight: sizingWeight.w1),
-        heightOf(weight: sizingWeight.w1),
-        widthOf(weight: sizingWeight.w1),
-        heightOf(weight: sizingWeight.w1));
-  }
-
   double heightOf({weight: sizingWeight}) {
     double screenWeightedHeight = 0.0;
 
@@ -556,22 +549,22 @@ class Sizing {
       //item needs to be 1/2 width for 2 sections
 
       isDesktopDisplay()
-          ? sizingWidth = area.width * 0.384
+          ? sizingWidth = area.width * 0.45
           : sizingWidth = area.width * 0.30;
     } else if (sections == 3) {
       //item needs to be 1/3 width for 3 sections
       isDesktopDisplay()
-          ? sizingWidth = area.width * 0.25
+          ? sizingWidth = area.width * 0.33
           : sizingWidth = area.width * 0.12;
     } else if (sections == 4) {
       //item needs to be 1/4 width for 4 sections
       isDesktopDisplay()
-          ? (sizingWidth = area.width * 0.18)
+          ? (sizingWidth = area.width * 0.24)
           : (sizingWidth = area.width * 0.092);
     } else if (sections == 5) {
       //item needs to be 1/5 width for 5 sections
       isDesktopDisplay()
-          ? (sizingWidth = area.width * 0.14)
+          ? (sizingWidth = area.width * 0.21)
           : (sizingWidth = area.width * 0.080);
     }
     return sizingWidth;
@@ -612,7 +605,7 @@ class Sizing {
       //item needs to be 1/5 height for 5 sections
 
       isDesktopDisplay()
-          ? sizingHeight = 0.135
+          ? sizingHeight = area.height * 0.100
           : sizingHeight = area.height * 0.097;
     }
 

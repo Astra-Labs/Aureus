@@ -25,17 +25,10 @@ class _MultipleDataTypeUserInputElementState
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       TabSubheaderElement(title: widget.dataLabel),
       Padding(padding: EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0)),
-      SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize),
-          height: size.layoutItemHeight(6, size.logicalScreenSize),
-          child: Container(
-              decoration: InputBackingDecoration().buildBacking(),
-              child: Center(
-                child: StandardTextFieldComponent(
-                    decorationVariant: decorationPriority.standard,
-                    hintText: widget.dataPlaceholder,
-                    textFieldController: widget.itemTextEditingController),
-              )))
+      StandardTextFieldComponent(
+          decorationVariant: decorationPriority.standard,
+          hintText: widget.dataPlaceholder,
+          textFieldController: widget.itemTextEditingController),
     ]);
   }
 }

@@ -193,8 +193,16 @@ class _AureusViewsViewState extends State<AureusViewsView> {
       viewListItems.clear();
 
       aureusViews.forEach((key, value) {
-        viewListItems
-            .add(CardObject.standard(decorationPriority.standard, key, () {}));
+        viewListItems.add(CardObject.standard(
+            decorationPriority.standard,
+            key,
+            () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => value,
+                      ))
+                }));
       });
     });
 

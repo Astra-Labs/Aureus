@@ -1,35 +1,23 @@
 # Singular Data Type
-### Source Code
-[Source Code](https://i.pinimg.com/originals/18/53/87/185387f0fea238da58c48efe41093347.jpg)
+#### Last Updated: 1/20/2022
+--------------------
 
-### Properties
-* 
+### Description 
 
-### I/O
-#### Input
-| Input | Type |
-|-----|-------|
-| |     |
+--------------------
 
+#### Usage 
 
-#### Output
-| Output | Type |
-|-----|-------|
-|  |      |
+~~~
 
-### UI
+~~~
 
-| Key | Value |
-|-----|-------|
-| BGC |       |
-| BRC |       |
-| TCR |       |
-| TS  |       |
-| TC  |       |
-| CR  |       |
+------------------
 
-### Variant | Single
+#### Properties
 
-### Variant | Twins
+------------------
 
-### Variant |  Triplets
+#### Links
+[Figma Frame]()
+[Source Code]()

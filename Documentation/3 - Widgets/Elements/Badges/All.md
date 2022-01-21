@@ -1,13 +1,23 @@
 # Badges
+#### Last Updated: 1/20/2022
+--------------------
 
-### Example
+### Description 
 
-### Links
+--------------------
+
+#### Usage 
+
+~~~
+
+~~~
+
+------------------
+
+#### Properties
+
+------------------
+
+#### Links
 [Figma Frame]()
 [Source Code]()
-
-### Usage
-
-### Implementation
-
-### Details

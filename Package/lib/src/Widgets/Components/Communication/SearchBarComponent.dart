@@ -17,32 +17,26 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
-        height: size.layoutItemHeight(6, size.logicalScreenSize),
-        child: Container(
-          decoration: InputBackingDecoration().buildBacking(),
-          child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: PrimaryTextFieldComponent(
-                      decorationVariant: decorationPriority.standard,
-                      hintText: 'Search here.',
-                      textFieldController: searchBarController),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: SecondaryIconButtonElement(
-                      buttonIcon: Icons.search,
-                      buttonAction: widget.onSearch,
-                      buttonTooltip: 'Search Button',
-                      decorationVariant: decorationPriority.important),
-                )
-              ]),
-        ));
+    return Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(6.0),
+            child: StandardTextFieldComponent(
+                decorationVariant: decorationPriority.standard,
+                hintText: 'Search here.',
+                textFieldController: searchBarController),
+          ),
+          Padding(
+            padding: EdgeInsets.all(6.0),
+            child: SecondaryIconButtonElement(
+                buttonIcon: Icons.search,
+                buttonAction: widget.onSearch,
+                buttonTooltip: 'Search Button',
+                decorationVariant: decorationPriority.important),
+          )
+        ]);
   }
 }

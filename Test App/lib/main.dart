@@ -8,9 +8,10 @@ import 'src/interface_items.dart';
 import 'src/functionality_items.dart';
 
 void main() {
+  
   apiVariables = Aureus(
       prodColor: Color.fromRGBO(255, 255, 255, 1.0),
-      prodName: 'Verena',
+      prodName: 'Aureus',
       safetyPlan: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
           productEligiblePlanOptions: []),
@@ -72,8 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: coloration.decorationColor(
-            decorationVariant: decorationPriority.inactive),
+        backgroundColor: coloration.accentColor().withOpacity(0.3),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.circle_outlined,

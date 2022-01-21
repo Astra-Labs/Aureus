@@ -45,7 +45,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
         },
         child: SizedBox(
             width: size.widthOf(weight: sizingWeight.w10),
-            height: minimumButtonTextSize.height * 5,
+            height: minimumButtonTextSize.height * 4,
             child: Container(
                 decoration: buttonDecoration,
                 child: Center(

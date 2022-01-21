@@ -25,8 +25,8 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
         constraints: BoxConstraints(
             minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
             maxHeight: size.layoutItemHeight(2, size.logicalScreenSize),
-            minWidth: size.layoutItemWidth(2, size.logicalScreenSize),
-            maxWidth: size.layoutItemWidth(2, size.logicalScreenSize)),
+            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
         decoration:
             LayerBackingDecoration(priority: decorationPriority.inactive)
                 .buildBacking(),

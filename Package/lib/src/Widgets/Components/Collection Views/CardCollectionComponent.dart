@@ -119,23 +119,26 @@ class _CardCollectionComponentState extends State<CardCollectionComponent> {
                 ? size.layoutItemHeight(4, size.logicalScreenSize)
                 : size.layoutItemHeight(1, size.logicalScreenSize),
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
-        child: ListView.builder(
-            scrollDirection: widget.collectionDirection,
-            itemCount: widget.cardObjects.length,
-            shrinkWrap: true,
-            itemBuilder: (BuildContext context, int index) {
-              var currentItem = widget.cardObjects[index];
+        child: SingleChildScrollView(
+          scrollDirection: widget.collectionDirection,
+          child: ListView.builder(
+              scrollDirection: widget.collectionDirection,
+              itemCount: widget.cardObjects.length,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                var currentItem = widget.cardObjects[index];
 
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                    splashColor: apiVariables.prodColor!.withOpacity(0.4),
-                    onTap: currentItem.decorationVariant !=
-                            decorationPriority.inactive
-                        ? currentItem.cardAction
-                        : null,
-                    child: filledCardObject(cardData: currentItem)),
-              );
-            }));
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                      splashColor: apiVariables.prodColor!.withOpacity(0.4),
+                      onTap: currentItem.decorationVariant !=
+                              decorationPriority.inactive
+                          ? currentItem.cardAction
+                          : null,
+                      child: filledCardObject(cardData: currentItem)),
+                );
+              }),
+        ));
   }
 }

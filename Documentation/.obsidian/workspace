@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "2 - Core/Foundation.md",
-            "mode": "preview"
+            "file": "1 - Introduction/Installation.md",
+            "mode": "source"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2 - Core/Foundation.md",
+                "file": "1 - Introduction/Installation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "a4f090b52864a08e",
   "lastOpenFiles": [
-    "2 - Core/Foundation.md",
-    "2 - Core/Accessibility.md",
-    "1 - Introduction/Quick Reference.md",
-    "1 - Introduction/Organization.md",
     "1 - Introduction/Installation.md",
-    "1 - Introduction/Exchange of Trust.md",
-    "1 - Introduction/Contributing.md",
-    "Meet Aureus.md",
-    "3 - Widgets/Elements/Misc/Tab Subheader.md",
-    "3 - Widgets/Elements/Misc/Slider.md"
+    "2 - Core/Accessibility/Accessibility.md",
+    "2 - Core/Accessibility/Coloration.md",
+    "2 - Core/Foundation/Foundation.md",
+    "2 - Core/Foundation/Package Variables.md",
+    "2 - Core/Foundation/Backing Decorators.md",
+    "2 - Core/Foundation/Sizing.md",
+    "3 - Widgets/Components/Buttons/Full Width Buttons.md",
+    "3 - Widgets/Components/Alert Controllers/Centered Alert Controller.md",
+    "3 - Widgets/Views/2FA Verification.md"
   ]
 }

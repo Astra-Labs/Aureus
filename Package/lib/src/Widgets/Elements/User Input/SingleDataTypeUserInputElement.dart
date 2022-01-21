@@ -20,17 +20,9 @@ class _SingleDataTypeUserInputElementState
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size.layoutItemWidth(1, size.logicalScreenSize),
-      height: size.layoutItemHeight(6, size.logicalScreenSize),
-      child: Container(
-          decoration: InputBackingDecoration().buildBacking(),
-          child: Center(
-            child: StandardTextFieldComponent(
-                decorationVariant: decorationPriority.standard,
-                hintText: widget.dataPlaceholder,
-                textFieldController: widget.itemTextEditingController),
-          )),
-    );
+    return StandardTextFieldComponent(
+        decorationVariant: decorationPriority.standard,
+        hintText: widget.dataPlaceholder,
+        textFieldController: widget.itemTextEditingController);
   }
 }

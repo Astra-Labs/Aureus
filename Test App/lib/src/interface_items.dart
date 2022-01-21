@@ -57,7 +57,10 @@ var tabSubheader = TabSubheaderElement(title: fillerTextSubheader);
 var divider = DividerElement();
 
 var slider = SliderElement();
-var timer = SliderElement();
+var timer = TimerElement(
+    timeAllotment: DateTimeRange(
+        start: DateTime.now(),
+        end: DateTime(DateTime.now().year, Duration.secondsPerMinute)));
 
 var singleInput =
     SingleDataTypeUserInputElement(dataPlaceholder: fillerPlaceholder);

@@ -80,19 +80,22 @@ class _ContainerViewState extends State<ContainerView> {
             child: widget.builder));
 
     if (hasExitBar == true) {
-      return SizedBox(
-          height: size.logicalHeight,
-          width: size.logicalWidth,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [ExitBarComponent(), Expanded(child: backingContainer)],
-          ));
+      return Scaffold(
+        body: SizedBox(
+            height: size.logicalHeight,
+            width: size.logicalWidth,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [ExitBarComponent(), Expanded(child: backingContainer)],
+            )),
+      );
     } else if (hasExitBar == false) {
-      return SizedBox(
-          height: size.logicalHeight,
-          width: size.logicalWidth,
-          child: Expanded(child: backingContainer));
+      return Scaffold(
+          body: (SizedBox(
+              height: size.logicalHeight,
+              width: size.logicalWidth,
+              child: Expanded(child: backingContainer))));
     }
 
     throw ErrorDescription('Exit bar value not given.');

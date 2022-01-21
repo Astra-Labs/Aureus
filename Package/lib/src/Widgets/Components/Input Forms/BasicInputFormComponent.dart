@@ -79,11 +79,9 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Padding(
-              padding: size.containerPadding(),
-              child: HeadingThreeText(
-                  widget.inputFormName, decorationPriority.standard)),
-          Padding(padding: size.containerPadding(), child: inputList)
+          HeadingThreeText(widget.inputFormName, decorationPriority.standard),
+          SizedBox(height: 8.0),
+          inputList
         ]);
   }
 }
