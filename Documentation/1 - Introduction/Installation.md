@@ -11,7 +11,7 @@ In the main file of your project, before you return your app, create and pass Au
 flutter run -d chrome --web-renderer html
 
 #### For web build:
+flutter web build --web-renderer html
   
 ### Getting the package:
-Issues / Bugs:
 When you find a bug, please file an issue in the Aureus github repository. 

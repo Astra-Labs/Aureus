@@ -8,7 +8,6 @@ import 'src/interface_items.dart';
 import 'src/functionality_items.dart';
 
 void main() {
-  
   apiVariables = Aureus(
       prodColor: Color.fromRGBO(255, 255, 255, 1.0),
       prodName: 'Aureus',
@@ -38,8 +37,33 @@ class MyApp extends StatelessWidget {
       backgroundColor = white();
     }
 
+    List<StandardIconButtonElement> buttonItems = [
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.important,
+          buttonTitle: "Open the repo.",
+          buttonIcon: Icons.ac_unit_outlined,
+          buttonAction: () => {}),
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.important,
+          buttonTitle: "Read the docs.",
+          buttonIcon: Icons.ac_unit_outlined,
+          buttonAction: () => {}),
+    ];
+
     return MaterialApp(
-        home: Scaffold(body: MyHomePage()),
+        home: Scaffold(
+            body: LandingPageView(
+                missionTagline:
+                    "An open-source design system specifically for high-risk tech products.",
+                lightModeLandscapeBacking: Image.network(
+                    'https://images.unsplash.com/photo-1516106163087-9b416a60a1df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'),
+                darkModeLandscapeBacking: Image.network(
+                    'https://images.unsplash.com/photo-1483356256511-b48749959172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'),
+                lightModeUIOverlay: Image.network(
+                    'http://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png'),
+                darkModeUIOverlay: Image.network(
+                    'http://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png'),
+                actionButtons: buttonItems)),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }

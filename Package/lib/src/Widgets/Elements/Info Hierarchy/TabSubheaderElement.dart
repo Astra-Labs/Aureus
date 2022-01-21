@@ -27,6 +27,6 @@ class TabSubheaderElement extends StatelessWidget {
                 .buildBacking()
                 .copyWith(color: coloration.accentColor()),
         child:
-            Center(child: TagOneText('$title', decorationPriority.standard)));
+            Center(child: TagOneText('$title', decorationPriority.important)));
   }
 }

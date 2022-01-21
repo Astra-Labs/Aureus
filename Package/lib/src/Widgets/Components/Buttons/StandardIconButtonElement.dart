@@ -47,12 +47,12 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
         },
         child: SizedBox(
             width: size.layoutItemWidth(1, size.logicalScreenSize),
-            height: minimumButtonTextSize.height * 5,
+            height: minimumButtonTextSize.height * 4,
             child: Container(
                 decoration: buttonDecoration,
                 child: Center(
                     child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

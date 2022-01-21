@@ -108,6 +108,7 @@ export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanConfirmationView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanFunctionalityView.dart';
 export 'src/Widgets/Views/2FAVerificationView.dart';
+export 'src/Widgets/Views/LandingPageView.dart';
 export 'src/Widgets/Views/SignInView.dart';
 
 /* ------------------ ENUMS -------------------- */

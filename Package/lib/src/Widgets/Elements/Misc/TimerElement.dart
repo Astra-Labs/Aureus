@@ -28,7 +28,8 @@ class _TimerElementState extends State<TimerElement> {
             width: 245,
             height: 245,
             alignment: Alignment.center,
-            child: Text("${widget.timeAllotment.duration}", style: heading1()),
+            child: HeadingOneText("${widget.timeAllotment.duration}",
+                decorationPriority.standard),
             decoration: timerBacking));
   }
 }
