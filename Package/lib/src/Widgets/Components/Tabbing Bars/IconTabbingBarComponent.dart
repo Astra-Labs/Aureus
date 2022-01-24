@@ -40,20 +40,22 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
       tabItems.add(tabItem);
     });
 
-    return SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
-        height: size.layoutItemHeight(6, size.logicalScreenSize),
-        child: Container(
-            padding: EdgeInsets.all(8),
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
-            child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    mainAxisSize: MainAxisSize.min,
-                    children: tabItems))));
+    return FloatingContainerElement(
+      child: SizedBox(
+          width: size.layoutItemWidth(1, size.logicalScreenSize),
+          height: size.layoutItemHeight(6, size.logicalScreenSize),
+          child: Container(
+              padding: EdgeInsets.all(8),
+              decoration:
+                  LayerBackingDecoration(priority: decorationPriority.inactive)
+                      .buildBacking(),
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
+                      children: tabItems)))),
+    );
   }
 }

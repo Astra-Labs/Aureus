@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class OnboardingInformationView extends StatefulWidget {
   final List<OnboardingDetail> onboardingDetails;
 
@@ -40,56 +37,59 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
     Widget informationCard = SizedBox(
         width: size.layoutItemWidth(1, size.logicalScreenSize),
         height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.7,
-        child: Container(
-          padding: EdgeInsets.all(12.0),
-          decoration:
-              CardBackingDecoration(priority: decorationPriority.inactive)
-                  .buildBacking(),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                    constraints: BoxConstraints(
-                        minHeight:
-                            size.layoutItemHeight(3, size.logicalScreenSize)),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.0),
-                        border: universalBorder(),
-                        image: DecorationImage(
-                          image: currentItem.detailImage.image,
-                          fit: BoxFit.cover,
-                        ))),
-                Spacer(),
-                TagOneText(
-                    currentItem.detailTitle, decorationPriority.standard),
-                BodyOneText(
-                    currentItem.detailBody, decorationPriority.standard),
-                Spacer(),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    PrimaryIconButtonElement(
-                        decorationVariant: (_selectedIndex == 0 &&
-                                _selectedIndex <
-                                    widget.onboardingDetails.length)
-                            ? decorationPriority.inactive
-                            : decorationPriority.important,
-                        buttonIcon: Icons.skip_next_outlined,
-                        buttonTooltip: 'Previous Item',
-                        buttonAction: () =>
-                            {_onItemTapped(_selectedIndex -= 1)}),
-                    PrimaryIconButtonElement(
-                        decorationVariant: decorationPriority.important,
-                        buttonIcon: Icons.next_plan_outlined,
-                        buttonTooltip: 'Next Item',
-                        buttonAction: () =>
-                            {_onItemTapped(_selectedIndex += 1)})
-                  ],
-                )
-              ]),
+        child: FloatingContainerElement(
+          child: Container(
+            padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
+            decoration:
+                CardBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                      constraints: BoxConstraints(
+                          minHeight:
+                              size.layoutItemHeight(3, size.logicalScreenSize)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          border: universalBorder(),
+                          image: DecorationImage(
+                            image: currentItem.detailImage.image,
+                            fit: BoxFit.cover,
+                          ))),
+                  Spacer(),
+                  TagOneText(
+                      currentItem.detailTitle, decorationPriority.standard),
+                  BodyOneText(
+                      currentItem.detailBody, decorationPriority.standard),
+                  Spacer(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      PrimaryIconButtonElement(
+                          decorationVariant: (_selectedIndex == 0)
+                              ? decorationPriority.inactive
+                              : decorationPriority.important,
+                          buttonIcon: Assets.back,
+                          buttonTooltip: 'Previous Item',
+                          buttonAction: () =>
+                              {_onItemTapped(_selectedIndex -= 1)}),
+                      PrimaryIconButtonElement(
+                          decorationVariant: (_selectedIndex >
+                                  (widget.onboardingDetails.length - 2))
+                              ? decorationPriority.inactive
+                              : decorationPriority.important,
+                          buttonIcon: Assets.next,
+                          buttonTooltip: 'Next Item',
+                          buttonAction: () =>
+                              {_onItemTapped(_selectedIndex += 1)})
+                    ],
+                  )
+                ]),
+          ),
         ));
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
@@ -103,6 +103,6 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
     );
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewLayout);
+        decorationVariant: decorationPriority.important, builder: viewLayout);
   }
 }

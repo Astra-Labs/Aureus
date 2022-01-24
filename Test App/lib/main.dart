@@ -1,32 +1,27 @@
 import 'package:aureus/aureus.dart';
-import 'package:test_app/src/backing_items.dart';
-import 'package:test_app/src/playground.dart';
-import 'package:test_app/src/test_interface.dart';
-import 'package:test_app/src/view_items.dart';
-import 'src/text_items.dart';
-import 'src/interface_items.dart';
-import 'src/functionality_items.dart';
+import 'package:test_app/test_interface.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   apiVariables = Aureus(
+      missionTagline:
+          "An open-source design system specifically for software focused on safety, privacy, and accessibility.",
       prodColor: Color.fromRGBO(255, 255, 255, 1.0),
       prodName: 'Aureus',
-      safetyPlan: Safety(
+      safetyObject: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
-          productEligiblePlanOptions: []),
-      darkFluidImage: Image(image: AssetImage('Dark-Blur.png')),
-      lightFluidImage: Image(image: AssetImage('Light-Fluid.jpg')),
-      darkBlurImage: Image(image: AssetImage('Dark-Blur.png')),
-      lightBlurImage: Image(image: AssetImage('Light-Blur.png')),
-      lightLogo: Image(image: AssetImage('Light-Logo.png')),
-      darkLogo: Image(image: AssetImage('Dark-Logo.png')));
+          eligiblePlanOptions: []),
+      darkFluidImage: Image(image: AssetImage('assets/Dark-Blur.png')),
+      lightFluidImage: Image(image: AssetImage('assets/Light-Fluid.jpg')),
+      darkBlurImage: Image(image: AssetImage('assets/Dark-Blur.png')),
+      lightBlurImage: Image(image: AssetImage('assets/Light-Blur.png')),
+      lightLogo: Image(image: AssetImage('assets/Light-Logo.png')),
+      darkLogo: Image(image: AssetImage('assets/Dark-Logo.png')));
 
-  runApp(MyApp());
+  runApp(AureusTestApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-
+class AureusTestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color backgroundColor = lavender();
@@ -37,43 +32,72 @@ class MyApp extends StatelessWidget {
       backgroundColor = white();
     }
 
-    List<StandardIconButtonElement> buttonItems = [
-      StandardIconButtonElement(
-          decorationVariant: decorationPriority.important,
-          buttonTitle: "Open the repo.",
-          buttonIcon: Icons.ac_unit_outlined,
-          buttonAction: () => {}),
-      StandardIconButtonElement(
-          decorationVariant: decorationPriority.important,
-          buttonTitle: "Read the docs.",
-          buttonIcon: Icons.ac_unit_outlined,
-          buttonAction: () => {}),
-    ];
-
     return MaterialApp(
-        home: Scaffold(
-            body: LandingPageView(
-                missionTagline:
-                    "An open-source design system specifically for high-risk tech products.",
-                lightModeLandscapeBacking: Image.network(
-                    'https://images.unsplash.com/photo-1516106163087-9b416a60a1df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'),
-                darkModeLandscapeBacking: Image.network(
-                    'https://images.unsplash.com/photo-1483356256511-b48749959172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'),
-                lightModeUIOverlay: Image.network(
-                    'http://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png'),
-                darkModeUIOverlay: Image.network(
-                    'http://assets.stickpng.com/images/5cb0633d80f2cf201a4c3253.png'),
-                actionButtons: buttonItems)),
+        home: LandingPage(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class LandingPage extends StatelessWidget {
+  // This widget is the root of your application.
+
+  Future<void> _launchInBrowser(String url) async {
+    if (!await launch(
+      url,
+      forceSafariVC: false,
+      forceWebView: false,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  Widget build(BuildContext context) {
+    List<StandardIconButtonElement> buttonItems = [
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: "Install with pub.dev.",
+          buttonIcon: Assets.wrench,
+          buttonAction: () => {_launchInBrowser('')}),
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: "Find documentation on Github.",
+          buttonIcon: Assets.settings,
+          buttonAction: () => {_launchInBrowser('')}),
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: "Use the test app.",
+          buttonIcon: Assets.expand,
+          buttonAction: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TestAppLanding(),
+                    ))
+              })
+    ];
+
+    return Scaffold(
+      body: LandingPageView(
+          lightModeLandscapeBacking: Image.network(
+              'https://images.unsplash.com/flagged/photo-1550340148-50cf8be518f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80'),
+          darkModeLandscapeBacking: Image.network(
+              'https://images.unsplash.com/photo-1468103933896-2c34a78104c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'),
+          lightModeUIOverlay:
+              Image(image: AssetImage('assets/Light Mode - Preview.png')),
+          darkModeUIOverlay:
+              Image(image: AssetImage('assets/Dark Mode - Preview.png')),
+          actionButtons: buttonItems),
+    );
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class TestAppLanding extends StatefulWidget {
+  @override
+  _TestAppLandingState createState() => _TestAppLandingState();
+}
+
+class _TestAppLandingState extends State<TestAppLanding> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
@@ -97,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: coloration.accentColor().withOpacity(0.3),
+        backgroundColor: coloration.sameColor(),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.circle_outlined,

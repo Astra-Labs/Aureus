@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//A card that contains a badge and label to describe what the card represents
-//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Badge%20Cards.md
-
 class ComplexBadgeCardElement extends StatelessWidget {
   final decorationPriority decorationVariant;
   final String cardLabel;
@@ -19,18 +16,6 @@ class ComplexBadgeCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size labelSize = Accessibility.textStringSize(
-        textInput: cardLabel,
-        textStyle: heading4(),
-        textDirection: TextDirection.ltr,
-        query: MediaQuery.of(context));
-
-    Size bodySize = Accessibility.textStringSize(
-        textInput: cardLabel,
-        textStyle: body1(),
-        textDirection: TextDirection.ltr,
-        query: MediaQuery.of(context));
-
     return Container(
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),

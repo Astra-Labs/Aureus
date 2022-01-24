@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class SignInView extends StatefulWidget {
   final VoidCallback onSignIn;
   final VoidCallback onSignup;

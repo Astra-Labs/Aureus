@@ -2,7 +2,6 @@ import 'package:aureus/aureus.dart';
 
 /*
 
-Description: 
 A class that contains variables, methods, and other items to ensure full accessibility compliance. 
 
 */
@@ -17,7 +16,7 @@ class Accessibility {
       required TextStyle textStyle,
       required TextDirection textDirection,
       required MediaQueryData query}) {
-    //creates variable that contains MediaQuery information that will be used to return proper sizing
+    //creates variable that contains MediaQuery information to return proper sizing
     TextPainter textPainter = TextPainter(
         text: TextSpan(text: textInput, style: textStyle),
         textScaleFactor: query.textScaleFactor,
@@ -33,13 +32,12 @@ class Accessibility {
 /*
 
 Description: 
-A class that takes variables into consideration to properly color the text of different items to match contrsst standards
+A class that takes variables into consideration to properly color the text of different items to match contrast standards
 */
 
 // 🛑
 class Coloration {
-  //the color returned for all general text in Aureus.
-
+  //Returns logo for the proper mode.
   Image resourceLogo() {
     if (brightness() == Brightness.light) {
       return apiVariables.darkLogo!;
@@ -47,9 +45,11 @@ class Coloration {
       return apiVariables.lightLogo!;
     }
 
-    throw ('Brightness is having issues');
+    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+    throw ("Brightness is returning a mode that doesn't exist");
   }
 
+  //Coloration for dynamically changing items that use all of the priority variants.
   Color decorationColor({required decorationPriority decorationVariant}) {
     switch (decorationVariant) {
       case decorationPriority.important:
@@ -63,17 +63,19 @@ class Coloration {
     }
   }
 
+  //Accent color for the given mode.
   Color accentColor() {
     if (brightness() == Brightness.light) {
-      return lavender();
+      return Color.fromRGBO(56, 62, 94, 1.0);
     } else if (brightness() == Brightness.dark) {
-      return frost();
+      return melt();
     }
 
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
-    return steel();
+    throw ("Brightness is returning a mode that doesn't exist");
   }
 
+  //Returns alternate color to the mode.
   Color contrastColor() {
     if (brightness() == Brightness.light) {
       return black();
@@ -82,10 +84,10 @@ class Coloration {
     }
 
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
-    return steel();
+    throw ("Brightness is returning a mode that doesn't exist");
   }
 
-  //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
+  //Returns same color as the mode.
   Color sameColor() {
     if (brightness() == Brightness.light) {
       return white();
@@ -93,10 +95,10 @@ class Coloration {
       return black();
     }
 
-    return steel();
+    throw ("Brightness is returning a mode that doesn't exist");
   }
 
-  //sometimes, items will have a high contrast background and need to be the same color as the mode. in that case, use this text color.
+  //Returns inactive color for the mode.
   Color inactiveColor() {
     if (brightness() == Brightness.light) {
       return iron().withOpacity(0.2);
@@ -104,9 +106,10 @@ class Coloration {
       return melt().withOpacity(0.3);
     }
 
-    return steel();
+    throw ("Brightness is returning a mode that doesn't exist");
   }
 
+  //returns a decoration priority dynamically based on if the item is active or not.
   decorationPriority itemPriority(bool isActive) {
     if (isActive == true) {
       return decorationPriority.important;

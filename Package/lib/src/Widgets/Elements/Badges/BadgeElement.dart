@@ -18,10 +18,10 @@ class IconBadge extends StatelessWidget {
     BoxShadow backingHaze = BoxShadow();
 
     if (brightness() == Brightness.dark) {
-      backingGradient = darkGradient();
+      backingGradient = lightGradient();
       backingHaze = pastelShadow();
     } else if (brightness() == Brightness.light) {
-      backingGradient = lightGradient();
+      backingGradient = darkGradient();
       backingHaze = darkShadow();
     }
 
@@ -32,13 +32,17 @@ class IconBadge extends StatelessWidget {
 
     return Container(
       constraints: BoxConstraints(
-          minHeight: 10, minWidth: 10, maxHeight: 70, maxWidth: 70),
+          minHeight: 10, minWidth: 10, maxHeight: 85, maxWidth: 85),
       decoration: customBadgeBacking
           .buildBacking()
           .copyWith(borderRadius: BorderRadius.circular(40)),
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Icon(badgeIcon, color: coloration.contrastColor()),
+        padding: const EdgeInsets.all(10.0),
+        child: Icon(
+          badgeIcon,
+          color: coloration.sameColor(),
+          size: 40.0,
+        ),
       ),
     );
   }

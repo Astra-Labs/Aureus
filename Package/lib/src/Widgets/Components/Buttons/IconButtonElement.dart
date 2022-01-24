@@ -33,24 +33,25 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
 
     return InkWell(
         onTap: () {
-          print('button tapped!');
           if (isButtonEnabled == true) {
             widget.buttonAction();
           }
         },
-        child: SizedBox(
-            width: 80.0,
-            height: 80.0,
-            child: Container(
-              decoration: buttonBacking,
-              child: Center(
-                child: Icon(widget.buttonIcon,
-                    color: coloration.decorationColor(
-                        decorationVariant: widget.decorationVariant),
-                    semanticLabel: widget.buttonTooltip,
-                    size: 60.0),
-              ),
-            )));
+        child: FloatingContainerElement(
+          child: SizedBox(
+              width: 80.0,
+              height: 80.0,
+              child: Container(
+                decoration: buttonBacking,
+                child: Center(
+                  child: Icon(widget.buttonIcon,
+                      color: coloration.decorationColor(
+                          decorationVariant: widget.decorationVariant),
+                      semanticLabel: widget.buttonTooltip,
+                      size: 60.0),
+                ),
+              )),
+        ));
   }
 }
 

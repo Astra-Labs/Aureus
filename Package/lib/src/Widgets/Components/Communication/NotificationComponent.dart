@@ -79,15 +79,17 @@ class _NotificationComponentState extends State<NotificationComponent> {
             child: BodyOneText(widget.notificationBody, notificationPriority),
           )
         ]);
-    return Container(
-        constraints: BoxConstraints(
-            minHeight: size.layoutItemHeight(6, size.logicalScreenSize),
-            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize),
-            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
-        alignment: Alignment.center,
-        padding: size.universalPadding(),
-        decoration: boxDecoration,
-        child: Center(child: notificationContent));
+    return FloatingContainerElement(
+      child: Container(
+          constraints: BoxConstraints(
+              minHeight: size.layoutItemHeight(6, size.logicalScreenSize),
+              maxHeight: size.layoutItemHeight(3, size.logicalScreenSize),
+              minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+              maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
+          alignment: Alignment.center,
+          padding: size.universalPadding(),
+          decoration: boxDecoration,
+          child: Center(child: notificationContent)),
+    );
   }
 }

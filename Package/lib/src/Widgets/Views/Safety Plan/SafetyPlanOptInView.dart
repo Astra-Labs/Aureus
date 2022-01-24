@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class SafetyPlanOptInView extends StatefulWidget {
   const SafetyPlanOptInView();
 
@@ -22,7 +19,7 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             HeadingTwoText("Safety Check", decorationPriority.standard),
             IconBadge(
-                badgeIcon: Icons.lock_outline,
+                badgeIcon: Assets.lock,
                 badgePriority: decorationPriority.important)
           ]),
         ),
@@ -30,7 +27,7 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
         Align(
           alignment: Alignment.center,
           child: BodyOneText(
-              "Our software has added safety features for people in dangerous situations. \n\nThis information will be encrypted, and stored locally on your device.\n\nYou can add these features now, or enable them anytime in app settings.",
+              "Our software has added safety features for people in dangerous situations. This information will be encrypted, and stored locally on your device. You can add these features now, or enable them anytime in app settings.",
               decorationPriority.standard),
         ),
         Spacer(),
@@ -51,6 +48,6 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
       ],
     );
     return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewLayout);
+        decorationVariant: decorationPriority.important, builder: viewLayout);
   }
 }

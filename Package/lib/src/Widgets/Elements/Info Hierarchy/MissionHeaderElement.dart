@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//A backing that acts as a timer.
-//Doc Link:
-
 class MissionHeaderElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(

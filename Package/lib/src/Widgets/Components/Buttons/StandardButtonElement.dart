@@ -20,7 +20,6 @@ class StandardButtonElement extends StatefulWidget {
 class _StandardButtonElementState extends State<StandardButtonElement> {
   @override
   Widget build(BuildContext context) {
-    //variables that change how the variants are displayed in build time
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedRectangle,
             priority: widget.decorationVariant)
@@ -42,13 +41,15 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
             widget.buttonAction();
           }
         },
-        child: SizedBox(
-            width: size.layoutItemWidth(1, size.logicalScreenSize),
-            height: minimumButtonTextSize.height * 4,
-            child: Container(
-                decoration: buttonDecoration,
-                child: Center(
-                    child: ButtonTwoText(
-                        widget.buttonTitle, widget.decorationVariant)))));
+        child: FloatingContainerElement(
+          child: SizedBox(
+              width: size.layoutItemWidth(1, size.logicalScreenSize),
+              height: minimumButtonTextSize.height * 4,
+              child: Container(
+                  decoration: buttonDecoration,
+                  child: Center(
+                      child: ButtonTwoText(
+                          widget.buttonTitle, widget.decorationVariant)))),
+        ));
   }
 }

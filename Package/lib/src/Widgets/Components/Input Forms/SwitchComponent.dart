@@ -33,7 +33,7 @@ class _SwitchComponentState extends State<SwitchComponent> {
       activeColor: coloration.accentColor(),
       activeTrackColor: coloration.sameColor(),
       inactiveThumbColor: coloration.sameColor(),
-      inactiveTrackColor: coloration.inactiveColor(),
+      inactiveTrackColor: coloration.accentColor(),
     );
   }
 }

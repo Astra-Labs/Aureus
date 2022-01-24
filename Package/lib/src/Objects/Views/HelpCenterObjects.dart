@@ -23,7 +23,7 @@ class HelpCenterObject {
 /*
 
 Description: 
-A category that separates and describes the articles in a 
+An object that separates and describes the articles in a specific category
 
 Details:
 -A minumum of one category is required to build a Help Center. 
@@ -49,18 +49,17 @@ Description:
 An object that constructs a help center article with from content. 
 
 Details:
--If you don't want to include a CTA on your article, just pass null to the constructor. It is required to be defined in the constructor, but can be built without it. 
+-If you don't want to include a CTA on your article, just pass null to the constructor. 
+It is required to be defined in the constructor, but can be built without it. 
 
 */
 class HelpCenterArticle {
   final String articleTitle;
   final String articleBody;
-  final VoidCallback articleCTA;
+  final VoidCallback? articleCTA;
 
-  const HelpCenterArticle(
-      {required this.articleTitle,
-      required this.articleBody,
-      required this.articleCTA})
+  HelpCenterArticle(
+      {required this.articleTitle, required this.articleBody, this.articleCTA})
       : assert(articleTitle != ''),
         assert(articleBody != '');
 }

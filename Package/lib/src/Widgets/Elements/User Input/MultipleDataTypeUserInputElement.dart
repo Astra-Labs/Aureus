@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class MultipleDataTypeUserInputElement extends StatefulWidget {
   final String dataLabel;
   final String dataPlaceholder;

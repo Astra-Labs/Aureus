@@ -28,7 +28,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
         .buildBacking();
 
     bool isButtonEnabled =
-        widget.currentVariant == decorationPriority.inactive ? true : false;
+        widget.currentVariant == decorationPriority.inactive ? false : true;
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
         textInput: widget.buttonTitle,
@@ -38,18 +38,19 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
 
     return InkWell(
         onTap: () {
-          print('button tapped!');
           if (isButtonEnabled == true) {
             widget.buttonAction();
           }
         },
-        child: SizedBox(
-            width: size.widthOf(weight: sizingWeight.w10),
-            height: minimumButtonTextSize.height * 4,
-            child: Container(
-                decoration: buttonDecoration,
-                child: Center(
-                    child: ButtonOneText(
-                        widget.buttonTitle, widget.currentVariant)))));
+        child: FloatingContainerElement(
+          child: SizedBox(
+              width: size.widthOf(weight: sizingWeight.w10),
+              height: minimumButtonTextSize.height * 4,
+              child: Container(
+                  decoration: buttonDecoration,
+                  child: Center(
+                      child: ButtonOneText(
+                          widget.buttonTitle, widget.currentVariant)))),
+        ));
   }
 }

@@ -1,10 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class LandingPageView extends StatefulWidget {
-  final String missionTagline;
   final Image lightModeLandscapeBacking;
   final Image darkModeLandscapeBacking;
   final Image lightModeUIOverlay;
@@ -12,8 +8,7 @@ class LandingPageView extends StatefulWidget {
   final List<StandardIconButtonElement> actionButtons;
 
   const LandingPageView(
-      {required this.missionTagline,
-      required this.lightModeLandscapeBacking,
+      {required this.lightModeLandscapeBacking,
       required this.darkModeLandscapeBacking,
       required this.lightModeUIOverlay,
       required this.darkModeUIOverlay,
@@ -33,7 +28,9 @@ class _LandingPageViewState extends State<LandingPageView> {
         children: [
           HeadingTwoText(
               "I'm ${apiVariables.prodName}", decorationPriority.standard),
-          HeadingOneText(widget.missionTagline, decorationPriority.standard)
+          SizedBox(height: 4.0),
+          HeadingOneText(
+              apiVariables.missionTagline, decorationPriority.standard)
         ]);
 
     Image homeScreenOverlay = brightness() == Brightness.light
@@ -51,21 +48,51 @@ class _LandingPageViewState extends State<LandingPageView> {
       children: widget.actionButtons,
     );
 
-    Container pageFooter = Container(
+    Container mobilePageFooter = Container(
+        width: size.logicalWidth,
+        height: size.layoutItemHeight(2, size.logicalScreenSize),
+        decoration: BoxDecoration(
+            color: coloration
+                .decorationColor(
+                    decorationVariant: decorationPriority.important)
+                .withOpacity(0.85),
+            border: Border(
+                top:
+                    BorderSide(color: coloration.inactiveColor(), width: 1.0))),
+        child: Padding(
+          padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w1)),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                BodyOneText(
+                    '${apiVariables.prodName} is run by Astra Labs, a 501(c)3 non-profit.',
+                    decorationPriority.standard),
+                SizedBox(width: 10.0),
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Give Feedback',
+                    buttonAction: () => {}),
+                SizedBox(width: 10.0),
+              ]),
+        ));
+
+    Container webPageFooter = Container(
         width: size.logicalWidth,
         decoration: BoxDecoration(
             color: coloration
                 .decorationColor(
                     decorationVariant: decorationPriority.important)
-                .withOpacity(0.70),
+                .withOpacity(0.85),
             border: Border(
                 top:
                     BorderSide(color: coloration.inactiveColor(), width: 1.0))),
         child: SizedBox(
           width: size.logicalWidth,
-          height: size.logicalHeight * 0.11,
+          height: size.logicalHeight * 0.15,
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
             child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,16 +107,6 @@ class _LandingPageViewState extends State<LandingPageView> {
                           decorationVariant: decorationPriority.standard,
                           buttonTitle: 'Give Feedback',
                           buttonAction: () => {}),
-                      SizedBox(width: 8.0),
-                      SmolButtonElement(
-                          decorationVariant: decorationPriority.standard,
-                          buttonTitle: 'See Status',
-                          buttonAction: () => {}),
-                      SizedBox(width: 8.0),
-                      SmolButtonElement(
-                          decorationVariant: decorationPriority.standard,
-                          buttonTitle: 'Check Impact',
-                          buttonAction: () => {}),
                     ],
                   )
                 ]),
@@ -101,15 +118,36 @@ class _LandingPageViewState extends State<LandingPageView> {
         width: size.logicalWidth,
         child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.start,
-                runSpacing: size.heightOf(weight: sizingWeight.w0),
-                children: [
-                  informationHiearchy,
-                  homeScreenOverlay,
-                  buttonItems,
-                  pageFooter
-                ])));
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsets.all(size.widthOf(weight: sizingWeight.w1)),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                            height: size.heightOf(weight: sizingWeight.w1)),
+                        informationHiearchy,
+                        SizedBox(
+                            height: size.heightOf(weight: sizingWeight.w0)),
+                        homeScreenOverlay,
+                        SizedBox(
+                            height: size.heightOf(weight: sizingWeight.w0)),
+                        SizedBox(
+                            height: size.logicalHeight *
+                                (0.15 * widget.actionButtons.length),
+                            child: buttonItems),
+                        SizedBox(height: 10.0),
+                      ]),
+                ),
+                FloatingContainerElement(child: mobilePageFooter)
+              ],
+            )));
 
     var webView = SizedBox(
         height: size.logicalHeight,
@@ -117,7 +155,7 @@ class _LandingPageViewState extends State<LandingPageView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -135,11 +173,11 @@ class _LandingPageViewState extends State<LandingPageView> {
                 SizedBox(
                     width: size.logicalWidth / 3.5,
                     height: size.logicalHeight *
-                        (0.15 * widget.actionButtons.length),
+                        (0.10 * widget.actionButtons.length),
                     child: buttonItems),
               ],
             ),
-            pageFooter
+            FloatingContainerElement(child: webPageFooter)
           ],
         ));
 

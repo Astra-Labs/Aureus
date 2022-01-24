@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class SingleDataTypeUserInputElement extends StatefulWidget {
   final String dataPlaceholder;
   TextEditingController itemTextEditingController = TextEditingController();

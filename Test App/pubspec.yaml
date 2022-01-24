@@ -31,6 +31,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   golden_toolkit: ^0.12.0
+  url_launcher: ^6.0.18
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,8 @@ flutter:
     - assets/Dark-Blur.png
     - assets/Dark-Fluid.jpg
     - assets/Dark-Logo.png
+    - assets/Dark Mode - Preview.png
+    - assets/Light Mode - Preview.png
     - assets/Light-Blur.png
     - assets/Light-Fluid.jpg
     - assets/Light-Logo.png

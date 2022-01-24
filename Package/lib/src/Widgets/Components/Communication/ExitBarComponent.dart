@@ -16,9 +16,9 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
     //because the bar breaks from current backing build conventions due to safety reasons, we have a custom variable that simply returns a color instead of .buildBacking();
     Color barBacking() {
       if (brightness() == Brightness.light) {
-        return melt();
+        return white();
       } else if (brightness() == Brightness.dark) {
-        return onyx();
+        return black();
       }
 
       return white();

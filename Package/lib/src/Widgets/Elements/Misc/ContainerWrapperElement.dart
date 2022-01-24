@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class ContainerWrapperElement extends StatelessWidget {
   final List<Widget> children;
   final wrapperVariants containerVariant;
@@ -31,7 +28,7 @@ class ContainerWrapperElement extends StatelessWidget {
             ));
       }
 
-      throw ("proper variant wasn't given to ContainerWrapperElement.");
+      throw ("Proper variant wasn't given to ContainerWrapperElement.");
     }
 
     return LayoutBuilder(

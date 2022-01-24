@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
 
 //A vertically & horizontally centered alert controller
-//Doc Link:
 
 class CenteredAlertControllerComponent extends StatefulWidget {
   final AlertControllerObject alertData;
@@ -51,6 +50,7 @@ class _CenteredAlertControllerComponentState
       );
     }
 
+    //Creates a custom backing to establish high importance.
     BoxDecoration alertBacking() {
       var customAlertBacking =
           BaseBackingDecoration(priority: decorationPriority.standard);
@@ -75,7 +75,6 @@ class _CenteredAlertControllerComponentState
     }
 
     return Container(
-        //this will be the rounded card backing
         decoration: alertBacking(),
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, size.logicalScreenSize),

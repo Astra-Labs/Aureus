@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class OnboardingDemoView extends StatefulWidget {
   final List<CoreTool> toolItems;
   final Widget exitPoint;
@@ -47,6 +44,6 @@ class _OnboardingDemoViewState extends State<OnboardingDemoView> {
     );
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewLayout);
+        decorationVariant: decorationPriority.important, builder: viewLayout);
   }
 }

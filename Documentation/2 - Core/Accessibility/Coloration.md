@@ -17,4 +17,4 @@ var coloration = Coloration();
 | Name | Constructor | Returns | Description | 
 |--------|-------------|----------|----------|
 | resourceLogo | N/A | Image | Returns proper logo according to light mode / dark mode. |
-| decorationColor | ({required decorationPriority decorationVariant}) | Color | For items that dynamically change state, returns the proper coloration for each state of decoration priority. |
+| decorationColor | (decorationPriority: decorationVariant) | Color | For items that dynamically change state, returns the proper coloration for each state of decoration priority. |

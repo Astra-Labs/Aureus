@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//A card that contains a badge and label to describe what the card represents
-//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Cards/Badge%20Cards.md
-
 class DetailCarouselCardElement extends StatelessWidget {
   final String cardLabel;
   final IconData cardIcon;
@@ -33,7 +30,7 @@ class DetailCarouselCardElement extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(cardIcon, color: coloration.contrastColor().withOpacity(0.5)),
+          Icon(cardIcon, color: coloration.contrastColor().withOpacity(0.8)),
           Text(cardLabel.toUpperCase(),
               style: tag2().copyWith(color: coloration.contrastColor()),
               textAlign: TextAlign.right)

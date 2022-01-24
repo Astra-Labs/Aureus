@@ -1,13 +1,19 @@
 import 'package:aureus/aureus.dart';
 
-//A container that sets the size for the screen with QA-approved padding, and enables the exit bar at the top of the screen when enabled in the safety plan.
-//Doc Link:
+//A container that sets the size for the screen with QA-approved padding,
+//and enables the exit bar at the top of the screen when enabled in the safety plan.
 
 class ContainerView extends StatefulWidget {
+  //determines if primary landing page (fluid decoration),
+  //or just secondary page (blur decoration).
   final decorationPriority decorationVariant;
   final ContainerWrapperElement builder;
+  final bool? takesFullWidth;
 
-  const ContainerView({required this.decorationVariant, required this.builder});
+  ContainerView(
+      {required this.decorationVariant,
+      required this.builder,
+      this.takesFullWidth = false});
 
   @override
   _ContainerViewState createState() => _ContainerViewState();
@@ -17,14 +23,12 @@ class _ContainerViewState extends State<ContainerView> {
   @override
   Widget build(BuildContext context) {
     //pull exit bar setting status from Safety Plan
-    const bool hasExitBar = true;
+    const bool hasExitBar = false;
 
     BoxDecoration containerBacking() {
       if (brightness() == Brightness.light) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns light fluid
-
-          print('should show light fluid');
           return BoxDecoration(
             image: DecorationImage(
               image: apiVariables.lightFluidImage!.image,
@@ -33,7 +37,6 @@ class _ContainerViewState extends State<ContainerView> {
           );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns light blur
-          print('should show light blur');
           return BoxDecoration(
             image: DecorationImage(
               image: apiVariables.lightBlurImage!.image,
@@ -44,8 +47,6 @@ class _ContainerViewState extends State<ContainerView> {
       } else if (brightness() == Brightness.dark) {
         if (widget.decorationVariant == decorationPriority.important) {
           //returns dark fluid
-
-          print('should show dark fluid');
           return BoxDecoration(
             image: DecorationImage(
               image: apiVariables.darkFluidImage!.image,
@@ -54,7 +55,6 @@ class _ContainerViewState extends State<ContainerView> {
           );
         } else if (widget.decorationVariant == decorationPriority.standard) {
           //returns dark blur
-          print('should show dark blur');
           return BoxDecoration(
             image: DecorationImage(
               image: apiVariables.darkBlurImage!.image,
@@ -76,7 +76,9 @@ class _ContainerViewState extends State<ContainerView> {
             0.0,
             size.heightOf(weight: sizingWeight.w0)),
         child: Container(
-            width: size.layoutItemWidth(1, size.logicalScreenSize),
+            width: widget.takesFullWidth!
+                ? size.widthOf(weight: sizingWeight.w10)
+                : size.layoutItemWidth(1, size.logicalScreenSize),
             child: widget.builder));
 
     if (hasExitBar == true) {
@@ -87,7 +89,7 @@ class _ContainerViewState extends State<ContainerView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
-              children: [ExitBarComponent(), Expanded(child: backingContainer)],
+              children: [ExitBarComponent(), backingContainer],
             )),
       );
     } else if (hasExitBar == false) {
@@ -95,7 +97,7 @@ class _ContainerViewState extends State<ContainerView> {
           body: (SizedBox(
               height: size.logicalHeight,
               width: size.logicalWidth,
-              child: Expanded(child: backingContainer))));
+              child: backingContainer)));
     }
 
     throw ErrorDescription('Exit bar value not given.');

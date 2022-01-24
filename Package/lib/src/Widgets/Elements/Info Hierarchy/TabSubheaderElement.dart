@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//A label that has a rounded backing and acts as a category subheader
-//Doc Link:
-
 class TabSubheaderElement extends StatelessWidget {
   final String title;
 

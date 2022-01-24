@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
-
 class SafetyPlanConfirmationView extends StatefulWidget {
   const SafetyPlanConfirmationView();
 
@@ -13,33 +10,54 @@ class SafetyPlanConfirmationView extends StatefulWidget {
 
 class _SafetyPlanConfirmationViewState
     extends State<SafetyPlanConfirmationView> {
-  Safety productSafetyObject = apiVariables.safetyPlan ??
-      Safety(
-          frequencyUsage: SafetyPlanFrequency.singleUse,
-          productEligiblePlanOptions: [
-            SafetyPlanOptions.deviceSandbox,
-            SafetyPlanOptions.disableNotifications,
-            SafetyPlanOptions.failedPasscodeDataDeletion
-          ]);
+  Safety productSafetyObject = Safety(
+      frequencyUsage: SafetyPlanFrequency.singleUse,
+      eligiblePlanOptions: [
+        SafetyPlanOptions.deviceSandbox,
+        SafetyPlanOptions.disableNotifications,
+        SafetyPlanOptions.failedPasscodeDataDeletion
+      ]);
 
   @override
   Widget build(BuildContext context) {
-    List<StandardSwitchCardComponent> eligibleOptionCards = [];
+    List<Widget> eligibleOptionCards = [];
 
-    productSafetyObject.productEligiblePlanOptions.forEach((element) {
-      eligibleOptionCards
-          .add(StandardSwitchCardComponent(switchDescription: element.name));
+    productSafetyObject.eligiblePlanOptions.forEach((element) {
+      eligibleOptionCards.add(Padding(
+        padding: EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
+        child: StandardSwitchCardComponent(switchDescription: element.name),
+      ));
     });
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.stackScroll,
+      containerVariant: wrapperVariants.fullScreen,
       children: [
-        HeadingTwoText('Safety Plan', decorationPriority.standard),
-        ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            padding: EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0),
-            children: eligibleOptionCards),
+        HeadingTwoText('Safety Options', decorationPriority.standard),
+        SizedBox(height: 8.0),
+        BodyOneText(
+            'Enable the options below to modify the functionality of ${apiVariables.prodName}.',
+            decorationPriority.standard),
+        SizedBox(height: 12.0),
+        DividerElement(),
+        Spacer(),
+        SizedBox(
+            width: size.layoutItemWidth(1, size.logicalScreenSize),
+            height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.6,
+            child: SingleChildScrollView(
+                child: (ListView(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.all(12.0),
+                    children: eligibleOptionCards)))),
+        Spacer(),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: PrimaryIconButtonElement(
+              decorationVariant: decorationPriority.important,
+              buttonIcon: Icons.navigate_next_outlined,
+              buttonTooltip: 'Go to next page',
+              buttonAction: () => {print("go to next!")}),
+        )
       ],
     );
 

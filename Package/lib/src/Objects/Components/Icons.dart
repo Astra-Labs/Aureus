@@ -9,7 +9,7 @@ class Assets {
   Assets._();
 
   static const _kFontFam = 'Aureus';
-  static const String? _kFontPkg = null;
+  static const String? _kFontPkg = 'Aureus';
 
   static const IconData add =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);

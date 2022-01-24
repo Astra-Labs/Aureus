@@ -11,7 +11,11 @@ export 'package:google_fonts/google_fonts.dart';
 
 export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
-export 'src/Core/safety.dart';
+export 'src/Core/Safety/safety.dart';
+export 'src/Core/Foundation/palette.dart';
+export 'src/Core/Foundation/sizing.dart';
+export 'src/Core/Foundation/text.dart';
+export 'src/Core/Foundation/decorations.dart';
 
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
@@ -33,7 +37,6 @@ export 'src/Objects/Views/OnboardingObjects.dart';
 
 //MARK: - Functionality Objects
 export 'src/Objects/Functionality/AccessibilityObjects.dart';
-export 'src/Objects/Functionality/SafetyPlanObjects.dart';
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
 
 /* ------------------ WIDGETS -------------------- */
@@ -52,13 +55,17 @@ export 'src/Widgets/Elements/Cards/ComplexBadgeCardElement.dart';
 export 'src/Widgets/Elements/Cards/CategoryIconDetailCardElement.dart';
 export 'src/Widgets/Elements/Cards/StandardSwitchCardComponent.dart';
 export 'src/Widgets/Elements/Cards/ComplexSwitchCardComponent.dart';
+export 'src/Widgets/Elements/Cards/GridCardElement.dart';
+export 'src/Widgets/Elements/Cards/GridBadgeCardElement.dart';
 
 export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/MissionHeaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/PageHeaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/DividerElement.dart';
+export 'src/Widgets/Elements/Info Hierarchy/DividingHeaderElement.dart';
 
 export 'src/Widgets/Elements/Misc/ContainerWrapperElement.dart';
+export 'src/Widgets/Elements/Misc/FloatingContainerElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
 
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
@@ -75,7 +82,6 @@ export 'src/Widgets/Components/Buttons/SmolButtonElement.dart';
 export 'src/Widgets/Components/Buttons/StandardButtonElement.dart';
 export 'src/Widgets/Components/Buttons/StandardIconButtonElement.dart';
 
-export 'src/Widgets/Components/Collection Views/CardCollectionComponent.dart';
 export 'src/Widgets/Components/Collection Views/DetailCardCarouselComponent.dart';
 
 export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';
@@ -96,7 +102,6 @@ export 'src/Widgets/Components/Tabbing Bars/OnboardingTabbingComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/SmolTextTabbingBarComponent.dart';
 
 //Exporting lib widget views
-//export 'Views/';
 
 export 'src/Widgets/Views/Onboarding/OnboardingDemoView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingInformationView.dart';

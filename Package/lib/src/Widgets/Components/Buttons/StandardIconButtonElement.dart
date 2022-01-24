@@ -23,7 +23,6 @@ class StandardIconButtonElement extends StatefulWidget {
 class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
   @override
   Widget build(BuildContext context) {
-    //variables that change how the variants are displayed in build time
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedRectangle,
             priority: widget.decorationVariant)
@@ -40,33 +39,34 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
 
     return InkWell(
         onTap: () {
-          print('button tapped!');
           if (isButtonEnabled == true) {
             widget.buttonAction();
           }
         },
-        child: SizedBox(
-            width: size.layoutItemWidth(1, size.logicalScreenSize),
-            height: minimumButtonTextSize.height * 4,
-            child: Container(
-                decoration: buttonDecoration,
-                child: Center(
-                    child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      ButtonTwoText(
-                          widget.buttonTitle, widget.decorationVariant),
-                      Icon(widget.buttonIcon,
-                          color: coloration.decorationColor(
-                              decorationVariant: widget.decorationVariant),
-                          semanticLabel: widget.buttonTitle,
-                          size: 30.0)
-                    ],
-                  ),
-                )))));
+        child: FloatingContainerElement(
+          child: SizedBox(
+              width: size.layoutItemWidth(1, size.logicalScreenSize),
+              height: minimumButtonTextSize.height * 4,
+              child: Container(
+                  decoration: buttonDecoration,
+                  child: Center(
+                      child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ButtonTwoText(
+                            widget.buttonTitle, widget.decorationVariant),
+                        Icon(widget.buttonIcon,
+                            color: coloration.decorationColor(
+                                decorationVariant: widget.decorationVariant),
+                            semanticLabel: widget.buttonTitle,
+                            size: 30.0)
+                      ],
+                    ),
+                  )))),
+        ));
   }
 }

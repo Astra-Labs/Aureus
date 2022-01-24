@@ -23,30 +23,17 @@ In your main() function of main.dart, pass an object of Aureus to apiVariables.
 void main() {
 
 apiVariables = Aureus(
-
 prodColor: Color.fromRGBO(255, 255, 255, 1.0),
-
 prodName: 'Aureus',
-
 safetyPlan: Safety(
-
 frequencyUsage: SafetyPlanFrequency.singleUse,
-
 productEligiblePlanOptions: []),
-
 darkFluidImage: Image(image: AssetImage('Dark-Blur.png')),
-
 lightFluidImage: Image(image: AssetImage('Light-Fluid.jpg')),
-
 darkBlurImage: Image(image: AssetImage('Dark-Blur.png')),
-
 lightBlurImage: Image(image: AssetImage('Light-Blur.png')),
-
 lightLogo: Image(image: AssetImage('Light-Logo.png')),
-
 darkLogo: Image(image: AssetImage('Dark-Logo.png')));
-
-  
 
 runApp(MyApp());
 

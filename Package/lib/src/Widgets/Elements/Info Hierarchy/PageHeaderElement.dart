@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:aureus/aureus.dart';
 
 //A backing that acts as a timer.
@@ -57,13 +55,20 @@ class PageHeaderElement extends StatelessWidget {
           minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
           maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
           minHeight: labelSizing.height * 2),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          HeadingTwoText(pageTitle, decorationPriority.standard),
-          buttonOptions()
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              HeadingTwoText(pageTitle, decorationPriority.standard),
+              Spacer(),
+              buttonOptions()
+            ],
+          ),
+          SizedBox(height: 12.0),
+          DividerElement()
         ],
       ),
     );

@@ -1,8 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-//A blank card that looks like a "pane" of glass
-//Doc Link:
-
 class SliderElement extends StatefulWidget {
   @override
   _SliderElementState createState() => _SliderElementState();
@@ -11,7 +8,6 @@ class SliderElement extends StatefulWidget {
 class _SliderElementState extends State<SliderElement> {
   var slideValue = 0.0;
 
-  //MARK: - Overrides
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(

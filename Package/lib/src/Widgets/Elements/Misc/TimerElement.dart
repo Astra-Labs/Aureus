@@ -22,14 +22,14 @@ class _TimerElementState extends State<TimerElement> {
               borderRadius: BorderRadius.circular(245),
             );
 
-    return AspectRatio(
-        aspectRatio: 1.0,
-        child: Container(
-            width: 245,
-            height: 245,
-            alignment: Alignment.center,
-            child: HeadingOneText("${widget.timeAllotment.duration}",
-                decorationPriority.standard),
-            decoration: timerBacking));
+    return FloatingContainerElement(
+      child: Container(
+          width: 300,
+          height: 300,
+          alignment: Alignment.center,
+          child: HeadingOneText("${widget.timeAllotment.duration.inSeconds}",
+              decorationPriority.standard),
+          decoration: timerBacking),
+    );
   }
 }

@@ -34,12 +34,19 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
     var containerWrapper = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
+        Spacer(),
         HeadingTwoText(
             'Two Factor Authentication', decorationPriority.standard),
         BodyOneText(hiddenUserPhoneNumber(), decorationPriority.standard),
         Spacer(),
         singleDataTypeUserInputElement,
+        SizedBox(
+          height: size.heightOf(weight: sizingWeight.w0),
+        ),
         DividerElement(),
+        SizedBox(
+          height: size.heightOf(weight: sizingWeight.w0),
+        ),
         Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +64,7 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
           alignment: Alignment.bottomRight,
           child: PrimaryIconButtonElement(
               decorationVariant: decorationPriority.important,
-              buttonIcon: Icons.navigate_next_outlined,
+              buttonIcon: Assets.next,
               buttonTooltip: 'Finish submitting verification code',
               buttonAction: () => {
                     userSubmittedCode = singleDataTypeUserInputElement

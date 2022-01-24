@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:aureus/src/Widgets/Elements/Cards/ComplexSwitchCardComponent.dart';
 
 //
 //Doc Link:
@@ -20,9 +19,11 @@ class _DataOptInViewState extends State<DataOptInView> {
       containerVariant: wrapperVariants.stackScroll,
       children: [
         HeadingTwoText('Data opt in', decorationPriority.standard),
+        SizedBox(height: 8.0),
         BodyTwoText(
             'Your consent is important to us. Please review the permissions below that we want to have access to.',
             decorationPriority.standard),
+        Divider(),
         ListView.builder(
             physics: ClampingScrollPhysics(),
             shrinkWrap: true,

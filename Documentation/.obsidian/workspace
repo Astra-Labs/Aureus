@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "2 - Core/Foundation/Backing Decorators.md",
-            "mode": "source"
+            "file": "2 - Core/Accessibility/Coloration.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2 - Core/Foundation/Backing Decorators.md",
+                "file": "2 - Core/Accessibility/Coloration.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "a4f090b52864a08e",
   "lastOpenFiles": [
-    "2 - Core/Foundation/Backing Decorators.md",
-    "1 - Introduction/Installation.md",
-    "2 - Core/Accessibility/Accessibility.md",
     "2 - Core/Accessibility/Coloration.md",
-    "2 - Core/Foundation/Foundation.md",
-    "2 - Core/Foundation/Package Variables.md",
-    "2 - Core/Foundation/Sizing.md",
-    "3 - Widgets/Components/Buttons/Full Width Buttons.md",
-    "3 - Widgets/Components/Alert Controllers/Centered Alert Controller.md",
-    "3 - Widgets/Views/2FA Verification.md"
+    "2 - Core/Accessibility/Accessibility.md",
+    "1 - Introduction/Installation.md",
+    "1 - Introduction/Design/Sensation.md",
+    "1 - Introduction/Design/Exchange of Trust.md",
+    "1 - Introduction/Codebase/Organization.md",
+    "1 - Introduction/Codebase/Contributing.md",
+    "Contents.md",
+    "Meet Aureus.md",
+    "2 - Core/Foundation/Package Variables.md"
   ]
 }
