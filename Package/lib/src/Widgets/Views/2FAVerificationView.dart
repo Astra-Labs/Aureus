@@ -34,16 +34,11 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
     var containerWrapper = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
-        Spacer(),
-        HeadingTwoText(
-            'Two Factor Authentication', decorationPriority.standard),
-        BodyOneText(hiddenUserPhoneNumber(), decorationPriority.standard),
+        DividingHeaderElement(
+            headerText: 'Two Factor Authentication',
+            subheaderText: hiddenUserPhoneNumber()),
         Spacer(),
         singleDataTypeUserInputElement,
-        SizedBox(
-          height: size.heightOf(weight: sizingWeight.w0),
-        ),
-        DividerElement(),
         SizedBox(
           height: size.heightOf(weight: sizingWeight.w0),
         ),

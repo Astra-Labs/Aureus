@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'dart:io' show Platform;
-
 //An exit bar that stays at the top of the user's screen and exits the screen when pressed.
 
 class ExitBarComponent extends StatefulWidget {

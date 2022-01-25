@@ -24,6 +24,17 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
 
     decorationPriority bubblePriority = decorationPriority.standard;
 
+    String returnMessageStatus(communicationStatus status) {
+      switch (status) {
+        case communicationStatus.delivered:
+          return 'Delivered';
+        case communicationStatus.failed:
+          return 'Failed';
+        case communicationStatus.sending:
+          return 'Sending';
+      }
+    }
+
     if (widget.messageVariant == messagingVariants.receiver) {
       bubblePriority = decorationPriority.important;
     } else if (widget.messageVariant == messagingVariants.sender) {
@@ -59,7 +70,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
             padding: const EdgeInsets.all(8.0),
             child: TagTwoText(
                 widget.messageVariant == messagingVariants.sender
-                    ? '${widget.currentStatus}'
+                    ? returnMessageStatus(widget.currentStatus)
                     : '',
                 decorationPriority.standard),
           )

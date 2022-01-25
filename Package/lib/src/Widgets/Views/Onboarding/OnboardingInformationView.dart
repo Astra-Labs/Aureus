@@ -26,7 +26,10 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
     widget.onboardingDetails.forEach((element) {
       tabItems.add(TabObject.forIconTabbing(
           tabIcon: element.detailCategoryIcon,
-          tabPriority: decorationPriority.standard,
+          tabPriority:
+              widget.onboardingDetails.indexOf(element) == _selectedIndex
+                  ? decorationPriority.important
+                  : decorationPriority.standard,
           accessibilityHint: element.detailTitle));
     });
 
@@ -34,35 +37,86 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
 
     Widget iconTabBar = IconTabbingBarComponent(tabItems: tabItems);
 
-    Widget informationCard = SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
-        height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.7,
-        child: FloatingContainerElement(
-          child: Container(
-            padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
-            child: Column(
+    Widget mobileInformationCard = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+              constraints: BoxConstraints(
+                  minHeight: size.layoutItemHeight(2, size.logicalScreenSize)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  border: universalBorder(),
+                  image: DecorationImage(
+                    image: currentItem.detailImage.image,
+                    fit: BoxFit.cover,
+                  ))),
+          Spacer(),
+          TagOneText(currentItem.detailTitle, decorationPriority.standard),
+          BodyOneText(currentItem.detailBody, decorationPriority.standard),
+          Spacer(),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              PrimaryIconButtonElement(
+                  decorationVariant: (_selectedIndex == 0)
+                      ? decorationPriority.inactive
+                      : decorationPriority.important,
+                  buttonIcon: Assets.back,
+                  buttonTooltip: 'Previous Item',
+                  buttonAction: () => {_onItemTapped(_selectedIndex -= 1)}),
+              PrimaryIconButtonElement(
+                  decorationVariant:
+                      (_selectedIndex > (widget.onboardingDetails.length - 2))
+                          ? decorationPriority.inactive
+                          : decorationPriority.important,
+                  buttonIcon: Assets.next,
+                  buttonTooltip: 'Next Item',
+                  buttonAction: () => {_onItemTapped(_selectedIndex += 1)})
+            ],
+          )
+        ]);
+
+    Widget webInformationCard = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+                constraints: BoxConstraints(
+                    minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
+                    minWidth: size.layoutItemWidth(2, size.logicalScreenSize)),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    border: universalBorder(),
+                    image: DecorationImage(
+                      image: currentItem.detailImage.image,
+                      fit: BoxFit.cover,
+                    ))),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              constraints: BoxConstraints(
+                  minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
+                  maxWidth:
+                      size.layoutItemWidth(2, size.logicalScreenSize) * 0.8),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                      constraints: BoxConstraints(
-                          minHeight:
-                              size.layoutItemHeight(3, size.logicalScreenSize)),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                          border: universalBorder(),
-                          image: DecorationImage(
-                            image: currentItem.detailImage.image,
-                            fit: BoxFit.cover,
-                          ))),
                   Spacer(),
-                  TagOneText(
-                      currentItem.detailTitle, decorationPriority.standard),
-                  BodyOneText(
-                      currentItem.detailBody, decorationPriority.standard),
+                  Flexible(
+                      child: TagOneText(currentItem.detailTitle,
+                          decorationPriority.standard)),
+                  Flexible(
+                    child: BodyOneText(
+                        currentItem.detailBody, decorationPriority.standard),
+                  ),
                   Spacer(),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,9 +142,26 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                               {_onItemTapped(_selectedIndex += 1)})
                     ],
                   )
-                ]),
-          ),
-        ));
+                ],
+              ),
+            ),
+          )
+        ]);
+
+    Widget informationCard = SizedBox(
+      width: size.layoutItemWidth(1, size.logicalScreenSize),
+      height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.7,
+      child: FloatingContainerElement(
+          child: Container(
+              padding:
+                  EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
+              decoration:
+                  CardBackingDecoration(priority: decorationPriority.inactive)
+                      .buildBacking(),
+              child: size.isDesktopDisplay()
+                  ? mobileInformationCard
+                  : webInformationCard)),
+    );
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,
@@ -98,7 +169,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
         HeadingOneText(
             "Meet ${apiVariables.prodName}.", decorationPriority.standard),
         iconTabBar,
-        informationCard
+        informationCard,
       ],
     );
 

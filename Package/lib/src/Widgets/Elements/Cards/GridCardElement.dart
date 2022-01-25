@@ -3,19 +3,22 @@ import 'package:aureus/aureus.dart';
 class GridCardElement extends StatelessWidget {
   final decorationPriority decorationVariant;
   final String cardLabel;
+  final Size gridSize;
 
   const GridCardElement(
-      {required this.decorationVariant, required this.cardLabel});
+      {required this.decorationVariant,
+      required this.cardLabel,
+      required this.gridSize});
 
   @override
   Widget build(BuildContext context) {
     return FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minWidth: size.layoutItemWidth(3, size.logicalScreenSize),
-              maxWidth: size.layoutItemWidth(3, size.logicalScreenSize),
-              minHeight: size.layoutItemWidth(3, size.logicalScreenSize),
-              maxHeight: size.layoutItemWidth(3, size.logicalScreenSize)),
+              minWidth: gridSize.height / 3.2,
+              maxWidth: gridSize.height / 3.2,
+              minHeight: gridSize.height / 3.2,
+              maxHeight: gridSize.height / 3.2),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           clipBehavior: Clip.hardEdge,

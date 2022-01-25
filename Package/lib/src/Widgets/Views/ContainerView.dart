@@ -84,8 +84,8 @@ class _ContainerViewState extends State<ContainerView> {
     if (hasExitBar == true) {
       return Scaffold(
         body: SizedBox(
-            height: size.logicalHeight,
-            width: size.logicalWidth,
+            height: size.physicalHeight,
+            width: size.physicalWidth,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -95,8 +95,8 @@ class _ContainerViewState extends State<ContainerView> {
     } else if (hasExitBar == false) {
       return Scaffold(
           body: (SizedBox(
-              height: size.logicalHeight,
-              width: size.logicalWidth,
+              height: size.physicalHeight,
+              width: size.physicalWidth,
               child: backingContainer)));
     }
 

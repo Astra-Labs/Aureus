@@ -15,8 +15,6 @@ class IconTabbingBarComponent extends StatefulWidget {
 }
 
 class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     //keeps track of every active / inactive item
@@ -24,15 +22,11 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
     List<Widget> tabItems = [];
 
     widget.tabItems.forEach((element) {
-      //checks to see if current index matches index of tab item. if yes, it's enabled.
-      decorationPriority tabPriority = coloration.itemPriority(
-          _selectedIndex == widget.tabItems.indexOf(element) ? true : false);
-
       var tabItem = Padding(
         padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
         child: SecondaryIconButtonElement(
             buttonAction: () => {},
-            decorationVariant: tabPriority,
+            decorationVariant: element.tabPriority,
             buttonTooltip: element.accessibilityHint,
             buttonIcon: element.tabIcon),
       );

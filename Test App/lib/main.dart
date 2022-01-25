@@ -11,7 +11,7 @@ void main() {
       safetyObject: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
           eligiblePlanOptions: []),
-      darkFluidImage: Image(image: AssetImage('assets/Dark-Blur.png')),
+      darkFluidImage: Image(image: AssetImage('assets/Dark-Fluid.jpg')),
       lightFluidImage: Image(image: AssetImage('assets/Light-Fluid.jpg')),
       darkBlurImage: Image(image: AssetImage('assets/Dark-Blur.png')),
       lightBlurImage: Image(image: AssetImage('assets/Light-Blur.png')),
@@ -72,7 +72,7 @@ class LandingPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TestAppLanding(),
+                      builder: (context) => AureusLandingPage(),
                     ))
               })
     ];

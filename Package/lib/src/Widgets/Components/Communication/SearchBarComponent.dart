@@ -25,7 +25,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
             children: [
               FloatingContainerElement(
                 child: SizedBox(
-                  width: size.layoutItemWidth(1, size.logicalScreenSize) * 0.85,
+                  width: size.layoutItemWidth(1, size.logicalScreenSize) * 0.70,
                   height: size.layoutItemHeight(6, size.logicalScreenSize),
                   child: TextFormField(
                       style: body2().copyWith(

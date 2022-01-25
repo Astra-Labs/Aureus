@@ -22,10 +22,13 @@ class _SafetyPlanConfirmationViewState
   Widget build(BuildContext context) {
     List<Widget> eligibleOptionCards = [];
 
+    var safety = apiVariables.safetyObject;
+
     productSafetyObject.eligiblePlanOptions.forEach((element) {
       eligibleOptionCards.add(Padding(
         padding: EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
-        child: StandardSwitchCardComponent(switchDescription: element.name),
+        child: StandardSwitchCardComponent(
+            switchDescription: safety.retrieveDetails(element).name),
       ));
     });
 
@@ -54,7 +57,7 @@ class _SafetyPlanConfirmationViewState
           alignment: Alignment.bottomRight,
           child: PrimaryIconButtonElement(
               decorationVariant: decorationPriority.important,
-              buttonIcon: Icons.navigate_next_outlined,
+              buttonIcon: Assets.next,
               buttonTooltip: 'Go to next page',
               buttonAction: () => {print("go to next!")}),
         )

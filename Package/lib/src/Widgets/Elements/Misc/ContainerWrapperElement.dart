@@ -13,7 +13,7 @@ class ContainerWrapperElement extends StatelessWidget {
         return SingleChildScrollView(
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.start,
-                runSpacing: size.heightOf(weight: sizingWeight.w0),
+                runSpacing: size.responsiveTextSize(20.0),
                 children: children));
       } else if (containerVariant == wrapperVariants.fullScreen) {
         return Container(

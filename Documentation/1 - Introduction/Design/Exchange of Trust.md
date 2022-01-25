@@ -1,5 +1,6 @@
 # Exchange of Trust 
 #### Last Updated: 12/7/2021
+--------------------
 
 Our work at Astra Labs is inheritently emotional. We want to create a place where the emotions that come up for our users are welcomed, given space, and handled with care.  
   
@@ -10,6 +11,8 @@ We’re trying to get our users home safely. We just need to build designs that 
 We have to earn the user’s trust, we are not entitled to it. A portion of this trust starts with design: removing dark patterns, foregoing dopamine traps, and building for what’s best for the user, not what’s best for us.
 
 With sensitive issues, it's imperative that the exchange of trust is as easy, comfortable, and as straight-forward as possible. When designing Aureus, our main prority was to build a system for designing and developing software that enabled people to trust us, and enabled us to earn that trust, so that we can achieve our mission of building resources where help is only a tap away. 
+
+--------------------
 
 ## Building trustable designs.
 The basics of building a trustable design can be broken into 
@@ -25,6 +28,8 @@ Understandable, and easily intrepreted copy. No room for misinterpretation or co
 
 4. Consistent
 The same experience across all of our products, designs, apps, and more. All designs under the UDS need to reflect changes in unison
+
+--------------------
 
 ## Defining our resources. 
 To define what makes something an 'Astra Labs' resource, we developed the following resource QA for Aureus, and all of our other resources. 

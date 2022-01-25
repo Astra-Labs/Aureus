@@ -65,7 +65,7 @@ TextStyle body2() {
 TextStyle button1() {
   return GoogleFonts.exo(
       fontSize: size.responsiveTextSize(17),
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       letterSpacing: 1.0);
 }
 
@@ -79,7 +79,7 @@ TextStyle button2() {
 TextStyle tag1() {
   return GoogleFonts.exo(
       fontSize: size.responsiveTextSize(12),
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       letterSpacing: 1.5);
 }
 

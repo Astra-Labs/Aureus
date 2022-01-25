@@ -43,13 +43,11 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
               height: 80.0,
               child: Container(
                 decoration: buttonBacking,
-                child: Center(
-                  child: Icon(widget.buttonIcon,
-                      color: coloration.decorationColor(
-                          decorationVariant: widget.decorationVariant),
-                      semanticLabel: widget.buttonTooltip,
-                      size: 60.0),
-                ),
+                child: Icon(widget.buttonIcon,
+                    color: coloration.decorationColor(
+                        decorationVariant: widget.decorationVariant),
+                    semanticLabel: widget.buttonTooltip,
+                    size: 65.0),
               )),
         ));
   }
@@ -99,7 +97,7 @@ class _SecondaryIconButtonElementState
                 color: coloration.decorationColor(
                     decorationVariant: widget.decorationVariant),
                 semanticLabel: widget.buttonTooltip,
-                size: 30.0),
+                size: 35.0),
           ),
         ));
   }

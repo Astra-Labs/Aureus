@@ -33,7 +33,9 @@ class _HelpCenterViewState extends State<HelpCenterView> {
           },
           child: GridCardElement(
               decorationVariant: decorationPriority.standard,
-              cardLabel: element.articleTitle),
+              cardLabel: element.articleTitle,
+              gridSize: Size(size.layoutItemWidth(1, size.logicalScreenSize),
+                  size.layoutItemHeight(1, size.logicalScreenSize))),
         ));
       });
     });
@@ -41,14 +43,10 @@ class _HelpCenterViewState extends State<HelpCenterView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
-        HeadingTwoText('Help Center', decorationPriority.standard),
-        SizedBox(height: 12.0),
-        BodyOneText(
-            'Find the answers to your questions about our software and how it works.',
-            decorationPriority.standard),
-        SizedBox(height: 12.0),
-        DividerElement(),
-        SizedBox(height: size.heightOf(weight: sizingWeight.w1)),
+        DividingHeaderElement(
+            headerText: 'Help Center',
+            subheaderText:
+                'Find the answers to your questions about our software and how it works.'),
         SizedBox(
           child: SingleChildScrollView(
             child: Wrap(
@@ -89,7 +87,7 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
       children: [
         SecondaryIconButtonElement(
             decorationVariant: decorationPriority.standard,
-            buttonIcon: Icons.exit_to_app_outlined,
+            buttonIcon: Assets.back,
             buttonTooltip: 'Return to Help Center.',
             buttonAction: () => {Navigator.pop(context)}),
         Spacer(),

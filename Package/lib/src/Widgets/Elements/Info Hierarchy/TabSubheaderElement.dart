@@ -19,10 +19,11 @@ class TabSubheaderElement extends StatelessWidget {
             maxHeight: minimumButtonTextSize.height * 2,
             maxWidth: minimumButtonTextSize.width * 1.6,
             minWidth: minimumButtonTextSize.width * 1.4),
-        decoration:
-            LayerBackingDecoration(priority: decorationPriority.standard)
-                .buildBacking()
-                .copyWith(color: coloration.accentColor()),
+        decoration: TabItemBackingDecoration(
+                priority: decorationPriority.standard,
+                variant: tabItemDecorationVariants.roundedRectangle)
+            .buildBacking()
+            .copyWith(color: coloration.accentColor()),
         child:
             Center(child: TagOneText('$title', decorationPriority.important)));
   }

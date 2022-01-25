@@ -24,14 +24,12 @@ class DetailCardCarouselComponent extends StatelessWidget {
       ));
     }
 
-    return FloatingContainerElement(
-      child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.min,
-              children: cardItems)),
-    );
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: cardItems));
   }
 }

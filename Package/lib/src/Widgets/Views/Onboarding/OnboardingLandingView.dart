@@ -39,17 +39,17 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Try out tools',
-                  buttonIcon: Icons.pan_tool_outlined,
+                  buttonIcon: Assets.expand,
                   buttonAction: () => {print('tool demo!')}),
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'See the features',
-                  buttonIcon: Icons.featured_video_outlined,
+                  buttonIcon: Assets.phone,
                   buttonAction: () => {print('tool information!')}),
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Get started',
-                  buttonIcon: Icons.play_arrow_outlined,
+                  buttonIcon: Assets.next,
                   buttonAction: () => {print('onboarding!')})
             ],
           ),

@@ -18,12 +18,10 @@ class _DataOptInViewState extends State<DataOptInView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,
       children: [
-        HeadingTwoText('Data opt in', decorationPriority.standard),
-        SizedBox(height: 8.0),
-        BodyTwoText(
-            'Your consent is important to us. Please review the permissions below that we want to have access to.',
-            decorationPriority.standard),
-        Divider(),
+        DividingHeaderElement(
+            headerText: 'Data Opt In',
+            subheaderText:
+                'Your consent is important to us. Please review the permissions below that we would like to have access to.'),
         ListView.builder(
             physics: ClampingScrollPhysics(),
             shrinkWrap: true,
@@ -44,7 +42,7 @@ class _DataOptInViewState extends State<DataOptInView> {
           alignment: Alignment.bottomRight,
           child: PrimaryIconButtonElement(
               decorationVariant: decorationPriority.important,
-              buttonIcon: Icons.navigate_next_outlined,
+              buttonIcon: Assets.next,
               buttonTooltip: 'Go to next page',
               buttonAction: () => {print("go to next!")}),
         )

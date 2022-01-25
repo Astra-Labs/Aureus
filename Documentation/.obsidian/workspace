@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "2 - Core/Accessibility/Coloration.md",
-            "mode": "preview"
+            "file": "1 - Introduction/Design/Sensation.md",
+            "mode": "source"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2 - Core/Accessibility/Coloration.md",
+                "file": "1 - Introduction/Design/Sensation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "a4f090b52864a08e",
   "lastOpenFiles": [
+    "1 - Introduction/Design/Sensation.md",
+    "1 - Introduction/Design/Exchange of Trust.md",
+    "2 - Core/Foundation/Package Variables.md",
     "2 - Core/Accessibility/Coloration.md",
     "2 - Core/Accessibility/Accessibility.md",
     "1 - Introduction/Installation.md",
-    "1 - Introduction/Design/Sensation.md",
-    "1 - Introduction/Design/Exchange of Trust.md",
     "1 - Introduction/Codebase/Organization.md",
     "1 - Introduction/Codebase/Contributing.md",
     "Contents.md",
-    "Meet Aureus.md",
-    "2 - Core/Foundation/Package Variables.md"
+    "Meet Aureus.md"
   ]
 }

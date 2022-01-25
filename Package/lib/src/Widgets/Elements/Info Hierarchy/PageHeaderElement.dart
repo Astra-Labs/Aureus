@@ -19,7 +19,7 @@ class PageHeaderElement extends StatelessWidget {
     Widget buttonOptions() {
       var exitButton = SecondaryIconButtonElement(
           decorationVariant: decorationPriority.standard,
-          buttonIcon: Icons.exit_to_app_outlined,
+          buttonIcon: Assets.no,
           buttonTooltip: 'Exit ${pageTitle}',
           buttonAction: onPageExit);
 
@@ -29,7 +29,7 @@ class PageHeaderElement extends StatelessWidget {
           children: [
             SecondaryIconButtonElement(
                 decorationVariant: decorationPriority.standard,
-                buttonIcon: Icons.more_horiz_outlined,
+                buttonIcon: Assets.more1,
                 buttonTooltip: '${pageTitle} Options',
                 buttonAction: onPageDetails!),
             exitButton

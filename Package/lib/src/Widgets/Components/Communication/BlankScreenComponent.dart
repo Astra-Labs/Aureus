@@ -20,7 +20,7 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
       child: Container(
           //this will be the rounded card backing
           constraints: BoxConstraints(
-              minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
+              minHeight: size.layoutItemHeight(2, size.logicalScreenSize),
               maxHeight: size.layoutItemHeight(2, size.logicalScreenSize),
               minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
               maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
@@ -34,12 +34,16 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Spacer(),
                   IconBadge(
                       badgeIcon: Assets.alertmessage,
                       badgePriority: decorationPriority.important),
+                  SizedBox(height: 8.0),
                   HeadingThreeText(
                       widget.cardTitle, decorationPriority.standard),
+                  SizedBox(height: 8.0),
                   BodyOneText(widget.cardBody, decorationPriority.standard),
+                  Spacer(),
                 ]),
           )),
     );

@@ -30,18 +30,24 @@ class IconBadge extends StatelessWidget {
     customBadgeBacking.decorationBorder = universalBorder();
     customBadgeBacking.decorationHaze = backingHaze;
 
-    return Container(
-      constraints: BoxConstraints(
-          minHeight: 10, minWidth: 10, maxHeight: 85, maxWidth: 85),
-      decoration: customBadgeBacking
-          .buildBacking()
-          .copyWith(borderRadius: BorderRadius.circular(40)),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
+    Size priorityBadge = Size(80.0, 80.0);
+    Size standardBadge = Size(40.0, 40.0);
+
+    Size badgeSizing = badgePriority == decorationPriority.important
+        ? priorityBadge
+        : standardBadge;
+
+    return SizedBox(
+      width: badgeSizing.width,
+      height: badgeSizing.height,
+      child: Container(
+        decoration: customBadgeBacking
+            .buildBacking()
+            .copyWith(borderRadius: BorderRadius.circular(40)),
         child: Icon(
           badgeIcon,
           color: coloration.sameColor(),
-          size: 40.0,
+          size: badgeSizing.width * 0.7,
         ),
       ),
     );

@@ -1,5 +1,7 @@
 # Sensation
 #### Last Updated: 12/7/2021
+--------------------
+
 We want to get people to a future they're meant to have, and that means developing a design system that creates specific sensations and emotions across multiple software platforms. This goes into the themes, implementation, and sensory experiences Aureus works to build towards. 
 
 ## Inspiration

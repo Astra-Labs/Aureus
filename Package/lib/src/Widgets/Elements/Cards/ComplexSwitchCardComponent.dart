@@ -33,7 +33,7 @@ class ComplexSwitchCardElement extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: IconBadge(
                             badgeIcon: cardIcon,
-                            badgePriority: decorationPriority.important),
+                            badgePriority: decorationPriority.standard),
                       ),
                       Align(
                           alignment: Alignment.topRight,
@@ -41,7 +41,7 @@ class ComplexSwitchCardElement extends StatelessWidget {
                     ],
                   ),
                   Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
-                  HeadingFourText(cardLabel, decorationPriority.standard),
+                  SubheaderText(cardLabel, decorationPriority.standard),
                   BodyOneText(cardBody, decorationPriority.standard)
                 ])));
   }

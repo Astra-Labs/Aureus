@@ -39,15 +39,17 @@ class _SignInViewState extends State<SignInView> {
             ],
           ),
         ),
+        SizedBox(height: 20.0),
+        DividerElement(),
         Spacer(),
         Align(
           alignment: Alignment.center,
           child: Column(
             children: [
               SingleDataTypeUserInputElement(dataPlaceholder: "Username"),
-              SizedBox(height: 8.0),
+              SizedBox(height: 5.0),
               SingleDataTypeUserInputElement(dataPlaceholder: "Password"),
-              SizedBox(height: 20.0),
+              SizedBox(height: 5.0),
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: "Sign In",
