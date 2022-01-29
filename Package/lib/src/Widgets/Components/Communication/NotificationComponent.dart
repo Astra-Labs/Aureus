@@ -3,7 +3,7 @@ import 'package:aureus/aureus.dart';
 //A notification card that describes a message to the user
 //Doc Link:
 
-class NotificationComponent extends StatefulWidget {
+class NotificationComponent extends StatelessWidget {
   final String notificationSubCategory;
   final DateTime notificationReceived;
   final String notificationHeader;
@@ -18,21 +18,16 @@ class NotificationComponent extends StatefulWidget {
       required this.hasNotificationBeenRead});
 
   @override
-  _NotificationComponentState createState() => _NotificationComponentState();
-}
-
-class _NotificationComponentState extends State<NotificationComponent> {
-  @override
   Widget build(BuildContext context) {
     //variables that determine how the notification will be displayed
 
-    decorationPriority notificationPriority = widget.hasNotificationBeenRead
+    decorationPriority notificationPriority = hasNotificationBeenRead
         ? decorationPriority.standard
         : decorationPriority.important;
 
     BoxDecoration boxDecoration =
         CardBackingDecoration(priority: notificationPriority).buildBacking();
-    BoxDecoration readIndicatorDecoration = widget.hasNotificationBeenRead
+    BoxDecoration readIndicatorDecoration = hasNotificationBeenRead
         ? BoxDecoration(color: white().withOpacity(0.0))
         : BoxDecoration(color: coloration.sameColor(), shape: BoxShape.circle);
 
@@ -50,10 +45,9 @@ class _NotificationComponentState extends State<NotificationComponent> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: [
+                TagTwoText(notificationSubCategory, notificationPriority),
                 TagTwoText(
-                    widget.notificationSubCategory, notificationPriority),
-                TagTwoText(
-                    '${widget.notificationReceived.month}/${widget.notificationReceived.day}/${widget.notificationReceived.year}',
+                    '${notificationReceived.month}/${notificationReceived.day}/${notificationReceived.year}',
                     notificationPriority)
               ],
             ),
@@ -65,8 +59,7 @@ class _NotificationComponentState extends State<NotificationComponent> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  HeadingFourText(
-                      widget.notificationHeader, notificationPriority),
+                  HeadingFourText(notificationHeader, notificationPriority),
                   Center(
                     child: Container(
                         width: 10,
@@ -78,7 +71,7 @@ class _NotificationComponentState extends State<NotificationComponent> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: BodyOneText(widget.notificationBody, notificationPriority),
+            child: BodyOneText(notificationBody, notificationPriority),
           )
         ]);
     return FloatingContainerElement(

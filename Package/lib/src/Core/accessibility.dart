@@ -49,7 +49,7 @@ class Accessibility {
 
     if (shortSide < 550) {
       //needs mobile phone scale
-      scaleFactor = 1.0;
+      scaleFactor = 1.1;
     } else if (shortSide >= 550 && shortSide < 900) {
       //needs tablet scale
       scaleFactor = 1.18;

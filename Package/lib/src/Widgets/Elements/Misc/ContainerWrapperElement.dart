@@ -1,25 +1,63 @@
 import 'package:aureus/aureus.dart';
 
-class ContainerWrapperElement extends StatelessWidget {
+class ContainerWrapperElement extends StatefulWidget {
   final List<Widget> children;
   final wrapperVariants containerVariant;
 
   ContainerWrapperElement(
       {required this.children, required this.containerVariant});
 
+  @override
+  _ContainerWrapperElementState createState() =>
+      _ContainerWrapperElementState();
+}
+
+class _ContainerWrapperElementState extends State<ContainerWrapperElement>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
+  }
+
+  // When the window changes, the container view uses
+  // the observer pattern to reload the children.
+  @override
+  void didChangeMetrics() {
+    setState(() {});
+  }
+
+  // When the user changes between light / dark mode, the container view uses
+  // the observer pattern to reload the children.
+  @override
+  void didChangePlatformBrightness() {
+    setState(() {});
+  }
+
+  // When the user changes accessibility features, the container view uses
+  // the observer pattern to reload the children.
+  @override
+  void didChangeAccessibilityFeatures() {
+    setState(() {});
+  }
+
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
-    var screenWidth = size.logicalWidth();
-    var screenHeight = size.logicalHeight();
 
     Widget containerFormatting(List<Widget> items) {
-      if (containerVariant == wrapperVariants.stackScroll) {
+      if (widget.containerVariant == wrapperVariants.stackScroll) {
         return SingleChildScrollView(
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.start,
                 runSpacing: size.responsiveTextSize(20.0),
-                children: children));
-      } else if (containerVariant == wrapperVariants.fullScreen) {
+                children: widget.children));
+      } else if (widget.containerVariant == wrapperVariants.fullScreen) {
         return Container(
             constraints: BoxConstraints(
                 minWidth: size.layoutItemWidth(1, screenSize),
@@ -29,7 +67,7 @@ class ContainerWrapperElement extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: children,
+              children: widget.children,
             ));
       }
 
@@ -38,7 +76,7 @@ class ContainerWrapperElement extends StatelessWidget {
 
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      return containerFormatting(children);
+      return containerFormatting(widget.children);
     });
   }
 }

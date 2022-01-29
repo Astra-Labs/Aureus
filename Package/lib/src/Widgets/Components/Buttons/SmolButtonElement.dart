@@ -17,27 +17,7 @@ class SmolButtonElement extends StatefulWidget {
   _SmolButtonElementState createState() => _SmolButtonElementState();
 }
 
-class _SmolButtonElementState extends State<SmolButtonElement>
-    with AureusResourceObserver {
-  final master = AureusResourceMaster();
-
-  @override
-  void initState() {
-    master.registerObserver(_SmolButtonElementState());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    master.unregisterObserver(_SmolButtonElementState());
-    super.dispose();
-  }
-
-  @override
-  void updateEnvironment() {
-    build(context);
-  }
-
+class _SmolButtonElementState extends State<SmolButtonElement> {
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =

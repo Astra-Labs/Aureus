@@ -11,26 +11,7 @@ class StandardSwitchCardComponent extends StatefulWidget {
 }
 
 class _StandardSwitchCardComponentState
-    extends State<StandardSwitchCardComponent> with AureusResourceObserver {
-  final master = AureusResourceMaster();
-
-  @override
-  void initState() {
-    master.registerObserver(_StandardSwitchCardComponentState());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    master.unregisterObserver(_StandardSwitchCardComponentState());
-    super.dispose();
-  }
-
-  @override
-  void updateEnvironment() {
-    build(context);
-  }
-
+    extends State<StandardSwitchCardComponent> {
   bool isSwitchEnabled = false;
 
   void toggleSwitch(bool value) {

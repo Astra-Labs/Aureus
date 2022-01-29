@@ -19,11 +19,9 @@ class ContainerView extends StatefulWidget {
 }
 
 // Widgets Binding Observer is added to the Container View to automatically
-// resize the backing images as the window changes.
+// alert child widgets as important information changes.
 class _ContainerViewState extends State<ContainerView>
     with WidgetsBindingObserver {
-  final master = AureusResourceMaster();
-
   @override
   void initState() {
     WidgetsBinding.instance!.addObserver(this);
@@ -40,33 +38,21 @@ class _ContainerViewState extends State<ContainerView>
   // the observer pattern to reload the children.
   @override
   void didChangeMetrics() {
-    print('Metrics changed!');
-
-    setState(() {
-      master.notifyObservers();
-    });
+    setState(() {});
   }
 
   // When the user changes between light / dark mode, the container view uses
   // the observer pattern to reload the children.
   @override
   void didChangePlatformBrightness() {
-    print('Platform brightness changed!');
-
-    setState(() {
-      master.notifyObservers();
-    });
+    setState(() {});
   }
 
   // When the user changes accessibility features, the container view uses
   // the observer pattern to reload the children.
   @override
   void didChangeAccessibilityFeatures() {
-    print('Accessibility features changed!');
-
-    setState(() {
-      master.notifyObservers();
-    });
+    setState(() {});
   }
 
   @override
@@ -120,7 +106,6 @@ class _ContainerViewState extends State<ContainerView>
     }
 
     Container backingContainer = Container(
-        key: ValueKey<bool>(containerEnvChanged),
         alignment: Alignment.center,
         width: screenWidth,
         decoration: containerBacking(),
@@ -142,7 +127,6 @@ class _ContainerViewState extends State<ContainerView>
         body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             return Column(
-              key: ValueKey<bool>(containerEnvChanged),
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [ExitBarComponent(), backingContainer],
@@ -153,7 +137,6 @@ class _ContainerViewState extends State<ContainerView>
     } else if (hasExitBar == false) {
       return Scaffold(
           body: (LayoutBuilder(
-        key: ValueKey<bool>(containerEnvChanged),
         builder: (BuildContext context, BoxConstraints constraints) {
           return backingContainer;
         },

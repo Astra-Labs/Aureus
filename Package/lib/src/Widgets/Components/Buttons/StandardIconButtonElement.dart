@@ -20,27 +20,7 @@ class StandardIconButtonElement extends StatefulWidget {
       _StandardIconButtonElementState();
 }
 
-class _StandardIconButtonElementState extends State<StandardIconButtonElement>
-    with AureusResourceObserver {
-  final master = AureusResourceMaster();
-
-  @override
-  void initState() {
-    master.registerObserver(_StandardIconButtonElementState());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    master.unregisterObserver(_StandardIconButtonElementState());
-    super.dispose();
-  }
-
-  @override
-  void updateEnvironment() {
-    build(context);
-  }
-
+class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
   @override
   Widget build(BuildContext context) {
     BoxDecoration buttonDecoration = ButtonBackingDecoration(

@@ -3,17 +3,12 @@ import 'package:aureus/aureus.dart';
 //Shows a card meant to act as a 'blank' screen placeholder to instruct user on what to do next
 //Doc Link:
 
-class BlankScreenComponent extends StatefulWidget {
+class BlankScreenComponent extends StatelessWidget {
   final String cardTitle;
   final String cardBody;
 
   const BlankScreenComponent({required this.cardTitle, required this.cardBody});
 
-  @override
-  _BlankScreenComponentState createState() => _BlankScreenComponentState();
-}
-
-class _BlankScreenComponentState extends State<BlankScreenComponent> {
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
@@ -41,10 +36,9 @@ class _BlankScreenComponentState extends State<BlankScreenComponent> {
                       badgeIcon: Assets.alertmessage,
                       badgePriority: decorationPriority.important),
                   SizedBox(height: 8.0),
-                  HeadingThreeText(
-                      widget.cardTitle, decorationPriority.standard),
+                  HeadingThreeText(cardTitle, decorationPriority.standard),
                   SizedBox(height: 8.0),
-                  BodyOneText(widget.cardBody, decorationPriority.standard),
+                  BodyOneText(cardBody, decorationPriority.standard),
                   Spacer(),
                 ]),
           )),

@@ -11,8 +11,6 @@ Brightness brightness() {
   return SchedulerBinding.instance!.window.platformBrightness;
 }
 
-bool containerEnvChanged = false;
-
 /* ------------------ GLOBAL VARIABLES -------------------- */
 
 /* 

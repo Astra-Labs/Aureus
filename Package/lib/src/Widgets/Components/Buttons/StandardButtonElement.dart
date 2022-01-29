@@ -17,27 +17,7 @@ class StandardButtonElement extends StatefulWidget {
   _StandardButtonElementState createState() => _StandardButtonElementState();
 }
 
-class _StandardButtonElementState extends State<StandardButtonElement>
-    with AureusResourceObserver {
-  final master = AureusResourceMaster();
-
-  @override
-  void initState() {
-    master.registerObserver(_StandardButtonElementState());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    master.unregisterObserver(_StandardButtonElementState());
-    super.dispose();
-  }
-
-  @override
-  void updateEnvironment() {
-    build(context);
-  }
-
+class _StandardButtonElementState extends State<StandardButtonElement> {
   @override
   Widget build(BuildContext context) {
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
@@ -58,7 +38,6 @@ class _StandardButtonElementState extends State<StandardButtonElement>
 
     return InkWell(
         onTap: () {
-          print('button tapped!');
           if (isButtonEnabled == true) {
             widget.buttonAction();
           }

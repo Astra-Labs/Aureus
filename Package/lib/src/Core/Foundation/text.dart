@@ -177,8 +177,7 @@ class HeadingOneText extends Text {
             style: heading1().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class HeadingTwoText extends Text {
@@ -187,8 +186,7 @@ class HeadingTwoText extends Text {
             style: heading2().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class HeadingThreeText extends Text {
@@ -197,8 +195,7 @@ class HeadingThreeText extends Text {
             style: heading3().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class HeadingFourText extends Text {
@@ -207,8 +204,7 @@ class HeadingFourText extends Text {
             style: heading4().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class SubheaderText extends Text {
@@ -217,8 +213,7 @@ class SubheaderText extends Text {
             style: subheading().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class BodyOneText extends Text {
@@ -227,8 +222,7 @@ class BodyOneText extends Text {
             style: body1().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class BodyTwoText extends Text {
@@ -237,8 +231,7 @@ class BodyTwoText extends Text {
             style: body2().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class ButtonOneText extends Text {
@@ -247,36 +240,35 @@ class ButtonOneText extends Text {
             style: button1().copyWith(
                 color:
                     coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+            semanticsLabel: data);
 }
 
 class ButtonTwoText extends Text {
   ButtonTwoText(String data, decorationPriority textColor)
-      : super(data.toUpperCase(),
-            style: button2().copyWith(
-                color:
-                    coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+      : super(
+          data.toUpperCase(),
+          style: button2().copyWith(
+              color: coloration.decorationColor(decorationVariant: textColor)),
+          semanticsLabel: data,
+        );
 }
 
 class TagOneText extends Text {
   TagOneText(String data, decorationPriority textColor)
-      : super(data.toUpperCase(),
-            style: tag1().copyWith(
-                color:
-                    coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+      : super(
+          data.toUpperCase(),
+          style: tag1().copyWith(
+              color: coloration.decorationColor(decorationVariant: textColor)),
+          semanticsLabel: data,
+        );
 }
 
 class TagTwoText extends Text {
   TagTwoText(String data, decorationPriority textColor)
-      : super(data.toUpperCase(),
-            style: tag2().copyWith(
-                color:
-                    coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data,
-            key: ValueKey<bool>(containerEnvChanged));
+      : super(
+          data.toUpperCase(),
+          style: tag2().copyWith(
+              color: coloration.decorationColor(decorationVariant: textColor)),
+          semanticsLabel: data,
+        );
 }

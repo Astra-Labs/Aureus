@@ -16,12 +16,10 @@ class _SwitchComponentState extends State<SwitchComponent> {
       setState(() {
         isSwitchEnabled = true;
       });
-      print('Switch Button is ON');
     } else {
       setState(() {
         isSwitchEnabled = false;
       });
-      print('Switch Button is OFF');
     }
   }
 

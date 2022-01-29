@@ -8,27 +8,7 @@ class SafetyPlanOptionsView extends StatefulWidget {
   _SafetyPlanOptionsViewState createState() => _SafetyPlanOptionsViewState();
 }
 
-class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView>
-    with AureusResourceObserver {
-  final master = AureusResourceMaster();
-
-  @override
-  void initState() {
-    master.registerObserver(_SafetyPlanOptionsViewState());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    master.unregisterObserver(_SafetyPlanOptionsViewState());
-    super.dispose();
-  }
-
-  @override
-  void updateEnvironment() {
-    build(context);
-  }
-
+class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
   Safety productSafetyObject = Safety(
       frequencyUsage: SafetyPlanFrequency.singleUse,
       eligiblePlanOptions: [

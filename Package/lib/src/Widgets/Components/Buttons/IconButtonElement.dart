@@ -71,27 +71,8 @@ class SecondaryIconButtonElement extends StatefulWidget {
       _SecondaryIconButtonElementState();
 }
 
-class _SecondaryIconButtonElementState extends State<SecondaryIconButtonElement>
-    with AureusResourceObserver {
-  final master = AureusResourceMaster();
-
-  @override
-  void initState() {
-    master.registerObserver(_SecondaryIconButtonElementState());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    master.unregisterObserver(_SecondaryIconButtonElementState());
-    super.dispose();
-  }
-
-  @override
-  void updateEnvironment() {
-    build(context);
-  }
-
+class _SecondaryIconButtonElementState
+    extends State<SecondaryIconButtonElement> {
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =

@@ -17,27 +17,7 @@ class FullWidthButtonElement extends StatefulWidget {
   _FullWidthButtonElementState createState() => _FullWidthButtonElementState();
 }
 
-class _FullWidthButtonElementState extends State<FullWidthButtonElement>
-    with AureusResourceObserver {
-  final master = AureusResourceMaster();
-
-  @override
-  void initState() {
-    master.registerObserver(_FullWidthButtonElementState());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    master.unregisterObserver(_FullWidthButtonElementState());
-    super.dispose();
-  }
-
-  @override
-  void updateEnvironment() {
-    build(context);
-  }
-
+class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
   @override
   Widget build(BuildContext context) {
     //variables that change how the variants are displayed in build time

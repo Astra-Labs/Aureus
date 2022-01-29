@@ -31,7 +31,7 @@ class _DataOptInViewState extends State<DataOptInView> {
               var currentItem = widget.permissionItems[index];
 
               return Padding(
-                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                 child: ComplexSwitchCardElement(
                     cardLabel: currentItem.permissionName,
                     cardBody: currentItem.permissionDescription,
