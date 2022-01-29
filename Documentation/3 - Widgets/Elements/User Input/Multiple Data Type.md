@@ -10,15 +10,10 @@
 
 ~~~
 
+var multiInput = MultipleDataTypeUserInputElement(
+dataLabel: fillerTextSubheader, dataPlaceholder: fillerPlaceholder);
+
 ~~~
 
 ------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()
 

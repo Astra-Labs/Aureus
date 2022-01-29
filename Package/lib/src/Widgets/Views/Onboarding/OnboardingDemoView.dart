@@ -30,7 +30,7 @@ class _OnboardingDemoViewState extends State<OnboardingDemoView> {
       containerVariant: wrapperVariants.fullScreen,
       children: [
         PageHeaderElement.withExit(
-            pageTitle: "${apiVariables.prodName}'s Tools",
+            pageTitle: "${packageVariables.prodName}'s Tools",
             onPageExit: () => {}),
         Spacer(),
         SingleChildScrollView(

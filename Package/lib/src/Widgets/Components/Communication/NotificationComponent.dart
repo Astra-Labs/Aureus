@@ -36,6 +36,8 @@ class _NotificationComponentState extends State<NotificationComponent> {
         ? BoxDecoration(color: white().withOpacity(0.0))
         : BoxDecoration(color: coloration.sameColor(), shape: BoxShape.circle);
 
+    var screenSize = size.logicalScreenSize();
+
     Column notificationContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -82,10 +84,10 @@ class _NotificationComponentState extends State<NotificationComponent> {
     return FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minHeight: size.layoutItemHeight(6, size.logicalScreenSize),
-              maxHeight: size.layoutItemHeight(3, size.logicalScreenSize),
-              minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-              maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
+              minHeight: size.layoutItemHeight(6, screenSize),
+              maxHeight: size.layoutItemHeight(3, screenSize),
+              minWidth: size.layoutItemWidth(1, screenSize),
+              maxWidth: size.layoutItemWidth(1, screenSize)),
           alignment: Alignment.center,
           padding: size.universalPadding(),
           decoration: boxDecoration,

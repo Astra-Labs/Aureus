@@ -1,8 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter/rendering.dart';
-
-//A scaffold that acts as a standardized tab bar
-//Doc Link:
 
 class NavBarComponent extends StatefulWidget {
   //tab items input will be checked to be icon only

@@ -10,14 +10,6 @@
 
 ~~~
 
+HelpCenterView(helpCenter: helpCenterTest);
+
 ~~~
-
-------------------
-
-#### Details
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

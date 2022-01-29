@@ -10,14 +10,9 @@
 
 ~~~
 
+var standardFullWidthButton = FullWidthButtonElement(
+buttonTitle: fillerTextButton,
+currentVariant: decorationPriority.standard,
+buttonAction: fillerAction);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

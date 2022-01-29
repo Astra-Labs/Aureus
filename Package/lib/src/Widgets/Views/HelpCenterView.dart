@@ -18,6 +18,8 @@ class _HelpCenterViewState extends State<HelpCenterView> {
   Widget build(BuildContext context) {
     var currentHelpCenter = widget.helpCenter;
 
+    var screenSize = size.logicalScreenSize();
+
     setState(() {
       itemGridCards.clear();
       currentHelpCenter.articleCategories[0].categoryArticles
@@ -34,8 +36,8 @@ class _HelpCenterViewState extends State<HelpCenterView> {
           child: GridCardElement(
               decorationVariant: decorationPriority.standard,
               cardLabel: element.articleTitle,
-              gridSize: Size(size.layoutItemWidth(1, size.logicalScreenSize),
-                  size.layoutItemHeight(1, size.logicalScreenSize))),
+              gridSize: Size(size.layoutItemWidth(1, screenSize),
+                  size.layoutItemHeight(1, screenSize))),
         ));
       });
     });
@@ -92,18 +94,17 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
             buttonAction: () => {Navigator.pop(context)}),
         Spacer(),
         IconBadge(
-            badgeIcon: Icons.lock_outline,
-            badgePriority: decorationPriority.important),
-        SizedBox(height: 12.0),
+            badgeIcon: Assets.lock, badgePriority: decorationPriority.standard),
+        SizedBox(height: 40.0),
         HeadingThreeText(
             widget.article.articleTitle, decorationPriority.standard),
         SizedBox(height: 25.0),
         Container(
             constraints: BoxConstraints(
-                minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-                maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-                minHeight: size.layoutItemHeight(5, size.logicalScreenSize),
-                maxHeight: size.layoutItemHeight(2, size.logicalScreenSize)),
+                minWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
+                maxWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
+                minHeight: size.layoutItemHeight(5, size.logicalScreenSize()),
+                maxHeight: size.layoutItemHeight(2, size.logicalScreenSize())),
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.standard)
                     .buildBacking(),

@@ -4,12 +4,14 @@ import 'package:flutter/scheduler.dart';
 final titleCase = TitleCase();
 final coloration = Coloration();
 final size = Sizing();
-late Aureus apiVariables;
+late Aureus packageVariables;
 
 // Returns the given 'mode' (light or dark) for the device that Aureus is running on.
 Brightness brightness() {
   return SchedulerBinding.instance!.window.platformBrightness;
 }
+
+bool containerEnvChanged = false;
 
 /* ------------------ GLOBAL VARIABLES -------------------- */
 

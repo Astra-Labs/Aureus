@@ -45,10 +45,16 @@ flutter:
   uses-material-design: true
   assets: 
     - assets/Dark-Blur.png
-    - assets/Dark-Fluid.jpg
-    - assets/Dark-Logo.png
+    - assets/Dark-Fluid.png
+    - assets/Icon - Dark Mode.png
     - assets/Dark Mode - Preview.png
     - assets/Light Mode - Preview.png
     - assets/Light-Blur.png
-    - assets/Light-Fluid.jpg
-    - assets/Light-Logo.png
+    - assets/Light-Fluid.png
+    - assets/Icon - Light Mode.png
+    - assets/Dark-Mode-Demo.png
+    - assets/Import-Sample-Dark-Mode.png
+    - assets/Landing-Example-Dark-Mode.png
+    - assets/Light-Mode-Demo.png
+    - assets/Import-Sample-Light-Mode.png
+    - assets/Landing-Example-Light-Mode.png

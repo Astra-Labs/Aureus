@@ -18,13 +18,15 @@ class StandardBadgeCardElement extends StatelessWidget {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
+    var screenSize = size.logicalScreenSize();
+
     return FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minWidth: size.layoutItemWidth(4, size.logicalScreenSize),
-              maxWidth: size.layoutItemWidth(3, size.logicalScreenSize),
-              minHeight: size.layoutItemHeight(4, size.logicalScreenSize),
-              maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
+              minWidth: size.layoutItemWidth(4, screenSize),
+              maxWidth: size.layoutItemWidth(3, screenSize),
+              minHeight: size.layoutItemHeight(4, screenSize),
+              maxHeight: size.layoutItemHeight(3, screenSize)),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           clipBehavior: Clip.hardEdge,

@@ -40,7 +40,7 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
         Spacer(),
         singleDataTypeUserInputElement,
         SizedBox(
-          height: size.heightOf(weight: sizingWeight.w0),
+          height: 20,
         ),
         Row(
             crossAxisAlignment: CrossAxisAlignment.center,

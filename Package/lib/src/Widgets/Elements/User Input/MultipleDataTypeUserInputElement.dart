@@ -3,7 +3,8 @@ import 'package:aureus/aureus.dart';
 class MultipleDataTypeUserInputElement extends StatefulWidget {
   final String dataLabel;
   final String dataPlaceholder;
-  TextEditingController itemTextEditingController = TextEditingController();
+  final TextEditingController itemTextEditingController =
+      TextEditingController();
 
   MultipleDataTypeUserInputElement(
       {required this.dataLabel, required this.dataPlaceholder});
@@ -22,10 +23,12 @@ class _MultipleDataTypeUserInputElementState
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       TabSubheaderElement(title: widget.dataLabel),
       Padding(padding: EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0)),
-      StandardTextFieldComponent(
-          decorationVariant: decorationPriority.standard,
-          hintText: widget.dataPlaceholder,
-          textFieldController: widget.itemTextEditingController),
+      FloatingContainerElement(
+        child: StandardTextFieldComponent(
+            decorationVariant: decorationPriority.standard,
+            hintText: widget.dataPlaceholder,
+            textFieldController: widget.itemTextEditingController),
+      ),
     ]);
   }
 }

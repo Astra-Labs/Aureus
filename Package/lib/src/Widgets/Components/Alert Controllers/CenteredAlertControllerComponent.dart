@@ -18,6 +18,8 @@ class _CenteredAlertControllerComponentState
   Widget build(BuildContext context) {
     Widget alertControllerActions = Container();
 
+    var screenSize = size.logicalScreenSize();
+
     if (widget.alertData.actions.length == 1) {
       //needs a single standard button
 
@@ -31,7 +33,7 @@ class _CenteredAlertControllerComponentState
     } else if (widget.alertData.actions.length <= 2) {
       //needs stacked standards button built to severity
       alertControllerActions = SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
+        width: size.layoutItemWidth(1, screenSize),
         child: ListView.separated(
             shrinkWrap: true,
             separatorBuilder: (BuildContext context, int index) =>
@@ -77,9 +79,9 @@ class _CenteredAlertControllerComponentState
     return Container(
         decoration: alertBacking(),
         constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-            minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
-            maxHeight: size.layoutItemHeight(1, size.logicalScreenSize)),
+            minWidth: size.layoutItemWidth(1, screenSize),
+            minHeight: size.layoutItemHeight(3, screenSize),
+            maxHeight: size.layoutItemHeight(1, screenSize)),
         child: Padding(
           padding: const EdgeInsets.all(35.0),
           child: Column(

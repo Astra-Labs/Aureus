@@ -2,7 +2,8 @@ import 'package:aureus/aureus.dart';
 
 class SingleDataTypeUserInputElement extends StatefulWidget {
   final String dataPlaceholder;
-  TextEditingController itemTextEditingController = TextEditingController();
+  final TextEditingController itemTextEditingController =
+      TextEditingController();
 
   SingleDataTypeUserInputElement({required this.dataPlaceholder});
 
@@ -17,9 +18,11 @@ class _SingleDataTypeUserInputElementState
 
   @override
   Widget build(BuildContext context) {
-    return StandardTextFieldComponent(
-        decorationVariant: decorationPriority.standard,
-        hintText: widget.dataPlaceholder,
-        textFieldController: widget.itemTextEditingController);
+    return FloatingContainerElement(
+      child: StandardTextFieldComponent(
+          decorationVariant: decorationPriority.standard,
+          hintText: widget.dataPlaceholder,
+          textFieldController: widget.itemTextEditingController),
+    );
   }
 }

@@ -16,12 +16,14 @@ class ComplexBadgeCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     return Container(
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
+            maxWidth: size.layoutItemWidth(1, screenSize),
+            maxHeight: size.layoutItemHeight(3, screenSize)),
         clipBehavior: Clip.hardEdge,
         child: Padding(
             padding: const EdgeInsets.all(13.0),

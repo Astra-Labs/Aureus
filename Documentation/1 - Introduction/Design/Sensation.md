@@ -4,6 +4,8 @@
 
 We want to get people to a future they're meant to have, and that means developing a design system that creates specific sensations and emotions across multiple software platforms. This goes into the themes, implementation, and sensory experiences Aureus works to build towards. 
 
+--------------------
+
 ## Inspiration
 We’re not just building an app, a design, or a mockup. we’re designing a greater experience for the user.  Our goal is to augment pre-existing experiences in the users life, not replace them. We’re not the destination, we’re the transportation getting them there.
 
@@ -11,24 +13,28 @@ The inspiration for the sensations of Aureus is the feeling of getting onto a pl
 
 That's what Aureus aims to feel like: looking outside while someone gets you to a place that's going to be safe for you.
 
+--------------------
+
 ## Foundational Themes
-1. Shapes
+### 1. Shapes
 Almost all UI components have rounded corners or are circular. Nothing has harsh or uncut lines (unless full width button or other full width element where corners blend in with screen).
 
-2. Dreams
+### 2. Dreams
 Our resources look like a dream. They feel comfortable, cohesive, and like someone put a pane of glass over a scene of nature. We use opacity of color to convey priority instead of color.
 
-3. Clean
+### 3. Clean
 All UI items have minimal elements, and are extremely clear in their purpose. All elements are properly aligned, centered, and consistent across the application with no variations (except between outlined variations.)
 
-4. Cycles / Circles
+### 4. Cycles / Circles
 Circular ecosystems are what Astra primarily works in, and we integrate circles into our designs to reference them. We use circles in our logos, navigation icons, and in other components to create a more 'friendly' feel and consistent brand / call back to the circular systemic issues we work in. 
 
-5. Symmetry 
+### 5. Symmetry 
 All items have balance and to purposefully use hiearchy and visual cues to properly communicate to the user. Contrast is used well to highlight what needs to be seen, and items are visually balanced to be clear without being boring or visually overwhelming. 
 
-6. Mirror
+### 6. Mirror
 Some forms in nature replicate in patterns of data. If you look for these symmetries, they appear everywhere. To integrate forms of nature and data into our work, we mirror common themes of nature, like the sky, circular patterns, and more. 
+
+--------------------
 
 ## Internal Base // Variations 
 Since all of our resources fall under one design system, internally we've adopted a system (referred to as) Base // Res that defines what unites and separates our resources. 

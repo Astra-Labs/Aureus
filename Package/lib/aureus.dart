@@ -20,6 +20,9 @@ export 'src/Core/Foundation/decorations.dart';
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
 
+//MARK - Observer Object
+export 'src/Objects/ResourceObserver.dart';
+
 //MARK: - Element Objects
 export 'src/Objects/Elements/AlertControllerObjects.dart';
 
@@ -27,7 +30,6 @@ export 'src/Objects/Elements/AlertControllerObjects.dart';
 export 'src/Objects/Components/CardObjects.dart';
 export 'src/Objects/Components/InputFormObjects.dart';
 export 'src/Objects/Components/Icons.dart';
-export 'src/Objects/Components/NotificationObject.dart';
 export 'src/Objects/Components/TabbingBarObjects.dart';
 
 //MARK: - View Objects
@@ -110,7 +112,7 @@ export 'src/Widgets/Views/DataConsentView.dart';
 export 'src/Widgets/Views/HelpCenterView.dart';
 export 'src/Widgets/Views/ContainerView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
-export 'src/Widgets/Views/Safety Plan/SafetyPlanConfirmationView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanOptionsView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanFunctionalityView.dart';
 export 'src/Widgets/Views/2FAVerificationView.dart';
 export 'src/Widgets/Views/LandingPageView.dart';

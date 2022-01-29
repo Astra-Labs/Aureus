@@ -10,14 +10,6 @@
 
 ~~~
 
+var sendField = SendFieldComponent(onSend: fillerAction);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

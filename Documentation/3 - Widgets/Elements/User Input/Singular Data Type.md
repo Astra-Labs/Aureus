@@ -10,14 +10,9 @@
 
 ~~~
 
+var singleInput =
+SingleDataTypeUserInputElement(dataPlaceholder: fillerPlaceholder);
+
 ~~~
 
 ------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

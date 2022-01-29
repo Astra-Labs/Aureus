@@ -12,20 +12,22 @@ class SafetyPlanFunctionalityView extends StatefulWidget {
 
 class _SafetyPlanFunctionalityViewState
     extends State<SafetyPlanFunctionalityView> {
-  var safety = apiVariables.safetyObject;
+  var safety = packageVariables.safetyObject;
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
         DividingHeaderElement(
-            headerText: "Functionality",
+            headerText: "Safety Plan - Confirmation",
             subheaderText:
-                "In order to enable your safety plan, you need to opt-in to agreeing the functionality of ${apiVariables.prodName} may change."),
+                "In order to enable your safety plan, you need to opt-in to agreeing the functionality of ${packageVariables.prodName} may change."),
         SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize),
-          height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.6,
+          width: size.layoutItemWidth(1, screenSize),
+          height: size.layoutItemHeight(2, screenSize),
           child: SingleChildScrollView(
             child: ListView.builder(
                 physics: ClampingScrollPhysics(),
@@ -34,8 +36,8 @@ class _SafetyPlanFunctionalityViewState
                 itemCount: widget.userSelectedOptions.length,
                 itemBuilder: (BuildContext context, int index) {
                   var currentItem = widget.userSelectedOptions[index];
-                  var safetyObject =
-                      apiVariables.safetyObject.retrieveDetails(currentItem);
+                  var safetyObject = packageVariables.safetyObject
+                      .retrieveDetails(currentItem);
 
                   return Padding(
                     padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
@@ -51,12 +53,12 @@ class _SafetyPlanFunctionalityViewState
         Column(
           children: [
             StandardButtonElement(
-                decorationVariant: decorationPriority.important,
+                decorationVariant: decorationPriority.standard,
                 buttonTitle: 'I agree to these changes.',
                 buttonAction: () => {}),
             SizedBox(height: 8.0),
             StandardButtonElement(
-                decorationVariant: decorationPriority.important,
+                decorationVariant: decorationPriority.standard,
                 buttonTitle: 'I want to edit my safety plan.',
                 buttonAction: () => {})
           ],

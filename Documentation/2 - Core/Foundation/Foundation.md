@@ -15,7 +15,3 @@ All of the typography found in Aureus is within foundation.dart as TextStyles, a
 
 ## Backings
 Because so many of our UI items re-use the same radiuses, backings, and more, there is a class for different types of items, and enums to hold data about them. When Aureus builds an item, depending on light mode or dark mode, the priority, and other pieces of information, a backing is created without redundent developer input that complies with Aureus' guidelines. 
-
-#### Backings - Usage
-
-#### Contains:

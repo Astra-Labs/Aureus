@@ -12,11 +12,13 @@ class ComplexSwitchCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     return Container(
         constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-            maxHeight: size.layoutItemHeight(3, size.logicalScreenSize)),
+            minWidth: size.layoutItemWidth(1, screenSize),
+            maxWidth: size.layoutItemWidth(1, screenSize),
+            maxHeight: size.layoutItemHeight(3, screenSize)),
         decoration: CardBackingDecoration(priority: decorationPriority.inactive)
             .buildBacking(),
         clipBehavior: Clip.hardEdge,
@@ -41,7 +43,7 @@ class ComplexSwitchCardElement extends StatelessWidget {
                     ],
                   ),
                   Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
-                  SubheaderText(cardLabel, decorationPriority.standard),
+                  HeadingFourText(cardLabel, decorationPriority.standard),
                   BodyOneText(cardBody, decorationPriority.standard)
                 ])));
   }

@@ -11,7 +11,26 @@ class StandardSwitchCardComponent extends StatefulWidget {
 }
 
 class _StandardSwitchCardComponentState
-    extends State<StandardSwitchCardComponent> {
+    extends State<StandardSwitchCardComponent> with AureusResourceObserver {
+  final master = AureusResourceMaster();
+
+  @override
+  void initState() {
+    master.registerObserver(_StandardSwitchCardComponentState());
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    master.unregisterObserver(_StandardSwitchCardComponentState());
+    super.dispose();
+  }
+
+  @override
+  void updateEnvironment() {
+    build(context);
+  }
+
   bool isSwitchEnabled = false;
 
   void toggleSwitch(bool value) {
@@ -34,10 +53,12 @@ class _StandardSwitchCardComponentState
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
+    var screenSize = size.logicalScreenSize();
+
     return FloatingContainerElement(
       child: SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize),
-          height: minimumLabelTextSize.height * 5,
+          width: size.layoutItemWidth(1, screenSize),
+          height: minimumLabelTextSize.height * 6,
           child: Container(
               decoration: LayerBackingDecoration(
                       priority: isSwitchEnabled
@@ -51,11 +72,13 @@ class _StandardSwitchCardComponentState
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      BodyOneText(
-                          widget.switchDescription,
-                          isSwitchEnabled
-                              ? decorationPriority.important
-                              : decorationPriority.standard),
+                      Flexible(
+                        child: BodyOneText(
+                            widget.switchDescription,
+                            isSwitchEnabled
+                                ? decorationPriority.important
+                                : decorationPriority.standard),
+                      ),
                       SwitchComponent()
                     ]),
               ))),

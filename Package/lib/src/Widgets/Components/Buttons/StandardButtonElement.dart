@@ -17,7 +17,27 @@ class StandardButtonElement extends StatefulWidget {
   _StandardButtonElementState createState() => _StandardButtonElementState();
 }
 
-class _StandardButtonElementState extends State<StandardButtonElement> {
+class _StandardButtonElementState extends State<StandardButtonElement>
+    with AureusResourceObserver {
+  final master = AureusResourceMaster();
+
+  @override
+  void initState() {
+    master.registerObserver(_StandardButtonElementState());
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    master.unregisterObserver(_StandardButtonElementState());
+    super.dispose();
+  }
+
+  @override
+  void updateEnvironment() {
+    build(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
@@ -34,6 +54,8 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
+    var screenSize = size.logicalScreenSize();
+
     return InkWell(
         onTap: () {
           print('button tapped!');
@@ -43,7 +65,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
         },
         child: FloatingContainerElement(
           child: SizedBox(
-              width: size.layoutItemWidth(1, size.logicalScreenSize),
+              width: size.layoutItemWidth(1, screenSize),
               height: minimumButtonTextSize.height * 4,
               child: Container(
                   decoration: buttonDecoration,

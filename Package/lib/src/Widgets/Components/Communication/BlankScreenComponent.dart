@@ -16,14 +16,16 @@ class BlankScreenComponent extends StatefulWidget {
 class _BlankScreenComponentState extends State<BlankScreenComponent> {
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     return FloatingContainerElement(
       child: Container(
           //this will be the rounded card backing
           constraints: BoxConstraints(
-              minHeight: size.layoutItemHeight(2, size.logicalScreenSize),
-              maxHeight: size.layoutItemHeight(2, size.logicalScreenSize),
-              minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-              maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
+              minHeight: size.layoutItemHeight(2, screenSize),
+              maxHeight: size.layoutItemHeight(2, screenSize),
+              minWidth: size.layoutItemWidth(1, screenSize),
+              maxWidth: size.layoutItemWidth(1, screenSize)),
           decoration:
               LayerBackingDecoration(priority: decorationPriority.inactive)
                   .buildBacking(),

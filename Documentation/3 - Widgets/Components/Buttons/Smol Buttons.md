@@ -10,14 +10,9 @@
 
 ~~~
 
+var standardSmolButton = SmolButtonElement(
+buttonTitle: fillerTextButton,
+buttonAction: fillerAction,
+decorationVariant: decorationPriority.standard);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

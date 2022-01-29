@@ -10,14 +10,9 @@
 
 ~~~
 
+var standardStandardButton = StandardButtonElement(
+buttonTitle: fillerTextButton,
+buttonAction: fillerAction,
+decorationVariant: decorationPriority.standard);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

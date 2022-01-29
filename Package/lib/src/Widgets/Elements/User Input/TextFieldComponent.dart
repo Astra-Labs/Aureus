@@ -12,9 +12,11 @@ class StandardTextFieldComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     return SizedBox(
-      width: size.layoutItemWidth(1, size.logicalScreenSize),
-      height: size.layoutItemHeight(6, size.logicalScreenSize),
+      width: size.layoutItemWidth(1, screenSize),
+      height: size.layoutItemHeight(6, screenSize),
       child: TextFormField(
           style: body2().copyWith(
               color: coloration.decorationColor(

@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter/gestures.dart';
 
 //A full width button that acts as the main CTA
 //Doc Link:
@@ -18,7 +17,27 @@ class FullWidthButtonElement extends StatefulWidget {
   _FullWidthButtonElementState createState() => _FullWidthButtonElementState();
 }
 
-class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
+class _FullWidthButtonElementState extends State<FullWidthButtonElement>
+    with AureusResourceObserver {
+  final master = AureusResourceMaster();
+
+  @override
+  void initState() {
+    master.registerObserver(_FullWidthButtonElementState());
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    master.unregisterObserver(_FullWidthButtonElementState());
+    super.dispose();
+  }
+
+  @override
+  void updateEnvironment() {
+    build(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     //variables that change how the variants are displayed in build time
@@ -26,6 +45,8 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
             variant: buttonDecorationVariants.edgedRectangle,
             priority: widget.currentVariant)
         .buildBacking();
+
+    var screenWidth = size.logicalWidth();
 
     bool isButtonEnabled =
         widget.currentVariant == decorationPriority.inactive ? false : true;
@@ -42,15 +63,13 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
             widget.buttonAction();
           }
         },
-        child: FloatingContainerElement(
-          child: SizedBox(
-              width: size.widthOf(weight: sizingWeight.w10),
-              height: minimumButtonTextSize.height * 4,
-              child: Container(
-                  decoration: buttonDecoration,
-                  child: Center(
-                      child: ButtonOneText(
-                          widget.buttonTitle, widget.currentVariant)))),
-        ));
+        child: SizedBox(
+            width: screenWidth,
+            height: minimumButtonTextSize.height * 4,
+            child: Container(
+                decoration: buttonDecoration,
+                child: Center(
+                    child: ButtonOneText(
+                        widget.buttonTitle, widget.currentVariant)))));
   }
 }

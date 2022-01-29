@@ -10,14 +10,9 @@
 
 ~~~
 
+var timer = TimerElement(
+timeAllotment: DateTimeRange(
+start: DateTime.now(),
+end: DateTime(DateTime.now().year, Duration.secondsPerMinute)));
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

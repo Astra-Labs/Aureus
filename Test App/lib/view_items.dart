@@ -15,7 +15,7 @@ HelpCenterCategories helpCenterCategoryOne = HelpCenterCategories(
       helpCenterArticleTwo,
       helpCenterArticleThree
     ],
-    categoryIcon: Icons.ac_unit_outlined);
+    categoryIcon: Assets.window);
 
 HelpCenterCategories helpCenterCategoryTwo = HelpCenterCategories(
     categoryTitle: 'Category Two',
@@ -24,7 +24,7 @@ HelpCenterCategories helpCenterCategoryTwo = HelpCenterCategories(
       helpCenterArticleTwo,
       helpCenterArticleThree
     ],
-    categoryIcon: Icons.analytics_sharp);
+    categoryIcon: Assets.snowflake);
 
 HelpCenterCategories helpCenterCategoryThree = HelpCenterCategories(
     categoryTitle: 'Category Three',
@@ -33,7 +33,7 @@ HelpCenterCategories helpCenterCategoryThree = HelpCenterCategories(
       helpCenterArticleTwo,
       helpCenterArticleThree
     ],
-    categoryIcon: Icons.satellite_sharp);
+    categoryIcon: Assets.android);
 
 HelpCenterArticle helpCenterArticleOne = HelpCenterArticle(
     articleTitle: 'Lorem ipsum dolor?',
@@ -68,13 +68,13 @@ DataPermissionObject cameraObject = DataConsent().cameraAccessPermission(
   print('asking for camera!');
 });
 
-DataPermissionObject microphoneObject = DataConsent().cameraAccessPermission(
+DataPermissionObject microphoneObject = DataConsent().microphoneAccessPermission(
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     () {
   print('asking for microphone!');
 });
 
-DataPermissionObject locationObject = DataConsent().cameraAccessPermission(
+DataPermissionObject locationObject = DataConsent().locationAccessPermission(
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     () {
   print('asking for location!');
@@ -94,7 +94,7 @@ CoreTool demoTool1 = CoreTool(
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
     toolCards: [],
-    toolIcon: Icons.access_alarm_outlined,
+    toolIcon: Assets.mail,
     entrySource: weightedBox1,
     exitSource: OnboardingLandingView());
 
@@ -106,7 +106,7 @@ CoreTool demoTool2 = CoreTool(
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
     toolCards: [],
-    toolIcon: Icons.attach_email_outlined,
+    toolIcon: Assets.body,
     entrySource: weightedBox2,
     exitSource: OnboardingLandingView());
 
@@ -118,7 +118,7 @@ CoreTool demoTool3 = CoreTool(
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
     toolCards: [],
-    toolIcon: Icons.dangerous_outlined,
+    toolIcon: Assets.stethoscope,
     entrySource: weightedBox3,
     exitSource: OnboardingLandingView());
 
@@ -130,7 +130,7 @@ CoreTool demoTool4 = CoreTool(
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
     toolCards: [],
-    toolIcon: Icons.arrow_downward,
+    toolIcon: Assets.pencil,
     entrySource: weightedBox4,
     exitSource: OnboardingLandingView());
 
@@ -138,18 +138,19 @@ OnboardingDetail onboardingInfo1 = OnboardingDetail(
     detailTitle: "Item 1",
     detailBody: fillerTextBody,
     detailImage: Image.network(
-        'https://preview.redd.it/g3tbgs87ze941.png?width=960&crop=smart&auto=webp&s=5f4a5cdb91f4c081d5f8c34befa9145f2176ccb7'),
+        'https://images.unsplash.com/photo-1568313381727-b78471533264?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'),
     detailCategoryIcon: fillerIcon1);
 
 OnboardingDetail onboardingInfo2 = OnboardingDetail(
     detailTitle: "Item 2",
     detailBody: fillerTextBody,
     detailImage: Image.network(
-        'https://preview.redd.it/3e9o1o1cxah41.jpg?width=640&crop=smart&auto=webp&s=65ba7a23f0e782436818e09cf2efb9bd261266d8'),
+        'https://images.unsplash.com/photo-1551740994-7af69385a217?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'),
     detailCategoryIcon: fillerIcon2);
 
 OnboardingDetail onboardingInfo3 = OnboardingDetail(
     detailTitle: "Item 3",
     detailBody: fillerTextBody,
-    detailImage: Image.network('https://i.redd.it/lbq642vppyg51.jpg'),
+    detailImage: Image.network(
+        'https://images.unsplash.com/photo-1632269826291-2cb3009bf43d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=664&q=80'),
     detailCategoryIcon: fillerIcon3);

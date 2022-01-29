@@ -13,14 +13,14 @@ accessing them through any specific class.
 // Gradients ---------------------------------
 
 Gradient lightGradient() {
-  return LinearGradient(
+  return const LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: [Colors.white, Color.fromRGBO(199, 208, 241, 1.0)]);
 }
 
 Gradient mediumGradient() {
-  return LinearGradient(
+  return const LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
@@ -30,7 +30,7 @@ Gradient mediumGradient() {
 }
 
 Gradient darkGradient() {
-  return LinearGradient(
+  return const LinearGradient(
       begin: Alignment.bottomLeft,
       end: Alignment.topRight,
       colors: [
@@ -42,51 +42,55 @@ Gradient darkGradient() {
 // Colors ---------------------------------
 
 Color white() {
-  return Color.fromRGBO(255, 255, 255, 1.0);
+  return const Color.fromRGBO(255, 255, 255, 1.0);
 }
 
 Color black() {
-  return Color.fromRGBO(0, 0, 0, 1.0);
+  return const Color.fromRGBO(0, 0, 0, 1.0);
 }
 
 Color lavender() {
-  return Color.fromRGBO(181, 190, 242, 1.0);
+  return const Color.fromRGBO(181, 190, 242, 1.0);
 }
 
 Color ice() {
-  return Color.fromRGBO(241, 243, 251, 1.0);
+  return const Color.fromRGBO(241, 243, 251, 1.0);
 }
 
 Color melt() {
-  return Color.fromRGBO(234, 237, 250, 1.0);
+  return const Color.fromRGBO(234, 237, 250, 1.0);
 }
 
 Color frost() {
-  return Color.fromRGBO(214, 215, 222, 1.0);
+  return const Color.fromRGBO(214, 215, 222, 1.0);
 }
 
 Color steel() {
-  return Color.fromRGBO(184, 192, 214, 1.0);
+  return const Color.fromRGBO(184, 192, 214, 1.0);
 }
 
 Color iron() {
-  return Color.fromRGBO(110, 115, 128, 1.0);
+  return const Color.fromRGBO(110, 115, 128, 1.0);
 }
 
 Color carbon() {
-  return Color.fromRGBO(77, 79, 90, 1.0);
+  return const Color.fromRGBO(77, 79, 90, 1.0);
 }
 
 Color onyx() {
-  return Color.fromRGBO(56, 56, 56, 1.0);
+  return const Color.fromRGBO(56, 56, 56, 1.0);
 }
 
 Color lightModeFill() {
-  return black().withOpacity(0.07);
+  return accessibility.accessFeatures.highContrast == true
+      ? black().withOpacity(0.15)
+      : black().withOpacity(0.07);
 }
 
 Color darkModeFill() {
-  return white().withOpacity(0.15);
+  return accessibility.accessFeatures.highContrast == true
+      ? white().withOpacity(0.30)
+      : white().withOpacity(0.15);
 }
 
 // Shadows ---------------------------------
@@ -115,17 +119,25 @@ BoxShadow pastelShadow() {
 // Borders ---------------------------------
 
 Border universalBorder() {
-  return Border.all(color: steel().withOpacity(0.6), width: 1);
+  return accessibility.accessFeatures.highContrast == true
+      ? Border.all(color: steel(), width: 2)
+      : Border.all(color: steel().withOpacity(0.6), width: 1);
 }
 
 Border pastelBorder() {
-  return Border.all(color: lavender().withOpacity(0.25), width: 1);
+  return accessibility.accessFeatures.highContrast
+      ? Border.all(color: lavender(), width: 2)
+      : Border.all(color: lavender().withOpacity(0.25), width: 1);
 }
 
 Border lightModeBorder() {
-  return Border.all(color: black().withOpacity(0.25), width: 1);
+  return accessibility.accessFeatures.highContrast == true
+      ? Border.all(color: onyx(), width: 2)
+      : Border.all(color: black().withOpacity(0.25), width: 1);
 }
 
 Border darkModeBorder() {
-  return Border.all(color: white().withOpacity(0.25), width: 1);
+  return accessibility.accessFeatures.highContrast == true
+      ? Border.all(color: melt(), width: 2)
+      : Border.all(color: white().withOpacity(0.25), width: 1);
 }

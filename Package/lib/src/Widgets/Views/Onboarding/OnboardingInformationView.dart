@@ -23,6 +23,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
   Widget build(BuildContext context) {
     List<TabObject> tabItems = [];
 
+    var screenSize = size.logicalScreenSize();
+
     widget.onboardingDetails.forEach((element) {
       tabItems.add(TabObject.forIconTabbing(
           tabIcon: element.detailCategoryIcon,
@@ -43,7 +45,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
         children: [
           Container(
               constraints: BoxConstraints(
-                  minHeight: size.layoutItemHeight(2, size.logicalScreenSize)),
+                  minHeight: size.layoutItemHeight(2, screenSize)),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
                   border: universalBorder(),
@@ -88,8 +90,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
                 constraints: BoxConstraints(
-                    minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
-                    minWidth: size.layoutItemWidth(2, size.logicalScreenSize)),
+                    minHeight: size.layoutItemHeight(3, screenSize),
+                    minWidth: size.layoutItemWidth(2, screenSize)),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     border: universalBorder(),
@@ -102,9 +104,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               constraints: BoxConstraints(
-                  minHeight: size.layoutItemHeight(3, size.logicalScreenSize),
-                  maxWidth:
-                      size.layoutItemWidth(2, size.logicalScreenSize) * 0.8),
+                  minHeight: size.layoutItemHeight(3, screenSize),
+                  maxWidth: size.layoutItemWidth(2, screenSize) * 0.8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -149,8 +150,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
         ]);
 
     Widget informationCard = SizedBox(
-      width: size.layoutItemWidth(1, size.logicalScreenSize),
-      height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.7,
+      width: size.layoutItemWidth(1, screenSize),
+      height: size.layoutItemHeight(1, screenSize) * 0.7,
       child: FloatingContainerElement(
           child: Container(
               padding:
@@ -167,7 +168,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
       containerVariant: wrapperVariants.stackScroll,
       children: [
         HeadingOneText(
-            "Meet ${apiVariables.prodName}.", decorationPriority.standard),
+            "Meet ${packageVariables.prodName}.", decorationPriority.standard),
         iconTabBar,
         informationCard,
       ],

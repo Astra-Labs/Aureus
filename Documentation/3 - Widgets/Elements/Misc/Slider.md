@@ -10,14 +10,6 @@
 
 ~~~
 
+var slider = SliderElement();
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

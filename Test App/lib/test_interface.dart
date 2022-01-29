@@ -1,4 +1,6 @@
 import 'package:aureus/aureus.dart';
+import 'package:test_app/main.dart';
+import 'package:test_app/iterating_view.dart';
 import 'package:test_app/text_items.dart';
 import 'interface_items.dart';
 import 'view_items.dart';
@@ -9,33 +11,82 @@ Map<String, Widget> aureusElements = {
   'Divider': divider,
   'Slider': slider,
   'Timer': timer,
-  'Single Input': singleInput,
-  'Multiple Input': multiInput,
-  'Standard Full Width Button': standardFullWidthButton,
-  'Important Full Width Button': importantFullWidthButton,
-  'Inactive Full Width Button': inactiveFullWidthButton,
-  'Standard Primary Icon Button': standardPrimaryIconButton,
-  'Important Primary Icon Button': importantPrimaryIconButton,
-  'Inactive Primary Icon Button': inactivePrimaryIconButton,
-  'Standard Secondary Icon Button': standardSecondaryIconButton,
-  'Important Secondary Icon Button': importantSecondaryIconButton,
-  'Inactive Secondary Icon Button': inactiveSecondaryIconButton,
-  'Standard Smol Button': standardSmolButton,
-  'Important Smol Button': importantSmolButton,
-  'Inactive Smol Button': inactiveSmolButton,
-  'Standard Standard Button': standardStandardButton,
-  'Important Standard Button': importantStandardButton,
-  'Inactive Standard Button': inactiveStandardButton,
+  'Standard Text Field': singleInput,
+  'Labeled Input Text Field': multiInput,
+  'Full Width Button': Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        standardFullWidthButton,
+        SizedBox(height: 10),
+        importantFullWidthButton,
+        SizedBox(height: 10),
+        inactiveFullWidthButton
+      ]),
+  'Primary Icon Buttons': Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        standardPrimaryIconButton,
+        SizedBox(height: 10),
+        importantPrimaryIconButton,
+        SizedBox(height: 10),
+        inactivePrimaryIconButton
+      ]),
+  'Secondary Icon Buttons': Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        standardSecondaryIconButton,
+        SizedBox(height: 10),
+        importantSecondaryIconButton,
+        SizedBox(height: 10),
+        inactiveSecondaryIconButton
+      ]),
+  'Smol Buttons': Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        standardSmolButton,
+        SizedBox(height: 10),
+        importantSmolButton,
+        SizedBox(height: 10),
+        inactiveSmolButton
+      ]),
+  'Standard Buttons': Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        standardStandardButton,
+        SizedBox(height: 10),
+        importantStandardButton,
+        SizedBox(height: 10),
+        inactiveStandardButton
+      ]),
 };
 
 Map<String, Widget> aureusComponents = {
-  'Receiver Message Bubble': receiverMessageBubble,
-  'Sender Message Bubble': senderMessageBubble,
-  'Unread Notification': unreadNotification,
-  'Read Notification': readNotification,
-  'Search Bar': searchBar,
-  'Send Field': sendField,
-  'Blank Screen': blankScreen,
+  'Exit Bar': ExitBarComponent(),
+  'Message Bubbles': Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        senderMessageBubble,
+        SizedBox(height: 20),
+        receiverMessageBubble
+      ]),
+  'Notifications': Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [unreadNotification, SizedBox(height: 10), readNotification]),
+  'Empty Item Placeholder': blankScreen,
   'Standard Card': testStandardCard,
   'Standard Icon Card': testStandardIconCard,
   'Detail Card': testDetailCard,
@@ -62,13 +113,12 @@ Map<String, Widget> aureusViews = {
   'Data Opt-in View': DataOptInView(permissionItems: dataPermissions),
   'Help Center View': HelpCenterView(helpCenter: helpCenterTest),
   'Safety Plan Opt In View': SafetyPlanOptInView(),
-  'Safety Plan Confirmation View': SafetyPlanConfirmationView(),
+  'Safety Plan Options View': SafetyPlanOptionsView(),
   'Safety Plan Functionality View':
       SafetyPlanFunctionalityView(userSelectedOptions: [
     SafetyPlanOptions.deviceSandbox,
     SafetyPlanOptions.disableScreenshots,
     SafetyPlanOptions.disableNotifications,
-    SafetyPlanOptions.failedPasscodeDataDeletion
   ]),
   'Sign In View': SignInView(
       onSignIn: fillerAction,
@@ -76,10 +126,19 @@ Map<String, Widget> aureusViews = {
       onResetInformation: fillerAction),
 };
 
-/*  FOUNDATION  */
-
 class AureusLandingPage extends StatefulWidget {
-  const AureusLandingPage();
+  final Image lightModeLandscapeBacking;
+  final Image darkModeLandscapeBacking;
+  final Image lightModeUIOverlay;
+  final Image darkModeUIOverlay;
+  final List<StandardIconButtonElement> actionButtons;
+
+  const AureusLandingPage(
+      {required this.lightModeLandscapeBacking,
+      required this.darkModeLandscapeBacking,
+      required this.lightModeUIOverlay,
+      required this.darkModeUIOverlay,
+      required this.actionButtons});
 
   @override
   _AureusLandingPageState createState() => _AureusLandingPageState();
@@ -94,51 +153,184 @@ class _AureusLandingPageState extends State<AureusLandingPage> {
     });
   }
 
+  Image landingUIOverlayImage() {
+    if (brightness() == Brightness.light) {
+      return widget.lightModeUIOverlay;
+    } else if (brightness() == Brightness.dark) {
+      return widget.darkModeUIOverlay;
+    }
+    throw ('Unexpected platform brightness issue. Please check the implementation.');
+  }
+
+  Image landscapeBackgroundImage() {
+    if (brightness() == Brightness.light) {
+      return widget.lightModeLandscapeBacking;
+    } else if (brightness() == Brightness.dark) {
+      return widget.darkModeLandscapeBacking;
+    }
+    throw ('Unexpected platform brightness issue. Please check the implementation.');
+  }
+
+  Image initializationDemoImage() {
+    if (brightness() == Brightness.light) {
+      return Image(
+        image: AssetImage('assets/Landing-Example-Light-Mode.png'),
+        semanticLabel:
+            'A code editor that shows how to write a landing page using Aureus.',
+      );
+    } else if (brightness() == Brightness.dark) {
+      return Image(
+          image: AssetImage('assets/Landing-Example-Dark-Mode.png'),
+          semanticLabel:
+              'A code editor that shows how to write a landing page using Aureus.');
+    }
+    throw ('Unexpected platform brightness issue. Please check the implementation.');
+  }
+
+  Image demoCreationImage() {
+    if (brightness() == Brightness.light) {
+      return Image(
+        image: AssetImage('assets/Light-Mode-Demo.png'),
+        semanticLabel:
+            'A phone and tablet side by side showing a landing page from Aureus.',
+      );
+    } else if (brightness() == Brightness.dark) {
+      return Image(
+        image: AssetImage('assets/Dark-Mode-Demo.png'),
+        semanticLabel:
+            'A phone and tablet side by side showing a landing page from Aureus.',
+      );
+    }
+    throw ('Unexpected platform brightness issue. Please check the implementation.');
+  }
+
+  List<TabObject> unsanitizedTabs = [
+    TabObject.forIconTabbing(
+        tabIcon: Assets.alertmessage,
+        tabPriority: decorationPriority.standard,
+        accessibilityHint: 'Safety'),
+    TabObject.forIconTabbing(
+        tabIcon: Assets.people,
+        tabPriority: decorationPriority.standard,
+        accessibilityHint: 'Accessibility'),
+    TabObject.forIconTabbing(
+        tabIcon: Assets.partnership,
+        tabPriority: decorationPriority.standard,
+        accessibilityHint: 'Our future')
+  ];
+
+  Map<String, String> boxInformation = {
+    "Safety at scale.":
+        "Aureus has the first known risk-mitigation functionality for users in dangerous situations. \n\nThe functionality enables the user to take control over what software is allowed to do, to ensure it doesn't escalate voilatile situations.",
+    "Accessibility in every area.":
+        "Access goes beyond usability for people with disabilities, and must work to include diverse financial, family, and cultural situations. \n\nAureus strives to achieve accessibility across every area we can, ensuring it can truly create software that reaches everyone.",
+    "A vision of the future.":
+        "Moving forward, Aureus will encompasses all Astra resources. \n\nAt launch, Aureus will be available to license to non-profit organizations and sofware to enable better accessibility of ethical design tools and software development within the industry."
+  };
+
+  Column informationHiearchy = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        HeadingTwoText(
+            "I'm ${packageVariables.prodName}", decorationPriority.standard),
+        SizedBox(height: 4.0),
+        HeadingOneText(
+            packageVariables.missionTagline, decorationPriority.standard)
+      ]);
+
   @override
   Widget build(BuildContext context) {
+    Size screenSize = size.logicalScreenSize();
+    double screenWidth = size.logicalWidth();
+    double screenHeight = size.logicalHeight();
+
+    Column buttonItems = Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.min,
+      children: widget.actionButtons,
+    );
+
+    Widget mobileLandingPageDemo() {
+      return SizedBox(
+          width: size.layoutItemWidth(1, screenSize),
+          height: size.layoutItemHeight(1, screenSize) * 1.1,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Spacer(),
+              HeadingOneText(
+                  'Focus on helping, not coding.', decorationPriority.standard),
+              SizedBox(height: 10.0),
+              BodyOneText(
+                  "Aureus enables designing, and developing software for urgent situations in a matter of days/weeks, not months/years.",
+                  decorationPriority.standard),
+              SizedBox(height: 40.0),
+              Container(
+                  constraints: BoxConstraints(
+                      minWidth: size.layoutItemWidth(1, screenSize),
+                      maxWidth: size.layoutItemWidth(1, screenSize)),
+                  child: demoCreationImage()),
+              SizedBox(height: 40.0),
+              Container(
+                  constraints: BoxConstraints(
+                      minWidth: size.layoutItemWidth(1, screenSize),
+                      maxWidth: size.layoutItemWidth(1, screenSize)),
+                  child: initializationDemoImage()),
+              Spacer(),
+              DividerElement()
+            ],
+          ));
+    }
+
+    Widget webLandingPageDemo() {
+      return SizedBox(
+          width: size.layoutItemWidth(1, screenSize),
+          height: size.layoutItemHeight(1, screenSize),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              HeadingOneText(
+                  'Focus on helping, not coding.', decorationPriority.standard),
+              SizedBox(height: 10.0),
+              BodyOneText(
+                  "Built in Flutter - Aureus enables designing, and developing software for urgent situations in a matter of days/weeks, not months/years.",
+                  decorationPriority.standard),
+              Spacer(),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                        constraints: BoxConstraints(
+                            minWidth: size.layoutItemWidth(2, screenSize),
+                            maxWidth: size.layoutItemWidth(2, screenSize)),
+                        child: demoCreationImage()),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(14.0),
+                    child: Container(
+                        constraints: BoxConstraints(
+                            minWidth: size.layoutItemWidth(2, screenSize),
+                            maxWidth: size.layoutItemWidth(2, screenSize)),
+                        child: initializationDemoImage()),
+                  ),
+                ],
+              ),
+              Spacer(),
+              DividerElement()
+            ],
+          ));
+    }
+
     Widget landingHeader() {
-      var scalingTab = TabObject.forIconTabbing(
-          tabIcon: Assets.add,
-          tabPriority: decorationPriority.standard,
-          accessibilityHint: 'Scalability');
-
-      var safetyTab = TabObject.forIconTabbing(
-          tabIcon: Assets.add,
-          tabPriority: decorationPriority.standard,
-          accessibilityHint: 'Safety');
-
-      var privacyTab = TabObject.forIconTabbing(
-          tabIcon: Assets.add,
-          tabPriority: decorationPriority.standard,
-          accessibilityHint: 'Privacy');
-
-      var accessibilityTab = TabObject.forIconTabbing(
-          tabIcon: Assets.add,
-          tabPriority: decorationPriority.standard,
-          accessibilityHint: 'Accessibility');
-
-      var futureTab = TabObject.forIconTabbing(
-          tabIcon: Assets.add,
-          tabPriority: decorationPriority.standard,
-          accessibilityHint: 'Our future');
-
-      List<TabObject> unsanitizedTabs = [
-        scalingTab,
-        safetyTab,
-        privacyTab,
-        accessibilityTab,
-        futureTab
-      ];
-
       List<TabObject> tabItems = [];
-
-      Map<String, String> boxInformation = {
-        "Scalability.": "",
-        "Safety.": "",
-        "Privacy.": "",
-        "Accessibility.": "",
-        "Vision of the future.": ""
-      };
 
       unsanitizedTabs.forEach((element) {
         tabItems.add(TabObject.forIconTabbing(
@@ -153,226 +345,121 @@ class _AureusLandingPageState extends State<AureusLandingPage> {
       Widget iconTabBar = IconTabbingBarComponent(tabItems: tabItems);
 
       return SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize),
-          height: size.layoutItemHeight(1, size.logicalScreenSize),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          width: size.layoutItemWidth(1, screenSize),
+          height: size.layoutItemHeight(1, screenSize),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Spacer(),
-                  Container(
-                      height: 65.0,
-                      width: 65.0,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: coloration.resourceLogo().image,
-                        fit: BoxFit.cover,
-                      ))),
-                  SizedBox(height: 15.0),
-                  HeadingTwoText("Meet Aureus.", decorationPriority.standard),
-                  Spacer(),
-                ],
-              ),
+              Spacer(),
+              iconTabBar,
+              SizedBox(height: 10.0),
               SizedBox(
-                width: size.layoutItemWidth(1, size.logicalScreenSize) * 0.60,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Spacer(),
-                    iconTabBar,
-                    SizedBox(height: 10.0),
-                    SizedBox(
-                      width: size.layoutItemWidth(1, size.logicalScreenSize) *
-                          0.60,
-                      height: size.layoutItemHeight(1, size.logicalScreenSize) *
-                          0.75,
-                      child: Container(
-                        padding: EdgeInsets.all(8.0),
-                        decoration: CardBackingDecoration(
-                                priority: decorationPriority.standard)
-                            .buildBacking(),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
+                width: size.layoutItemWidth(1, screenSize),
+                height: size.layoutItemHeight(1, screenSize) * 0.60,
+                child: FloatingContainerElement(
+                  child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    decoration: CardBackingDecoration(
+                            priority: decorationPriority.inactive)
+                        .buildBacking(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Spacer(),
+                            HeadingThreeText(
+                                currentItem.key, decorationPriority.standard),
+                            SizedBox(height: 10),
+                            BodyOneText(
+                                currentItem.value, decorationPriority.standard),
+                            Spacer(),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.max,
                               children: [
-                                Spacer(),
-                                TagOneText(currentItem.key,
-                                    decorationPriority.standard),
-                                BodyOneText(currentItem.value,
-                                    decorationPriority.standard),
-                                Spacer(),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    SecondaryIconButtonElement(
-                                        decorationVariant: (_selectedIndex == 0)
-                                            ? decorationPriority.inactive
-                                            : decorationPriority.important,
-                                        buttonIcon: Assets.back,
-                                        buttonTooltip: 'Previous Item',
-                                        buttonAction: () => {
-                                              _onItemTapped(_selectedIndex -= 1)
-                                            }),
-                                    SecondaryIconButtonElement(
-                                        decorationVariant: (_selectedIndex >
-                                                (boxInformation.length - 2))
-                                            ? decorationPriority.inactive
-                                            : decorationPriority.important,
-                                        buttonIcon: Assets.next,
-                                        buttonTooltip: 'Next Item',
-                                        buttonAction: () => {
-                                              _onItemTapped(_selectedIndex += 1)
-                                            })
-                                  ],
-                                )
-                              ]),
-                        ),
-                      ),
+                                SecondaryIconButtonElement(
+                                    decorationVariant: (_selectedIndex == 0)
+                                        ? decorationPriority.inactive
+                                        : decorationPriority.important,
+                                    buttonIcon: Assets.back,
+                                    buttonTooltip: 'Previous Item',
+                                    buttonAction: () =>
+                                        {_onItemTapped(_selectedIndex -= 1)}),
+                                SecondaryIconButtonElement(
+                                    decorationVariant: (_selectedIndex >
+                                            (boxInformation.length - 2))
+                                        ? decorationPriority.inactive
+                                        : decorationPriority.important,
+                                    buttonIcon: Assets.next,
+                                    buttonTooltip: 'Next Item',
+                                    buttonAction: () =>
+                                        {_onItemTapped(_selectedIndex += 1)})
+                              ],
+                            ),
+                          ]),
                     ),
-                  ],
+                  ),
                 ),
-              )
+              ),
+              Spacer(),
             ],
           ));
-    }
-
-    Widget featureDescription() {
-      var featureCard1 = CategoryIconDetailCardElement(
-          decorationVariant: decorationPriority.standard,
-          cardLabel: 'Safety Plan',
-          cardBody:
-              "A built-in safety functionality that modifies software functionality based on users' safety needs.",
-          cardIcon: Assets.add);
-
-      var featureCard2 = CategoryIconDetailCardElement(
-          decorationVariant: decorationPriority.standard,
-          cardLabel: 'Responsiveness',
-          cardBody:
-              "Dynamically resizing text, layout, colors, and software variables to align with our product principles.",
-          cardIcon: Assets.add);
-
-      var featureCard3 = CategoryIconDetailCardElement(
-          decorationVariant: decorationPriority.standard,
-          cardLabel: 'Access',
-          cardBody:
-              "Built for use on iOS, Android, and beyond - Aureus enables access to develop software undefined by platform.",
-          cardIcon: Assets.add);
-
-      List<Widget> cardItems = [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: featureCard1,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: featureCard2,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: featureCard3,
-        )
-      ];
-
-      return SizedBox(
-        width: size.layoutItemWidth(1, size.logicalScreenSize),
-        height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.8,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            DividerElement(),
-            Spacer(),
-            TabSubheaderElement(title: 'What Aureus enables.'),
-            Spacer(),
-            SizedBox(
-              width: size.layoutItemWidth(1, size.logicalScreenSize),
-              height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.5,
-              child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      mainAxisSize: MainAxisSize.min,
-                      children: cardItems)),
-            )
-          ],
-        ),
-      );
     }
 
     Widget breakoutArea() {
       var featureCard1 = InkWell(
           onTap: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AureusFoundationView(),
-                    ))
-              },
-          child: DetailBadgeCardElement(
-              decorationVariant: decorationPriority.standard,
-              cardLabel: 'Foundation',
-              cardBody:
-                  "The global variables that make up the basis of Aureus.",
-              cardIcon: Assets.add));
-
-      var featureCard2 = InkWell(
-          onTap: () => {
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => AureusElementsView(),
-                    ))
+                    ),
+                    (route) => false)
               },
-          child: DetailBadgeCardElement(
+          child: CategoryIconDetailCardElement(
               decorationVariant: decorationPriority.standard,
               cardLabel: 'Elements',
-              cardBody: "The first layer of building blocks for the UI items.",
-              cardIcon: Assets.add));
+              cardBody:
+                  "Buttons, dividers, labels that make up the first layer of building blocks for a view.",
+              cardIcon: Assets.link));
 
-      var featureCard3 = InkWell(
+      var featureCard2 = InkWell(
           onTap: () => {
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => AureusComponentsView(),
-                    ))
+                    ),
+                    (route) => false)
               },
-          child: DetailBadgeCardElement(
+          child: CategoryIconDetailCardElement(
               decorationVariant: decorationPriority.standard,
               cardLabel: 'Components',
-              cardBody: "UI Components that make up parts of a view.",
-              cardIcon: Assets.add));
+              cardBody:
+                  "Emergency exit bars, alert controllers, notifications, message bubbles, and other major building blocks,",
+              cardIcon: Assets.expand));
 
-      var featureCard4 = InkWell(
+      var featureCard3 = InkWell(
           onTap: () => {
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => AureusViewsView(),
-                    ))
+                    ),
+                    (route) => false)
               },
-          child: DetailBadgeCardElement(
+          child: CategoryIconDetailCardElement(
               decorationVariant: decorationPriority.standard,
               cardLabel: 'Views',
               cardBody:
-                  "Re-usable view templates for data consent, safety, onboarding, and more. ",
-              cardIcon: Assets.add));
+                  "Re-usable views for data consent, safety, onboarding, customer service and more.",
+              cardIcon: Assets.window));
 
       List<Widget> cardItems = [
         Padding(
@@ -386,16 +473,12 @@ class _AureusLandingPageState extends State<AureusLandingPage> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: featureCard3,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: featureCard4,
         )
       ];
 
       return SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize),
-          height: size.layoutItemHeight(1, size.logicalScreenSize) * 1,
+          width: size.layoutItemWidth(1, screenSize),
+          height: size.layoutItemHeight(1, screenSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -406,8 +489,8 @@ class _AureusLandingPageState extends State<AureusLandingPage> {
               TabSubheaderElement(title: 'What Aureus is made of.'),
               SizedBox(height: 20.0),
               SizedBox(
-                width: size.layoutItemWidth(1, size.logicalScreenSize),
-                height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.8,
+                width: size.layoutItemWidth(1, screenSize),
+                height: size.layoutItemHeight(1, screenSize) * 0.6,
                 child: FloatingContainerElement(
                   child: Container(
                     padding: EdgeInsets.all(10.0),
@@ -415,53 +498,212 @@ class _AureusLandingPageState extends State<AureusLandingPage> {
                             priority: decorationPriority.inactive)
                         .buildBacking(),
                     child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             mainAxisSize: MainAxisSize.min,
                             children: cardItems)),
                   ),
                 ),
-              )
+              ),
+              Spacer(),
+              DividerElement()
             ],
           ));
     }
 
-    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+    Widget footerCTA() {
+      return SizedBox(
+        width: size.layoutItemWidth(1, screenSize),
+        height: size.layoutItemHeight(1, screenSize),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Spacer(),
+            HeadingOneText(
+                'Aureus is currently in beta at Astra Labs, and not available for external use.',
+                decorationPriority.standard),
+            SizedBox(height: 20.0),
+            BodyOneText(
+                "Check back for more details about non-profit licensing in Fall 2022",
+                decorationPriority.standard),
+            SizedBox(height: 20.0),
+            SizedBox(
+              width: size.layoutItemWidth(1, screenSize),
+              height: size.layoutItemHeight(1, screenSize) * 0.4,
+              child: FloatingContainerElement(
+                child: Container(
+                    decoration: LayerBackingDecoration(
+                            priority: decorationPriority.standard)
+                        .buildBacking(),
+                    child: Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Spacer(),
+                            StandardButtonElement(
+                                decorationVariant: decorationPriority.important,
+                                buttonTitle: 'Open Github repo.',
+                                buttonAction: () => {
+                                      launchInBrowser(
+                                          'https://github.com/Astra-Labs/Aureus')
+                                    }),
+                            SizedBox(height: 30.0),
+                            StandardButtonElement(
+                                decorationVariant: decorationPriority.standard,
+                                buttonTitle: 'our Gen 2.0 resources.',
+                                buttonAction: () => {
+                                      launchInBrowser(
+                                          'https://www.withastra.org/writing/enter-gen-20')
+                                    }),
+                            Spacer()
+                          ]),
+                    )),
+              ),
+            ),
+            Spacer(),
+          ],
+        ),
+      );
+    }
+
+    var mobileView = ContainerWrapperElement(
         containerVariant: wrapperVariants.stackScroll,
         children: [
-          landingHeader(),
-          featureDescription(),
-          breakoutArea(),
+          Container(
+              constraints: BoxConstraints(
+                  minHeight: screenHeight * 1.5,
+                  maxHeight: screenHeight * 1.5,
+                  minWidth: screenWidth,
+                  maxWidth: screenWidth),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: landscapeBackgroundImage().image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.all(size.widthOf(weight: sizingWeight.w1)),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                                height: size.heightOf(weight: sizingWeight.w1)),
+                            informationHiearchy,
+                            SizedBox(
+                                height: size.heightOf(weight: sizingWeight.w0)),
+                            landingUIOverlayImage(),
+                            SizedBox(
+                                height: size.heightOf(weight: sizingWeight.w0)),
+                            SizedBox(
+                                height: screenHeight *
+                                    (0.15 * widget.actionButtons.length),
+                                child: buttonItems),
+                            SizedBox(height: 10.0),
+                          ]),
+                    ),
+                  ),
+                ],
+              )),
+          Center(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  SizedBox(height: 30.0),
+                  mobileLandingPageDemo(),
+                  SizedBox(height: 30.0),
+                  landingHeader(),
+                  SizedBox(height: 30.0),
+                  breakoutArea(),
+                  SizedBox(height: 30.0),
+                  footerCTA(),
+                  SizedBox(height: 30.0)
+                ]),
+          ),
+        ]);
+
+    var webView = ContainerWrapperElement(
+        containerVariant: wrapperVariants.stackScroll,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                constraints: BoxConstraints(
+                    minHeight: screenHeight,
+                    maxHeight: screenHeight,
+                    minWidth: screenWidth,
+                    maxWidth: screenWidth),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: landscapeBackgroundImage().image,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SizedBox(
+                        width: screenWidth / 3.5,
+                        height: screenHeight * 0.5,
+                        child: Center(child: informationHiearchy)),
+                    SizedBox(
+                        width: screenWidth / 3.5,
+                        height: screenHeight * 0.88,
+                        child: landingUIOverlayImage()),
+                    SizedBox(
+                        width: screenWidth / 3.5,
+                        height:
+                            screenHeight * (0.10 * widget.actionButtons.length),
+                        child: buttonItems),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    SizedBox(height: 60.0),
+                    webLandingPageDemo(),
+                    SizedBox(height: 60.0),
+                    landingHeader(),
+                    SizedBox(height: 60.0),
+                    breakoutArea(),
+                    SizedBox(height: 60.0),
+                    footerCTA(),
+                    SizedBox(height: 60.0)
+                  ],
+                ),
+              )
+            ],
+          ),
         ]);
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
-  }
-}
-
-class AureusFoundationView extends StatefulWidget {
-  const AureusFoundationView();
-
-  @override
-  _AureusFoundationViewState createState() => _AureusFoundationViewState();
-}
-
-class _AureusFoundationViewState extends State<AureusFoundationView> {
-  @override
-  Widget build(BuildContext context) {
-    ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.stackScroll,
-        children: [
-          DividingHeaderElement(
-              headerText: "Foundation",
-              subheaderText:
-                  'Foundation is the colors, text styles, accessibility & safety functionality, and everything in between that makes up the basis of Aureus.')
-        ]);
-
-    return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+      decorationVariant: decorationPriority.important,
+      builder: size.isDesktopDisplay() ? mobileView : webView,
+      takesFullWidth: true,
+    );
   }
 }
 
@@ -477,41 +719,24 @@ class AureusElementsView extends StatefulWidget {
 class _AureusElementsViewState extends State<AureusElementsView> {
   @override
   Widget build(BuildContext context) {
-    ListView elementsList = ListView.builder(
-        physics: ClampingScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
-        shrinkWrap: true,
-        itemCount: aureusElements.entries.length,
-        itemBuilder: (BuildContext context, int index) {
-          var itemName = aureusElements.keys.elementAt(index);
-          var itemWidget = aureusElements.values.elementAt(index);
+    List<String> testDescriptions = [];
 
-          return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
-                  child: BodyOneText(itemName, decorationPriority.standard),
-                ),
-                Container(
-                    padding: EdgeInsets.all(20.0),
-                    decoration: CardBackingDecoration(
-                            priority: decorationPriority.inactive)
-                        .buildBacking(),
-                    child: itemWidget)
-              ]);
-        });
+    aureusElements.keys.forEach((element) {
+      testDescriptions.add('Yee the haw');
+    });
+
+    var component = IteratingComponent(
+        itemTitles: aureusElements.keys.toList(),
+        itemWidgets: aureusElements.values.toList());
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.stackScroll,
+        containerVariant: wrapperVariants.fullScreen,
         children: [
           DividingHeaderElement(
               headerText: 'Elements',
               subheaderText:
-                  "Singular 'base' widgets that can stand alone, or create components. These are the first layer of building blocks for the UI items."),
-          elementsList
+                  "Singular 'base' widgets that can stand alone, or create components."),
+          component
         ]);
 
     return ContainerView(
@@ -531,42 +756,24 @@ class AureusComponentsView extends StatefulWidget {
 class _AureusComponentsViewState extends State<AureusComponentsView> {
   @override
   Widget build(BuildContext context) {
-    ListView componentsList = ListView.builder(
-      padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
-      physics: ClampingScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: aureusComponents.entries.length,
-      itemBuilder: (BuildContext context, int index) {
-        var itemName = aureusComponents.keys.elementAt(index);
-        var itemWidget = aureusComponents.values.elementAt(index);
+    List<String> testDescriptions = [];
 
-        return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
-                child: BodyOneText(itemName, decorationPriority.standard),
-              ),
-              Container(
-                  padding: EdgeInsets.all(20.0),
-                  decoration: CardBackingDecoration(
-                          priority: decorationPriority.inactive)
-                      .buildBacking(),
-                  child: itemWidget)
-            ]);
-      },
-    );
+    aureusComponents.keys.forEach((element) {
+      testDescriptions.add('Yee the haw');
+    });
+
+    var component = IteratingComponent(
+        itemTitles: aureusComponents.keys.toList(),
+        itemWidgets: aureusComponents.values.toList());
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.stackScroll,
+        containerVariant: wrapperVariants.fullScreen,
         children: [
           DividingHeaderElement(
               headerText: 'Components',
               subheaderText:
-                  "Singular 'base' widgets that can stand alone, or create components. These are the first layer of building blocks for a view."),
-          componentsList
+                  "Fleshed out items that are actionable parts of the UI."),
+          component
         ]);
 
     return ContainerView(
@@ -588,6 +795,8 @@ class _AureusViewsViewState extends State<AureusViewsView> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     setState(() {
       viewGridCards.clear();
 
@@ -603,8 +812,8 @@ class _AureusViewsViewState extends State<AureusViewsView> {
           child: GridCardElement(
             decorationVariant: decorationPriority.standard,
             cardLabel: key,
-            gridSize: Size(size.layoutItemWidth(1, size.logicalScreenSize),
-                size.layoutItemHeight(1, size.logicalScreenSize)),
+            gridSize: Size(size.layoutItemWidth(1, screenSize) * 0.7,
+                size.layoutItemHeight(1, screenSize)),
           ),
         ));
       });
@@ -626,11 +835,13 @@ class _AureusViewsViewState extends State<AureusViewsView> {
               headerText: 'Views',
               subheaderText:
                   "Views are templates that we re-use a lot throughout our resources. Interactions are disabled on these views, and are just for testing purposes."),
-          SizedBox(
-            height: size.layoutItemHeight(1, size.logicalScreenSize) * 0.7,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: viewsCardList,
+          Center(
+            child: SizedBox(
+              height: size.layoutItemHeight(1, screenSize) * 0.7,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: viewsCardList,
+              ),
             ),
           )
         ]);

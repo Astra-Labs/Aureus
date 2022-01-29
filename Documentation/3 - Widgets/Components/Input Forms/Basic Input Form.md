@@ -13,13 +13,3 @@ For use with one stage of input. Group input based on category. For use with 1 c
 ~~~
 
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

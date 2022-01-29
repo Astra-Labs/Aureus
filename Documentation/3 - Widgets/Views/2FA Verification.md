@@ -10,15 +10,10 @@
 
 ~~~
 
+TFAVerificationView(
+userPhoneNumber: 555555555,
+issueVerificationCode: () => {print('verification code issued!')},
+onUserSubmission: () => {print('user submitted code!')});
+
 ~~~
-
-------------------
-
-#### Details
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()
 

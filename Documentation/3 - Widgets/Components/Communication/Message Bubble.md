@@ -10,14 +10,14 @@
 
 ~~~
 
+var receiverMessageBubble = MessageBubbleComponent(
+messageVariant: messagingVariants.receiver,
+messageBody: fillerTextBody,
+currentStatus: communicationStatus.delivered);
+
+var senderMessageBubble = MessageBubbleComponent(
+messageVariant: messagingVariants.sender,
+messageBody: fillerTextBody,
+currentStatus: communicationStatus.delivered);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

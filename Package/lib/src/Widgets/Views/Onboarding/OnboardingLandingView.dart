@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:aureus/aureus.dart';
 
 class OnboardingLandingView extends StatefulWidget {
@@ -18,18 +16,24 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
           Spacer(),
           Center(
             child: SizedBox(
-                width: size.widthOf(weight: sizingWeight.w1),
-                child: coloration.resourceLogo()),
+                height: 65.0,
+                width: 65.0,
+                child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                  image: coloration.resourceLogo().image,
+                  fit: BoxFit.contain,
+                )))),
           ),
           Spacer(),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadingThreeText(
-                  "I'm ${apiVariables.prodName}", decorationPriority.standard),
+              HeadingThreeText("I'm ${packageVariables.prodName}",
+                  decorationPriority.standard),
               HeadingOneText(
-                  apiVariables.missionTagline, decorationPriority.standard)
+                  packageVariables.missionTagline, decorationPriority.standard)
             ],
           ),
           Spacer(),

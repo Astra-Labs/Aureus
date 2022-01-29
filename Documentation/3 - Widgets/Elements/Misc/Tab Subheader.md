@@ -10,14 +10,6 @@
 
 ~~~
 
+var tabSubheader = TabSubheaderElement(title: fillerTextSubheader);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

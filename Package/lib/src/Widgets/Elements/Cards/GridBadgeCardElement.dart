@@ -18,13 +18,15 @@ class GridBadgeCardElement extends StatelessWidget {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
+    var screenSize = size.logicalScreenSize();
+
     return FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minWidth: size.layoutItemWidth(3, size.logicalScreenSize),
-              maxWidth: size.layoutItemWidth(3, size.logicalScreenSize),
-              minHeight: size.layoutItemWidth(3, size.logicalScreenSize),
-              maxHeight: size.layoutItemWidth(3, size.logicalScreenSize)),
+              minWidth: size.layoutItemWidth(3, screenSize),
+              maxWidth: size.layoutItemWidth(3, screenSize),
+              minHeight: size.layoutItemWidth(3, screenSize),
+              maxHeight: size.layoutItemWidth(3, screenSize)),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           clipBehavior: Clip.hardEdge,

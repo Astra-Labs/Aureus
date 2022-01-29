@@ -17,16 +17,16 @@ With sensitive issues, it's imperative that the exchange of trust is as easy, co
 ## Building trustable designs.
 The basics of building a trustable design can be broken into 
 
-1. Comfortable
+### 1. Comfortable
 Intitutive, and easily navigatable designs that you don’t need a user manual to figure out. Based off of best practices from other established designs in the field.
 
-2. Clean
+### 2. Clean
 Minimalist, unclutted, and cut-straight to the point. No bullshit. Just the help they need, and none of the frills they don’t
 
-3. Clear
+### 3. Clear
 Understandable, and easily intrepreted copy. No room for misinterpretation or confusion.
 
-4. Consistent
+### 4. Consistent
 The same experience across all of our products, designs, apps, and more. All designs under the UDS need to reflect changes in unison
 
 --------------------

@@ -10,14 +10,9 @@
 
 ~~~
 
+SignInView(
+onSignIn: fillerAction,
+onSignup: fillerAction,
+onResetInformation: fillerAction);
+
 ~~~
-
-------------------
-
-#### Details
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

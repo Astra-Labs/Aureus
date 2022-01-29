@@ -12,23 +12,47 @@ almost any web / mobile / tablet screen.
 
 class Sizing {
   //Pixel Ratio of a given device
-  final pixelRatio = window.devicePixelRatio;
+
+  SingletonFlutterWindow sizingWindow() {
+    return WidgetsBinding.instance!.window;
+  }
+
+  double pixelRatio() {
+    return sizingWindow().devicePixelRatio;
+  }
 
   //Size in physical pixels
-  final physicalScreenSize = window.physicalSize;
+  Size physicalScreenSize() {
+    return Size(
+        sizingWindow().physicalSize.width, sizingWindow().physicalSize.height);
+  }
 
-  late var physicalWidth = physicalScreenSize.width;
-  late var physicalHeight = physicalScreenSize.height;
+  double physicalWidth() {
+    return (physicalScreenSize().width);
+  }
 
-  //Size in logical pixels
-  late var logicalScreenSize = window.physicalSize / pixelRatio;
-  late var logicalWidth = logicalScreenSize.width;
-  late var logicalHeight = logicalScreenSize.height;
+  double physicalHeight() {
+    return physicalScreenSize().height;
+  }
+
+  //Size in physical pixels
+  Size logicalScreenSize() {
+    var screenSize = sizingWindow().physicalSize / pixelRatio();
+    return Size(screenSize.width, screenSize.height);
+  }
+
+  double logicalWidth() {
+    return logicalScreenSize().width;
+  }
+
+  double logicalHeight() {
+    return logicalScreenSize().height;
+  }
 
   bool isDesktopDisplay() {
-    if (logicalScreenSize.width >= logicalScreenSize.height) {
+    if (logicalWidth() > logicalHeight()) {
       return false;
-    } else if (logicalScreenSize.width < logicalScreenSize.height) {
+    } else if (logicalWidth() < logicalHeight()) {
       return true;
     }
 
@@ -39,7 +63,7 @@ class Sizing {
   //mobile, tablet, and web.
   double responsiveTextSize(double base) {
     double scaleFactor = 0.0;
-    double shortSide = logicalScreenSize.shortestSide;
+    double shortSide = logicalScreenSize().shortestSide;
 
     if (shortSide < 550) {
       //needs mobile phone scale
@@ -57,7 +81,7 @@ class Sizing {
 
   // Basic padding that can be used for anything.
   EdgeInsets universalPadding() {
-    return EdgeInsets.fromLTRB(20, 10, 20, 10);
+    return const EdgeInsets.fromLTRB(20, 10, 20, 10);
   }
 
   // Returns the % of screen height for the weight passed
@@ -70,57 +94,57 @@ class Sizing {
 
       //MINIMUM HEIGHT OF ITEM - 5%
       case sizingWeight.w0:
-        screenWeightedHeight = (logicalHeight) * 0.05;
+        screenWeightedHeight = logicalHeight() * 0.05;
         break;
 
       //10% of screen height
       case sizingWeight.w1:
-        screenWeightedHeight = (logicalHeight) * 0.1;
+        screenWeightedHeight = logicalHeight() * 0.1;
         break;
 
       //20% of screen height
       case sizingWeight.w2:
-        screenWeightedHeight = (logicalHeight) * 0.2;
+        screenWeightedHeight = logicalHeight() * 0.2;
         break;
 
       //30% of screen height
       case sizingWeight.w3:
-        screenWeightedHeight = (logicalHeight) * 0.3;
+        screenWeightedHeight = logicalHeight() * 0.3;
         break;
 
       //40% of screen height
       case sizingWeight.w4:
-        screenWeightedHeight = (logicalHeight) * 0.4;
+        screenWeightedHeight = logicalHeight() * 0.4;
         break;
 
       //50% of screen height
       case sizingWeight.w5:
-        screenWeightedHeight = (logicalHeight) * 0.5;
+        screenWeightedHeight = logicalHeight() * 0.5;
         break;
 
       //60% of screen height
       case sizingWeight.w6:
-        screenWeightedHeight = (logicalHeight) * 0.6;
+        screenWeightedHeight = logicalHeight() * 0.6;
         break;
 
       //70% of screen height
       case sizingWeight.w7:
-        screenWeightedHeight = (logicalHeight) * 0.7;
+        screenWeightedHeight = logicalHeight() * 0.7;
         break;
 
       //80% of screen height
       case sizingWeight.w8:
-        screenWeightedHeight = (logicalHeight) * 0.8;
+        screenWeightedHeight = logicalHeight() * 0.8;
         break;
 
       //90% of screen height
       case sizingWeight.w9:
-        screenWeightedHeight = (logicalHeight) * 0.9;
+        screenWeightedHeight = logicalHeight() * 0.9;
         break;
 
       //100% of screen height
       case sizingWeight.w10:
-        screenWeightedHeight = (logicalHeight);
+        screenWeightedHeight = logicalHeight();
         break;
     }
 
@@ -136,57 +160,57 @@ class Sizing {
 
       //MINIMUM WIDTH OF ITEM - 5%
       case sizingWeight.w0:
-        screenWeightedWidth = (logicalWidth) * 0.05;
+        screenWeightedWidth = logicalWidth() * 0.05;
         break;
 
       //10% of width
       case sizingWeight.w1:
-        screenWeightedWidth = (logicalWidth) * 0.1;
+        screenWeightedWidth = logicalWidth() * 0.1;
         break;
 
       //20% of width
       case sizingWeight.w2:
-        screenWeightedWidth = (logicalWidth) * 0.2;
+        screenWeightedWidth = logicalWidth() * 0.2;
         break;
 
       //30% of width
       case sizingWeight.w3:
-        screenWeightedWidth = (logicalWidth) * 0.3;
+        screenWeightedWidth = logicalWidth() * 0.3;
         break;
 
       //40% of width
       case sizingWeight.w4:
-        screenWeightedWidth = (logicalWidth) * 0.4;
+        screenWeightedWidth = logicalWidth() * 0.4;
         break;
 
       //50% of width
       case sizingWeight.w5:
-        screenWeightedWidth = (logicalWidth) * 0.5;
+        screenWeightedWidth = logicalWidth() * 0.5;
         break;
 
       //60% of width
       case sizingWeight.w6:
-        screenWeightedWidth = (logicalWidth) * 0.6;
+        screenWeightedWidth = logicalWidth() * 0.6;
         break;
 
       //70% of width
       case sizingWeight.w7:
-        screenWeightedWidth = (logicalWidth) * 0.7;
+        screenWeightedWidth = logicalWidth() * 0.7;
         break;
 
       //80% of width
       case sizingWeight.w8:
-        screenWeightedWidth = (logicalWidth) * 0.8;
+        screenWeightedWidth = logicalWidth() * 0.8;
         break;
 
       //90% of width
       case sizingWeight.w9:
-        screenWeightedWidth = (logicalWidth) * 0.9;
+        screenWeightedWidth = logicalWidth() * 0.9;
         break;
 
       //100% of width
       case sizingWeight.w10:
-        screenWeightedWidth = (logicalWidth);
+        screenWeightedWidth = logicalWidth();
         break;
     }
 

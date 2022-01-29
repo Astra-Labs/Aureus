@@ -12,12 +12,14 @@ class DetailCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     return FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-              maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-              maxHeight: size.layoutItemHeight(4, size.logicalScreenSize)),
+              minWidth: size.layoutItemWidth(1, screenSize),
+              maxWidth: size.layoutItemWidth(1, screenSize),
+              maxHeight: size.layoutItemHeight(4, screenSize)),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           clipBehavior: Clip.hardEdge,

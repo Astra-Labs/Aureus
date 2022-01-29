@@ -19,7 +19,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'Camera',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.camera_outlined,
+        permissionIcon: Assets.camera,
         onPermissionOptIn: onPermissionOptIn);
   }
 
@@ -28,7 +28,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'Microphone',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.mic_external_on_rounded,
+        permissionIcon: Assets.play,
         onPermissionOptIn: onPermissionOptIn);
   }
 
@@ -37,7 +37,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'Location',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.location_on_rounded,
+        permissionIcon: Assets.location,
         onPermissionOptIn: onPermissionOptIn);
   }
 
@@ -46,7 +46,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'Bluetooth',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.bluetooth_audio_rounded,
+        permissionIcon: Assets.settings,
         onPermissionOptIn: onPermissionOptIn);
   }
 
@@ -55,7 +55,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'Health Information',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.health_and_safety_rounded,
+        permissionIcon: Assets.stethoscope,
         onPermissionOptIn: onPermissionOptIn);
   }
 
@@ -64,7 +64,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'Tracking',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.track_changes_rounded,
+        permissionIcon: Assets.window,
         onPermissionOptIn: onPermissionOptIn);
   }
 
@@ -73,7 +73,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'Push Notifications',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.notification_add_rounded,
+        permissionIcon: Assets.alertmessage,
         onPermissionOptIn: onPermissionOptIn);
   }
 
@@ -82,7 +82,7 @@ class DataConsent {
     return DataPermissionObject(
         permissionName: 'E-mail Promotions',
         permissionDescription: permissionUsage,
-        permissionIcon: Icons.email_rounded,
+        permissionIcon: Assets.mail,
         onPermissionOptIn: onPermissionOptIn);
   }
 }

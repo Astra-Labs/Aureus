@@ -50,6 +50,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
+    var screenSize = size.logicalScreenSize();
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,7 +59,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
           Container(
               constraints: BoxConstraints(
                   minHeight: bodyTextSizing.height * 2.5,
-                  maxWidth: size.layoutItemWidth(2, size.physicalScreenSize)),
+                  maxWidth: size.layoutItemWidth(1, screenSize) * 0.7),
               padding: EdgeInsets.all(12.0),
               decoration: backingDecoration,
               child: Center(

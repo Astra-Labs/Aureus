@@ -10,9 +10,11 @@ class _SliderElementState extends State<SliderElement> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = size.logicalScreenSize();
+
     return ConstrainedBox(
-      constraints: BoxConstraints(
-          maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
+      constraints:
+          BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
       child: SliderTheme(
         data: SliderTheme.of(context).copyWith(
             activeTrackColor: coloration.contrastColor(),

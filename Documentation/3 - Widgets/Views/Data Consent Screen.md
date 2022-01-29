@@ -10,16 +10,8 @@
 
 ~~~
 
+DataOptInView(permissionItems: dataPermissions);
+
 ~~~
-
-------------------
-
-#### Details
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()
 
 

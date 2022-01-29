@@ -3,6 +3,7 @@
 --------------------
 
 ### Description 
+An icon button that comes in two sizes: primary and secondary.
 
 --------------------
 
@@ -10,14 +11,16 @@
 
 ~~~
 
+var standardPrimaryIconButton = PrimaryIconButtonElement(
+buttonIcon: fillerIcon1,
+buttonTooltip: fillerTextButton,
+buttonAction: fillerAction,
+decorationVariant: decorationPriority.standard);
+
+var standardSecondaryIconButton = SecondaryIconButtonElement(
+buttonIcon: fillerIcon1,
+buttonTooltip: fillerTextButton,
+buttonAction: fillerAction,
+decorationVariant: decorationPriority.standard);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

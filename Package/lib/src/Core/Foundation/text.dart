@@ -13,81 +13,137 @@ each mode.
 // Global Text Styles ---------------------------------
 
 TextStyle heading1() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(26),
-      fontWeight: FontWeight.w200,
-      letterSpacing: 0.4);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(26),
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(26),
+          fontWeight: FontWeight.w200,
+          letterSpacing: 0.4);
 }
 
 TextStyle heading2() {
-  return GoogleFonts.exo(
-    fontSize: size.responsiveTextSize(21),
-    fontWeight: FontWeight.w300,
-    letterSpacing: 1.2,
-  );
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(21),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 1.2,
+        )
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(21),
+          fontWeight: FontWeight.w300,
+          letterSpacing: 1.2,
+        );
 }
 
 TextStyle heading3() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(17),
-      fontWeight: FontWeight.w500,
-      letterSpacing: 1.0);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w700,
+          letterSpacing: 1.0)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 1.0);
 }
 
 TextStyle heading4() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(14),
-      fontWeight: FontWeight.w600,
-      letterSpacing: 1.0);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w800,
+          letterSpacing: 1.0)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w600,
+          letterSpacing: 1.0);
 }
 
 TextStyle subheading() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(17),
-      fontWeight: FontWeight.w300,
-      letterSpacing: 0.4);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.4);
 }
 
 TextStyle body1() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(14),
-      fontWeight: FontWeight.w200,
-      letterSpacing: 0.4);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w200,
+          letterSpacing: 0.4);
 }
 
 TextStyle body2() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(14),
-      fontWeight: FontWeight.w300,
-      letterSpacing: 0.4);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(15),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w300,
+          letterSpacing: 0.4);
 }
 
 TextStyle button1() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(17),
-      fontWeight: FontWeight.w500,
-      letterSpacing: 1.0);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 1.0);
 }
 
 TextStyle button2() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(12),
-      fontWeight: FontWeight.w400,
-      letterSpacing: 1.0);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(12),
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(12),
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1.0);
 }
 
 TextStyle tag1() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(12),
-      fontWeight: FontWeight.w500,
-      letterSpacing: 1.5);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(12),
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(12),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 1.5);
 }
 
 TextStyle tag2() {
-  return GoogleFonts.exo(
-      fontSize: size.responsiveTextSize(12),
-      fontWeight: FontWeight.w400,
-      letterSpacing: 1.0);
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(12),
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.4)
+      : GoogleFonts.exo(
+          fontSize: accessibility.responsiveTextSize(12),
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1.0);
 }
 
 class TitleCase {
@@ -120,7 +176,9 @@ class HeadingOneText extends Text {
       : super(data,
             style: heading1().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class HeadingTwoText extends Text {
@@ -128,7 +186,9 @@ class HeadingTwoText extends Text {
       : super(data.toUpperCase(),
             style: heading2().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class HeadingThreeText extends Text {
@@ -136,7 +196,9 @@ class HeadingThreeText extends Text {
       : super(data.toUpperCase(),
             style: heading3().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class HeadingFourText extends Text {
@@ -144,7 +206,9 @@ class HeadingFourText extends Text {
       : super(data.toUpperCase(),
             style: heading4().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class SubheaderText extends Text {
@@ -152,7 +216,9 @@ class SubheaderText extends Text {
       : super(TitleCase.convertToTitleCase(data),
             style: subheading().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class BodyOneText extends Text {
@@ -160,7 +226,9 @@ class BodyOneText extends Text {
       : super(data,
             style: body1().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class BodyTwoText extends Text {
@@ -168,7 +236,9 @@ class BodyTwoText extends Text {
       : super(data,
             style: body2().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class ButtonOneText extends Text {
@@ -176,7 +246,9 @@ class ButtonOneText extends Text {
       : super(data.toUpperCase(),
             style: button1().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class ButtonTwoText extends Text {
@@ -184,7 +256,9 @@ class ButtonTwoText extends Text {
       : super(data.toUpperCase(),
             style: button2().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class TagOneText extends Text {
@@ -192,7 +266,9 @@ class TagOneText extends Text {
       : super(data.toUpperCase(),
             style: tag1().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }
 
 class TagTwoText extends Text {
@@ -200,5 +276,7 @@ class TagTwoText extends Text {
       : super(data.toUpperCase(),
             style: tag2().copyWith(
                 color:
-                    coloration.decorationColor(decorationVariant: textColor)));
+                    coloration.decorationColor(decorationVariant: textColor)),
+            semanticsLabel: data,
+            key: ValueKey<bool>(containerEnvChanged));
 }

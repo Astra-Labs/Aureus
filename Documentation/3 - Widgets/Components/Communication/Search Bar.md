@@ -10,14 +10,6 @@
 
 ~~~
 
+var searchBar = SearchBarComponent(onSearch: fillerAction);
+
 ~~~
-
-------------------
-
-#### Properties
-
-------------------
-
-#### Links
-[Figma Frame]()
-[Source Code]()

@@ -49,7 +49,18 @@ late AlertControllerObject testAlertControllerObject =
         alertTitle: 'Would you like to yee?',
         alertBody: 'Haw. Haw Haw Haw Haw.',
         actions: [testAlertControllerAction],
-        alertIcon: Icons.access_alarm);
+        alertIcon: Assets.expand);
+
+AlertControllerObject multipleTestAlertControllerObject =
+    AlertControllerObject.multipleActions(
+        onCancellation: () => {print('cancelled')},
+        alertTitle: 'Would you like to yee?',
+        alertBody: 'Haw. Haw Haw Haw Haw.',
+        actions: [testAlertControllerAction, testAlertControllerAction2],
+        alertIcon: Assets.expand);
+
+var alertController =
+    CenteredAlertControllerComponent(alertData: testAlertControllerObject);
 
 /* ELEMENTS */
 

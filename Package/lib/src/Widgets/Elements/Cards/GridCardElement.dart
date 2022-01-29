@@ -12,13 +12,16 @@ class GridCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var maxWidth =
+        size.isDesktopDisplay() ? gridSize.width / 2 : gridSize.width / 3.2;
+
     return FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minWidth: gridSize.height / 3.2,
-              maxWidth: gridSize.height / 3.2,
-              minHeight: gridSize.height / 3.2,
-              maxHeight: gridSize.height / 3.2),
+              minWidth: maxWidth,
+              maxWidth: maxWidth,
+              minHeight: maxWidth,
+              maxHeight: maxWidth),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           clipBehavior: Clip.hardEdge,

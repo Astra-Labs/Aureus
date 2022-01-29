@@ -34,10 +34,12 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
       tabItems.add(tabItem);
     });
 
+    var screenSize = size.logicalScreenSize();
+
     return FloatingContainerElement(
       child: SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize),
-          height: size.layoutItemHeight(6, size.logicalScreenSize),
+          width: size.layoutItemWidth(1, screenSize),
+          height: size.layoutItemHeight(6, screenSize),
           child: Container(
               padding: EdgeInsets.all(8),
               decoration:

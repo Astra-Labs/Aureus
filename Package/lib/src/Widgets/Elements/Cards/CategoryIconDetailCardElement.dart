@@ -14,34 +14,42 @@ class CategoryIconDetailCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        //this will be the rounded card backing
-        constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(2, size.logicalScreenSize),
-            minHeight: size.layoutItemHeight(2, size.logicalScreenSize)),
-        decoration:
-            CardBackingDecoration(priority: decorationVariant).buildBacking(),
-        alignment: Alignment.center,
-        clipBehavior: Clip.hardEdge,
-        child: SizedBox(
-            width: size.layoutItemWidth(2, size.logicalScreenSize) - 20,
-            height: size.layoutItemHeight(2, size.logicalScreenSize) - 20,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Icon(cardIcon,
-                      size: size.widthOf(weight: sizingWeight.w0),
-                      color: coloration.decorationColor(
-                          decorationVariant: decorationVariant)),
-                  HeadingThreeText(cardLabel, decorationVariant),
-                  Text(cardBody,
-                      textAlign: TextAlign.center,
-                      style: body1().copyWith(
-                        color: coloration.decorationColor(
-                            decorationVariant: decorationVariant),
-                      ))
-                ])));
+    var screenSize = size.logicalScreenSize();
+    var screenWidth = size.logicalWidth();
+
+    return FloatingContainerElement(
+      child: Container(
+          //this will be the rounded card backing
+          constraints: BoxConstraints(
+              maxWidth: size.layoutItemWidth(1, screenSize) * 0.7,
+              minHeight: size.layoutItemHeight(2, screenSize)),
+          decoration:
+              CardBackingDecoration(priority: decorationVariant).buildBacking(),
+          alignment: Alignment.center,
+          clipBehavior: Clip.hardEdge,
+          child: SizedBox(
+              width: size.layoutItemWidth(2, screenSize) - 20,
+              height: size.layoutItemHeight(2, screenSize) - 20,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(cardIcon,
+                          size: screenWidth / 8,
+                          color: coloration.decorationColor(
+                              decorationVariant: decorationVariant)),
+                      HeadingThreeText(cardLabel, decorationVariant),
+                      Text(cardBody,
+                          textAlign: TextAlign.center,
+                          style: body1().copyWith(
+                            color: coloration.decorationColor(
+                                decorationVariant: decorationVariant),
+                          ))
+                    ]),
+              ))),
+    );
   }
 }

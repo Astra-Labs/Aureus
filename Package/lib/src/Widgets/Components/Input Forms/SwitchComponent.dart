@@ -30,10 +30,10 @@ class _SwitchComponentState extends State<SwitchComponent> {
     return Switch(
       onChanged: toggleSwitch,
       value: isSwitchEnabled,
-      activeColor: coloration.accentColor(),
-      activeTrackColor: coloration.sameColor(),
-      inactiveThumbColor: coloration.sameColor(),
-      inactiveTrackColor: coloration.accentColor(),
+      activeColor: coloration.contrastColor(),
+      activeTrackColor: coloration.accentColor(),
+      inactiveThumbColor: coloration.accentColor(),
+      inactiveTrackColor: coloration.inactiveColor(),
     );
   }
 }

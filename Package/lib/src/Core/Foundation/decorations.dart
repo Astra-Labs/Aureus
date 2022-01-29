@@ -120,7 +120,7 @@ class CardBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
 
       decorationCornerRadius = BorderRadius.circular(10.0);
-      decorationFill = coloration.inactiveColor();
+      decorationFill = coloration.inactiveColor().withOpacity(0.1);
     } else if (priority == decorationPriority.important) {
       decorationCornerRadius = BorderRadius.circular(20.0);
       decorationBorder = universalBorder();

@@ -37,6 +37,9 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
       return Alignment.center;
     }
 
+    var screenSize = size.logicalScreenSize();
+    var screenWidth = size.logicalWidth();
+
     Size accessibilitySizing = Accessibility.textStringSize(
         textInput: 'Tap the button to quickly exit.',
         textStyle: body1(),
@@ -45,15 +48,14 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
 
     return Container(
         constraints: BoxConstraints(
-            minHeight: accessibilitySizing.height * 5,
-            minWidth: size.widthOf(weight: sizingWeight.w10)),
+            minHeight: accessibilitySizing.height * 5, minWidth: screenWidth),
         child: Align(
           alignment: barAlignment(),
           child: ConstrainedBox(
             constraints: BoxConstraints(
                 minHeight: accessibilitySizing.height * 3,
-                minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-                maxWidth: size.layoutItemWidth(1, size.logicalScreenSize)),
+                minWidth: size.layoutItemWidth(1, screenSize),
+                maxWidth: size.layoutItemWidth(1, screenSize)),
             child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

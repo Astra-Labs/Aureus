@@ -19,6 +19,10 @@ class LandingPageView extends StatefulWidget {
 }
 
 class _LandingPageViewState extends State<LandingPageView> {
+  var screenSize = size.logicalScreenSize();
+  var screenWidth = size.logicalWidth();
+  var screenHeight = size.logicalHeight();
+
   @override
   Widget build(BuildContext context) {
     Column informationHiearchy = Column(
@@ -27,10 +31,10 @@ class _LandingPageViewState extends State<LandingPageView> {
         mainAxisSize: MainAxisSize.min,
         children: [
           HeadingTwoText(
-              "I'm ${apiVariables.prodName}", decorationPriority.standard),
+              "I'm ${packageVariables.prodName}", decorationPriority.standard),
           SizedBox(height: 4.0),
           HeadingOneText(
-              apiVariables.missionTagline, decorationPriority.standard)
+              packageVariables.missionTagline, decorationPriority.standard)
         ]);
 
     Image homeScreenOverlay = brightness() == Brightness.light
@@ -49,8 +53,8 @@ class _LandingPageViewState extends State<LandingPageView> {
     );
 
     Container mobilePageFooter = Container(
-        width: size.logicalWidth,
-        height: size.layoutItemHeight(2, size.logicalScreenSize),
+        width: screenWidth,
+        height: size.layoutItemHeight(2, screenSize),
         decoration: BoxDecoration(
             color: coloration
                 .decorationColor(
@@ -67,7 +71,7 @@ class _LandingPageViewState extends State<LandingPageView> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 BodyOneText(
-                    '${apiVariables.prodName} is run by Astra Labs, a 501(c)3 non-profit.',
+                    '${packageVariables.prodName} is run by Astra Labs, a 501(c)3 non-profit.',
                     decorationPriority.standard),
                 SizedBox(width: 10.0),
                 SmolButtonElement(
@@ -79,7 +83,7 @@ class _LandingPageViewState extends State<LandingPageView> {
         ));
 
     Container webPageFooter = Container(
-        width: size.logicalWidth,
+        width: screenWidth,
         decoration: BoxDecoration(
             color: coloration
                 .decorationColor(
@@ -89,8 +93,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                 top:
                     BorderSide(color: coloration.inactiveColor(), width: 1.0))),
         child: SizedBox(
-          width: size.logicalWidth,
-          height: size.logicalHeight * 0.15,
+          width: screenWidth,
+          height: screenHeight * 0.15,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
             child: Row(
@@ -99,7 +103,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   BodyOneText(
-                      '${apiVariables.prodName} is run by Astra Labs, a 501(c)3 non-profit.',
+                      '${packageVariables.prodName} is run by Astra Labs, a 501(c)3 non-profit.',
                       decorationPriority.standard),
                   Row(
                     children: [
@@ -114,8 +118,8 @@ class _LandingPageViewState extends State<LandingPageView> {
         ));
 
     var mobileView = SizedBox(
-        height: size.logicalHeight,
-        width: size.logicalWidth,
+        height: screenHeight,
+        width: screenWidth,
         child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -139,7 +143,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                         SizedBox(
                             height: size.heightOf(weight: sizingWeight.w0)),
                         SizedBox(
-                            height: size.logicalHeight *
+                            height: screenHeight *
                                 (0.15 * widget.actionButtons.length),
                             child: buttonItems),
                         SizedBox(height: 10.0),
@@ -150,8 +154,8 @@ class _LandingPageViewState extends State<LandingPageView> {
             )));
 
     var webView = SizedBox(
-        height: size.logicalHeight,
-        width: size.logicalWidth,
+        height: screenHeight,
+        width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -163,17 +167,16 @@ class _LandingPageViewState extends State<LandingPageView> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 SizedBox(
-                    width: size.logicalWidth / 3.5,
-                    height: size.logicalHeight * 0.5,
+                    width: screenWidth / 3.5,
+                    height: screenHeight * 0.5,
                     child: Center(child: informationHiearchy)),
                 SizedBox(
-                    width: size.logicalWidth / 3.5,
-                    height: size.logicalHeight * 0.88,
+                    width: screenWidth / 3.5,
+                    height: screenHeight * 0.88,
                     child: homeScreenOverlay),
                 SizedBox(
-                    width: size.logicalWidth / 3.5,
-                    height: size.logicalHeight *
-                        (0.10 * widget.actionButtons.length),
+                    width: screenWidth / 3.5,
+                    height: screenHeight * (0.10 * widget.actionButtons.length),
                     child: buttonItems),
               ],
             ),
@@ -184,10 +187,10 @@ class _LandingPageViewState extends State<LandingPageView> {
     return Scaffold(
       body: Container(
           constraints: BoxConstraints(
-              minHeight: size.logicalHeight,
-              maxHeight: size.logicalHeight,
-              minWidth: size.logicalWidth,
-              maxWidth: size.logicalWidth),
+              minHeight: screenHeight,
+              maxHeight: screenHeight,
+              minWidth: screenWidth,
+              maxWidth: screenWidth),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: landscapeBacking.image,
@@ -195,8 +198,8 @@ class _LandingPageViewState extends State<LandingPageView> {
             ),
           ),
           child: SizedBox(
-              width: size.logicalWidth,
-              height: size.logicalHeight,
+              width: screenWidth,
+              height: screenHeight,
               child: size.isDesktopDisplay() ? mobileView : webView)),
     );
   }

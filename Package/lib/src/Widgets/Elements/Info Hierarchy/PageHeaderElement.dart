@@ -20,7 +20,7 @@ class PageHeaderElement extends StatelessWidget {
       var exitButton = SecondaryIconButtonElement(
           decorationVariant: decorationPriority.standard,
           buttonIcon: Assets.no,
-          buttonTooltip: 'Exit ${pageTitle}',
+          buttonTooltip: 'Exit $pageTitle',
           buttonAction: onPageExit);
 
       if (onPageDetails != null) {
@@ -30,7 +30,7 @@ class PageHeaderElement extends StatelessWidget {
             SecondaryIconButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonIcon: Assets.more1,
-                buttonTooltip: '${pageTitle} Options',
+                buttonTooltip: '$pageTitle Options',
                 buttonAction: onPageDetails!),
             exitButton
           ],
@@ -50,10 +50,12 @@ class PageHeaderElement extends StatelessWidget {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
+    var screenSize = size.logicalScreenSize();
+
     return Container(
       constraints: BoxConstraints(
-          minWidth: size.layoutItemWidth(1, size.logicalScreenSize),
-          maxWidth: size.layoutItemWidth(1, size.logicalScreenSize),
+          minWidth: size.layoutItemWidth(1, screenSize),
+          maxWidth: size.layoutItemWidth(1, screenSize),
           minHeight: labelSizing.height * 2),
       child: Column(
         children: [

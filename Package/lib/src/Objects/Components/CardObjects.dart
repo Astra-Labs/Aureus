@@ -8,6 +8,86 @@ class CardObject {
   IconData? cardIcon;
   VoidCallback? cardAction;
 
+  Widget filledCardObject(
+      {required cardType cardVariant, required CardObject cardData}) {
+    switch (cardVariant) {
+
+      //should be card object type of: standard
+      case cardType.StandardCard:
+        {
+          return StandardCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!);
+        }
+
+      //should be card object type of: standardIcon
+      case cardType.StandardBadgeCard:
+        {
+          return StandardBadgeCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: detailed
+      case cardType.DetailCard:
+        {
+          return DetailCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!);
+        }
+
+      //should be card object type of: detailedIcon
+      case cardType.DetailBadgeCard:
+        {
+          return DetailBadgeCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: standardIcon
+      case cardType.DetailCarouselCard:
+        {
+          return DetailCarouselCardElement(
+              cardLabel: cardData.cardLabel!, cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: complex
+      case cardType.ComplexCard:
+        {
+          return ComplexCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardDetailCarousel: cardData.cardDetailCarousel!);
+        }
+
+      //should be card object type of: complexIcon
+      case cardType.ComplexBadgeCard:
+        {
+          return ComplexBadgeCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardDetailCarousel: cardData.cardDetailCarousel!,
+              cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: complex
+      case cardType.CategoryIconDetailCard:
+        {
+          return CategoryIconDetailCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardIcon: cardData.cardIcon!);
+        }
+    }
+  }
+
   //standard card with header and action
   CardObject.standard(this.decorationVariant, this.cardLabel, this.cardAction)
       : assert(cardLabel != '', cardAction != null);
