@@ -15,14 +15,12 @@ class DetailCarouselCardElement extends StatelessWidget {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var screenSize = size.logicalScreenSize();
-
     return Container(
       constraints: BoxConstraints(
-          minWidth: labelSize.width * 2,
-          maxWidth: size.layoutItemWidth(3, screenSize),
-          minHeight: size.heightOf(weight: sizingWeight.w0),
-          maxHeight: size.heightOf(weight: sizingWeight.w1)),
+          minWidth: labelSize.width * 1.5,
+          maxWidth: labelSize.width * 2,
+          minHeight: labelSize.height * 2,
+          maxHeight: labelSize.height * 3),
       decoration: CardBackingDecoration(priority: decorationPriority.inactive)
           .buildBacking(),
       clipBehavior: Clip.hardEdge,

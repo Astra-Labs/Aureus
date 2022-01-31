@@ -91,7 +91,8 @@ class _CenteredAlertControllerComponentState
               children: [
                 IconBadge(
                     badgeIcon: widget.alertData.alertIcon,
-                    badgePriority: decorationPriority.important),
+                    badgePriority: decorationPriority.standard),
+                SizedBox(height: 20),
                 HeadingThreeText(
                     widget.alertData.alertTitle, decorationPriority.standard),
                 BodyOneText(

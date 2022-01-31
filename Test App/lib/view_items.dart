@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:test_app/functionality_items.dart';
 import 'package:test_app/interface_items.dart';
 
 HelpCenterObject helpCenterTest = HelpCenterObject(articleCategories: [
@@ -95,7 +94,7 @@ CoreTool demoTool1 = CoreTool(
     ],
     toolCards: [],
     toolIcon: Assets.mail,
-    entrySource: weightedBox1,
+    entrySource: OnboardingLandingView(),
     exitSource: OnboardingLandingView());
 
 CoreTool demoTool2 = CoreTool(
@@ -107,7 +106,7 @@ CoreTool demoTool2 = CoreTool(
     ],
     toolCards: [],
     toolIcon: Assets.body,
-    entrySource: weightedBox2,
+    entrySource: OnboardingLandingView(),
     exitSource: OnboardingLandingView());
 
 CoreTool demoTool3 = CoreTool(
@@ -119,7 +118,7 @@ CoreTool demoTool3 = CoreTool(
     ],
     toolCards: [],
     toolIcon: Assets.stethoscope,
-    entrySource: weightedBox3,
+    entrySource: OnboardingLandingView(),
     exitSource: OnboardingLandingView());
 
 CoreTool demoTool4 = CoreTool(
@@ -131,7 +130,7 @@ CoreTool demoTool4 = CoreTool(
     ],
     toolCards: [],
     toolIcon: Assets.pencil,
-    entrySource: weightedBox4,
+    entrySource: OnboardingLandingView(),
     exitSource: OnboardingLandingView());
 
 OnboardingDetail onboardingInfo1 = OnboardingDetail(

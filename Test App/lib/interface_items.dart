@@ -33,35 +33,6 @@ void fillerAction() {
   print('Action completed');
 }
 
-var testAlertControllerAction = AlertControllerAction(
-    actionName: 'Yee the haw',
-    actionSeverity: AlertControllerActionSeverity.confirm,
-    onSelection: () => {print('yee haw!')});
-
-var testAlertControllerAction2 = AlertControllerAction(
-    actionName: 'Haw the yee',
-    actionSeverity: AlertControllerActionSeverity.destruct,
-    onSelection: () => {print('haw yee!')});
-
-late AlertControllerObject testAlertControllerObject =
-    AlertControllerObject.singleAction(
-        onCancellation: () => {print('cancelled')},
-        alertTitle: 'Would you like to yee?',
-        alertBody: 'Haw. Haw Haw Haw Haw.',
-        actions: [testAlertControllerAction],
-        alertIcon: Assets.expand);
-
-AlertControllerObject multipleTestAlertControllerObject =
-    AlertControllerObject.multipleActions(
-        onCancellation: () => {print('cancelled')},
-        alertTitle: 'Would you like to yee?',
-        alertBody: 'Haw. Haw Haw Haw Haw.',
-        actions: [testAlertControllerAction, testAlertControllerAction2],
-        alertIcon: Assets.expand);
-
-var alertController =
-    CenteredAlertControllerComponent(alertData: testAlertControllerObject);
-
 /* ELEMENTS */
 
 var tabSubheader = TabSubheaderElement(title: fillerTextSubheader);
@@ -161,6 +132,35 @@ var inactiveStandardButton = StandardButtonElement(
     decorationVariant: decorationPriority.inactive);
 
 /* COMPONENTS */
+
+var testAlertControllerAction = AlertControllerAction(
+    actionName: 'Yee the haw',
+    actionSeverity: AlertControllerActionSeverity.confirm,
+    onSelection: () => {print('yee haw!')});
+
+var testAlertControllerAction2 = AlertControllerAction(
+    actionName: 'Haw the yee',
+    actionSeverity: AlertControllerActionSeverity.destruct,
+    onSelection: () => {print('haw yee!')});
+
+late AlertControllerObject testAlertControllerObject =
+    AlertControllerObject.singleAction(
+        onCancellation: () => {print('cancelled')},
+        alertTitle: 'Would you like to yee?',
+        alertBody: 'Haw. Haw Haw Haw Haw.',
+        actions: [testAlertControllerAction],
+        alertIcon: Assets.expand);
+
+AlertControllerObject multipleTestAlertControllerObject =
+    AlertControllerObject.multipleActions(
+        onCancellation: () => {print('cancelled')},
+        alertTitle: 'Would you like to yee?',
+        alertBody: 'Haw. Haw Haw Haw Haw.',
+        actions: [testAlertControllerAction, testAlertControllerAction2],
+        alertIcon: Assets.expand);
+
+var alertController =
+    CenteredAlertControllerComponent(alertData: testAlertControllerObject);
 
 var receiverMessageBubble = MessageBubbleComponent(
     messageVariant: messagingVariants.receiver,
@@ -292,11 +292,6 @@ var standardContainerView = ContainerView(
 var importantContainerView = ContainerView(
     decorationVariant: decorationPriority.important, builder: landing1);
 
-Widget childWidget1 = Container(color: lavender());
-Widget childWidget2 = Container(color: melt());
-Widget childWidget3 = Container(color: ice());
-Widget childWidget4 = Container(color: steel());
-
 TabObject tab1 = TabObject.forIconTabbing(
     tabIcon: fillerIcon1,
     tabPriority: decorationPriority.standard,
@@ -316,33 +311,3 @@ TabObject tab4 = TabObject.forIconTabbing(
     tabIcon: fillerIcon4,
     tabPriority: decorationPriority.standard,
     accessibilityHint: 'Steel');
-
-/* MISC */
-
-//array of all elements available in aureus
-List<Widget> libElements = [
-  tabSubheader,
-  divider,
-  timer,
-  singleInput,
-  multiInput,
-  inactiveFullWidthButton,
-  standardPrimaryIconButton,
-  importantPrimaryIconButton,
-  inactivePrimaryIconButton,
-  standardSecondaryIconButton,
-  importantSecondaryIconButton,
-  inactiveSecondaryIconButton,
-  standardSmolButton,
-  importantSmolButton,
-  inactiveSmolButton,
-  standardStandardButton,
-  importantStandardButton,
-  inactiveStandardButton,
-  receiverMessageBubble,
-  senderMessageBubble,
-  unreadNotification,
-  readNotification,
-  searchBar,
-  sendField
-];

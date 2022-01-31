@@ -56,18 +56,21 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
                 minHeight: accessibilitySizing.height * 3,
                 minWidth: size.layoutItemWidth(1, screenSize),
                 maxWidth: size.layoutItemWidth(1, screenSize)),
-            child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  BodyOneText(
-                      'Tap the button to exit.', decorationPriority.standard),
-                  SmolButtonElement(
-                      decorationVariant: decorationPriority.important,
-                      buttonTitle: 'Exit now.',
-                      buttonAction: () => {print('Exit for user!')})
-                ]),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    BodyOneText(
+                        'Tap the button to exit.', decorationPriority.standard),
+                    SmolButtonElement(
+                        decorationVariant: decorationPriority.important,
+                        buttonTitle: 'Exit now.',
+                        buttonAction: () => {print('Exit for user!')})
+                  ]),
+            ),
           ),
         ),
         decoration: BoxDecoration(

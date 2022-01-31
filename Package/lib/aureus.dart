@@ -92,7 +92,6 @@ export 'src/Widgets/Components/Communication/SearchBarComponent.dart';
 export 'src/Widgets/Components/Communication/SendFieldComponent.dart';
 export 'src/Widgets/Components/Communication/BlankScreenComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
-export 'src/Widgets/Components/Communication/ProgressIndicatorComponent.dart';
 
 export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
 export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';

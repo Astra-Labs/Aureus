@@ -37,8 +37,7 @@ var textTestListView = ListView.separated(
     return Container(
         height: 50,
         width: 350,
-        child: Container(
-            width: 350, height: 50, child: Center(child: textTesting[index])));
+        child: Container(width: 350, height: 50, child: textTesting[index]));
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),
 );
