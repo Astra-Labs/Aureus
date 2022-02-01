@@ -99,7 +99,7 @@ export 'src/Widgets/Components/Input Forms/SwitchComponent.dart';
 
 export 'src/Widgets/Components/Tabbing Bars/IconTabbingBarComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/NavBarComponent.dart';
-export 'src/Widgets/Components/Tabbing Bars/OnboardingTabbingComponent.dart';
+export 'src/Widgets/Components/Tabbing Bars/IteratingTabbingComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/SmolTextTabbingBarComponent.dart';
 
 //Exporting lib widget views

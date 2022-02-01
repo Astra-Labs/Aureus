@@ -8,15 +8,7 @@ class MissionHeaderElement extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         HeadingOneText('How can I help?', decorationPriority.standard),
-        AspectRatio(
-            aspectRatio: 1 / 1,
-            child: Container(
-                constraints: BoxConstraints(
-                    minHeight: size.heightOf(weight: sizingWeight.w0),
-                    maxHeight: size.heightOf(weight: sizingWeight.w2),
-                    minWidth: size.widthOf(weight: sizingWeight.w0),
-                    maxWidth: size.widthOf(weight: sizingWeight.w2)),
-                child: coloration.resourceLogo())),
+        Container(width: 70.0, height: 70.0, child: coloration.resourceLogo()),
       ],
     );
   }

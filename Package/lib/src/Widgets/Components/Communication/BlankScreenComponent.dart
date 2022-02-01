@@ -31,15 +31,15 @@ class BlankScreenComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   IconBadge(
                       badgeIcon: Assets.alertmessage,
                       badgePriority: decorationPriority.important),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
                   HeadingThreeText(cardTitle, decorationPriority.standard),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
                   BodyOneText(cardBody, decorationPriority.standard),
-                  Spacer(),
+                  const Spacer(),
                 ]),
           )),
     );

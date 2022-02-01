@@ -149,6 +149,8 @@ class _AureusElementsViewState extends State<AureusElementsView> {
         children: [
           HeadingOneText('Elements', decorationPriority.standard),
           SizedBox(height: 10.0),
+          Divider(),
+          SizedBox(height: 10.0),
           component
         ]);
 
@@ -177,6 +179,8 @@ class _AureusComponentsViewState extends State<AureusComponentsView> {
         containerVariant: wrapperVariants.stackScroll,
         children: [
           HeadingOneText('Components', decorationPriority.standard),
+          SizedBox(height: 10.0),
+          Divider(),
           SizedBox(height: 10.0),
           component
         ]);
@@ -238,9 +242,11 @@ class _AureusViewsViewState extends State<AureusViewsView> {
         children: [
           HeadingOneText('Views', decorationPriority.standard),
           SizedBox(height: 10.0),
+          Divider(),
+          SizedBox(height: 10.0),
           Center(
             child: SizedBox(
-              height: size.layoutItemHeight(1, screenSize) * 0.7,
+              height: size.layoutItemHeight(1, screenSize),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: viewsCardList,

@@ -26,7 +26,7 @@ class CategoryIconDetailCardElement extends StatelessWidget {
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           alignment: Alignment.center,
-          clipBehavior: Clip.hardEdge,
+          clipBehavior: Clip.antiAlias,
           child: SizedBox(
               width: size.layoutItemWidth(2, screenSize) - 20,
               height: size.layoutItemHeight(2, screenSize) - 20,

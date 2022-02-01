@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:aureus/src/Objects/ResourceObserver.dart';
 
 class SafetyPlanOptionsView extends StatefulWidget {
   const SafetyPlanOptionsView();

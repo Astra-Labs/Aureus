@@ -20,7 +20,6 @@ class StandardCardElement extends StatelessWidget {
               maxHeight: size.layoutItemHeight(4, screenSize)),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
-          clipBehavior: Clip.hardEdge,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Align(

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:aureus/aureus.dart';
+import 'package:flutter/semantics.dart';
 
 /*
 
@@ -18,6 +19,12 @@ class Accessibility {
 
   final AccessibilityFeatures accessFeatures =
       WidgetsBinding.instance!.window.accessibilityFeatures;
+
+  Semantics aureusSemanticsObject() {
+    SemanticsProperties properties = SemanticsProperties();
+
+    return Semantics.fromProperties(properties: properties);
+  }
 
   static Size textStringSize(
       {required String textInput,

@@ -15,14 +15,15 @@ class AureusResourceMaster {
     _observers.remove(observer);
   }
 
-  void notifyObservers() {
+  void notifyAccessibilityObservers() {
     print('notifying observers');
     for (var observer in _observers) {
-      observer.updateEnvironment();
+      observer.updateAccessibilityLogic();
     }
   }
 }
 
 mixin AureusResourceObserver {
-  void updateEnvironment();
+  void updateAccessibilityLogic();
+  void updateSafetyPlanLogic();
 }

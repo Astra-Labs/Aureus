@@ -2,8 +2,8 @@ library aureus;
 
 import 'package:aureus/aureus.dart';
 
-//An input form that takes multiple kinds of different data types (e.g: Time AND text AND password)
-//Doc Link:
+//An input form that takes multiple kinds of different data types
+//(e.g: Time AND text AND password)
 
 class LongInputFormComponent extends StatefulWidget {
   final List<LongInputFormGroupingObject> formGroupingObject;

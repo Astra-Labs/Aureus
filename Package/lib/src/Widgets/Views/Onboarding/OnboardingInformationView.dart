@@ -32,6 +32,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
               widget.onboardingDetails.indexOf(element) == _selectedIndex
                   ? decorationPriority.important
                   : decorationPriority.standard,
+          onTabSelection: () =>
+              {_onItemTapped(widget.onboardingDetails.indexOf(element))},
           accessibilityHint: element.detailTitle));
     });
 

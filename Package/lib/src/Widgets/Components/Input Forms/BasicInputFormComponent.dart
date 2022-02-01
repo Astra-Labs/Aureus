@@ -5,10 +5,11 @@ import 'package:aureus/aureus.dart';
 //A text / input form that only takes ONE kind of data (text/numbers/time, etc)
 //Doc Link:
 
+// ignore: must_be_immutable
 class BasicInputFormComponent extends StatefulWidget {
-  String inputFormName;
-  List<SingleUserInputTypeObject> singleVarianceInputObjects = [];
-  List<MultiUserInputTypeObject> multiVarianceInputObjects = [];
+  late String inputFormName;
+  late List<SingleUserInputTypeObject> singleVarianceInputObjects = [];
+  late List<MultiUserInputTypeObject> multiVarianceInputObjects = [];
 
   BasicInputFormComponent.singleDataType(
       {required this.inputFormName, required this.singleVarianceInputObjects})
@@ -28,13 +29,6 @@ class BasicInputFormComponent extends StatefulWidget {
 }
 
 class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
-  //returns user input based
-  Map<int, String> returnAllUserInput() {
-    return Map();
-  }
-
-  void getInputFromIndex({index: int}) {}
-
   @override
   Widget build(BuildContext context) {
     ListView inputList = ListView();

@@ -3,6 +3,7 @@ import 'package:aureus/aureus.dart';
 //A backing that acts as a timer.
 //Doc Link:
 
+// ignore: must_be_immutable
 class PageHeaderElement extends StatelessWidget {
   final String pageTitle;
   final VoidCallback onPageExit;
@@ -49,7 +50,6 @@ class PageHeaderElement extends StatelessWidget {
         textStyle: heading2(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
-
     var screenSize = size.logicalScreenSize();
 
     return Container(

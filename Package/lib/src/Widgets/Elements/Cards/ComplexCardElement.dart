@@ -22,7 +22,7 @@ class ComplexCardElement extends StatelessWidget {
         constraints: BoxConstraints(
             maxWidth: size.layoutItemWidth(1, screenSize),
             maxHeight: size.layoutItemHeight(3, screenSize)),
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: Clip.antiAlias,
         child: Padding(
             padding: const EdgeInsets.all(13.0),
             child: Column(

@@ -20,7 +20,6 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
       constraints: BoxConstraints(
           minHeight: size.layoutItemHeight(6, screenSize),
           maxHeight: size.layoutItemHeight(5, screenSize),
-          minWidth: size.layoutItemWidth(1, screenSize),
           maxWidth: size.layoutItemWidth(1, screenSize)),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

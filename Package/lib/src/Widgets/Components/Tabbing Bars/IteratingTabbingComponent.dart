@@ -1,17 +1,19 @@
 import 'package:aureus/aureus.dart';
 
-class IteratingComponent extends StatefulWidget {
+//An icon tabbing bar and accompanying card that acts as an onboarding walkthrough
+class IteratingTabbingComponent extends StatefulWidget {
   final List<String> itemTitles;
   final List<Widget> itemWidgets;
 
-  const IteratingComponent(
+  const IteratingTabbingComponent(
       {required this.itemTitles, required this.itemWidgets});
 
   @override
-  _IteratingComponentState createState() => _IteratingComponentState();
+  _IteratingTabbingComponentState createState() =>
+      _IteratingTabbingComponentState();
 }
 
-class _IteratingComponentState extends State<IteratingComponent> {
+class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

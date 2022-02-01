@@ -21,7 +21,7 @@ class ComplexSwitchCardElement extends StatelessWidget {
             maxHeight: size.layoutItemHeight(3, screenSize)),
         decoration: CardBackingDecoration(priority: decorationPriority.inactive)
             .buildBacking(),
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: Clip.antiAlias,
         child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(

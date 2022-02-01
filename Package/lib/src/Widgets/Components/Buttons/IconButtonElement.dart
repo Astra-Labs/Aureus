@@ -89,15 +89,16 @@ class _SecondaryIconButtonElementState
           }
         },
         child: SizedBox(
-          width: 55.0,
-          height: 55.0,
+          width: 50.0,
+          height: 50.0,
           child: Container(
             decoration: buttonBackingDecoration.buildBacking(),
+            alignment: Alignment.center,
             child: Icon(widget.buttonIcon,
                 color: coloration.decorationColor(
                     decorationVariant: widget.decorationVariant),
                 semanticLabel: widget.buttonTooltip,
-                size: 35.0),
+                size: 40.0),
           ),
         ));
   }

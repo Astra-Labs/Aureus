@@ -295,19 +295,23 @@ var importantContainerView = ContainerView(
 TabObject tab1 = TabObject.forIconTabbing(
     tabIcon: fillerIcon1,
     tabPriority: decorationPriority.standard,
+    onTabSelection: () => {},
     accessibilityHint: 'Lavender');
 
 TabObject tab2 = TabObject.forIconTabbing(
     tabIcon: fillerIcon2,
     tabPriority: decorationPriority.standard,
+    onTabSelection: () => {},
     accessibilityHint: 'Melt');
 
 TabObject tab3 = TabObject.forIconTabbing(
     tabIcon: fillerIcon3,
     tabPriority: decorationPriority.standard,
+    onTabSelection: () => {},
     accessibilityHint: 'Ice');
 
 TabObject tab4 = TabObject.forIconTabbing(
     tabIcon: fillerIcon4,
     tabPriority: decorationPriority.standard,
+    onTabSelection: () => {},
     accessibilityHint: 'Steel');

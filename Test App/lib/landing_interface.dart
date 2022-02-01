@@ -35,21 +35,6 @@ Image demoCreationImage() {
   throw ('Unexpected platform brightness issue. Please check the implementation.');
 }
 
-List<TabObject> unsanitizedTabs = [
-  TabObject.forIconTabbing(
-      tabIcon: Assets.alertmessage,
-      tabPriority: decorationPriority.standard,
-      accessibilityHint: 'Safety'),
-  TabObject.forIconTabbing(
-      tabIcon: Assets.people,
-      tabPriority: decorationPriority.standard,
-      accessibilityHint: 'Accessibility'),
-  TabObject.forIconTabbing(
-      tabIcon: Assets.partnership,
-      tabPriority: decorationPriority.standard,
-      accessibilityHint: 'Our future')
-];
-
 Map<String, String> boxInformation = {
   "Safety at scale.":
       "Aureus has the first known risk-mitigation functionality for users in dangerous situations. \n\nThe functionality enables the user to take control over what software is allowed to do, to ensure it doesn't escalate voilatile situations.",
@@ -187,6 +172,24 @@ class _landingHeaderState extends State<landingHeader> {
   Widget build(BuildContext context) {
     Size screenSize = size.logicalScreenSize();
 
+    List<TabObject> unsanitizedTabs = [
+      TabObject.forIconTabbing(
+          tabIcon: Assets.alertmessage,
+          tabPriority: decorationPriority.standard,
+          onTabSelection: () => {_onItemTapped(0)},
+          accessibilityHint: 'Safety'),
+      TabObject.forIconTabbing(
+          tabIcon: Assets.people,
+          tabPriority: decorationPriority.standard,
+          onTabSelection: () => {_onItemTapped(1)},
+          accessibilityHint: 'Accessibility'),
+      TabObject.forIconTabbing(
+          tabIcon: Assets.partnership,
+          tabPriority: decorationPriority.standard,
+          onTabSelection: () => {_onItemTapped(2)},
+          accessibilityHint: 'Our future')
+    ];
+
     List<TabObject> tabItems = [];
 
     unsanitizedTabs.forEach((element) {
@@ -195,6 +198,7 @@ class _landingHeaderState extends State<landingHeader> {
           tabPriority: unsanitizedTabs.indexOf(element) == _selectedIndex
               ? decorationPriority.important
               : decorationPriority.standard,
+          onTabSelection: element.onTabSelection,
           accessibilityHint: element.accessibilityHint));
     });
 

@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
 
 //A circle with an icon that is meant to act as a category label, but not as a button.
-//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Badges/All.md
 
 class IconBadge extends StatelessWidget {
   final IconData badgeIcon;
@@ -11,43 +10,57 @@ class IconBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var customBadgeBacking =
-        BaseBackingDecoration(priority: decorationPriority.standard);
+    Decoration customBadgeBacking() {
+      var baseDecoration =
+          BaseBackingDecoration(priority: decorationPriority.standard);
+      Gradient backingGradient = LinearGradient(colors: []);
+      BoxShadow backingHaze = BoxShadow();
+      baseDecoration.decorationCornerRadius = BorderRadius.circular(10.0);
 
-    Gradient backingGradient = LinearGradient(colors: []);
-    BoxShadow backingHaze = BoxShadow();
+      switch (badgePriority) {
+        case decorationPriority.standard:
+          {
+            baseDecoration.decorationFill = coloration.inactiveColor();
+            break;
+          }
+        case decorationPriority.important:
+          {
+            if (brightness() == Brightness.dark) {
+              backingGradient = lightGradient();
+              backingHaze = pastelShadow();
+            } else if (brightness() == Brightness.light) {
+              backingGradient = darkGradient();
+              backingHaze = darkShadow();
+            }
 
-    if (brightness() == Brightness.dark) {
-      backingGradient = lightGradient();
-      backingHaze = pastelShadow();
-    } else if (brightness() == Brightness.light) {
-      backingGradient = darkGradient();
-      backingHaze = darkShadow();
+            baseDecoration.decorationGradient = backingGradient;
+            baseDecoration.decorationHaze = backingHaze;
+            break;
+          }
+
+        case decorationPriority.inactive:
+          {
+            baseDecoration.decorationFill = coloration.accentColor();
+            break;
+          }
+      }
+
+      return BaseBackingDecoration(priority: decorationPriority.standard)
+          .buildBacking();
     }
 
-    customBadgeBacking.decorationCornerRadius = BorderRadius.circular(10.0);
-    customBadgeBacking.decorationGradient = backingGradient;
-    customBadgeBacking.decorationBorder = universalBorder();
-    customBadgeBacking.decorationHaze = backingHaze;
-
-    Size priorityBadge = Size(80.0, 80.0);
-    Size standardBadge = Size(40.0, 40.0);
-
-    Size badgeSizing = badgePriority == decorationPriority.important
-        ? priorityBadge
-        : standardBadge;
-
     return SizedBox(
-      width: badgeSizing.width,
-      height: badgeSizing.height,
+      width: 40.0,
+      height: 40.0,
       child: Container(
-        decoration: customBadgeBacking
-            .buildBacking()
-            .copyWith(borderRadius: BorderRadius.circular(40)),
+        alignment: Alignment.center,
+        decoration: customBadgeBacking(),
         child: Icon(
           badgeIcon,
-          color: coloration.sameColor(),
-          size: badgeSizing.width * 0.7,
+          color: badgePriority == decorationPriority.inactive
+              ? coloration.contrastColor()
+              : coloration.sameColor(),
+          size: 35,
         ),
       ),
     );

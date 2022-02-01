@@ -29,7 +29,6 @@ class StandardBadgeCardElement extends StatelessWidget {
               maxHeight: size.layoutItemHeight(3, screenSize)),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
-          clipBehavior: Clip.hardEdge,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
