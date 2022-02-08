@@ -65,42 +65,22 @@ class _ContainerViewState extends State<ContainerView>
     var screenHeight = size.logicalHeight();
 
     BoxDecoration containerBacking() {
-      if (brightness() == Brightness.light) {
-        if (widget.decorationVariant == decorationPriority.important) {
-          //returns light fluid
-          return BoxDecoration(
-            image: DecorationImage(
-              image: packageVariables.lightFluidImage!.image,
-              fit: BoxFit.cover,
-            ),
-          );
-        } else if (widget.decorationVariant == decorationPriority.standard) {
-          //returns light blur
-          return BoxDecoration(
-            image: DecorationImage(
-              image: packageVariables.lightBlurImage!.image,
-              fit: BoxFit.cover,
-            ),
-          );
-        }
-      } else if (brightness() == Brightness.dark) {
-        if (widget.decorationVariant == decorationPriority.important) {
-          //returns dark fluid
-          return BoxDecoration(
-            image: DecorationImage(
-              image: packageVariables.darkFluidImage!.image,
-              fit: BoxFit.cover,
-            ),
-          );
-        } else if (widget.decorationVariant == decorationPriority.standard) {
-          //returns dark blur
-          return BoxDecoration(
-            image: DecorationImage(
-              image: packageVariables.darkBlurImage!.image,
-              fit: BoxFit.cover,
-            ),
-          );
-        }
+      if (widget.decorationVariant == decorationPriority.important) {
+        //returns primary image
+        return BoxDecoration(
+          image: DecorationImage(
+            image: coloration.primaryImage().image,
+            fit: BoxFit.cover,
+          ),
+        );
+      } else if (widget.decorationVariant == decorationPriority.standard) {
+        //returns secondary image
+        return BoxDecoration(
+          image: DecorationImage(
+            image: coloration.secondaryImage().image,
+            fit: BoxFit.cover,
+          ),
+        );
       }
       return BoxDecoration();
     }

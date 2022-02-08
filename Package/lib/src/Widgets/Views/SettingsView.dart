@@ -1,14 +1,13 @@
 import 'package:aureus/aureus.dart';
 
-class SafetyPlanLogInAuditView extends StatefulWidget {
-  const SafetyPlanLogInAuditView();
+class SettingsView extends StatefulWidget {
+  const SettingsView();
 
   @override
-  _SafetyPlanLogInAuditViewState createState() =>
-      _SafetyPlanLogInAuditViewState();
+  _SettingsViewState createState() => _SettingsViewState();
 }
 
-class _SafetyPlanLogInAuditViewState extends State<SafetyPlanLogInAuditView> {
+class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(

@@ -12,7 +12,7 @@ class SafetyPlanFunctionalityView extends StatefulWidget {
 
 class _SafetyPlanFunctionalityViewState
     extends State<SafetyPlanFunctionalityView> {
-  var safety = packageVariables.safetyObject;
+  var safety = resourceValues.safetySettings;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _SafetyPlanFunctionalityViewState
         DividingHeaderElement(
             headerText: "Safety Plan - Confirmation",
             subheaderText:
-                "In order to enable your safety plan, you need to opt-in to agreeing the functionality of ${packageVariables.prodName} may change."),
+                "In order to enable your safety plan, you need to opt-in to agreeing the functionality of ${resourceValues.name} may change."),
         SizedBox(
           width: size.layoutItemWidth(1, screenSize),
           height: size.layoutItemHeight(2, screenSize),
@@ -36,7 +36,7 @@ class _SafetyPlanFunctionalityViewState
                 itemCount: widget.userSelectedOptions.length,
                 itemBuilder: (BuildContext context, int index) {
                   var currentItem = widget.userSelectedOptions[index];
-                  var safetyObject = packageVariables.safetyObject
+                  var safetyObject = resourceValues.safetySettings
                       .retrieveDetails(currentItem);
 
                   return Padding(

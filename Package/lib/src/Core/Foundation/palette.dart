@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/scheduler.dart';
 
 /* ------------------ ASSET PALETTE -------------------- */
 
@@ -10,33 +11,19 @@ accessing them through any specific class.
 
 */
 
+// Returns the given 'mode' (light or dark) for the device that Aureus is running on.
+Brightness brightness() {
+  return SchedulerBinding.instance!.window.platformBrightness;
+}
+
 // Gradients ---------------------------------
 
 Gradient lightGradient() {
-  return const LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: [Colors.white, Color.fromRGBO(199, 208, 241, 1.0)]);
-}
-
-Gradient mediumGradient() {
-  return const LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [
-        Color.fromRGBO(185, 195, 237, 1.0),
-        Color.fromRGBO(216, 222, 244, 1.0)
-      ]);
+  return resourceValues.darkMode.contrastGradient;
 }
 
 Gradient darkGradient() {
-  return const LinearGradient(
-      begin: Alignment.bottomLeft,
-      end: Alignment.topRight,
-      colors: [
-        const Color.fromRGBO(4, 4, 6, 1.0),
-        const Color.fromRGBO(67, 72, 109, 1.0)
-      ]);
+  return resourceValues.darkMode.contrastGradient;
 }
 
 // Colors ---------------------------------

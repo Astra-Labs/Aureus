@@ -22,6 +22,21 @@ void main() {
   runApp(AureusTestApp());
 }
 
+class TestingView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var loadingCircle = LoadingCircleElement();
+
+    var containerViewHolder = ContainerWrapperElement(
+        children: [loadingCircle],
+        containerVariant: wrapperVariants.fullScreen);
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard,
+        builder: containerViewHolder);
+  }
+}
+
 Future<void> launchInBrowser(String url) async {
   if (!await launch(
     url,
@@ -100,15 +115,19 @@ class LandingPage extends StatelessWidget {
       throw ('Unexpected platform brightness issue. Please check the implementation.');
     }
 
-    return Scaffold(
-        body: size.isDesktopDisplay()
+    return Scaffold(body: SplashScreenView(
+      onLaunch: () {
+        print('Yee haw!');
+      },
+    ) /* size.isDesktopDisplay()
             ? mobileLandingView(
-                landscapeBacking: landscapeBackgroundImage(),
+                landscapeBacking: landscapeBackgroun hhhhthydImage(),
                 uiOverlay: landingUIOverlayImage(),
                 actionButtons: buttonItems)
             : webLandingView(
                 landscapeBacking: landscapeBackgroundImage(),
                 uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems));
+                actionButtons: buttonItems*)*/
+        );
   }
 }

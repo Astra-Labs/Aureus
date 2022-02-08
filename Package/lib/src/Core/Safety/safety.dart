@@ -149,7 +149,7 @@ class Safety {
             'Stops us from sending you push notifications that may show up on your phone / browser screen.',
         icon: Assets.paperplane,
         functionalityChange:
-            'You will not receive push notifications from ${packageVariables.prodName}');
+            'You will not receive push notifications from ${resourceValues.name}');
   }
 
   SafetyOptionDetails disableBiometricsDetails() {
@@ -159,7 +159,7 @@ class Safety {
             'Turns off the ability to access or make changes to your account with biometric (TouchID / FaceID) authentication.',
         icon: Assets.person,
         functionalityChange:
-            "You won't be able to use your face or fingerprints to perform actions on ${packageVariables.prodName}");
+            "You won't be able to use your face or fingerprints to perform actions on ${resourceValues.name}");
   }
 
   SafetyOptionDetails enable2FADetails() {
@@ -169,7 +169,7 @@ class Safety {
             "Asks you for a secondary passcode to finish signing in. You'll set this passcode later on.",
         icon: Assets.stop,
         functionalityChange:
-            'You will not be able to access ${packageVariables.prodName} without a secondary passcode.');
+            'You will not be able to access ${resourceValues.name} without a secondary passcode.');
   }
 
   SafetyOptionDetails localDataStorageDetails() {
@@ -186,17 +186,17 @@ class Safety {
     return SafetyOptionDetails(
         name: 'Delete data after failed log-in attempts.',
         description:
-            'Automatically deletes all usuable data on ${packageVariables.prodName} if you enter your password or code incorrectly more than 10 times.',
+            'Automatically deletes all usuable data on ${resourceValues.name} if you enter your password or code incorrectly more than 10 times.',
         icon: Assets.alert,
         functionalityChange:
-            'You will not be able to retrieve any account data after it has been deleted. To continue using ${packageVariables.prodName}, you will need to re-set up an account from scratch.');
+            'You will not be able to retrieve any account data after it has been deleted. To continue using ${resourceValues.name}, you will need to re-set up an account from scratch.');
   }
 
   SafetyOptionDetails exitBarDetails() {
     return SafetyOptionDetails(
         name: 'Show an emergency exit bar.',
         description:
-            'Has an exit bar that allows you to quickly leave ${packageVariables.prodName} on every screen.',
+            'Has an exit bar that allows you to quickly leave ${resourceValues.name} on every screen.',
         icon: Assets.expand,
         functionalityChange:
             'You will see an exit bar on every screen you access.');
@@ -208,17 +208,17 @@ class Safety {
         description: 'Screenshots / screen recordings will be blocked.',
         icon: Assets.lock,
         functionalityChange:
-            'You will not be able to take screenshots or screen recordings inside of ${packageVariables.prodName}');
+            'You will not be able to take screenshots or screen recordings inside of ${resourceValues.name}');
   }
 
   SafetyOptionDetails deviceSandboxDetails() {
     return SafetyOptionDetails(
         name: 'Sandbox your device.',
         description:
-            'Disables ${packageVariables.prodName} from doing anything outside of its container. This disables opening links, exporting items, sending messages, sending data to a server, and more.',
+            'Disables ${resourceValues.name} from doing anything outside of its container. This disables opening links, exporting items, sending messages, sending data to a server, and more.',
         icon: Assets.link,
         functionalityChange:
-            'You will not be able to complete any functionality that requires ${packageVariables.prodName} to use a 3rd party service. This will completely block it from having contact with the rest of your device.');
+            'You will not be able to complete any functionality that requires ${resourceValues.name} to use a 3rd party service. This will completely block it from having contact with the rest of your device.');
   }
 
   SafetyOptionDetails logFailedAttemptsDetails() {

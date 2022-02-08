@@ -21,9 +21,24 @@ class AureusResourceMaster {
       observer.updateAccessibilityLogic();
     }
   }
+
+  void notifySafetyPlanObservers() {
+    print('notifying observers');
+    for (var observer in _observers) {
+      observer.updateAccessibilityLogic();
+    }
+  }
+
+  void notifyPrivacyObservers() {
+    print('notifying observers');
+    for (var observer in _observers) {
+      observer.updateAccessibilityLogic();
+    }
+  }
 }
 
 mixin AureusResourceObserver {
-  void updateAccessibilityLogic();
-  void updateSafetyPlanLogic();
+  void updateAccessibilityLogic() {}
+  void updateSafetyPlanLogic() {}
+  void updatePrivacyLogic() {}
 }

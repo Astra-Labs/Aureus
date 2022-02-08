@@ -10,9 +10,6 @@ accessibility compliance.
 
 */
 
-var accessibility = Accessibility();
-
-// 🛑
 class Accessibility {
   // returns the proper sizing of a string for a given text style with
   // regards to the scale factor to accomodate dynamic text sizing.
@@ -80,9 +77,33 @@ class Coloration {
   //Returns logo for the proper mode.
   Image resourceLogo() {
     if (brightness() == Brightness.light) {
-      return packageVariables.darkLogo!;
+      return resourceValues.lightMode.logo!;
     } else if (brightness() == Brightness.dark) {
-      return packageVariables.lightLogo!;
+      return resourceValues.darkMode.logo!;
+    }
+
+    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+    throw ("Brightness is returning a mode that doesn't exist");
+  }
+
+  //Returns primary image for the proper mode.
+  Image primaryImage() {
+    if (brightness() == Brightness.light) {
+      return resourceValues.lightMode.primaryImage!;
+    } else if (brightness() == Brightness.dark) {
+      return resourceValues.darkMode.primaryImage!;
+    }
+
+    //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
+    throw ("Brightness is returning a mode that doesn't exist");
+  }
+
+  //Returns secondary image for the proper mode.
+  Image secondaryImage() {
+    if (brightness() == Brightness.light) {
+      return resourceValues.lightMode.secondaryImage!;
+    } else if (brightness() == Brightness.dark) {
+      return resourceValues.darkMode.secondaryImage!;
     }
 
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.
@@ -106,9 +127,9 @@ class Coloration {
   //Accent color for the given mode.
   Color accentColor() {
     if (brightness() == Brightness.light) {
-      return Color.fromRGBO(56, 62, 94, 1.0);
+      return resourceValues.lightMode.accentColor;
     } else if (brightness() == Brightness.dark) {
-      return melt();
+      return resourceValues.darkMode.accentColor;
     }
 
     //throws an error because there are only two mode options, so if the function falls through, something has gone wrong.

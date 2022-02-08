@@ -170,7 +170,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
       containerVariant: wrapperVariants.stackScroll,
       children: [
         HeadingOneText(
-            "Meet ${packageVariables.prodName}.", decorationPriority.standard),
+            "Meet ${resourceValues.name}.", decorationPriority.standard),
         iconTabBar,
         informationCard,
       ],

@@ -68,6 +68,8 @@ export 'src/Widgets/Elements/Info Hierarchy/DividingHeaderElement.dart';
 
 export 'src/Widgets/Elements/Misc/ContainerWrapperElement.dart';
 export 'src/Widgets/Elements/Misc/FloatingContainerElement.dart';
+export 'src/Widgets/Elements/Misc/LoadingCircleElement.dart';
+export 'src/Widgets/Elements/Misc/ProgressIndicatorElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
 
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
@@ -116,6 +118,10 @@ export 'src/Widgets/Views/Safety Plan/SafetyPlanFunctionalityView.dart';
 export 'src/Widgets/Views/2FAVerificationView.dart';
 export 'src/Widgets/Views/LandingPageView.dart';
 export 'src/Widgets/Views/SignInView.dart';
+export 'src/Widgets/Views/SplashScreenView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
+export 'src/Widgets/Views/SettingsView.dart';
 
 /* ------------------ ENUMS -------------------- */
 //Global Foundational Enums go here since Dart doesn't support nested types

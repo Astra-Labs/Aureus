@@ -20,7 +20,7 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
   Widget build(BuildContext context) {
     List<Widget> eligibleOptionCards = [];
 
-    var safety = packageVariables.safetyObject;
+    var safety = resourceValues.safetySettings;
 
     var screenSize = size.logicalScreenSize();
 
@@ -38,7 +38,7 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
         DividingHeaderElement(
             headerText: 'Safety Plan - Options',
             subheaderText:
-                'Enable the options below to modify the functionality of ${packageVariables.prodName}.'),
+                'Enable the options below to modify the functionality of ${resourceValues.name}.'),
         Spacer(),
         SizedBox(
             width: size.layoutItemWidth(1, screenSize),

@@ -30,8 +30,7 @@ class _OnboardingDemoViewState extends State<OnboardingDemoView> {
       containerVariant: wrapperVariants.fullScreen,
       children: [
         PageHeaderElement.withExit(
-            pageTitle: "${packageVariables.prodName}'s Tools",
-            onPageExit: () => {}),
+            pageTitle: "${resourceValues.name}'s Tools", onPageExit: () => {}),
         Spacer(),
         SingleChildScrollView(
             scrollDirection: Axis.horizontal,

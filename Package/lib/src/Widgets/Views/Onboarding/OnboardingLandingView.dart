@@ -30,10 +30,10 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadingThreeText("I'm ${packageVariables.prodName}",
-                  decorationPriority.standard),
+              HeadingThreeText(
+                  "I'm ${resourceValues.name}", decorationPriority.standard),
               HeadingOneText(
-                  packageVariables.missionTagline, decorationPriority.standard)
+                  resourceValues.mission, decorationPriority.standard)
             ],
           ),
           Spacer(),

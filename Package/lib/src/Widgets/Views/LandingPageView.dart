@@ -31,10 +31,9 @@ class _LandingPageViewState extends State<LandingPageView> {
         mainAxisSize: MainAxisSize.min,
         children: [
           HeadingTwoText(
-              "I'm ${packageVariables.prodName}", decorationPriority.standard),
+              "I'm ${resourceValues.name}", decorationPriority.standard),
           SizedBox(height: 4.0),
-          HeadingOneText(
-              packageVariables.missionTagline, decorationPriority.standard)
+          HeadingOneText(resourceValues.mission, decorationPriority.standard)
         ]);
 
     Image homeScreenOverlay = brightness() == Brightness.light
@@ -71,7 +70,7 @@ class _LandingPageViewState extends State<LandingPageView> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 BodyOneText(
-                    '${packageVariables.prodName} is run by Astra Labs, a 501(c)3 non-profit.',
+                    '${resourceValues.name} is run by Astra Labs, a 501(c)3 non-profit.',
                     decorationPriority.standard),
                 SizedBox(width: 10.0),
                 SmolButtonElement(
@@ -103,7 +102,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   BodyOneText(
-                      '${packageVariables.prodName} is run by Astra Labs, a 501(c)3 non-profit.',
+                      '${resourceValues.name} is run by ${resourceValues.developerName}.',
                       decorationPriority.standard),
                   Row(
                     children: [
