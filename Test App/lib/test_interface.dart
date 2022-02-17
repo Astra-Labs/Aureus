@@ -101,6 +101,13 @@ Map<String, Widget> aureusComponents = {
 };
 
 Map<String, Widget> aureusViews = {
+  'Splash Screen': SplashScreenView(
+    onLaunch: () => {print('Launched something!')},
+  ),
+  'Content Warning': ContentWarningComponent(
+      warningDescription:
+          'This article contains mentions of sexual assult and depictions of trauma.',
+      entryPoint: SafetyPlanOptInView()),
   'Two Factor Authentication': TFAVerificationView(
       userPhoneNumber: 555555555,
       issueVerificationCode: () => {print('verification code issued!')},

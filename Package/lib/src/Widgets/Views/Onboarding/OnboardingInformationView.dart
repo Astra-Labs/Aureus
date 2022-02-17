@@ -169,6 +169,13 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,
       children: [
+        Align(
+            alignment: Alignment.topRight,
+            child: SecondaryIconButtonElement(
+                decorationVariant: decorationPriority.standard,
+                buttonIcon: Assets.no,
+                buttonTooltip: 'Return to onboarding landing',
+                buttonAction: () => {Navigator.pop(context)})),
         HeadingOneText(
             "Meet ${resourceValues.name}.", decorationPriority.standard),
         iconTabBar,

@@ -13,6 +13,7 @@ export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
 export 'src/Core/Safety/safety.dart';
 export 'src/Core/Foundation/palette.dart';
+export 'src/Core/Foundation/sensory.dart';
 export 'src/Core/Foundation/sizing.dart';
 export 'src/Core/Foundation/text.dart';
 export 'src/Core/Foundation/decorations.dart';
@@ -79,6 +80,7 @@ export 'src/Widgets/Elements/User Input/SliderElement.dart';
 
 //Exporting lib widget components
 export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
+export 'src/Widgets/Components/Alert Controllers/ContentWarningComponent.dart';
 
 export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
 export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
@@ -122,6 +124,38 @@ export 'src/Widgets/Views/SplashScreenView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
 export 'src/Widgets/Views/SettingsView.dart';
+
+//Exporting lib tool templates
+
+// -------------------------- Mini Tools
+export 'src/Widgets/Tools/Mini Tools/BubbleBurstToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/CameraInputToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/GuidedBreathingToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/MindfulnessToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/SketchToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/TimerToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/VentToolTemplate.dart';
+
+// -------------------------- Trackers
+export 'src/Widgets/Tools/Trackers/MultiCategoryItemInfoToolTemplate.dart';
+export 'src/Widgets/Tools/Trackers/MultiCategoryTrackerToolTemplate.dart';
+export 'src/Widgets/Tools/Trackers/SingleCategoryItemInfoToolTemplate.dart';
+export 'src/Widgets/Tools/Trackers/SingleCategoryTrackerToolTemplate.dart';
+
+// -------------------------- User Input
+export 'src/Widgets/Tools/User Input/DualColumnInputToolTemplate.dart';
+export 'src/Widgets/Tools/User Input/InputSummaryToolTemplate.dart';
+export 'src/Widgets/Tools/User Input/PromptListUserInputToolTemplate.dart';
+export 'src/Widgets/Tools/User Input/SingleInputToolTemplate.dart';
+export 'src/Widgets/Tools/User Input/SingleSliderInputToolTemplate.dart';
+export 'src/Widgets/Tools/User Input/TriInputToolTemplate.dart';
+
+// -------------------------- User Selection
+export 'src/Widgets/Tools/User Selection/GridSelectToolTemplate.dart';
+export 'src/Widgets/Tools/User Selection/ListViewButtonSelectToolTemplate.dart';
+export 'src/Widgets/Tools/User Selection/ListViewPickerSelectToolTemplate.dart';
+export 'src/Widgets/Tools/User Selection/MultiCategoryCardSelectInputToolTemplate.dart';
+export 'src/Widgets/Tools/User Selection/YesNoButtonSelectToolTemplate.dart';
 
 /* ------------------ ENUMS -------------------- */
 //Global Foundational Enums go here since Dart doesn't support nested types

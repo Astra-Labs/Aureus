@@ -35,6 +35,11 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
+        SecondaryIconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonIcon: Assets.no,
+            buttonTooltip: 'Return to settings page.',
+            buttonAction: () => {}),
         DividingHeaderElement(
             headerText: 'Safety Plan - Settings',
             subheaderText: 'Change your safety plan settings here.'),

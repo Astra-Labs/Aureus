@@ -1,23 +1,62 @@
 import 'package:aureus/aureus.dart';
+import 'package:test_app/interface_items.dart';
 import 'package:test_app/test_interface.dart';
+import 'package:test_app/view_items.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'landing_interface.dart';
 
 void main() {
-  packageVariables = Aureus(
-      missionTagline:
+  var resourceBranding = AureusBranding(
+      fontFamily: 'Exo',
+      lightModeStyle: AureusStylization(
+          contrastGradient: LinearGradient(colors: [steel(), carbon()]),
+          accentColor: lavender(),
+          primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
+          secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
+          logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
+      darkModeStyle: AureusStylization(
+          contrastGradient: LinearGradient(colors: [melt(), frost()]),
+          accentColor: melt(),
+          primaryImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
+          secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
+          logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
+
+  var resourceInformation = AureusInformation(
+      name: 'Aureus',
+      mission:
           "An open-source design system for software focused on safety, privacy, and accessibility.",
-      prodColor: Color.fromRGBO(255, 255, 255, 1.0),
-      prodName: 'Aureus',
-      safetyObject: Safety(
+      safetySettings: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
           eligiblePlanOptions: []),
-      darkFluidImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
-      lightFluidImage: Image(image: AssetImage('assets/Light-Fluid.png')),
-      darkBlurImage: Image(image: AssetImage('assets/Dark-Blur.png')),
-      lightBlurImage: Image(image: AssetImage('assets/Light-Blur.png')),
-      lightLogo: Image(image: AssetImage('assets/Icon - Dark Mode.png')),
-      darkLogo: Image(image: AssetImage('assets/Icon - Light Mode.png')));
+      developerName: 'developerName',
+      developerEmail: 'developerEmail',
+      userSupportURL: 'userSupportURL',
+      requestedDataPermissions: [],
+      termsOfService: 'termsOfService',
+      privacyPolicy: 'privacyPolicy');
+
+  var resourceNavigation = AureusNavigationTree(
+      SplashScreenView(onLaunch: () => {}),
+      landing1,
+      SettingsView(),
+      OnboardingLandingView(),
+      OnboardingDemoView(
+          toolItems: [demoTool1, demoTool2, demoTool3, demoTool4],
+          exitPoint: OnboardingLandingView()),
+      OnboardingInformationView(
+        onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
+      ),
+      landing1,
+      landing1,
+      HelpCenterView(helpCenter: helpCenterTest),
+      landing1);
+
+  packageVariables = AureusResource(
+      resourceBranding: resourceBranding,
+      resourceInformation: resourceInformation,
+      resourceNavigation: resourceNavigation);
+
+  var splash = SplashScreenView(onLaunch: () => {});
 
   runApp(AureusTestApp());
 }
@@ -76,7 +115,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: LandingPage(),
+        home: AureusViewsView(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
@@ -115,19 +154,15 @@ class LandingPage extends StatelessWidget {
       throw ('Unexpected platform brightness issue. Please check the implementation.');
     }
 
-    return Scaffold(body: SplashScreenView(
-      onLaunch: () {
-        print('Yee haw!');
-      },
-    ) /* size.isDesktopDisplay()
+    return Scaffold(
+        body: size.isDesktopDisplay()
             ? mobileLandingView(
-                landscapeBacking: landscapeBackgroun hhhhthydImage(),
+                landscapeBacking: landscapeBackgroundImage(),
                 uiOverlay: landingUIOverlayImage(),
                 actionButtons: buttonItems)
             : webLandingView(
                 landscapeBacking: landscapeBackgroundImage(),
                 uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems*)*/
-        );
+                actionButtons: buttonItems));
   }
 }

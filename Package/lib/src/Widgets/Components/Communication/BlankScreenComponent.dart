@@ -1,7 +1,7 @@
 import 'package:aureus/aureus.dart';
 
-//Shows a card meant to act as a 'blank' screen placeholder to instruct user on what to do next
-//Doc Link:
+// Shows a card meant to act as a 'blank' screen placeholder to instruct
+// user on what to do next
 
 class BlankScreenComponent extends StatelessWidget {
   final String cardTitle;

@@ -44,17 +44,37 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Try out tools',
                   buttonIcon: Assets.expand,
-                  buttonAction: () => {print('tool demo!')}),
+                  buttonAction: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  resourceValues.onboardingDemo!,
+                            ))
+                      }),
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'See the features',
                   buttonIcon: Assets.phone,
-                  buttonAction: () => {print('tool information!')}),
+                  buttonAction: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  resourceValues.onboardingInfo!,
+                            ))
+                      }),
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Get started',
                   buttonIcon: Assets.next,
-                  buttonAction: () => {print('onboarding!')})
+                  buttonAction: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => resourceValues.signUp!,
+                            ))
+                      })
             ],
           ),
           Spacer(),

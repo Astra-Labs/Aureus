@@ -49,11 +49,9 @@ Column informationHiearchy = Column(
     mainAxisAlignment: MainAxisAlignment.start,
     mainAxisSize: MainAxisSize.min,
     children: [
-      HeadingTwoText(
-          "I'm ${packageVariables.prodName}", decorationPriority.standard),
+      HeadingTwoText("I'm ${resourceValues.name}", decorationPriority.standard),
       SizedBox(height: 4.0),
-      HeadingOneText(
-          packageVariables.missionTagline, decorationPriority.standard)
+      HeadingOneText(resourceValues.mission, decorationPriority.standard)
     ]);
 
 /* ------------------------------------------------------------------------------------------------------------ */

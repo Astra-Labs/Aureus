@@ -23,7 +23,7 @@ Gradient lightGradient() {
 }
 
 Gradient darkGradient() {
-  return resourceValues.darkMode.contrastGradient;
+  return resourceValues.lightMode.contrastGradient;
 }
 
 // Colors ---------------------------------

@@ -25,14 +25,14 @@ class AureusResourceMaster {
   void notifySafetyPlanObservers() {
     print('notifying observers');
     for (var observer in _observers) {
-      observer.updateAccessibilityLogic();
+      observer.updateSafetyPlanLogic();
     }
   }
 
   void notifyPrivacyObservers() {
     print('notifying observers');
     for (var observer in _observers) {
-      observer.updateAccessibilityLogic();
+      observer.updatePrivacyLogic();
     }
   }
 }

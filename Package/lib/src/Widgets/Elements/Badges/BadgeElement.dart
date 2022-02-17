@@ -45,8 +45,7 @@ class IconBadge extends StatelessWidget {
           }
       }
 
-      return BaseBackingDecoration(priority: decorationPriority.standard)
-          .buildBacking();
+      return baseDecoration.buildBacking();
     }
 
     return SizedBox(
