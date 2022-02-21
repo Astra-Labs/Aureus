@@ -3,8 +3,6 @@ import 'package:aureus/aureus.dart';
 /* ------------------ CORE TOOL -------------------- */
 /*
 
--------
-
 */
 
 class CoreTool {
@@ -29,8 +27,6 @@ class CoreTool {
 /* ------------------ Tool Navigation Container -------------------- */
 /*
 
--------
-
 */
 
 class ToolNavigationContainer {
@@ -44,17 +40,42 @@ class ToolNavigationContainer {
       required this.widgetChild});
 }
 
+/* ------------------ Tool Navigation Page -------------------- */
+/*
+
+*/
+
 class ToolNavigationPage {
   final CoreTool parentTool;
   final ContainerWrapperElement pageBody;
   const ToolNavigationPage({required this.parentTool, required this.pageBody});
 }
 
-class ToolNavigationCardCarousel {
+class ToolNavigationCardCarousel extends StatefulWidget {
   final CoreTool parentTool;
   final List<ToolCardTemplate> toolCards;
   const ToolNavigationCardCarousel(
       {required this.parentTool, required this.toolCards});
+
+  @override
+  _ToolNavigationCardCarouselState createState() =>
+      _ToolNavigationCardCarouselState();
+}
+
+class _ToolNavigationCardCarouselState
+    extends State<ToolNavigationCardCarousel> {
+  void nextCard() {}
+  void previousCard() {}
+
+  @override
+  Widget build(BuildContext context) {
+    var carouselLayout = ContainerWrapperElement(
+        children: [], containerVariant: wrapperVariants.fullScreen);
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard,
+        builder: carouselLayout);
+  }
 }
 
 /* ------------------ Tool Card Template -------------------- */
@@ -75,12 +96,18 @@ class ToolCardTemplate {
       required this.badgeIcon});
 
   Widget returnActiveToolCard() {
-    // returns active card that takes user input.
-    throw ('Active template card not overriden by child class.');
+    return BaseCardToolTemplate(
+        isActive: true,
+        cardIcon: badgeIcon,
+        toolPrompt: templatePrompt,
+        toolChildren: templateItems);
   }
 
   Widget returnTemplateSummary() {
-    // returns card that shows under tool to be used as summary card
-    throw ('Inactive template summary not implemented by child class.');
+    return BaseCardToolTemplate(
+        isActive: false,
+        cardIcon: badgeIcon,
+        toolPrompt: templatePrompt,
+        toolChildren: templateItems);
   }
 }

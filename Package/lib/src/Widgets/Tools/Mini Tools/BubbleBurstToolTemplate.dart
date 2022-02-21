@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:aureus/src/Widgets/Tools/BaseCardToolTemplate.dart';
 
 /*
 
@@ -14,13 +15,10 @@ class BubbleBurstToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    // TODO: implement returnTemplateSummary
-    return super.returnTemplateSummary();
-  }
-
-  @override
-  Widget returnActiveToolCard() {
-    // TODO: implement returnActiveToolCard
-    return super.returnActiveToolCard();
+    return BaseCardToolTemplate(
+        isActive: false,
+        cardIcon: badgeIcon,
+        toolPrompt: templatePrompt,
+        toolChildren: templateItems);
   }
 }

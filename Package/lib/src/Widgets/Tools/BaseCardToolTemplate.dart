@@ -6,12 +6,14 @@ import 'package:aureus/aureus.dart';
 // other cards, not as a stand alone item.
 
 class BaseCardToolTemplate extends StatefulWidget {
+  final bool isActive;
   final IconData cardIcon;
   final String toolPrompt;
-  final Widget toolChildren;
+  final List<Widget> toolChildren;
 
   const BaseCardToolTemplate(
-      {required this.cardIcon,
+      {required this.isActive,
+      required this.cardIcon,
       required this.toolPrompt,
       required this.toolChildren});
 
@@ -22,6 +24,37 @@ class BaseCardToolTemplate extends StatefulWidget {
 class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    var screenSize = size.logicalScreenSize();
+
+    var activeLayout = Container(
+        constraints: BoxConstraints(
+            maxHeight: size.layoutItemHeight(1, screenSize),
+            maxWidth: size.layoutItemWidth(1, screenSize),
+            minWidth: size.layoutItemWidth(1, screenSize)),
+        decoration:
+            CardBackingDecoration(priority: decorationPriority.important)
+                .buildBacking(),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              IconBadge(
+                  badgeIcon: widget.cardIcon,
+                  badgePriority: decorationPriority.standard),
+              SizedBox(height: 20.0),
+              SubheaderText(widget.toolPrompt, decorationPriority.important),
+              SizedBox(height: 20.0),
+              Column(children: widget.toolChildren)
+            ],
+          ),
+        ));
+
+    var inactiveLayout = Container();
+
+    //checks if widget is actively engaged, and returns proper layout.
+    return widget.isActive ? activeLayout : inactiveLayout;
   }
 }

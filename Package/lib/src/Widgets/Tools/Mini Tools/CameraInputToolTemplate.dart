@@ -13,13 +13,10 @@ class CameraInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    // TODO: implement returnTemplateSummary
-    return super.returnTemplateSummary();
-  }
-
-  @override
-  Widget returnActiveToolCard() {
-    // TODO: implement returnActiveToolCard
-    return super.returnActiveToolCard();
+    return BaseCardToolTemplate(
+        isActive: false,
+        cardIcon: badgeIcon,
+        toolPrompt: templatePrompt,
+        toolChildren: templateItems);
   }
 }

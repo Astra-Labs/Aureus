@@ -1,80 +1,157 @@
 import 'package:aureus/aureus.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-/*--------- LEVEL 0 --------*/
+/*---IMPORTANT---*/
 /*
+  The data consent objects request permissions across operating systems on your behalf, 
+  and keep them managed. However, you must still go into the native codebase 
+  for Android / iOS and manually input what permissions you will be asking for ahead
+  of time, to avoid a crash. Read more about this on the permission handler documentation
+  under setup here: https://pub.dev/packages/permission_handler 
+*/
 
-Description: 
-The top level class that contains all of the onboarding detail objects
-
-Details:
--A minimum of 2 onboarding details are required to build an onboarding object. 
-
+/*--------- DATA CONSENT --------*/
+/*
 */
 
 class DataConsent {
   const DataConsent();
 
-  DataPermissionObject cameraAccessPermission(
-      String permissionUsage, VoidCallback onPermissionOptIn) {
+  // checks permissions on behalf of the user, and runs code if enabled,
+  // shows alert controller to user if not enabled.
+
+  Future<void> consentHandler(VoidCallback onConsent, dataAccess item) async {
+    switch (item) {
+      case dataAccess.camera:
+        {
+          if (await Permission.camera.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.bluetooth:
+        {
+          if (await Permission.bluetooth.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.contacts:
+        {
+          if (await Permission.contacts.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.health:
+        {
+          if (await Permission.activityRecognition.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.location:
+        {
+          if (await Permission.location.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.microphone:
+        {
+          if (await Permission.microphone.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.photos:
+        {
+          if (await Permission.photos.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.pushNotifications:
+        {
+          if (await Permission.notification.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.tracking:
+        {
+          if (await Permission.appTrackingTransparency.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+      case dataAccess.sensors:
+        {
+          if (await Permission.sensors.request().isGranted) {
+            onConsent();
+          }
+          break;
+        }
+    }
+  }
+
+  DataPermissionObject cameraAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Camera',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.camera,
-        onPermissionOptIn: onPermissionOptIn);
+        onPermissionOptIn: () => {Permission.camera.request()});
   }
 
-  DataPermissionObject microphoneAccessPermission(
-      String permissionUsage, VoidCallback onPermissionOptIn) {
+  DataPermissionObject microphoneAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Microphone',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.play,
-        onPermissionOptIn: onPermissionOptIn);
+        onPermissionOptIn: () => {Permission.microphone.request()});
   }
 
-  DataPermissionObject locationAccessPermission(
-      String permissionUsage, VoidCallback onPermissionOptIn) {
+  DataPermissionObject locationAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Location',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.location,
-        onPermissionOptIn: onPermissionOptIn);
+        onPermissionOptIn: () => {Permission.location.request()});
   }
 
-  DataPermissionObject bluetoothAccessPermission(
-      String permissionUsage, VoidCallback onPermissionOptIn) {
+  DataPermissionObject bluetoothAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Bluetooth',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.settings,
-        onPermissionOptIn: onPermissionOptIn);
+        onPermissionOptIn: () => {Permission.bluetooth.request()});
   }
 
   DataPermissionObject healthInformationAccessPermission(
-      String permissionUsage, VoidCallback onPermissionOptIn) {
+      String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Health Information',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.stethoscope,
-        onPermissionOptIn: onPermissionOptIn);
+        onPermissionOptIn: () => {Permission.activityRecognition.request()});
   }
 
-  DataPermissionObject trackingAccessPermission(
-      String permissionUsage, VoidCallback onPermissionOptIn) {
+  DataPermissionObject trackingAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Tracking',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.window,
-        onPermissionOptIn: onPermissionOptIn);
+        onPermissionOptIn: () =>
+            {Permission.appTrackingTransparency.request()});
   }
 
   DataPermissionObject pushNotificationsAccessPermission(
-      String permissionUsage, VoidCallback onPermissionOptIn) {
+      String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Push Notifications',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.alertmessage,
-        onPermissionOptIn: onPermissionOptIn);
+        onPermissionOptIn: () => {Permission.notification.request()});
   }
 
   DataPermissionObject emailSubscriptionPermission(
@@ -84,6 +161,14 @@ class DataConsent {
         permissionDescription: permissionUsage,
         permissionIcon: Assets.mail,
         onPermissionOptIn: onPermissionOptIn);
+  }
+
+  DataPermissionObject sensorsPermission(String permissionUsage) {
+    return DataPermissionObject(
+        permissionName: 'Device Sensors',
+        permissionDescription: permissionUsage,
+        permissionIcon: Assets.mail,
+        onPermissionOptIn: () => {Permission.sensors.request()});
   }
 }
 

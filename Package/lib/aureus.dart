@@ -127,6 +127,9 @@ export 'src/Widgets/Views/SettingsView.dart';
 
 //Exporting lib tool templates
 
+export 'src/Widgets/Tools/BaseCardToolTemplate.dart';
+export 'src/Widgets/Tools/BasePageToolTemplate.dart';
+
 // -------------------------- Mini Tools
 export 'src/Widgets/Tools/Mini Tools/BubbleBurstToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/CameraInputToolTemplate.dart';
@@ -186,3 +189,16 @@ enum cardType {
 }
 
 enum wrapperVariants { stackScroll, fullScreen }
+
+enum dataAccess {
+  camera,
+  microphone,
+  bluetooth,
+  pushNotifications,
+  location,
+  contacts,
+  photos,
+  tracking,
+  health,
+  sensors
+}

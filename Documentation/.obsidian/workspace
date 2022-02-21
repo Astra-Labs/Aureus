@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Meet Aureus.md",
+            "file": "3 - Widgets/Views/Safety Plan Functionality View.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Meet Aureus.md",
+                "file": "3 - Widgets/Views/Safety Plan Functionality View.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "a4f090b52864a08e",
   "lastOpenFiles": [
+    "3 - Widgets/Views/Safety Plan Functionality View.md",
+    "3 - Widgets/Views/Data Consent Screen.md",
+    "3 - Widgets/Views/Container View.md",
+    "3 - Widgets/Elements/User Input/Singular Data Type.md",
+    "2 - Core/Foundation/Package Variables.md",
     "Meet Aureus.md",
     "Contents.md",
     "1 - Introduction/Installation.md",
     "2 - Core/Accessibility/Accessibility.md",
-    "3 - Widgets/Views/Onboarding Information View.md",
-    "3 - Widgets/Views/Help Center.md",
-    "3 - Widgets/Views/Data Consent Screen.md",
-    "3 - Widgets/Views/Container View.md",
-    "3 - Widgets/Views/2FA Verification.md",
-    "3 - Widgets/Elements/User Input/Singular Data Type.md"
+    "3 - Widgets/Views/Onboarding Information View.md"
   ]
 }

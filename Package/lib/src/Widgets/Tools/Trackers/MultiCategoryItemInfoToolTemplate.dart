@@ -8,19 +8,17 @@ USAGE:
 
 */
 
-class MultiCategoryItemInfoToolTemplate extends ToolCardTemplate {
-  MultiCategoryItemInfoToolTemplate()
-      : super(templateItems: [], templatePrompt: '', badgeIcon: IconData(0));
+class ToolNavigationPage {
+  final CoreTool parentTool;
+  final ContainerWrapperElement pageBody;
+  const ToolNavigationPage({required this.parentTool, required this.pageBody});
+}
 
-  @override
-  Widget returnTemplateSummary() {
-    // TODO: implement returnTemplateSummary
-    return super.returnTemplateSummary();
-  }
+class MultiCategoryItemInfoToolTemplate extends ToolNavigationPage {
+  final CoreTool parentTool;
+  final ContainerWrapperElement body = ContainerWrapperElement(
+      children: [], containerVariant: wrapperVariants.fullScreen);
 
-  @override
-  Widget returnActiveToolCard() {
-    // TODO: implement returnActiveToolCard
-    return super.returnActiveToolCard();
-  }
+  const MultiCategoryItemInfoToolTemplate({required this.parentTool})
+      : super(parentTool: parentTool, pageBody: body);
 }
