@@ -22,3 +22,17 @@ class BubbleBurstToolTemplate extends ToolCardTemplate {
         toolChildren: templateItems);
   }
 }
+
+class _BubbleBurstCard extends StatefulWidget {
+  _BubbleBurstCard();
+
+  @override
+  _BubbleBurstCardState createState() => _BubbleBurstCardState();
+}
+
+class _BubbleBurstCardState extends State<_BubbleBurstCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

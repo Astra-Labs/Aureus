@@ -133,11 +133,14 @@ export 'src/Widgets/Tools/BasePageToolTemplate.dart';
 // -------------------------- Mini Tools
 export 'src/Widgets/Tools/Mini Tools/BubbleBurstToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/CameraInputToolTemplate.dart';
-export 'src/Widgets/Tools/Mini Tools/GuidedBreathingToolTemplate.dart';
-export 'src/Widgets/Tools/Mini Tools/MindfulnessToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/ColorSpectrumToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/GyroscopeDirectionToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/MapInputToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/MicrophoneInputToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/PulseInputToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/SensoryMapToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/SketchToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/TimerToolTemplate.dart';
-export 'src/Widgets/Tools/Mini Tools/VentToolTemplate.dart';
 
 // -------------------------- Trackers
 export 'src/Widgets/Tools/Trackers/MultiCategoryItemInfoToolTemplate.dart';

@@ -8,15 +8,12 @@ USAGE:
 
 */
 
-class SingleCategoryItemInfoToolTemplate extends ToolCardTemplate {
-  SingleCategoryItemInfoToolTemplate()
-      : super(templateItems: [], templatePrompt: '', badgeIcon: IconData(0));
+class SingleCategoryItemInfoToolTemplate extends ToolNavigationPage {
+  final CoreTool parentTool;
 
-  @override
-  Widget returnActiveToolCard() {
-    return BasePageToolTemplate(
-        parentTool: parentTool,
-        onToolDetail: onToolDetail,
-        pageChildren: pageChildren);
-  }
+  SingleCategoryItemInfoToolTemplate({required this.parentTool})
+      : super(
+            parentTool: parentTool,
+            pageBody: ContainerWrapperElement(
+                children: [], containerVariant: wrapperVariants.fullScreen));
 }

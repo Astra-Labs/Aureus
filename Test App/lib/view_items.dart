@@ -62,28 +62,16 @@ List<DataPermissionObject> dataPermissions = [
 ];
 
 DataPermissionObject cameraObject = DataConsent().cameraAccessPermission(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    () {
-  print('asking for camera!');
-});
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
 DataPermissionObject microphoneObject = DataConsent().microphoneAccessPermission(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    () {
-  print('asking for microphone!');
-});
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
 DataPermissionObject locationObject = DataConsent().locationAccessPermission(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    () {
-  print('asking for location!');
-});
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
 DataPermissionObject bluetoothObject = DataConsent().bluetoothAccessPermission(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    () {
-  print('asking for bluetooth!');
-});
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
 CoreTool demoTool1 = CoreTool(
     toolName: 'Tool 1',
@@ -92,10 +80,16 @@ CoreTool demoTool1 = CoreTool(
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
-    toolCards: [],
     toolIcon: Assets.mail,
     entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView());
+    exitSource: OnboardingLandingView(),
+    navigationContainer: ToolNavigationContainer(
+        toolParent: demoTool1,
+        exitPoint: demoTool1.exitSource,
+        widgetChild: ContainerWrapperElement(children: [
+          ToolNavigationCardCarousel(parentTool: demoTool1, toolCards: [])
+        ], containerVariant: wrapperVariants.fullScreen)),
+    nextSteps: [demoTool2, demoTool3]);
 
 CoreTool demoTool2 = CoreTool(
     toolName: 'Tool 2',
@@ -104,10 +98,16 @@ CoreTool demoTool2 = CoreTool(
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
-    toolCards: [],
     toolIcon: Assets.body,
     entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView());
+    exitSource: OnboardingLandingView(),
+    navigationContainer: ToolNavigationContainer(
+        toolParent: demoTool2,
+        exitPoint: demoTool2.exitSource,
+        widgetChild: ContainerWrapperElement(children: [
+          ToolNavigationCardCarousel(parentTool: demoTool2, toolCards: [])
+        ], containerVariant: wrapperVariants.fullScreen)),
+    nextSteps: [demoTool1, demoTool3]);
 
 CoreTool demoTool3 = CoreTool(
     toolName: 'Tool 3',
@@ -116,10 +116,16 @@ CoreTool demoTool3 = CoreTool(
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
-    toolCards: [],
     toolIcon: Assets.stethoscope,
     entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView());
+    exitSource: OnboardingLandingView(),
+    navigationContainer: ToolNavigationContainer(
+        toolParent: demoTool3,
+        exitPoint: demoTool3.exitSource,
+        widgetChild: ContainerWrapperElement(children: [
+          ToolNavigationCardCarousel(parentTool: demoTool3, toolCards: [])
+        ], containerVariant: wrapperVariants.fullScreen)),
+    nextSteps: [demoTool1, demoTool2]);
 
 CoreTool demoTool4 = CoreTool(
     toolName: 'Tool 4',
@@ -128,10 +134,16 @@ CoreTool demoTool4 = CoreTool(
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     ],
-    toolCards: [],
     toolIcon: Assets.pencil,
     entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView());
+    exitSource: OnboardingLandingView(),
+    navigationContainer: ToolNavigationContainer(
+        toolParent: demoTool4,
+        exitPoint: demoTool4.exitSource,
+        widgetChild: ContainerWrapperElement(children: [
+          ToolNavigationCardCarousel(parentTool: demoTool4, toolCards: [])
+        ], containerVariant: wrapperVariants.fullScreen)),
+    nextSteps: [demoTool2, demoTool3]);
 
 OnboardingDetail onboardingInfo1 = OnboardingDetail(
     detailTitle: "Item 1",

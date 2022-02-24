@@ -20,3 +20,17 @@ class CameraInputToolTemplate extends ToolCardTemplate {
         toolChildren: templateItems);
   }
 }
+
+class _CameraInputCard extends StatefulWidget {
+  _CameraInputCard();
+
+  @override
+  _CameraInputCardState createState() => _CameraInputCardState();
+}
+
+class _CameraInputCardState extends State<_CameraInputCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

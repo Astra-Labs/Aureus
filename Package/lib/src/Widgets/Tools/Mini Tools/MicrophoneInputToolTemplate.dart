@@ -13,3 +13,17 @@ class MicrophoneInputToolTemplate extends ToolCardTemplate {
         toolChildren: templateItems);
   }
 }
+
+class _MicrophoneInputCard extends StatefulWidget {
+  _MicrophoneInputCard();
+
+  @override
+  _MicrophoneInputCardState createState() => _MicrophoneInputCardState();
+}
+
+class _MicrophoneInputCardState extends State<_MicrophoneInputCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

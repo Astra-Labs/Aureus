@@ -66,9 +66,23 @@ class _ToolNavigationCardCarouselState
     extends State<ToolNavigationCardCarousel> {
   void nextCard() {}
   void previousCard() {}
+  void returnHome() {
+    Navigator.pop(context);
+  }
+
+  void finishTool() {}
 
   @override
   Widget build(BuildContext context) {
+    //the current, visible active card.
+    var activeCardItem = ToolCardTemplate();
+    //the summary of all of the previous cards and their answers
+    var summaryListView = ListView();
+    //the index current card being shown
+    int currentCardIndex;
+    //the highest progress point reached in the tool.
+    int toolProgressIndicator;
+
     var carouselLayout = ContainerWrapperElement(
         children: [], containerVariant: wrapperVariants.fullScreen);
 
@@ -94,6 +108,14 @@ class ToolCardTemplate {
       {required this.templatePrompt,
       required this.templateItems,
       required this.badgeIcon});
+
+  void onNextCard() {
+    throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
+  }
+
+  void onPreviousCard() {
+    throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
+  }
 
   Widget returnActiveToolCard() {
     return BaseCardToolTemplate(

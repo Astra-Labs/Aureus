@@ -13,3 +13,17 @@ class MapInputToolTemplate extends ToolCardTemplate {
         toolChildren: templateItems);
   }
 }
+
+class _MapInputCard extends StatefulWidget {
+  _MapInputCard();
+
+  @override
+  _MapInputCardState createState() => _MapInputCardState();
+}
+
+class _MapInputCardState extends State<_MapInputCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

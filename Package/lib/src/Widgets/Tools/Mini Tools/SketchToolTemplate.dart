@@ -21,3 +21,17 @@ class SketchToolTemplate extends ToolCardTemplate {
         toolChildren: templateItems);
   }
 }
+
+class _SketchInputCard extends StatefulWidget {
+  _SketchInputCard();
+
+  @override
+  _SketchInputCardState createState() => _SketchInputCardState();
+}
+
+class _SketchInputCardState extends State<_SketchInputCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

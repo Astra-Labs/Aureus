@@ -13,3 +13,17 @@ class SensoryMapToolTemplate extends ToolCardTemplate {
         toolChildren: templateItems);
   }
 }
+
+class _SensoryMapInputCard extends StatefulWidget {
+  _SensoryMapInputCard();
+
+  @override
+  _SensoryMapInputCardState createState() => _SensoryMapInputCardState();
+}
+
+class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

@@ -21,3 +21,17 @@ class TimerToolTemplate extends ToolCardTemplate {
         toolChildren: templateItems);
   }
 }
+
+class _TimerInputCard extends StatefulWidget {
+  _TimerInputCard();
+
+  @override
+  _TimerInputCardState createState() => _TimerInputCardState();
+}
+
+class _TimerInputCardState extends State<_TimerInputCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

@@ -8,15 +8,12 @@ USAGE:
 
 */
 
-class MultiCategoryTrackerToolTemplate extends ToolCardTemplate {
-  MultiCategoryTrackerToolTemplate()
-      : super(templateItems: [], templatePrompt: '', badgeIcon: IconData(0));
+class MultiCategoryTrackerToolTemplate extends ToolNavigationPage {
+  final CoreTool parentTool;
 
-  @override
-  Widget returnActiveToolCard() {
-    return BasePageToolTemplate(
-        parentTool: parentTool,
-        onToolDetail: onToolDetail,
-        pageChildren: pageChildren);
-  }
+  MultiCategoryTrackerToolTemplate({required this.parentTool})
+      : super(
+            parentTool: parentTool,
+            pageBody: ContainerWrapperElement(
+                children: [], containerVariant: wrapperVariants.fullScreen));
 }
