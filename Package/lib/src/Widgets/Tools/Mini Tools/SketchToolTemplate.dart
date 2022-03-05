@@ -9,8 +9,22 @@ USAGE:
 */
 
 class SketchToolTemplate extends ToolCardTemplate {
-  SketchToolTemplate()
-      : super(templateItems: [], templatePrompt: '', badgeIcon: IconData(0));
+  SketchToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
+
+  // Array that holds the values neccessary to read
+  // and write what a user entered into the prompt card
+  // for display purposes. Write to dataMap in ActiveCard,
+  // and read in SummaryCard.
+  var dataMap = [];
+
+  @override
+  Widget returnActiveToolCard() {
+    return BaseCardToolTemplate(
+        isActive: true,
+        cardIcon: badgeIcon,
+        toolPrompt: templatePrompt,
+        toolChildren: []);
+  }
 
   @override
   Widget returnTemplateSummary() {
@@ -18,7 +32,7 @@ class SketchToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: templateItems);
+        toolChildren: []);
   }
 }
 

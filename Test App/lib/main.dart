@@ -120,6 +120,25 @@ class AureusTestApp extends StatelessWidget {
   }
 }
 
+class ToolCardTesting extends StatefulWidget {
+  const ToolCardTesting();
+  @override
+  _ToolCardTestingState createState() => _ToolCardTestingState();
+}
+
+class _ToolCardTestingState extends State<ToolCardTesting> {
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> cards = [];
+
+    var view = ContainerWrapperElement(
+        children: [], containerVariant: wrapperVariants.stackScroll);
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard, builder: view);
+  }
+}
+
 class LandingPage extends StatelessWidget {
   // This widget is the root of your application.
 

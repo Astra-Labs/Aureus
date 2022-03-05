@@ -133,6 +133,9 @@ Map<String, Widget> aureusViews = {
       onSignIn: fillerAction,
       onSignup: fillerAction,
       onResetInformation: fillerAction),
+  /*'Tool Detail View': ToolDetailView(parentTool: parentTool),
+  'Tool Next Steps View': ToolNextStepsView(parentTool: parentTool),
+  'Tool Summary View': ToolSummaryView(),*/
 };
 
 /*  ELEMENTS  */

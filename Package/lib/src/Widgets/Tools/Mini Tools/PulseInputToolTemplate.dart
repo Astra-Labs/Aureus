@@ -9,24 +9,30 @@ USAGE:
 */
 
 class PulseInputToolTemplate extends ToolCardTemplate {
-  final String toolPrompt;
-  final IconData toolBadge;
+  PulseInputToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
 
-  const PulseInputToolTemplate(
-      {required this.toolPrompt, required this.toolBadge})
-      : super(
-            templateItems: const [Divider()],
-            templatePrompt: toolPrompt,
-            badgeIcon: toolBadge);
+  // Array that holds the values neccessary to read
+  // and write what a user entered into the prompt card
+  // for display purposes. Write to dataMap in ActiveCard,
+  // and read in SummaryCard.
+  var dataMap = [];
 
-  //Template summary is getting overriden because it's a complex card.
+  @override
+  Widget returnActiveToolCard() {
+    return BaseCardToolTemplate(
+        isActive: true,
+        cardIcon: badgeIcon,
+        toolPrompt: templatePrompt,
+        toolChildren: []);
+  }
+
   @override
   Widget returnTemplateSummary() {
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: templateItems);
+        toolChildren: []);
   }
 }
 

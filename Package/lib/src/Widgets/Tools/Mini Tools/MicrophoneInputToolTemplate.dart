@@ -2,7 +2,22 @@ import 'package:aureus/aureus.dart';
 
 class MicrophoneInputToolTemplate extends ToolCardTemplate {
   MicrophoneInputToolTemplate()
-      : super(templateItems: [], templatePrompt: '', badgeIcon: IconData(0));
+      : super(templatePrompt: '', badgeIcon: IconData(0));
+
+  // Array that holds the values neccessary to read
+  // and write what a user entered into the prompt card
+  // for display purposes. Write to dataMap in ActiveCard,
+  // and read in SummaryCard.
+  var dataMap = [];
+
+  @override
+  Widget returnActiveToolCard() {
+    return BaseCardToolTemplate(
+        isActive: true,
+        cardIcon: badgeIcon,
+        toolPrompt: templatePrompt,
+        toolChildren: []);
+  }
 
   @override
   Widget returnTemplateSummary() {
@@ -10,7 +25,7 @@ class MicrophoneInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: templateItems);
+        toolChildren: []);
   }
 }
 

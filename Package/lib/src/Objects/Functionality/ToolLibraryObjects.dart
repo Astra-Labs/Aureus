@@ -1,4 +1,9 @@
+import 'dart:math';
+
 import 'package:aureus/aureus.dart';
+import 'package:aureus/src/Widgets/Views/Tool%20Library/ToolDetailView.dart';
+import 'package:aureus/src/Widgets/Views/Tool%20Library/ToolNextStepView.dart';
+import 'package:aureus/src/Widgets/Views/Tool%20Library/ToolSummaryView.dart';
 
 /* ------------------ CORE TOOL -------------------- */
 /*
@@ -7,20 +12,32 @@ import 'package:aureus/aureus.dart';
 
 class CoreTool {
   final String toolName;
-  final List<String> toolDescription;
+  //The name of your tool
+  // ------------------------------
+  final String toolDescription;
+  //Description of your tool to be shown in ToolDetailView
+  // ------------------------------
+  final Map<String, IconData> toolDetails;
+  //Information & Icons to represent important information about
+  //your tool. To be used in ToolDetailView.
+  // ------------------------------
   final ToolNavigationContainer navigationContainer;
+  //The navigation container that holds your tool functionality.
+  // ------------------------------
   final IconData toolIcon;
-  final Widget entrySource;
-  final Widget exitSource;
+  //Specific icon for your tool.
+  // ------------------------------
   final List<CoreTool> nextSteps;
+  //Other tools people can use after they finish.
+  //This gets populated in ToolNextStepsView.dart
+  // ------------------------------
 
   const CoreTool(
       {required this.toolName,
       required this.toolDescription,
+      required this.toolDetails,
       required this.navigationContainer,
       required this.toolIcon,
-      required this.entrySource,
-      required this.exitSource,
       required this.nextSteps});
 }
 
@@ -30,14 +47,17 @@ class CoreTool {
 */
 
 class ToolNavigationContainer {
-  final CoreTool toolParent;
-  final Widget exitPoint;
-  final ContainerWrapperElement widgetChild;
+  ToolDetailView details;
+  Widget entryPoint;
+  ToolNextStepsView nextSteps;
+  ToolSummaryView summary;
+  ToolNavigationCardCarousel? cardCarousel;
 
-  const ToolNavigationContainer(
-      {required this.toolParent,
-      required this.exitPoint,
-      required this.widgetChild});
+  ToolNavigationContainer(this.cardCarousel,
+      {required this.details,
+      required this.entryPoint,
+      required this.nextSteps,
+      required this.summary});
 }
 
 /* ------------------ Tool Navigation Page -------------------- */
@@ -74,20 +94,58 @@ class _ToolNavigationCardCarouselState
 
   @override
   Widget build(BuildContext context) {
-    //the current, visible active card.
-    var activeCardItem = ToolCardTemplate();
-    //the summary of all of the previous cards and their answers
-    var summaryListView = ListView();
-    //the index current card being shown
-    int currentCardIndex;
-    //the highest progress point reached in the tool.
-    int toolProgressIndicator;
+    var screenSize = size.logicalScreenSize();
 
-    var carouselLayout = ContainerWrapperElement(
-        children: [], containerVariant: wrapperVariants.fullScreen);
+    //the current, visible active card.
+    Widget activeCardItem = Container();
+    //the summary of all of the previous cards and their answers
+    List<Widget> summaryListView = [];
+    //the index current card being shown
+    int currentCardIndex = 0;
+    //the highest progress point reached in the tool.
+    int toolProgressIndicator = 0;
+
+    var children = widget.toolCards;
+
+    children.forEach((element) {
+      if (children.indexOf(element) == currentCardIndex) {
+        activeCardItem = element.returnActiveToolCard();
+        toolProgressIndicator >= currentCardIndex
+            ? toolProgressIndicator = currentCardIndex
+            : toolProgressIndicator = toolProgressIndicator;
+      } else if (children.indexOf(element) != currentCardIndex) {
+        summaryListView.add(element.returnTemplateSummary());
+      }
+    });
+
+    var summaryList = SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: ListView(children: summaryListView));
+
+    var carouselLayout = ContainerWrapperElement(children: [
+      PageHeaderElement.withExit(
+          pageTitle: widget.parentTool.toolName, onPageExit: () => {}),
+      SizedBox(height: 35.0),
+      Column(
+        children: [
+          activeCardItem,
+          SizedBox(height: 20.0),
+          summaryList,
+        ],
+      ),
+      Spacer(),
+      FloatingContainerElement(
+          child: Container(
+              width: size.layoutItemWidth(1, screenSize),
+              height: size.layoutItemHeight(6, screenSize),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: LinearProgressIndicator(),
+              )))
+    ], containerVariant: wrapperVariants.fullScreen);
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard,
+        decorationVariant: decorationPriority.important,
         builder: carouselLayout);
   }
 }
@@ -101,13 +159,10 @@ class _ToolNavigationCardCarouselState
 
 class ToolCardTemplate {
   final String templatePrompt;
-  final List<Widget> templateItems;
   final IconData badgeIcon;
 
   const ToolCardTemplate(
-      {required this.templatePrompt,
-      required this.templateItems,
-      required this.badgeIcon});
+      {required this.templatePrompt, required this.badgeIcon});
 
   void onNextCard() {
     throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
@@ -118,18 +173,10 @@ class ToolCardTemplate {
   }
 
   Widget returnActiveToolCard() {
-    return BaseCardToolTemplate(
-        isActive: true,
-        cardIcon: badgeIcon,
-        toolPrompt: templatePrompt,
-        toolChildren: templateItems);
+    throw ('Should be overriden by the child tool template.');
   }
 
   Widget returnTemplateSummary() {
-    return BaseCardToolTemplate(
-        isActive: false,
-        cardIcon: badgeIcon,
-        toolPrompt: templatePrompt,
-        toolChildren: templateItems);
+    throw ('Should be overriden by the child tool template.');
   }
 }
