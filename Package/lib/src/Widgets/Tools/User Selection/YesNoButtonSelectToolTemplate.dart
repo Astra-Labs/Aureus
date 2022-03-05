@@ -2,15 +2,12 @@ import 'package:aureus/aureus.dart';
 
 /*
 
-DESCRIPTION: 
--------------------
-USAGE: 
+Takes a simple bool response from user in response 
+to the prompt. 
 
 */
 
 class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
-  var userResponse = [];
-
   YesNoButtonSelectToolTemplate()
       : super(templatePrompt: '', badgeIcon: IconData(0));
 
@@ -26,15 +23,36 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          Row(
+            children: [
+              SecondaryIconButtonElement(
+                  decorationVariant: decorationPriority.important,
+                  buttonIcon: Assets.yes,
+                  buttonTooltip: 'Yes',
+                  buttonAction: () => {dataMap.insert(0, true), onNextCard()}),
+              Spacer(),
+              SecondaryIconButtonElement(
+                  decorationVariant: decorationPriority.important,
+                  buttonIcon: Assets.no,
+                  buttonTooltip: 'No',
+                  buttonAction: () => {dataMap.insert(0, false), onNextCard()})
+            ],
+          )
+        ]);
   }
 
   @override
   Widget returnTemplateSummary() {
+    //Returns a badge with yes or no icon depending on answer in user map.
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          IconBadge(
+              badgeIcon: dataMap[0] == true ? Assets.yes : Assets.no,
+              badgePriority: decorationPriority.important)
+        ]);
   }
 }
