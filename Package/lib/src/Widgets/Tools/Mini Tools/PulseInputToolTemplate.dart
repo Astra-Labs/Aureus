@@ -32,7 +32,9 @@ class PulseInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Used the Pulse Input tool', decorationPriority.standard)
+        ]);
   }
 }
 

@@ -31,7 +31,10 @@ class CameraInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Took a photo with Camera Input Tool',
+              decorationPriority.standard)
+        ]);
   }
 }
 

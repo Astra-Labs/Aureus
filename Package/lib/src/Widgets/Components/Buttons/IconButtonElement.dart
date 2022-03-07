@@ -32,6 +32,8 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
         .buildBacking();
 
     return InkWell(
+        highlightColor: coloration.accentColor(),
+        splashColor: coloration.contrastColor(),
         onTap: () {
           if (isButtonEnabled == true) {
             widget.buttonAction();
@@ -73,26 +75,37 @@ class SecondaryIconButtonElement extends StatefulWidget {
 
 class _SecondaryIconButtonElementState
     extends State<SecondaryIconButtonElement> {
+  BoxDecoration animatedBacking = BoxDecoration(
+      color: Colors.transparent, borderRadius: BorderRadius.circular(100));
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
         widget.decorationVariant == decorationPriority.inactive ? false : true;
 
-    var buttonBackingDecoration = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.circle,
-        priority: widget.decorationVariant);
-
     return InkWell(
         onTap: () {
           if (isButtonEnabled == true) {
+            print('Inkwell is working owo');
             widget.buttonAction();
+
+            setState(() {
+              animatedBacking = BoxDecoration(
+                  color: coloration.accentColor(),
+                  borderRadius: BorderRadius.circular(100));
+            });
           }
         },
         child: SizedBox(
           width: 50.0,
           height: 50.0,
-          child: Container(
-            decoration: buttonBackingDecoration.buildBacking(),
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 200),
+            curve: Curves.bounceIn,
+            foregroundDecoration: animatedBacking,
+            decoration: ButtonBackingDecoration(
+                    variant: buttonDecorationVariants.circle,
+                    priority: widget.decorationVariant)
+                .buildBacking(),
             alignment: Alignment.center,
             child: Icon(widget.buttonIcon,
                 color: coloration.decorationColor(

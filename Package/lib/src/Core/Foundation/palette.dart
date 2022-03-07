@@ -70,7 +70,7 @@ Color onyx() {
 
 Color lightModeFill() {
   return accessibility.accessFeatures.highContrast == true
-      ? black().withOpacity(0.15)
+      ? black().withOpacity(0.30)
       : black().withOpacity(0.07);
 }
 

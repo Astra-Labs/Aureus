@@ -66,7 +66,7 @@ class _ContainerViewState extends State<ContainerView>
 
     BoxDecoration containerBacking() {
       if (widget.decorationVariant == decorationPriority.important) {
-        //returns primary image
+        //returns primary image defined in AureusStylization
         return BoxDecoration(
           image: DecorationImage(
             image: coloration.primaryImage().image,
@@ -74,7 +74,7 @@ class _ContainerViewState extends State<ContainerView>
           ),
         );
       } else if (widget.decorationVariant == decorationPriority.standard) {
-        //returns secondary image
+        //returns secondary image defined in AureusStylization
         return BoxDecoration(
           image: DecorationImage(
             image: coloration.secondaryImage().image,

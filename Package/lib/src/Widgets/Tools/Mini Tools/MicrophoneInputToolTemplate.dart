@@ -25,7 +25,10 @@ class MicrophoneInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Recorded a noise with Microphone Input tool.',
+              decorationPriority.standard)
+        ]);
   }
 }
 

@@ -15,12 +15,27 @@ class IconBadge extends StatelessWidget {
           BaseBackingDecoration(priority: decorationPriority.standard);
       Gradient backingGradient = LinearGradient(colors: []);
       BoxShadow backingHaze = BoxShadow();
-      baseDecoration.decorationCornerRadius = BorderRadius.circular(10.0);
+      baseDecoration.decorationCornerRadius = BorderRadius.circular(60.0);
 
       switch (badgePriority) {
-        case decorationPriority.standard:
+        case decorationPriority.inactive:
           {
-            baseDecoration.decorationFill = coloration.inactiveColor();
+            /*
+
+            Since the badges are supposed to be used on top of 
+            important elements, inactive elements will show
+            as the fill of the opposite mode's fill color to 
+            preserve contrast (since layering the mode's fill)
+            on an important priority item will lead to the 
+            background looking invisible. 
+            
+             */
+            if (brightness() == Brightness.light) {
+              baseDecoration.decorationFill = darkModeFill();
+            } else if (brightness() == Brightness.dark) {
+              baseDecoration.decorationFill = lightModeFill();
+            }
+
             break;
           }
         case decorationPriority.important:
@@ -38,9 +53,24 @@ class IconBadge extends StatelessWidget {
             break;
           }
 
-        case decorationPriority.inactive:
+        case decorationPriority.standard:
           {
-            baseDecoration.decorationFill = coloration.accentColor();
+            baseDecoration.decorationFill = coloration.inactiveColor();
+            break;
+          }
+
+        case decorationPriority.inverted:
+          {
+            if (brightness() == Brightness.dark) {
+              backingGradient = darkGradient();
+              backingHaze = darkShadow();
+            } else if (brightness() == Brightness.light) {
+              backingGradient = lightGradient();
+              backingHaze = lightShadow();
+            }
+
+            baseDecoration.decorationGradient = backingGradient;
+            baseDecoration.decorationHaze = backingHaze;
             break;
           }
       }
@@ -56,7 +86,7 @@ class IconBadge extends StatelessWidget {
         decoration: customBadgeBacking(),
         child: Icon(
           badgeIcon,
-          color: badgePriority == decorationPriority.inactive
+          color: badgePriority == decorationPriority.standard
               ? coloration.contrastColor()
               : coloration.sameColor(),
           size: 35,

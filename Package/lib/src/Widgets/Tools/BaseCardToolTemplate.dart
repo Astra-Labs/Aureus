@@ -28,31 +28,71 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
 
     var activeLayout = Container(
         constraints: BoxConstraints(
-            maxHeight: size.layoutItemHeight(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize),
-            minWidth: size.layoutItemWidth(1, screenSize)),
+            minWidth: size.layoutItemWidth(1, screenSize),
+            maxHeight: size.layoutItemHeight(1, screenSize)),
         decoration:
             CardBackingDecoration(priority: decorationPriority.important)
                 .buildBacking(),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconBadge(
-                  badgeIcon: widget.cardIcon,
-                  badgePriority: decorationPriority.standard),
-              SizedBox(height: 20.0),
-              SubheaderText(widget.toolPrompt, decorationPriority.important),
-              SizedBox(height: 20.0),
-              Column(children: widget.toolChildren)
-            ],
-          ),
+        padding: EdgeInsets.all(15.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 10.0),
+            IconBadge(
+                badgeIcon: widget.cardIcon,
+                badgePriority: decorationPriority.inactive),
+            SizedBox(height: 20.0),
+            SubheaderText(widget.toolPrompt, decorationPriority.important),
+            SizedBox(height: 20.0),
+            Column(children: widget.toolChildren),
+            SizedBox(height: 20.0)
+          ],
         ));
 
-    var inactiveLayout = Container();
+    var inactiveLayout = FloatingContainerElement(
+        child: Container(
+            constraints: BoxConstraints(
+                maxWidth: size.layoutItemWidth(1, screenSize),
+                minWidth: size.layoutItemWidth(1, screenSize),
+                maxHeight: size.layoutItemHeight(4, screenSize)),
+            decoration:
+                CardBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            padding: EdgeInsets.all(15.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                IconBadge(
+                    badgeIcon: widget.cardIcon,
+                    badgePriority: decorationPriority.standard),
+                SizedBox(width: 15.0),
+                FractionallySizedBox(
+                  heightFactor: 1.0,
+                  child: Container(
+                      width: 1,
+                      decoration:
+                          BoxDecoration(color: coloration.inactiveColor())),
+                ),
+                SizedBox(width: 15.0),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TagOneText(widget.toolPrompt, decorationPriority.standard),
+                    SizedBox(height: 15.0),
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(children: widget.toolChildren))
+                  ],
+                )
+              ],
+            )));
 
     //checks if widget is actively engaged, and returns proper layout.
     return widget.isActive ? activeLayout : inactiveLayout;

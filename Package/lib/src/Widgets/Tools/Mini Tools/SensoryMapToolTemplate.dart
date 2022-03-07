@@ -24,7 +24,9 @@ class SensoryMapToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Used the Sensory Map tool', decorationPriority.standard)
+        ]);
   }
 }
 

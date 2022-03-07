@@ -121,6 +121,9 @@ class Coloration {
 
       case decorationPriority.standard:
         return contrastColor();
+
+      case decorationPriority.inverted:
+        return sameColor();
     }
   }
 

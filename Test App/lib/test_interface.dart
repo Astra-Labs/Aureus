@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:test_app/landing_interface.dart';
-import 'package:test_app/main.dart';
 import 'package:test_app/iterating_view.dart';
 import 'package:test_app/text_items.dart';
 import 'interface_items.dart';
@@ -112,9 +110,8 @@ Map<String, Widget> aureusViews = {
       userPhoneNumber: 555555555,
       issueVerificationCode: () => {print('verification code issued!')},
       onUserSubmission: () => {print('user submitted code!')}),
-  'Onboarding Demo View': OnboardingDemoView(
-      toolItems: [demoTool1, demoTool2, demoTool3, demoTool4],
-      exitPoint: OnboardingLandingView()),
+  'Onboarding Demo View':
+      OnboardingDemoView(toolItems: [], exitPoint: OnboardingLandingView()),
   'Onboarding Information View': OnboardingInformationView(
     onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
   ),
@@ -133,9 +130,9 @@ Map<String, Widget> aureusViews = {
       onSignIn: fillerAction,
       onSignup: fillerAction,
       onResetInformation: fillerAction),
-  /*'Tool Detail View': ToolDetailView(parentTool: parentTool),
-  'Tool Next Steps View': ToolNextStepsView(parentTool: parentTool),
-  'Tool Summary View': ToolSummaryView(),*/
+  /*'Tool Detail View': demoTool.navigationContainer.details,
+  'Tool Next Steps View': demoTool.navigationContainer.nextSteps,
+  'Tool Summary View': demoTool.navigationContainer.summary!,*/
 };
 
 /*  ELEMENTS  */

@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:aureus/src/Core/Foundation/sensory.dart';
 
 class SplashScreenView extends StatefulWidget {
   final VoidCallback onLaunch;

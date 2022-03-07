@@ -24,7 +24,10 @@ class MapInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Selected a location with Map Input tool.',
+              decorationPriority.standard)
+        ]);
   }
 }
 

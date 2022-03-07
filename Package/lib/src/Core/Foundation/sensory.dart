@@ -11,7 +11,25 @@ haptics, our sound library, and more.
 */
 
 class Sensory {
-  void createSensation(Widget item, sensationType sense) {
+  // Wraps an Ink & Inkwell widget together and calls
+  // the Aureus sensory engine to provide haptic feedback
+  // and noises from the sound library.
+  Ink onSensoryTap(VoidCallback tapAction, sensationType sense) {
+    return Ink(
+      color: coloration.accentColor(),
+      child: InkWell(
+        onTap: () => {
+          createSensation(sense),
+          tapAction(),
+        },
+      ),
+    );
+  }
+
+  // Calls the Hpatic Feedback engine and plays
+  // an accompanying sound file for the different
+  // types of gestures that happen.
+  void createSensation(sensationType sense) {
     switch (sense) {
       case sensationType.confirmation:
         {
@@ -85,17 +103,6 @@ enum sensationType {
   press,
   hold,
 }
-
-/*
-
-- Open animation [animation] should run forward: [AnimationController.forward].
-- Close animation [animation] should run reverse: [AnimationController.reverse].
-- [centerAlignment] center of circular reveal. [centerOffset] if not specified.
-- [centerOffset] center of circular reveal. Child's center if not specified.
-- [centerAlignment] or [centerOffset] must be null (or both).
-- [minRadius] minimum radius of circular reveal. 0 if not if not specified.
-- [maxRadius] maximum radius of circular reveal. Distance from center to further child's corner if not specified.
-*/
 
 class CircleAnimation extends StatelessWidget {
   final Alignment centerAlignment;

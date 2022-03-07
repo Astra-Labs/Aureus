@@ -29,7 +29,10 @@ class GyroscopeDirectionToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Moved device with Gyroscope Direction Tool',
+              decorationPriority.standard)
+        ]);
   }
 }
 

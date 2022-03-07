@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:aureus/aureus.dart';
 
 class FloatingContainerElement extends StatelessWidget {

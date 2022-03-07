@@ -15,6 +15,8 @@ class SmolTextTabbingBarComponent extends StatefulWidget {
 
 class _SmolTextTabbingBarComponentState
     extends State<SmolTextTabbingBarComponent> {
+  // TO-DO: figure out why dart is throwing a proble below, and saying selected index isn't used. -Amanda S
+  // ignore: unused_field
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

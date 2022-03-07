@@ -32,7 +32,10 @@ class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Selected a color with Color Spectrum tool',
+              decorationPriority.standard)
+        ]);
   }
 }
 

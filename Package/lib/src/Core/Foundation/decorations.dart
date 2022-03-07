@@ -78,6 +78,17 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       } else if (brightness() == Brightness.dark) {
         decorationFill = darkModeFill();
         decorationBorder = darkModeBorder();
+      } else if (priority == decorationPriority.inverted) {
+        decorationCornerRadius = BorderRadius.circular(20.0);
+        decorationBorder = universalBorder();
+
+        if (brightness() == Brightness.light) {
+          decorationGradient = lightGradient();
+          decorationHaze = darkShadow();
+        } else if (brightness() == Brightness.dark) {
+          decorationGradient = darkGradient();
+          decorationHaze = darkShadow();
+        }
       }
     }
   }
@@ -141,6 +152,17 @@ class CardBackingDecoration extends BaseBackingDecoration {
       } else if (brightness() == Brightness.dark) {
         decorationFill = darkModeFill();
         decorationBorder = darkModeBorder();
+      }
+    } else if (priority == decorationPriority.inverted) {
+      decorationCornerRadius = BorderRadius.circular(20.0);
+      decorationBorder = universalBorder();
+
+      if (brightness() == Brightness.light) {
+        decorationGradient = lightGradient();
+        decorationHaze = darkShadow();
+      } else if (brightness() == Brightness.dark) {
+        decorationGradient = darkGradient();
+        decorationHaze = darkShadow();
       }
     }
   }

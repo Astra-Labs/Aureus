@@ -32,7 +32,10 @@ class SketchToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText(
+              'Drew with the Sketch Input Tool', decorationPriority.standard)
+        ]);
   }
 }
 

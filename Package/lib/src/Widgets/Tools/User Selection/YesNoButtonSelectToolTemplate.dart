@@ -9,13 +9,14 @@ to the prompt.
 
 class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
   YesNoButtonSelectToolTemplate()
-      : super(templatePrompt: '', badgeIcon: IconData(0));
+      : super(
+            templatePrompt: 'Yes no template.', badgeIcon: Assets.babycarriage);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
-  var dataMap = [];
+  var dataMap = [false];
 
   @override
   Widget returnActiveToolCard() {
@@ -25,18 +26,26 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
         toolPrompt: templatePrompt,
         toolChildren: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SecondaryIconButtonElement(
-                  decorationVariant: decorationPriority.important,
+                  decorationVariant: decorationPriority.inverted,
                   buttonIcon: Assets.yes,
                   buttonTooltip: 'Yes',
-                  buttonAction: () => {dataMap.insert(0, true), onNextCard()}),
+                  buttonAction: () => {
+                        print('Pressed yes!'),
+                        dataMap.insert(0, true) /*, onNextCard()*/
+                      }),
               Spacer(),
               SecondaryIconButtonElement(
-                  decorationVariant: decorationPriority.important,
+                  decorationVariant: decorationPriority.inverted,
                   buttonIcon: Assets.no,
                   buttonTooltip: 'No',
-                  buttonAction: () => {dataMap.insert(0, false), onNextCard()})
+                  buttonAction: () => {
+                        print('Pressed no!'),
+                        dataMap.insert(0, false) /*, onNextCard()*/
+                      })
             ],
           )
         ]);
@@ -45,6 +54,11 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
   @override
   Widget returnTemplateSummary() {
     //Returns a badge with yes or no icon depending on answer in user map.
+
+    if (dataMap.isEmpty == true) {
+      throw ('You cannot show a template summary of a tool template without populating dataMap.');
+    }
+
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,

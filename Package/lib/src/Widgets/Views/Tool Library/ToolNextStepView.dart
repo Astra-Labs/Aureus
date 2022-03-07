@@ -10,8 +10,9 @@ USAGE:
 
 class ToolNextStepsView extends StatefulWidget {
   final CoreTool parentTool;
-
-  const ToolNextStepsView({required this.parentTool});
+  final Map<String, VoidCallback> nextSteps;
+  //
+  const ToolNextStepsView({required this.parentTool, required this.nextSteps});
 
   @override
   _ToolNextStepsViewState createState() => _ToolNextStepsViewState();
@@ -24,19 +25,13 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
     var nextStepCards = [];
     var tool = widget.parentTool;
 
-    tool.nextSteps.forEach((element) {
+    widget.nextSteps.entries.forEach((element) {
       nextStepCards.add(InkWell(
-        onTap: () => {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => element.navigationContainer.entryPoint,
-              ))
-        },
+        onTap: () => {element.value()},
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: StandardCardElement(
-                cardLabel: element.toolName,
+                cardLabel: element.key,
                 decorationVariant: decorationPriority.standard)),
       ));
     });

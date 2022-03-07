@@ -32,7 +32,9 @@ class TimerToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Completed with a Timer.', decorationPriority.standard)
+        ]);
   }
 }
 

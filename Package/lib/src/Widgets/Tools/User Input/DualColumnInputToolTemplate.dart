@@ -29,6 +29,9 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
+    if (dataMap.isEmpty == true) {
+      throw ('You cannot show a template summary of a tool template without populating dataMap.');
+    }
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,

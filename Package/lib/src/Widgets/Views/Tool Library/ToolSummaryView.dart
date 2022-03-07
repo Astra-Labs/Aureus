@@ -10,8 +10,9 @@ USAGE:
 
 class ToolSummaryView extends StatefulWidget {
   final CoreTool parentTool;
-  const ToolSummaryView({required this.parentTool})
-      : assert(parentTool.navigationContainer.cardCarousel != null);
+  ToolSummaryView({required this.parentTool})
+      : assert(parentTool.navigationContainer.toolCards!.isNotEmpty == true,
+            'Tool Summary View requires the parent CoreTool to have tool cards in the navigation container.');
 
   @override
   _ToolSummaryViewState createState() => _ToolSummaryViewState();
@@ -23,7 +24,7 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
     var tool = widget.parentTool;
     List<Widget> summaryItems = [];
 
-    tool.navigationContainer.cardCarousel!.toolCards.forEach((element) {
+    tool.navigationContainer.toolCards!.forEach((element) {
       summaryItems.add(Padding(
         padding: EdgeInsets.all(8.0),
         child: element.returnTemplateSummary(),

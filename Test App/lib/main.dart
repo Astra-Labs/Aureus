@@ -16,7 +16,7 @@ void main() {
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
       darkModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [melt(), frost()]),
-          accentColor: melt(),
+          accentColor: lavender(),
           primaryImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
@@ -28,9 +28,9 @@ void main() {
       safetySettings: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
           eligiblePlanOptions: []),
-      developerName: 'developerName',
-      developerEmail: 'developerEmail',
-      userSupportURL: 'userSupportURL',
+      developerName: 'Astra Laboratories',
+      developerEmail: 'hello@withastra.com',
+      userSupportURL: 'https://www.withastra.org/',
       requestedDataPermissions: [],
       termsOfService: 'termsOfService',
       privacyPolicy: 'privacyPolicy');
@@ -40,9 +40,7 @@ void main() {
       landing1,
       SettingsView(),
       OnboardingLandingView(),
-      OnboardingDemoView(
-          toolItems: [demoTool1, demoTool2, demoTool3, demoTool4],
-          exitPoint: OnboardingLandingView()),
+      OnboardingDemoView(toolItems: [], exitPoint: OnboardingLandingView()),
       OnboardingInformationView(
         onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
       ),
@@ -55,8 +53,6 @@ void main() {
       resourceBranding: resourceBranding,
       resourceInformation: resourceInformation,
       resourceNavigation: resourceNavigation);
-
-  var splash = SplashScreenView(onLaunch: () => {});
 
   runApp(AureusTestApp());
 }
@@ -115,7 +111,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: AureusViewsView(),
+        home: ToolCardTesting(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
@@ -129,13 +125,34 @@ class ToolCardTesting extends StatefulWidget {
 class _ToolCardTestingState extends State<ToolCardTesting> {
   @override
   Widget build(BuildContext context) {
-    List<Widget> cards = [];
+    var activeBase = BaseCardToolTemplate(
+        isActive: true,
+        cardIcon: Assets.babycarriage,
+        toolPrompt: 'Active Base Card',
+        toolChildren: [
+          IconBadge(
+              badgeIcon: Assets.alertmessage,
+              badgePriority: decorationPriority.important)
+        ]);
 
-    var view = ContainerWrapperElement(
-        children: [], containerVariant: wrapperVariants.stackScroll);
+    var inactiveBase = BaseCardToolTemplate(
+        isActive: false,
+        cardIcon: Assets.babycarriage,
+        toolPrompt: 'Inactive Base Card',
+        toolChildren: [
+          IconBadge(
+              badgeIcon: Assets.alertmessage,
+              badgePriority: decorationPriority.important),
+        ]);
+
+    var yesNoActive = YesNoButtonSelectToolTemplate().returnActiveToolCard();
+    var yesNoInactive = YesNoButtonSelectToolTemplate().returnTemplateSummary();
+
+    var wrapper = ContainerWrapperElement(
+        children: [yesNoActive], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: view);
+        decorationVariant: decorationPriority.important, builder: wrapper);
   }
 }
 

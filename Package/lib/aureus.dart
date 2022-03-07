@@ -175,7 +175,7 @@ enum communicationStatus { sending, delivered, failed }
 enum CardType { standard, badge }
 enum userInputType { singleDataType, multiDataType }
 enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
-enum decorationPriority { standard, important, inactive }
+enum decorationPriority { standard, important, inactive, inverted }
 enum buttonDecorationVariants {
   roundedPill,
   roundedRectangle,

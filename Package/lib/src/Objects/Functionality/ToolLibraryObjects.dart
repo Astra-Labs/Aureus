@@ -1,9 +1,4 @@
-import 'dart:math';
-
 import 'package:aureus/aureus.dart';
-import 'package:aureus/src/Widgets/Views/Tool%20Library/ToolDetailView.dart';
-import 'package:aureus/src/Widgets/Views/Tool%20Library/ToolNextStepView.dart';
-import 'package:aureus/src/Widgets/Views/Tool%20Library/ToolSummaryView.dart';
 
 /* ------------------ CORE TOOL -------------------- */
 /*
@@ -27,37 +22,50 @@ class CoreTool {
   final IconData toolIcon;
   //Specific icon for your tool.
   // ------------------------------
-  final List<CoreTool> nextSteps;
-  //Other tools people can use after they finish.
-  //This gets populated in ToolNextStepsView.dart
-  // ------------------------------
 
   const CoreTool(
       {required this.toolName,
       required this.toolDescription,
       required this.toolDetails,
       required this.navigationContainer,
-      required this.toolIcon,
-      required this.nextSteps});
+      required this.toolIcon});
 }
 
 /* ------------------ Tool Navigation Container -------------------- */
 /*
 
+Where you set all of the points of navigation & metadata
+for your tool to be accessed and to go through the tool flow.
+
 */
 
 class ToolNavigationContainer {
   ToolDetailView details;
+  // An instance of ToolDetailView for this tool.
+  // ------------------------------
   Widget entryPoint;
+  // The widget where your tool starts. This is usually a
+  // ToolNavigationPage, or a ToolCardCarousel.
+  // ------------------------------
   ToolNextStepsView nextSteps;
-  ToolSummaryView summary;
-  ToolNavigationCardCarousel? cardCarousel;
+  // The page users go to after they finish using the tool.
+  // This is what the summary view sends people to when done.
+  // ------------------------------
+  ToolSummaryView? summary;
+  // The summary view that gives the user an overview
+  // of everything they've said. Optional, since it
+  // requires toolCards below to be initialized.
+  // ------------------------------
+  List<ToolCardTemplate>? toolCards;
+  // All of the tool card templates used within the view.
+  // The ToolSummaryView & ToolCardCarouselView use this
+  // to be able to read & write data across the screens.
+  // ------------------------------
 
-  ToolNavigationContainer(this.cardCarousel,
+  ToolNavigationContainer(this.toolCards, this.summary,
       {required this.details,
       required this.entryPoint,
-      required this.nextSteps,
-      required this.summary});
+      required this.nextSteps});
 }
 
 /* ------------------ Tool Navigation Page -------------------- */
@@ -73,9 +81,9 @@ class ToolNavigationPage {
 
 class ToolNavigationCardCarousel extends StatefulWidget {
   final CoreTool parentTool;
-  final List<ToolCardTemplate> toolCards;
-  const ToolNavigationCardCarousel(
-      {required this.parentTool, required this.toolCards});
+  ToolNavigationCardCarousel({required this.parentTool})
+      : assert(parentTool.navigationContainer.toolCards!.isNotEmpty == true,
+            'ToolNavigationCardCarousel requires the parent CoreTool to have tool cards in the navigation container.');
 
   @override
   _ToolNavigationCardCarouselState createState() =>
@@ -105,7 +113,7 @@ class _ToolNavigationCardCarouselState
     //the highest progress point reached in the tool.
     int toolProgressIndicator = 0;
 
-    var children = widget.toolCards;
+    var children = widget.parentTool.navigationContainer.toolCards!;
 
     children.forEach((element) {
       if (children.indexOf(element) == currentCardIndex) {
@@ -165,11 +173,11 @@ class ToolCardTemplate {
       {required this.templatePrompt, required this.badgeIcon});
 
   void onNextCard() {
-    throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
+    //throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
   }
 
   void onPreviousCard() {
-    throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
+    //throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
   }
 
   Widget returnActiveToolCard() {

@@ -34,23 +34,27 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return InkWell(
-        onTap: () {
-          if (isButtonEnabled == true) {
-            widget.buttonAction();
-          }
-        },
-        child: FloatingContainerElement(
-          child: Container(
-              constraints: BoxConstraints(
-                  minHeight: minimumButtonTextSize.height * 1.8,
-                  maxHeight: minimumButtonTextSize.height * 2,
-                  maxWidth: minimumButtonTextSize.width * 1.4,
-                  minWidth: minimumButtonTextSize.width * 1.3),
-              decoration: buttonDecoration,
-              child: Center(
-                  child: TagOneText(
-                      widget.buttonTitle, widget.decorationVariant))),
-        ));
+    return Ink(
+      child: InkWell(
+          highlightColor: coloration.accentColor(),
+          splashColor: coloration.contrastColor(),
+          onTap: () {
+            if (isButtonEnabled == true) {
+              widget.buttonAction();
+            }
+          },
+          child: FloatingContainerElement(
+            child: Container(
+                constraints: BoxConstraints(
+                    minHeight: minimumButtonTextSize.height * 1.8,
+                    maxHeight: minimumButtonTextSize.height * 2,
+                    maxWidth: minimumButtonTextSize.width * 1.4,
+                    minWidth: minimumButtonTextSize.width * 1.3),
+                decoration: buttonDecoration,
+                child: Center(
+                    child: TagOneText(
+                        widget.buttonTitle, widget.decorationVariant))),
+          )),
+    );
   }
 }

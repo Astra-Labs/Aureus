@@ -36,21 +36,24 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
 
     var screenSize = size.logicalScreenSize();
 
-    return InkWell(
-        onTap: () {
-          if (isButtonEnabled == true) {
-            widget.buttonAction();
-          }
-        },
-        child: FloatingContainerElement(
-          child: SizedBox(
-              width: size.layoutItemWidth(1, screenSize),
-              height: minimumButtonTextSize.height * 4,
-              child: Container(
-                  decoration: buttonDecoration,
-                  child: Center(
-                      child: ButtonTwoText(
-                          widget.buttonTitle, widget.decorationVariant)))),
-        ));
+    return Ink(
+      color: coloration.accentColor(),
+      child: InkWell(
+          onTap: () {
+            if (isButtonEnabled == true) {
+              widget.buttonAction();
+            }
+          },
+          child: FloatingContainerElement(
+            child: SizedBox(
+                width: size.layoutItemWidth(1, screenSize),
+                height: minimumButtonTextSize.height * 4,
+                child: Container(
+                    decoration: buttonDecoration,
+                    child: Center(
+                        child: ButtonTwoText(
+                            widget.buttonTitle, widget.decorationVariant)))),
+          )),
+    );
   }
 }

@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'package:aureus/src/Widgets/Tools/BaseCardToolTemplate.dart';
-
 /*
 
 DESCRIPTION: 
@@ -33,7 +31,9 @@ class BubbleBurstToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyTwoText('Bubble Burst Tool', decorationPriority.standard)
+        ]);
   }
 }
 

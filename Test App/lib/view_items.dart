@@ -73,77 +73,102 @@ DataPermissionObject locationObject = DataConsent().locationAccessPermission(
 DataPermissionObject bluetoothObject = DataConsent().bluetoothAccessPermission(
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
+/*CoreTool demoTool = CoreTool(
+    toolName: 'Cool Tool 0!',
+    toolDescription:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    toolDetails: {
+      'Emergency': Assets.alert,
+    },
+    navigationContainer:
+        ToolNavigationContainer([], ToolSummaryView(parentTool: demoTool),
+            details: ToolDetailView(parentTool: demoTool),
+            entryPoint: ToolNavigationCardCarousel(parentTool: demoTool),
+            nextSteps: ToolNextStepsView(parentTool: demoTool, nextSteps: {
+              'Print hi': () => {print('hi')},
+              'Print hey': () => {print('hey')},
+              'Print why': () => {print('why')},
+              'Print money': () => {print('money')},
+            })),
+    toolIcon: Assets.alertmessage);
+
 CoreTool demoTool1 = CoreTool(
-    toolName: 'Tool 1',
-    toolDescription: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-    ],
-    toolIcon: Assets.mail,
-    entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView(),
-    navigationContainer: ToolNavigationContainer(
-        toolParent: demoTool1,
-        exitPoint: demoTool1.exitSource,
-        widgetChild: ContainerWrapperElement(children: [
-          ToolNavigationCardCarousel(parentTool: demoTool1, toolCards: [])
-        ], containerVariant: wrapperVariants.fullScreen)),
-    nextSteps: [demoTool2, demoTool3]);
+    toolName: 'Cool Tool 1!',
+    toolDescription:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    toolDetails: {
+      'Emergency': Assets.alert,
+    },
+    navigationContainer:
+        ToolNavigationContainer([], ToolSummaryView(parentTool: demoTool),
+            details: ToolDetailView(parentTool: demoTool),
+            entryPoint: ToolNavigationCardCarousel(parentTool: demoTool),
+            nextSteps: ToolNextStepsView(parentTool: demoTool, nextSteps: {
+              'Print hi': () => {print('hi')},
+              'Print hey': () => {print('hey')},
+              'Print why': () => {print('why')},
+              'Print money': () => {print('money')},
+            })),
+    toolIcon: Assets.alertmessage);
 
 CoreTool demoTool2 = CoreTool(
-    toolName: 'Tool 2',
-    toolDescription: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-    ],
-    toolIcon: Assets.body,
-    entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView(),
-    navigationContainer: ToolNavigationContainer(
-        toolParent: demoTool2,
-        exitPoint: demoTool2.exitSource,
-        widgetChild: ContainerWrapperElement(children: [
-          ToolNavigationCardCarousel(parentTool: demoTool2, toolCards: [])
-        ], containerVariant: wrapperVariants.fullScreen)),
-    nextSteps: [demoTool1, demoTool3]);
+    toolName: 'Cool Tool 2!',
+    toolDescription:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    toolDetails: {
+      'Emergency': Assets.alert,
+    },
+    navigationContainer:
+        ToolNavigationContainer([], ToolSummaryView(parentTool: demoTool),
+            details: ToolDetailView(parentTool: demoTool),
+            entryPoint: ToolNavigationCardCarousel(parentTool: demoTool),
+            nextSteps: ToolNextStepsView(parentTool: demoTool, nextSteps: {
+              'Print hi': () => {print('hi')},
+              'Print hey': () => {print('hey')},
+              'Print why': () => {print('why')},
+              'Print money': () => {print('money')},
+            })),
+    toolIcon: Assets.alertmessage);
 
 CoreTool demoTool3 = CoreTool(
-    toolName: 'Tool 3',
-    toolDescription: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-    ],
-    toolIcon: Assets.stethoscope,
-    entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView(),
-    navigationContainer: ToolNavigationContainer(
-        toolParent: demoTool3,
-        exitPoint: demoTool3.exitSource,
-        widgetChild: ContainerWrapperElement(children: [
-          ToolNavigationCardCarousel(parentTool: demoTool3, toolCards: [])
-        ], containerVariant: wrapperVariants.fullScreen)),
-    nextSteps: [demoTool1, demoTool2]);
+    toolName: 'Cool Tool 3!',
+    toolDescription:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    toolDetails: {
+      'Emergency': Assets.alert,
+    },
+    navigationContainer:
+        ToolNavigationContainer([], ToolSummaryView(parentTool: demoTool),
+            details: ToolDetailView(parentTool: demoTool),
+            entryPoint: ToolNavigationCardCarousel(parentTool: demoTool),
+            nextSteps: ToolNextStepsView(parentTool: demoTool, nextSteps: {
+              'Print hi': () => {print('hi')},
+              'Print hey': () => {print('hey')},
+              'Print why': () => {print('why')},
+              'Print money': () => {print('money')},
+            })),
+    toolIcon: Assets.alertmessage);
 
 CoreTool demoTool4 = CoreTool(
-    toolName: 'Tool 4',
-    toolDescription: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-    ],
-    toolIcon: Assets.pencil,
-    entrySource: OnboardingLandingView(),
-    exitSource: OnboardingLandingView(),
-    navigationContainer: ToolNavigationContainer(
-        toolParent: demoTool4,
-        exitPoint: demoTool4.exitSource,
-        widgetChild: ContainerWrapperElement(children: [
-          ToolNavigationCardCarousel(parentTool: demoTool4, toolCards: [])
-        ], containerVariant: wrapperVariants.fullScreen)),
-    nextSteps: [demoTool2, demoTool3]);
+    toolName: 'Cool Tool 4!',
+    toolDescription:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    toolDetails: {
+      'Emergency': Assets.alert,
+    },
+    navigationContainer:
+        ToolNavigationContainer([], ToolSummaryView(parentTool: demoTool),
+            details: ToolDetailView(parentTool: demoTool),
+            entryPoint: ToolNavigationCardCarousel(parentTool: demoTool),
+            nextSteps: ToolNextStepsView(parentTool: demoTool, nextSteps: {
+              'Print hi': () => {print('hi')},
+              'Print hey': () => {print('hey')},
+              'Print why': () => {print('why')},
+              'Print money': () => {print('money')},
+            })),
+    toolIcon: Assets.alertmessage);
+
+    */
 
 OnboardingDetail onboardingInfo1 = OnboardingDetail(
     detailTitle: "Item 1",
