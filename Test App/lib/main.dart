@@ -148,11 +148,11 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
     var yesNoActive = YesNoButtonSelectToolTemplate().returnActiveToolCard();
     var yesNoInactive = YesNoButtonSelectToolTemplate().returnTemplateSummary();
 
-    //var singleInputActive =
-    //var singleInputInactive =
+    var singleInputActive = SingleInputToolTemplate().returnActiveToolCard();
+    var singleInputInactive = SingleInputToolTemplate().returnTemplateSummary();
 
     var wrapper = ContainerWrapperElement(
-        children: [yesNoActive, yesNoInactive],
+        children: [singleInputActive, singleInputInactive],
         containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
