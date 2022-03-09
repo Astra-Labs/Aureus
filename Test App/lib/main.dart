@@ -247,10 +247,17 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
     var listButtonPickerInactive = listButtonPicker.returnTemplateSummary();
 
     var pulseCard = PulseInputToolTemplate();
-    var pulseActive = PulseInputToolTemplate().returnActiveToolCard();
+    var pulseActive = pulseCard.returnActiveToolCard();
+    var pulseInactive = pulseCard.returnTemplateSummary();
+
+    var timerTool = TimerToolTemplate(
+        allotment: Duration(seconds: 10), onFinish: () => {print('yee haw!')});
+    var timerActive = timerTool.returnActiveToolCard();
+    var timerInactive = timerTool.returnTemplateSummary();
 
     var wrapper = ContainerWrapperElement(
-        children: [pulseActive], containerVariant: wrapperVariants.stackScroll);
+        children: [pulseActive, pulseInactive, timerActive, timerInactive],
+        containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
         decorationVariant: decorationPriority.important, builder: wrapper);

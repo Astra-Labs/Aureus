@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /*--------- IMPORTANT ----------*/
 
@@ -232,8 +233,8 @@ class Safety {
 
   // Takes a list of fallbacks (options that a specific piece of code violates,
   // and the desired fallback to complete instead)
-  VoidCallback actionSafetyCheck(BuildContext actionContext,
-      List<SafetyPlanFallback> fallbackItems, VoidCallback primaryItem) {
+  Future<VoidCallback> actionSafetyCheck(BuildContext actionContext,
+      List<SafetyPlanFallback> fallbackItems, VoidCallback primaryItem) async {
     VoidCallback executableCode = () => {};
 
     var screenWidth = size.logicalWidth();
@@ -259,10 +260,8 @@ class Safety {
           ])))),
     );
 
-    fallbackItems.forEach((element) {
-      var optionEnabled = _SafetyPlan().readSafetyOption(element.safetyOption);
-
-      if (optionEnabled == true) {
+    fallbackItems.forEach((element) async {
+      if (await _SafetyPlan()._readSetting(element.safetyOption) == true) {
         if (element.fallbackOption == SafetyFallBackOptions.alternateCode) {
           executableCode = element.fallbackCode!;
         } else if (element.fallbackOption ==
@@ -298,29 +297,73 @@ After that, you interact with the Safety Plan by writing
 */
 
 class _SafetyPlan {
-  Map<SafetyPlanOptions, bool> get readSettings {
+  final _storage = const FlutterSecureStorage();
+
+  String safetyPlanKey(SafetyPlanOptions option) {
+    switch (option) {
+      case SafetyPlanOptions.onlyNeccessaryEmails:
+        return 'onlyNeccessaryEmails';
+
+      case SafetyPlanOptions.disableNotifications:
+        return 'disableNotifications';
+
+      case SafetyPlanOptions.disableBiometrics:
+        return 'disableBiometrics';
+
+      case SafetyPlanOptions.enable2FA:
+        return 'enable2FA';
+
+      case SafetyPlanOptions.localDataStorage:
+        return 'localDataStorage';
+
+      case SafetyPlanOptions.failedPasscodeDataDeletion:
+        return 'failedPasscodeDataDeletion';
+
+      case SafetyPlanOptions.exitBar:
+        return 'exitBar';
+
+      case SafetyPlanOptions.disableScreenshots:
+        return 'disableScreenshots';
+
+      case SafetyPlanOptions.deviceSandbox:
+        return 'deviceSandbox';
+
+      case SafetyPlanOptions.logFailedAttempts:
+        return 'logFailedAttempts';
+    }
+  }
+
+  Future<bool> _readSetting(SafetyPlanOptions option) async {
+    final settings = _storage.read(key: safetyPlanKey(option));
+
+    print('item being read!');
+    return settings.toString() == "true" ? true : false;
+  }
+
+  Future<void> _writeSetting(SafetyPlanOptions option, bool isEnabled) async {
+    await _storage.write(
+        key: safetyPlanKey(option), value: isEnabled.toString());
+
+    print('item being written!');
+  }
+
+  Future<Map<SafetyPlanOptions, bool>> get readSettings async {
     // pull settings from local storage here
-    return {
-      SafetyPlanOptions.onlyNeccessaryEmails: false,
-      SafetyPlanOptions.disableNotifications: false,
-      SafetyPlanOptions.disableBiometrics: false,
-      SafetyPlanOptions.enable2FA: false,
-      SafetyPlanOptions.localDataStorage: false,
-      SafetyPlanOptions.failedPasscodeDataDeletion: false,
-      SafetyPlanOptions.exitBar: false,
-      SafetyPlanOptions.disableScreenshots: false,
-      SafetyPlanOptions.deviceSandbox: false,
-      SafetyPlanOptions.logFailedAttempts: false
-    };
+
+    Map<SafetyPlanOptions, bool> settings = {};
+
+    SafetyPlanOptions.values.forEach((element) async {
+      settings.addEntries([MapEntry(element, await _readSetting(element))]);
+    });
+
+    return settings;
   }
 
   //write settings directly to local storage
   set writeSettings(Map<SafetyPlanOptions, bool> newSettings) {
-    writeSettings = newSettings;
-  }
-
-  bool readSafetyOption(SafetyPlanOptions option) {
-    return readSettings[option]!;
+    newSettings.entries.forEach((element) {
+      _writeSetting(element.key, element.value);
+    });
   }
 }
 

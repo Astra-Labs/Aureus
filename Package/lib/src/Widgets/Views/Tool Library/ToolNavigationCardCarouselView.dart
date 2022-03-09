@@ -67,7 +67,12 @@ class _ToolTemplateCardCarouselViewState
   @override
   Widget build(BuildContext context) {
     //the current, visible active card.
-    Widget activeCardItem = Container();
+    Widget activeCardItem = AnimatedContainer(
+      duration: accessibility.accessFeatures.disableAnimations
+          ? Duration(seconds: 0)
+          : Duration(seconds: 1),
+    );
+
     //the summary of all of the previous cards and their answers
     List<Widget> summaryListView = [];
 

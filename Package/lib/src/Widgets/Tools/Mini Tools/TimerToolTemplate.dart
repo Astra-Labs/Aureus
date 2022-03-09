@@ -9,7 +9,11 @@ USAGE:
 */
 
 class TimerToolTemplate extends ToolCardTemplate {
-  TimerToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
+  final Duration allotment;
+  final VoidCallback onFinish;
+
+  TimerToolTemplate({required this.allotment, required this.onFinish})
+      : super(templatePrompt: 'Timer', badgeIcon: Assets.brain);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -23,7 +27,7 @@ class TimerToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [TimerElement(timeAllotment: allotment)]);
   }
 
   @override
