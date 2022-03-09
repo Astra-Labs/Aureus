@@ -145,24 +145,26 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
               badgePriority: decorationPriority.important),
         ]);
 
-    //var yesNoActive = YesNoButtonSelectToolTemplate().returnActiveToolCard();
-    //var yesNoInactive = YesNoButtonSelectToolTemplate().returnTemplateSummary();
+    var yesNoTool = YesNoButtonSelectToolTemplate();
+    var yesNoActive = yesNoTool.returnActiveToolCard();
+    var yesNoInactive = yesNoTool.returnTemplateSummary();
 
-    //var singleInputActive = SingleInputToolTemplate().returnActiveToolCard();
-    //var singleInputInactive = SingleInputToolTemplate().returnTemplateSummary();
+    var singleInputTool = SingleInputToolTemplate();
+    var singleInputActive = singleInputTool.returnActiveToolCard();
+    var singleInputInactive = singleInputTool.returnTemplateSummary();
 
-    var dualColumnInputActive =
-        DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons')
-            .returnActiveToolCard();
-    var dualColumnInputInactive =
-        DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons')
-            .returnTemplateSummary();
+    var dualColumnTool =
+        DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons');
+    var dualColumnInputActive = dualColumnTool.returnActiveToolCard();
+    var dualColumnInputInactive = dualColumnTool.returnTemplateSummary();
 
-    //var triInputActive = TriInputToolTemplate().returnActiveToolCard();
-    //var triInputInactive = TriInputToolTemplate().returnTemplateSummary();
+    var triInputTool = TriInputToolTemplate(
+        textPrompt1: 'Idea #1', textPrompt2: 'Idea #2', textPrompt3: 'Idea #3');
+    var triInputActive = triInputTool.returnActiveToolCard();
+    var triInputInactive = triInputTool.returnTemplateSummary();
 
     var wrapper = ContainerWrapperElement(
-        children: [dualColumnInputActive, dualColumnInputInactive],
+        children: [triInputActive, triInputInactive],
         containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(

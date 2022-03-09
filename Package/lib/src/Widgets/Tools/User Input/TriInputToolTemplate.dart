@@ -9,33 +9,143 @@ USAGE:
 */
 
 class TriInputToolTemplate extends ToolCardTemplate {
-  TriInputToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
+  final String textPrompt1;
+  final String textPrompt2;
+  final String textPrompt3;
+
+  TriInputToolTemplate(
+      {required this.textPrompt1,
+      required this.textPrompt2,
+      required this.textPrompt3})
+      : super(templatePrompt: 'Tri Input Tool', badgeIcon: IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
-  var dataMap = [];
+  var dataMap = ['yee haw my beans', 'yee haw my toast', 'yee haw my beets'];
 
   @override
   Widget returnActiveToolCard() {
+    var textField1Controller = TextEditingController();
+    var textField2Controller = TextEditingController();
+    var textField3Controller = TextEditingController();
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          SizedBox(height: 20.0),
+          StandardTextFieldComponent(
+              hintText: textPrompt1,
+              decorationVariant: decorationPriority.standard,
+              textFieldController: textField1Controller),
+          StandardTextFieldComponent(
+              hintText: textPrompt2,
+              decorationVariant: decorationPriority.standard,
+              textFieldController: textField2Controller),
+          StandardTextFieldComponent(
+              hintText: textPrompt3,
+              decorationVariant: decorationPriority.standard,
+              textFieldController: textField3Controller),
+          SizedBox(height: 5),
+          DividerElement(),
+          SizedBox(height: 20.0),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonTitle: 'Next',
+                    buttonAction: () => {
+                          dataMap.insert(0, textField1Controller.text),
+                          dataMap.insert(1, textField2Controller.text),
+                          dataMap.insert(2, textField3Controller.text),
+                          onNextCard()
+                        }),
+                Spacer(),
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Skip',
+                    buttonAction: () => {onNextCard()})
+              ]),
+        ]);
   }
 
   @override
   Widget returnTemplateSummary() {
-    if (dataMap.isEmpty == true) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
-    }
+    //The summary to displayed when the tool is completed.
+    var filledChildren = [
+      Row(
+        children: [
+          FloatingContainerElement(
+              child: Container(
+            decoration:
+                LayerBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  TagTwoText(textPrompt1, decorationPriority.standard),
+                  SizedBox(height: 5.0),
+                  BodyOneText(dataMap.isNotEmpty ? dataMap[0] : '',
+                      decorationPriority.standard)
+                ]),
+          )),
+          SizedBox(width: 15.0),
+          FloatingContainerElement(
+              child: Container(
+            decoration:
+                LayerBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  TagTwoText(textPrompt2, decorationPriority.standard),
+                  SizedBox(height: 5.0),
+                  BodyOneText(dataMap.isNotEmpty ? dataMap[1] : '',
+                      decorationPriority.standard)
+                ]),
+          )),
+          SizedBox(width: 15.0),
+          FloatingContainerElement(
+              child: Container(
+            decoration:
+                LayerBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  TagTwoText(textPrompt3, decorationPriority.standard),
+                  SizedBox(height: 5.0),
+                  BodyOneText(dataMap.isNotEmpty ? dataMap[2] : '',
+                      decorationPriority.standard)
+                ]),
+          ))
+        ],
+      )
+    ];
+
+    //The list to displayed when the tool is skipped.
+    var skippedChildren = [
+      BodyOneText('Tool Skipped', decorationPriority.inactive)
+    ];
 
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: dataMap.isNotEmpty ? filledChildren : skippedChildren);
   }
 }

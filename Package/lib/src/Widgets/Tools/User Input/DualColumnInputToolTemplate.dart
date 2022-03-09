@@ -20,7 +20,7 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
 
-  var dataMap = ['yee haw my beans', 'yee haw my toast'];
+  var dataMap = [];
 
   @override
   Widget returnActiveToolCard() {
