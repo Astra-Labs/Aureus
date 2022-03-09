@@ -70,7 +70,6 @@ class PageHeaderElement extends StatelessWidget {
             ],
           ),
           SizedBox(height: 12.0),
-          DividerElement()
         ],
       ),
     );

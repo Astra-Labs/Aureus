@@ -3,9 +3,12 @@ import 'package:aureus/aureus.dart';
 class ContainerWrapperElement extends StatefulWidget {
   final List<Widget> children;
   final wrapperVariants containerVariant;
+  final bool takesFullWidth;
 
   ContainerWrapperElement(
-      {required this.children, required this.containerVariant});
+      {required this.children,
+      required this.containerVariant,
+      this.takesFullWidth = false});
 
   @override
   _ContainerWrapperElementState createState() =>
@@ -59,11 +62,17 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement>
                 children: widget.children));
       } else if (widget.containerVariant == wrapperVariants.fullScreen) {
         return Container(
-            constraints: BoxConstraints(
-                minWidth: size.layoutItemWidth(1, screenSize),
-                maxWidth: size.layoutItemWidth(1, screenSize),
-                minHeight: size.layoutItemHeight(1, screenSize),
-                maxHeight: size.layoutItemHeight(1, screenSize)),
+            constraints: widget.takesFullWidth
+                ? BoxConstraints(
+                    minWidth: screenSize.width,
+                    maxWidth: screenSize.width,
+                    minHeight: screenSize.height,
+                    maxHeight: screenSize.height)
+                : BoxConstraints(
+                    minWidth: size.layoutItemWidth(1, screenSize),
+                    maxWidth: size.layoutItemWidth(1, screenSize),
+                    minHeight: size.layoutItemHeight(1, screenSize),
+                    maxHeight: size.layoutItemHeight(1, screenSize)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,

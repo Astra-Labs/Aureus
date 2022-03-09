@@ -125,24 +125,24 @@ TextStyle button2() {
 TextStyle tag1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w700,
+          fontSize: accessibility.responsiveTextSize(10),
+          fontWeight: FontWeight.w900,
           letterSpacing: 0.4)
       : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w500,
+          fontSize: accessibility.responsiveTextSize(10),
+          fontWeight: FontWeight.w700,
           letterSpacing: 1.5);
 }
 
 TextStyle tag2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w600,
+          fontSize: accessibility.responsiveTextSize(10),
+          fontWeight: FontWeight.w800,
           letterSpacing: 0.4)
       : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w400,
+          fontSize: accessibility.responsiveTextSize(10),
+          fontWeight: FontWeight.w600,
           letterSpacing: 1.0);
 }
 

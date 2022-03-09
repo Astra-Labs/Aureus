@@ -48,16 +48,18 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
             });
           }
         },
-        child: SizedBox(
-            width: screenWidth,
-            height: minimumButtonTextSize.height * 4,
-            child: AnimatedContainer(
-                duration: Duration(milliseconds: 200),
-                curve: Curves.bounceIn,
-                /*foregroundDecoration: animatedBacking,*/
-                decoration: buttonDecoration,
-                child: Center(
-                    child: ButtonOneText(
-                        widget.buttonTitle, widget.currentVariant)))));
+        child: AnimatedContainer(
+            constraints: BoxConstraints(
+              minHeight: minimumButtonTextSize.height * 4,
+              maxHeight: minimumButtonTextSize.height * 4,
+              minWidth: screenWidth,
+            ),
+            duration: Duration(milliseconds: 200),
+            curve: Curves.bounceIn,
+            /*foregroundDecoration: animatedBacking,*/
+            decoration: buttonDecoration,
+            child: Center(
+                child:
+                    ButtonOneText(widget.buttonTitle, widget.currentVariant))));
   }
 }

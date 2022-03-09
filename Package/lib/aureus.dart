@@ -127,6 +127,7 @@ export 'src/Widgets/Views/SettingsView.dart';
 export 'src/Widgets/Views/Tool Library/ToolDetailView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNextStepView.dart';
 export 'src/Widgets/Views/Tool Library/ToolSummaryView.dart';
+export 'src/Widgets/Views/Tool Library/ToolNavigationCardCarouselView.dart';
 
 //Exporting lib tool templates
 
@@ -160,7 +161,6 @@ export 'src/Widgets/Tools/User Input/SingleSliderInputToolTemplate.dart';
 export 'src/Widgets/Tools/User Input/TriInputToolTemplate.dart';
 
 // -------------------------- User Selection
-export 'src/Widgets/Tools/User Selection/GridSelectToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/ListViewButtonSelectToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/ListViewPickerSelectToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/MultiCategoryCardSelectInputToolTemplate.dart';

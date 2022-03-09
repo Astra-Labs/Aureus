@@ -66,9 +66,12 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          IconBadge(
-              badgeIcon: dataMap[0] == true ? Assets.yes : Assets.no,
-              badgePriority: decorationPriority.important)
+          Align(
+            alignment: Alignment.centerRight,
+            child: IconBadge(
+                badgeIcon: dataMap[0] == true ? Assets.yes : Assets.no,
+                badgePriority: decorationPriority.important),
+          )
         ]);
   }
 }

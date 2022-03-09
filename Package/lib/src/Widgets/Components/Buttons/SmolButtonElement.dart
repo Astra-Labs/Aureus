@@ -54,8 +54,8 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
               constraints: BoxConstraints(
                   minHeight: minimumButtonTextSize.height * 1.8,
                   maxHeight: minimumButtonTextSize.height * 2,
-                  maxWidth: minimumButtonTextSize.width * 1.4,
-                  minWidth: minimumButtonTextSize.width * 1.3),
+                  maxWidth: minimumButtonTextSize.width * 2,
+                  minWidth: minimumButtonTextSize.width * 2),
               decoration: buttonDecoration,
               /*foregroundDecoration: animatedBacking,*/
               child: Center(

@@ -111,8 +111,68 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: ToolCardTesting(),
+        home: ToolNavigationTesting(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
+  }
+}
+
+class ToolNavigationTesting extends StatefulWidget {
+  const ToolNavigationTesting();
+  @override
+  _ToolNavigationTestingState createState() => _ToolNavigationTestingState();
+}
+
+class _ToolNavigationTestingState extends State<ToolNavigationTesting> {
+  var testingTool = CoreTool(
+    [
+      SingleInputToolTemplate(),
+      DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons'),
+      SingleSliderToolTemplate(),
+      SingleInputToolTemplate()
+    ],
+    toolName: 'Guided Cooldown',
+    toolDescription:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    toolDetails: {
+      'SMS Based': Assets.alertmessage,
+      'Kid-friendly': Assets.babycarriage,
+      'Requires brain': Assets.brain,
+    },
+    entryPoint: OnboardingLandingView(),
+    nextSteps: {
+      'Print hi': () => {print('hi')},
+      'Print hey': () => {print('hey')},
+      'Print why': () => {print('why')},
+      'Print money': () => {print('money')}
+    },
+    toolIcon: Assets.medicine,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    var toolContainer = navigationContainer(testingTool);
+
+    var containerWrapper = ContainerWrapperElement(children: [
+      DividingHeaderElement(
+          headerText: 'Welcome, Soylent Whore.',
+          subheaderText:
+              'This page is to help a very tired Amanda to debug the Core Tools, their containers, and more.'),
+      SizedBox(height: 70.0),
+      StandardButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: 'Enter Tool.',
+          buttonAction: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => toolContainer.details,
+                    ))
+              }),
+    ], containerVariant: wrapperVariants.fullScreen);
+
+    return ContainerView(
+        decorationVariant: decorationPriority.standard,
+        builder: containerWrapper);
   }
 }
 

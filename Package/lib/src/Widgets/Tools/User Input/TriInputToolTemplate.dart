@@ -17,7 +17,7 @@ class TriInputToolTemplate extends ToolCardTemplate {
       {required this.textPrompt1,
       required this.textPrompt2,
       required this.textPrompt3})
-      : super(templatePrompt: 'Tri Input Tool', badgeIcon: IconData(0));
+      : super(templatePrompt: 'Tri Input Tool', badgeIcon: Assets.alert);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

@@ -3,17 +3,17 @@ import 'package:aureus/aureus.dart';
 // A floating circle with a gradient that's filled according to how complete
 // something is. Used for showing completion at the end of a task or action.
 
-class ProgressIndicatorElement extends StatefulWidget {
+class CompletionCircleElement extends StatefulWidget {
   final double progressValue;
 
-  const ProgressIndicatorElement({required this.progressValue});
+  const CompletionCircleElement({required this.progressValue});
 
   @override
-  _ProgressIndicatorElementState createState() =>
-      _ProgressIndicatorElementState();
+  _CompletionCircleElementState createState() =>
+      _CompletionCircleElementState();
 }
 
-class _ProgressIndicatorElementState extends State<ProgressIndicatorElement>
+class _CompletionCircleElementState extends State<CompletionCircleElement>
     with TickerProviderStateMixin {
   late AnimationController controller;
 
@@ -42,15 +42,23 @@ class _ProgressIndicatorElementState extends State<ProgressIndicatorElement>
 
   @override
   Widget build(BuildContext context) {
-    return FloatingContainerElement(
-      child: Stack(children: [
-        CircularProgressIndicator(
-          backgroundColor: coloration.inactiveColor(),
-          color: coloration.accentColor(),
-          value: widget.progressValue,
-          strokeWidth: 2.0,
-          semanticsLabel: 'Progress Indicator',
-        ),
+    return SizedBox(
+      width: 150,
+      height: 150,
+      child: Stack(alignment: Alignment.center, children: [
+        SizedBox(
+            width: 150,
+            height: 150,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircularProgressIndicator(
+                backgroundColor: coloration.inactiveColor(),
+                color: coloration.accentColor(),
+                value: widget.progressValue,
+                strokeWidth: 3.0,
+                semanticsLabel: 'Progress Indicator',
+              ),
+            )),
         HeadingTwoText('${widget.progressValue}%', decorationPriority.standard)
       ]),
     );

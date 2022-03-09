@@ -16,20 +16,57 @@ class CoreTool {
   //Information & Icons to represent important information about
   //your tool. To be used in ToolDetailView.
   // ------------------------------
-  final ToolNavigationContainer navigationContainer;
-  //The navigation container that holds your tool functionality.
-  // ------------------------------
   final IconData toolIcon;
   //Specific icon for your tool.
   // ------------------------------
+  final Widget entryPoint;
+  // The widget that's the entry point for actually using your tool.
+  // If you're using tool card templates, it's recommended
+  // to make the entry point a ToolNavigationCardCarousel
+  // ------------------------------
+  final Map<String, VoidCallback> nextSteps;
+  // A map of a string (which describes action to the user),
+  // and a corresponding VoidCallback which completes that
+  // action if the item is pressed that will be shown
+  // at the end of a tool flow.
+  //----------------------------------------
+  List<ToolCardTemplate>? toolCards;
+  // The list of tool cards that you use within the flow of a Core Tool
+  // This allows Aureus to auto-generate a flow for you, and to
+  // carry the template data from usage to summary.
 
-  const CoreTool(
+  CoreTool(this.toolCards,
       {required this.toolName,
       required this.toolDescription,
       required this.toolDetails,
-      required this.navigationContainer,
-      required this.toolIcon});
+      required this.toolIcon,
+      required this.entryPoint,
+      required this.nextSteps});
 }
+
+// The navigation container that holds your tool functionality.
+// This is initialized for you based on whether or not you provide
+// tool cards within the CoreTool constructor.
+ToolNavigationContainer navigationContainer(CoreTool tool) {
+  return ToolNavigationContainer(tool.toolCards!.isEmpty ? [] : tool.toolCards,
+      tool.toolCards!.isNotEmpty ? ToolSummaryView(parentTool: tool) : null,
+      details: ToolDetailView(parentTool: tool),
+      entryPoint: tool.toolCards!.isEmpty
+          ? tool.entryPoint
+          : ToolTemplateCardCarouselView(parentTool: tool),
+      nextSteps:
+          ToolNextStepsView(parentTool: tool, nextSteps: tool.nextSteps));
+}
+
+// ------------------------------
+// Dev note from Amanda (3/8/2022): it's currently initalized
+// within a function because implementing this
+// as a variable of the CoreTool class
+// caused a 'maximum call stack' error.
+// Maybe in the future a better developer than me (Amanda)
+// can figure out a more elegant solution to having a navigation
+// container being initialized like this, but I've been
+// hard pressed to find another way.
 
 /* ------------------ Tool Navigation Container -------------------- */
 /*
@@ -79,91 +116,46 @@ class ToolNavigationPage {
   const ToolNavigationPage({required this.parentTool, required this.pageBody});
 }
 
-class ToolNavigationCardCarousel extends StatefulWidget {
-  final CoreTool parentTool;
-  ToolNavigationCardCarousel({required this.parentTool})
-      : assert(parentTool.navigationContainer.toolCards!.isNotEmpty == true,
-            'ToolNavigationCardCarousel requires the parent CoreTool to have tool cards in the navigation container.');
+// An observer pattern that the ToolTemplateCardCarouselView
+// uses to receive instructions from the ToolTemplateCards on moving
+// forward / going backward, depending on the interaction that the
+// user takes on the card.
 
-  @override
-  _ToolNavigationCardCarouselState createState() =>
-      _ToolNavigationCardCarouselState();
-}
+class AureusToolTemplateMaster {
+  List<AureusToolTemplateObserver> _observers = [];
 
-class _ToolNavigationCardCarouselState
-    extends State<ToolNavigationCardCarousel> {
-  void nextCard() {}
-  void previousCard() {}
-  void returnHome() {
-    Navigator.pop(context);
+  void registerObserver(AureusToolTemplateObserver observer) {
+    print('observer registered');
+    _observers.add(observer);
   }
 
-  void finishTool() {}
+  void unregisterObserver(AureusToolTemplateObserver observer) {
+    print('observer unregistered :-(');
+    _observers.remove(observer);
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+  void notifyObserverForward() {
+    print('notifying observers about moving forward');
+    for (var observer in _observers) {
+      observer.nextAction();
+    }
+  }
 
-    //the current, visible active card.
-    Widget activeCardItem = Container();
-    //the summary of all of the previous cards and their answers
-    List<Widget> summaryListView = [];
-    //the index current card being shown
-    int currentCardIndex = 0;
-    //the highest progress point reached in the tool.
-    int toolProgressIndicator = 0;
-
-    var children = widget.parentTool.navigationContainer.toolCards!;
-
-    children.forEach((element) {
-      if (children.indexOf(element) == currentCardIndex) {
-        activeCardItem = element.returnActiveToolCard();
-        toolProgressIndicator >= currentCardIndex
-            ? toolProgressIndicator = currentCardIndex
-            : toolProgressIndicator = toolProgressIndicator;
-      } else if (children.indexOf(element) != currentCardIndex) {
-        summaryListView.add(element.returnTemplateSummary());
-      }
-    });
-
-    var summaryList = SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: ListView(children: summaryListView));
-
-    var carouselLayout = ContainerWrapperElement(children: [
-      PageHeaderElement.withExit(
-          pageTitle: widget.parentTool.toolName, onPageExit: () => {}),
-      SizedBox(height: 35.0),
-      Column(
-        children: [
-          activeCardItem,
-          SizedBox(height: 20.0),
-          summaryList,
-        ],
-      ),
-      Spacer(),
-      FloatingContainerElement(
-          child: Container(
-              width: size.layoutItemWidth(1, screenSize),
-              height: size.layoutItemHeight(6, screenSize),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: LinearProgressIndicator(),
-              )))
-    ], containerVariant: wrapperVariants.fullScreen);
-
-    return ContainerView(
-        decorationVariant: decorationPriority.important,
-        builder: carouselLayout);
+  void notifyObserverBackward() {
+    print('notifying observers about going backwards');
+    for (var observer in _observers) {
+      observer.previousAction();
+    }
   }
 }
 
+mixin AureusToolTemplateObserver {
+  void nextAction() {}
+  void previousAction() {}
+}
+
+var toolTemplateMaster = AureusToolTemplateMaster();
 /* ------------------ Tool Card Template -------------------- */
-/*
-
--------
-
-*/
 
 class ToolCardTemplate {
   final String templatePrompt;
@@ -174,12 +166,12 @@ class ToolCardTemplate {
 
   void onNextCard() {
     print('requests move to next card');
-    //throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
+    toolTemplateMaster.notifyObserverForward();
   }
 
   void onPreviousCard() {
     print('requests return to previous card');
-    //throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
+    toolTemplateMaster.notifyObserverBackward();
   }
 
   Widget returnActiveToolCard() {

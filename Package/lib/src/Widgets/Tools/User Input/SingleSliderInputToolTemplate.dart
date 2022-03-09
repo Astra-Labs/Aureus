@@ -10,7 +10,7 @@ USAGE:
 
 class SingleSliderToolTemplate extends ToolCardTemplate {
   SingleSliderToolTemplate()
-      : super(templatePrompt: 'Single Slider', badgeIcon: IconData(0));
+      : super(templatePrompt: 'Single Slider', badgeIcon: Assets.alert);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -71,7 +71,8 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText('Slider: ${dataMap[0]} / 10', decorationPriority.inactive)
+          BodyOneText(
+              'Slider: ${dataMap[0] / 10} / 10', decorationPriority.inactive)
         ]);
   }
 }

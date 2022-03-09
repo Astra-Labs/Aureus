@@ -21,55 +21,79 @@ class _ToolDetailViewState extends State<ToolDetailView> {
   @override
   Widget build(BuildContext context) {
     var tool = widget.parentTool;
+    var toolNavigation = navigationContainer(tool);
+    var screenSize = size.logicalScreenSize();
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
+      takesFullWidth: true,
       children: [
-        SecondaryIconButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonIcon: Assets.no,
-            buttonTooltip: 'Exit ${tool.toolName} informa',
-            buttonAction: () => {Navigator.pop(context)}),
-        IconBadge(
-            badgeIcon: tool.toolIcon,
-            badgePriority: decorationPriority.important),
-        HeadingOneText(tool.toolName, decorationPriority.standard),
-        FloatingContainerElement(
-            child: Container(
-                constraints: BoxConstraints(),
-                decoration: LayerBackingDecoration(
-                        priority: decorationPriority.standard)
-                    .buildBacking(),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      Spacer(),
-                      TagOneText('Description', decorationPriority.standard),
-                      SizedBox(height: 20.0),
-                      Container(
-                        padding: EdgeInsets.all(8.0),
+        Center(
+          child: SizedBox(
+            width: size.layoutItemWidth(1, screenSize),
+            height: size.layoutItemHeight(1, screenSize),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Spacer(),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: SecondaryIconButtonElement(
+                      decorationVariant: decorationPriority.standard,
+                      buttonIcon: Assets.no,
+                      buttonTooltip: 'Exit ${tool.toolName} details',
+                      buttonAction: () => {Navigator.pop(context)}),
+                ),
+                Spacer(),
+                IconBadge(
+                    badgeIcon: tool.toolIcon,
+                    badgePriority: decorationPriority.important),
+                SizedBox(height: 10.0),
+                HeadingOneText(tool.toolName, decorationPriority.standard),
+                SizedBox(height: 40.0),
+                FloatingContainerElement(
+                    child: Container(
+                        height: size.layoutItemHeight(1, screenSize) * 0.6,
+                        width: size.layoutItemWidth(1, screenSize),
                         decoration: LayerBackingDecoration(
                                 priority: decorationPriority.standard)
                             .buildBacking(),
-                        child: SingleChildScrollView(
-                          child: Wrap(
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
                             children: [
-                              BodyOneText(tool.toolDescription,
-                                  decorationPriority.standard)
+                              Spacer(),
+                              TabSubheaderElement(title: 'Description'),
+                              SizedBox(height: 20.0),
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: LayerBackingDecoration(
+                                        priority: decorationPriority.standard)
+                                    .buildBacking(),
+                                child: BodyOneText(tool.toolDescription,
+                                    decorationPriority.standard),
+                              ),
+                              SizedBox(height: 20.0),
+                              TabSubheaderElement(title: 'Used for'),
+                              SizedBox(height: 20.0),
+                              DetailCardCarouselComponent(
+                                  cardDetailCarousel: tool.toolDetails),
+                              Spacer(),
                             ],
                           ),
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      TagOneText('Used for', decorationPriority.standard),
-                      SizedBox(height: 20.0),
-                      DetailCardCarouselComponent(
-                          cardDetailCarousel: tool.toolDetails),
-                      Spacer()
-                    ],
-                  ),
-                ))),
+                        ))),
+                Spacer(),
+              ],
+            ),
+          ),
+        ),
+        Spacer(),
         FullWidthButtonElement(
             buttonTitle: 'Open ${tool.toolName}.',
             currentVariant: decorationPriority.important,
@@ -77,8 +101,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            tool.navigationContainer.entryPoint,
+                        builder: (context) => toolNavigation.entryPoint,
                       ))
                 })
       ],
