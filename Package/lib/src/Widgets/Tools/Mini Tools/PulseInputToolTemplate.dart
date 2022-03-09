@@ -141,7 +141,23 @@ class _PulseMapCard extends StatefulWidget {
 }
 
 class _PulseMapCardState extends State<_PulseMapCard> {
-  VoidCallback pulseDot = () => {};
+  List<List<int>> selectedMapPattern = [];
+
+  void pulseDot(List<int> values) {
+    print('pulsing this dot: ${values[0]} ${values[1]}!');
+    Sensory().createSensation(sensationType.praise);
+
+    var y = values[0];
+    var x = values[1];
+
+    var mapRow = selectedMapPattern[y];
+
+    setState(() {
+      //removes the one, and sets it to zero, counting that dot as completed.
+      mapRow.removeAt(x);
+      mapRow.insert(x, 0);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +166,7 @@ class _PulseMapCardState extends State<_PulseMapCard> {
     //from 0-7 on the Y-axis (vertical) where the dot is
     int yIndex = 0;
 
-    List<List<int>> selectedMapPattern = widget.mapPattern10;
+    selectedMapPattern = widget.mapPattern10;
 
     var activeDot = Padding(
         padding: EdgeInsets.all(7.0),
@@ -185,7 +201,16 @@ class _PulseMapCardState extends State<_PulseMapCard> {
       element.forEach((element) {
         if (currentRow[xIndex] == 1) {
           // is the active dot
-          tempDotHolding.add(activeDot);
+
+          var indexMap = [yIndex, xIndex];
+
+          tempDotHolding.add(GestureDetector(
+              onTap: () => {
+                    pulseDot(new List<int>.from(
+                        indexMap.map((element) => element).toList()))
+                  },
+              child: activeDot));
+          print('gave dot $xIndex and $yIndex');
         } else if (currentRow[xIndex] == 0) {
           // is an inactive dot
           tempDotHolding.add(inactiveDot);

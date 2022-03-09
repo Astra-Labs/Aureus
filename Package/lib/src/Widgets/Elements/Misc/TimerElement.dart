@@ -5,7 +5,7 @@ import 'dart:async';
 //Doc Link:
 
 class TimerElement extends StatefulWidget {
-  final DateTimeRange timeAllotment;
+  final Duration timeAllotment;
 
   const TimerElement({required this.timeAllotment});
 
@@ -15,23 +15,22 @@ class TimerElement extends StatefulWidget {
 
 class _TimerElementState extends State<TimerElement> {
   late Timer _timer;
-  late Duration duration;
+  var intDuration = 0;
 
   void startTimer() {
-    duration = widget.timeAllotment.duration;
+    print('timer started!');
+    var intDuration = (widget.timeAllotment.inSeconds);
     const oneSec = const Duration(seconds: 1);
     _timer = new Timer.periodic(
       oneSec,
       (Timer timer) {
-        if (duration.inSeconds == 0) {
-          setState(() {
+        setState(() {
+          if (intDuration == 0) {
             timer.cancel();
-          });
-        } else {
-          setState(() {
-            duration = (duration.inSeconds - 1) as Duration;
-          });
-        }
+          } else {
+            intDuration--;
+          }
+        });
       },
     );
   }
@@ -42,12 +41,19 @@ class _TimerElementState extends State<TimerElement> {
 
   void resetTimer() {
     _timer.cancel();
-    duration = widget.timeAllotment.duration;
+    intDuration = widget.timeAllotment.inSeconds;
+  }
+
+  @override
+  void initState() {
+    intDuration = widget.timeAllotment.inSeconds;
+    super.initState();
   }
 
   @override
   void dispose() {
     pauseTimer();
+    super.dispose();
   }
 
   String formatHHMMSS(int seconds) {
@@ -81,28 +87,29 @@ class _TimerElementState extends State<TimerElement> {
             width: 300,
             height: 300,
             alignment: Alignment.center,
-            child: HeadingOneText(
-                formatHHMMSS(widget.timeAllotment.duration.inSeconds),
-                decorationPriority.standard),
+            child: HeadingOneText('$intDuration', decorationPriority.standard),
             decoration: timerBacking),
       ),
-      SizedBox(height: 10.0),
-      Row(children: [
-        SmolButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonTitle: 'Start',
-            buttonAction: () => {startTimer()}),
-        Spacer(),
-        SmolButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonTitle: 'Pause',
-            buttonAction: () => {pauseTimer()}),
-        Spacer(),
-        SmolButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonTitle: 'Cancel',
-            buttonAction: () => {resetTimer()}),
-      ]),
+      SizedBox(height: 20.0),
+      SizedBox(
+        width: 300,
+        child: Row(children: [
+          SmolButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'Start',
+              buttonAction: () => {startTimer()}),
+          Spacer(),
+          SmolButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'Pause',
+              buttonAction: () => {pauseTimer()}),
+          Spacer(),
+          SmolButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'Cancel',
+              buttonAction: () => {resetTimer()}),
+        ]),
+      ),
     ]);
   }
 }
