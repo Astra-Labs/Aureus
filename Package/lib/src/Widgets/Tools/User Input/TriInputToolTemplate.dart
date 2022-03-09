@@ -36,7 +36,7 @@ class TriInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          SizedBox(height: 20.0),
+          SizedBox(height: 25.0),
           StandardTextFieldComponent(
               hintText: textPrompt1,
               decorationVariant: decorationPriority.standard,
@@ -57,6 +57,11 @@ class TriInputToolTemplate extends ToolCardTemplate {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SmolButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Skip',
+                    buttonAction: () => {onNextCard()}),
+                Spacer(),
+                SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
                     buttonAction: () => {
@@ -65,11 +70,6 @@ class TriInputToolTemplate extends ToolCardTemplate {
                           dataMap.insert(2, textField3Controller.text),
                           onNextCard()
                         }),
-                Spacer(),
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Skip',
-                    buttonAction: () => {onNextCard()})
               ]),
         ]);
   }

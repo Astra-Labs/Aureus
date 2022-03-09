@@ -1,13 +1,14 @@
 import 'package:aureus/aureus.dart';
 
+// ignore: must_be_immutable
 class SliderElement extends StatefulWidget {
+  var slideValue = 0.0;
+
   @override
   _SliderElementState createState() => _SliderElementState();
 }
 
 class _SliderElementState extends State<SliderElement> {
-  var slideValue = 0.0;
-
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
@@ -30,15 +31,15 @@ class _SliderElementState extends State<SliderElement> {
             inactiveTickMarkColor: coloration.contrastColor(),
             valueIndicatorShape: SliderComponentShape.noOverlay),
         child: Slider(
-          value: slideValue,
+          value: widget.slideValue,
           min: 0,
           max: 100,
           divisions: 10,
-          label: '$slideValue',
+          label: '$widget.slideValue',
           onChanged: (value) {
             setState(
               () {
-                slideValue = value;
+                widget.slideValue = value;
               },
             );
           },

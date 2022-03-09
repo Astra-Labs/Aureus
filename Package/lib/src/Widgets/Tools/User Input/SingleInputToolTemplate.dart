@@ -38,15 +38,15 @@ class SingleInputToolTemplate extends ToolCardTemplate {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SmolButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Skip',
+                    buttonAction: () => {onNextCard()}),
+                Spacer(),
+                SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
                     buttonAction: () =>
                         {dataMap.insert(0, cardController.text), onNextCard()}),
-                Spacer(),
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Skip',
-                    buttonAction: () => {onNextCard()})
               ]),
         ]);
   }

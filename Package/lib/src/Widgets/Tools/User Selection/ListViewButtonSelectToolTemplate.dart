@@ -8,9 +8,19 @@ USAGE:
 
 */
 
-class ListViewSelectToolTemplate extends ToolCardTemplate {
-  ListViewSelectToolTemplate()
-      : super(templatePrompt: '', badgeIcon: IconData(0));
+class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
+  final Map<String, VoidCallback> listItems;
+  //----------------------------------------
+  // A map of a string (which describes action to the user),
+  // and a corresponding VoidCallback which completes that
+  // action if the item is pressed. The user will also be
+  // passed to the next card when they push ANY button.
+
+  ListViewButtonSelectToolTemplate({required this.listItems})
+      : assert(listItems.entries.length <= 5,
+            "You can't have more than 5 options in a button select card. That would be too overwhelming to the user."),
+        super(
+            templatePrompt: 'List View Button Select', badgeIcon: IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -20,23 +30,45 @@ class ListViewSelectToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
+    List<Widget> buttonItems = [];
+
+    listItems.entries.forEach((element) {
+      buttonItems.add(Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: StandardButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: element.key,
+            buttonAction: () => {
+                  dataMap.insert(0, element.key),
+                  element.value(),
+                  onNextCard(),
+                }),
+      ));
+    });
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            children: buttonItems,
+          )
+        ]);
   }
 
   @override
   Widget returnTemplateSummary() {
-    if (dataMap.isEmpty == true) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
-    }
-
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyOneText(
+              dataMap.isNotEmpty ? dataMap[0] : 'List selection skipped.',
+              decorationPriority.inactive)
+        ]);
   }
 }

@@ -148,6 +148,11 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SmolButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Skip',
+                    buttonAction: () => {onNextCard()}),
+                Spacer(),
+                SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
                     buttonAction: () => {
@@ -155,11 +160,6 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                           dataMap.insert(1, column2Controller.text),
                           onNextCard()
                         }),
-                Spacer(),
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Skip',
-                    buttonAction: () => {onNextCard()})
               ]),
         ]);
   }

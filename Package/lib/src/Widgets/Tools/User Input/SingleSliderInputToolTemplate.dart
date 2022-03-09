@@ -10,21 +10,54 @@ USAGE:
 
 class SingleSliderToolTemplate extends ToolCardTemplate {
   SingleSliderToolTemplate()
-      : super(templatePrompt: '', badgeIcon: IconData(0));
+      : super(templatePrompt: 'Single Slider', badgeIcon: IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
-  var dataMap = [];
+  var dataMap = [5.0];
 
   @override
   Widget returnActiveToolCard() {
+    var slider = SliderElement();
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          slider,
+          SizedBox(height: 10.0),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                SubheaderText('0', decorationPriority.standard),
+                Spacer(),
+                SubheaderText('10', decorationPriority.standard)
+              ],
+            ),
+          ),
+          SizedBox(height: 10.0),
+          DividerElement(),
+          SizedBox(height: 20.0),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Skip',
+                    buttonAction: () => {onNextCard()}),
+                Spacer(),
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonTitle: 'Next',
+                    buttonAction: () =>
+                        {dataMap.insert(0, slider.slideValue), onNextCard()}),
+              ])
+        ]);
   }
 
   @override
@@ -37,6 +70,8 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyOneText('Slider: ${dataMap[0]} / 10', decorationPriority.inactive)
+        ]);
   }
 }

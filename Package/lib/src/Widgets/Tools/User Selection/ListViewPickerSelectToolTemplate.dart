@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/cupertino.dart';
 
 /*
 
@@ -9,8 +10,13 @@ USAGE:
 */
 
 class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
-  ListViewPickerSelectToolTemplate()
-      : super(templatePrompt: '', badgeIcon: IconData(0));
+  final List<String> pickerOptions;
+  //-------------------------------
+  // A list that holds the different options you want to be shown
+  // in the picker wheel.
+
+  ListViewPickerSelectToolTemplate({required this.pickerOptions})
+      : super(templatePrompt: 'List View Picker', badgeIcon: IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -20,23 +26,65 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
+    List<Widget> pickerList = [];
+    String selectedItem = '';
+
+    pickerOptions.forEach((element) {
+      pickerList.add(
+          Center(child: BodyOneText(element, decorationPriority.standard)));
+    });
+
     return BaseCardToolTemplate(
-        isActive: true,
-        cardIcon: badgeIcon,
-        toolPrompt: templatePrompt,
-        toolChildren: []);
+      isActive: true,
+      cardIcon: badgeIcon,
+      toolPrompt: templatePrompt,
+      toolChildren: [
+        Container(
+          height: 100,
+          decoration: InputBackingDecoration().buildBacking(),
+          padding: EdgeInsets.all(12.0),
+          child: CupertinoPicker(
+              backgroundColor: Colors.transparent,
+              itemExtent: 40,
+              magnification: 1.2,
+              diameterRatio: 1.9,
+              onSelectedItemChanged: (int index) {
+                selectedItem = pickerOptions[index];
+              },
+              children: pickerList),
+        ),
+        SizedBox(height: 20.0),
+        DividerElement(),
+        SizedBox(height: 20.0),
+        Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SmolButtonElement(
+                  decorationVariant: decorationPriority.standard,
+                  buttonTitle: 'Skip',
+                  buttonAction: () => {onNextCard()}),
+              Spacer(),
+              SmolButtonElement(
+                  decorationVariant: decorationPriority.important,
+                  buttonTitle: 'Next',
+                  buttonAction: () =>
+                      {dataMap.insert(0, selectedItem), onNextCard()}),
+            ])
+      ],
+    );
   }
 
   @override
   Widget returnTemplateSummary() {
-    if (dataMap.isEmpty == true) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
-    }
-
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyOneText(
+              dataMap.isNotEmpty ? dataMap[0] : 'Picker Selection skipped',
+              decorationPriority.inactive)
+        ]);
   }
 }

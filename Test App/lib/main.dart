@@ -163,8 +163,31 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
     var triInputActive = triInputTool.returnActiveToolCard();
     var triInputInactive = triInputTool.returnTemplateSummary();
 
+    var sliderTool = SingleSliderToolTemplate();
+    var sliderActive = sliderTool.returnActiveToolCard();
+    var sliderInactive = sliderTool.returnTemplateSummary();
+
+    var listPickerTool = ListViewPickerSelectToolTemplate(pickerOptions: [
+      'Iced Caramel Macchiato',
+      'Iced Vanilla Latte',
+      'Iced Mint Mocha',
+      'Iced Chai Tea',
+      'Iced Matcha Green Tea'
+    ]);
+    var listPickerActive = listPickerTool.returnActiveToolCard();
+    var listPickerInactive = listPickerTool.returnTemplateSummary();
+
+    var listButtonPicker = ListViewButtonSelectToolTemplate(listItems: {
+      'Print hi': () => {print('hi')},
+      'Print hey': () => {print('hey')},
+      'Print why': () => {print('why')},
+      'Print money': () => {print('money')},
+    });
+    var listButtonPickerActive = listButtonPicker.returnActiveToolCard();
+    var listButtonPickerInactive = listButtonPicker.returnTemplateSummary();
+
     var wrapper = ContainerWrapperElement(
-        children: [triInputActive, triInputInactive],
+        children: [listButtonPickerActive, listButtonPickerInactive],
         containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
