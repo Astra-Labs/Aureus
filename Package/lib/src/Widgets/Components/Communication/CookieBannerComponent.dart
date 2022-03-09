@@ -1,8 +1,13 @@
 import 'package:aureus/aureus.dart';
-//An exit bar that stays at the top of the user's screen and exits the screen when pressed.
 
 class CookieBannerComponent extends StatefulWidget {
-  const CookieBannerComponent();
+  final String cookieMessage;
+  final VoidCallback onCookieAccept;
+  final VoidCallback onCookieDeny;
+  const CookieBannerComponent(
+      {required this.cookieMessage,
+      required this.onCookieAccept,
+      required this.onCookieDeny});
 
   @override
   _CookieBannerComponentState createState() => _CookieBannerComponentState();
@@ -22,25 +27,31 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
         decoration:
             CardBackingDecoration(priority: decorationPriority.important)
                 .buildBacking(),
-        child: Column(
-          children: [
-            SizedBox(height: 20.0),
-            IconBadge(
-                badgeIcon: Assets.alertmessage,
-                badgePriority: decorationPriority.important),
-            TagTwoText('data', decorationPriority.important),
-            BodyOneText('data', decorationPriority.important),
-            Spacer(),
-            StandardButtonElement(
-                decorationVariant: decorationPriority.important,
-                buttonTitle: 'buttonTitle',
-                buttonAction: () => {}),
-            StandardButtonElement(
-                decorationVariant: decorationPriority.important,
-                buttonTitle: 'buttonTitle',
-                buttonAction: () => {}),
-            SizedBox(height: 20.0),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(13.0),
+          child: Column(
+            children: [
+              SizedBox(height: 20.0),
+              IconBadge(
+                  badgeIcon: Assets.alertmessage,
+                  badgePriority: decorationPriority.important),
+              SizedBox(height: 10.0),
+              TagTwoText('Cookie Usage', decorationPriority.important),
+              SizedBox(height: 5.0),
+              BodyOneText(widget.cookieMessage, decorationPriority.important),
+              SizedBox(height: 10.0),
+              StandardButtonElement(
+                  decorationVariant: decorationPriority.important,
+                  buttonTitle: 'Accept',
+                  buttonAction: widget.onCookieAccept),
+              SizedBox(height: 5.0),
+              StandardButtonElement(
+                  decorationVariant: decorationPriority.important,
+                  buttonTitle: 'Deny',
+                  buttonAction: widget.onCookieDeny),
+              SizedBox(height: 20.0),
+            ],
+          ),
         ));
   }
 }

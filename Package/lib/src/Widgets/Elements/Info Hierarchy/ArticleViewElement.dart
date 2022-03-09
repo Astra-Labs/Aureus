@@ -17,10 +17,15 @@ class ArticleViewElement extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       children: [
+        const SizedBox(height: 20.0),
         HeadingOneText(title, decorationPriority.standard),
+        const SizedBox(height: 5.0),
         SubheaderText(subheader, decorationPriority.standard),
+        const SizedBox(height: 10.0),
         DividerElement(),
-        BodyOneText(body, decorationPriority.standard)
+        const SizedBox(height: 10.0),
+        BodyOneText(body, decorationPriority.standard),
+        const SizedBox(height: 20.0),
       ],
     );
   }

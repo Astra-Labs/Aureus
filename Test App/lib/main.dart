@@ -10,7 +10,7 @@ void main() {
       fontFamily: 'Exo',
       lightModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [carbon(), black()]),
-          accentColor: lavender(),
+          accentColor: Color.fromRGBO(225, 230, 255, 1.0),
           primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
@@ -111,7 +111,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: ToolNavigationTesting(),
+        home: ToolCardTesting(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
@@ -246,9 +246,11 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
     var listButtonPickerActive = listButtonPicker.returnActiveToolCard();
     var listButtonPickerInactive = listButtonPicker.returnTemplateSummary();
 
+    var pulseCard = PulseInputToolTemplate();
+    var pulseActive = PulseInputToolTemplate().returnActiveToolCard();
+
     var wrapper = ContainerWrapperElement(
-        children: [listButtonPickerActive, listButtonPickerInactive],
-        containerVariant: wrapperVariants.stackScroll);
+        children: [pulseActive], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
         decorationVariant: decorationPriority.important, builder: wrapper);

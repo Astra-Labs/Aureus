@@ -14,17 +14,6 @@ class Sensory {
   // Wraps an Ink & Inkwell widget together and calls
   // the Aureus sensory engine to provide haptic feedback
   // and noises from the sound library.
-  Ink onSensoryTap(VoidCallback tapAction, sensationType sense) {
-    return Ink(
-      color: coloration.accentColor(),
-      child: InkWell(
-        onTap: () => {
-          createSensation(sense),
-          tapAction(),
-        },
-      ),
-    );
-  }
 
   // Calls the Hpatic Feedback engine and plays
   // an accompanying sound file for the different

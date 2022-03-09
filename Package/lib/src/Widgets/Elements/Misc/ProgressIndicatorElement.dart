@@ -18,7 +18,7 @@ class _ProgressIndicatorElementState extends State<ProgressIndicatorElement> {
       value: widget.value,
       backgroundColor: coloration.inactiveColor(),
       color: coloration.accentColor(),
-      minHeight: 3.0,
+      minHeight: 5.0,
       semanticsLabel: 'Progress Indicator',
       semanticsValue: 'Progress: ${widget.value}',
     );

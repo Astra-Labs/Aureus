@@ -95,6 +95,7 @@ export 'src/Widgets/Components/Communication/NotificationComponent.dart';
 export 'src/Widgets/Components/Communication/SearchBarComponent.dart';
 export 'src/Widgets/Components/Communication/SendFieldComponent.dart';
 export 'src/Widgets/Components/Communication/BlankScreenComponent.dart';
+export 'src/Widgets/Components/Communication/CookieBannerComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
 
 export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';

@@ -72,7 +72,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                               TabSubheaderElement(title: 'Description'),
                               SizedBox(height: 20.0),
                               Container(
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(12.0),
                                 decoration: LayerBackingDecoration(
                                         priority: decorationPriority.standard)
                                     .buildBacking(),

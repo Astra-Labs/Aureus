@@ -75,6 +75,13 @@ class ContentWarningComponent extends StatelessWidget {
       ),
     );
 
-    return warningLayout;
+    return ContainerView(
+        decorationVariant: decorationPriority.important,
+        takesFullWidth: true,
+        builder: ContainerWrapperElement(
+          takesFullWidth: true,
+          containerVariant: wrapperVariants.fullScreen,
+          children: [warningLayout],
+        ));
   }
 }
