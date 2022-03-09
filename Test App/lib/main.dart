@@ -145,14 +145,24 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
               badgePriority: decorationPriority.important),
         ]);
 
-    var yesNoActive = YesNoButtonSelectToolTemplate().returnActiveToolCard();
-    var yesNoInactive = YesNoButtonSelectToolTemplate().returnTemplateSummary();
+    //var yesNoActive = YesNoButtonSelectToolTemplate().returnActiveToolCard();
+    //var yesNoInactive = YesNoButtonSelectToolTemplate().returnTemplateSummary();
 
-    var singleInputActive = SingleInputToolTemplate().returnActiveToolCard();
-    var singleInputInactive = SingleInputToolTemplate().returnTemplateSummary();
+    //var singleInputActive = SingleInputToolTemplate().returnActiveToolCard();
+    //var singleInputInactive = SingleInputToolTemplate().returnTemplateSummary();
+
+    var dualColumnInputActive =
+        DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons')
+            .returnActiveToolCard();
+    var dualColumnInputInactive =
+        DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons')
+            .returnTemplateSummary();
+
+    //var triInputActive = TriInputToolTemplate().returnActiveToolCard();
+    //var triInputInactive = TriInputToolTemplate().returnTemplateSummary();
 
     var wrapper = ContainerWrapperElement(
-        children: [singleInputActive, singleInputInactive],
+        children: [dualColumnInputActive, dualColumnInputInactive],
         containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
