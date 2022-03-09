@@ -173,10 +173,12 @@ class ToolCardTemplate {
       {required this.templatePrompt, required this.badgeIcon});
 
   void onNextCard() {
+    print('requests move to next card');
     //throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
   }
 
   void onPreviousCard() {
+    print('requests return to previous card');
     //throw ('onNextCard needs to be overriden by the parent navigation controller to manage card states.');
   }
 

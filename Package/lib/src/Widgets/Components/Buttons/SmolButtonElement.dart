@@ -18,6 +18,8 @@ class SmolButtonElement extends StatefulWidget {
 }
 
 class _SmolButtonElementState extends State<SmolButtonElement> {
+  BoxDecoration animatedBacking = BoxDecoration();
+
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
@@ -34,27 +36,31 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return Ink(
-      child: InkWell(
-          highlightColor: coloration.accentColor(),
-          splashColor: coloration.contrastColor(),
-          onTap: () {
-            if (isButtonEnabled == true) {
-              widget.buttonAction();
-            }
-          },
-          child: FloatingContainerElement(
-            child: Container(
-                constraints: BoxConstraints(
-                    minHeight: minimumButtonTextSize.height * 1.8,
-                    maxHeight: minimumButtonTextSize.height * 2,
-                    maxWidth: minimumButtonTextSize.width * 1.4,
-                    minWidth: minimumButtonTextSize.width * 1.3),
-                decoration: buttonDecoration,
-                child: Center(
-                    child: TagOneText(
-                        widget.buttonTitle, widget.decorationVariant))),
-          )),
-    );
+    return InkWell(
+        highlightColor: coloration.accentColor(),
+        splashColor: coloration.contrastColor(),
+        onTap: () {
+          if (isButtonEnabled == true) {
+            widget.buttonAction();
+            setState(() {
+              animatedBacking = BoxDecoration(color: coloration.accentColor());
+            });
+          }
+        },
+        child: FloatingContainerElement(
+          child: AnimatedContainer(
+              duration: Duration(milliseconds: 200),
+              curve: Curves.bounceIn,
+              constraints: BoxConstraints(
+                  minHeight: minimumButtonTextSize.height * 1.8,
+                  maxHeight: minimumButtonTextSize.height * 2,
+                  maxWidth: minimumButtonTextSize.width * 1.4,
+                  minWidth: minimumButtonTextSize.width * 1.3),
+              decoration: buttonDecoration,
+              /*foregroundDecoration: animatedBacking,*/
+              child: Center(
+                  child: TagOneText(
+                      widget.buttonTitle, widget.decorationVariant))),
+        ));
   }
 }

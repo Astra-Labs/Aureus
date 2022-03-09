@@ -9,7 +9,8 @@ USAGE:
 */
 
 class SingleInputToolTemplate extends ToolCardTemplate {
-  SingleInputToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
+  SingleInputToolTemplate()
+      : super(templatePrompt: 'Single Input', badgeIcon: IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -19,11 +20,31 @@ class SingleInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
+    var cardController = TextEditingController();
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          FloatingContainerElement(
+              child: Container(
+                  decoration: InputBackingDecoration().buildBacking(),
+                  padding: const EdgeInsets.all(12.0),
+                  child: TextField(controller: cardController))),
+          DividerElement(),
+          Row(children: [
+            SmolButtonElement(
+                decorationVariant: decorationPriority.important,
+                buttonTitle: 'Next',
+                buttonAction: () =>
+                    {dataMap.insert(0, cardController.text), onNextCard()}),
+            SmolButtonElement(
+                decorationVariant: decorationPriority.standard,
+                buttonTitle: 'Skip',
+                buttonAction: () => {onNextCard()})
+          ])
+        ]);
   }
 
   @override
@@ -35,6 +56,9 @@ class SingleInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: [
+          BodyOneText(dataMap.isNotEmpty ? dataMap[0] : 'Tool Skipped',
+              decorationPriority.inactive)
+        ]);
   }
 }

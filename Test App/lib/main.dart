@@ -9,7 +9,7 @@ void main() {
   var resourceBranding = AureusBranding(
       fontFamily: 'Exo',
       lightModeStyle: AureusStylization(
-          contrastGradient: LinearGradient(colors: [steel(), carbon()]),
+          contrastGradient: LinearGradient(colors: [carbon(), black()]),
           accentColor: lavender(),
           primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
@@ -148,8 +148,12 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
     var yesNoActive = YesNoButtonSelectToolTemplate().returnActiveToolCard();
     var yesNoInactive = YesNoButtonSelectToolTemplate().returnTemplateSummary();
 
+    //var singleInputActive =
+    //var singleInputInactive =
+
     var wrapper = ContainerWrapperElement(
-        children: [yesNoActive], containerVariant: wrapperVariants.stackScroll);
+        children: [yesNoActive, yesNoInactive],
+        containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
         decorationVariant: decorationPriority.important, builder: wrapper);

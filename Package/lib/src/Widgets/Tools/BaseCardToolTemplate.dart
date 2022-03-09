@@ -31,9 +31,8 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             maxWidth: size.layoutItemWidth(1, screenSize),
             minWidth: size.layoutItemWidth(1, screenSize),
             maxHeight: size.layoutItemHeight(1, screenSize)),
-        decoration:
-            CardBackingDecoration(priority: decorationPriority.important)
-                .buildBacking(),
+        decoration: CardBackingDecoration(priority: decorationPriority.inverted)
+            .buildBacking(),
         padding: EdgeInsets.all(15.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -43,9 +42,9 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             SizedBox(height: 10.0),
             IconBadge(
                 badgeIcon: widget.cardIcon,
-                badgePriority: decorationPriority.inactive),
+                badgePriority: decorationPriority.standard),
             SizedBox(height: 20.0),
-            SubheaderText(widget.toolPrompt, decorationPriority.important),
+            SubheaderText(widget.toolPrompt, decorationPriority.standard),
             SizedBox(height: 20.0),
             Column(children: widget.toolChildren),
             SizedBox(height: 20.0)

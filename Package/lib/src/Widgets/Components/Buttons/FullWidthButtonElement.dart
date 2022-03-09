@@ -18,6 +18,8 @@ class FullWidthButtonElement extends StatefulWidget {
 }
 
 class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
+  BoxDecoration animatedBacking = BoxDecoration();
+
   @override
   Widget build(BuildContext context) {
     //variables that change how the variants are displayed in build time
@@ -41,12 +43,18 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
         onTap: () {
           if (isButtonEnabled == true) {
             widget.buttonAction();
+            setState(() {
+              animatedBacking = BoxDecoration(color: coloration.accentColor());
+            });
           }
         },
         child: SizedBox(
             width: screenWidth,
             height: minimumButtonTextSize.height * 4,
-            child: Container(
+            child: AnimatedContainer(
+                duration: Duration(milliseconds: 200),
+                curve: Curves.bounceIn,
+                /*foregroundDecoration: animatedBacking,*/
                 decoration: buttonDecoration,
                 child: Center(
                     child: ButtonOneText(

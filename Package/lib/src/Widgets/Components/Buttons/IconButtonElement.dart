@@ -75,8 +75,8 @@ class SecondaryIconButtonElement extends StatefulWidget {
 
 class _SecondaryIconButtonElementState
     extends State<SecondaryIconButtonElement> {
-  BoxDecoration animatedBacking = BoxDecoration(
-      color: Colors.transparent, borderRadius: BorderRadius.circular(100));
+  BoxDecoration animatedBacking = BoxDecoration();
+
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
@@ -101,7 +101,7 @@ class _SecondaryIconButtonElementState
           child: AnimatedContainer(
             duration: Duration(milliseconds: 200),
             curve: Curves.bounceIn,
-            foregroundDecoration: animatedBacking,
+            /*foregroundDecoration: animatedBacking,*/
             decoration: ButtonBackingDecoration(
                     variant: buttonDecorationVariants.circle,
                     priority: widget.decorationVariant)

@@ -21,6 +21,8 @@ class StandardIconButtonElement extends StatefulWidget {
 }
 
 class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
+  BoxDecoration animatedBacking = BoxDecoration();
+
   @override
   Widget build(BuildContext context) {
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
@@ -43,13 +45,19 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
         onTap: () {
           if (isButtonEnabled == true) {
             widget.buttonAction();
+            setState(() {
+              animatedBacking = BoxDecoration(color: coloration.accentColor());
+            });
           }
         },
         child: FloatingContainerElement(
           child: SizedBox(
               width: size.layoutItemWidth(1, screenSize),
               height: minimumButtonTextSize.height * 4,
-              child: Container(
+              child: AnimatedContainer(
+                  duration: Duration(milliseconds: 200),
+                  curve: Curves.bounceIn,
+                  /*foregroundDecoration: animatedBacking,*/
                   decoration: buttonDecoration,
                   child: Center(
                       child: Padding(
