@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 
 class MicrophoneInputToolTemplate extends ToolCardTemplate {
   MicrophoneInputToolTemplate()

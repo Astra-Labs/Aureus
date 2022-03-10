@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:camera/camera.dart';
 /*
 
 DESCRIPTION: 
