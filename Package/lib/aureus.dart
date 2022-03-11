@@ -69,6 +69,7 @@ export 'src/Widgets/Elements/Info Hierarchy/DividingHeaderElement.dart';
 
 export 'src/Widgets/Elements/Misc/ContainerWrapperElement.dart';
 export 'src/Widgets/Elements/Misc/FloatingContainerElement.dart';
+export 'src/Widgets/Elements/Misc/CompletionCircleElement.dart';
 export 'src/Widgets/Elements/Misc/LoadingCircleElement.dart';
 export 'src/Widgets/Elements/Misc/ProgressIndicatorElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';

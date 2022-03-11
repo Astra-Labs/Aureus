@@ -53,7 +53,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                     width: 60.0,
                     height: 60.0,
                     child: coloration.resourceLogo()),
-                SizedBox(height: 10.0),
+                SizedBox(height: 20.0),
                 HeadingOneText('You did a great job with ${tool.toolName}',
                     decorationPriority.standard),
                 SizedBox(height: 40.0),
@@ -67,7 +67,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                           priority: decorationPriority.inactive)
                       .buildBacking(),
                   child: Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,19 +75,14 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                         Spacer(),
                         HeadingThreeText(
                             'Next Steps', decorationPriority.standard),
-                        SizedBox(height: 5.0),
                         BodyOneText(
                             'Choose next steps to go further, or return home.',
                             decorationPriority.standard),
-                        SizedBox(height: 10.0),
-                        SizedBox(
-                          width: size.layoutItemWidth(1, screenSize),
-                          height: size.layoutItemHeight(1, screenSize) * 0.4,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: nextStepCards,
-                            ),
+                        SizedBox(height: 20.0),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: nextStepCards,
                           ),
                         ),
                         Spacer(),

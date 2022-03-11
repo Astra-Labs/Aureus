@@ -45,8 +45,117 @@ class _GyroscopeDirectionCard extends StatefulWidget {
 }
 
 class _GyroscopeDirectionCardState extends State<_GyroscopeDirectionCard> {
+  late double x, y;
+  var quadrantActive = 0;
+
+  @override
+  void initState() {
+    gyroscopeEvents.listen((event) {
+      setState(() {
+        x = event.x;
+        y = event.y;
+      });
+    });
+
+    super.initState();
+  }
+
+  Offset calculateQuadrantPosition() {
+    return Offset(0.0, 0.0);
+  }
+
+  int findActiveQuadrant(Offset rect) {
+    if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 2;
+    } else if (Rect.fromPoints(Offset(101.0, 100.0), Offset(200.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 3;
+    } else if (Rect.fromPoints(Offset(201.0, 100.0), Offset(300.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 4;
+    } else if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 1;
+    } else if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 0;
+    } else if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 5;
+    } else if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 8;
+    } else if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 7;
+    } else if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+        .contains(rect)) {
+      //user is dead centered, no quadrant.
+      return 6;
+    }
+
+    return 0;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Stack(
+        children: [
+          //Center shaker ball quadrant arrow
+          Positioned(
+              child: SizedBox(
+            width: 300,
+            height: 300,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: coloration.inactiveColor(), shape: BoxShape.circle),
+              padding: const EdgeInsets.all(10),
+              child: Positioned.fromRect(
+                  rect: Rect.fromPoints(Offset(0.0, 1.0), Offset(0.0, 1.0)),
+                  child: Container(
+                      width: 30.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                          color: coloration.inactiveColor(),
+                          shape: BoxShape.circle))),
+            ),
+          )),
+          //left quadrant arrow
+          Positioned(
+              child: Icon(Assets.next,
+                  color: quadrantActive == 0
+                      ? coloration.accentColor()
+                      : coloration.inactiveColor())),
+          //top quadrant arrow
+          Positioned(
+              child: Icon(Assets.next,
+                  color: quadrantActive == 0
+                      ? coloration.accentColor()
+                      : coloration.inactiveColor())),
+          //right quadrant arrow
+          Positioned(
+              child: Icon(Assets.next,
+                  color: quadrantActive == 0
+                      ? coloration.accentColor()
+                      : coloration.inactiveColor())),
+          //bottom quadrant arrow
+          Positioned(
+              child: Icon(Assets.next,
+                  color: quadrantActive == 0
+                      ? coloration.accentColor()
+                      : coloration.inactiveColor())),
+        ],
+      ),
+    );
   }
 }

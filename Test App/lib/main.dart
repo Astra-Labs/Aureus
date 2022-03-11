@@ -61,9 +61,11 @@ class TestingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var loadingCircle = LoadingCircleElement();
+    var progressIndicator = ProgressIndicatorElement(value: 0.4);
+    var completionCircle = CompletionCircleElement(progressValue: 0.4);
 
     var containerViewHolder = ContainerWrapperElement(
-        children: [loadingCircle],
+        children: [loadingCircle, progressIndicator, completionCircle],
         containerVariant: wrapperVariants.fullScreen);
 
     return ContainerView(
@@ -111,7 +113,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: ToolCardTesting(),
+        home: TestingView(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
@@ -256,8 +258,7 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
     var timerInactive = timerTool.returnTemplateSummary();
 
     var wrapper = ContainerWrapperElement(
-        children: [pulseActive, pulseInactive, timerActive, timerInactive],
-        containerVariant: wrapperVariants.stackScroll);
+        children: [], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
         decorationVariant: decorationPriority.important, builder: wrapper);

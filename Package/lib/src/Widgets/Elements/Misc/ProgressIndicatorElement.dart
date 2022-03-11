@@ -11,14 +11,41 @@ class ProgressIndicatorElement extends StatefulWidget {
       _ProgressIndicatorElementState();
 }
 
-class _ProgressIndicatorElementState extends State<ProgressIndicatorElement> {
+class _ProgressIndicatorElementState extends State<ProgressIndicatorElement>
+    with TickerProviderStateMixin {
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    // Checks user's accessibility settings to make sure animations are allowed,
+    //and then initializes the animation controller.
+    if (accessibility.accessFeatures.disableAnimations == false ||
+        accessibility.accessFeatures.reduceMotion == false) {
+      controller = AnimationController(
+        vsync: this,
+        upperBound: widget.value,
+        duration: const Duration(seconds: 2),
+      )..addListener(() {
+          setState(() {});
+        });
+      controller.forward();
+      super.initState();
+    }
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return LinearProgressIndicator(
-      value: widget.value,
+      value: controller.value,
       backgroundColor: coloration.inactiveColor(),
       color: coloration.accentColor(),
-      minHeight: 5.0,
+      minHeight: 3.0,
       semanticsLabel: 'Progress Indicator',
       semanticsValue: 'Progress: ${widget.value}',
     );

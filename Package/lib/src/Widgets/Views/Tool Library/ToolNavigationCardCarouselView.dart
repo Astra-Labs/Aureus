@@ -111,6 +111,7 @@ class _ToolTemplateCardCarouselViewState
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  SizedBox(height: 50.0),
                   PageHeaderElement.withExit(
                       pageTitle: widget.parentTool.toolName,
                       onPageExit: () => {Navigator.pop(context)}),
