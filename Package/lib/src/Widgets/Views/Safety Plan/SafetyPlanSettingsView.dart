@@ -35,23 +35,17 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
-        SecondaryIconButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonIcon: Assets.no,
-            buttonTooltip: 'Return to settings page.',
-            buttonAction: () => {}),
-        DividingHeaderElement(
-            headerText: 'Safety Plan - Settings',
-            subheaderText: 'Change your safety plan settings here.'),
+        PageHeaderElement.withExit(
+            pageTitle: 'Safety Plan Settings',
+            onPageExit: () => {Navigator.pop(context)}),
         Spacer(),
         SizedBox(
             width: size.layoutItemWidth(1, screenSize),
-            height: size.layoutItemHeight(1, screenSize) * 0.8,
+            height: size.layoutItemHeight(1, screenSize),
             child: SingleChildScrollView(
                 child: (ListView(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    padding: EdgeInsets.all(12.0),
                     children: eligibleOptionCards)))),
       ],
     );

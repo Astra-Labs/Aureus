@@ -9,110 +9,77 @@ accessibility compliance.
 
 */
 
-enum widgetSemantics {
-  enabledButton,
-  // enabled button
-  // ------------------------------
-  disabledButton,
-  // disabled button
-  // ------------------------------
-  selectedButton,
-  // selected button
-  // ------------------------------
-  untoggledSwitchItem,
-  // disabled toggle / switch
-  // ------------------------------
-  toggledSwitchItem,
-  // enabled toggle / switch
-  // ------------------------------
-  link,
-  // link to external item
-  // ------------------------------
-  header,
-  // textual header
-  // ------------------------------
-  disabledTextField,
-  // for disabled single line text fields
-  // ------------------------------
-  enabledTextField,
-  // for editable, enabled single line text fields
-  // ------------------------------
-  disabledTextView,
-  // for disabled multi-line text fields
-  // ------------------------------
-  enabledTextView,
-  // for enabled multi-line text fields
-  // ------------------------------
-  readOnlyTextView,
-  // for read-only multi-line text fields
-  // ------------------------------
-  disabledSlider,
-  // for disabled slider items
-  // ------------------------------
-  enabledSlider,
-  // for enabled slider items
-  // ------------------------------
-  ignorable,
-  // for items that should be ignored by a screen reader
-  // ------------------------------
-  readableText,
-  // for read-only text
-  // ------------------------------
-  temporaryItem,
-  // for widgets that only temporarily show up & stay on screen (e.g: time sensitive notification)
-  // ------------------------------
-  disabledItem,
-  // for items that are disabled
-  // ------------------------------
-  enabledItem,
-  // for items that are enabled
-  // ------------------------------
-  selectedItem,
-  // for items that are selected
-  // ------------------------------
-  interactableCollectionView,
-  // a collection view that has items that are interactable
-  // ------------------------------
-  readOnlyCollectionView,
-  // a collection view that has items that are not interactable
-  // ------------------------------
-  disabledTabBar,
-  // a tab bar that is disabled
-  // ------------------------------
-  enabledTabBar,
-  // a tab bar that is enabled
-  // ------------------------------
-  view,
-  // a full-screen view that holds widgets
-  // ------------------------------
-}
-
+// ignore: must_be_immutable
 class SemanticsWrapper extends SemanticsProperties {
   bool? isEnabled;
+  // Is able to be interacted with / selected.
+  // ------------------------------
   bool? isChecked;
+  // If it's a radio button / checkbox, is checked.
+  // ------------------------------
   bool? isToggled;
+  //  Is toggled on if it's a switch component
+  // ------------------------------
   bool? isSelected;
+  //  Is selected and focused if in a group
+  // ------------------------------
   bool? isReadOnly;
+  //  Is non-interactable and read only
+  // ------------------------------
   bool? isEditable;
+  //  Is able to have value edited / changed
+  // ------------------------------
   bool? isFocusable;
+  //  Is able to be uniquely focused on
+  // ------------------------------
   bool? isMutuallyExclusive;
+  //  Is a mutually exclusive interactable. If one is selected, all of the others are not.
+  // ------------------------------
   bool? isHidden;
+  //  Is not shown on the screen.
+  // ------------------------------
   bool? isObscured;
+  //  Is obscured on the screen, but can be visible.
+  // ------------------------------
   bool? isMultiline;
+  //  Is a piece of text that has multiple lines
+  // ------------------------------
   bool? isLiveRegion;
+  //  Is a temporary / time sensitive item that will disappear. Makes
+  //  an annoucement over VoiceReaders
+  // ------------------------------
   String? label;
+  //  What the item is named
+  // ------------------------------
   String? value;
+  //  What the value of the item is. E.G: If a text field, what the text is.
+  // ------------------------------
   String? hint;
+  //  What happens if you interact with the item.
+  // ------------------------------
+
+  // ------------------------------
+  // Wrapper that governs a header that divides a page
+  SemanticsWrapper.header({required this.label})
+      : assert(label != ""),
+        super(label: label, header: true, readOnly: true);
 
   // ------------------------------
   // Wrapper that governs a button
   SemanticsWrapper.button(
-      {required this.isEnabled, required this.label, required this.hint})
-      : assert(isEnabled != null && hint != "" && label != ""),
+      {required this.isEnabled,
+      required this.label,
+      required this.hint,
+      required this.isMutuallyExclusive})
+      : assert(isEnabled != null &&
+            hint != "" &&
+            label != "" &&
+            isMutuallyExclusive != null),
         super(
             label: label,
             enabled: isEnabled,
             hint: hint,
+            inMutuallyExclusiveGroup: isMutuallyExclusive,
             button: true,
             focusable: isEnabled);
 
@@ -122,35 +89,31 @@ class SemanticsWrapper extends SemanticsProperties {
       {required this.isEnabled,
       required this.label,
       required this.hint,
-      required this.isToggled})
+      required this.isToggled,
+      required this.isMutuallyExclusive})
       : assert(isEnabled != null &&
             hint != "" &&
             label != "" &&
-            isToggled != null),
+            isToggled != null &&
+            isMutuallyExclusive != null),
         super(
             label: label,
             enabled: isEnabled,
             hint: hint,
             toggled: isToggled,
-            focusable: isEnabled);
+            focusable: isEnabled,
+            inMutuallyExclusiveGroup: isMutuallyExclusive);
 
   // ------------------------------
   // Wrapper that governs a progress indicator
-  SemanticsWrapper.progressIndicator(
-      {required this.isEnabled,
-      required this.label,
-      required this.hint,
-      required this.isToggled})
-      : assert(isEnabled != null &&
-            hint != "" &&
-            label != "" &&
-            isToggled != null),
+  SemanticsWrapper.progressIndicator({required this.hint, required this.value})
+      : assert(hint != "" && value != null),
         super(
-            label: label,
-            enabled: isEnabled,
+            label: 'Progress Indicator',
+            value: 'Progress: $value}',
             hint: hint,
-            toggled: isToggled,
-            focusable: isEnabled);
+            selected: false,
+            focusable: true);
 
   // ------------------------------
   // Wrapper that governs a text field with one line
@@ -158,14 +121,19 @@ class SemanticsWrapper extends SemanticsProperties {
       {required this.label,
       required this.hint,
       this.value = 'Blank text field',
-      required this.isEditable})
-      : assert(isEditable != null && hint != "" && label != ""),
+      required this.isEditable,
+      required this.isSelected})
+      : assert(isEditable != null &&
+            hint != "" &&
+            label != "" &&
+            isSelected != null),
         super(
             multiline: false,
             label: label,
             enabled: isEditable,
             focusable: isEditable,
-            readOnly: isEditable,
+            selected: isSelected,
+            readOnly: isEditable == true ? false : true,
             hint: hint,
             value: value);
 
@@ -175,6 +143,7 @@ class SemanticsWrapper extends SemanticsProperties {
       {required this.label,
       required this.hint,
       this.value = 'Blank text view',
+      required this.isSelected,
       required this.isEditable})
       : assert(isEditable != null && hint != "" && label != ""),
         super(
@@ -182,7 +151,8 @@ class SemanticsWrapper extends SemanticsProperties {
             label: label,
             enabled: isEditable,
             focusable: isEditable,
-            readOnly: isEditable,
+            selected: isSelected,
+            readOnly: isEditable == true ? false : true,
             hint: hint,
             value: value);
 
@@ -251,40 +221,28 @@ class SemanticsWrapper extends SemanticsProperties {
       {required this.isEnabled,
       required this.label,
       required this.hint,
-      required this.isToggled})
+      required this.isSelected})
       : assert(isEnabled != null &&
             hint != "" &&
             label != "" &&
-            isToggled != null),
+            isSelected != null),
         super(
             label: label,
             enabled: isEnabled,
             hint: hint,
-            toggled: isToggled,
+            selected: isSelected,
             focusable: isEnabled);
 
   // ------------------------------
   // Wrapper that governs a view
-  SemanticsWrapper.view(
-      {required this.isEnabled,
-      required this.label,
-      required this.hint,
-      required this.isToggled})
-      : assert(isEnabled != null &&
-            hint != "" &&
-            label != "" &&
-            isToggled != null),
-        super(
-            label: label,
-            enabled: isEnabled,
-            hint: hint,
-            toggled: isToggled,
-            focusable: isEnabled);
+  SemanticsWrapper.view({required this.label, required this.hint})
+      : assert(hint != "" && label != ""),
+        super(label: label, hint: hint);
 
   // ------------------------------
   // Wrapper that declares an item that can be ignored
   SemanticsWrapper.ignorable()
-      : super(enabled: false, focusable: false, hidden: true);
+      : super(enabled: false, focusable: false, hidden: true, selected: false);
 }
 
 class Accessibility {

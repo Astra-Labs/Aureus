@@ -113,7 +113,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: TestingView(),
+        home: SettingsView(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }

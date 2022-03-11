@@ -46,6 +46,7 @@ class _GyroscopeDirectionCard extends StatefulWidget {
 
 class _GyroscopeDirectionCardState extends State<_GyroscopeDirectionCard> {
   late double x, y;
+  var currentOffset = Offset(0, 0);
   var quadrantActive = 0;
 
   @override
@@ -77,7 +78,7 @@ class _GyroscopeDirectionCardState extends State<_GyroscopeDirectionCard> {
         .contains(rect)) {
       //user is dead centered, no quadrant.
       return 4;
-    } else if (Rect.fromPoints(Offset(0.0, 100.0), Offset(0.0, 100.0))
+    } else if (Rect.fromPoints(Offset(0.0, 101.0), Offset(0.0, 200.0))
         .contains(rect)) {
       //user is dead centered, no quadrant.
       return 1;
@@ -120,8 +121,7 @@ class _GyroscopeDirectionCardState extends State<_GyroscopeDirectionCard> {
               decoration: BoxDecoration(
                   color: coloration.inactiveColor(), shape: BoxShape.circle),
               padding: const EdgeInsets.all(10),
-              child: Positioned.fromRect(
-                  rect: Rect.fromPoints(Offset(0.0, 1.0), Offset(0.0, 1.0)),
+              child: Positioned.fill(
                   child: Container(
                       width: 30.0,
                       height: 30.0,

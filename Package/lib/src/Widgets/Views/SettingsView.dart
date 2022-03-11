@@ -8,10 +8,65 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
+  var aboutDialogue = AboutDialog(
+    applicationName: packageVariables.resourceInformation.name,
+    applicationLegalese:
+        'Developed by ${packageVariables.resourceInformation.developerName},',
+    children: [
+      StandardButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: 'Contact Support',
+          buttonAction: () => {}),
+      StandardButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: 'Terms of Service',
+          buttonAction: () => {}),
+      StandardButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: 'Privacy Policy',
+          buttonAction: () => {})
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.fullScreen, children: []);
+        containerVariant: wrapperVariants.stackScroll,
+        children: [
+          PageHeaderElement.withExit(
+              pageTitle: 'Settings',
+              onPageExit: () => {Navigator.pop(context)}),
+          SizedBox(height: 20.0),
+          TabSubheaderElement(title: 'I want to'),
+          SizedBox(height: 20.0),
+          StandardButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'use the help center.',
+              buttonAction: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AureusValues().help!,
+                        ))
+                  }),
+          SizedBox(height: 10.0),
+          StandardButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'modify Safety Plan settings.',
+              buttonAction: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SafetyPlanSettingsView(),
+                        ))
+                  }),
+          SizedBox(height: 10.0),
+          StandardButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle:
+                  'learn more about ${packageVariables.resourceInformation.name}.',
+              buttonAction: () => {showAboutDialog(context: context)})
+        ]);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);
