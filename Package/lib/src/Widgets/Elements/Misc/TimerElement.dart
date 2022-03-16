@@ -20,8 +20,8 @@ class _TimerElementState extends State<TimerElement> {
   void startTimer() {
     print('timer started!');
     var intDuration = (widget.timeAllotment.inSeconds);
-    const oneSec = const Duration(seconds: 1);
-    _timer = new Timer.periodic(
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(
       oneSec,
       (Timer timer) {
         setState(() {
@@ -90,23 +90,26 @@ class _TimerElementState extends State<TimerElement> {
             child: HeadingOneText('$intDuration', decorationPriority.standard),
             decoration: timerBacking),
       ),
-      SizedBox(height: 20.0),
+      const SizedBox(height: 20.0),
       SizedBox(
         width: 300,
         child: Row(children: [
           SmolButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'Start',
+              buttonHint: 'Starts the timer.',
               buttonAction: () => {startTimer()}),
-          Spacer(),
+          const Spacer(),
           SmolButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'Pause',
+              buttonHint: 'Pauses the timer.',
               buttonAction: () => {pauseTimer()}),
-          Spacer(),
+          const Spacer(),
           SmolButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'Cancel',
+              buttonHint: 'Cancels the timer.',
               buttonAction: () => {resetTimer()}),
         ]),
       ),

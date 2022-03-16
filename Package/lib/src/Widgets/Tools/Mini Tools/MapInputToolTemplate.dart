@@ -1,7 +1,8 @@
 import 'package:aureus/aureus.dart';
 
 class MapInputToolTemplate extends ToolCardTemplate {
-  MapInputToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
+  MapInputToolTemplate()
+      : super(templatePrompt: '', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -15,7 +16,7 @@ class MapInputToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const []);
   }
 
   @override
@@ -32,7 +33,7 @@ class MapInputToolTemplate extends ToolCardTemplate {
 }
 
 class _MapInputCard extends StatefulWidget {
-  _MapInputCard();
+  const _MapInputCard();
 
   @override
   _MapInputCardState createState() => _MapInputCardState();

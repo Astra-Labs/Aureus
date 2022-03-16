@@ -47,6 +47,12 @@ class _CompletionCircleElementState extends State<CompletionCircleElement>
       width: 150,
       height: 150,
       child: Stack(alignment: Alignment.center, children: [
+        const SizedBox(
+          width: 150.0,
+          height: 150.0,
+          /*decoration: BoxDecoration(
+              boxShadow: [pastelShadow()], shape: BoxShape.circle),*/
+        ),
         FloatingContainerElement(
           child: SizedBox(
             width: 150.0,

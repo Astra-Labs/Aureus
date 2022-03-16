@@ -41,7 +41,7 @@ class ContentWarningComponent extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Spacer(),
-                      IconBadge(
+                      const IconBadge(
                           badgeIcon: Assets.alertmessage,
                           badgePriority: decorationPriority.important),
                       const SizedBox(height: 15.0),

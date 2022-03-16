@@ -9,7 +9,8 @@ USAGE:
 */
 
 class CameraInputToolTemplate extends ToolCardTemplate {
-  CameraInputToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
+  CameraInputToolTemplate()
+      : super(templatePrompt: '', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -23,7 +24,7 @@ class CameraInputToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const []);
   }
 
   @override
@@ -40,7 +41,7 @@ class CameraInputToolTemplate extends ToolCardTemplate {
 }
 
 class _CameraInputCard extends StatefulWidget {
-  _CameraInputCard();
+  const _CameraInputCard();
 
   @override
   _CameraInputCardState createState() => _CameraInputCardState();

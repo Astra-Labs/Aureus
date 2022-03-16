@@ -11,7 +11,7 @@ class SafetyPlanLogInAuditView extends StatefulWidget {
 class _SafetyPlanLogInAuditViewState extends State<SafetyPlanLogInAuditView> {
   @override
   Widget build(BuildContext context) {
-    ContainerWrapperElement viewLayout = ContainerWrapperElement(
+    ContainerWrapperElement viewLayout = const ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen, children: []);
 
     return ContainerView(

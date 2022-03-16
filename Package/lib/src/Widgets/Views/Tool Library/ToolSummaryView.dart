@@ -10,9 +10,10 @@ USAGE:
 
 class ToolSummaryView extends StatefulWidget {
   final CoreTool parentTool;
-  ToolSummaryView({required this.parentTool})
+  ToolSummaryView({Key? key, required this.parentTool})
       : assert(parentTool.toolCards!.isNotEmpty == true,
-            'Tool Summary View requires the parent CoreTool to have tool cards in the navigation container.');
+            'Tool Summary View requires the parent CoreTool to have tool cards in the navigation container.'),
+        super(key: key);
 
   @override
   _ToolSummaryViewState createState() => _ToolSummaryViewState();
@@ -25,12 +26,12 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
     var screenSize = size.logicalScreenSize();
     List<Widget> summaryItems = [];
 
-    tool.toolCards!.forEach((element) {
+    for (var element in tool.toolCards!) {
       summaryItems.add(Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: element.returnTemplateSummary(),
       ));
-    });
+    }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
@@ -44,17 +45,17 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Spacer(),
-                      CompletionCircleElement(progressValue: 100),
-                      SizedBox(height: 10.0),
+                      const Spacer(),
+                      const CompletionCircleElement(progressValue: 100),
+                      const SizedBox(height: 10.0),
                       HeadingOneText(
-                          '${tool.toolName}', decorationPriority.standard),
-                      SizedBox(height: 40.0),
+                          tool.toolName, decorationPriority.standard),
+                      const SizedBox(height: 40.0),
                       FloatingContainerElement(
                           child: Container(
                               width: size.layoutItemWidth(1, screenSize),
                               height: size.layoutItemHeight(2, screenSize),
-                              padding: EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(10.0),
                               decoration: LayerBackingDecoration(
                                       priority: decorationPriority.standard)
                                   .buildBacking(),
@@ -62,17 +63,18 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
                                 children: [
                                   Row(
                                     children: [
-                                      TabSubheaderElement(title: 'Summary'),
-                                      Spacer(),
+                                      const TabSubheaderElement(
+                                          title: 'Summary'),
+                                      const Spacer(),
                                       SecondaryIconButtonElement(
                                           decorationVariant:
                                               decorationPriority.standard,
                                           buttonIcon: Assets.hamburgermenu,
-                                          buttonTooltip: 'Summary Actions',
+                                          buttonHint: 'Summary Actions',
                                           buttonAction: () => {})
                                     ],
                                   ),
-                                  SizedBox(height: 15.0),
+                                  const SizedBox(height: 15.0),
                                   SizedBox(
                                     width: size.layoutItemWidth(1, screenSize),
                                     height:
@@ -87,7 +89,7 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
                                   )
                                 ],
                               ))),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
                       StandardButtonElement(
                           decorationVariant: decorationPriority.important,
                           buttonTitle: 'Go to next steps.',

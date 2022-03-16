@@ -2,9 +2,10 @@ import 'package:aureus/aureus.dart';
 
 class ToolTemplateCardCarouselView extends StatefulWidget {
   final CoreTool parentTool;
-  ToolTemplateCardCarouselView({required this.parentTool})
+  ToolTemplateCardCarouselView({Key? key, required this.parentTool})
       : assert(parentTool.toolCards!.isNotEmpty == true,
-            'ToolTemplateCardCarouselView requires the parent CoreTool to have tool cards in the navigation container.');
+            'ToolTemplateCardCarouselView requires the parent CoreTool to have tool cards in the navigation container.'),
+        super(key: key);
 
   @override
   _ToolTemplateCardCarouselViewState createState() =>
@@ -69,8 +70,8 @@ class _ToolTemplateCardCarouselViewState
     //the current, visible active card.
     Widget activeCardItem = AnimatedContainer(
       duration: accessibility.accessFeatures.disableAnimations
-          ? Duration(seconds: 0)
-          : Duration(seconds: 1),
+          ? const Duration(seconds: 0)
+          : const Duration(seconds: 1),
     );
 
     //the summary of all of the previous cards and their answers
@@ -80,7 +81,7 @@ class _ToolTemplateCardCarouselViewState
     var children = widget.parentTool.toolCards!;
     toolNavigation = navigationContainer(widget.parentTool);
 
-    children.forEach((element) {
+    for (var element in children) {
       if (children.indexOf(element) == currentCardIndex) {
         print('is the active card');
         activeCardItem = element.returnActiveToolCard();
@@ -89,10 +90,10 @@ class _ToolTemplateCardCarouselViewState
         summaryListView.insert(
             0,
             Padding(
-                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                 child: element.returnTemplateSummary()));
       }
-    });
+    }
 
     var summaryList = SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -111,18 +112,18 @@ class _ToolTemplateCardCarouselViewState
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  SizedBox(height: 50.0),
+                  const SizedBox(height: 50.0),
                   PageHeaderElement.withExit(
                       pageTitle: widget.parentTool.toolName,
                       onPageExit: () => {Navigator.pop(context)}),
-                  SizedBox(height: 30.0),
+                  const SizedBox(height: 30.0),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       activeCardItem,
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
                       summaryList,
                     ],
                   ),
@@ -131,7 +132,7 @@ class _ToolTemplateCardCarouselViewState
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: FloatingContainerElement(

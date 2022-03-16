@@ -1,6 +1,5 @@
 import 'package:aureus/aureus.dart';
 import 'package:test_app/interface_items.dart';
-import 'package:test_app/test_interface.dart';
 import 'package:test_app/view_items.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'landing_interface.dart';
@@ -40,7 +39,7 @@ void main() {
       landing1,
       SettingsView(),
       OnboardingLandingView(),
-      OnboardingDemoView(toolItems: [], exitPoint: OnboardingLandingView()),
+      OnboardingDemoView(toolItems: []),
       OnboardingInformationView(
         onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
       ),
@@ -60,13 +59,11 @@ void main() {
 class TestingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var loadingCircle = LoadingCircleElement();
-    var progressIndicator = ProgressIndicatorElement(value: 0.4);
-    var completionCircle = CompletionCircleElement(progressValue: 0.4);
+    var banner = BannerNotificationComponent(
+        body: 'Notification Body!', icon: Assets.alertmessage);
 
     var containerViewHolder = ContainerWrapperElement(
-        children: [loadingCircle, progressIndicator, completionCircle],
-        containerVariant: wrapperVariants.fullScreen);
+        children: [banner], containerVariant: wrapperVariants.fullScreen);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard,
@@ -113,7 +110,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: SettingsView(),
+        home: TestingView(),
         theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
   }
 }
@@ -187,26 +184,6 @@ class ToolCardTesting extends StatefulWidget {
 class _ToolCardTestingState extends State<ToolCardTesting> {
   @override
   Widget build(BuildContext context) {
-    var activeBase = BaseCardToolTemplate(
-        isActive: true,
-        cardIcon: Assets.babycarriage,
-        toolPrompt: 'Active Base Card',
-        toolChildren: [
-          IconBadge(
-              badgeIcon: Assets.alertmessage,
-              badgePriority: decorationPriority.important)
-        ]);
-
-    var inactiveBase = BaseCardToolTemplate(
-        isActive: false,
-        cardIcon: Assets.babycarriage,
-        toolPrompt: 'Inactive Base Card',
-        toolChildren: [
-          IconBadge(
-              badgeIcon: Assets.alertmessage,
-              badgePriority: decorationPriority.important),
-        ]);
-
     var yesNoTool = YesNoButtonSelectToolTemplate();
     var yesNoActive = yesNoTool.returnActiveToolCard();
     var yesNoInactive = yesNoTool.returnTemplateSummary();
@@ -257,8 +234,26 @@ class _ToolCardTestingState extends State<ToolCardTesting> {
     var timerActive = timerTool.returnActiveToolCard();
     var timerInactive = timerTool.returnTemplateSummary();
 
-    var wrapper = ContainerWrapperElement(
-        children: [], containerVariant: wrapperVariants.stackScroll);
+    var wrapper = ContainerWrapperElement(children: [
+      yesNoActive,
+      yesNoInactive,
+      singleInputActive,
+      singleInputInactive,
+      dualColumnInputActive,
+      dualColumnInputInactive,
+      triInputActive,
+      triInputInactive,
+      sliderActive,
+      sliderInactive,
+      listPickerActive,
+      listPickerInactive,
+      listButtonPickerActive,
+      listButtonPickerInactive,
+      pulseActive,
+      pulseInactive,
+      timerActive,
+      timerInactive
+    ], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
         decorationVariant: decorationPriority.important, builder: wrapper);

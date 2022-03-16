@@ -22,7 +22,7 @@ class _MultipleDataTypeUserInputElementState
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       TabSubheaderElement(title: widget.dataLabel),
-      Padding(padding: const EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0)),
+      const Padding(padding: EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0)),
       FloatingContainerElement(
         child: StandardTextFieldComponent(
             decorationVariant: decorationPriority.standard,

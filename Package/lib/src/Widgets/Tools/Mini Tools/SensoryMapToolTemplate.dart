@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 
 class SensoryMapToolTemplate extends ToolCardTemplate {
   SensoryMapToolTemplate()
-      : super(templatePrompt: 'Sensory Map', badgeIcon: IconData(0));
+      : super(templatePrompt: 'Sensory Map', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -20,8 +20,8 @@ class SensoryMapToolTemplate extends ToolCardTemplate {
           BodyOneText('Drag the dot to where you feel xyz in your body.',
               decorationPriority.standard),
           _SensoryMapInputCard(),
-          DividerElement(),
-          SizedBox(height: 20.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -29,11 +29,14 @@ class SensoryMapToolTemplate extends ToolCardTemplate {
                 SmolButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Skip',
+                    buttonHint:
+                        'Skips the current card, and goes to the next one.',
                     buttonAction: () => {onNextCard()}),
-                Spacer(),
+                const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card',
                     buttonAction: () => {onNextCard()}),
               ]),
         ]);
@@ -52,7 +55,7 @@ class SensoryMapToolTemplate extends ToolCardTemplate {
 }
 
 class _SensoryMapInputCard extends StatefulWidget {
-  _SensoryMapInputCard();
+  const _SensoryMapInputCard();
 
   @override
   _SensoryMapInputCardState createState() => _SensoryMapInputCardState();
@@ -62,11 +65,11 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
   @override
   Widget build(BuildContext context) {
     return FloatingContainerElement(
-      child: Container(
+      child: SizedBox(
         width: 200,
         height: 200,
         child: CustomPaint(
-          size: Size(195, 195),
+          size: const Size(195, 195),
           painter: SensoryMapPainter(),
         ),
       ),
@@ -77,13 +80,13 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
 class SensoryMapPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final pointMode = ui.PointMode.polygon;
+    const pointMode = ui.PointMode.polygon;
     final points = [
-      Offset(50, 100),
-      Offset(150, 75),
-      Offset(250, 250),
-      Offset(130, 200),
-      Offset(270, 100),
+      const Offset(50, 100),
+      const Offset(150, 75),
+      const Offset(250, 250),
+      const Offset(130, 200),
+      const Offset(270, 100),
     ];
     final paint = Paint()
       ..color = Colors.black

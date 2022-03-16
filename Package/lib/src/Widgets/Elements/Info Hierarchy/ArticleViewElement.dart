@@ -22,7 +22,7 @@ class ArticleViewElement extends StatelessWidget {
         const SizedBox(height: 5.0),
         SubheaderText(subheader, decorationPriority.standard),
         const SizedBox(height: 10.0),
-        DividerElement(),
+        const DividerElement(),
         const SizedBox(height: 10.0),
         BodyOneText(body, decorationPriority.standard),
         const SizedBox(height: 20.0),

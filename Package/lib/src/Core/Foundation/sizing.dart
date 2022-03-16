@@ -70,10 +70,10 @@ class Sizing {
       scaleFactor = 1.0;
     } else if (shortSide >= 550 && shortSide < 900) {
       //needs tablet scale
-      scaleFactor = 1.15;
+      scaleFactor = 1.20;
     } else if (shortSide >= 900) {
       //needs web phone scale
-      scaleFactor = 1.30;
+      scaleFactor = 1.35;
     }
 
     return scaleFactor * base;
@@ -87,7 +87,7 @@ class Sizing {
   // Returns the % of screen height for the weight passed
   // as a double so it can be used for layout purposes.
 
-  double heightOf({weight: sizingWeight}) {
+  double heightOf({weight = sizingWeight}) {
     double screenWeightedHeight = 0.0;
 
     switch (weight) {
@@ -153,7 +153,7 @@ class Sizing {
 
   // Returns the % of screen width for the weight passed
   // as a double so it can be used for layout purposes.
-  double widthOf({weight: sizingWeight}) {
+  double widthOf({weight = sizingWeight}) {
     double screenWeightedWidth = 0.0;
 
     switch (weight) {

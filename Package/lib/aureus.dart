@@ -22,7 +22,7 @@ export 'src/Core/Foundation/decorations.dart';
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
 
 //MARK - Observer Object
-export 'src/Objects/ResourceObserver.dart';
+export 'src/Objects/Functionality/ResourceObserver.dart';
 
 //MARK: - Element Objects
 export 'src/Objects/Elements/AlertControllerObjects.dart';
@@ -41,6 +41,11 @@ export 'src/Objects/Views/OnboardingObjects.dart';
 //MARK: - Functionality Objects
 export 'src/Objects/Functionality/AccessibilityObjects.dart';
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
+export 'src/Objects/Functionality/ResourceObserver.dart';
+export 'src/Objects/Functionality/NotificationObserver.dart';
+
+//MARK: - Sensory Objects
+export 'src/Objects/Sensation/routes.dart';
 
 /* ------------------ WIDGETS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
@@ -98,6 +103,7 @@ export 'src/Widgets/Components/Communication/SendFieldComponent.dart';
 export 'src/Widgets/Components/Communication/BlankScreenComponent.dart';
 export 'src/Widgets/Components/Communication/CookieBannerComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
+export 'src/Widgets/Components/Communication/BannerNotificationComponent.dart';
 
 export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
 export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';
@@ -137,7 +143,6 @@ export 'src/Widgets/Tools/BaseCardToolTemplate.dart';
 export 'src/Widgets/Tools/BasePageToolTemplate.dart';
 
 // -------------------------- Mini Tools
-export 'src/Widgets/Tools/Mini Tools/BubbleBurstToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/CameraInputToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/ColorSpectrumToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/GyroscopeDirectionToolTemplate.dart';
@@ -186,14 +191,14 @@ enum buttonDecorationVariants {
 }
 enum tabItemDecorationVariants { circle, roundedRectangle }
 enum cardType {
-  StandardCard,
-  StandardBadgeCard,
-  DetailCard,
-  DetailBadgeCard,
-  DetailCarouselCard,
-  ComplexCard,
-  ComplexBadgeCard,
-  CategoryIconDetailCard,
+  standardCard,
+  standardBadgeCard,
+  detailCard,
+  detailBadgeCard,
+  detailCarouselCard,
+  complexCard,
+  complexBadgeCard,
+  categoryIconDetailCard,
 }
 
 enum wrapperVariants { stackScroll, fullScreen }

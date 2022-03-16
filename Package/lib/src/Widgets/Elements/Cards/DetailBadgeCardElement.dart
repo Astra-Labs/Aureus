@@ -32,7 +32,7 @@ class DetailBadgeCardElement extends StatelessWidget {
                 children: [
                   IconBadge(
                       badgeIcon: cardIcon, badgePriority: decorationVariant),
-                  Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+                  const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
                   HeadingFourText(cardLabel, decorationVariant),
                   BodyOneText(cardBody, decorationVariant)
                 ])));

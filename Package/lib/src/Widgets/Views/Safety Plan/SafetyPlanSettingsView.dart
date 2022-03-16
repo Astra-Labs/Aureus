@@ -8,7 +8,7 @@ class SafetyPlanSettingsView extends StatefulWidget {
 }
 
 class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
-  Safety productSafetyObject = Safety(
+  Safety productSafetyObject = const Safety(
       frequencyUsage: SafetyPlanFrequency.singleUse,
       eligiblePlanOptions: [
         SafetyPlanOptions.deviceSandbox,
@@ -24,13 +24,13 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
 
     var screenSize = size.logicalScreenSize();
 
-    productSafetyObject.eligiblePlanOptions.forEach((element) {
+    for (var element in productSafetyObject.eligiblePlanOptions) {
       eligibleOptionCards.add(Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
+        padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
         child: StandardSwitchCardComponent(
             switchDescription: safety.retrieveDetails(element).name),
       ));
-    });
+    }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
@@ -38,7 +38,7 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
         PageHeaderElement.withExit(
             pageTitle: 'Safety Plan Settings',
             onPageExit: () => {Navigator.pop(context)}),
-        Spacer(),
+        const Spacer(),
         SizedBox(
             width: size.layoutItemWidth(1, screenSize),
             height: size.layoutItemHeight(1, screenSize),

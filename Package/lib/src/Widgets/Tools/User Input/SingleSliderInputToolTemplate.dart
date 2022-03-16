@@ -28,20 +28,20 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
         toolPrompt: templatePrompt,
         toolChildren: [
           slider,
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Row(
               children: [
                 SubheaderText('0', decorationPriority.standard),
-                Spacer(),
+                const Spacer(),
                 SubheaderText('10', decorationPriority.standard)
               ],
             ),
           ),
-          SizedBox(height: 10.0),
-          DividerElement(),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 10.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -49,11 +49,13 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
                 SmolButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Skip',
+                    buttonHint: 'Skips the current card.',
                     buttonAction: () => {onNextCard()}),
-                Spacer(),
+                const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card.',
                     buttonAction: () =>
                         {dataMap.insert(0, slider.slideValue), onNextCard()}),
               ])

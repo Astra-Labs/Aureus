@@ -1,9 +1,8 @@
 import 'package:aureus/aureus.dart';
-import 'package:flutter_sound/flutter_sound.dart';
 
 class MicrophoneInputToolTemplate extends ToolCardTemplate {
   MicrophoneInputToolTemplate()
-      : super(templatePrompt: '', badgeIcon: IconData(0));
+      : super(templatePrompt: '', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -17,7 +16,7 @@ class MicrophoneInputToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const []);
   }
 
   @override
@@ -34,15 +33,50 @@ class MicrophoneInputToolTemplate extends ToolCardTemplate {
 }
 
 class _MicrophoneInputCard extends StatefulWidget {
-  _MicrophoneInputCard();
+  const _MicrophoneInputCard();
 
   @override
   _MicrophoneInputCardState createState() => _MicrophoneInputCardState();
 }
 
 class _MicrophoneInputCardState extends State<_MicrophoneInputCard> {
+  var currentIcon = Icons.play_arrow;
+  var currentHint = 'Starts a recording.';
+  bool isRecordingUser = false;
+
+  void startRecording() {
+    setState(() {
+      currentIcon = Icons.pause;
+      currentHint = 'Stops the recording.';
+      isRecordingUser = true;
+    });
+  }
+
+  void stopRecording() {
+    setState(() {
+      currentIcon = Icons.play_arrow;
+      currentHint = 'Starts a recording.';
+      isRecordingUser = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        HeadingOneText('data', decorationPriority.standard),
+        const SizedBox(height: 10.0),
+        PrimaryIconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonIcon: currentIcon,
+            buttonHint: currentHint,
+            buttonAction: () => {
+                  if (isRecordingUser == true)
+                    {stopRecording()}
+                  else if (isRecordingUser == false)
+                    {startRecording()}
+                })
+      ],
+    );
   }
 }

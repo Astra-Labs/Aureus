@@ -57,8 +57,8 @@ class _CenteredAlertControllerComponentState
       var customAlertBacking =
           BaseBackingDecoration(priority: decorationPriority.standard);
 
-      Gradient backingGradient = LinearGradient(colors: []);
-      BoxShadow backingHaze = BoxShadow();
+      Gradient backingGradient = const LinearGradient(colors: []);
+      BoxShadow backingHaze = const BoxShadow();
 
       if (brightness() == Brightness.dark) {
         backingGradient = darkGradient();
@@ -76,32 +76,40 @@ class _CenteredAlertControllerComponentState
       return customAlertBacking.buildBacking();
     }
 
-    return Container(
-        decoration: alertBacking(),
-        constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(1, screenSize),
-            minHeight: size.layoutItemHeight(3, screenSize),
-            maxHeight: size.layoutItemHeight(1, screenSize)),
-        child: Padding(
-          padding: const EdgeInsets.all(35.0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconBadge(
-                    badgeIcon: widget.alertData.alertIcon,
-                    badgePriority: decorationPriority.standard),
-                SizedBox(height: 20),
-                HeadingThreeText(
-                    widget.alertData.alertTitle, decorationPriority.standard),
-                BodyOneText(
-                    widget.alertData.alertBody, decorationPriority.standard),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 25, 0, 10),
-                  child: alertControllerActions,
-                ),
-              ]),
-        ));
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.customItem(
+          isEnabled: true,
+          label: 'Alert Controller - ${widget.alertData.alertTitle}',
+          hint: widget.alertData.alertBody,
+          isEditable: false,
+          isLiveRegion: true),
+      child: Container(
+          decoration: alertBacking(),
+          constraints: BoxConstraints(
+              minWidth: size.layoutItemWidth(1, screenSize),
+              minHeight: size.layoutItemHeight(3, screenSize),
+              maxHeight: size.layoutItemHeight(1, screenSize)),
+          child: Padding(
+            padding: const EdgeInsets.all(35.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconBadge(
+                      badgeIcon: widget.alertData.alertIcon,
+                      badgePriority: decorationPriority.standard),
+                  const SizedBox(height: 20),
+                  HeadingThreeText(
+                      widget.alertData.alertTitle, decorationPriority.standard),
+                  BodyOneText(
+                      widget.alertData.alertBody, decorationPriority.standard),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 25, 0, 10),
+                    child: alertControllerActions,
+                  ),
+                ]),
+          )),
+    );
   }
 }

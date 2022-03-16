@@ -37,22 +37,22 @@ class _ToolDetailViewState extends State<ToolDetailView> {
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Spacer(),
+                const Spacer(),
                 Align(
                   alignment: Alignment.topRight,
                   child: SecondaryIconButtonElement(
                       decorationVariant: decorationPriority.standard,
                       buttonIcon: Assets.no,
-                      buttonTooltip: 'Exit ${tool.toolName} details',
+                      buttonHint: 'Exit ${tool.toolName} details',
                       buttonAction: () => {Navigator.pop(context)}),
                 ),
-                Spacer(),
+                const Spacer(),
                 IconBadge(
                     badgeIcon: tool.toolIcon,
                     badgePriority: decorationPriority.important),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 HeadingOneText(tool.toolName, decorationPriority.standard),
-                SizedBox(height: 40.0),
+                const SizedBox(height: 40.0),
                 FloatingContainerElement(
                     child: Container(
                         height: size.layoutItemHeight(1, screenSize) * 0.6,
@@ -68,34 +68,35 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Spacer(),
-                              TabSubheaderElement(title: 'Description'),
-                              SizedBox(height: 20.0),
+                              const Spacer(),
+                              const TabSubheaderElement(title: 'Description'),
+                              const SizedBox(height: 20.0),
                               Container(
-                                padding: EdgeInsets.all(12.0),
+                                padding: const EdgeInsets.all(12.0),
                                 decoration: LayerBackingDecoration(
                                         priority: decorationPriority.standard)
                                     .buildBacking(),
                                 child: BodyOneText(tool.toolDescription,
                                     decorationPriority.standard),
                               ),
-                              SizedBox(height: 20.0),
-                              TabSubheaderElement(title: 'Used for'),
-                              SizedBox(height: 20.0),
+                              const SizedBox(height: 20.0),
+                              const TabSubheaderElement(title: 'Used for'),
+                              const SizedBox(height: 20.0),
                               DetailCardCarouselComponent(
                                   cardDetailCarousel: tool.toolDetails),
-                              Spacer(),
+                              const Spacer(),
                             ],
                           ),
                         ))),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         FullWidthButtonElement(
             buttonTitle: 'Open ${tool.toolName}.',
+            buttonHint: 'Starts ${tool.toolName}.',
             currentVariant: decorationPriority.important,
             buttonAction: () => {
                   Navigator.push(

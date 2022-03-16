@@ -10,11 +10,14 @@ class IconBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var responsiveBadgeSize = size.responsiveTextSize(40.0);
+    var responsiveIconSize = size.responsiveTextSize(33.0);
+
     Decoration customBadgeBacking() {
       var baseDecoration =
           BaseBackingDecoration(priority: decorationPriority.standard);
-      Gradient backingGradient = LinearGradient(colors: []);
-      BoxShadow backingHaze = BoxShadow();
+      Gradient backingGradient = const LinearGradient(colors: []);
+      BoxShadow backingHaze = const BoxShadow();
       baseDecoration.decorationCornerRadius = BorderRadius.circular(60.0);
 
       switch (badgePriority) {
@@ -78,18 +81,22 @@ class IconBadge extends StatelessWidget {
       return baseDecoration.buildBacking();
     }
 
-    return SizedBox(
-      width: 40.0,
-      height: 40.0,
-      child: Container(
-        alignment: Alignment.center,
-        decoration: customBadgeBacking(),
-        child: Icon(
-          badgeIcon,
-          color: badgePriority == decorationPriority.standard
-              ? coloration.contrastColor()
-              : coloration.sameColor(),
-          size: 35,
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.ignorable(),
+      child: SizedBox(
+        width: responsiveBadgeSize,
+        height: responsiveBadgeSize,
+        child: Container(
+          alignment: Alignment.center,
+          decoration: customBadgeBacking(),
+          child: Icon(
+            badgeIcon,
+            color: badgePriority == decorationPriority.standard ||
+                    badgePriority == decorationPriority.inverted
+                ? coloration.contrastColor()
+                : coloration.sameColor(),
+            size: responsiveIconSize,
+          ),
         ),
       ),
     );

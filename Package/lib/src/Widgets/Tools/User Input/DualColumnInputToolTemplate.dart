@@ -34,7 +34,7 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
             return Row(
@@ -48,7 +48,7 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     TagOneText(prompt1, decorationPriority.standard),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     SizedBox(
                       width: constraints.maxWidth * 0.48,
                       height: 100,
@@ -73,7 +73,7 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                                                 decorationPriority.standard)
                                         .withOpacity(0.3),
                                     width: 1.0)),
-                            errorBorder: OutlineInputBorder(
+                            errorBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(255, 178, 178, 1.0),
                                     width: 1.0)),
@@ -90,14 +90,14 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                     )
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     TagOneText(prompt2, decorationPriority.standard),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     SizedBox(
                       width: constraints.maxWidth * 0.48,
                       height: 100,
@@ -122,7 +122,7 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                                                 decorationPriority.standard)
                                         .withOpacity(0.3),
                                     width: 1.0)),
-                            errorBorder: OutlineInputBorder(
+                            errorBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(255, 178, 178, 1.0),
                                     width: 1.0)),
@@ -142,9 +142,9 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
               ],
             );
           }),
-          SizedBox(height: 20.0),
-          DividerElement(),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -152,11 +152,13 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                 SmolButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Skip',
+                    buttonHint: 'Skips the current card.',
                     buttonAction: () => {onNextCard()}),
-                Spacer(),
+                const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card.',
                     buttonAction: () => {
                           dataMap.insert(0, column1Controller.text),
                           dataMap.insert(1, column2Controller.text),
@@ -177,32 +179,32 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   TagTwoText(prompt1, decorationPriority.standard),
-                  SizedBox(height: 5.0),
+                  const SizedBox(height: 5.0),
                   BodyOneText(dataMap.isNotEmpty ? dataMap[0] : '',
                       decorationPriority.standard)
                 ]),
           )),
-          SizedBox(width: 15.0),
+          const SizedBox(width: 15.0),
           FloatingContainerElement(
               child: Container(
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   TagTwoText(prompt2, decorationPriority.standard),
-                  SizedBox(height: 5.0),
+                  const SizedBox(height: 5.0),
                   BodyOneText(dataMap.isNotEmpty ? dataMap[1] : '',
                       decorationPriority.standard)
                 ]),

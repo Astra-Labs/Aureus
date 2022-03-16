@@ -13,7 +13,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
         children: [
-          Spacer(),
+          const Spacer(),
           Center(
             child: SizedBox(
                 height: 65.0,
@@ -25,7 +25,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                   fit: BoxFit.contain,
                 )))),
           ),
-          Spacer(),
+          const Spacer(),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                   resourceValues.mission, decorationPriority.standard)
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Wrap(
             runSpacing: 8.0,
             children: [
@@ -77,7 +77,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                       })
             ],
           ),
-          Spacer(),
+          const Spacer(),
         ]);
 
     return ContainerView(

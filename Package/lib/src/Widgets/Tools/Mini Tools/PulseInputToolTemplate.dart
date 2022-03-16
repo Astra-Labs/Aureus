@@ -10,7 +10,7 @@ USAGE:
 
 class PulseInputToolTemplate extends ToolCardTemplate {
   PulseInputToolTemplate()
-      : super(templatePrompt: 'Pulse Input', badgeIcon: IconData(0));
+      : super(templatePrompt: 'Pulse Input', badgeIcon: const IconData(0));
 
   @override
   Widget returnActiveToolCard() {
@@ -19,11 +19,11 @@ class PulseInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           BodyOneText(
               'Press each colorful dot to disable it, and to move forward.',
               decorationPriority.standard),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           _PulseMapCard()
         ]);
   }
@@ -183,7 +183,7 @@ class _PulseMapCardState extends State<_PulseMapCard> {
     selectedMapPattern = (allMaps..shuffle()).first;
 
     var activeDot = Padding(
-        padding: EdgeInsets.all(7.0),
+        padding: const EdgeInsets.all(7.0),
         child: Container(
             width: 40,
             height: 40,
@@ -193,7 +193,7 @@ class _PulseMapCardState extends State<_PulseMapCard> {
                 boxShadow: [pastelShadow()])));
 
     var inactiveDot = Padding(
-        padding: EdgeInsets.all(7.0),
+        padding: const EdgeInsets.all(7.0),
         child: Container(
             width: 40,
             height: 40,
@@ -206,13 +206,13 @@ class _PulseMapCardState extends State<_PulseMapCard> {
     var currentRow = [];
     List<Row> gridColumns = [];
 
-    selectedMapPattern.forEach((element) {
+    for (var element in selectedMapPattern) {
       xIndex = 0;
       currentRow = selectedMapPattern[yIndex];
 
       List<Widget> tempDotHolding = [];
 
-      element.forEach((element) {
+      for (var _ in element) {
         if (currentRow[xIndex] == 1) {
           // is the active dot
 
@@ -220,7 +220,7 @@ class _PulseMapCardState extends State<_PulseMapCard> {
 
           tempDotHolding.add(GestureDetector(
               onTap: () => {
-                    pulseDot(new List<int>.from(
+                    pulseDot(List<int>.from(
                         indexMap.map((element) => element).toList()))
                   },
               child: activeDot));
@@ -231,7 +231,7 @@ class _PulseMapCardState extends State<_PulseMapCard> {
         }
 
         xIndex += 1;
-      });
+      }
 
       gridColumns.add(Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -239,15 +239,13 @@ class _PulseMapCardState extends State<_PulseMapCard> {
           children: tempDotHolding));
 
       yIndex += 1;
-    });
+    }
 
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: gridColumns,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: gridColumns,
     );
   }
 }

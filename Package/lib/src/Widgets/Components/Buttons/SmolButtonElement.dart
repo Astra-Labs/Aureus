@@ -6,19 +6,23 @@ import 'package:aureus/aureus.dart';
 class SmolButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
   final String buttonTitle;
+  final String buttonHint;
   final VoidCallback buttonAction;
 
   const SmolButtonElement(
-      {required this.decorationVariant,
+      {Key? key,
+      required this.decorationVariant,
       required this.buttonTitle,
-      required this.buttonAction});
+      required this.buttonHint,
+      required this.buttonAction})
+      : super(key: key);
 
   @override
   _SmolButtonElementState createState() => _SmolButtonElementState();
 }
 
 class _SmolButtonElementState extends State<SmolButtonElement> {
-  BoxDecoration animatedBacking = BoxDecoration();
+  BoxDecoration animatedBacking = const BoxDecoration();
 
   @override
   Widget build(BuildContext context) {
@@ -36,31 +40,39 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return InkWell(
-        highlightColor: coloration.accentColor(),
-        splashColor: coloration.contrastColor(),
-        onTap: () {
-          if (isButtonEnabled == true) {
-            widget.buttonAction();
-            setState(() {
-              animatedBacking = BoxDecoration(color: coloration.accentColor());
-            });
-          }
-        },
-        child: FloatingContainerElement(
-          child: AnimatedContainer(
-              duration: Duration(milliseconds: 200),
-              curve: Curves.bounceIn,
-              constraints: BoxConstraints(
-                  minHeight: minimumButtonTextSize.height * 1.8,
-                  maxHeight: minimumButtonTextSize.height * 2,
-                  maxWidth: minimumButtonTextSize.width * 2,
-                  minWidth: minimumButtonTextSize.width * 2),
-              decoration: buttonDecoration,
-              /*foregroundDecoration: animatedBacking,*/
-              child: Center(
-                  child: TagOneText(
-                      widget.buttonTitle, widget.decorationVariant))),
-        ));
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: InkWell(
+          highlightColor: coloration.accentColor(),
+          splashColor: coloration.contrastColor(),
+          onTap: () {
+            if (isButtonEnabled == true) {
+              widget.buttonAction();
+              setState(() {
+                animatedBacking =
+                    BoxDecoration(color: coloration.accentColor());
+              });
+            }
+          },
+          child: FloatingContainerElement(
+            child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.bounceIn,
+                constraints: BoxConstraints(
+                    minHeight: minimumButtonTextSize.height * 1.8,
+                    maxHeight: minimumButtonTextSize.height * 2,
+                    maxWidth: minimumButtonTextSize.width * 2,
+                    minWidth: minimumButtonTextSize.width * 2),
+                decoration: buttonDecoration,
+                /*foregroundDecoration: animatedBacking,*/
+                child: Center(
+                    child: TagOneText(
+                        widget.buttonTitle, widget.decorationVariant))),
+          )),
+    );
   }
 }

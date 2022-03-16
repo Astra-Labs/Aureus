@@ -43,6 +43,7 @@ class TimerToolTemplate extends ToolCardTemplate {
 }
 
 class _TimerInputCard extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
   _TimerInputCard();
 
   @override

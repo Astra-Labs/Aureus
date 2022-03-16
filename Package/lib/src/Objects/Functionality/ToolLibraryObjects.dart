@@ -125,24 +125,20 @@ class AureusToolTemplateMaster {
   List<AureusToolTemplateObserver> _observers = [];
 
   void registerObserver(AureusToolTemplateObserver observer) {
-    print('observer registered');
     _observers.add(observer);
   }
 
   void unregisterObserver(AureusToolTemplateObserver observer) {
-    print('observer unregistered :-(');
     _observers.remove(observer);
   }
 
   void notifyObserverForward() {
-    print('notifying observers about moving forward');
     for (var observer in _observers) {
       observer.nextAction();
     }
   }
 
   void notifyObserverBackward() {
-    print('notifying observers about going backwards');
     for (var observer in _observers) {
       observer.previousAction();
     }
@@ -165,12 +161,10 @@ class ToolCardTemplate {
       {required this.templatePrompt, required this.badgeIcon});
 
   void onNextCard() {
-    print('requests move to next card');
     toolTemplateMaster.notifyObserverForward();
   }
 
   void onPreviousCard() {
-    print('requests return to previous card');
     toolTemplateMaster.notifyObserverBackward();
   }
 

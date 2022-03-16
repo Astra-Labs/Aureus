@@ -18,7 +18,7 @@ class StandardButtonElement extends StatefulWidget {
 }
 
 class _StandardButtonElementState extends State<StandardButtonElement> {
-  BoxDecoration animatedBacking = BoxDecoration();
+  BoxDecoration animatedBacking = const BoxDecoration();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
               width: size.layoutItemWidth(1, screenSize),
               height: minimumButtonTextSize.height * 4,
               child: AnimatedContainer(
-                  duration: Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: 200),
                   curve: Curves.bounceIn,
                   /*foregroundDecoration: animatedBacking,*/
                   decoration: buttonDecoration,

@@ -5,11 +5,13 @@ import 'package:aureus/aureus.dart';
 
 class FullWidthButtonElement extends StatefulWidget {
   final String buttonTitle;
+  final String buttonHint;
   final decorationPriority currentVariant;
   final VoidCallback buttonAction;
 
   const FullWidthButtonElement(
       {required this.buttonTitle,
+      required this.buttonHint,
       required this.currentVariant,
       required this.buttonAction});
 
@@ -18,10 +20,12 @@ class FullWidthButtonElement extends StatefulWidget {
 }
 
 class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
-  BoxDecoration animatedBacking = BoxDecoration();
+  BoxDecoration animatedBacking = const BoxDecoration();
 
   @override
   Widget build(BuildContext context) {
+    bool isButtonEnabled =
+        widget.currentVariant == decorationPriority.inactive ? false : true;
     //variables that change how the variants are displayed in build time
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.edgedRectangle,
@@ -30,36 +34,41 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement> {
 
     var screenWidth = size.logicalWidth();
 
-    bool isButtonEnabled =
-        widget.currentVariant == decorationPriority.inactive ? false : true;
-
     Size minimumButtonTextSize = Accessibility.textStringSize(
         textInput: widget.buttonTitle,
         textStyle: button1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return InkWell(
-        onTap: () {
-          if (isButtonEnabled == true) {
-            widget.buttonAction();
-            setState(() {
-              animatedBacking = BoxDecoration(color: coloration.accentColor());
-            });
-          }
-        },
-        child: AnimatedContainer(
-            constraints: BoxConstraints(
-              minHeight: minimumButtonTextSize.height * 4,
-              maxHeight: minimumButtonTextSize.height * 4,
-              minWidth: screenWidth,
-            ),
-            duration: Duration(milliseconds: 200),
-            curve: Curves.bounceIn,
-            /*foregroundDecoration: animatedBacking,*/
-            decoration: buttonDecoration,
-            child: Center(
-                child:
-                    ButtonOneText(widget.buttonTitle, widget.currentVariant))));
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: InkWell(
+          onTap: () {
+            if (isButtonEnabled == true) {
+              widget.buttonAction();
+              setState(() {
+                animatedBacking =
+                    BoxDecoration(color: coloration.accentColor());
+              });
+            }
+          },
+          child: AnimatedContainer(
+              constraints: BoxConstraints(
+                minHeight: minimumButtonTextSize.height * 4,
+                maxHeight: minimumButtonTextSize.height * 4,
+                minWidth: screenWidth,
+              ),
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.bounceIn,
+              /*foregroundDecoration: animatedBacking,*/
+              decoration: buttonDecoration,
+              child: Center(
+                  child: ButtonOneText(
+                      widget.buttonTitle, widget.currentVariant)))),
+    );
   }
 }

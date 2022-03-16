@@ -99,12 +99,13 @@ class CircleAnimation extends StatelessWidget {
   final Widget child;
   final Animation<double> animation;
 
-  CircleAnimation({
+  const CircleAnimation({
+    Key? key,
     required this.child,
     required this.animation,
     required this.centerAlignment,
     required this.centerOffset,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +118,7 @@ class CircleAnimation extends StatelessWidget {
             centerAlignment: centerAlignment,
             centerOffset: centerOffset,
           ),
-          child: this.child,
+          child: child,
         );
       },
     );
@@ -138,7 +139,7 @@ class CircularAnimationClip extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final Offset center = centerOffset;
-    final minRadius = 1.0;
+    const minRadius = 1.0;
     final maxRadius = calcMaxRadius(size, center);
 
     return Path()

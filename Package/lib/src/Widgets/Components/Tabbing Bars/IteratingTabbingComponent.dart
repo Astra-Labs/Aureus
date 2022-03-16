@@ -29,32 +29,34 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
 
     var screenSize = size.logicalScreenSize();
 
-    widget.itemTitles.forEach((element) {
+    for (var element in widget.itemTitles) {
       var currentIndex = widget.itemTitles.indexOf(element);
 
       tabItems.add(TabObject.forTextTabbing(
-          tabTitle: element,
-          tabPriority: currentIndex == _selectedIndex
-              ? decorationPriority.important
-              : decorationPriority.standard,
-          onTabSelection: () => {_onItemTapped(currentIndex)},
-          accessibilityHint: element));
-    });
+        tabTitle: element,
+        onTabSelection: () => {_onItemTapped(currentIndex)},
+        accessibilityHint: 'Selects $element as new tab.',
+        tabPriority: currentIndex == _selectedIndex
+            ? decorationPriority.important
+            : decorationPriority.standard,
+      ));
+    }
 
     var currentTitle = widget.itemTitles[_selectedIndex];
     var currentWidget = widget.itemWidgets[_selectedIndex];
 
-    tabItems.forEach((element) {
+    for (var element in tabItems) {
       var currentIndex = tabItems.indexOf(element);
 
       tabButtons.add(Padding(
         padding: const EdgeInsets.all(8.0),
         child: SmolButtonElement(
-            decorationVariant: element.tabPriority,
+            decorationVariant: element.tabPriority!,
             buttonTitle: element.tabTitle,
+            buttonHint: 'Changes selected tab to ${element.tabTitle}.',
             buttonAction: () => {_onItemTapped(currentIndex)}),
       ));
-    });
+    }
 
     Widget mobileInformationCard = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,12 +70,12 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   currentWidget,
-                  Spacer(),
+                  const Spacer(),
                 ],
               )),
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
@@ -93,7 +95,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                         Flexible(
                             child: TagOneText(
                                 currentTitle, decorationPriority.standard)),
-                        Spacer(),
+                        const Spacer(),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +106,8 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                                     ? decorationPriority.inactive
                                     : decorationPriority.important,
                                 buttonIcon: Assets.back,
-                                buttonTooltip: 'Previous Item',
+                                buttonHint:
+                                    'Changes selection to previous tab item.',
                                 buttonAction: () =>
                                     {_onItemTapped(_selectedIndex -= 1)}),
                             SecondaryIconButtonElement(
@@ -113,7 +116,8 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                                         ? decorationPriority.inactive
                                         : decorationPriority.important,
                                 buttonIcon: Assets.next,
-                                buttonTooltip: 'Next Item',
+                                buttonHint:
+                                    'Changes selection to next tab item.',
                                 buttonAction: () =>
                                     {_onItemTapped(_selectedIndex += 1)})
                           ],
@@ -142,9 +146,9 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   currentWidget,
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ),
@@ -166,11 +170,11 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       Flexible(
                           child: TagOneText(
                               currentTitle, decorationPriority.standard)),
-                      Spacer(),
+                      const Spacer(),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,7 +185,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                                   ? decorationPriority.inactive
                                   : decorationPriority.important,
                               buttonIcon: Assets.back,
-                              buttonTooltip: 'Previous Item',
+                              buttonHint: 'Previous Item',
                               buttonAction: () =>
                                   {_onItemTapped(_selectedIndex -= 1)}),
                           SecondaryIconButtonElement(
@@ -190,7 +194,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                                       ? decorationPriority.inactive
                                       : decorationPriority.important,
                               buttonIcon: Assets.next,
-                              buttonTooltip: 'Next Item',
+                              buttonHint: 'Next Item',
                               buttonAction: () =>
                                   {_onItemTapped(_selectedIndex += 1)})
                         ],
@@ -208,7 +212,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
       height: size.layoutItemHeight(1, screenSize) * 0.6,
       child: FloatingContainerElement(
           child: Container(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               decoration:
                   CardBackingDecoration(priority: decorationPriority.inactive)
                       .buildBacking(),
@@ -227,7 +231,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                 width: size.layoutItemWidth(1, screenSize),
                 height: size.layoutItemHeight(6, screenSize),
                 child: Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     decoration: LayerBackingDecoration(
                             priority: decorationPriority.inactive)
                         .buildBacking(),
@@ -239,7 +243,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                             mainAxisSize: MainAxisSize.min,
                             children: tabButtons))))),
         Padding(
-          padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
           child: informationCard,
         )
       ],

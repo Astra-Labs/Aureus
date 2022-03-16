@@ -12,16 +12,22 @@ class BasicInputFormComponent extends StatefulWidget {
   late List<MultiUserInputTypeObject> multiVarianceInputObjects = [];
 
   BasicInputFormComponent.singleDataType(
-      {required this.inputFormName, required this.singleVarianceInputObjects})
+      {Key? key,
+      required this.inputFormName,
+      required this.singleVarianceInputObjects})
       : assert(inputFormName != ''),
         assert(singleVarianceInputObjects != [] &&
-            singleVarianceInputObjects.length >= 2);
+            singleVarianceInputObjects.isNotEmpty),
+        super(key: key);
 
   BasicInputFormComponent.multiDataType(
-      {required this.inputFormName, required this.multiVarianceInputObjects})
+      {Key? key,
+      required this.inputFormName,
+      required this.multiVarianceInputObjects})
       : assert(inputFormName != ''),
         assert(multiVarianceInputObjects != [] &&
-            multiVarianceInputObjects.length >= 2);
+            multiVarianceInputObjects.isNotEmpty),
+        super(key: key);
 
   @override
   _BasicInputFormComponentState createState() =>
@@ -74,7 +80,7 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
         mainAxisSize: MainAxisSize.max,
         children: [
           HeadingThreeText(widget.inputFormName, decorationPriority.standard),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           inputList
         ]);
   }

@@ -9,7 +9,8 @@ USAGE:
 */
 
 class SketchToolTemplate extends ToolCardTemplate {
-  SketchToolTemplate() : super(templatePrompt: '', badgeIcon: IconData(0));
+  SketchToolTemplate()
+      : super(templatePrompt: '', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -23,7 +24,7 @@ class SketchToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const []);
   }
 
   @override
@@ -40,7 +41,7 @@ class SketchToolTemplate extends ToolCardTemplate {
 }
 
 class _SketchInputCard extends StatefulWidget {
-  _SketchInputCard();
+  const _SketchInputCard();
 
   @override
   _SketchInputCardState createState() => _SketchInputCardState();
@@ -50,5 +51,19 @@ class _SketchInputCardState extends State<_SketchInputCard> {
   @override
   Widget build(BuildContext context) {
     return Container();
+  }
+}
+
+class SketchCanvas extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint toolPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..color = coloration.accentColor();
+  }
+
+  @override
+  bool shouldRepaint(SketchCanvas delegate) {
+    return true;
   }
 }

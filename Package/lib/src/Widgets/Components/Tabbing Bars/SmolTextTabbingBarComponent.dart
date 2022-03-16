@@ -32,18 +32,19 @@ class _SmolTextTabbingBarComponentState
     List<TabObject> tabItems = [];
     List<Widget> tabButtons = [];
 
-    widget.tabObjects.forEach((element) {
+    for (var element in widget.tabObjects) {
       var currentIndex = tabItems.indexOf(element);
 
       tabButtons.add(Padding(
         padding: const EdgeInsets.all(8.0),
         child: SmolButtonElement(
-            decorationVariant: element.tabPriority,
+            decorationVariant: element.tabPriority!,
             buttonTitle: element.tabTitle,
+            buttonHint: 'Changes selected tab to ${element.tabTitle}',
             buttonAction: () =>
                 {element.onTabSelection, _onItemTapped(currentIndex)}),
       ));
-    });
+    }
 
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +56,7 @@ class _SmolTextTabbingBarComponentState
                   width: size.layoutItemWidth(1, screenSize),
                   height: size.layoutItemHeight(6, screenSize),
                   child: Container(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       decoration: LayerBackingDecoration(
                               priority: decorationPriority.inactive)
                           .buildBacking(),

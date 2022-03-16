@@ -30,14 +30,14 @@ class _BasePageToolTemplateState extends State<BasePageToolTemplate> {
         height: screenSize.height,
         child: Column(
           children: [
-            SizedBox(height: 50.0),
+            const SizedBox(height: 50.0),
             PageHeaderElement.withOptionsExit(
-                pageTitle: '${widget.parentTool.toolName}',
+                pageTitle: widget.parentTool.toolName,
                 onPageDetails: widget.onToolDetail,
                 onPageExit: () => {Navigator.pop(context)}),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Column(children: widget.pageChildren),
-            Spacer()
+            const Spacer()
           ],
         ));
   }

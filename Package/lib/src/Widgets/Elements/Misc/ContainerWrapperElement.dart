@@ -5,7 +5,7 @@ class ContainerWrapperElement extends StatefulWidget {
   final wrapperVariants containerVariant;
   final bool takesFullWidth;
 
-  ContainerWrapperElement(
+  const ContainerWrapperElement(
       {required this.children,
       required this.containerVariant,
       this.takesFullWidth = false});
@@ -15,77 +15,38 @@ class ContainerWrapperElement extends StatefulWidget {
       _ContainerWrapperElementState();
 }
 
-class _ContainerWrapperElementState extends State<ContainerWrapperElement>
-    with WidgetsBindingObserver {
+class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
   @override
-  void initState() {
-    WidgetsBinding.instance!.addObserver(this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
-    super.dispose();
-  }
-
-  // When the window changes, the container view uses
-  // the observer pattern to reload the children.
-  @override
-  void didChangeMetrics() {
-    setState(() {});
-  }
-
-  // When the user changes between light / dark mode, the container view uses
-  // the observer pattern to reload the children.
-  @override
-  void didChangePlatformBrightness() {
-    setState(() {});
-  }
-
-  // When the user changes accessibility features, the container view uses
-  // the observer pattern to reload the children.
-  @override
-  void didChangeAccessibilityFeatures() {
-    setState(() {});
-  }
-
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
-
-    Widget containerFormatting(List<Widget> items) {
-      if (widget.containerVariant == wrapperVariants.stackScroll) {
-        return SingleChildScrollView(
+    Widget children = widget.containerVariant == wrapperVariants.stackScroll
+        ? SingleChildScrollView(
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.start,
                 runSpacing: size.responsiveTextSize(20.0),
-                children: widget.children));
-      } else if (widget.containerVariant == wrapperVariants.fullScreen) {
-        return Container(
-            constraints: widget.takesFullWidth
-                ? BoxConstraints(
-                    minWidth: screenSize.width,
-                    maxWidth: screenSize.width,
-                    minHeight: screenSize.height,
-                    maxHeight: screenSize.height)
-                : BoxConstraints(
-                    minWidth: size.layoutItemWidth(1, screenSize),
-                    maxWidth: size.layoutItemWidth(1, screenSize),
-                    minHeight: size.layoutItemHeight(1, screenSize),
-                    maxHeight: size.layoutItemHeight(1, screenSize)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: widget.children,
-            ));
-      }
-
-      throw ("Proper variant wasn't given to ContainerWrapperElement.");
-    }
+                children: widget.children))
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: widget.children,
+          );
 
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      return containerFormatting(widget.children);
+      return Container(
+          constraints: widget.takesFullWidth
+              ? BoxConstraints(
+                  minWidth: MediaQuery.of(context).size.width,
+                  maxWidth: MediaQuery.of(context).size.width,
+                  minHeight: MediaQuery.of(context).size.height,
+                  maxHeight: MediaQuery.of(context).size.height)
+              : BoxConstraints(
+                  minWidth: size.layoutItemWidth(1, screenSize),
+                  maxWidth: size.layoutItemWidth(1, screenSize),
+                  minHeight: size.layoutItemHeight(1, screenSize),
+                  maxHeight: size.layoutItemHeight(1, screenSize)),
+          child: children);
     });
   }
 }

@@ -32,7 +32,7 @@ class _LandingPageViewState extends State<LandingPageView> {
         children: [
           HeadingTwoText(
               "I'm ${resourceValues.name}", decorationPriority.standard),
-          SizedBox(height: 4.0),
+          const SizedBox(height: 4.0),
           HeadingOneText(resourceValues.mission, decorationPriority.standard)
         ]);
 
@@ -72,12 +72,13 @@ class _LandingPageViewState extends State<LandingPageView> {
                 BodyOneText(
                     '${resourceValues.name} is run by Astra Labs, a 501(c)3 non-profit.',
                     decorationPriority.standard),
-                SizedBox(width: 10.0),
+                const SizedBox(width: 10.0),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Give Feedback',
+                    buttonHint: 'Opens the place to give feedback.',
                     buttonAction: () => {}),
-                SizedBox(width: 10.0),
+                const SizedBox(width: 10.0),
               ]),
         ));
 
@@ -109,6 +110,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                       SmolButtonElement(
                           decorationVariant: decorationPriority.standard,
                           buttonTitle: 'Give Feedback',
+                          buttonHint: 'Opens the place to give feedback.',
                           buttonAction: () => {}),
                     ],
                   )
@@ -145,7 +147,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                             height: screenHeight *
                                 (0.15 * widget.actionButtons.length),
                             child: buttonItems),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10.0),
                       ]),
                 ),
                 FloatingContainerElement(child: mobilePageFooter)

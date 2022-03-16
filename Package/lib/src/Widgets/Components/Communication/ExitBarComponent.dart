@@ -46,37 +46,47 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return Container(
-        constraints: BoxConstraints(
-            minHeight: accessibilitySizing.height * 5, minWidth: screenWidth),
-        child: Align(
-          alignment: barAlignment(),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-                minHeight: accessibilitySizing.height * 3,
-                minWidth: size.layoutItemWidth(1, screenSize),
-                maxWidth: size.layoutItemWidth(1, screenSize)),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    BodyOneText(
-                        'Tap the button to exit.', decorationPriority.standard),
-                    SmolButtonElement(
-                        decorationVariant: decorationPriority.important,
-                        buttonTitle: 'Exit now.',
-                        buttonAction: () => {print('Exit for user!')})
-                  ]),
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.customItem(
+          isEnabled: true,
+          label: 'Exit Bar',
+          hint:
+              'Has an exit bar that allows you to quickly leave ${resourceValues.name} by changing the screen.',
+          isFocusable: true,
+          isEditable: false),
+      child: Container(
+          constraints: BoxConstraints(
+              minHeight: accessibilitySizing.height * 5, minWidth: screenWidth),
+          child: Align(
+            alignment: barAlignment(),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                  minHeight: accessibilitySizing.height * 3,
+                  minWidth: size.layoutItemWidth(1, screenSize),
+                  maxWidth: size.layoutItemWidth(1, screenSize)),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      BodyOneText('Tap the button to exit.',
+                          decorationPriority.standard),
+                      SmolButtonElement(
+                          decorationVariant: decorationPriority.important,
+                          buttonTitle: 'Exit now.',
+                          buttonHint: 'Closes ',
+                          buttonAction: () => {print('Exit for user!')})
+                    ]),
+              ),
             ),
           ),
-        ),
-        decoration: BoxDecoration(
-          color: barBacking(),
-          border: Border(
-              bottom: BorderSide(color: steel().withOpacity(0.3), width: 1)),
-        ));
+          decoration: BoxDecoration(
+            color: barBacking(),
+            border: Border(
+                bottom: BorderSide(color: steel().withOpacity(0.3), width: 1)),
+          )),
+    );
   }
 }

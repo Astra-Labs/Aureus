@@ -8,11 +8,13 @@ class ContainerView extends StatefulWidget {
   final decorationPriority decorationVariant;
   final ContainerWrapperElement builder;
   final bool? takesFullWidth;
+  final bool? hasBackgroundImage;
 
-  ContainerView(
+  const ContainerView(
       {required this.decorationVariant,
       required this.builder,
-      this.takesFullWidth = false});
+      this.takesFullWidth = false,
+      this.hasBackgroundImage = true});
 
   @override
   _ContainerViewState createState() => _ContainerViewState();
@@ -21,38 +23,35 @@ class ContainerView extends StatefulWidget {
 // Widgets Binding Observer is added to the Container View to automatically
 // alert child widgets as important information changes.
 class _ContainerViewState extends State<ContainerView>
-    with WidgetsBindingObserver {
+    with AureusNotificationObserver {
   @override
   void initState() {
-    WidgetsBinding.instance!.addObserver(this);
+    AureusNotificationMaster().registerObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    AureusNotificationMaster().unregisterObserver(this);
     super.dispose();
   }
 
-  // When the window changes, the container view uses
-  // the observer pattern to reload the children.
+  //Displays an alert controller over the current view.
   @override
-  void didChangeMetrics() {
-    setState(() {});
+  void showAlertController() {
+    super.showAlertController();
   }
 
-  // When the user changes between light / dark mode, the container view uses
-  // the observer pattern to reload the children.
+  //Displays a content warning over the current view.
   @override
-  void didChangePlatformBrightness() {
-    setState(() {});
+  void showContentWarning() {
+    super.showContentWarning();
   }
 
-  // When the user changes accessibility features, the container view uses
-  // the observer pattern to reload the children.
+  // Displays a dropdown notification at the top of the view.
   @override
-  void didChangeAccessibilityFeatures() {
-    setState(() {});
+  void showDropdownNotification() {
+    super.showDropdownNotification();
   }
 
   @override
@@ -65,7 +64,8 @@ class _ContainerViewState extends State<ContainerView>
     var screenHeight = size.logicalHeight();
 
     BoxDecoration containerBacking() {
-      if (widget.decorationVariant == decorationPriority.important) {
+      if (widget.decorationVariant == decorationPriority.important &&
+          widget.hasBackgroundImage == true) {
         //returns primary image defined in AureusStylization
         return BoxDecoration(
           image: DecorationImage(
@@ -73,7 +73,8 @@ class _ContainerViewState extends State<ContainerView>
             fit: BoxFit.cover,
           ),
         );
-      } else if (widget.decorationVariant == decorationPriority.standard) {
+      } else if (widget.decorationVariant == decorationPriority.standard &&
+          widget.hasBackgroundImage == true) {
         //returns secondary image defined in AureusStylization
         return BoxDecoration(
           image: DecorationImage(
@@ -82,18 +83,20 @@ class _ContainerViewState extends State<ContainerView>
           ),
         );
       }
-      return BoxDecoration();
+      return const BoxDecoration();
     }
 
     Container backingContainer = Container(
         alignment: Alignment.center,
         width: screenWidth,
-        decoration: containerBacking(),
+        decoration: widget.hasBackgroundImage == true
+            ? containerBacking()
+            : const BoxDecoration(color: Colors.transparent),
         padding: widget.takesFullWidth!
-            ? EdgeInsets.all(0.0)
+            ? const EdgeInsets.all(0.0)
             : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w0),
                 0.0, size.heightOf(weight: sizingWeight.w0)),
-        child: Container(
+        child: SizedBox(
             width: widget.takesFullWidth!
                 ? screenWidth
                 : size.layoutItemWidth(1, screenSize),
@@ -104,23 +107,25 @@ class _ContainerViewState extends State<ContainerView>
 
     if (hasExitBar == true) {
       return Scaffold(
+        backgroundColor: Colors.transparent,
         body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
-              children: [ExitBarComponent(), backingContainer],
+              children: [const ExitBarComponent(), backingContainer],
             );
           },
         ),
       );
     } else if (hasExitBar == false) {
       return Scaffold(
+          backgroundColor: Colors.transparent,
           body: (LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return backingContainer;
-        },
-      )));
+            builder: (BuildContext context, BoxConstraints constraints) {
+              return backingContainer;
+            },
+          )));
     }
 
     throw ErrorDescription('Exit bar value not given.');

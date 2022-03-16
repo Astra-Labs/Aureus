@@ -8,7 +8,7 @@ class SafetyPlanOptionsView extends StatefulWidget {
 }
 
 class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
-  Safety productSafetyObject = Safety(
+  Safety productSafetyObject = const Safety(
       frequencyUsage: SafetyPlanFrequency.singleUse,
       eligiblePlanOptions: [
         SafetyPlanOptions.deviceSandbox,
@@ -24,13 +24,13 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
 
     var screenSize = size.logicalScreenSize();
 
-    productSafetyObject.eligiblePlanOptions.forEach((element) {
+    for (var element in productSafetyObject.eligiblePlanOptions) {
       eligibleOptionCards.add(Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
+        padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
         child: StandardSwitchCardComponent(
             switchDescription: safety.retrieveDetails(element).name),
       ));
-    });
+    }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
@@ -39,7 +39,7 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
             headerText: 'Safety Plan - Options',
             subheaderText:
                 'Enable the options below to modify the functionality of ${resourceValues.name}.'),
-        Spacer(),
+        const Spacer(),
         SizedBox(
             width: size.layoutItemWidth(1, screenSize),
             height: size.layoutItemHeight(1, screenSize) * 0.6,
@@ -47,15 +47,15 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
                 child: (ListView(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     children: eligibleOptionCards)))),
-        Spacer(),
+        const Spacer(),
         Align(
           alignment: Alignment.bottomRight,
           child: PrimaryIconButtonElement(
               decorationVariant: decorationPriority.important,
               buttonIcon: Assets.next,
-              buttonTooltip: 'Go to next page',
+              buttonHint: 'Go to next page',
               buttonAction: () => {print("go to next!")}),
         )
       ],

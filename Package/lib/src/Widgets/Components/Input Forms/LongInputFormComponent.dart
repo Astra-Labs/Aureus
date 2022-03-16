@@ -17,33 +17,29 @@ class LongInputFormComponent extends StatefulWidget {
 class _LongInputFormComponentState extends State<LongInputFormComponent> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child:
-            //layer one list view that contains lists of all of the sections
-            ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: widget.formGroupingObject.length,
-                itemBuilder: (BuildContext context, int index) {
-                  LongInputFormGroupingObject layer1Object =
-                      widget.formGroupingObject[index];
+    return ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: widget.formGroupingObject.length,
+        itemBuilder: (BuildContext context, int index) {
+          LongInputFormGroupingObject layer1Object =
+              widget.formGroupingObject[index];
 
-                  return Padding(
-                      padding: size.universalPadding(),
+          return Padding(
+              padding: size.universalPadding(),
 
-                      //layer two list view
-                      child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: layer1Object.inputObjects.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            BaseUserInputObject currentObject =
-                                layer1Object.inputObjects[index];
+              //layer two list view
+              child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: layer1Object.inputObjects.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    BaseUserInputObject currentObject =
+                        layer1Object.inputObjects[index];
 
-                            return Padding(
-                                padding: size.universalPadding(),
-                                child: SingleDataTypeUserInputElement(
-                                    dataPlaceholder:
-                                        currentObject.placeholder));
-                          }));
-                }));
+                    return Padding(
+                        padding: size.universalPadding(),
+                        child: SingleDataTypeUserInputElement(
+                            dataPlaceholder: currentObject.placeholder));
+                  }));
+        });
   }
 }

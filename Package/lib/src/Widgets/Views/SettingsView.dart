@@ -36,9 +36,9 @@ class _SettingsViewState extends State<SettingsView> {
           PageHeaderElement.withExit(
               pageTitle: 'Settings',
               onPageExit: () => {Navigator.pop(context)}),
-          SizedBox(height: 20.0),
-          TabSubheaderElement(title: 'I want to'),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
+          const TabSubheaderElement(title: 'I want to'),
+          const SizedBox(height: 20.0),
           StandardButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'use the help center.',
@@ -49,7 +49,7 @@ class _SettingsViewState extends State<SettingsView> {
                           builder: (context) => AureusValues().help!,
                         ))
                   }),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           StandardButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'modify Safety Plan settings.',
@@ -57,10 +57,10 @@ class _SettingsViewState extends State<SettingsView> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SafetyPlanSettingsView(),
+                          builder: (context) => const SafetyPlanSettingsView(),
                         ))
                   }),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           StandardButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle:

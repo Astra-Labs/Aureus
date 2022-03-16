@@ -39,17 +39,17 @@ class _SignInViewState extends State<SignInView> {
             ],
           ),
         ),
-        SizedBox(height: 20.0),
-        DividerElement(),
-        Spacer(),
+        const SizedBox(height: 20.0),
+        const DividerElement(),
+        const Spacer(),
         Align(
           alignment: Alignment.center,
           child: Column(
             children: [
               SingleDataTypeUserInputElement(dataPlaceholder: "Username"),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               SingleDataTypeUserInputElement(dataPlaceholder: "Password"),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: "Sign In",
@@ -57,7 +57,7 @@ class _SignInViewState extends State<SignInView> {
             ],
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Align(
           alignment: Alignment.bottomCenter,
           child: Row(
@@ -68,11 +68,15 @@ class _SignInViewState extends State<SignInView> {
               SmolButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: "Sign Up",
+                  buttonHint:
+                      'Takes you to the sign up view to create an account.',
                   buttonAction: widget.onSignup),
-              SizedBox(width: 20.0),
+              const SizedBox(width: 20.0),
               SmolButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: "Reset Password",
+                  buttonHint:
+                      'Takes you to the reset password view to recover your password.',
                   buttonAction: widget.onResetInformation),
             ],
           ),

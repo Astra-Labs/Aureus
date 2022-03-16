@@ -159,7 +159,7 @@ class AureusInformation {
   final String userSupportURL;
   // The URL that users should go if they need something.
   // ------------------------------
-  final List<DataConsent> requestedDataPermissions;
+  final List<DataPermissionObject> requestedDataPermissions;
   // The data permissions that you want from a user in onboarding.
   // ------------------------------
   final String termsOfService;

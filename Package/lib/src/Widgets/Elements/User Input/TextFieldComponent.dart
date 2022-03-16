@@ -34,7 +34,7 @@ class StandardTextFieldComponent extends StatelessWidget {
                           .decorationColor(decorationVariant: decorationVariant)
                           .withOpacity(0.3),
                       width: 1.0)),
-              errorBorder: OutlineInputBorder(
+              errorBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                       color: Color.fromRGBO(255, 178, 178, 1.0), width: 1.0)),
               disabledBorder: InputBorder.none,

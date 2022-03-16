@@ -22,8 +22,8 @@ class _HelpCenterViewState extends State<HelpCenterView> {
 
     setState(() {
       itemGridCards.clear();
-      currentHelpCenter.articleCategories[0].categoryArticles
-          .forEach((element) {
+      for (var element
+          in currentHelpCenter.articleCategories[0].categoryArticles) {
         itemGridCards.add(InkWell(
           onTap: () => {
             Navigator.push(
@@ -39,13 +39,13 @@ class _HelpCenterViewState extends State<HelpCenterView> {
               gridSize: Size(size.layoutItemWidth(1, screenSize),
                   size.layoutItemHeight(1, screenSize))),
         ));
-      });
+      }
     });
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
-        DividingHeaderElement(
+        const DividingHeaderElement(
             headerText: 'Help Center',
             subheaderText:
                 'Find the answers to your questions about our software and how it works.'),
@@ -61,7 +61,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
       ],
     );
 
@@ -90,15 +90,15 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
         SecondaryIconButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonIcon: Assets.back,
-            buttonTooltip: 'Return to Help Center.',
+            buttonHint: 'Return to Help Center.',
             buttonAction: () => {Navigator.pop(context)}),
-        Spacer(),
-        IconBadge(
+        const Spacer(),
+        const IconBadge(
             badgeIcon: Assets.lock, badgePriority: decorationPriority.standard),
-        SizedBox(height: 40.0),
+        const SizedBox(height: 40.0),
         HeadingThreeText(
             widget.article.articleTitle, decorationPriority.standard),
-        SizedBox(height: 25.0),
+        const SizedBox(height: 25.0),
         Container(
             constraints: BoxConstraints(
                 minWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
@@ -108,7 +108,7 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.standard)
                     .buildBacking(),
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Wrap(
@@ -118,7 +118,7 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
                 ],
               ),
             )),
-        Spacer(),
+        const Spacer(),
       ],
     );
     return ContainerView(

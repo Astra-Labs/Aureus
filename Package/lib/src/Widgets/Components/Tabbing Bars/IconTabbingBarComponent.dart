@@ -15,24 +15,37 @@ class IconTabbingBarComponent extends StatefulWidget {
 }
 
 class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     //keeps track of every active / inactive item
 
     List<Widget> tabItems = [];
 
-    widget.tabItems.forEach((element) {
+    for (var element in widget.tabItems) {
+      var currentIndex = widget.tabItems.indexOf(element);
+
       var tabItem = Padding(
-        padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
         child: SecondaryIconButtonElement(
-            buttonAction: () => {},
-            decorationVariant: element.tabPriority,
-            buttonTooltip: element.accessibilityHint,
+            buttonAction: () =>
+                {element.onTabSelection(), _onItemTapped(currentIndex)},
+            decorationVariant: currentIndex == _selectedIndex
+                ? decorationPriority.important
+                : decorationPriority.standard,
+            buttonHint: 'Changes tab to ${element.tabTitle}',
             buttonIcon: element.tabIcon),
       );
 
       tabItems.add(tabItem);
-    });
+    }
 
     var screenSize = size.logicalScreenSize();
 
@@ -41,7 +54,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
           width: size.layoutItemWidth(1, screenSize),
           height: size.layoutItemHeight(6, screenSize),
           child: Container(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               decoration:
                   LayerBackingDecoration(priority: decorationPriority.inactive)
                       .buildBacking(),

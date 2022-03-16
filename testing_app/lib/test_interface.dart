@@ -115,8 +115,7 @@ Map<String, Widget> aureusViews = {
       userPhoneNumber: 555555555,
       issueVerificationCode: () => {print('verification code issued!')},
       onUserSubmission: () => {print('user submitted code!')}),
-  'Onboarding Demo View':
-      OnboardingDemoView(toolItems: [], exitPoint: OnboardingLandingView()),
+  'Onboarding Demo View': OnboardingDemoView(toolItems: []),
   'Onboarding Information View': OnboardingInformationView(
     onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
   ),

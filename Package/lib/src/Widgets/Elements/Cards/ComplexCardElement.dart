@@ -30,7 +30,7 @@ class ComplexCardElement extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 HeadingFourText(cardLabel, decorationVariant),
                 BodyOneText(cardBody, decorationVariant),
                 DetailCardCarouselComponent(

@@ -10,7 +10,7 @@ USAGE:
 
 class MultiCategoryCardSelectInputToolTemplate extends ToolCardTemplate {
   MultiCategoryCardSelectInputToolTemplate()
-      : super(templatePrompt: '', badgeIcon: IconData(0));
+      : super(templatePrompt: '', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -24,7 +24,7 @@ class MultiCategoryCardSelectInputToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const []);
   }
 
   @override
@@ -37,6 +37,6 @@ class MultiCategoryCardSelectInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const []);
   }
 }

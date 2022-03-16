@@ -20,7 +20,8 @@ class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
       : assert(listItems.entries.length <= 5,
             "You can't have more than 5 options in a button select card. That would be too overwhelming to the user."),
         super(
-            templatePrompt: 'List View Button Select', badgeIcon: IconData(0));
+            templatePrompt: 'List View Button Select',
+            badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -32,7 +33,7 @@ class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
   Widget returnActiveToolCard() {
     List<Widget> buttonItems = [];
 
-    listItems.entries.forEach((element) {
+    for (var element in listItems.entries) {
       buttonItems.add(Padding(
         padding: const EdgeInsets.all(12.0),
         child: StandardButtonElement(
@@ -44,7 +45,7 @@ class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
                   onNextCard(),
                 }),
       ));
-    });
+    }
 
     return BaseCardToolTemplate(
         isActive: true,

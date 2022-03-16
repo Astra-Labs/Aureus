@@ -36,7 +36,7 @@ class _IteratingComponentState extends State<IteratingComponent> {
               ? decorationPriority.important
               : decorationPriority.standard,
           onTabSelection: () => {_onItemTapped(currentIndex)},
-          accessibilityHint: element));
+          accessibilityHint: 'Selects $element as new tab.'));
     });
 
     var currentTitle = widget.itemTitles[_selectedIndex];
@@ -48,8 +48,10 @@ class _IteratingComponentState extends State<IteratingComponent> {
       tabButtons.add(Padding(
         padding: const EdgeInsets.all(8.0),
         child: SmolButtonElement(
-            decorationVariant: element.tabPriority,
+            decorationVariant:
+                element.tabPriority ?? decorationPriority.standard,
             buttonTitle: element.tabTitle,
+            buttonHint: 'Switches selected tab to ${element.tabTitle}',
             buttonAction: () => {_onItemTapped(currentIndex)}),
       ));
     });
@@ -102,7 +104,7 @@ class _IteratingComponentState extends State<IteratingComponent> {
                                     ? decorationPriority.inactive
                                     : decorationPriority.important,
                                 buttonIcon: Assets.back,
-                                buttonTooltip: 'Previous Item',
+                                buttonHint: 'Previous Item',
                                 buttonAction: () =>
                                     {_onItemTapped(_selectedIndex -= 1)}),
                             SecondaryIconButtonElement(
@@ -111,7 +113,7 @@ class _IteratingComponentState extends State<IteratingComponent> {
                                         ? decorationPriority.inactive
                                         : decorationPriority.important,
                                 buttonIcon: Assets.next,
-                                buttonTooltip: 'Next Item',
+                                buttonHint: 'Next Item',
                                 buttonAction: () =>
                                     {_onItemTapped(_selectedIndex += 1)})
                           ],
@@ -179,7 +181,7 @@ class _IteratingComponentState extends State<IteratingComponent> {
                                   ? decorationPriority.inactive
                                   : decorationPriority.important,
                               buttonIcon: Assets.back,
-                              buttonTooltip: 'Previous Item',
+                              buttonHint: 'Previous Item',
                               buttonAction: () =>
                                   {_onItemTapped(_selectedIndex -= 1)}),
                           SecondaryIconButtonElement(
@@ -188,7 +190,7 @@ class _IteratingComponentState extends State<IteratingComponent> {
                                       ? decorationPriority.inactive
                                       : decorationPriority.important,
                               buttonIcon: Assets.next,
-                              buttonTooltip: 'Next Item',
+                              buttonHint: 'Next Item',
                               buttonAction: () =>
                                   {_onItemTapped(_selectedIndex += 1)})
                         ],

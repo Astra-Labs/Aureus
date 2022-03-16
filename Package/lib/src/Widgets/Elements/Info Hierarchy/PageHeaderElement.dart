@@ -10,18 +10,22 @@ class PageHeaderElement extends StatelessWidget {
   VoidCallback? onPageDetails;
 
   PageHeaderElement.withExit(
-      {required this.pageTitle, required this.onPageExit});
+      {Key? key, required this.pageTitle, required this.onPageExit})
+      : super(key: key);
   PageHeaderElement.withOptionsExit(
-      {required this.pageTitle,
+      {Key? key,
+      required this.pageTitle,
       required this.onPageDetails,
-      required this.onPageExit});
+      required this.onPageExit})
+      : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     Widget buttonOptions() {
       var exitButton = SecondaryIconButtonElement(
           decorationVariant: decorationPriority.standard,
           buttonIcon: Assets.no,
-          buttonTooltip: 'Exit $pageTitle',
+          buttonHint: 'Exit $pageTitle',
           buttonAction: onPageExit);
 
       if (onPageDetails != null) {
@@ -31,7 +35,7 @@ class PageHeaderElement extends StatelessWidget {
             SecondaryIconButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonIcon: Assets.more1,
-                buttonTooltip: '$pageTitle Options',
+                buttonHint: 'Shows options for $pageTitle',
                 buttonAction: onPageDetails!),
             exitButton
           ],
@@ -59,17 +63,18 @@ class PageHeaderElement extends StatelessWidget {
           minHeight: labelSizing.height * 2),
       child: Column(
         children: [
+          SizedBox(height: size.responsiveTextSize(30.0)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               HeadingTwoText(pageTitle, decorationPriority.standard),
-              Spacer(),
+              const Spacer(),
               buttonOptions()
             ],
           ),
-          SizedBox(height: 12.0),
+          const SizedBox(height: 12.0),
         ],
       ),
     );

@@ -134,7 +134,7 @@ class Safety {
   }
 
   SafetyOptionDetails onlyNeccessaryEmailsDetails() {
-    return SafetyOptionDetails(
+    return const SafetyOptionDetails(
         name: 'Only receieve neccessary emails.',
         description:
             'Opts you out of any emails outside of required account functionality emails.',
@@ -174,7 +174,7 @@ class Safety {
   }
 
   SafetyOptionDetails localDataStorageDetails() {
-    return SafetyOptionDetails(
+    return const SafetyOptionDetails(
         name: 'Request local data storage.',
         description:
             'Keeps your data off of the cloud by encrypting it locally on your local device, instead of using a database and servers.',
@@ -223,7 +223,7 @@ class Safety {
   }
 
   SafetyOptionDetails logFailedAttemptsDetails() {
-    return SafetyOptionDetails(
+    return const SafetyOptionDetails(
         name: 'Track failed log-in attempts.',
         description: 'Keeps a log of failed attempts to access your account.',
         icon: Assets.alertmessage,
@@ -260,7 +260,7 @@ class Safety {
           ])))),
     );
 
-    fallbackItems.forEach((element) async {
+    for (var element in fallbackItems) {
       if (await _SafetyPlan()._readSetting(element.safetyOption) == true) {
         if (element.fallbackOption == SafetyFallBackOptions.alternateCode) {
           executableCode = element.fallbackCode!;
@@ -275,7 +275,7 @@ class Safety {
               };
         }
       }
-    });
+    }
 
     return executableCode;
   }
@@ -336,15 +336,12 @@ class _SafetyPlan {
   Future<bool> _readSetting(SafetyPlanOptions option) async {
     final settings = _storage.read(key: safetyPlanKey(option));
 
-    print('item being read!');
     return settings.toString() == "true" ? true : false;
   }
 
   Future<void> _writeSetting(SafetyPlanOptions option, bool isEnabled) async {
     await _storage.write(
         key: safetyPlanKey(option), value: isEnabled.toString());
-
-    print('item being written!');
   }
 
   Future<Map<SafetyPlanOptions, bool>> get readSettings async {
@@ -352,18 +349,18 @@ class _SafetyPlan {
 
     Map<SafetyPlanOptions, bool> settings = {};
 
-    SafetyPlanOptions.values.forEach((element) async {
+    for (var element in SafetyPlanOptions.values) {
       settings.addEntries([MapEntry(element, await _readSetting(element))]);
-    });
+    }
 
     return settings;
   }
 
   //write settings directly to local storage
   set writeSettings(Map<SafetyPlanOptions, bool> newSettings) {
-    newSettings.entries.forEach((element) {
+    for (var element in newSettings.entries) {
       _writeSetting(element.key, element.value);
-    });
+    }
   }
 }
 
@@ -423,7 +420,7 @@ class _SafetyPlanFunctionalityViewState
           height: size.layoutItemHeight(2, screenSize),
           child: SingleChildScrollView(
             child: ListView.builder(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemCount: widget.userSelectedOptions.length,
@@ -433,7 +430,7 @@ class _SafetyPlanFunctionalityViewState
                       .retrieveDetails(currentItem);
 
                   return Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                     child: ComplexSwitchCardElement(
                         cardLabel: safetyObject.name,
                         cardBody: safetyObject.functionalityChange,
@@ -442,14 +439,14 @@ class _SafetyPlanFunctionalityViewState
                 }),
           ),
         ),
-        SizedBox(height: 20.0),
+        const SizedBox(height: 20.0),
         Column(
           children: [
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonTitle: 'I agree to these changes.',
                 buttonAction: () => {}),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonTitle: 'I want to edit my safety plan.',

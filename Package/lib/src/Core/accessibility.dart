@@ -171,35 +171,35 @@ class SemanticsWrapper extends SemanticsProperties {
   // ------------------------------
   // Wrapper that governs a custom item
   SemanticsWrapper.customItem(
-      this.isChecked,
-      this.isToggled,
-      this.isSelected,
-      this.isReadOnly,
-      this.isEditable,
-      this.isFocusable,
-      this.isMutuallyExclusive,
-      this.isHidden,
-      this.isObscured,
-      this.isMultiline,
-      this.isLiveRegion,
+      {this.isChecked = false,
+      this.isToggled = false,
+      this.isSelected = false,
+      this.isReadOnly = false,
+      this.isEditable = false,
+      this.isFocusable = false,
+      this.isMutuallyExclusive = false,
+      this.isHidden = false,
+      this.isObscured = false,
+      this.isMultiline = false,
+      this.isLiveRegion = false,
       this.value,
       this.hint,
-      {required this.isEnabled,
+      required this.isEnabled,
       required this.label})
       : assert(isEnabled != null && label != ""),
         super(
           label: label,
-          checked: isChecked ?? false,
-          toggled: isToggled ?? false,
-          selected: isSelected ?? false,
-          readOnly: isReadOnly ?? false,
-          inMutuallyExclusiveGroup: isMutuallyExclusive ?? false,
-          hidden: isHidden ?? false,
-          obscured: isObscured ?? false,
-          multiline: isMultiline ?? false,
-          liveRegion: isLiveRegion ?? false,
-          value: value ?? null,
-          hint: hint ?? null,
+          checked: isChecked,
+          toggled: isToggled,
+          selected: isSelected,
+          readOnly: isReadOnly,
+          inMutuallyExclusiveGroup: isMutuallyExclusive,
+          hidden: isHidden,
+          obscured: isObscured,
+          multiline: isMultiline,
+          liveRegion: isLiveRegion,
+          value: value,
+          hint: hint,
           enabled: isEnabled,
           focusable: isFocusable,
           focused: isSelected,
@@ -207,12 +207,9 @@ class SemanticsWrapper extends SemanticsProperties {
 
   // ------------------------------
   // Wrapper that governs a collection view of items
-  SemanticsWrapper.collectionView({
-    required this.isEnabled,
-    required this.label,
-    required this.isEditable,
-    required this.value,
-  })  : assert(isEnabled != null && label != ""),
+  SemanticsWrapper.collectionView(
+      {required this.isEnabled, required this.label, required this.isEditable})
+      : assert(isEnabled != null && label != ""),
         super(label: label, enabled: isEnabled, focusable: isEnabled);
 
   // ------------------------------

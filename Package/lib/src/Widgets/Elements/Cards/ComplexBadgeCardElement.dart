@@ -42,7 +42,7 @@ class ComplexBadgeCardElement extends StatelessWidget {
                         badgeIcon: cardIcon, badgePriority: decorationVariant)
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 BodyOneText(cardBody, decorationVariant),
                 DetailCardCarouselComponent(
                     cardDetailCarousel: cardDetailCarousel)

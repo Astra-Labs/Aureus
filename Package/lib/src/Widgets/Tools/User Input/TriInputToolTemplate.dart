@@ -36,7 +36,7 @@ class TriInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          SizedBox(height: 25.0),
+          const SizedBox(height: 25.0),
           StandardTextFieldComponent(
               hintText: textPrompt1,
               decorationVariant: decorationPriority.standard,
@@ -49,9 +49,9 @@ class TriInputToolTemplate extends ToolCardTemplate {
               hintText: textPrompt3,
               decorationVariant: decorationPriority.standard,
               textFieldController: textField3Controller),
-          SizedBox(height: 5),
-          DividerElement(),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 5),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -59,11 +59,13 @@ class TriInputToolTemplate extends ToolCardTemplate {
                 SmolButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Skip',
+                    buttonHint: 'Skips the current card.',
                     buttonAction: () => {onNextCard()}),
-                Spacer(),
+                const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card.',
                     buttonAction: () => {
                           dataMap.insert(0, textField1Controller.text),
                           dataMap.insert(1, textField2Controller.text),
@@ -85,50 +87,50 @@ class TriInputToolTemplate extends ToolCardTemplate {
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   TagTwoText(textPrompt1, decorationPriority.standard),
-                  SizedBox(height: 5.0),
+                  const SizedBox(height: 5.0),
                   BodyOneText(dataMap.isNotEmpty ? dataMap[0] : '',
                       decorationPriority.standard)
                 ]),
           )),
-          SizedBox(width: 15.0),
+          const SizedBox(width: 15.0),
           FloatingContainerElement(
               child: Container(
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   TagTwoText(textPrompt2, decorationPriority.standard),
-                  SizedBox(height: 5.0),
+                  const SizedBox(height: 5.0),
                   BodyOneText(dataMap.isNotEmpty ? dataMap[1] : '',
                       decorationPriority.standard)
                 ]),
           )),
-          SizedBox(width: 15.0),
+          const SizedBox(width: 15.0),
           FloatingContainerElement(
               child: Container(
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   TagTwoText(textPrompt3, decorationPriority.standard),
-                  SizedBox(height: 5.0),
+                  const SizedBox(height: 5.0),
                   BodyOneText(dataMap.isNotEmpty ? dataMap[2] : '',
                       decorationPriority.standard)
                 ]),

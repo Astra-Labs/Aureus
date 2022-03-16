@@ -9,7 +9,7 @@ USAGE:
 
 class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
   ColorSpectrumInputToolTemplate()
-      : super(templatePrompt: '', badgeIcon: IconData(0));
+      : super(templatePrompt: '', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -23,7 +23,7 @@ class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const []);
   }
 
   @override
@@ -40,7 +40,7 @@ class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
 }
 
 class _ColorSpectrumInputCard extends StatefulWidget {
-  _ColorSpectrumInputCard();
+  const _ColorSpectrumInputCard();
 
   @override
   _ColorSpectrumInputCardState createState() => _ColorSpectrumInputCardState();

@@ -25,7 +25,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
 
     var screenSize = size.logicalScreenSize();
 
-    widget.onboardingDetails.forEach((element) {
+    for (var element in widget.onboardingDetails) {
       tabItems.add(TabObject.forIconTabbing(
           tabIcon: element.detailCategoryIcon,
           tabPriority:
@@ -35,7 +35,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
           onTabSelection: () =>
               {_onItemTapped(widget.onboardingDetails.indexOf(element))},
           accessibilityHint: element.detailTitle));
-    });
+    }
 
     var currentItem = widget.onboardingDetails[_selectedIndex];
 
@@ -55,10 +55,10 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                     image: currentItem.detailImage.image,
                     fit: BoxFit.cover,
                   ))),
-          Spacer(),
+          const Spacer(),
           TagOneText(currentItem.detailTitle, decorationPriority.standard),
           BodyOneText(currentItem.detailBody, decorationPriority.standard),
-          Spacer(),
+          const Spacer(),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,7 +69,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                       ? decorationPriority.inactive
                       : decorationPriority.important,
                   buttonIcon: Assets.back,
-                  buttonTooltip: 'Previous Item',
+                  buttonHint: 'Previous Item',
                   buttonAction: () => {_onItemTapped(_selectedIndex -= 1)}),
               PrimaryIconButtonElement(
                   decorationVariant:
@@ -77,7 +77,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                           ? decorationPriority.inactive
                           : decorationPriority.important,
                   buttonIcon: Assets.next,
-                  buttonTooltip: 'Next Item',
+                  buttonHint: 'Next Item',
                   buttonAction: () => {_onItemTapped(_selectedIndex += 1)})
             ],
           )
@@ -112,7 +112,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   Flexible(
                       child: TagOneText(currentItem.detailTitle,
                           decorationPriority.standard)),
@@ -120,7 +120,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                     child: BodyOneText(
                         currentItem.detailBody, decorationPriority.standard),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,7 +131,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                               ? decorationPriority.inactive
                               : decorationPriority.important,
                           buttonIcon: Assets.back,
-                          buttonTooltip: 'Previous Item',
+                          buttonHint: 'Previous Item',
                           buttonAction: () =>
                               {_onItemTapped(_selectedIndex -= 1)}),
                       PrimaryIconButtonElement(
@@ -140,7 +140,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                               ? decorationPriority.inactive
                               : decorationPriority.important,
                           buttonIcon: Assets.next,
-                          buttonTooltip: 'Next Item',
+                          buttonHint: 'Next Item',
                           buttonAction: () =>
                               {_onItemTapped(_selectedIndex += 1)})
                     ],
@@ -174,7 +174,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
             child: SecondaryIconButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonIcon: Assets.no,
-                buttonTooltip: 'Return to onboarding landing',
+                buttonHint: 'Return to onboarding landing',
                 buttonAction: () => {Navigator.pop(context)})),
         HeadingOneText(
             "Meet ${resourceValues.name}.", decorationPriority.standard),

@@ -30,7 +30,8 @@ class DetailCardElement extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     HeadingFourText(cardLabel, decorationVariant),
-                    Padding(padding: EdgeInsets.fromLTRB(0, 4.0, 0.0, 4.0)),
+                    const Padding(
+                        padding: EdgeInsets.fromLTRB(0, 4.0, 0.0, 4.0)),
                     BodyOneText(cardBody, decorationVariant)
                   ]))),
     );

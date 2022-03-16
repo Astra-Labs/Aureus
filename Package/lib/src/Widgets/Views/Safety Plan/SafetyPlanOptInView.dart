@@ -18,19 +18,19 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             HeadingTwoText("Safety Check", decorationPriority.standard),
-            IconBadge(
+            const IconBadge(
                 badgeIcon: Assets.lock,
                 badgePriority: decorationPriority.standard)
           ]),
         ),
-        Spacer(),
+        const Spacer(),
         Align(
           alignment: Alignment.center,
           child: SubheaderText(
               "Our software has added safety features for people in dangerous situations. This information will be encrypted, and stored locally on your device. You can add these features now, or enable them anytime in app settings.",
               decorationPriority.standard),
         ),
-        Spacer(),
+        const Spacer(),
         Align(
           alignment: Alignment.bottomCenter,
           child: Column(children: [

@@ -13,7 +13,7 @@ class CardObject {
     switch (cardVariant) {
 
       //should be card object type of: standard
-      case cardType.StandardCard:
+      case cardType.standardCard:
         {
           return StandardCardElement(
               decorationVariant: cardData.decorationVariant,
@@ -21,7 +21,7 @@ class CardObject {
         }
 
       //should be card object type of: standardIcon
-      case cardType.StandardBadgeCard:
+      case cardType.standardBadgeCard:
         {
           return StandardBadgeCardElement(
               decorationVariant: cardData.decorationVariant,
@@ -30,7 +30,7 @@ class CardObject {
         }
 
       //should be card object type of: detailed
-      case cardType.DetailCard:
+      case cardType.detailCard:
         {
           return DetailCardElement(
               decorationVariant: cardData.decorationVariant,
@@ -39,7 +39,7 @@ class CardObject {
         }
 
       //should be card object type of: detailedIcon
-      case cardType.DetailBadgeCard:
+      case cardType.detailBadgeCard:
         {
           return DetailBadgeCardElement(
               decorationVariant: cardData.decorationVariant,
@@ -49,14 +49,14 @@ class CardObject {
         }
 
       //should be card object type of: standardIcon
-      case cardType.DetailCarouselCard:
+      case cardType.detailCarouselCard:
         {
           return DetailCarouselCardElement(
               cardLabel: cardData.cardLabel!, cardIcon: cardData.cardIcon!);
         }
 
       //should be card object type of: complex
-      case cardType.ComplexCard:
+      case cardType.complexCard:
         {
           return ComplexCardElement(
               decorationVariant: cardData.decorationVariant,
@@ -66,7 +66,7 @@ class CardObject {
         }
 
       //should be card object type of: complexIcon
-      case cardType.ComplexBadgeCard:
+      case cardType.complexBadgeCard:
         {
           return ComplexBadgeCardElement(
               decorationVariant: cardData.decorationVariant,
@@ -77,7 +77,7 @@ class CardObject {
         }
 
       //should be card object type of: complex
-      case cardType.CategoryIconDetailCard:
+      case cardType.categoryIconDetailCard:
         {
           return CategoryIconDetailCardElement(
               decorationVariant: cardData.decorationVariant,

@@ -33,21 +33,21 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             maxHeight: size.layoutItemHeight(1, screenSize)),
         decoration: CardBackingDecoration(priority: decorationPriority.inverted)
             .buildBacking(),
-        padding: EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             IconBadge(
                 badgeIcon: widget.cardIcon,
                 badgePriority: decorationPriority.standard),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             SubheaderText(widget.toolPrompt, decorationPriority.standard),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Column(children: widget.toolChildren),
-            SizedBox(height: 20.0)
+            const SizedBox(height: 20.0)
           ],
         ));
 
@@ -60,7 +60,7 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             decoration:
                 CardBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -69,7 +69,7 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
                 IconBadge(
                     badgeIcon: widget.cardIcon,
                     badgePriority: decorationPriority.standard),
-                SizedBox(width: 15.0),
+                const SizedBox(width: 15.0),
                 FractionallySizedBox(
                   heightFactor: 1.0,
                   child: Container(
@@ -77,14 +77,14 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
                       decoration:
                           BoxDecoration(color: coloration.inactiveColor())),
                 ),
-                SizedBox(width: 15.0),
+                const SizedBox(width: 15.0),
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TagOneText(widget.toolPrompt, decorationPriority.standard),
-                    SizedBox(height: 15.0),
+                    const SizedBox(height: 15.0),
                     SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(children: widget.toolChildren))

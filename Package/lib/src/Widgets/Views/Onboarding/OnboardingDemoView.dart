@@ -2,9 +2,8 @@ import 'package:aureus/aureus.dart';
 
 class OnboardingDemoView extends StatefulWidget {
   final List<CoreTool> toolItems;
-  final Widget exitPoint;
 
-  const OnboardingDemoView({required this.toolItems, required this.exitPoint});
+  const OnboardingDemoView({required this.toolItems});
 
   @override
   _OnboardingDemoViewState createState() => _OnboardingDemoViewState();
@@ -32,7 +31,7 @@ class _OnboardingDemoViewState extends State<OnboardingDemoView> {
         PageHeaderElement.withExit(
             pageTitle: "${resourceValues.name}'s Tools",
             onPageExit: () => {Navigator.pop(context)}),
-        Spacer(),
+        const Spacer(),
         SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(

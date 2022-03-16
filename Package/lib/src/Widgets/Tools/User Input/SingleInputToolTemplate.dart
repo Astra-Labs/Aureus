@@ -31,8 +31,8 @@ class SingleInputToolTemplate extends ToolCardTemplate {
               hintText: 'Answer here.',
               decorationVariant: decorationPriority.standard,
               textFieldController: cardController),
-          DividerElement(),
-          SizedBox(height: 20.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -40,11 +40,13 @@ class SingleInputToolTemplate extends ToolCardTemplate {
                 SmolButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Skip',
+                    buttonHint: 'Skips the current card.',
                     buttonAction: () => {onNextCard()}),
-                Spacer(),
+                const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card.',
                     buttonAction: () =>
                         {dataMap.insert(0, cardController.text), onNextCard()}),
               ]),

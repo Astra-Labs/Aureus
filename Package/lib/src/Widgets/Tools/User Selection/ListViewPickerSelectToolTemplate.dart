@@ -16,7 +16,7 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
   // in the picker wheel.
 
   ListViewPickerSelectToolTemplate({required this.pickerOptions})
-      : super(templatePrompt: 'List View Picker', badgeIcon: IconData(0));
+      : super(templatePrompt: 'List View Picker', badgeIcon: const IconData(0));
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -29,10 +29,10 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
     List<Widget> pickerList = [];
     String selectedItem = '';
 
-    pickerOptions.forEach((element) {
+    for (var element in pickerOptions) {
       pickerList.add(
           Center(child: BodyOneText(element, decorationPriority.standard)));
-    });
+    }
 
     return BaseCardToolTemplate(
       isActive: true,
@@ -42,7 +42,7 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
         Container(
           height: 100,
           decoration: InputBackingDecoration().buildBacking(),
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: CupertinoPicker(
               backgroundColor: Colors.transparent,
               itemExtent: 40,
@@ -53,9 +53,9 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
               },
               children: pickerList),
         ),
-        SizedBox(height: 20.0),
-        DividerElement(),
-        SizedBox(height: 20.0),
+        const SizedBox(height: 20.0),
+        const DividerElement(),
+        const SizedBox(height: 20.0),
         Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -63,11 +63,13 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
               SmolButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Skip',
+                  buttonHint: 'Skips the current card.',
                   buttonAction: () => {onNextCard()}),
-              Spacer(),
+              const Spacer(),
               SmolButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: 'Next',
+                  buttonHint: 'Goes to the next card.',
                   buttonAction: () =>
                       {dataMap.insert(0, selectedItem), onNextCard()}),
             ])

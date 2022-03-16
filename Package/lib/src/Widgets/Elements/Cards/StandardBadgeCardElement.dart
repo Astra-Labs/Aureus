@@ -12,12 +12,6 @@ class StandardBadgeCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size labelSize = Accessibility.textStringSize(
-        textInput: cardLabel,
-        textStyle: body2(),
-        textDirection: TextDirection.ltr,
-        query: MediaQuery.of(context));
-
     var screenSize = size.logicalScreenSize();
 
     return FloatingContainerElement(
@@ -42,10 +36,7 @@ class StandardBadgeCardElement extends StatelessWidget {
                         badgeIcon: cardIcon, badgePriority: decorationVariant)),
                 Align(
                     alignment: Alignment.bottomLeft,
-                    child: SizedBox(
-                        width: labelSize.width,
-                        height: labelSize.height,
-                        child: BodyTwoText(cardLabel, decorationVariant))),
+                    child: BodyTwoText(cardLabel, decorationVariant)),
               ],
             ),
           )),

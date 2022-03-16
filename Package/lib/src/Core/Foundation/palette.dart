@@ -85,21 +85,21 @@ Color darkModeFill() {
 BoxShadow lightShadow() {
   return BoxShadow(
       color: steel().withOpacity(0.4),
-      offset: Offset(0.0, 3.0),
+      offset: const Offset(0.0, 3.0),
       blurRadius: 30.0);
 }
 
 BoxShadow darkShadow() {
   return BoxShadow(
       color: carbon().withOpacity(0.4),
-      offset: Offset(0.0, 3.0),
+      offset: const Offset(0.0, 3.0),
       blurRadius: 30.0);
 }
 
 BoxShadow pastelShadow() {
   return BoxShadow(
       color: lavender().withOpacity(0.3),
-      offset: Offset(0.0, 3.0),
+      offset: const Offset(0.0, 3.0),
       blurRadius: 30.0);
 }
 

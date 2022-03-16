@@ -24,7 +24,7 @@ class DetailCarouselCardElement extends StatelessWidget {
       decoration: CardBackingDecoration(priority: decorationPriority.inactive)
           .buildBacking(),
       clipBehavior: Clip.hardEdge,
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -50,67 +50,73 @@ var multiInput = MultipleDataTypeUserInputElement(
 var standardFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
     currentVariant: decorationPriority.standard,
+    buttonHint: 'Hint here!',
     buttonAction: fillerAction);
 
 var importantFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
     currentVariant: decorationPriority.important,
+    buttonHint: 'Hint here!',
     buttonAction: fillerAction);
 
 var inactiveFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
     currentVariant: decorationPriority.inactive,
+    buttonHint: 'Hint here!',
     buttonAction: fillerAction);
 
 var standardPrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
-    buttonTooltip: fillerTextButton,
+    buttonHint: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.standard);
 
 var importantPrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
-    buttonTooltip: fillerTextButton,
+    buttonHint: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var inactivePrimaryIconButton = PrimaryIconButtonElement(
     buttonIcon: fillerIcon1,
-    buttonTooltip: fillerTextButton,
+    buttonHint: fillerTextButton,
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.inactive);
 
 var standardSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
-    buttonTooltip: fillerTextButton,
+    buttonHint: 'Hint here!',
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.standard);
 
 var importantSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
-    buttonTooltip: fillerTextButton,
+    buttonHint: 'Hint here!',
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var inactiveSecondaryIconButton = SecondaryIconButtonElement(
     buttonIcon: fillerIcon1,
-    buttonTooltip: fillerTextButton,
+    buttonHint: 'Hint here!',
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.inactive);
 
 var standardSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
+    buttonHint: 'Hint here!',
     decorationVariant: decorationPriority.standard);
 
 var importantSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
+    buttonHint: 'Hint here!',
     decorationVariant: decorationPriority.important);
 
 var inactiveSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
     buttonAction: fillerAction,
+    buttonHint: 'Hint here!',
     decorationVariant: decorationPriority.inactive);
 
 var standardStandardButton = StandardButtonElement(

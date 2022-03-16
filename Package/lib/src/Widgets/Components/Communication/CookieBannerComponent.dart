@@ -31,25 +31,25 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
           padding: const EdgeInsets.all(13.0),
           child: Column(
             children: [
-              SizedBox(height: 20.0),
-              IconBadge(
+              const SizedBox(height: 20.0),
+              const IconBadge(
                   badgeIcon: Assets.alertmessage,
                   badgePriority: decorationPriority.important),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               TagTwoText('Cookie Usage', decorationPriority.important),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               BodyOneText(widget.cookieMessage, decorationPriority.important),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: 'Accept',
                   buttonAction: widget.onCookieAccept),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: 'Deny',
                   buttonAction: widget.onCookieDeny),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
             ],
           ),
         ));

@@ -37,9 +37,9 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
         DividingHeaderElement(
             headerText: 'Two Factor Authentication',
             subheaderText: hiddenUserPhoneNumber()),
-        Spacer(),
+        const Spacer(),
         singleDataTypeUserInputElement,
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(
@@ -52,15 +52,16 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
               SmolButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Resend code',
+                  buttonHint: 'Sends a new verification code to your number.',
                   buttonAction: () => {})
             ]),
-        Spacer(),
+        const Spacer(),
         Align(
           alignment: Alignment.bottomRight,
           child: PrimaryIconButtonElement(
               decorationVariant: decorationPriority.important,
               buttonIcon: Assets.next,
-              buttonTooltip: 'Finish submitting verification code',
+              buttonHint: 'Finish submitting verification code',
               buttonAction: () => {
                     userSubmittedCode = singleDataTypeUserInputElement
                         .itemTextEditingController.text,

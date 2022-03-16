@@ -19,7 +19,7 @@ class _SplashScreenViewState extends State<SplashScreenView>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
     );
     animation = CurvedAnimation(
       parent: animationController,
@@ -56,7 +56,7 @@ class _SplashScreenViewState extends State<SplashScreenView>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Spacer(),
+                const Spacer(),
                 Container(
                     height: 80.0,
                     width: 80.0,
@@ -65,10 +65,10 @@ class _SplashScreenViewState extends State<SplashScreenView>
                       image: coloration.resourceLogo().image,
                       fit: BoxFit.cover,
                     ))),
-                SizedBox(height: 40.0),
+                const SizedBox(height: 40.0),
                 HeadingTwoText(
-                    '${resourceValues.name}', decorationPriority.standard),
-                Spacer(),
+                    resourceValues.name, decorationPriority.standard),
+                const Spacer(),
               ],
             ),
           )),

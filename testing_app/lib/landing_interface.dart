@@ -247,7 +247,7 @@ class _landingHeaderState extends State<landingHeader> {
                                       ? decorationPriority.inactive
                                       : decorationPriority.important,
                                   buttonIcon: Assets.back,
-                                  buttonTooltip: 'Previous Item',
+                                  buttonHint: 'Previous Item',
                                   buttonAction: () =>
                                       {_onItemTapped(_selectedIndex -= 1)}),
                               SecondaryIconButtonElement(
@@ -256,7 +256,7 @@ class _landingHeaderState extends State<landingHeader> {
                                       ? decorationPriority.inactive
                                       : decorationPriority.important,
                                   buttonIcon: Assets.next,
-                                  buttonTooltip: 'Next Item',
+                                  buttonHint: 'Next Item',
                                   buttonAction: () =>
                                       {_onItemTapped(_selectedIndex += 1)})
                             ],

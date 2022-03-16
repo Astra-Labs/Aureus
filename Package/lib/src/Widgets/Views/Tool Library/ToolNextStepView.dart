@@ -24,7 +24,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
     List<Widget> nextStepCards = [];
     var tool = widget.parentTool;
 
-    widget.nextSteps.entries.forEach((element) {
+    for (var element in widget.nextSteps.entries) {
       nextStepCards.add(InkWell(
         onTap: () => {element.value()},
         child: Padding(
@@ -33,7 +33,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                 cardLabel: element.key,
                 decorationVariant: decorationPriority.standard)),
       ));
-    });
+    }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
@@ -48,17 +48,17 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                     width: 60.0,
                     height: 60.0,
                     child: coloration.resourceLogo()),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 HeadingOneText('You did a great job with ${tool.toolName}',
                     decorationPriority.standard),
-                SizedBox(height: 40.0),
-                DividerElement(),
-                SizedBox(height: 40.0),
+                const SizedBox(height: 40.0),
+                const DividerElement(),
+                const SizedBox(height: 40.0),
                 FloatingContainerElement(
                     child: Container(
                   width: size.layoutItemWidth(1, screenSize),
@@ -72,32 +72,33 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         HeadingThreeText(
                             'Next Steps', decorationPriority.standard),
                         BodyOneText(
                             'Choose next steps to go further, or return home.',
                             decorationPriority.standard),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: nextStepCards,
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                   ),
                 )),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         FullWidthButtonElement(
             buttonTitle: 'Return home.',
+            buttonHint: 'Return home.',
             currentVariant: decorationPriority.important,
             buttonAction: () => {Navigator.pop(context)})
       ],

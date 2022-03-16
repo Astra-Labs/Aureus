@@ -34,7 +34,7 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
             SecondaryIconButtonElement(
                 buttonIcon: Assets.paperplane,
                 buttonAction: widget.onSend,
-                buttonTooltip: 'Send Button',
+                buttonHint: 'Sends the value in the text field.',
                 decorationVariant: decorationPriority.important)
           ]),
     );

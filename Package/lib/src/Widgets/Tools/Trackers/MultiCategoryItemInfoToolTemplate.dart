@@ -14,6 +14,6 @@ class MultiCategoryItemInfoToolTemplate extends ToolNavigationPage {
   MultiCategoryItemInfoToolTemplate({required this.parentTool})
       : super(
             parentTool: parentTool,
-            pageBody: ContainerWrapperElement(
+            pageBody: const ContainerWrapperElement(
                 children: [], containerVariant: wrapperVariants.fullScreen));
 }
