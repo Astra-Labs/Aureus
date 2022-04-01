@@ -23,7 +23,7 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
         ? SingleChildScrollView(
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.start,
-                runSpacing: size.responsiveTextSize(20.0),
+                runSpacing: size.responsiveSize(20.0),
                 children: widget.children))
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,7 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       return Container(
-          constraints: widget.takesFullWidth
+          constraints: widget.takesFullWidth == true
               ? BoxConstraints(
                   minWidth: MediaQuery.of(context).size.width,
                   maxWidth: MediaQuery.of(context).size.width,

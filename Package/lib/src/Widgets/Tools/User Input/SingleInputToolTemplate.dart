@@ -9,8 +9,8 @@ USAGE:
 */
 
 class SingleInputToolTemplate extends ToolCardTemplate {
-  SingleInputToolTemplate()
-      : super(templatePrompt: 'Single Input', badgeIcon: Assets.android);
+  SingleInputToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

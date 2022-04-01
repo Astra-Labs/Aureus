@@ -9,8 +9,8 @@ USAGE:
 */
 
 class InputSummaryToolTemplate extends ToolCardTemplate {
-  InputSummaryToolTemplate()
-      : super(templatePrompt: '', badgeIcon: const IconData(0));
+  InputSummaryToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

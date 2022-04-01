@@ -9,8 +9,8 @@ USAGE:
 */
 
 class SingleSliderToolTemplate extends ToolCardTemplate {
-  SingleSliderToolTemplate()
-      : super(templatePrompt: 'Single Slider', badgeIcon: Assets.alert);
+  SingleSliderToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

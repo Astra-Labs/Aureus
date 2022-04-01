@@ -377,6 +377,9 @@ class Coloration {
 
       case decorationPriority.inverted:
         return sameColor();
+
+      case decorationPriority.active:
+        return contrastColor().withOpacity(0.8);
     }
   }
 

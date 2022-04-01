@@ -39,32 +39,36 @@ class _LoadingCircleElementState extends State<LoadingCircleElement>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 200.0,
-      height: 200.0,
-      child: Stack(alignment: Alignment.center, children: [
-        FloatingContainerElement(
-          child: SizedBox(
-            width: 200.0,
-            height: 200.0,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: coloration.accentColor().withOpacity(0.2),
-                    shape: BoxShape.circle),
-                child: CircularProgressIndicator(
-                    backgroundColor: coloration.inactiveColor(),
-                    color: coloration.accentColor(),
-                    value: controller.value,
-                    strokeWidth: 3.0,
-                    semanticsLabel: 'Loading Indicator'),
+    return PulseShadowElement(
+      pulseWidth: 200.0,
+      isActive: true,
+      child: SizedBox(
+        width: 200.0,
+        height: 200.0,
+        child: Stack(alignment: Alignment.center, children: [
+          FloatingContainerElement(
+            child: SizedBox(
+              width: 200.0,
+              height: 200.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: coloration.accentColor().withOpacity(0.2),
+                      shape: BoxShape.circle),
+                  child: CircularProgressIndicator(
+                      backgroundColor: coloration.inactiveColor(),
+                      color: coloration.accentColor(),
+                      value: controller.value,
+                      strokeWidth: 3.0,
+                      semanticsLabel: 'Loading Indicator'),
+                ),
               ),
             ),
           ),
-        ),
-        HeadingTwoText('Loading', decorationPriority.standard)
-      ]),
+          HeadingTwoText('Loading', decorationPriority.standard)
+        ]),
+      ),
     );
   }
 }

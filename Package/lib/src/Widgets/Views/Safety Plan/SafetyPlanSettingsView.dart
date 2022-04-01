@@ -27,7 +27,7 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
     for (var element in productSafetyObject.eligiblePlanOptions) {
       eligibleOptionCards.add(Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
-        child: StandardSwitchCardComponent(
+        child: StandardSwitchCardElement(
             switchDescription: safety.retrieveDetails(element).name),
       ));
     }

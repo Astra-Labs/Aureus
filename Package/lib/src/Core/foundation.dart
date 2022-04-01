@@ -187,55 +187,57 @@ class AureusInformation {
 // the entry and exit points from specific templates will come from this navigation tree.
 /* ----------------------------------------- */
 class AureusNavigationTree {
-  SplashScreenView splashScreen;
+  final Widget splashScreen;
   //A splash screen with what users first see.
   // ------------------------------
-  Widget homeScreen;
+  final Widget homeScreen;
   //The entry point into your software.
   // ------------------------------
-  Widget? signUp;
+  final Widget signUp;
   //A sign up screen
   // ------------------------------
-  SignInView? signIn;
+  final Widget signIn;
   //A sign in screen.
   // ------------------------------
-  Widget? settings;
+  final Widget settings;
   //Where your settings are.
   // ------------------------------
-  OnboardingLandingView? onboardingLanding;
+  final Widget onboardingLanding;
   //Where your users land for onboarding. (For use in OnboardingLandingView)
   // ------------------------------
-  OnboardingInformationView? onboardingInformation;
+  final Widget onboardingInformation;
   //The entry point into your software. (For use in OnboardingLandingView,)
   // ------------------------------
-  OnboardingDemoView? onboardingDemo;
+  final Widget onboardingDemo;
   // The entry point into your software. (For use in OnboardingLandingView)
   // ------------------------------
-  Widget termsOfService;
+  final Widget termsOfService;
   // A view that holds your terms of service. This goes in your settings page.
   // ------------------------------
-  Widget privacyPolicy;
+  final Widget privacyPolicy;
   // A view that holds your privacy policy. This goes in your settings page.
   // ------------------------------
-  HelpCenterView? helpCenter;
+  final Widget helpCenter;
   // A templated help center that addresses common questions / concerns from users.
   // ------------------------------
-  Widget contactSupport;
+  final Widget contactSupport;
   // A 'contact us' page or form (if you have programmed one).
   // If this is blank, Aureus will default to sending people to your support email.
   // ------------------------------
 
-  AureusNavigationTree(
-      this.splashScreen,
-      this.homeScreen,
-      this.settings,
-      this.onboardingLanding,
-      this.onboardingDemo,
-      this.onboardingInformation,
-      this.termsOfService,
-      this.privacyPolicy,
-      this.helpCenter,
-      this.contactSupport);
+  const AureusNavigationTree(
+      {required this.splashScreen,
+      required this.homeScreen,
+      required this.settings,
+      required this.onboardingLanding,
+      required this.onboardingDemo,
+      required this.onboardingInformation,
+      required this.termsOfService,
+      required this.privacyPolicy,
+      required this.signIn,
+      required this.signUp,
+      required this.helpCenter,
+      required this.contactSupport});
 }
 
 /*--------- AUREUS VALUE MAP ----------*/

@@ -29,7 +29,7 @@ class _BannerNotificationComponentState
         // Removes notification from widget tree when
         // progress bar is done.
         if (progressAnimation.value == 1.0) {
-          print('item is done!');
+          notificationMaster.resetRequests();
         } else {
           setState(() {});
         }
@@ -91,7 +91,9 @@ class _BannerNotificationComponentState
       semanticsValue: 'Time Left: ${1.0 - slideAnimation.value * 15} seconds',
     );
 
-    return FloatingContainerElement(
+    return PulseShadowElement(
+      pulseWidth: size.layoutItemWidth(1, screenSize),
+      isActive: true,
       child: Container(
           constraints: BoxConstraints(
               minWidth: size.layoutItemWidth(1, screenSize),
@@ -99,7 +101,7 @@ class _BannerNotificationComponentState
               minHeight: size.layoutItemHeight(5, screenSize),
               maxHeight: size.layoutItemHeight(5, screenSize)),
           decoration:
-              CardBackingDecoration(priority: decorationPriority.inactive)
+              CardBackingDecoration(priority: decorationPriority.inverted)
                   .buildBacking(),
           child: Column(
             children: [

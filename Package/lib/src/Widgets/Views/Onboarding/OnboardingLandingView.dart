@@ -49,7 +49,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  resourceValues.onboardingDemo!,
+                                  resourceValues.onboardingDemo,
                             ))
                       }),
               StandardIconButtonElement(
@@ -61,7 +61,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  resourceValues.onboardingInfo!,
+                                  resourceValues.onboardingInfo,
                             ))
                       }),
               StandardIconButtonElement(
@@ -72,7 +72,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => resourceValues.signUp!,
+                              builder: (context) => resourceValues.signUp,
                             ))
                       })
             ],

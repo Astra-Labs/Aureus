@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 
 /*
 
@@ -9,8 +10,8 @@ USAGE:
 */
 
 class SketchToolTemplate extends ToolCardTemplate {
-  SketchToolTemplate()
-      : super(templatePrompt: '', badgeIcon: const IconData(0));
+  SketchToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -24,7 +25,7 @@ class SketchToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: const []);
+        toolChildren: []);
   }
 
   @override
@@ -48,18 +49,101 @@ class _SketchInputCard extends StatefulWidget {
 }
 
 class _SketchInputCardState extends State<_SketchInputCard> {
+  List<Offset> points = <Offset>[];
+  var canvas = Container();
+  Color activeColor = Colors.amber;
+
+  GestureDetector buildCurrentPath(BuildContext context) {
+    return GestureDetector(
+      onPanStart: onPanStart,
+      onPanUpdate: onPanUpdate,
+      onPanEnd: onPanEnd,
+      child: RepaintBoundary(
+        child: Container(
+          color: Colors.transparent,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          // CustomPaint widget will go here
+        ),
+      ),
+    );
+  }
+
+  void onPanStart(DragStartDetails details) {
+    print('User started drawing');
+    final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition);
+    print(point);
+  }
+
+  void onPanUpdate(DragUpdateDetails details) {
+    final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition);
+    print(point);
+  }
+
+  void onPanEnd(DragEndDetails details) {
+    print('User ended drawing');
+  }
+
+  void changeColor(Color color) {
+    setState(() {
+      activeColor = color;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    /*var colorCircle1 = GestureDetector(
+        onTap: () => {changeColor(Colors.amber)},
+        child: Container(
+            width: size.responsiveSize(50.0),
+            height: size.responsiveSize(50.0),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.amber,
+                border: activeColor == Colors.amber
+                    ? universalBorder()
+                    : Border.all(color: Colors.transparent))));
+    var colorCircle2 = Container();
+    var colorCircle3 = Container();
+    var colorCircle4 = Container();
+    var colorCircle5 = Container();*/
+
+    //var circleScroll = SizedBox(height: size.responsiveSize(65.0), width: size.layoutItemWidth(2, area))
+
+    return Container(
+      child: Column(
+        children: [
+          const SizedBox(height: 10.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonTitle: 'Clear',
+                    buttonHint: 'Clears the canvas',
+                    buttonAction: () => {points.clear()}),
+                const Spacer(),
+              ]),
+        ],
+      ),
+    );
   }
 }
 
 class SketchCanvas extends CustomPainter {
+  final Color stroke;
+  const SketchCanvas({required this.stroke});
+
   @override
   void paint(Canvas canvas, Size size) {
     Paint toolPaint = Paint()
       ..style = PaintingStyle.stroke
-      ..color = coloration.accentColor();
+      ..color = stroke;
   }
 
   @override

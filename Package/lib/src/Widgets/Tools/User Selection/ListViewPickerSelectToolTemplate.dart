@@ -15,8 +15,11 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
   // A list that holds the different options you want to be shown
   // in the picker wheel.
 
-  ListViewPickerSelectToolTemplate({required this.pickerOptions})
-      : super(templatePrompt: 'List View Picker', badgeIcon: const IconData(0));
+  ListViewPickerSelectToolTemplate(
+      {required this.pickerOptions,
+      required templatePrompt,
+      required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

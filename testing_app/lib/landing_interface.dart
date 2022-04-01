@@ -527,8 +527,8 @@ class _webLandingViewState extends State<webLandingView> {
                       SizedBox(height: 60.0),
                       webLandingPageDemo(),
                       SizedBox(height: 60.0),
-                      landingHeader(),
-                      SizedBox(height: 60.0),
+                      /*landingHeader(),
+                      SizedBox(height: 60.0),*/
                       breakoutArea(),
                       SizedBox(height: 60.0),
                       footerCTA(),
@@ -630,8 +630,8 @@ class _mobileLandingViewState extends State<mobileLandingView> {
                     SizedBox(height: 30.0),
                     mobileLandingPageDemo(),
                     SizedBox(height: 30.0),
-                    landingHeader(),
-                    SizedBox(height: 30.0),
+                    /*landingHeader(),
+                    SizedBox(height: 30.0),*/
                     breakoutArea(),
                     SizedBox(height: 30.0),
                     footerCTA(),

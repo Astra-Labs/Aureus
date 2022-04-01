@@ -8,9 +8,8 @@ to the prompt.
 */
 
 class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
-  YesNoButtonSelectToolTemplate()
-      : super(
-            templatePrompt: 'Yes no template.', badgeIcon: Assets.babycarriage);
+  YesNoButtonSelectToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

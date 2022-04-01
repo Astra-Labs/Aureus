@@ -44,7 +44,7 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
                 badgeIcon: widget.cardIcon,
                 badgePriority: decorationPriority.standard),
             const SizedBox(height: 20.0),
-            SubheaderText(widget.toolPrompt, decorationPriority.standard),
+            BodyTwoText(widget.toolPrompt, decorationPriority.standard),
             const SizedBox(height: 20.0),
             Column(children: widget.toolChildren),
             const SizedBox(height: 20.0)
@@ -56,7 +56,7 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             constraints: BoxConstraints(
                 maxWidth: size.layoutItemWidth(1, screenSize),
                 minWidth: size.layoutItemWidth(1, screenSize),
-                maxHeight: size.layoutItemHeight(4, screenSize)),
+                maxHeight: size.layoutItemHeight(5, screenSize)),
             decoration:
                 CardBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),

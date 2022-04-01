@@ -1,42 +1,34 @@
 import 'package:aureus/aureus.dart';
 
 class SafetyPlanOptionsView extends StatefulWidget {
-  const SafetyPlanOptionsView();
+  final Widget exitPoint;
+
+  const SafetyPlanOptionsView({required this.exitPoint});
 
   @override
   _SafetyPlanOptionsViewState createState() => _SafetyPlanOptionsViewState();
 }
 
 class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
-  Safety productSafetyObject = const Safety(
-      frequencyUsage: SafetyPlanFrequency.singleUse,
-      eligiblePlanOptions: [
-        SafetyPlanOptions.deviceSandbox,
-        SafetyPlanOptions.disableNotifications,
-        SafetyPlanOptions.failedPasscodeDataDeletion
-      ]);
+  List<SafetyPlanOptions> userSelectedOptions = [];
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> eligibleOptionCards = [];
+    List<StandardSwitchCardElement> eligibleOptionCards = [];
 
     var safety = resourceValues.safetySettings;
-
     var screenSize = size.logicalScreenSize();
 
-    for (var element in productSafetyObject.eligiblePlanOptions) {
-      eligibleOptionCards.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
-        child: StandardSwitchCardComponent(
-            switchDescription: safety.retrieveDetails(element).name),
-      ));
+    for (var element in safety.eligiblePlanOptions) {
+      eligibleOptionCards.add(StandardSwitchCardElement(
+          switchDescription: safety.retrieveDetails(element).name));
     }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
         DividingHeaderElement(
-            headerText: 'Safety Plan - Options',
+            headerText: 'Plan Options',
             subheaderText:
                 'Enable the options below to modify the functionality of ${resourceValues.name}.'),
         const Spacer(),
@@ -47,7 +39,7 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
                 child: (ListView(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    padding: const EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
                     children: eligibleOptionCards)))),
         const Spacer(),
         Align(
@@ -56,7 +48,22 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
               decorationVariant: decorationPriority.important,
               buttonIcon: Assets.next,
               buttonHint: 'Go to next page',
-              buttonAction: () => {print("go to next!")}),
+              buttonAction: () => {
+                    eligibleOptionCards.forEach((element) {
+                      if (element.isSwitchEnabled == true) {
+                        var index = eligibleOptionCards.indexOf(element);
+                        userSelectedOptions
+                            .add(safety.eligiblePlanOptions.elementAt(index));
+                      }
+                    }),
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SafetyPlanFunctionalityView(
+                              exitPoint: widget.exitPoint,
+                              userSelectedOptions: userSelectedOptions),
+                        ))
+                  }),
         )
       ],
     );

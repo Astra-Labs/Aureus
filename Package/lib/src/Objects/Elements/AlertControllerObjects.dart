@@ -16,8 +16,7 @@ class AlertControllerObject {
       required this.alertBody,
       required this.alertIcon,
       required this.actions})
-      : assert(actions.length >= 2),
-        assert(actions.length <= 3);
+      : assert(actions.length >= 2);
 
   //takes one item through the actions list, and otherwise throws an error
   const AlertControllerObject.singleAction(

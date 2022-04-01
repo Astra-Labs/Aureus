@@ -4,21 +4,21 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class SwitchComponent extends StatefulWidget {
+  bool isSwitchEnabled = false;
+
   @override
   _SwitchComponentState createState() => _SwitchComponentState();
 }
 
 class _SwitchComponentState extends State<SwitchComponent> {
-  bool isSwitchEnabled = false;
-
   void toggleSwitch(bool value) {
-    if (isSwitchEnabled == false) {
+    if (widget.isSwitchEnabled == false) {
       setState(() {
-        isSwitchEnabled = true;
+        widget.isSwitchEnabled = true;
       });
     } else {
       setState(() {
-        isSwitchEnabled = false;
+        widget.isSwitchEnabled = false;
       });
     }
   }
@@ -27,7 +27,7 @@ class _SwitchComponentState extends State<SwitchComponent> {
   Widget build(BuildContext context) {
     return Switch(
       onChanged: toggleSwitch,
-      value: isSwitchEnabled,
+      value: widget.isSwitchEnabled,
       activeColor: coloration.contrastColor(),
       activeTrackColor: coloration.accentColor(),
       inactiveThumbColor: coloration.accentColor(),

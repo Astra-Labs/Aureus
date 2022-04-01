@@ -46,7 +46,7 @@ class _SettingsViewState extends State<SettingsView> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => AureusValues().help!,
+                          builder: (context) => resourceValues.help,
                         ))
                   }),
           const SizedBox(height: 10.0),

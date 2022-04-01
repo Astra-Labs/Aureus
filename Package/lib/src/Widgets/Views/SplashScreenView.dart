@@ -19,28 +19,28 @@ class _SplashScreenViewState extends State<SplashScreenView>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    );
+      duration: const Duration(milliseconds: 2500),
+    )
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          animationController.reverse();
+        } else if (status == AnimationStatus.dismissed) {
+          widget.onLaunch();
+        }
+      });
     animation = CurvedAnimation(
       parent: animationController,
-      curve: Curves.decelerate,
+      curve: const Interval(0.0, 0.2, curve: Curves.decelerate),
     );
 
     animationController.forward();
   }
 
-  void afterBuild() {
-    setState(() {
-      // Reverses the animation controller and runs on launch VoidCallback
-      animationController.reverse();
-      widget.onLaunch();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) => afterBuild);
-
     var screenSize = size.logicalScreenSize();
 
     return CircleAnimation(

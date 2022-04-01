@@ -22,13 +22,35 @@ class PrimaryIconButtonElement extends StatefulWidget {
 }
 
 class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
+  //Switches decoration to active, and then returns it to current variant.
+
+  late decorationPriority buttonPriority;
+
+  @override
+  void initState() {
+    buttonPriority = widget.decorationVariant;
+    super.initState();
+  }
+
+  void createButtonInteraction() {
+    setState(() {
+      buttonPriority = decorationPriority.active;
+      sensation.createSensation(sensationType.press);
+    });
+
+    Future.delayed(const Duration(seconds: 1), () {
+      setState(() {
+        buttonPriority = widget.decorationVariant;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
         widget.decorationVariant == decorationPriority.inactive ? false : true;
     BoxDecoration buttonBacking = ButtonBackingDecoration(
-            variant: buttonDecorationVariants.circle,
-            priority: widget.decorationVariant)
+            variant: buttonDecorationVariants.circle, priority: buttonPriority)
         .buildBacking();
 
     return Semantics.fromProperties(
@@ -38,25 +60,30 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
           label: 'Icon Button',
           hint: widget.buttonHint,
           isMutuallyExclusive: false),
-      child: InkWell(
-          highlightColor: coloration.accentColor(),
-          splashColor: coloration.contrastColor(),
+      child: GestureDetector(
           onTap: () {
             if (isButtonEnabled == true) {
+              createButtonInteraction();
               widget.buttonAction();
             }
           },
-          child: FloatingContainerElement(
-            child: SizedBox(
-                width: 80.0,
-                height: 80.0,
-                child: Container(
-                  decoration: buttonBacking,
-                  child: Icon(widget.buttonIcon,
-                      color: coloration.decorationColor(
-                          decorationVariant: widget.decorationVariant),
-                      size: 65.0),
-                )),
+          child: PulseShadowElement(
+            pulseWidth: 80.0,
+            isActive: widget.decorationVariant == decorationPriority.important
+                ? true
+                : false,
+            child: FloatingContainerElement(
+              child: SizedBox(
+                  width: 80.0,
+                  height: 80.0,
+                  child: Container(
+                    decoration: buttonBacking,
+                    child: Icon(widget.buttonIcon,
+                        color: coloration.decorationColor(
+                            decorationVariant: buttonPriority),
+                        size: 65.0),
+                  )),
+            ),
           )),
     );
   }
@@ -87,7 +114,26 @@ class SecondaryIconButtonElement extends StatefulWidget {
 
 class _SecondaryIconButtonElementState
     extends State<SecondaryIconButtonElement> {
-  BoxDecoration animatedBacking = const BoxDecoration();
+  late decorationPriority buttonPriority;
+
+  @override
+  void initState() {
+    buttonPriority = widget.decorationVariant;
+    super.initState();
+  }
+
+  void createButtonInteraction() {
+    setState(() {
+      buttonPriority = decorationPriority.active;
+      sensation.createSensation(sensationType.press);
+    });
+
+    Future.delayed(const Duration(seconds: 1), () {
+      setState(() {
+        buttonPriority = widget.decorationVariant;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,29 +147,23 @@ class _SecondaryIconButtonElementState
           label: 'Icon Button',
           hint: widget.buttonHint,
           isMutuallyExclusive: widget.isMutuallyExclusive),
-      child: InkWell(
+      child: GestureDetector(
           onTap: () {
             if (isButtonEnabled == true) {
-              print('Inkwell is working owo');
               widget.buttonAction();
-
-              setState(() {
-                animatedBacking = BoxDecoration(
-                    color: coloration.accentColor(),
-                    borderRadius: BorderRadius.circular(100));
-              });
             }
           },
-          child: SizedBox(
-            width: 50.0,
-            height: 50.0,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.bounceIn,
-              /*foregroundDecoration: animatedBacking,*/
+          child: PulseShadowElement(
+            pulseWidth: 50.0,
+            isActive: widget.decorationVariant == decorationPriority.important
+                ? true
+                : false,
+            child: Container(
+              width: 50.0,
+              height: 50.0,
               decoration: ButtonBackingDecoration(
                       variant: buttonDecorationVariants.circle,
-                      priority: widget.decorationVariant)
+                      priority: buttonPriority)
                   .buildBacking(),
               alignment: Alignment.center,
               child: Icon(widget.buttonIcon,

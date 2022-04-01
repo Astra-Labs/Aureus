@@ -34,7 +34,7 @@ export 'src/Objects/Components/Icons.dart';
 export 'src/Objects/Components/TabbingBarObjects.dart';
 
 //MARK: - View Objects
-export 'src/Objects/Views/DataConsentObjects.dart';
+export 'src/Objects/Functionality/DataConsentObjects.dart';
 export 'src/Objects/Views/HelpCenterObjects.dart';
 export 'src/Objects/Views/OnboardingObjects.dart';
 
@@ -45,7 +45,7 @@ export 'src/Objects/Functionality/ResourceObserver.dart';
 export 'src/Objects/Functionality/NotificationObserver.dart';
 
 //MARK: - Sensory Objects
-export 'src/Objects/Sensation/routes.dart';
+export 'src/Objects/Views/routes.dart';
 
 /* ------------------ WIDGETS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
@@ -53,19 +53,21 @@ export 'src/Objects/Sensation/routes.dart';
 //MARK: - Widget Elements
 export 'src/Widgets/Elements/Badges/BadgeElement.dart';
 
-export 'src/Widgets/Elements/Cards/StandardCardElement.dart';
-export 'src/Widgets/Elements/Cards/StandardBadgeCardElement.dart';
-export 'src/Widgets/Elements/Cards/DetailCardElement.dart';
-export 'src/Widgets/Elements/Cards/DetailBadgeCardElement.dart';
-export 'src/Widgets/Elements/Cards/DetailCarouselCardElement.dart';
-export 'src/Widgets/Elements/Cards/ComplexCardElement.dart';
-export 'src/Widgets/Elements/Cards/ComplexBadgeCardElement.dart';
-export 'src/Widgets/Elements/Cards/CategoryIconDetailCardElement.dart';
-export 'src/Widgets/Elements/Cards/StandardSwitchCardComponent.dart';
-export 'src/Widgets/Elements/Cards/ComplexSwitchCardComponent.dart';
-export 'src/Widgets/Elements/Cards/GridCardElement.dart';
-export 'src/Widgets/Elements/Cards/GridBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/Standard/StandardCardElement.dart';
+export 'src/Widgets/Elements/Cards/Standard/StandardBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/Detail/DetailCardElement.dart';
+export 'src/Widgets/Elements/Cards/Detail/DetailBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/Detail/DetailCarouselCardElement.dart';
+export 'src/Widgets/Elements/Cards/Complex/ComplexCardElement.dart';
+export 'src/Widgets/Elements/Cards/Complex/ComplexBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/Detail/CategoryIconDetailCardElement.dart';
+export 'src/Widgets/Elements/Cards/Standard/StandardSwitchCardElement.dart';
+export 'src/Widgets/Elements/Cards/Standard/StandardSelectionCardElement.dart';
+export 'src/Widgets/Elements/Cards/Complex/ComplexSwitchCardElement.dart';
+export 'src/Widgets/Elements/Cards/Grid/GridCardElement.dart';
+export 'src/Widgets/Elements/Cards/Grid/GridBadgeCardElement.dart';
 
+export 'src/Widgets/Elements/Info Hierarchy/ArticleViewElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/MissionHeaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/PageHeaderElement.dart';
@@ -78,6 +80,8 @@ export 'src/Widgets/Elements/Misc/CompletionCircleElement.dart';
 export 'src/Widgets/Elements/Misc/LoadingCircleElement.dart';
 export 'src/Widgets/Elements/Misc/ProgressIndicatorElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
+export 'src/Widgets/Elements/Misc/PulseShadowElement.dart';
+export 'src/Widgets/Elements/Misc/EclipseShadowElement.dart';
 
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
 export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
@@ -87,6 +91,7 @@ export 'src/Widgets/Elements/User Input/SliderElement.dart';
 //Exporting lib widget components
 export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
 export 'src/Widgets/Components/Alert Controllers/ContentWarningComponent.dart';
+export 'src/Widgets/Components/Alert Controllers/BottomActionSheetComponent.dart';
 
 export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
 export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
@@ -121,10 +126,9 @@ export 'src/Widgets/Views/Onboarding/OnboardingInformationView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingLandingView.dart';
 export 'src/Widgets/Views/DataConsentView.dart';
 export 'src/Widgets/Views/HelpCenterView.dart';
-export 'src/Widgets/Views/ContainerView.dart';
+export 'src/Widgets/Views/Supporting/ContainerView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptionsView.dart';
-export 'src/Widgets/Views/Safety Plan/SafetyPlanFunctionalityView.dart';
 export 'src/Widgets/Views/2FAVerificationView.dart';
 export 'src/Widgets/Views/LandingPageView.dart';
 export 'src/Widgets/Views/SignInView.dart';
@@ -136,6 +140,7 @@ export 'src/Widgets/Views/Tool Library/ToolDetailView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNextStepView.dart';
 export 'src/Widgets/Views/Tool Library/ToolSummaryView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNavigationCardCarouselView.dart';
+export 'src/Widgets/Views/Supporting/LightLeakView.dart';
 
 //Exporting lib tool templates
 
@@ -166,12 +171,15 @@ export 'src/Widgets/Tools/User Input/PromptListUserInputToolTemplate.dart';
 export 'src/Widgets/Tools/User Input/SingleInputToolTemplate.dart';
 export 'src/Widgets/Tools/User Input/SingleSliderInputToolTemplate.dart';
 export 'src/Widgets/Tools/User Input/TriInputToolTemplate.dart';
+export 'src/Widgets/Tools/User Input/DatePickerInputToolTemplate.dart';
+export 'src/Widgets/Tools/User Input/TimePickerInputToolTemplate.dart';
 
 // -------------------------- User Selection
 export 'src/Widgets/Tools/User Selection/ListViewButtonSelectToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/ListViewPickerSelectToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/MultiCategoryCardSelectInputToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/YesNoButtonSelectToolTemplate.dart';
+export 'src/Widgets/Tools/User Selection/GridCardSelectToolTemplate.dart';
 
 /* ------------------ ENUMS -------------------- */
 //Global Foundational Enums go here since Dart doesn't support nested types
@@ -182,7 +190,7 @@ enum communicationStatus { sending, delivered, failed }
 enum CardType { standard, badge }
 enum userInputType { singleDataType, multiDataType }
 enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
-enum decorationPriority { standard, important, inactive, inverted }
+enum decorationPriority { standard, important, inactive, inverted, active }
 enum buttonDecorationVariants {
   roundedPill,
   roundedRectangle,

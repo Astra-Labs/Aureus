@@ -171,7 +171,7 @@ class TitleCase {
   }
 }
 
-class HeadingOneText extends SelectableText {
+class HeadingOneText extends Text {
   HeadingOneText(String data, decorationPriority textColor)
       : super(data,
             style: heading1().copyWith(
@@ -180,7 +180,7 @@ class HeadingOneText extends SelectableText {
             semanticsLabel: data);
 }
 
-class HeadingTwoText extends SelectableText {
+class HeadingTwoText extends Text {
   HeadingTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
             style: heading2().copyWith(
@@ -189,7 +189,7 @@ class HeadingTwoText extends SelectableText {
             semanticsLabel: data);
 }
 
-class HeadingThreeText extends SelectableText {
+class HeadingThreeText extends Text {
   HeadingThreeText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
             style: heading3().copyWith(
@@ -198,7 +198,7 @@ class HeadingThreeText extends SelectableText {
             semanticsLabel: data);
 }
 
-class HeadingFourText extends SelectableText {
+class HeadingFourText extends Text {
   HeadingFourText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
             style: heading4().copyWith(
@@ -207,7 +207,7 @@ class HeadingFourText extends SelectableText {
             semanticsLabel: data);
 }
 
-class SubheaderText extends SelectableText {
+class SubheaderText extends Text {
   SubheaderText(String data, decorationPriority textColor)
       : super(TitleCase.convertToTitleCase(data),
             style: subheading().copyWith(
@@ -216,7 +216,7 @@ class SubheaderText extends SelectableText {
             semanticsLabel: data);
 }
 
-class BodyOneText extends SelectableText {
+class BodyOneText extends Text {
   BodyOneText(String data, decorationPriority textColor)
       : super(data,
             style: body1().copyWith(
@@ -225,7 +225,7 @@ class BodyOneText extends SelectableText {
             semanticsLabel: data);
 }
 
-class BodyTwoText extends SelectableText {
+class BodyTwoText extends Text {
   BodyTwoText(String data, decorationPriority textColor)
       : super(data,
             style: body2().copyWith(
@@ -234,7 +234,7 @@ class BodyTwoText extends SelectableText {
             semanticsLabel: data);
 }
 
-class ButtonOneText extends SelectableText {
+class ButtonOneText extends Text {
   ButtonOneText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
             style: button1().copyWith(
@@ -243,7 +243,7 @@ class ButtonOneText extends SelectableText {
             semanticsLabel: data);
 }
 
-class ButtonTwoText extends SelectableText {
+class ButtonTwoText extends Text {
   ButtonTwoText(String data, decorationPriority textColor)
       : super(
           data.toUpperCase(),
@@ -253,7 +253,7 @@ class ButtonTwoText extends SelectableText {
         );
 }
 
-class TagOneText extends SelectableText {
+class TagOneText extends Text {
   TagOneText(String data, decorationPriority textColor)
       : super(
           data.toUpperCase(),
@@ -263,7 +263,7 @@ class TagOneText extends SelectableText {
         );
 }
 
-class TagTwoText extends SelectableText {
+class TagTwoText extends Text {
   TagTwoText(String data, decorationPriority textColor)
       : super(
           data.toUpperCase(),

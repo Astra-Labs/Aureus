@@ -6,8 +6,8 @@ import 'package:sensors_plus/sensors_plus.dart';
 */
 
 class GyroscopeDirectionToolTemplate extends ToolCardTemplate {
-  GyroscopeDirectionToolTemplate()
-      : super(templatePrompt: '', badgeIcon: const IconData(0));
+  GyroscopeDirectionToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -21,7 +21,22 @@ class GyroscopeDirectionToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: const []);
+        toolChildren: [
+          const SizedBox(height: 10.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card',
+                    buttonAction: () => {onNextCard()}),
+              ]),
+        ]);
   }
 
   @override

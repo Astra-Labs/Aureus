@@ -37,6 +37,7 @@ class PageHeaderElement extends StatelessWidget {
                 buttonIcon: Assets.more1,
                 buttonHint: 'Shows options for $pageTitle',
                 buttonAction: onPageDetails!),
+            const SizedBox(width: 15.0),
             exitButton
           ],
         );
@@ -63,13 +64,15 @@ class PageHeaderElement extends StatelessWidget {
           minHeight: labelSizing.height * 2),
       child: Column(
         children: [
-          SizedBox(height: size.responsiveTextSize(30.0)),
+          SizedBox(height: size.responsiveSize(30.0)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              HeadingTwoText(pageTitle, decorationPriority.standard),
+              Flexible(
+                  child:
+                      HeadingTwoText(pageTitle, decorationPriority.standard)),
               const Spacer(),
               buttonOptions()
             ],

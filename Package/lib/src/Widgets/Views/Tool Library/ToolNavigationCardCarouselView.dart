@@ -1,10 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:aureus/aureus.dart';
 
 class ToolTemplateCardCarouselView extends StatefulWidget {
   final CoreTool parentTool;
-  ToolTemplateCardCarouselView({Key? key, required this.parentTool})
-      : assert(parentTool.toolCards!.isNotEmpty == true,
-            'ToolTemplateCardCarouselView requires the parent CoreTool to have tool cards in the navigation container.'),
+  List<ToolCardTemplate> customCards;
+  ToolTemplateCardCarouselView(
+      {Key? key, required this.parentTool, this.customCards = const []})
+      : assert(
+            parentTool.toolCards!.isNotEmpty == true ||
+                customCards.isNotEmpty == true,
+            'ToolTemplateCardCarouselView requires the parent CoreTool to have tool cards in the navigation container, or to pass cards through the constructor.'),
         super(key: key);
 
   @override
@@ -16,6 +22,7 @@ class _ToolTemplateCardCarouselViewState
     extends State<ToolTemplateCardCarouselView>
     with AureusToolTemplateObserver {
   late ToolNavigationContainer toolNavigation;
+  List<ToolCardTemplate> toolChildren = [];
 
   //the index current card being shown
   int currentCardIndex = 0;
@@ -23,6 +30,9 @@ class _ToolTemplateCardCarouselViewState
   @override
   void initState() {
     toolTemplateMaster.registerObserver(this);
+    toolChildren = widget.customCards.isEmpty
+        ? widget.parentTool.toolCards!
+        : widget.customCards;
     super.initState();
   }
 
@@ -38,11 +48,11 @@ class _ToolTemplateCardCarouselViewState
     print(
         "current index is $currentCardIndex, length is ${widget.parentTool.toolCards!.length}");
     setState(() {
-      if (currentCardIndex <= widget.parentTool.toolCards!.length) {
+      if (currentCardIndex <= toolChildren.length) {
         print("card hasn't hit limit");
         currentCardIndex += 1;
       }
-      if (currentCardIndex == (widget.parentTool.toolCards!.length)) {
+      if (currentCardIndex == (toolChildren.length)) {
         print("card has hit limit");
         Navigator.push(
           context,
@@ -68,24 +78,19 @@ class _ToolTemplateCardCarouselViewState
   @override
   Widget build(BuildContext context) {
     //the current, visible active card.
-    Widget activeCardItem = AnimatedContainer(
-      duration: accessibility.accessFeatures.disableAnimations
-          ? const Duration(seconds: 0)
-          : const Duration(seconds: 1),
-    );
+    Widget activeCardItem = Container();
 
     //the summary of all of the previous cards and their answers
     List<Widget> summaryListView = [];
 
     var screenSize = size.logicalScreenSize();
-    var children = widget.parentTool.toolCards!;
     toolNavigation = navigationContainer(widget.parentTool);
 
-    for (var element in children) {
-      if (children.indexOf(element) == currentCardIndex) {
+    for (var element in toolChildren) {
+      if (toolChildren.indexOf(element) == currentCardIndex) {
         print('is the active card');
         activeCardItem = element.returnActiveToolCard();
-      } else if (children.indexOf(element) < currentCardIndex) {
+      } else if (toolChildren.indexOf(element) < currentCardIndex) {
         print('is the inactive card');
         summaryListView.insert(
             0,
@@ -95,71 +100,63 @@ class _ToolTemplateCardCarouselViewState
       }
     }
 
-    var summaryList = SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: ListView(shrinkWrap: true, children: summaryListView));
+    var summaryList = SizedBox(
+        height: size.layoutItemHeight(4, screenSize),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: ListView(shrinkWrap: true, children: summaryListView)));
+
+    var fullLayout = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: summaryListView.isEmpty == true
+          ? [
+              activeCardItem,
+            ]
+          : [
+              activeCardItem,
+              const SizedBox(height: 20.0),
+              summaryList,
+            ],
+    );
+
+    var progressBar = FloatingContainerElement(
+        child: Container(
+            width: screenSize.width,
+            height: size.layoutItemHeight(6, screenSize),
+            decoration:
+                LayerBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            child: Center(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ProgressIndicatorElement(
+                value: summaryListView.isNotEmpty == true
+                    ? (currentCardIndex / widget.parentTool.toolCards!.length)
+                    : 0.1,
+              ),
+            ))));
 
     var carouselLayout = ContainerWrapperElement(
       children: [
-        Center(
-          child: SizedBox(
-            width: size.layoutItemWidth(1, screenSize),
-            height: size.layoutItemHeight(1, screenSize),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const SizedBox(height: 50.0),
-                  PageHeaderElement.withExit(
-                      pageTitle: widget.parentTool.toolName,
-                      onPageExit: () => {Navigator.pop(context)}),
-                  const SizedBox(height: 30.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      activeCardItem,
-                      const SizedBox(height: 20.0),
-                      summaryList,
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        PageHeaderElement.withExit(
+            pageTitle: widget.parentTool.toolName,
+            onPageExit: () => {Navigator.pop(context)}),
+        const SizedBox(height: 30.0),
+        fullLayout,
         const Spacer(),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: FloatingContainerElement(
-              child: Container(
-                  width: screenSize.width,
-                  height: size.layoutItemHeight(6, screenSize),
-                  decoration: LayerBackingDecoration(
-                          priority: decorationPriority.inactive)
-                      .buildBacking(),
-                  child: Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ProgressIndicatorElement(
-                      value: (currentCardIndex /
-                          widget.parentTool.toolCards!.length),
-                    ),
-                  )))),
-        )
+        const SizedBox(height: 30.0),
+        progressBar
       ],
       containerVariant: wrapperVariants.fullScreen,
-      takesFullWidth: true,
+      takesFullWidth: false,
     );
 
     return ContainerView(
       decorationVariant: decorationPriority.important,
       builder: carouselLayout,
-      takesFullWidth: true,
+      takesFullWidth: false,
     );
   }
 }

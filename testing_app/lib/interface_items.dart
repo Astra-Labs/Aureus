@@ -198,34 +198,34 @@ var searchBar = SearchBarComponent(onSearch: fillerAction);
 var sendField = SendFieldComponent(onSend: fillerAction);
 
 Widget testStandardCard = Playground().filledCardObject(
-    cardVariant: cardType.StandardCard,
+    cardVariant: cardType.standardCard,
     cardData: Playground().standardCardObject);
 
 Widget testStandardIconCard = Playground().filledCardObject(
-    cardVariant: cardType.StandardBadgeCard,
+    cardVariant: cardType.standardBadgeCard,
     cardData: Playground().standardIconCardObject);
 
 Widget testDetailCard = Playground().filledCardObject(
-    cardVariant: cardType.DetailCard, cardData: Playground().detailCardObject);
+    cardVariant: cardType.detailCard, cardData: Playground().detailCardObject);
 
 Widget testDetailIconCard = Playground().filledCardObject(
-    cardVariant: cardType.DetailBadgeCard,
+    cardVariant: cardType.detailBadgeCard,
     cardData: Playground().detailIconCardObject);
 
 Widget testDetailCarouselCard = Playground().filledCardObject(
-    cardVariant: cardType.DetailCarouselCard,
+    cardVariant: cardType.detailCarouselCard,
     cardData: Playground().standardIconCardObject);
 
 Widget testComplexCard = Playground().filledCardObject(
-    cardVariant: cardType.ComplexCard,
+    cardVariant: cardType.complexCard,
     cardData: Playground().complexCardObject);
 
 Widget testComplexIconCard = Playground().filledCardObject(
-    cardVariant: cardType.ComplexBadgeCard,
+    cardVariant: cardType.complexBadgeCard,
     cardData: Playground().complexIconCardObject);
 
 Widget testCategoryCard = Playground().filledCardObject(
-    cardVariant: cardType.CategoryIconDetailCard,
+    cardVariant: cardType.categoryIconDetailCard,
     cardData: Playground().complexIconCardObject);
 
 Widget testDetailCarousel = DetailCardCarouselComponent(cardDetailCarousel: {

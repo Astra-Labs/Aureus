@@ -98,7 +98,7 @@ BoxShadow darkShadow() {
 
 BoxShadow pastelShadow() {
   return BoxShadow(
-      color: lavender().withOpacity(0.3),
+      color: coloration.accentColor().withOpacity(0.3),
       offset: const Offset(0.0, 3.0),
       blurRadius: 30.0);
 }
@@ -113,8 +113,8 @@ Border universalBorder() {
 
 Border pastelBorder() {
   return accessibility.accessFeatures.highContrast
-      ? Border.all(color: lavender(), width: 2)
-      : Border.all(color: lavender().withOpacity(0.25), width: 1);
+      ? Border.all(color: coloration.accentColor(), width: 2)
+      : Border.all(color: coloration.accentColor().withOpacity(0.25), width: 1);
 }
 
 Border lightModeBorder() {

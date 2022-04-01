@@ -102,7 +102,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => toolNavigation.entryPoint,
+                        builder: (context) => toolNavigation.entryPoint!,
                       ))
                 })
       ],

@@ -75,7 +75,7 @@ Map<String, Widget> aureusComponents = {
   'Content Warning': ContentWarningComponent(
       warningDescription:
           'This article contains mentions of sexual assult and depictions of trauma.',
-      entryPoint: SafetyPlanOptInView()),
+      onContinue: () => {print('Yee  haw')}),
   'Cookie Banner': CookieBannerComponent(
       cookieMessage:
           'We show cookies to improve your experience. Please enable cookies. owo.',
@@ -138,6 +138,11 @@ Map<String, Widget> aureusViews = {
   'Tool Next Steps View': demoTool.navigationContainer.nextSteps,
   'Tool Summary View': demoTool.navigationContainer.summary!,*/
 };
+
+/*Map<String, Widget> aureusToolTemplates = { 
+  "" : , 
+
+}*/
 
 /*  ELEMENTS  */
 

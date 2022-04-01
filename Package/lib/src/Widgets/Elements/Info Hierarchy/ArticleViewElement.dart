@@ -12,21 +12,31 @@ class ArticleViewElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        const SizedBox(height: 20.0),
-        HeadingOneText(title, decorationPriority.standard),
-        const SizedBox(height: 5.0),
-        SubheaderText(subheader, decorationPriority.standard),
-        const SizedBox(height: 10.0),
-        const DividerElement(),
-        const SizedBox(height: 10.0),
-        BodyOneText(body, decorationPriority.standard),
-        const SizedBox(height: 20.0),
-      ],
+    var screenSize = size.logicalScreenSize();
+
+    return SizedBox(
+      width: size.layoutItemWidth(1, screenSize),
+      height: size.layoutItemHeight(1, screenSize),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            const SizedBox(height: 20.0),
+            Flexible(child: HeadingOneText(title, decorationPriority.standard)),
+            const SizedBox(height: 5.0),
+            Flexible(
+                child: SubheaderText(subheader, decorationPriority.standard)),
+            const SizedBox(height: 10.0),
+            const DividerElement(),
+            const SizedBox(height: 10.0),
+            Flexible(child: BodyOneText(body, decorationPriority.standard)),
+            const SizedBox(height: 20.0),
+          ],
+        ),
+      ),
     );
   }
 }

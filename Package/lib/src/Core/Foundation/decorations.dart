@@ -89,6 +89,10 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
           decorationGradient = darkGradient();
           decorationHaze = darkShadow();
         }
+      } else if (priority == decorationPriority.active) {
+        decorationFill = coloration.contrastColor().withOpacity(0.4);
+        decorationBorder = Border.all(
+            color: coloration.contrastColor().withOpacity(0.8), width: 1);
       }
     }
   }

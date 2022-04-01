@@ -1,13 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
-
 class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
   final Map<String, VoidCallback> listItems;
   //----------------------------------------
@@ -16,12 +8,11 @@ class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
   // action if the item is pressed. The user will also be
   // passed to the next card when they push ANY button.
 
-  ListViewButtonSelectToolTemplate({required this.listItems})
+  ListViewButtonSelectToolTemplate(
+      {required this.listItems, required templatePrompt, required badgeIcon})
       : assert(listItems.entries.length <= 5,
             "You can't have more than 5 options in a button select card. That would be too overwhelming to the user."),
-        super(
-            templatePrompt: 'List View Button Select',
-            badgeIcon: const IconData(0));
+        super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

@@ -59,15 +59,72 @@ void main() {
 class TestingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var banner = BannerNotificationComponent(
-        body: 'Notification Body!', icon: Assets.alertmessage);
+    var bottomData = AlertControllerObject.multipleActions(
+        onCancellation: () => {print('Yee haw my beets')},
+        alertTitle: "Alert Title",
+        alertBody: "Alert Body",
+        alertIcon: Assets.android,
+        actions: [
+          AlertControllerAction(
+              actionName: 'Yee',
+              actionSeverity: AlertControllerActionSeverity.standard,
+              onSelection: () => {}),
+          AlertControllerAction(
+              actionName: 'Haw',
+              actionSeverity: AlertControllerActionSeverity.standard,
+              onSelection: () => {}),
+          AlertControllerAction(
+              actionName: 'MeeBeats',
+              actionSeverity: AlertControllerActionSeverity.standard,
+              onSelection: () => {}),
+        ]);
+
+    List<Widget> buttons = [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: StandardButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonTitle: 'Alert Controller',
+            buttonAction: () =>
+                {notificationMaster.sendAlertControllerRequest(bottomData)}),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: StandardButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonTitle: 'Content Warning',
+            buttonAction: () => {
+                  notificationMaster.sendContentWarningRequest(
+                      'There is a content issue here.', Assets.alertmessage)
+                }),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: StandardButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonTitle: 'Dropdown Banner',
+            buttonAction: () => {
+                  notificationMaster.sendAlertNotificationRequest(
+                      'Banner request!', Assets.apple)
+                }),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: StandardButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonTitle: 'Bottom Action Sheet',
+            buttonAction: () =>
+                {notificationMaster.showBottomActionController(bottomData)}),
+      )
+    ];
 
     var containerViewHolder = ContainerWrapperElement(
-        children: [banner], containerVariant: wrapperVariants.fullScreen);
+        children: buttons, containerVariant: wrapperVariants.fullScreen);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard,
         builder: containerViewHolder);
+    //return LightLeakView();
   }
 }
 
@@ -110,8 +167,8 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: TestingView(),
-        theme: new ThemeData(scaffoldBackgroundColor: backgroundColor));
+        home: LandingPage(),
+        theme: new ThemeData(scaffoldBackgroundColor: coloration.sameColor()));
   }
 }
 
@@ -124,10 +181,19 @@ class ToolNavigationTesting extends StatefulWidget {
 class _ToolNavigationTestingState extends State<ToolNavigationTesting> {
   var testingTool = CoreTool(
     [
-      SingleInputToolTemplate(),
-      DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons'),
-      SingleSliderToolTemplate(),
-      SingleInputToolTemplate()
+      SingleInputToolTemplate(
+        templatePrompt: 'Yes No Tool Template',
+        badgeIcon: Assets.alert,
+      ),
+      DualColumnInputToolTemplate(
+          templatePrompt: 'Yes No Tool Template',
+          badgeIcon: Assets.alert,
+          prompt1: 'Pros',
+          prompt2: 'Cons'),
+      SingleSliderToolTemplate(
+          templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert),
+      SingleInputToolTemplate(
+          templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert)
     ],
     toolName: 'Guided Cooldown',
     toolDescription:
@@ -184,53 +250,73 @@ class ToolCardTesting extends StatefulWidget {
 class _ToolCardTestingState extends State<ToolCardTesting> {
   @override
   Widget build(BuildContext context) {
-    var yesNoTool = YesNoButtonSelectToolTemplate();
+    var yesNoTool = YesNoButtonSelectToolTemplate(
+        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
     var yesNoActive = yesNoTool.returnActiveToolCard();
     var yesNoInactive = yesNoTool.returnTemplateSummary();
 
-    var singleInputTool = SingleInputToolTemplate();
+    var singleInputTool = SingleInputToolTemplate(
+        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
     var singleInputActive = singleInputTool.returnActiveToolCard();
     var singleInputInactive = singleInputTool.returnTemplateSummary();
 
-    var dualColumnTool =
-        DualColumnInputToolTemplate(prompt1: 'Pros', prompt2: 'Cons');
+    var dualColumnTool = DualColumnInputToolTemplate(
+        templatePrompt: 'Yes No Tool Template',
+        badgeIcon: Assets.alert,
+        prompt1: 'Pros',
+        prompt2: 'Cons');
     var dualColumnInputActive = dualColumnTool.returnActiveToolCard();
     var dualColumnInputInactive = dualColumnTool.returnTemplateSummary();
 
     var triInputTool = TriInputToolTemplate(
-        textPrompt1: 'Idea #1', textPrompt2: 'Idea #2', textPrompt3: 'Idea #3');
+        templatePrompt: 'Yes No Tool Template',
+        badgeIcon: Assets.alert,
+        textPrompt1: 'Idea #1',
+        textPrompt2: 'Idea #2',
+        textPrompt3: 'Idea #3');
     var triInputActive = triInputTool.returnActiveToolCard();
     var triInputInactive = triInputTool.returnTemplateSummary();
 
-    var sliderTool = SingleSliderToolTemplate();
+    var sliderTool = SingleSliderToolTemplate(
+        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
     var sliderActive = sliderTool.returnActiveToolCard();
     var sliderInactive = sliderTool.returnTemplateSummary();
 
-    var listPickerTool = ListViewPickerSelectToolTemplate(pickerOptions: [
-      'Iced Caramel Macchiato',
-      'Iced Vanilla Latte',
-      'Iced Mint Mocha',
-      'Iced Chai Tea',
-      'Iced Matcha Green Tea'
-    ]);
+    var listPickerTool = ListViewPickerSelectToolTemplate(
+        templatePrompt: 'Yes No Tool Template',
+        badgeIcon: Assets.alert,
+        pickerOptions: [
+          'Iced Caramel Macchiato',
+          'Iced Vanilla Latte',
+          'Iced Mint Mocha',
+          'Iced Chai Tea',
+          'Iced Matcha Green Tea'
+        ]);
     var listPickerActive = listPickerTool.returnActiveToolCard();
     var listPickerInactive = listPickerTool.returnTemplateSummary();
 
-    var listButtonPicker = ListViewButtonSelectToolTemplate(listItems: {
-      'Print hi': () => {print('hi')},
-      'Print hey': () => {print('hey')},
-      'Print why': () => {print('why')},
-      'Print money': () => {print('money')},
-    });
+    var listButtonPicker = ListViewButtonSelectToolTemplate(
+        templatePrompt: 'Yes No Tool Template',
+        badgeIcon: Assets.alert,
+        listItems: {
+          'Print hi': () => {print('hi')},
+          'Print hey': () => {print('hey')},
+          'Print why': () => {print('why')},
+          'Print money': () => {print('money')},
+        });
     var listButtonPickerActive = listButtonPicker.returnActiveToolCard();
     var listButtonPickerInactive = listButtonPicker.returnTemplateSummary();
 
-    var pulseCard = PulseInputToolTemplate();
+    var pulseCard = PulseInputToolTemplate(
+        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
     var pulseActive = pulseCard.returnActiveToolCard();
     var pulseInactive = pulseCard.returnTemplateSummary();
 
     var timerTool = TimerToolTemplate(
-        allotment: Duration(seconds: 10), onFinish: () => {print('yee haw!')});
+        templatePrompt: 'Yes No Tool Template',
+        badgeIcon: Assets.alert,
+        allotment: Duration(seconds: 10),
+        onFinish: () => {print('yee haw!')});
     var timerActive = timerTool.returnActiveToolCard();
     var timerInactive = timerTool.returnTemplateSummary();
 

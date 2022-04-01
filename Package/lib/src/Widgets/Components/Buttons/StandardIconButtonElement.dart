@@ -21,13 +21,32 @@ class StandardIconButtonElement extends StatefulWidget {
 }
 
 class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
-  BoxDecoration animatedBacking = const BoxDecoration();
+  late decorationPriority buttonPriority;
+
+  @override
+  void initState() {
+    buttonPriority = widget.decorationVariant;
+    super.initState();
+  }
+
+  void createButtonInteraction() {
+    setState(() {
+      buttonPriority = decorationPriority.active;
+      sensation.createSensation(sensationType.press);
+    });
+
+    Future.delayed(const Duration(seconds: 1), () {
+      setState(() {
+        buttonPriority = widget.decorationVariant;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedRectangle,
-            priority: widget.decorationVariant)
+            priority: buttonPriority)
         .buildBacking();
 
     bool isButtonEnabled =
@@ -44,39 +63,40 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
     return InkWell(
         onTap: () {
           if (isButtonEnabled == true) {
+            createButtonInteraction();
             widget.buttonAction();
-            setState(() {
-              animatedBacking = BoxDecoration(color: coloration.accentColor());
-            });
           }
         },
-        child: FloatingContainerElement(
-          child: SizedBox(
-              width: size.layoutItemWidth(1, screenSize),
-              height: minimumButtonTextSize.height * 4,
-              child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.bounceIn,
-                  /*foregroundDecoration: animatedBacking,*/
-                  decoration: buttonDecoration,
-                  child: Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        ButtonTwoText(
-                            widget.buttonTitle, widget.decorationVariant),
-                        Icon(widget.buttonIcon,
-                            color: coloration.decorationColor(
-                                decorationVariant: widget.decorationVariant),
-                            semanticLabel: widget.buttonTitle,
-                            size: 30.0)
-                      ],
-                    ),
-                  )))),
+        child: PulseShadowElement(
+          pulseWidth: size.layoutItemWidth(1, screenSize),
+          isActive: widget.decorationVariant == decorationPriority.important
+              ? true
+              : false,
+          child: FloatingContainerElement(
+            child: SizedBox(
+                width: size.layoutItemWidth(1, screenSize),
+                height: minimumButtonTextSize.height * 4,
+                child: Container(
+                    decoration: buttonDecoration,
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          ButtonTwoText(
+                              widget.buttonTitle, widget.decorationVariant),
+                          Icon(widget.buttonIcon,
+                              color: coloration.decorationColor(
+                                  decorationVariant: widget.decorationVariant),
+                              semanticLabel: widget.buttonTitle,
+                              size: 30.0)
+                        ],
+                      ),
+                    )))),
+          ),
         ));
   }
 }

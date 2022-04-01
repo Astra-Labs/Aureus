@@ -9,8 +9,9 @@ USAGE:
 */
 
 class MultiCategoryCardSelectInputToolTemplate extends ToolCardTemplate {
-  MultiCategoryCardSelectInputToolTemplate()
-      : super(templatePrompt: '', badgeIcon: const IconData(0));
+  MultiCategoryCardSelectInputToolTemplate(
+      {required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

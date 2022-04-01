@@ -12,8 +12,12 @@ class TimerToolTemplate extends ToolCardTemplate {
   final Duration allotment;
   final VoidCallback onFinish;
 
-  TimerToolTemplate({required this.allotment, required this.onFinish})
-      : super(templatePrompt: 'Timer', badgeIcon: Assets.brain);
+  TimerToolTemplate(
+      {required this.allotment,
+      required this.onFinish,
+      required templatePrompt,
+      required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -27,7 +31,23 @@ class TimerToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: [TimerElement(timeAllotment: allotment)]);
+        toolChildren: [
+          TimerElement(timeAllotment: allotment),
+          const SizedBox(height: 10.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card',
+                    buttonAction: () => {onNextCard()}),
+              ]),
+        ]);
   }
 
   @override

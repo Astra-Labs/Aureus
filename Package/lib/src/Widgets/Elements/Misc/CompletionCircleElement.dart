@@ -50,8 +50,6 @@ class _CompletionCircleElementState extends State<CompletionCircleElement>
         const SizedBox(
           width: 150.0,
           height: 150.0,
-          /*decoration: BoxDecoration(
-              boxShadow: [pastelShadow()], shape: BoxShape.circle),*/
         ),
         FloatingContainerElement(
           child: SizedBox(

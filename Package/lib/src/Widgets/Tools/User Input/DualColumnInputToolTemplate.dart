@@ -12,10 +12,12 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
   final String prompt1;
   final String prompt2;
 
-  DualColumnInputToolTemplate({required this.prompt1, required this.prompt2})
-      : super(
-            templatePrompt: 'Dual Column Input',
-            badgeIcon: Assets.babycarriage);
+  DualColumnInputToolTemplate(
+      {required this.prompt1,
+      required this.prompt2,
+      required templatePrompt,
+      required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

@@ -4,9 +4,9 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 class DataOptInView extends StatefulWidget {
-  final List<DataPermissionObject> permissionItems;
+  final VoidCallback onFinish;
 
-  const DataOptInView({required this.permissionItems});
+  const DataOptInView({required this.onFinish});
 
   @override
   _DataOptInViewState createState() => _DataOptInViewState();
@@ -15,6 +15,8 @@ class DataOptInView extends StatefulWidget {
 class _DataOptInViewState extends State<DataOptInView> {
   @override
   Widget build(BuildContext context) {
+    var permissionItems = resourceValues.dataPermissions;
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,
       children: [
@@ -26,12 +28,12 @@ class _DataOptInViewState extends State<DataOptInView> {
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
-            itemCount: widget.permissionItems.length,
+            itemCount: permissionItems.length,
             itemBuilder: (BuildContext context, int index) {
-              var currentItem = widget.permissionItems[index];
+              var currentItem = permissionItems[index];
 
               return Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
                 child: ComplexSwitchCardElement(
                     cardLabel: currentItem.permissionName,
                     cardBody: currentItem.permissionDescription,
@@ -44,7 +46,7 @@ class _DataOptInViewState extends State<DataOptInView> {
               decorationVariant: decorationPriority.important,
               buttonIcon: Assets.next,
               buttonHint: 'Go to next page',
-              buttonAction: () => {print("go to next!")}),
+              buttonAction: () => {widget.onFinish()}),
         )
       ],
     );

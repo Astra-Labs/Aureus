@@ -24,6 +24,27 @@ class SmolButtonElement extends StatefulWidget {
 class _SmolButtonElementState extends State<SmolButtonElement> {
   BoxDecoration animatedBacking = const BoxDecoration();
 
+  late decorationPriority buttonPriority;
+
+  @override
+  void initState() {
+    buttonPriority = widget.decorationVariant;
+    super.initState();
+  }
+
+  void createButtonInteraction() {
+    setState(() {
+      buttonPriority = decorationPriority.active;
+      sensation.createSensation(sensationType.press);
+    });
+
+    Future.delayed(const Duration(seconds: 1), () {
+      setState(() {
+        buttonPriority = widget.decorationVariant;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
@@ -31,7 +52,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
 
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedPill,
-            priority: widget.decorationVariant)
+            priority: buttonPriority)
         .buildBacking();
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
@@ -46,32 +67,30 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
           label: widget.buttonTitle,
           hint: widget.buttonHint,
           isMutuallyExclusive: false),
-      child: InkWell(
-          highlightColor: coloration.accentColor(),
-          splashColor: coloration.contrastColor(),
+      child: GestureDetector(
           onTap: () {
             if (isButtonEnabled == true) {
+              createButtonInteraction();
               widget.buttonAction();
-              setState(() {
-                animatedBacking =
-                    BoxDecoration(color: coloration.accentColor());
-              });
             }
           },
-          child: FloatingContainerElement(
-            child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.bounceIn,
-                constraints: BoxConstraints(
-                    minHeight: minimumButtonTextSize.height * 1.8,
-                    maxHeight: minimumButtonTextSize.height * 2,
-                    maxWidth: minimumButtonTextSize.width * 2,
-                    minWidth: minimumButtonTextSize.width * 2),
-                decoration: buttonDecoration,
-                /*foregroundDecoration: animatedBacking,*/
-                child: Center(
-                    child: TagOneText(
-                        widget.buttonTitle, widget.decorationVariant))),
+          child: PulseShadowElement(
+            pulseWidth: minimumButtonTextSize.width * 2,
+            isActive: widget.decorationVariant == decorationPriority.important
+                ? true
+                : false,
+            child: FloatingContainerElement(
+              child: Container(
+                  constraints: BoxConstraints(
+                      minHeight: minimumButtonTextSize.height * 1.8,
+                      maxHeight: minimumButtonTextSize.height * 2,
+                      maxWidth: minimumButtonTextSize.width * 2,
+                      minWidth: minimumButtonTextSize.width * 2),
+                  decoration: buttonDecoration,
+                  child: Center(
+                      child: TagOneText(
+                          widget.buttonTitle, widget.decorationVariant))),
+            ),
           )),
     );
   }

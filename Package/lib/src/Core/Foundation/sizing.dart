@@ -59,18 +59,21 @@ class Sizing {
     throw ('An impossible ratio was returned when determining isDesktopDisplay');
   }
 
-  //Creates a text scale factor to adjust for size differences between
+  //Creates a scale factor to adjust for size differences between
   //mobile, tablet, and web.
-  double responsiveTextSize(double base) {
+  double responsiveSize(double base) {
     double scaleFactor = 0.0;
     double shortSide = logicalScreenSize().shortestSide;
 
-    if (shortSide < 550) {
+    if (shortSide >= 300) {
       //needs mobile phone scale
+      scaleFactor = 0.80;
+    } else if (shortSide >= 420 && shortSide < 550) {
+      //needs tablet scale
       scaleFactor = 1.0;
     } else if (shortSide >= 550 && shortSide < 900) {
       //needs tablet scale
-      scaleFactor = 1.20;
+      scaleFactor = 1.25;
     } else if (shortSide >= 900) {
       //needs web phone scale
       scaleFactor = 1.35;

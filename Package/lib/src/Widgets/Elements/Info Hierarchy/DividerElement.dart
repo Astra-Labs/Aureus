@@ -11,8 +11,9 @@ class DividerElement extends StatelessWidget {
       properties: SemanticsWrapper.ignorable(),
       child: Container(
           width: size.layoutItemWidth(1, screenSize),
-          height: 2,
-          decoration: BoxDecoration(color: coloration.inactiveColor())),
+          height: 1,
+          decoration: BoxDecoration(
+              color: coloration.inactiveColor().withOpacity(0.3))),
     );
   }
 }

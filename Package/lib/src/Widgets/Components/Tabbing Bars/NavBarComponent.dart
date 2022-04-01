@@ -33,7 +33,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
       //checks to see if current index matches index of tab item. if yes, it's enabled.
 
       var tabItem = BottomNavigationBarItem(
-        icon: Icon(element.tabIcon, size: size.responsiveTextSize(38.0)),
+        icon: Icon(element.tabIcon, size: size.responsiveSize(38.0)),
         label: ".",
         tooltip: element.accessibilityHint,
         backgroundColor: Colors.transparent,

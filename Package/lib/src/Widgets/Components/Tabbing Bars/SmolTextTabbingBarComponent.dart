@@ -3,10 +3,11 @@ import 'package:aureus/aureus.dart';
 //A group of smol buttons that acts as a tabbing bar to change data
 
 class SmolTextTabbingBarComponent extends StatefulWidget {
-  final List<TabObject> tabObjects;
+  final List<String> itemTitles;
+  final List<VoidCallback> itemActions;
 
-  const SmolTextTabbingBarComponent({required this.tabObjects})
-      : assert(tabObjects.length >= 2);
+  const SmolTextTabbingBarComponent(
+      {required this.itemTitles, required this.itemActions});
 
   @override
   _SmolTextTabbingBarComponentState createState() =>
@@ -15,9 +16,16 @@ class SmolTextTabbingBarComponent extends StatefulWidget {
 
 class _SmolTextTabbingBarComponentState
     extends State<SmolTextTabbingBarComponent> {
-  // TO-DO: figure out why dart is throwing a proble below, and saying selected index isn't used. -Amanda S
-  // ignore: unused_field
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    setState(() {
+      _selectedIndex = 0;
+      widget.itemActions[0];
+    });
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -27,46 +35,40 @@ class _SmolTextTabbingBarComponentState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
-
     List<TabObject> tabItems = [];
     List<Widget> tabButtons = [];
 
-    for (var element in widget.tabObjects) {
-      var currentIndex = tabItems.indexOf(element);
+    for (var element in widget.itemTitles) {
+      var currentIndex = widget.itemTitles.indexOf(element);
+      var currentAction = widget.itemActions[currentIndex];
 
-      tabButtons.add(Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SmolButtonElement(
-            decorationVariant: element.tabPriority!,
-            buttonTitle: element.tabTitle,
-            buttonHint: 'Changes selected tab to ${element.tabTitle}',
-            buttonAction: () =>
-                {element.onTabSelection, _onItemTapped(currentIndex)}),
+      tabItems.add(TabObject.forTextTabbing(
+        tabTitle: element,
+        onTabSelection: () => {currentAction(), _onItemTapped(currentIndex)},
+        accessibilityHint: 'Selects $element as new tab.',
+        tabPriority: currentIndex == _selectedIndex
+            ? decorationPriority.important
+            : decorationPriority.standard,
       ));
     }
 
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          FloatingContainerElement(
-              child: SizedBox(
-                  width: size.layoutItemWidth(1, screenSize),
-                  height: size.layoutItemHeight(6, screenSize),
-                  child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: LayerBackingDecoration(
-                              priority: decorationPriority.inactive)
-                          .buildBacking(),
-                      child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              mainAxisSize: MainAxisSize.min,
-                              children: tabButtons)))))
-        ]);
+    for (var element in tabItems) {
+      tabButtons.add(Padding(
+        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
+        child: SmolButtonElement(
+            decorationVariant: element.tabPriority!,
+            buttonTitle: element.tabTitle,
+            buttonHint: 'Changes selected tab to ${element.tabTitle}.',
+            buttonAction: () => {element.onTabSelection()}),
+      ));
+    }
+
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: tabButtons));
   }
 }

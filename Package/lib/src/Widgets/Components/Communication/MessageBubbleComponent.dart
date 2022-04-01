@@ -51,30 +51,35 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
         query: MediaQuery.of(context));
 
     var screenSize = size.logicalScreenSize();
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Container(
-              constraints: BoxConstraints(
-                  minHeight: bodyTextSizing.height * 2.5,
-                  maxWidth: size.layoutItemWidth(1, screenSize) * 0.7),
-              padding: const EdgeInsets.all(12.0),
-              decoration: backingDecoration,
-              child: Center(
-                  child: SizedBox(
-                      width: bodyTextSizing.width,
-                      height: bodyTextSizing.height,
-                      child: BodyTwoText(widget.messageBody, bubblePriority)))),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TagTwoText(
-                widget.messageVariant == messagingVariants.sender
-                    ? returnMessageStatus(widget.currentStatus)
-                    : '',
-                decorationPriority.standard),
-          )
-        ]);
+
+    return Align(
+      alignment: widget.messageVariant == messagingVariants.sender
+          ? Alignment.topRight
+          : Alignment.topLeft,
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+                constraints: BoxConstraints(
+                    minHeight: bodyTextSizing.height * 2.5,
+                    maxWidth: size.layoutItemWidth(1, screenSize) * 0.7),
+                padding: const EdgeInsets.all(20.0),
+                decoration: backingDecoration,
+                child: Center(
+                    child: Flexible(
+                        child:
+                            BodyTwoText(widget.messageBody, bubblePriority)))),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TagTwoText(
+                  widget.messageVariant == messagingVariants.sender
+                      ? returnMessageStatus(widget.currentStatus)
+                      : '',
+                  decorationPriority.standard),
+            )
+          ]),
+    );
   }
 }

@@ -13,12 +13,17 @@ class TimerElement extends StatefulWidget {
   _TimerElementState createState() => _TimerElementState();
 }
 
-class _TimerElementState extends State<TimerElement> {
+class _TimerElementState extends State<TimerElement>
+    with TickerProviderStateMixin {
   late Timer _timer;
+  var _isTimerActive = false;
   var intDuration = 0;
 
   void startTimer() {
     print('timer started!');
+
+    _isTimerActive = true;
+
     var intDuration = (widget.timeAllotment.inSeconds);
     const oneSec = Duration(seconds: 1);
     _timer = Timer.periodic(
@@ -27,6 +32,7 @@ class _TimerElementState extends State<TimerElement> {
         setState(() {
           if (intDuration == 0) {
             timer.cancel();
+            _isTimerActive = false;
           } else {
             intDuration--;
           }
@@ -36,23 +42,43 @@ class _TimerElementState extends State<TimerElement> {
   }
 
   void pauseTimer() {
+    _isTimerActive = false;
     _timer.cancel();
   }
 
   void resetTimer() {
+    _isTimerActive = false;
     _timer.cancel();
     intDuration = widget.timeAllotment.inSeconds;
   }
 
+  late AnimationController controller;
+
   @override
   void initState() {
+    // Checks user's accessibility settings to make sure animations are allowed,
+    //and then initializes the animation controller.
+
     intDuration = widget.timeAllotment.inSeconds;
-    super.initState();
+
+    if (accessibility.accessFeatures.disableAnimations == false ||
+        accessibility.accessFeatures.reduceMotion == false) {
+      controller = AnimationController(
+        vsync: this,
+        upperBound: intDuration.toDouble() / 100,
+        duration: const Duration(seconds: 2),
+      )..addListener(() {
+          setState(() {});
+        });
+      controller.forward();
+      super.initState();
+    }
   }
 
   @override
   void dispose() {
     pauseTimer();
+    controller.dispose();
     super.dispose();
   }
 
@@ -74,40 +100,62 @@ class _TimerElementState extends State<TimerElement> {
 
   @override
   Widget build(BuildContext context) {
-    var timerBacking =
-        LayerBackingDecoration(priority: decorationPriority.inactive)
-            .buildBacking()
-            .copyWith(
-              borderRadius: BorderRadius.circular(245),
-            );
+    var responsiveSize = size.responsiveSize(350);
+
+    var timerCircle = SizedBox(
+      width: responsiveSize,
+      height: responsiveSize,
+      child: Stack(alignment: Alignment.center, children: [
+        FloatingContainerElement(
+          child: SizedBox(
+            width: responsiveSize,
+            height: responsiveSize,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: coloration.accentColor().withOpacity(0.2),
+                    shape: BoxShape.circle),
+                child: CircularProgressIndicator(
+                    backgroundColor: coloration.inactiveColor(),
+                    color: coloration.accentColor(),
+                    value: controller.value,
+                    strokeWidth: 3.0,
+                    semanticsLabel: 'Timer'),
+              ),
+            ),
+          ),
+        ),
+        HeadingOneText(formatHHMMSS(intDuration), decorationPriority.standard)
+      ]),
+    );
 
     return Column(children: [
-      FloatingContainerElement(
-        child: Container(
-            width: 300,
-            height: 300,
-            alignment: Alignment.center,
-            child: HeadingOneText('$intDuration', decorationPriority.standard),
-            decoration: timerBacking),
-      ),
-      const SizedBox(height: 20.0),
+      timerCircle,
+      const SizedBox(height: 30.0),
       SizedBox(
-        width: 300,
+        width: responsiveSize,
         child: Row(children: [
           SmolButtonElement(
-              decorationVariant: decorationPriority.standard,
+              decorationVariant: _isTimerActive == true
+                  ? decorationPriority.inactive
+                  : decorationPriority.important,
               buttonTitle: 'Start',
               buttonHint: 'Starts the timer.',
               buttonAction: () => {startTimer()}),
           const Spacer(),
           SmolButtonElement(
-              decorationVariant: decorationPriority.standard,
+              decorationVariant: _isTimerActive == true
+                  ? decorationPriority.standard
+                  : decorationPriority.inactive,
               buttonTitle: 'Pause',
               buttonHint: 'Pauses the timer.',
               buttonAction: () => {pauseTimer()}),
           const Spacer(),
           SmolButtonElement(
-              decorationVariant: decorationPriority.standard,
+              decorationVariant: _isTimerActive == true
+                  ? decorationPriority.standard
+                  : decorationPriority.inactive,
               buttonTitle: 'Cancel',
               buttonHint: 'Cancels the timer.',
               buttonAction: () => {resetTimer()}),

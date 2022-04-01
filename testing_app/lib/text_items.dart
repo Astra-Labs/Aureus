@@ -2,23 +2,23 @@ import 'package:aureus/aureus.dart';
 
 //where all text related items in aureus are initiated for testing
 
-SelectableText text1 =
+Text text1 =
     HeadingOneText('Heading One', decorationPriority.standard);
-SelectableText text2 =
+Text text2 =
     HeadingTwoText('Heading Two', decorationPriority.standard);
-SelectableText text3 =
+Text text3 =
     HeadingThreeText('Heading Three', decorationPriority.standard);
-SelectableText text4 =
+Text text4 =
     HeadingFourText('Heading Four', decorationPriority.standard);
-SelectableText text5 = SubheaderText('Subheader', decorationPriority.standard);
-SelectableText text6 = BodyOneText('Body One', decorationPriority.standard);
-SelectableText text7 = BodyTwoText('Body Two', decorationPriority.standard);
-SelectableText text8 = ButtonOneText('Button One', decorationPriority.standard);
-SelectableText text9 = ButtonTwoText('Button Two', decorationPriority.standard);
-SelectableText text10 = TagOneText('Tag One', decorationPriority.standard);
-SelectableText text11 = TagTwoText('Tag Two', decorationPriority.standard);
+Text text5 = SubheaderText('Subheader', decorationPriority.standard);
+Text text6 = BodyOneText('Body One', decorationPriority.standard);
+Text text7 = BodyTwoText('Body Two', decorationPriority.standard);
+Text text8 = ButtonOneText('Button One', decorationPriority.standard);
+Text text9 = ButtonTwoText('Button Two', decorationPriority.standard);
+Text text10 = TagOneText('Tag One', decorationPriority.standard);
+Text text11 = TagTwoText('Tag Two', decorationPriority.standard);
 
-List<SelectableText> textTesting = [
+List<Text> textTesting = [
   text1,
   text2,
   text3,

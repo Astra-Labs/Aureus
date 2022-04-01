@@ -1,7 +1,9 @@
 import 'package:aureus/aureus.dart';
 
 class SafetyPlanOptInView extends StatefulWidget {
-  const SafetyPlanOptInView();
+  final Widget exitPoint;
+
+  const SafetyPlanOptInView({required this.exitPoint});
 
   @override
   _SafetyPlanOptInViewState createState() => _SafetyPlanOptInViewState();
@@ -26,7 +28,7 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
         const Spacer(),
         Align(
           alignment: Alignment.center,
-          child: SubheaderText(
+          child: BodyOneText(
               "Our software has added safety features for people in dangerous situations. This information will be encrypted, and stored locally on your device. You can add these features now, or enable them anytime in app settings.",
               decorationPriority.standard),
         ),
@@ -37,12 +39,26 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
             StandardButtonElement(
                 decorationVariant: decorationPriority.important,
                 buttonTitle: 'I want additional safety features.',
-                buttonAction: () => {}),
+                buttonAction: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SafetyPlanOptionsView(
+                              exitPoint: widget.exitPoint,
+                            ),
+                          ))
+                    }),
             SizedBox(height: size.heightOf(weight: sizingWeight.w0) / 2),
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonTitle: "I don't want safety features.",
-                buttonAction: () => {})
+                buttonAction: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => widget.exitPoint,
+                          ))
+                    })
           ]),
         )
       ],

@@ -2,8 +2,8 @@ import 'package:aureus/aureus.dart';
 import 'dart:ui' as ui;
 
 class SensoryMapToolTemplate extends ToolCardTemplate {
-  SensoryMapToolTemplate()
-      : super(templatePrompt: 'Sensory Map', badgeIcon: const IconData(0));
+  SensoryMapToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -19,19 +19,13 @@ class SensoryMapToolTemplate extends ToolCardTemplate {
         toolChildren: [
           BodyOneText('Drag the dot to where you feel xyz in your body.',
               decorationPriority.standard),
-          _SensoryMapInputCard(),
+          const _SensoryMapInputCard(),
           const DividerElement(),
           const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Skip',
-                    buttonHint:
-                        'Skips the current card, and goes to the next one.',
-                    buttonAction: () => {onNextCard()}),
                 const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,

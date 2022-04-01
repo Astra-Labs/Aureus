@@ -48,12 +48,13 @@ class CoreTool {
 // This is initialized for you based on whether or not you provide
 // tool cards within the CoreTool constructor.
 ToolNavigationContainer navigationContainer(CoreTool tool) {
-  return ToolNavigationContainer(tool.toolCards!.isEmpty ? [] : tool.toolCards,
+  return ToolNavigationContainer(
+      tool.toolCards!.isEmpty ? [] : tool.toolCards,
       tool.toolCards!.isNotEmpty ? ToolSummaryView(parentTool: tool) : null,
-      details: ToolDetailView(parentTool: tool),
-      entryPoint: tool.toolCards!.isEmpty
+      tool.toolCards!.isEmpty
           ? tool.entryPoint
           : ToolTemplateCardCarouselView(parentTool: tool),
+      details: ToolDetailView(parentTool: tool),
       nextSteps:
           ToolNextStepsView(parentTool: tool, nextSteps: tool.nextSteps));
 }
@@ -80,7 +81,7 @@ class ToolNavigationContainer {
   ToolDetailView details;
   // An instance of ToolDetailView for this tool.
   // ------------------------------
-  Widget entryPoint;
+  Widget? entryPoint;
   // The widget where your tool starts. This is usually a
   // ToolNavigationPage, or a ToolCardCarousel.
   // ------------------------------
@@ -99,10 +100,8 @@ class ToolNavigationContainer {
   // to be able to read & write data across the screens.
   // ------------------------------
 
-  ToolNavigationContainer(this.toolCards, this.summary,
-      {required this.details,
-      required this.entryPoint,
-      required this.nextSteps});
+  ToolNavigationContainer(this.toolCards, this.summary, this.entryPoint,
+      {required this.details, required this.nextSteps});
 }
 
 /* ------------------ Tool Navigation Page -------------------- */

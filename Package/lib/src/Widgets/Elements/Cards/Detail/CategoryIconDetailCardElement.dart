@@ -35,13 +35,18 @@ class CategoryIconDetailCardElement extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      SizedBox(height: size.responsiveTextSize(30.0)),
+                      SizedBox(height: size.responsiveSize(30.0)),
                       Icon(cardIcon,
-                          size: size.responsiveTextSize(60),
+                          size: size.responsiveSize(60),
                           color: coloration.decorationColor(
                               decorationVariant: decorationVariant)),
-                      SizedBox(height: size.responsiveTextSize(30.0)),
-                      HeadingFourText(cardLabel, decorationVariant),
+                      SizedBox(height: size.responsiveSize(30.0)),
+                      Text(cardLabel.toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: heading4().copyWith(
+                            color: coloration.decorationColor(
+                                decorationVariant: decorationVariant),
+                          )),
                       const SizedBox(height: 5.0),
                       Text(cardBody,
                           textAlign: TextAlign.center,

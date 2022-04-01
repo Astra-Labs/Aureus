@@ -10,6 +10,8 @@ haptics, our sound library, and more.
 
 */
 
+var sensation = Sensory();
+
 class Sensory {
   // Wraps an Ink & Inkwell widget together and calls
   // the Aureus sensory engine to provide haptic feedback
@@ -18,6 +20,7 @@ class Sensory {
   // Calls the Hpatic Feedback engine and plays
   // an accompanying sound file for the different
   // types of gestures that happen.
+
   void createSensation(sensationType sense) {
     switch (sense) {
       case sensationType.confirmation:
@@ -109,18 +112,21 @@ class CircleAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animation,
-      builder: (BuildContext context, Widget? _) {
-        return ClipPath(
-          clipper: CircularAnimationClip(
-            fraction: animation.value,
-            centerAlignment: centerAlignment,
-            centerOffset: centerOffset,
-          ),
-          child: child,
-        );
-      },
+    return Container(
+      color: coloration.sameColor(),
+      child: AnimatedBuilder(
+        animation: animation,
+        builder: (BuildContext context, Widget? _) {
+          return ClipPath(
+            clipper: CircularAnimationClip(
+              fraction: animation.value,
+              centerAlignment: centerAlignment,
+              centerOffset: centerOffset,
+            ),
+            child: child,
+          );
+        },
+      ),
     );
   }
 }
@@ -174,8 +180,7 @@ class HeroWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HeroMode(
-        child: Hero(
-            tag: 'Aureus-${Random().nextInt(1000)}-$heroTag', child: child),
+        child: Hero(tag: 'heroTag', child: child),
         enabled: accessibility.accessFeatures.disableAnimations ? false : true);
   }
 }

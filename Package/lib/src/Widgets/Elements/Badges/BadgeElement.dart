@@ -10,8 +10,8 @@ class IconBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var responsiveBadgeSize = size.responsiveTextSize(40.0);
-    var responsiveIconSize = size.responsiveTextSize(33.0);
+    var responsiveBadgeSize = size.responsiveSize(50.0);
+    var responsiveIconSize = size.responsiveSize(35.0);
 
     Decoration customBadgeBacking() {
       var baseDecoration =
@@ -75,6 +75,11 @@ class IconBadge extends StatelessWidget {
             baseDecoration.decorationGradient = backingGradient;
             baseDecoration.decorationHaze = backingHaze;
             break;
+          }
+
+        case decorationPriority.active:
+          {
+            throw ("BadgeElement cannot be decorationPriority.active, that priority is meant for interactable elements being highlighted and BadgeElement is non-interactable.");
           }
       }
 

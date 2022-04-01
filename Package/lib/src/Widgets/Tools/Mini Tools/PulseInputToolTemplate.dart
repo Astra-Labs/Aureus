@@ -9,8 +9,8 @@ USAGE:
 */
 
 class PulseInputToolTemplate extends ToolCardTemplate {
-  PulseInputToolTemplate()
-      : super(templatePrompt: 'Pulse Input', badgeIcon: const IconData(0));
+  PulseInputToolTemplate({required templatePrompt, required badgeIcon})
+      : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   @override
   Widget returnActiveToolCard() {
@@ -24,7 +24,21 @@ class PulseInputToolTemplate extends ToolCardTemplate {
               'Press each colorful dot to disable it, and to move forward.',
               decorationPriority.standard),
           const SizedBox(height: 20.0),
-          _PulseMapCard()
+          _PulseMapCard(),
+          const SizedBox(height: 10.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonTitle: 'Next',
+                    buttonHint: 'Goes to the next card',
+                    buttonAction: () => {onNextCard()}),
+              ]),
         ]);
   }
 

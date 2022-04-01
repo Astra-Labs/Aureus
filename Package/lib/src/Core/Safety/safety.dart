@@ -357,7 +357,7 @@ class _SafetyPlan {
   }
 
   //write settings directly to local storage
-  set writeSettings(Map<SafetyPlanOptions, bool> newSettings) {
+  Future<void> writeSettings(Map<SafetyPlanOptions, bool> newSettings) async {
     for (var element in newSettings.entries) {
       _writeSetting(element.key, element.value);
     }
@@ -392,8 +392,10 @@ class SafetyPlanObject {
 
 class SafetyPlanFunctionalityView extends StatefulWidget {
   final List<SafetyPlanOptions> userSelectedOptions;
+  final Widget exitPoint;
 
-  const SafetyPlanFunctionalityView({required this.userSelectedOptions});
+  const SafetyPlanFunctionalityView(
+      {required this.userSelectedOptions, required this.exitPoint});
 
   @override
   _SafetyPlanFunctionalityViewState createState() =>
@@ -404,59 +406,167 @@ class _SafetyPlanFunctionalityViewState
     extends State<SafetyPlanFunctionalityView> {
   var safety = resourceValues.safetySettings;
 
+  Map<SafetyPlanOptions, bool> userEnabledSettings = {};
+  List<ComplexSwitchCardElement> optionCards = [];
+
+  void updateSettings() {
+    optionCards.forEach((element) {
+      if (element.switchItem.isSwitchEnabled == true) {
+        var index = optionCards.indexOf(element);
+        var setting = widget.userSelectedOptions.elementAt(index);
+        userEnabledSettings.putIfAbsent(setting, () => true);
+      }
+    });
+
+    _SafetyPlan().writeSettings(userEnabledSettings).then(
+        (value) => {
+              notificationMaster.sendAlertControllerRequest(
+                  AlertControllerObject.singleAction(
+                      onCancellation: () => {},
+                      alertTitle: "Safety Plan Enabled",
+                      alertBody:
+                          "Your safety plan settings have been encrypted, and saved.",
+                      alertIcon: Assets.yes,
+                      actions: [
+                    AlertControllerAction(
+                        actionName: "Ok!",
+                        actionSeverity: AlertControllerActionSeverity.standard,
+                        onSelection: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => widget.exitPoint,
+                                  ))
+                            })
+                  ]))
+            }, onError: (error) {
+      notificationMaster.sendAlertControllerRequest(
+          AlertControllerObject.singleAction(
+              onCancellation: () => {},
+              alertTitle: "Uh oh.",
+              alertBody:
+                  "An error saving your safety plan has occured: $error.",
+              alertIcon: Assets.yes,
+              actions: [
+            AlertControllerAction(
+                actionName: "Ok.",
+                actionSeverity: AlertControllerActionSeverity.standard,
+                onSelection: () => {notificationMaster.resetRequests()})
+          ]));
+    });
+
+    /*Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => _PlanModificationLoadingView(
+              userEnabledSettings: userEnabledSettings,
+              exitPoint: widget.exitPoint),
+        ));*/
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.fullScreen,
-      children: [
-        DividingHeaderElement(
-            headerText: "Safety Plan - Confirmation",
-            subheaderText:
-                "In order to enable your safety plan, you need to opt-in to agreeing the functionality of ${resourceValues.name} may change."),
-        SizedBox(
-          width: size.layoutItemWidth(1, screenSize),
-          height: size.layoutItemHeight(2, screenSize),
-          child: SingleChildScrollView(
-            child: ListView.builder(
-                physics: const ClampingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: widget.userSelectedOptions.length,
-                itemBuilder: (BuildContext context, int index) {
-                  var currentItem = widget.userSelectedOptions[index];
-                  var safetyObject = resourceValues.safetySettings
-                      .retrieveDetails(currentItem);
+    for (var element in widget.userSelectedOptions) {
+      var safetyObject = resourceValues.safetySettings.retrieveDetails(element);
+      optionCards.add(ComplexSwitchCardElement(
+          cardLabel: safetyObject.name,
+          cardBody: safetyObject.functionalityChange,
+          cardIcon: safetyObject.icon));
+    }
 
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
-                    child: ComplexSwitchCardElement(
-                        cardLabel: safetyObject.name,
-                        cardBody: safetyObject.functionalityChange,
-                        cardIcon: safetyObject.icon),
-                  );
-                }),
-          ),
-        ),
-        const SizedBox(height: 20.0),
-        Column(
-          children: [
+    ContainerWrapperElement selectionViewLayout = ContainerWrapperElement(
+        containerVariant: wrapperVariants.fullScreen,
+        children: [
+          DividingHeaderElement(
+              headerText: "Plan Confirmation",
+              subheaderText:
+                  "In order to enable your safety plan, you need to opt-in to agreeing the functionality of ${resourceValues.name} may change."),
+          SizedBox(
+              width: size.layoutItemWidth(1, screenSize),
+              height: size.layoutItemHeight(2, screenSize),
+              child: SingleChildScrollView(
+                  child: (Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: optionCards,
+              )))),
+          const SizedBox(height: 20.0),
+          Column(children: [
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonTitle: 'I agree to these changes.',
-                buttonAction: () => {}),
+                buttonAction: updateSettings),
             const SizedBox(height: 8.0),
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonTitle: 'I want to edit my safety plan.',
-                buttonAction: () => {})
-          ],
-        ),
-      ],
-    );
+                buttonAction: () => {Navigator.pop(context)})
+          ])
+        ]);
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewLayout);
+        decorationVariant: decorationPriority.standard,
+        builder: selectionViewLayout);
+  }
+}
+
+class _PlanModificationLoadingView extends StatefulWidget {
+  final Map<SafetyPlanOptions, bool> userEnabledSettings;
+  final Widget exitPoint;
+
+  const _PlanModificationLoadingView(
+      {required this.userEnabledSettings, required this.exitPoint});
+
+  @override
+  _PlanModificationLoadingViewState createState() =>
+      _PlanModificationLoadingViewState();
+}
+
+class _PlanModificationLoadingViewState
+    extends State<_PlanModificationLoadingView> {
+  @override
+  Widget build(BuildContext context) {
+    var futureViewLayout = ContainerWrapperElement(children: [
+      FutureBuilder<void>(
+        future: _SafetyPlan().writeSettings(widget.userEnabledSettings),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // If the Future is complete, display the screen and the alert controller confirmation.
+            notificationMaster.sendAlertControllerRequest(
+                AlertControllerObject.singleAction(
+                    onCancellation: () => {},
+                    alertTitle: "Safety Plan Enabled",
+                    alertBody:
+                        "Your safety plan settings have been enabled, encrypted, and saved.",
+                    alertIcon: Assets.yes,
+                    actions: [
+                  AlertControllerAction(
+                      actionName: "Ok!",
+                      actionSeverity: AlertControllerActionSeverity.standard,
+                      onSelection: () => {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => widget.exitPoint,
+                                ))
+                          })
+                ]));
+            return Column(
+              children: [],
+            );
+          } else {
+            // Otherwise, display a loading indicator.
+            return const Center(child: LoadingCircleElement());
+          }
+        },
+      )
+    ], containerVariant: wrapperVariants.fullScreen);
+
+    return ContainerView(
+      decorationVariant: decorationPriority.standard,
+      builder: futureViewLayout,
+    );
   }
 }

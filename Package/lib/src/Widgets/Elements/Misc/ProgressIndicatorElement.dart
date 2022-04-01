@@ -24,7 +24,7 @@ class _ProgressIndicatorElementState extends State<ProgressIndicatorElement>
       controller = AnimationController(
         vsync: this,
         upperBound: widget.value,
-        duration: const Duration(seconds: 2),
+        duration: const Duration(seconds: 1),
       )..addListener(() {
           setState(() {});
         });

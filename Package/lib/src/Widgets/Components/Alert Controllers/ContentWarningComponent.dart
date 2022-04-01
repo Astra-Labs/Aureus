@@ -4,84 +4,57 @@ import 'package:aureus/aureus.dart';
 
 class ContentWarningComponent extends StatelessWidget {
   final String warningDescription;
-  final Widget entryPoint;
+  final VoidCallback onContinue;
 
   const ContentWarningComponent(
-      {required this.warningDescription, required this.entryPoint});
+      {required this.warningDescription, required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    var warningLayout = FloatingContainerElement(
-      child: Container(
+    var warningLayout = Container(
         constraints: BoxConstraints(
-            minHeight: screenSize.height,
-            maxHeight: screenSize.height,
-            minWidth: screenSize.width,
-            maxWidth: screenSize.width),
-        decoration:
-            LayerBackingDecoration(priority: decorationPriority.inactive)
-                .buildBacking(),
-        child: Center(
-          child: Container(
-              constraints: BoxConstraints(
-                  minHeight: size.layoutItemHeight(1, screenSize) * 0.7,
-                  maxHeight: size.layoutItemHeight(1, screenSize) * 0.7,
-                  minWidth: size.layoutItemWidth(1, screenSize),
-                  maxWidth: size.layoutItemWidth(1, screenSize)),
-              decoration:
-                  LayerBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
-              child: Padding(
-                padding: const EdgeInsets.all(35.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Spacer(),
-                      const IconBadge(
-                          badgeIcon: Assets.alertmessage,
-                          badgePriority: decorationPriority.important),
-                      const SizedBox(height: 15.0),
-                      HeadingThreeText(
-                          "Content Warning", decorationPriority.standard),
-                      const SizedBox(height: 15.0),
-                      BodyOneText(
-                          warningDescription, decorationPriority.standard),
-                      const Spacer(),
-                      StandardIconButtonElement(
-                          decorationVariant: decorationPriority.standard,
-                          buttonTitle: 'Continue',
-                          buttonIcon: Assets.next,
-                          buttonAction: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => entryPoint,
-                                    ))
-                              }),
-                      const SizedBox(height: 15.0),
-                      StandardIconButtonElement(
-                          decorationVariant: decorationPriority.standard,
-                          buttonTitle: 'Go back',
-                          buttonIcon: Assets.no,
-                          buttonAction: () => {Navigator.pop(context)}),
-                      const Spacer()
-                    ]),
-              )),
-        ),
-      ),
-    );
-
-    return ContainerView(
-        decorationVariant: decorationPriority.important,
-        takesFullWidth: true,
-        builder: ContainerWrapperElement(
-          takesFullWidth: true,
-          containerVariant: wrapperVariants.fullScreen,
-          children: [warningLayout],
+            minHeight: size.layoutItemHeight(1, screenSize) * 0.6,
+            maxHeight: size.layoutItemHeight(1, screenSize) * 0.6,
+            minWidth: size.layoutItemWidth(1, screenSize),
+            maxWidth: size.layoutItemWidth(1, screenSize)),
+        decoration: CardBackingDecoration(priority: decorationPriority.inverted)
+            .buildBacking(),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const IconBadge(
+                    badgeIcon: Assets.alertmessage,
+                    badgePriority: decorationPriority.important),
+                const SizedBox(height: 15.0),
+                HeadingThreeText(
+                    "Content Warning", decorationPriority.standard),
+                const SizedBox(height: 10.0),
+                BodyOneText(warningDescription, decorationPriority.standard),
+                const SizedBox(height: 20.0),
+                const Spacer(),
+                const DividerElement(),
+                const SizedBox(height: 20.0),
+                const Spacer(),
+                StandardIconButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Continue',
+                    buttonIcon: Assets.next,
+                    buttonAction: () => {onContinue()}),
+                const SizedBox(height: 15.0),
+                StandardIconButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Go back',
+                    buttonIcon: Assets.no,
+                    buttonAction: () => {Navigator.pop(context)}),
+              ]),
         ));
+
+    return warningLayout;
   }
 }
