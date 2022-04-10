@@ -1,13 +1,5 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
-
 class TimerToolTemplate extends ToolCardTemplate {
   final Duration allotment;
   final VoidCallback onFinish;
@@ -32,21 +24,15 @@ class TimerToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          TimerElement(timeAllotment: allotment),
+          TimerElement(
+              timeAllotment: allotment,
+              onFinish: () => {
+                    onFinish(),
+                    toolTemplateMaster.notifyObserverForward(),
+                    notificationMaster.sendAlertNotificationRequest(
+                        "Timer completed", Assets.time)
+                  }),
           const SizedBox(height: 10.0),
-          const DividerElement(),
-          const SizedBox(height: 20.0),
-          Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(),
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.important,
-                    buttonTitle: 'Next',
-                    buttonHint: 'Goes to the next card',
-                    buttonAction: () => {onNextCard()}),
-              ]),
         ]);
   }
 
@@ -57,7 +43,7 @@ class TimerToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyTwoText('Completed with a Timer.', decorationPriority.standard)
+          BodyTwoText('Completed a Timer.', decorationPriority.standard)
         ]);
   }
 }

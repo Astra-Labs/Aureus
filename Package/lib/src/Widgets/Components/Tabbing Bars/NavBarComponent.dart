@@ -64,6 +64,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(
+          alignment: Alignment.center,
           children: [
             Container(
                 width: MediaQuery.of(context).size.width,
@@ -77,26 +78,24 @@ class _NavBarComponentState extends State<NavBarComponent> {
             Center(
               child: _pages.elementAt(_selectedIndex),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 45.0),
-                child: FloatingContainerElement(
-                    child: Container(
-                        constraints: BoxConstraints(
-                            maxHeight: screenSize.height * 0.10,
-                            maxWidth: size.layoutItemWidth(1, screenSize)),
-                        decoration: CardBackingDecoration(
-                                priority: decorationPriority.inactive)
-                            .buildBacking()
-                            .copyWith(borderRadius: BorderRadius.circular(60)),
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 5.0),
-                            navigationBar,
-                          ],
-                        ))),
-              ),
+            Positioned(
+              bottom: 25,
+              child: FloatingContainerElement(
+                  child: Container(
+                      constraints: BoxConstraints(
+                          maxWidth: size.layoutItemWidth(1, screenSize)),
+                      decoration: CardBackingDecoration(
+                              priority: decorationPriority.inactive)
+                          .buildBacking()
+                          .copyWith(borderRadius: BorderRadius.circular(60)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 5),
+                          navigationBar,
+                        ],
+                      ))),
             ),
           ],
         ),

@@ -1,4 +1,7 @@
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 import 'package:aureus/aureus.dart';
+import 'package:flutter/services.dart';
 
 /* ------------------ TEXT CLASSES -------------------- */
 
@@ -272,3 +275,97 @@ class TagTwoText extends Text {
           semanticsLabel: data,
         );
 }
+
+// Takes a gradient and masks it
+// over the parameters
+// --------------------------------------
+class GradientText extends StatelessWidget {
+  final String text;
+  // The text to be displayed
+  // ------------------------
+  final TextStyle style;
+  // The style that you want it to be
+  // ------------------------
+  final Gradient gradient;
+  // The gradient to overlay the text
+  // ------------------------
+
+  const GradientText({
+    required this.text,
+    required this.gradient,
+    required this.style,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      blendMode: BlendMode.srcIn,
+      shaderCallback: (bounds) => gradient.createShader(
+        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+      ),
+      child: Text(text, style: style),
+    );
+  }
+}
+
+/*
+// Takes the primary image from the alternate style and masks it
+// over the parameters
+// --------------------------------------
+class ImageOverlayText extends StatefulWidget {
+  final String text;
+  // The text to be displayed
+  // ------------------------
+  final TextStyle style;
+  // The style that you want it to be
+  // ------------------------
+
+  const ImageOverlayText({
+    required this.text,
+    required this.style,
+  });
+
+  @override
+  _ImageOverlayTextState createState() => _ImageOverlayTextState();
+}
+
+class _ImageOverlayTextState extends State<ImageOverlayText> {
+  Float64List matrix4 = Matrix4.identity().storage;
+  late Future<ui.Image> imgFuture;
+
+  var altImage = brightness() == Brightness.light
+      ? resourceValues.darkMode.primaryImage
+      : resourceValues.lightMode.primaryImage;
+
+  // Loads image into format usable with shader.
+  Future<ui.Image> loadImage() async {
+    var fileData = Uint8List.sublistView(await rootBundle.load(altImage));
+    return await decodeImageFromList(fileData);
+  }
+
+  @override
+  void initState() {
+    imgFuture = loadImage();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: imgFuture,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Text(
+            widget.text,
+            style: widget.style.copyWith(
+                foreground: Paint()
+                  ..shader = ImageShader(snapshot.data as ui.Image,
+                      TileMode.clamp, TileMode.clamp, matrix4)),
+          );
+        } else {
+          return Text(widget.text);
+        }
+      },
+    );
+  }
+}*/

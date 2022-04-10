@@ -6,11 +6,13 @@ import 'package:aureus/aureus.dart';
 class StandardButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
   final String buttonTitle;
+  final String buttonHint;
   final VoidCallback buttonAction;
 
   const StandardButtonElement(
       {required this.decorationVariant,
       required this.buttonTitle,
+      required this.buttonHint,
       required this.buttonAction});
 
   @override
@@ -30,12 +32,6 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
     setState(() {
       buttonPriority = decorationPriority.active;
       sensation.createSensation(sensationType.press);
-    });
-
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        buttonPriority = widget.decorationVariant;
-      });
     });
   }
 
@@ -57,28 +53,35 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
 
     var screenSize = size.logicalScreenSize();
 
-    return GestureDetector(
-        onTap: () {
-          if (isButtonEnabled == true) {
-            createButtonInteraction();
-            widget.buttonAction();
-          }
-        },
-        child: PulseShadowElement(
-          pulseWidth: size.layoutItemWidth(1, screenSize),
-          isActive: widget.decorationVariant == decorationPriority.important
-              ? true
-              : false,
-          child: FloatingContainerElement(
-            child: SizedBox(
-                width: size.layoutItemWidth(1, screenSize),
-                height: minimumButtonTextSize.height * 3,
-                child: Container(
-                    decoration: buttonDecoration,
-                    child: Center(
-                        child: ButtonTwoText(
-                            widget.buttonTitle, widget.decorationVariant)))),
-          ),
-        ));
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: GestureDetector(
+          onTap: () {
+            if (isButtonEnabled == true) {
+              createButtonInteraction();
+              widget.buttonAction();
+            }
+          },
+          child: PulseShadowElement(
+            pulseWidth: size.layoutItemWidth(1, screenSize),
+            isActive: widget.decorationVariant == decorationPriority.important
+                ? true
+                : false,
+            child: FloatingContainerElement(
+              child: SizedBox(
+                  width: size.layoutItemWidth(1, screenSize),
+                  height: minimumButtonTextSize.height + 45,
+                  child: Container(
+                      decoration: buttonDecoration,
+                      child: Center(
+                          child: ButtonTwoText(
+                              widget.buttonTitle, widget.decorationVariant)))),
+            ),
+          )),
+    );
   }
 }

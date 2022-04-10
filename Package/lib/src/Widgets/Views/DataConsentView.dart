@@ -35,9 +35,12 @@ class _DataOptInViewState extends State<DataOptInView> {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
                 child: ComplexSwitchCardElement(
-                    cardLabel: currentItem.permissionName,
-                    cardBody: currentItem.permissionDescription,
-                    cardIcon: currentItem.permissionIcon),
+                  cardLabel: currentItem.permissionName,
+                  cardBody: currentItem.permissionDescription,
+                  cardIcon: currentItem.permissionIcon,
+                  onEnable: () => {currentItem.onPermissionOptIn()},
+                  onDisable: () => {},
+                ),
               );
             }),
         Align(

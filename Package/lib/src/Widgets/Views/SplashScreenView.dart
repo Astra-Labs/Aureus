@@ -74,7 +74,7 @@ class _SplashScreenViewState extends State<SplashScreenView>
           )),
       animation: animation,
       centerAlignment: Alignment.centerRight,
-      centerOffset: Offset.zero,
+      centerOffset: const Offset(0.5, 0.5),
     );
   }
 }

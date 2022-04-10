@@ -28,6 +28,8 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
       eligibleOptionCards.add(Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
         child: StandardSwitchCardElement(
+            onEnable: () => {},
+            onDisable: () => {},
             switchDescription: safety.retrieveDetails(element).name),
       ));
     }

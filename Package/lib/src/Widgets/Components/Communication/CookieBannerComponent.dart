@@ -43,11 +43,13 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: 'Accept',
+                  buttonHint: 'Accepts cookies from ${resourceValues.name}',
                   buttonAction: widget.onCookieAccept),
               const SizedBox(height: 5.0),
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: 'Deny',
+                  buttonHint: 'Denies cookies from ${resourceValues.name}',
                   buttonAction: widget.onCookieDeny),
               const SizedBox(height: 20.0),
             ],

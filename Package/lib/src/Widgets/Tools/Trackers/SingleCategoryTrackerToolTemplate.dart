@@ -9,9 +9,7 @@ USAGE:
 */
 
 class SingleCategoryTrackerToolTemplate extends ToolNavigationPage {
-  final CoreTool parentTool;
-
-  SingleCategoryTrackerToolTemplate({required this.parentTool})
+  SingleCategoryTrackerToolTemplate({parentTool})
       : super(
             parentTool: parentTool,
             pageBody: const ContainerWrapperElement(

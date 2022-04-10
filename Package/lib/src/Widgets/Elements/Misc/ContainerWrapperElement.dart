@@ -35,17 +35,18 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       return Container(
-          constraints: widget.takesFullWidth == true
-              ? BoxConstraints(
-                  minWidth: MediaQuery.of(context).size.width,
-                  maxWidth: MediaQuery.of(context).size.width,
-                  minHeight: MediaQuery.of(context).size.height,
-                  maxHeight: MediaQuery.of(context).size.height)
-              : BoxConstraints(
-                  minWidth: size.layoutItemWidth(1, screenSize),
-                  maxWidth: size.layoutItemWidth(1, screenSize),
-                  minHeight: size.layoutItemHeight(1, screenSize),
-                  maxHeight: size.layoutItemHeight(1, screenSize)),
+          constraints: BoxConstraints(
+              minWidth: MediaQuery.of(context).size.width,
+              maxWidth: MediaQuery.of(context).size.width,
+              minHeight: MediaQuery.of(context).size.height,
+              maxHeight: MediaQuery.of(context).size.height),
+          padding: widget.takesFullWidth == true
+              ? const EdgeInsets.all(0.0)
+              : EdgeInsets.fromLTRB(
+                  size.widthOf(weight: sizingWeight.w0) / 2,
+                  size.widthOf(weight: sizingWeight.w1) / 2,
+                  size.widthOf(weight: sizingWeight.w0) / 2,
+                  size.widthOf(weight: sizingWeight.w0) / 2),
           child: children);
     });
   }

@@ -20,9 +20,11 @@ class ToolTemplateCardCarouselView extends StatefulWidget {
 
 class _ToolTemplateCardCarouselViewState
     extends State<ToolTemplateCardCarouselView>
-    with AureusToolTemplateObserver {
+    with AureusToolTemplateObserver, TickerProviderStateMixin {
   late ToolNavigationContainer toolNavigation;
   List<ToolCardTemplate> toolChildren = [];
+  late AnimationController _controller;
+  late Animation<Offset> _offset;
 
   //the index current card being shown
   int currentCardIndex = 0;
@@ -33,12 +35,30 @@ class _ToolTemplateCardCarouselViewState
     toolChildren = widget.customCards.isEmpty
         ? widget.parentTool.toolCards!
         : widget.customCards;
+
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500))
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.dismissed) {
+          //resets the container after the animation is reversed
+          setState(() {});
+        }
+      });
+
+    _offset = Tween<Offset>(
+            begin: const Offset(0.0, 0.0), end: const Offset(0.0, 0.0))
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+
     super.initState();
   }
 
   @override
   void dispose() {
     toolTemplateMaster.unregisterObserver(this);
+    _controller.dispose();
     super.dispose();
   }
 
@@ -48,6 +68,11 @@ class _ToolTemplateCardCarouselViewState
     print(
         "current index is $currentCardIndex, length is ${widget.parentTool.toolCards!.length}");
     setState(() {
+      _offset = Tween<Offset>(
+              begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
+          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+      _controller.forward();
+
       if (currentCardIndex <= toolChildren.length) {
         print("card hasn't hit limit");
         currentCardIndex += 1;
@@ -69,6 +94,7 @@ class _ToolTemplateCardCarouselViewState
   void previousAction() {
     print('Received previous card instructions from master.');
     setState(() {
+      _controller.reverse();
       if (currentCardIndex != 0) {
         currentCardIndex -= 1;
       }
@@ -100,27 +126,6 @@ class _ToolTemplateCardCarouselViewState
       }
     }
 
-    var summaryList = SizedBox(
-        height: size.layoutItemHeight(4, screenSize),
-        child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: ListView(shrinkWrap: true, children: summaryListView)));
-
-    var fullLayout = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: summaryListView.isEmpty == true
-          ? [
-              activeCardItem,
-            ]
-          : [
-              activeCardItem,
-              const SizedBox(height: 20.0),
-              summaryList,
-            ],
-    );
-
     var progressBar = FloatingContainerElement(
         child: Container(
             width: screenSize.width,
@@ -143,10 +148,9 @@ class _ToolTemplateCardCarouselViewState
         PageHeaderElement.withExit(
             pageTitle: widget.parentTool.toolName,
             onPageExit: () => {Navigator.pop(context)}),
-        const SizedBox(height: 30.0),
-        fullLayout,
         const Spacer(),
-        const SizedBox(height: 30.0),
+        activeCardItem,
+        const Spacer(),
         progressBar
       ],
       containerVariant: wrapperVariants.fullScreen,

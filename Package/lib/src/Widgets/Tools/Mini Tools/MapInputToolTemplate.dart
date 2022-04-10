@@ -1,4 +1,12 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+
+/*
+-------------------------------
+IN BETA DEVELOPMENT - DO NOT USE
+-------------------------------
+*/
 
 class MapInputToolTemplate extends ToolCardTemplate {
   MapInputToolTemplate({required templatePrompt, required badgeIcon})
@@ -17,8 +25,7 @@ class MapInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          const SizedBox(height: 10.0),
-          const DividerElement(),
+          const _MapInputCard(),
           const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,6 +64,33 @@ class _MapInputCard extends StatefulWidget {
 class _MapInputCardState extends State<_MapInputCard> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    var screenSize = size.logicalScreenSize();
+    return SizedBox(
+      width: size.layoutItemWidth(1, screenSize),
+      height: size.layoutItemHeight(2, screenSize),
+      child: Container(
+        decoration: BoxDecoration(border: universalBorder()),
+        child: FlutterMap(
+          options: MapOptions(
+            bounds: LatLngBounds(LatLng(58.8, 6.1), LatLng(59, 6.2)),
+            boundsOptions: const FitBoundsOptions(padding: EdgeInsets.all(8.0)),
+          ),
+          layers: [
+            TileLayerOptions(
+                urlTemplate:
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                subdomains: ['a', 'b', 'c'],
+                attributionBuilder: (_) {
+                  return const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: TabSubheaderElement(
+                      title: "© OpenStreetMap contributors",
+                    ),
+                  );
+                }),
+          ],
+        ),
+      ),
+    );
   }
 }

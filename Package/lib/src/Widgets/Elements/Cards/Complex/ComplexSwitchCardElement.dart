@@ -4,12 +4,15 @@ class ComplexSwitchCardElement extends StatelessWidget {
   final String cardLabel;
   final String cardBody;
   final IconData cardIcon;
-  final SwitchComponent switchItem = SwitchComponent();
+  final VoidCallback onEnable;
+  final VoidCallback onDisable;
 
-  ComplexSwitchCardElement(
+  const ComplexSwitchCardElement(
       {required this.cardLabel,
       required this.cardBody,
-      required this.cardIcon});
+      required this.cardIcon,
+      required this.onEnable,
+      required this.onDisable});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,7 @@ class ComplexSwitchCardElement extends StatelessWidget {
                         ),
                         Align(
                             alignment: Alignment.topRight,
-                            child: SwitchComponent())
+                            child: SwitchComponent(onEnable, onDisable))
                       ],
                     ),
                     const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),

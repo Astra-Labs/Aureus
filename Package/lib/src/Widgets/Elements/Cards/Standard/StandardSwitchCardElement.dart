@@ -2,9 +2,14 @@ import 'package:aureus/aureus.dart';
 
 class StandardSwitchCardElement extends StatefulWidget {
   final String switchDescription;
+  final VoidCallback onEnable;
+  final VoidCallback onDisable;
   bool isSwitchEnabled = false;
 
-  StandardSwitchCardElement({required this.switchDescription});
+  StandardSwitchCardElement(
+      {required this.switchDescription,
+      required this.onEnable,
+      required this.onDisable});
 
   @override
   _StandardSwitchCardElementState createState() =>
@@ -55,14 +60,7 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
                           child: BodyOneText(widget.switchDescription,
                               decorationPriority.standard),
                         ),
-                        Switch(
-                          onChanged: toggleSwitch,
-                          value: widget.isSwitchEnabled,
-                          activeColor: coloration.contrastColor(),
-                          activeTrackColor: coloration.accentColor(),
-                          inactiveThumbColor: coloration.accentColor(),
-                          inactiveTrackColor: coloration.inactiveColor(),
-                        )
+                        SwitchComponent(widget.onEnable, widget.onDisable)
                       ]),
                 ))),
       ),

@@ -39,6 +39,7 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
             StandardButtonElement(
                 decorationVariant: decorationPriority.important,
                 buttonTitle: 'I want additional safety features.',
+                buttonHint: 'Takes you to enable safety features.',
                 buttonAction: () => {
                       Navigator.push(
                           context,
@@ -52,6 +53,7 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonTitle: "I don't want safety features.",
+                buttonHint: "Continues without enabling safety features",
                 buttonAction: () => {
                       Navigator.push(
                           context,

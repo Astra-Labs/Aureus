@@ -30,6 +30,7 @@ class _CenteredAlertControllerComponentState
                     ? decorationPriority.important
                     : decorationPriority.standard,
             buttonTitle: element.actionName,
+            buttonHint: 'Completes ${element.actionName}',
             buttonAction: element.onSelection),
       ));
     }

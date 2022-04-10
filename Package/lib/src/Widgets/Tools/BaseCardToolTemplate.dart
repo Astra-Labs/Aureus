@@ -26,37 +26,41 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    var activeLayout = Container(
-        constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(1, screenSize),
-            minWidth: size.layoutItemWidth(1, screenSize),
-            maxHeight: size.layoutItemHeight(1, screenSize)),
-        decoration: CardBackingDecoration(priority: decorationPriority.inverted)
-            .buildBacking(),
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 10.0),
-            IconBadge(
-                badgeIcon: widget.cardIcon,
-                badgePriority: decorationPriority.standard),
-            const SizedBox(height: 20.0),
-            BodyTwoText(widget.toolPrompt, decorationPriority.standard),
-            const SizedBox(height: 20.0),
-            Column(children: widget.toolChildren),
-            const SizedBox(height: 20.0)
-          ],
-        ));
+    var activeLayout = PulseShadowElement(
+        isActive: true,
+        pulseWidth: size.layoutItemWidth(1, screenSize),
+        child: Container(
+            constraints: BoxConstraints(
+                maxWidth: size.layoutItemWidth(1, screenSize),
+                minWidth: size.layoutItemWidth(1, screenSize),
+                maxHeight: size.layoutItemHeight(1, screenSize)),
+            decoration:
+                CardBackingDecoration(priority: decorationPriority.inverted)
+                    .buildBacking(),
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 10.0),
+                IconBadge(
+                    badgeIcon: widget.cardIcon,
+                    badgePriority: decorationPriority.standard),
+                const SizedBox(height: 20.0),
+                BodyTwoText(widget.toolPrompt, decorationPriority.standard),
+                const SizedBox(height: 20.0),
+                Column(children: widget.toolChildren),
+                const SizedBox(height: 20.0)
+              ],
+            )));
 
     var inactiveLayout = FloatingContainerElement(
         child: Container(
             constraints: BoxConstraints(
                 maxWidth: size.layoutItemWidth(1, screenSize),
                 minWidth: size.layoutItemWidth(1, screenSize),
-                maxHeight: size.layoutItemHeight(5, screenSize)),
+                maxHeight: size.layoutItemHeight(6, screenSize)),
             decoration:
                 CardBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
@@ -84,7 +88,7 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TagOneText(widget.toolPrompt, decorationPriority.standard),
-                    const SizedBox(height: 15.0),
+                    const SizedBox(height: 10.0),
                     SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(children: widget.toolChildren))

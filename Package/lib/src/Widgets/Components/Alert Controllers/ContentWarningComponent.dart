@@ -44,12 +44,14 @@ class ContentWarningComponent extends StatelessWidget {
                 StandardIconButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Continue',
+                    buttonHint: "Clears the content warning, and continues.",
                     buttonIcon: Assets.next,
                     buttonAction: () => {onContinue()}),
                 const SizedBox(height: 15.0),
                 StandardIconButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Go back',
+                    buttonHint: "Takes you to the previous screen.",
                     buttonIcon: Assets.no,
                     buttonAction: () => {Navigator.pop(context)}),
               ]),

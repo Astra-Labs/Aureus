@@ -109,7 +109,9 @@ Map<String, Widget> aureusComponents = {
 
 Map<String, Widget> aureusViews = {
   'Splash Screen': SplashScreenView(
-    onLaunch: () => {print('Launched something!')},
+    onLaunch: () => {
+      Navigator.push(context, MaterialPageRoute(builder: builder))
+    },
   ),
   'Two Factor Authentication': TFAVerificationView(
       userPhoneNumber: 555555555,
@@ -129,14 +131,14 @@ Map<String, Widget> aureusViews = {
     SafetyPlanOptions.deviceSandbox,
     SafetyPlanOptions.disableScreenshots,
     SafetyPlanOptions.disableNotifications,
-  ]),
+  ], exitPoint: ,),
   'Sign In View': SignInView(
       onSignIn: fillerAction,
       onSignup: fillerAction,
       onResetInformation: fillerAction),
-  /*'Tool Detail View': demoTool.navigationContainer.details,
+  'Tool Detail View': demoTool.navigationContainer.details,
   'Tool Next Steps View': demoTool.navigationContainer.nextSteps,
-  'Tool Summary View': demoTool.navigationContainer.summary!,*/
+  'Tool Summary View': demoTool.navigationContainer.summary!
 };
 
 /*Map<String, Widget> aureusToolTemplates = { 

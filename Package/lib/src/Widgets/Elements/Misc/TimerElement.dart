@@ -4,10 +4,12 @@ import 'dart:async';
 //A backing that acts as a timer.
 //Doc Link:
 
+// ignore: must_be_immutable
 class TimerElement extends StatefulWidget {
   final Duration timeAllotment;
+  VoidCallback? onFinish;
 
-  const TimerElement({required this.timeAllotment});
+  TimerElement({required this.timeAllotment, this.onFinish});
 
   @override
   _TimerElementState createState() => _TimerElementState();
@@ -18,38 +20,46 @@ class _TimerElementState extends State<TimerElement>
   late Timer _timer;
   var _isTimerActive = false;
   var intDuration = 0;
+  var timeString = '';
 
   void startTimer() {
     print('timer started!');
 
     _isTimerActive = true;
+    controller.forward();
 
     var intDuration = (widget.timeAllotment.inSeconds);
-    const oneSec = Duration(seconds: 1);
     _timer = Timer.periodic(
-      oneSec,
+      const Duration(seconds: 1),
       (Timer timer) {
-        setState(() {
-          if (intDuration == 0) {
-            timer.cancel();
-            _isTimerActive = false;
-          } else {
-            intDuration--;
+        if (intDuration == 0) {
+          timer.cancel();
+          if (widget.onFinish != null) {
+            widget.onFinish!();
           }
-        });
+          _isTimerActive = false;
+        } else {
+          intDuration--;
+        }
       },
     );
   }
 
   void pauseTimer() {
-    _isTimerActive = false;
-    _timer.cancel();
+    setState(() {
+      _isTimerActive = false;
+      _timer.cancel();
+      controller.stop();
+    });
   }
 
   void resetTimer() {
-    _isTimerActive = false;
-    _timer.cancel();
-    intDuration = widget.timeAllotment.inSeconds;
+    setState(() {
+      _isTimerActive = false;
+      _timer.cancel();
+      intDuration = widget.timeAllotment.inSeconds;
+      controller.reset();
+    });
   }
 
   late AnimationController controller;
@@ -65,12 +75,13 @@ class _TimerElementState extends State<TimerElement>
         accessibility.accessFeatures.reduceMotion == false) {
       controller = AnimationController(
         vsync: this,
-        upperBound: intDuration.toDouble() / 100,
-        duration: const Duration(seconds: 2),
+        duration: Duration(seconds: intDuration),
       )..addListener(() {
-          setState(() {});
+          setState(() {
+            timeString = formatHHMMSS(controller.duration!.inSeconds -
+                controller.lastElapsedDuration!.inSeconds);
+          });
         });
-      controller.forward();
       super.initState();
     }
   }
@@ -126,7 +137,7 @@ class _TimerElementState extends State<TimerElement>
             ),
           ),
         ),
-        HeadingOneText(formatHHMMSS(intDuration), decorationPriority.standard)
+        HeadingOneText(timeString, decorationPriority.standard)
       ]),
     );
 

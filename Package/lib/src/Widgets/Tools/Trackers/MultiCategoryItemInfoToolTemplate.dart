@@ -9,9 +9,7 @@ USAGE:
 */
 
 class MultiCategoryItemInfoToolTemplate extends ToolNavigationPage {
-  final CoreTool parentTool;
-
-  MultiCategoryItemInfoToolTemplate({required this.parentTool})
+  MultiCategoryItemInfoToolTemplate({required parentTool})
       : super(
             parentTool: parentTool,
             pageBody: const ContainerWrapperElement(

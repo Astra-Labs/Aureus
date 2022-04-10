@@ -1,11 +1,9 @@
 import 'package:aureus/aureus.dart';
 
 /*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
+-------------------------------
+IN BETA DEVELOPMENT - DO NOT USE
+-------------------------------
 */
 
 class PulseInputToolTemplate extends ToolCardTemplate {

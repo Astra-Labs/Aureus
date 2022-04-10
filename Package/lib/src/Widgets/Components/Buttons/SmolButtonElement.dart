@@ -24,24 +24,18 @@ class SmolButtonElement extends StatefulWidget {
 class _SmolButtonElementState extends State<SmolButtonElement> {
   BoxDecoration animatedBacking = const BoxDecoration();
 
-  late decorationPriority buttonPriority;
+  var scale = 1.0;
+  var duration = const Duration(milliseconds: 500);
 
   @override
   void initState() {
-    buttonPriority = widget.decorationVariant;
     super.initState();
   }
 
   void createButtonInteraction() {
     setState(() {
-      buttonPriority = decorationPriority.active;
+      scale = 1.5;
       sensation.createSensation(sensationType.press);
-    });
-
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        buttonPriority = widget.decorationVariant;
-      });
     });
   }
 
@@ -52,7 +46,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
 
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedPill,
-            priority: buttonPriority)
+            priority: widget.decorationVariant)
         .buildBacking();
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
@@ -80,16 +74,20 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
                 ? true
                 : false,
             child: FloatingContainerElement(
-              child: Container(
-                  constraints: BoxConstraints(
-                      minHeight: minimumButtonTextSize.height * 1.8,
-                      maxHeight: minimumButtonTextSize.height * 2,
-                      maxWidth: minimumButtonTextSize.width * 2,
-                      minWidth: minimumButtonTextSize.width * 2),
-                  decoration: buttonDecoration,
-                  child: Center(
-                      child: TagOneText(
-                          widget.buttonTitle, widget.decorationVariant))),
+              child: AnimatedScale(
+                scale: scale,
+                duration: duration,
+                child: Container(
+                    constraints: BoxConstraints(
+                        minHeight: minimumButtonTextSize.height + 10,
+                        maxHeight: minimumButtonTextSize.height + 10,
+                        maxWidth: minimumButtonTextSize.width + 20,
+                        minWidth: minimumButtonTextSize.width + 20),
+                    decoration: buttonDecoration,
+                    child: Center(
+                        child: TagOneText(
+                            widget.buttonTitle, widget.decorationVariant))),
+              ),
             ),
           )),
     );

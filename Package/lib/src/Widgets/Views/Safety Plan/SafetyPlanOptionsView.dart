@@ -21,6 +21,8 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
 
     for (var element in safety.eligiblePlanOptions) {
       eligibleOptionCards.add(StandardSwitchCardElement(
+          onEnable: () => {userSelectedOptions.add(element)},
+          onDisable: () => {userSelectedOptions.remove(element)},
           switchDescription: safety.retrieveDetails(element).name));
     }
 
@@ -45,17 +47,12 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
         Align(
           alignment: Alignment.bottomRight,
           child: PrimaryIconButtonElement(
-              decorationVariant: decorationPriority.important,
+              decorationVariant: userSelectedOptions.isEmpty
+                  ? decorationPriority.inactive
+                  : decorationPriority.important,
               buttonIcon: Assets.next,
               buttonHint: 'Go to next page',
               buttonAction: () => {
-                    eligibleOptionCards.forEach((element) {
-                      if (element.isSwitchEnabled == true) {
-                        var index = eligibleOptionCards.indexOf(element);
-                        userSelectedOptions
-                            .add(safety.eligiblePlanOptions.elementAt(index));
-                      }
-                    }),
                     Navigator.push(
                         context,
                         MaterialPageRoute(

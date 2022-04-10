@@ -16,14 +16,18 @@ class _SettingsViewState extends State<SettingsView> {
       StandardButtonElement(
           decorationVariant: decorationPriority.standard,
           buttonTitle: 'Contact Support',
+          buttonHint:
+              'Brings you to contact support for ${resourceValues.name}',
           buttonAction: () => {}),
       StandardButtonElement(
           decorationVariant: decorationPriority.standard,
           buttonTitle: 'Terms of Service',
+          buttonHint: 'Shows Terms of Service',
           buttonAction: () => {}),
       StandardButtonElement(
           decorationVariant: decorationPriority.standard,
           buttonTitle: 'Privacy Policy',
+          buttonHint: 'Shows Privacy Policy',
           buttonAction: () => {})
     ],
   );
@@ -41,7 +45,9 @@ class _SettingsViewState extends State<SettingsView> {
           const SizedBox(height: 20.0),
           StandardButtonElement(
               decorationVariant: decorationPriority.standard,
-              buttonTitle: 'use the help center.',
+              buttonTitle: 'Use the help center.',
+              buttonHint:
+                  "Takes you to the help center to find more information about ${resourceValues.name}",
               buttonAction: () => {
                     Navigator.push(
                         context,
@@ -53,6 +59,7 @@ class _SettingsViewState extends State<SettingsView> {
           StandardButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'modify Safety Plan settings.',
+              buttonHint: "Takes you to modify your safety plan.",
               buttonAction: () => {
                     Navigator.push(
                         context,
@@ -65,6 +72,8 @@ class _SettingsViewState extends State<SettingsView> {
               decorationVariant: decorationPriority.standard,
               buttonTitle:
                   'learn more about ${packageVariables.resourceInformation.name}.',
+              buttonHint:
+                  "Shows terms of service, licenses, developer information, and more.",
               buttonAction: () => {showAboutDialog(context: context)})
         ]);
 

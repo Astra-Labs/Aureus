@@ -29,15 +29,12 @@ class SingleUserInputTypeObject extends BaseUserInputObject {
 
 class MultiUserInputTypeObject extends BaseUserInputObject {
   final String dataLabel;
-  final String placeholder;
-  final String accessibilityHint;
-  final TextInputType textInputType;
 
-  MultiUserInputTypeObject(
+  const MultiUserInputTypeObject(
       {required this.dataLabel,
-      required this.placeholder,
-      required this.accessibilityHint,
-      required this.textInputType})
+      required placeholder,
+      required accessibilityHint,
+      required textInputType})
       : assert(dataLabel != ''),
         super(
             placeholder: placeholder,

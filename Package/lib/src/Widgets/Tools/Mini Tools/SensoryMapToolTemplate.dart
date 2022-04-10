@@ -1,5 +1,4 @@
 import 'package:aureus/aureus.dart';
-import 'dart:ui' as ui;
 
 class SensoryMapToolTemplate extends ToolCardTemplate {
   SensoryMapToolTemplate({required templatePrompt, required badgeIcon})
@@ -17,10 +16,7 @@ class SensoryMapToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText('Drag the dot to where you feel xyz in your body.',
-              decorationPriority.standard),
           const _SensoryMapInputCard(),
-          const DividerElement(),
           const SizedBox(height: 20.0),
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,41 +52,96 @@ class _SensoryMapInputCard extends StatefulWidget {
 }
 
 class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
-  @override
-  Widget build(BuildContext context) {
-    return FloatingContainerElement(
-      child: SizedBox(
-        width: 200,
-        height: 200,
-        child: CustomPaint(
-          size: const Size(195, 195),
-          painter: SensoryMapPainter(),
-        ),
-      ),
+  Offset itemOffset = Offset.zero;
+
+  Container createMapCircle(double diameter) {
+    return Container(
+      width: diameter,
+      height: diameter,
+      decoration:
+          BoxDecoration(border: universalBorder(), shape: BoxShape.circle),
     );
   }
-}
 
-class SensoryMapPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    const pointMode = ui.PointMode.polygon;
-    final points = [
-      const Offset(50, 100),
-      const Offset(150, 75),
-      const Offset(250, 250),
-      const Offset(130, 200),
-      const Offset(270, 100),
-    ];
-    final paint = Paint()
-      ..color = Colors.black
-      ..strokeWidth = 4
-      ..strokeCap = StrokeCap.round;
-    canvas.drawPoints(pointMode, points, paint);
+  void onPanStart(DragStartDetails details) {
+    print('User started drawing');
+    final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition);
+
+    setState(() {
+      itemOffset = point;
+    });
+
+    print(point);
+  }
+
+  void onPanUpdate(DragUpdateDetails details) {
+    final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition);
+
+    setState(() {
+      itemOffset = point;
+    });
+
+    print(point);
+  }
+
+  void onPanEnd(DragEndDetails details) {
+    print('User ended drawing');
   }
 
   @override
-  bool shouldRepaint(CustomPainter old) {
-    return false;
+  Widget build(BuildContext context) {
+    var sensoryMarker = PulseShadowElement(
+        isActive: true,
+        pulseWidth: size.responsiveSize(40),
+        child: Container(
+          width: size.responsiveSize(40),
+          height: size.responsiveSize(40),
+          decoration: ButtonBackingDecoration(
+                  variant: buttonDecorationVariants.circle,
+                  priority: decorationPriority.important)
+              .buildBacking(),
+          child: Icon(
+            Icons.circle_outlined,
+            color: coloration.sameColor(),
+          ),
+        ));
+
+    var mappingCircles = SizedBox(
+        width: 250,
+        height: 250,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            createMapCircle(size.responsiveSize(275)),
+            createMapCircle(size.responsiveSize(250)),
+            createMapCircle(size.responsiveSize(225)),
+            createMapCircle(size.responsiveSize(200)),
+            createMapCircle(size.responsiveSize(175)),
+            createMapCircle(size.responsiveSize(150)),
+            createMapCircle(size.responsiveSize(125)),
+            createMapCircle(size.responsiveSize(100)),
+            createMapCircle(size.responsiveSize(75)),
+            createMapCircle(size.responsiveSize(50)),
+            createMapCircle(size.responsiveSize(25)),
+            const Positioned(
+                top: 0.0, child: TabSubheaderElement(title: "Top")),
+            const Positioned(
+                right: 0.0, child: TabSubheaderElement(title: "Right")),
+            const Positioned(
+                bottom: 0.0, child: TabSubheaderElement(title: "Bottom")),
+            const Positioned(
+                left: 0.0, child: TabSubheaderElement(title: "Left")),
+            Positioned(
+                left: itemOffset.dx, top: itemOffset.dy, child: sensoryMarker),
+          ],
+        ));
+
+    return GestureDetector(
+        onPanStart: onPanStart,
+        onPanUpdate: onPanUpdate,
+        onPanEnd: onPanEnd,
+        child: mappingCircles);
   }
 }

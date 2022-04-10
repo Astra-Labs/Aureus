@@ -37,12 +37,6 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
       buttonPriority = decorationPriority.active;
       sensation.createSensation(sensationType.press);
     });
-
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        buttonPriority = widget.decorationVariant;
-      });
-    });
   }
 
   @override
@@ -127,12 +121,6 @@ class _SecondaryIconButtonElementState
       buttonPriority = decorationPriority.active;
       sensation.createSensation(sensationType.press);
     });
-
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        buttonPriority = widget.decorationVariant;
-      });
-    });
   }
 
   @override
@@ -163,7 +151,7 @@ class _SecondaryIconButtonElementState
               height: 50.0,
               decoration: ButtonBackingDecoration(
                       variant: buttonDecorationVariants.circle,
-                      priority: buttonPriority)
+                      priority: widget.decorationVariant)
                   .buildBacking(),
               alignment: Alignment.center,
               child: Icon(widget.buttonIcon,

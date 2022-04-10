@@ -64,7 +64,6 @@ class PageHeaderElement extends StatelessWidget {
           minHeight: labelSizing.height * 2),
       child: Column(
         children: [
-          SizedBox(height: size.responsiveSize(30.0)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +72,6 @@ class PageHeaderElement extends StatelessWidget {
               Flexible(
                   child:
                       HeadingTwoText(pageTitle, decorationPriority.standard)),
-              const Spacer(),
               buttonOptions()
             ],
           ),

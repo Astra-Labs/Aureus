@@ -35,15 +35,12 @@ class TabObject {
 
 class ControllerTabObject extends TabObject {
   final Widget tabController;
-  final String tabTitle;
-  final String accessibilityHint;
-  final IconData tabIcon;
 
   ControllerTabObject(
       {required this.tabController,
-      required this.tabTitle,
-      required this.accessibilityHint,
-      required this.tabIcon})
+      required tabTitle,
+      required accessibilityHint,
+      required tabIcon})
       : super.forBasicTabbing(
             tabTitle: tabTitle,
             tabIcon: tabIcon,

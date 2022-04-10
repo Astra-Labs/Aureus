@@ -1,17 +1,11 @@
-import 'package:aureus/aureus.dart';
-import 'package:camera/camera.dart';
 import 'dart:io';
 
-/*
+import 'package:aureus/aureus.dart';
+import 'package:camera/camera.dart';
+import 'package:video_player/video_player.dart';
 
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
-
-class CameraInputToolTemplate extends ToolCardTemplate {
-  CameraInputToolTemplate({required templatePrompt, required badgeIcon})
+class VideoInputToolTemplate extends ToolCardTemplate {
+  VideoInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
   // Array that holds the values neccessary to read
@@ -32,15 +26,15 @@ class CameraInputToolTemplate extends ToolCardTemplate {
           Builder(
             builder: (context) => StandardIconButtonElement(
                 decorationVariant: decorationPriority.important,
-                buttonIcon: Assets.camera,
-                buttonTitle: "Take photo",
+                buttonIcon: Assets.play,
+                buttonTitle: "Take a video",
                 buttonHint: "Takes you to the camera.",
                 buttonAction: () => {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => _CameraInputCard(
-                                templatePrompt: templatePrompt,
+                            builder: (context) => _VideoRecordInputCard(
+                                toolPrompt: templatePrompt,
                                 cardIcon: badgeIcon),
                           )),
                     }),
@@ -55,24 +49,26 @@ class CameraInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyTwoText('Took a photo with Camera Input Tool',
-              decorationPriority.standard)
+          BodyTwoText('Responded with a video.', decorationPriority.standard)
         ]);
   }
 }
 
-class _CameraInputCard extends StatefulWidget {
-  final String templatePrompt;
+class _VideoRecordInputCard extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
   final IconData cardIcon;
-  const _CameraInputCard(
-      {required this.templatePrompt, required this.cardIcon});
+  final String toolPrompt;
+
+  const _VideoRecordInputCard(
+      {required this.cardIcon, required this.toolPrompt});
 
   @override
-  _CameraInputCardState createState() => _CameraInputCardState();
+  _VideoRecordInputCardState createState() => _VideoRecordInputCardState();
 }
 
-class _CameraInputCardState extends State<_CameraInputCard> {
+class _VideoRecordInputCardState extends State<_VideoRecordInputCard> {
   bool _isLoading = true;
+  bool _isRecording = false;
   late CameraController _cameraController;
 
   @override
@@ -87,23 +83,39 @@ class _CameraInputCardState extends State<_CameraInputCard> {
     super.dispose();
   }
 
-  void _takePhoto() async {
-    final file = await _cameraController.takePicture();
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => _CameraReviewCard(
-            file: file,
-            toolPrompt: widget.templatePrompt,
-            cardIcon: widget.cardIcon,
-          ),
-        ));
+  void _manageVideo() async {
+    if (_isRecording) {
+      setState(() => _isRecording = false);
+      await _cameraController.pauseVideoRecording();
+    } else {
+      setState(() => _isRecording = true);
+      await _cameraController.prepareForVideoRecording();
+      await _cameraController.startVideoRecording();
+    }
+  }
+
+  void _clearVideo() async {
+    await _cameraController.stopVideoRecording();
+    setState(() => _isRecording = false);
+  }
+
+  void _finishVideo() async {
+    final file = await _cameraController.stopVideoRecording();
+    setState(() => _isRecording = false);
+    final route = MaterialPageRoute(
+      fullscreenDialog: true,
+      builder: (_) => _VideoPlaybackCard(
+          filePath: file.path,
+          toolPrompt: widget.toolPrompt,
+          cardIcon: widget.cardIcon),
+    );
+    Navigator.push(context, route);
   }
 
   void _initCamera() async {
     final cameras = await availableCameras();
     final front = cameras.firstWhere(
-        (camera) => camera.lensDirection == CameraLensDirection.back);
+        (camera) => camera.lensDirection == CameraLensDirection.front);
     _cameraController = CameraController(front, ResolutionPreset.max);
     await _cameraController.initialize();
     setState(() => _isLoading = false);
@@ -113,32 +125,33 @@ class _CameraInputCardState extends State<_CameraInputCard> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    var topBar = Column(children: [
-      SizedBox(
-          width: size.layoutItemWidth(1, screenSize),
-          height: size.layoutItemWidth(5, screenSize),
-          child: FloatingContainerElement(
-            child: Container(
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  HeadingTwoText("Capture", decorationPriority.standard),
-                  const Spacer(),
-                  SecondaryIconButtonElement(
-                      decorationVariant: decorationPriority.standard,
-                      buttonIcon: Assets.no,
-                      buttonHint: "Exits the camera.",
-                      buttonAction: () => {Navigator.pop(context)}),
-                ],
-              ),
+    var topBar = SizedBox(
+        width: size.layoutItemWidth(1, screenSize),
+        height: size.layoutItemWidth(5, screenSize),
+        child: FloatingContainerElement(
+          child: Container(
+            decoration:
+                CardBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                HeadingTwoText("Record", decorationPriority.standard),
+                const Spacer(),
+                SecondaryIconButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonIcon: Assets.no,
+                    buttonHint: "Exits the recording studio.",
+                    buttonAction: () => {Navigator.pop(context)}),
+              ],
             ),
-          )),
-      const SizedBox(height: 20.0),
+          ),
+        ));
+
+    var controlBar =
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       SizedBox(
         width: size.layoutItemWidth(1, screenSize),
         height: size.layoutItemHeight(6, screenSize),
@@ -156,11 +169,56 @@ class _CameraInputCardState extends State<_CameraInputCard> {
                     badgeIcon: widget.cardIcon,
                     badgePriority: decorationPriority.inverted),
                 const SizedBox(width: 20.0),
-                BodyTwoText(
-                    widget.templatePrompt, decorationPriority.important),
+                BodyTwoText(widget.toolPrompt, decorationPriority.important),
               ],
             )),
       ),
+      const SizedBox(height: 20),
+      SizedBox(
+          width: size.layoutItemWidth(1, screenSize),
+          height: size.layoutItemWidth(3, screenSize),
+          child: FloatingContainerElement(
+            child: Container(
+              decoration:
+                  CardBackingDecoration(priority: decorationPriority.inactive)
+                      .buildBacking(),
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Spacer(),
+                  SmolButtonElement(
+                      decorationVariant: _isRecording == true
+                          ? decorationPriority.important
+                          : decorationPriority.inactive,
+                      buttonTitle: 'Clear',
+                      buttonHint: "Clears and restarts recording.",
+                      buttonAction: () => {_clearVideo()}),
+                  const SizedBox(width: 30.0),
+                  PrimaryIconButtonElement(
+                      decorationVariant: decorationPriority.important,
+                      buttonIcon:
+                          _isRecording ? Icons.circle : Icons.circle_outlined,
+                      buttonHint: _isRecording
+                          ? "Pauses recording."
+                          : "Starts recording",
+                      buttonAction: () => {_manageVideo()}),
+                  const SizedBox(width: 30.0),
+                  SmolButtonElement(
+                      decorationVariant: _isRecording == true
+                          ? decorationPriority.important
+                          : decorationPriority.inactive,
+                      buttonTitle: "Finish",
+                      buttonHint: "Finishes recording.",
+                      buttonAction: () => {
+                            _finishVideo(),
+                          }),
+                  const Spacer(),
+                ],
+              ),
+            ),
+          ))
     ]);
 
     var cameraStack = SizedBox(
@@ -173,21 +231,8 @@ class _CameraInputCardState extends State<_CameraInputCard> {
               scale: 1.5,
               child: CameraPreview(_cameraController),
             ),
-            Positioned(top: 60, child: topBar),
-            Positioned(
-                bottom: 45,
-                child: PrimaryIconButtonElement(
-                    decorationVariant: decorationPriority.important,
-                    buttonIcon: Icons.circle_outlined,
-                    buttonHint: "Takes a photo.",
-                    buttonAction: () => {_takePhoto()})),
-            Container(
-                width: size.responsiveSize(250),
-                height: size.responsiveSize(250),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: universalBorder(),
-                )),
+            Positioned(top: 50, child: topBar),
+            Positioned(bottom: 30, child: controlBar),
           ],
         ));
 
@@ -213,25 +258,40 @@ class _CameraInputCardState extends State<_CameraInputCard> {
   }
 }
 
-class _CameraReviewCard extends StatefulWidget {
+class _VideoPlaybackCard extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
 
-  final XFile file;
+  final String filePath;
   final IconData cardIcon;
   final String toolPrompt;
 
-  const _CameraReviewCard(
+  const _VideoPlaybackCard(
       {Key? key,
-      required this.file,
+      required this.filePath,
       required this.cardIcon,
       required this.toolPrompt})
       : super(key: key);
 
   @override
-  _CameraReviewCardState createState() => _CameraReviewCardState();
+  _VideoPlaybackCardState createState() => _VideoPlaybackCardState();
 }
 
-class _CameraReviewCardState extends State<_CameraReviewCard> {
+class _VideoPlaybackCardState extends State<_VideoPlaybackCard> {
+  late VideoPlayerController _videoPlayerController;
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
+  }
+
+  Future _initVideoPlayer() async {
+    _videoPlayerController = VideoPlayerController.file(File(widget.filePath));
+    await _videoPlayerController.initialize();
+    await _videoPlayerController.setLooping(true);
+    await _videoPlayerController.play();
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
@@ -279,7 +339,7 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
                       decorationVariant: decorationPriority.standard,
                       buttonTitle: 'Retake',
                       buttonIcon: Assets.no,
-                      buttonHint: "Goes back to camera.",
+                      buttonHint: "Goes back to recording studio.",
                       buttonAction: () => {Navigator.pop(context)}),
                   const SizedBox(height: 20),
                   StandardIconButtonElement(
@@ -292,7 +352,7 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
                             Navigator.of(context)
                                 .popUntil((_) => popCount++ >= 2),
                             notificationMaster.sendAlertNotificationRequest(
-                                "Camera tool completed.", Assets.camera)
+                                "Video tool completed.", Assets.camera)
                           }),
                   const Spacer(),
                 ],
@@ -309,18 +369,24 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
             takesFullWidth: true,
             children: [
               SizedBox(
-                  width: screenSize.width,
-                  height: screenSize.height,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.file(File(widget.file.path),
-                          width: screenSize.width,
-                          height: screenSize.height,
-                          fit: BoxFit.cover),
-                      Positioned(bottom: 30, child: controlBar)
-                    ],
-                  ))
+                width: screenSize.width,
+                height: screenSize.height,
+                child: FutureBuilder(
+                    future: _initVideoPlayer(),
+                    builder: (context, state) {
+                      if (state.connectionState == ConnectionState.waiting) {
+                        return const Center(child: LoadingCircleElement());
+                      } else {
+                        return Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            VideoPlayer(_videoPlayerController),
+                            Positioned(bottom: 30, child: controlBar)
+                          ],
+                        );
+                      }
+                    }),
+              )
             ],
             containerVariant: wrapperVariants.fullScreen));
   }

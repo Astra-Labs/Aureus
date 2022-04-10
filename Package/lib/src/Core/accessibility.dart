@@ -48,19 +48,16 @@ class SemanticsWrapper extends SemanticsProperties {
   //  Is a temporary / time sensitive item that will disappear. Makes
   //  an annoucement over VoiceReaders
   // ------------------------------
-  String? label;
-  //  What the item is named
+  //  Label: What the item is named
   // ------------------------------
-  String? value;
-  //  What the value of the item is. E.G: If a text field, what the text is.
+  // Value: What the value of the item is. E.G: If a text field, what the text is.
   // ------------------------------
-  String? hint;
-  //  What happens if you interact with the item.
+  // Hint: What happens if you interact with the item.
   // ------------------------------
 
   // ------------------------------
   // Wrapper that governs a header that divides a page
-  SemanticsWrapper.header({required this.label})
+  SemanticsWrapper.header({required label})
       : assert(label != ""),
         super(label: label, header: true, readOnly: true);
 
@@ -68,8 +65,8 @@ class SemanticsWrapper extends SemanticsProperties {
   // Wrapper that governs a button
   SemanticsWrapper.button(
       {required this.isEnabled,
-      required this.label,
-      required this.hint,
+      required label,
+      required hint,
       required this.isMutuallyExclusive})
       : assert(isEnabled != null &&
             hint != "" &&
@@ -87,8 +84,8 @@ class SemanticsWrapper extends SemanticsProperties {
   // Wrapper that governs a toggle
   SemanticsWrapper.toggle(
       {required this.isEnabled,
-      required this.label,
-      required this.hint,
+      required label,
+      required hint,
       required this.isToggled,
       required this.isMutuallyExclusive})
       : assert(isEnabled != null &&
@@ -106,7 +103,7 @@ class SemanticsWrapper extends SemanticsProperties {
 
   // ------------------------------
   // Wrapper that governs a progress indicator
-  SemanticsWrapper.progressIndicator({required this.hint, required this.value})
+  SemanticsWrapper.progressIndicator({required hint, required value})
       : assert(hint != "" && value != null),
         super(
             label: 'Progress Indicator',
@@ -118,9 +115,9 @@ class SemanticsWrapper extends SemanticsProperties {
   // ------------------------------
   // Wrapper that governs a text field with one line
   SemanticsWrapper.textField(
-      {required this.label,
-      required this.hint,
-      this.value = 'Blank text field',
+      {required label,
+      required hint,
+      value = 'Blank text field',
       required this.isEditable,
       required this.isSelected})
       : assert(isEditable != null &&
@@ -140,9 +137,9 @@ class SemanticsWrapper extends SemanticsProperties {
   // ------------------------------
   // Wrapper that governs a text view with multiple lines
   SemanticsWrapper.textView(
-      {required this.label,
-      required this.hint,
-      this.value = 'Blank text view',
+      {required label,
+      required hint,
+      value = 'Blank text view',
       required this.isSelected,
       required this.isEditable})
       : assert(isEditable != null && hint != "" && label != ""),
@@ -159,7 +156,7 @@ class SemanticsWrapper extends SemanticsProperties {
   // ------------------------------
   // Wrapper that governs a slider
   SemanticsWrapper.slider(
-      {required this.isEnabled, required this.hint, required this.value})
+      {required this.isEnabled, required hint, required value})
       : assert(isEnabled != null && hint != "" && value != ""),
         super(
             label: "Slider",
@@ -182,10 +179,10 @@ class SemanticsWrapper extends SemanticsProperties {
       this.isObscured = false,
       this.isMultiline = false,
       this.isLiveRegion = false,
-      this.value,
-      this.hint,
+      value,
+      hint,
       required this.isEnabled,
-      required this.label})
+      required label})
       : assert(isEnabled != null && label != ""),
         super(
           label: label,
@@ -208,7 +205,7 @@ class SemanticsWrapper extends SemanticsProperties {
   // ------------------------------
   // Wrapper that governs a collection view of items
   SemanticsWrapper.collectionView(
-      {required this.isEnabled, required this.label, required this.isEditable})
+      {required this.isEnabled, required label, required this.isEditable})
       : assert(isEnabled != null && label != ""),
         super(label: label, enabled: isEnabled, focusable: isEnabled);
 
@@ -216,8 +213,8 @@ class SemanticsWrapper extends SemanticsProperties {
   // Wrapper that governs a tab bar
   SemanticsWrapper.tabBar(
       {required this.isEnabled,
-      required this.label,
-      required this.hint,
+      required label,
+      required hint,
       required this.isSelected})
       : assert(isEnabled != null &&
             hint != "" &&
@@ -232,7 +229,7 @@ class SemanticsWrapper extends SemanticsProperties {
 
   // ------------------------------
   // Wrapper that governs a view
-  SemanticsWrapper.view({required this.label, required this.hint})
+  SemanticsWrapper.view({required label, required hint})
       : assert(hint != "" && label != ""),
         super(label: label, hint: hint);
 

@@ -30,6 +30,7 @@ class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
         child: StandardButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: element.key,
+            buttonHint: 'Selects ${element.key} from the list',
             buttonAction: () => {
                   dataMap.insert(0, element.key),
                   element.value(),

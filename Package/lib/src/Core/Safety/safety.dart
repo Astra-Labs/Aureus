@@ -410,14 +410,6 @@ class _SafetyPlanFunctionalityViewState
   List<ComplexSwitchCardElement> optionCards = [];
 
   void updateSettings() {
-    optionCards.forEach((element) {
-      if (element.switchItem.isSwitchEnabled == true) {
-        var index = optionCards.indexOf(element);
-        var setting = widget.userSelectedOptions.elementAt(index);
-        userEnabledSettings.putIfAbsent(setting, () => true);
-      }
-    });
-
     _SafetyPlan().writeSettings(userEnabledSettings).then(
         (value) => {
               notificationMaster.sendAlertControllerRequest(
@@ -454,14 +446,6 @@ class _SafetyPlanFunctionalityViewState
                 onSelection: () => {notificationMaster.resetRequests()})
           ]));
     });
-
-    /*Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => _PlanModificationLoadingView(
-              userEnabledSettings: userEnabledSettings,
-              exitPoint: widget.exitPoint),
-        ));*/
   }
 
   @override
@@ -471,6 +455,12 @@ class _SafetyPlanFunctionalityViewState
     for (var element in widget.userSelectedOptions) {
       var safetyObject = resourceValues.safetySettings.retrieveDetails(element);
       optionCards.add(ComplexSwitchCardElement(
+          onEnable: () =>
+              {userEnabledSettings.putIfAbsent(element, () => true)},
+          onDisable: () => {
+                if (userEnabledSettings.containsKey(element))
+                  {userEnabledSettings.remove(element)}
+              },
           cardLabel: safetyObject.name,
           cardBody: safetyObject.functionalityChange,
           cardIcon: safetyObject.icon));
@@ -495,13 +485,19 @@ class _SafetyPlanFunctionalityViewState
           const SizedBox(height: 20.0),
           Column(children: [
             StandardButtonElement(
-                decorationVariant: decorationPriority.standard,
+                decorationVariant: userEnabledSettings.isEmpty
+                    ? decorationPriority.inactive
+                    : decorationPriority.standard,
                 buttonTitle: 'I agree to these changes.',
+                buttonHint:
+                    "Agrees to functionality changes, and saves safety plan items.",
                 buttonAction: updateSettings),
             const SizedBox(height: 8.0),
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
                 buttonTitle: 'I want to edit my safety plan.',
+                buttonHint:
+                    "Disagrees to functionality changes, and takes you to the previous page to edit your settings.",
                 buttonAction: () => {Navigator.pop(context)})
           ])
         ]);

@@ -9,9 +9,7 @@ USAGE:
 */
 
 class SingleCategoryItemInfoToolTemplate extends ToolNavigationPage {
-  final CoreTool parentTool;
-
-  SingleCategoryItemInfoToolTemplate({required this.parentTool})
+  SingleCategoryItemInfoToolTemplate({required parentTool})
       : super(
             parentTool: parentTool,
             pageBody: const ContainerWrapperElement(

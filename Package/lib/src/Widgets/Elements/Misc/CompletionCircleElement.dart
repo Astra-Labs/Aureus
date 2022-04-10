@@ -43,18 +43,20 @@ class _CompletionCircleElementState extends State<CompletionCircleElement>
 
   @override
   Widget build(BuildContext context) {
+    var dynamicSize = size.responsiveSize(120);
+
     return SizedBox(
-      width: 150,
-      height: 150,
+      width: dynamicSize,
+      height: dynamicSize,
       child: Stack(alignment: Alignment.center, children: [
-        const SizedBox(
-          width: 150.0,
-          height: 150.0,
+        SizedBox(
+          width: dynamicSize,
+          height: dynamicSize,
         ),
         FloatingContainerElement(
           child: SizedBox(
-            width: 150.0,
-            height: 150.0,
+            width: dynamicSize,
+            height: dynamicSize,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -71,7 +73,7 @@ class _CompletionCircleElementState extends State<CompletionCircleElement>
             ),
           ),
         ),
-        HeadingTwoText(
+        BodyOneText(
             '${widget.progressValue * 100}%', decorationPriority.standard)
       ]),
     );

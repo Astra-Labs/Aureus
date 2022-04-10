@@ -24,7 +24,7 @@ class _BannerNotificationComponentState
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 15),
+      duration: const Duration(seconds: 4),
     )..addListener(() {
         // Removes notification from widget tree when
         // progress bar is done.
@@ -79,58 +79,62 @@ class _BannerNotificationComponentState
 
   @override
   Widget build(BuildContext context) {
-    //WidgetsBinding.instance!.addPostFrameCallback((_) => afterBuild);
-
     var screenSize = size.logicalScreenSize();
-    var slidingProgressBar = LinearProgressIndicator(
-      value: progressAnimation.value,
-      backgroundColor: coloration.inactiveColor(),
-      color: coloration.accentColor(),
-      minHeight: 5.0,
-      semanticsLabel: 'Notification Timer',
-      semanticsValue: 'Time Left: ${1.0 - slideAnimation.value * 15} seconds',
-    );
+    var slidingProgressBar = ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: LinearProgressIndicator(
+          value: progressAnimation.value,
+          backgroundColor: coloration.inactiveColor(),
+          color: coloration.accentColor(),
+          minHeight: 5.0,
+          semanticsLabel: 'Notification Timer',
+          semanticsValue:
+              'Time Left: ${1.0 - slideAnimation.value * 15} seconds',
+        ));
 
-    return PulseShadowElement(
-      pulseWidth: size.layoutItemWidth(1, screenSize),
-      isActive: true,
-      child: Container(
-          constraints: BoxConstraints(
-              minWidth: size.layoutItemWidth(1, screenSize),
-              maxWidth: size.layoutItemWidth(1, screenSize),
-              minHeight: size.layoutItemHeight(5, screenSize),
-              maxHeight: size.layoutItemHeight(5, screenSize)),
-          decoration:
-              CardBackingDecoration(priority: decorationPriority.inverted)
-                  .buildBacking(),
-          child: Column(
-            children: [
-              const Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    BodyTwoText(widget.body, decorationPriority.standard),
-                    const Spacer(),
-                    const IconBadge(
-                        badgeIcon: Assets.alertmessage,
-                        badgePriority: decorationPriority.important),
-                  ],
+    return GestureDetector(
+      onVerticalDragEnd: (end) {
+        notificationMaster.resetRequests();
+      },
+      child: FloatingContainerElement(
+        child: Container(
+            constraints: BoxConstraints(
+                minWidth: size.layoutItemWidth(1, screenSize),
+                maxWidth: size.layoutItemWidth(1, screenSize),
+                minHeight: size.layoutItemHeight(6, screenSize),
+                maxHeight: size.layoutItemHeight(6, screenSize)),
+            decoration:
+                CardBackingDecoration(priority: decorationPriority.standard)
+                    .buildBacking(),
+            child: Column(
+              children: [
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      BodyTwoText(widget.body, decorationPriority.standard),
+                      const Spacer(),
+                      const IconBadge(
+                          badgeIcon: Assets.alertmessage,
+                          badgePriority: decorationPriority.important),
+                    ],
+                  ),
                 ),
-              ),
-              const Spacer(),
-              const DividerElement(),
-              const SizedBox(height: 10.0),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: slidingProgressBar,
-              ),
-              const SizedBox(height: 10.0),
-            ],
-          )),
+                const Spacer(),
+                const DividerElement(),
+                const SizedBox(height: 5.0),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: slidingProgressBar,
+                ),
+                const SizedBox(height: 5.0),
+              ],
+            )),
+      ),
     );
   }
 }

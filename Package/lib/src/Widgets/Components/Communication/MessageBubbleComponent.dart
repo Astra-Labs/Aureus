@@ -63,7 +63,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
           children: [
             Container(
                 constraints: BoxConstraints(
-                    minHeight: bodyTextSizing.height * 2.5,
+                    minHeight: bodyTextSizing.height + 20,
                     maxWidth: size.layoutItemWidth(1, screenSize) * 0.7),
                 padding: const EdgeInsets.all(20.0),
                 decoration: backingDecoration,

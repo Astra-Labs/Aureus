@@ -25,6 +25,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   late Animation _gradient1;
   late Animation _gradient2;
   late decorationPriority buttonPriority;
+  var scale = 1.0;
   AureusStylization currentStyle = brightness() == Brightness.light
       ? packageVariables.resourceBranding.lightModeStyle
       : packageVariables.resourceBranding.darkModeStyle;
@@ -69,14 +70,8 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   //Switches decoration to active, and then returns it to current variant.
   void createButtonInteraction() {
     setState(() {
-      buttonPriority = decorationPriority.active;
+      scale = 1.5;
       sensation.createSensation(sensationType.press);
-    });
-
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        buttonPriority = widget.currentVariant;
-      });
     });
   }
 
@@ -117,24 +112,32 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
             isActive: widget.currentVariant == decorationPriority.important
                 ? true
                 : false,
-            child: Container(
-                constraints: BoxConstraints(
-                  minHeight: minimumButtonTextSize.height * 4,
-                  maxHeight: minimumButtonTextSize.height * 4,
-                  minWidth: screenWidth,
-                ),
-                decoration:
-                    widget.currentVariant == decorationPriority.important
-                        ? BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [_gradient1.value, _gradient2.value]),
-                            color: coloration.contrastColor())
-                        : buttonDecoration,
-                child: Center(
+            child: AnimatedScale(
+              duration: const Duration(milliseconds: 500),
+              scale: scale,
+              child: Container(
+                  constraints: BoxConstraints(
+                    minHeight: minimumButtonTextSize.height * 3,
+                    maxHeight: minimumButtonTextSize.height * 3,
+                    minWidth: screenWidth,
+                  ),
+                  decoration:
+                      widget.currentVariant == decorationPriority.important
+                          ? BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [_gradient1.value, _gradient2.value]),
+                              color: coloration.contrastColor())
+                          : buttonDecoration,
+                  child: Center(
+                      child: AnimatedScale(
+                    scale: scale,
+                    duration: const Duration(milliseconds: 500),
                     child: ButtonOneText(
-                        widget.buttonTitle, widget.currentVariant))),
+                        widget.buttonTitle, widget.currentVariant),
+                  ))),
+            ),
           )),
     );
   }

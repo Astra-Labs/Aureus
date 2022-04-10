@@ -35,9 +35,9 @@ class _ToolDetailViewState extends State<ToolDetailView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                const Spacer(),
+                const SizedBox(height: 50.0),
                 Align(
                   alignment: Alignment.topRight,
                   child: SecondaryIconButtonElement(
@@ -50,12 +50,11 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                 IconBadge(
                     badgeIcon: tool.toolIcon,
                     badgePriority: decorationPriority.important),
-                const SizedBox(height: 10.0),
+                const SizedBox(height: 15.0),
                 HeadingOneText(tool.toolName, decorationPriority.standard),
                 const SizedBox(height: 40.0),
                 FloatingContainerElement(
                     child: Container(
-                        height: size.layoutItemHeight(1, screenSize) * 0.6,
                         width: size.layoutItemWidth(1, screenSize),
                         decoration: LayerBackingDecoration(
                                 priority: decorationPriority.standard)
@@ -66,9 +65,9 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Spacer(),
+                              const SizedBox(height: 20.0),
                               const TabSubheaderElement(title: 'Description'),
                               const SizedBox(height: 20.0),
                               Container(
@@ -84,7 +83,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                               const SizedBox(height: 20.0),
                               DetailCardCarouselComponent(
                                   cardDetailCarousel: tool.toolDetails),
-                              const Spacer(),
+                              const SizedBox(height: 20.0),
                             ],
                           ),
                         ))),

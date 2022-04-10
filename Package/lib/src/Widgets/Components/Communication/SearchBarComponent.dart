@@ -26,10 +26,13 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
           children: [
-            SingleDataTypeUserInputElement(dataPlaceholder: 'Search here.'),
-            const SizedBox(width: 10),
+            SizedBox(
+                width: size.layoutItemWidth(1, screenSize) * 0.75,
+                child: SingleDataTypeUserInputElement(
+                    dataPlaceholder: 'Search here.')),
+            const Spacer(),
             SecondaryIconButtonElement(
-                buttonIcon: Icons.search,
+                buttonIcon: Assets.next,
                 buttonAction: widget.onSearch,
                 buttonHint: 'Searches for the term you enter.',
                 decorationVariant: decorationPriority.important)

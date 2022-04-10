@@ -30,6 +30,7 @@ class _BottomActionSheetComponentState
                     ? decorationPriority.important
                     : decorationPriority.standard,
             buttonTitle: element.actionName,
+            buttonHint: "Completes the action ${element.actionName}",
             buttonAction: element.onSelection),
       ));
     }

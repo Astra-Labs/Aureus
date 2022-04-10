@@ -53,6 +53,7 @@ class _SignInViewState extends State<SignInView> {
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,
                   buttonTitle: "Sign In",
+                  buttonHint: "Authenticates your credentials to log you in.",
                   buttonAction: widget.onSignIn)
             ],
           ),

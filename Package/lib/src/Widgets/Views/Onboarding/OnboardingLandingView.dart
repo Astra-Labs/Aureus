@@ -43,6 +43,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Try out tools',
+                  buttonHint: "Opens demo tool page",
                   buttonIcon: Assets.expand,
                   buttonAction: () => {
                         Navigator.push(
@@ -55,6 +56,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'See the features',
+                  buttonHint: "Opens feauture information page",
                   buttonIcon: Assets.phone,
                   buttonAction: () => {
                         Navigator.push(
@@ -67,6 +69,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Get started',
+                  buttonHint: "Takes you to onboarding",
                   buttonIcon: Assets.next,
                   buttonAction: () => {
                         Navigator.push(

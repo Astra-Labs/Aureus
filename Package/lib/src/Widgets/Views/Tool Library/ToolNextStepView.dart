@@ -44,7 +44,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
             width: size.layoutItemWidth(1, screenSize),
             height: size.layoutItemHeight(1, screenSize),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -62,7 +62,6 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                 FloatingContainerElement(
                     child: Container(
                   width: size.layoutItemWidth(1, screenSize),
-                  height: size.layoutItemHeight(2, screenSize),
                   decoration: LayerBackingDecoration(
                           priority: decorationPriority.inactive)
                       .buildBacking(),
@@ -72,9 +71,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Spacer(),
-                        HeadingThreeText(
-                            'Next Steps', decorationPriority.standard),
+                        const SizedBox(height: 20.0),
                         BodyOneText(
                             'Choose next steps to go further, or return home.',
                             decorationPriority.standard),
@@ -85,7 +82,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
                             children: nextStepCards,
                           ),
                         ),
-                        const Spacer(),
+                        const SizedBox(height: 20.0),
                       ],
                     ),
                   ),

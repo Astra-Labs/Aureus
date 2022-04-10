@@ -22,7 +22,7 @@ export 'src/Core/Foundation/decorations.dart';
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
 
 //MARK - Observer Object
-export 'src/Objects/Functionality/ResourceObserver.dart';
+export 'src/Objects/Observers/ResourceObserver.dart';
 
 //MARK: - Element Objects
 export 'src/Objects/Elements/AlertControllerObjects.dart';
@@ -41,8 +41,8 @@ export 'src/Objects/Views/OnboardingObjects.dart';
 //MARK: - Functionality Objects
 export 'src/Objects/Functionality/AccessibilityObjects.dart';
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
-export 'src/Objects/Functionality/ResourceObserver.dart';
-export 'src/Objects/Functionality/NotificationObserver.dart';
+export 'src/Objects/Observers/ResourceObserver.dart';
+export 'src/Objects/Observers/NotificationObserver.dart';
 
 //MARK: - Sensory Objects
 export 'src/Objects/Views/routes.dart';
@@ -157,6 +157,9 @@ export 'src/Widgets/Tools/Mini Tools/PulseInputToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/SensoryMapToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/SketchToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/TimerToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/AdaptiveInputSelectionToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/AdaptiveInputToolTemplate.dart';
+export 'src/Widgets/Tools/Mini Tools/VideoInputToolTemplate.dart';
 
 // -------------------------- Trackers
 export 'src/Widgets/Tools/Trackers/MultiCategoryItemInfoToolTemplate.dart';
@@ -222,4 +225,11 @@ enum dataAccess {
   tracking,
   health,
   sensors
+}
+
+enum adaptiveInput {
+  text,
+  video,
+  voice,
+  draw,
 }

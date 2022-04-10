@@ -7,12 +7,14 @@ class StandardIconButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
   final String buttonTitle;
   final IconData buttonIcon;
+  final String buttonHint;
   final VoidCallback buttonAction;
 
   const StandardIconButtonElement(
       {required this.decorationVariant,
       required this.buttonTitle,
       required this.buttonIcon,
+      required this.buttonHint,
       required this.buttonAction});
 
   @override
@@ -33,12 +35,6 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
     setState(() {
       buttonPriority = decorationPriority.active;
       sensation.createSensation(sensationType.press);
-    });
-
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        buttonPriority = widget.decorationVariant;
-      });
     });
   }
 
@@ -75,7 +71,7 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
           child: FloatingContainerElement(
             child: SizedBox(
                 width: size.layoutItemWidth(1, screenSize),
-                height: minimumButtonTextSize.height * 4,
+                height: minimumButtonTextSize.height + 45,
                 child: Container(
                     decoration: buttonDecoration,
                     child: Center(

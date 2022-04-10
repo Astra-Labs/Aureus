@@ -17,13 +17,12 @@ class DetailCarouselCardElement extends StatelessWidget {
 
     return Container(
       constraints: BoxConstraints(
-          minWidth: labelSize.width * 1.5,
-          maxWidth: labelSize.width * 2,
-          minHeight: labelSize.height * 2,
-          maxHeight: labelSize.height * 3),
+          minWidth: labelSize.width + 40,
+          maxWidth: labelSize.width + 50,
+          minHeight: labelSize.height + 30,
+          maxHeight: labelSize.height + 30),
       decoration: CardBackingDecoration(priority: decorationPriority.inactive)
           .buildBacking(),
-      clipBehavior: Clip.hardEdge,
       padding: const EdgeInsets.all(8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
