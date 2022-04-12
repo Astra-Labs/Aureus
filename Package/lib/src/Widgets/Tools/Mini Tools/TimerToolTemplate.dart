@@ -32,7 +32,6 @@ class TimerToolTemplate extends ToolCardTemplate {
                     notificationMaster.sendAlertNotificationRequest(
                         "Timer completed", Assets.time)
                   }),
-          const SizedBox(height: 10.0),
         ]);
   }
 

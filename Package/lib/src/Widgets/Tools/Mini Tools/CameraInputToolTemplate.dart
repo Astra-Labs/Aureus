@@ -117,50 +117,37 @@ class _CameraInputCardState extends State<_CameraInputCard> {
       SizedBox(
           width: size.layoutItemWidth(1, screenSize),
           height: size.layoutItemWidth(5, screenSize),
-          child: FloatingContainerElement(
-            child: Container(
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  decoration: CardBackingDecoration(
+                          priority: decorationPriority.important)
                       .buildBacking(),
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  HeadingTwoText("Capture", decorationPriority.standard),
-                  const Spacer(),
-                  SecondaryIconButtonElement(
-                      decorationVariant: decorationPriority.standard,
-                      buttonIcon: Assets.no,
-                      buttonHint: "Exits the camera.",
-                      buttonAction: () => {Navigator.pop(context)}),
-                ],
-              ),
-            ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(width: 10.0),
+                      IconBadge(
+                          badgeIcon: widget.cardIcon,
+                          badgePriority: decorationPriority.inverted),
+                      const SizedBox(width: 20.0),
+                      BodyTwoText(
+                          widget.templatePrompt, decorationPriority.important),
+                      const SizedBox(width: 10.0),
+                    ],
+                  )),
+              const Spacer(),
+              SecondaryIconButtonElement(
+                  decorationVariant: decorationPriority.standard,
+                  buttonIcon: Assets.no,
+                  buttonHint: "Exits the camera.",
+                  buttonAction: () => {Navigator.pop(context)}),
+            ],
           )),
-      const SizedBox(height: 20.0),
-      SizedBox(
-        width: size.layoutItemWidth(1, screenSize),
-        height: size.layoutItemHeight(6, screenSize),
-        child: Container(
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.important)
-                    .buildBacking(),
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(width: 10.0),
-                IconBadge(
-                    badgeIcon: widget.cardIcon,
-                    badgePriority: decorationPriority.inverted),
-                const SizedBox(width: 20.0),
-                BodyTwoText(
-                    widget.templatePrompt, decorationPriority.important),
-              ],
-            )),
-      ),
     ]);
 
     var cameraStack = SizedBox(
@@ -237,69 +224,44 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
     var screenSize = size.logicalScreenSize();
     var popCount = 0;
 
-    var controlBar =
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      SizedBox(
+    var controlBar = SizedBox(
         width: size.layoutItemWidth(1, screenSize),
-        height: size.layoutItemHeight(6, screenSize),
-        child: Container(
+        height: size.layoutItemWidth(2, screenSize),
+        child: FloatingContainerElement(
+          child: Container(
             decoration:
-                CardBackingDecoration(priority: decorationPriority.important)
+                CardBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
             padding: const EdgeInsets.all(8.0),
-            child: Row(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(width: 10.0),
-                IconBadge(
-                    badgeIcon: widget.cardIcon,
-                    badgePriority: decorationPriority.inverted),
-                const SizedBox(width: 20.0),
-                BodyTwoText(widget.toolPrompt, decorationPriority.important),
+                const Spacer(),
+                StandardIconButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: 'Retake',
+                    buttonIcon: Assets.no,
+                    buttonHint: "Goes back to camera.",
+                    buttonAction: () => {Navigator.pop(context)}),
+                const SizedBox(height: 20),
+                StandardIconButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: "Complete",
+                    buttonHint: "Finishes prompt.",
+                    buttonIcon: Assets.yes,
+                    buttonAction: () => {
+                          toolTemplateMaster.notifyObserverForward(),
+                          Navigator.of(context)
+                              .popUntil((_) => popCount++ >= 2),
+                          notificationMaster.sendAlertNotificationRequest(
+                              "Camera tool completed.", Assets.camera)
+                        }),
+                const Spacer(),
               ],
-            )),
-      ),
-      const SizedBox(height: 20),
-      SizedBox(
-          width: size.layoutItemWidth(1, screenSize),
-          height: size.layoutItemWidth(2, screenSize),
-          child: FloatingContainerElement(
-            child: Container(
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(),
-                  StandardIconButtonElement(
-                      decorationVariant: decorationPriority.standard,
-                      buttonTitle: 'Retake',
-                      buttonIcon: Assets.no,
-                      buttonHint: "Goes back to camera.",
-                      buttonAction: () => {Navigator.pop(context)}),
-                  const SizedBox(height: 20),
-                  StandardIconButtonElement(
-                      decorationVariant: decorationPriority.standard,
-                      buttonTitle: "Complete",
-                      buttonHint: "Finishes prompt.",
-                      buttonIcon: Assets.yes,
-                      buttonAction: () => {
-                            toolTemplateMaster.notifyObserverForward(),
-                            Navigator.of(context)
-                                .popUntil((_) => popCount++ >= 2),
-                            notificationMaster.sendAlertNotificationRequest(
-                                "Camera tool completed.", Assets.camera)
-                          }),
-                  const Spacer(),
-                ],
-              ),
             ),
-          ))
-    ]);
+          ),
+        ));
 
     return ContainerView(
         decorationVariant: decorationPriority.standard,
@@ -318,6 +280,32 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
                           width: screenSize.width,
                           height: screenSize.height,
                           fit: BoxFit.cover),
+                      Positioned(
+                        top: 45,
+                        child: SizedBox(
+                          width: size.layoutItemWidth(1, screenSize),
+                          height: size.layoutItemHeight(6, screenSize),
+                          child: Container(
+                              decoration: CardBackingDecoration(
+                                      priority: decorationPriority.important)
+                                  .buildBacking(),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const SizedBox(width: 10.0),
+                                  IconBadge(
+                                      badgeIcon: widget.cardIcon,
+                                      badgePriority:
+                                          decorationPriority.inverted),
+                                  const SizedBox(width: 20.0),
+                                  BodyTwoText(widget.toolPrompt,
+                                      decorationPriority.important),
+                                ],
+                              )),
+                        ),
+                      ),
                       Positioned(bottom: 30, child: controlBar)
                     ],
                   ))

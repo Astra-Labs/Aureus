@@ -19,13 +19,13 @@ develop incredibly quickly.
 
 class AureusResource extends StatefulWidget {
   final AureusBranding resourceBranding;
-  //
+  // The branding information (style, color, etc) for your resource.
   // ------------------------------
   final AureusInformation resourceInformation;
-  //
+  // The information (developers, name, privacy policy) for your resource.
   // ------------------------------
   final AureusNavigationTree resourceNavigation;
-  //
+  // The widgets used for specific items (splash screen, home page) for your resource.
   // ------------------------------
 
   const AureusResource(

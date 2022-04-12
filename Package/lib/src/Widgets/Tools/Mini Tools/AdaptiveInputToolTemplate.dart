@@ -7,8 +7,6 @@ import 'package:aureus/aureus.dart';
 // text, sketch, or voice recording.
 
 class AdaptiveInputToolTemplate extends ToolCardTemplate {
-  final adaptiveInput inputVariant;
-
   // Creates variables to be initialize in the constructor
   // this is so the user can see the variables from the tool
   // as opposed to a "skipped tool message" even if filled
@@ -18,8 +16,7 @@ class AdaptiveInputToolTemplate extends ToolCardTemplate {
   late VideoInputToolTemplate _videoTool;
   late MicrophoneInputToolTemplate _voiceTool;
 
-  AdaptiveInputToolTemplate(
-      {required templatePrompt, required badgeIcon, required this.inputVariant})
+  AdaptiveInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon) {
     _drawingTool = SketchToolTemplate(
         templatePrompt: templatePrompt, badgeIcon: badgeIcon);
@@ -33,7 +30,7 @@ class AdaptiveInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
-    switch (inputVariant) {
+    switch (toolTemplateMaster.inputType) {
 
       // returns proper tool for drawing.
       case (adaptiveInput.draw):
@@ -62,7 +59,7 @@ class AdaptiveInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    switch (inputVariant) {
+    switch (toolTemplateMaster.inputType) {
 
       // returns proper tool for drawing.
       case (adaptiveInput.draw):

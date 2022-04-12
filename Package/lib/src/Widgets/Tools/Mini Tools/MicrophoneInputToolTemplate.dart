@@ -160,41 +160,35 @@ class _MicrophoneInputCardState extends State<_MicrophoneInputCard>
 
   @override
   Widget build(BuildContext context) {
-    var controlBar = Container(
-      decoration: CardBackingDecoration(priority: decorationPriority.inactive)
-          .buildBacking(),
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          const Spacer(),
-          SecondaryIconButtonElement(
-              decorationVariant: _isRecording == true && _isPaused != true
-                  ? decorationPriority.inactive
-                  : decorationPriority.important,
-              buttonIcon: Assets.play,
-              buttonHint: _isPaused == false
-                  ? "Starts recording."
-                  : "Resumes recording.",
-              buttonAction: () => {_isPaused == false ? _start() : _resume()}),
-          const Spacer(),
-          SecondaryIconButtonElement(
-              decorationVariant: _isRecording == true && _isPaused != true
-                  ? decorationPriority.standard
-                  : decorationPriority.inactive,
-              buttonIcon: Assets.pause,
-              buttonHint: "Pauses recording.",
-              buttonAction: () => {_pause()}),
-          const Spacer(),
-          SecondaryIconButtonElement(
-              decorationVariant: _isRecording == true
-                  ? decorationPriority.standard
-                  : decorationPriority.inactive,
-              buttonIcon: Assets.yes,
-              buttonHint: "Finishes recording.",
-              buttonAction: () => {_stop()}),
-          const Spacer(),
-        ],
-      ),
+    var controlBar = Row(
+      children: [
+        const Spacer(),
+        SecondaryIconButtonElement(
+            decorationVariant: _isRecording == true && _isPaused != true
+                ? decorationPriority.inactive
+                : decorationPriority.important,
+            buttonIcon: Assets.play,
+            buttonHint:
+                _isPaused == false ? "Starts recording." : "Resumes recording.",
+            buttonAction: () => {_isPaused == false ? _start() : _resume()}),
+        const Spacer(),
+        SecondaryIconButtonElement(
+            decorationVariant: _isRecording == true && _isPaused != true
+                ? decorationPriority.standard
+                : decorationPriority.inactive,
+            buttonIcon: Assets.pause,
+            buttonHint: "Pauses recording.",
+            buttonAction: () => {_pause()}),
+        const Spacer(),
+        SecondaryIconButtonElement(
+            decorationVariant: _isRecording == true
+                ? decorationPriority.standard
+                : decorationPriority.inactive,
+            buttonIcon: Assets.yes,
+            buttonHint: "Finishes recording.",
+            buttonAction: () => {_stop()}),
+        const Spacer(),
+      ],
     );
 
     var recordingIndicator = SizedBox(

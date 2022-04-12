@@ -1,13 +1,20 @@
 import 'package:aureus/aureus.dart';
 
-//A full width button that acts as the main CTA
-//Doc Link:
+//A full width button that acts as the main CTA for a screen.
 
 class FullWidthButtonElement extends StatefulWidget {
   final String buttonTitle;
+  // The title of your button
+  // ------------------------------
   final String buttonHint;
+  // What your button does. Used for tooltips / accessibility information.
+  // ------------------------------
   final decorationPriority currentVariant;
+  // The current decoration priority of the button.
+  // ------------------------------
   final VoidCallback buttonAction;
+  // The action that your button completes.
+  // ------------------------------
 
   const FullWidthButtonElement(
       {required this.buttonTitle,

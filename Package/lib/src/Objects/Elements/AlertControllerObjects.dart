@@ -4,10 +4,20 @@ enum AlertControllerActionSeverity { standard, cancel, confirm, destruct }
 
 class AlertControllerObject {
   final VoidCallback onCancellation;
+  // What to do when the alert controller is cancelled
+  // ------------------------------
   final String alertTitle;
+  // Title of the alert controller
+  // ------------------------------
   final String alertBody;
+  // Description & body of alert controller
+  // ------------------------------
   final IconData alertIcon;
+  // Icon for the alert controller badge
+  // ------------------------------
   final List<AlertControllerAction> actions;
+  // The actions someone can take on the alert controller.
+  // ------------------------------
 
   //takes multiple items through the actions list, and otherwise throws an error
   const AlertControllerObject.multipleActions(

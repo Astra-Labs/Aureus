@@ -14,6 +14,8 @@ Details:
 
 class HelpCenterObject {
   final List<HelpCenterCategories> articleCategories;
+  // The categories available in the help center.
+  // ------------------------------
 
   const HelpCenterObject({required this.articleCategories})
       : assert(articleCategories.length >= 1);
@@ -31,8 +33,14 @@ Details:
 */
 class HelpCenterCategories {
   final String categoryTitle;
+  // The title of the category (e.g: Payments, Development, etc)
+  // ------------------------------
   final List<HelpCenterArticle> categoryArticles;
+  // The sub-articles that form the category
+  // ------------------------------
   final IconData categoryIcon;
+  // The icon related to the category
+  // ------------------------------
 
   const HelpCenterCategories(
       {required this.categoryTitle,
@@ -55,11 +63,13 @@ It is required to be defined in the constructor, but can be built without it.
 */
 class HelpCenterArticle {
   final String articleTitle;
+  // The title of the article
+  // ------------------------------
   final String articleBody;
-  final VoidCallback? articleCTA;
+  // The content / body of the article
+  // ------------------------------
 
-  HelpCenterArticle(
-      {required this.articleTitle, required this.articleBody, this.articleCTA})
+  HelpCenterArticle({required this.articleTitle, required this.articleBody})
       : assert(articleTitle != ''),
         assert(articleBody != '');
 }

@@ -122,6 +122,7 @@ class ToolNavigationPage {
 
 class AureusToolTemplateMaster {
   List<AureusToolTemplateObserver> _observers = [];
+  adaptiveInput inputType = adaptiveInput.text;
 
   void registerObserver(AureusToolTemplateObserver observer) {
     _observers.add(observer);
@@ -142,11 +143,25 @@ class AureusToolTemplateMaster {
       observer.previousAction();
     }
   }
+
+  void updateAdaptiveInput(adaptiveInput input) {
+    for (var observer in _observers) {
+      observer.retrieveAdaptiveInput(input);
+    }
+  }
+
+  void retrieveAdaptiveInput(adaptiveInput input) {
+    for (var observer in _observers) {
+      observer.retrieveAdaptiveInput(input);
+    }
+  }
 }
 
 mixin AureusToolTemplateObserver {
   void nextAction() {}
   void previousAction() {}
+  void updateAdaptiveInput(adaptiveInput input) {}
+  void retrieveAdaptiveInput(adaptiveInput input) {}
 }
 
 var toolTemplateMaster = AureusToolTemplateMaster();
@@ -154,7 +169,11 @@ var toolTemplateMaster = AureusToolTemplateMaster();
 
 class ToolCardTemplate {
   final String templatePrompt;
+  // The string describing what to input into a tool
+  // ------------------------------
   final IconData badgeIcon;
+  // The badge associated with a tool input card
+  // ------------------------------
 
   const ToolCardTemplate(
       {required this.templatePrompt, required this.badgeIcon});

@@ -18,6 +18,8 @@ class ToolNextStepsView extends StatefulWidget {
 }
 
 class _ToolNextStepsViewState extends State<ToolNextStepsView> {
+  var popCount = 0;
+
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
@@ -95,9 +97,11 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
         const Spacer(),
         FullWidthButtonElement(
             buttonTitle: 'Return home.',
-            buttonHint: 'Return home.',
+            buttonHint: 'Takes you to the screen before entering the tool.',
             currentVariant: decorationPriority.important,
-            buttonAction: () => {Navigator.pop(context)})
+            buttonAction: () => {
+                  Navigator.of(context).popUntil((_) => popCount++ >= 4),
+                })
       ],
     );
 

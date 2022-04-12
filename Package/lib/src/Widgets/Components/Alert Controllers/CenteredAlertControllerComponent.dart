@@ -4,6 +4,8 @@ import 'package:aureus/aureus.dart';
 
 class CenteredAlertControllerComponent extends StatefulWidget {
   final AlertControllerObject alertData;
+  // The data object that dictates how your alert controller behaves.
+  // ------------------------------
 
   const CenteredAlertControllerComponent({required this.alertData});
 

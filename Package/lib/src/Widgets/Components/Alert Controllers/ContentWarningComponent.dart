@@ -4,7 +4,12 @@ import 'package:aureus/aureus.dart';
 
 class ContentWarningComponent extends StatelessWidget {
   final String warningDescription;
+  // The description about the content (e.g: why a warning is being shown)
+  // ------------------------------
   final VoidCallback onContinue;
+  // A function that determines what to do if the user wants to
+  // continue and see the content.
+  // ------------------------------
 
   const ContentWarningComponent(
       {required this.warningDescription, required this.onContinue});

@@ -71,7 +71,7 @@ class _ToolTemplateCardCarouselViewState
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-      _controller.forward();
+      //_controller.forward();
 
       if (currentCardIndex <= toolChildren.length) {
         print("card hasn't hit limit");
@@ -129,13 +129,12 @@ class _ToolTemplateCardCarouselViewState
     var progressBar = FloatingContainerElement(
         child: Container(
             width: screenSize.width,
-            height: size.layoutItemHeight(6, screenSize),
             decoration:
                 LayerBackingDecoration(priority: decorationPriority.inactive)
                     .buildBacking(),
             child: Center(
                 child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: ProgressIndicatorElement(
                 value: summaryListView.isNotEmpty == true
                     ? (currentCardIndex / widget.parentTool.toolCards!.length)
@@ -148,9 +147,11 @@ class _ToolTemplateCardCarouselViewState
         PageHeaderElement.withExit(
             pageTitle: widget.parentTool.toolName,
             onPageExit: () => {Navigator.pop(context)}),
+        const SizedBox(height: 10.0),
         const Spacer(),
         activeCardItem,
         const Spacer(),
+        const SizedBox(height: 10.0),
         progressBar
       ],
       containerVariant: wrapperVariants.fullScreen,

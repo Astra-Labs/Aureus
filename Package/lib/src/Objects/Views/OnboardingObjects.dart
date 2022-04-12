@@ -13,6 +13,8 @@ Details:
 
 class OnboardingObject {
   final List<OnboardingDetail> onboardingItems;
+  // Items that hold information / photos for the user to experience on log-in
+  // ------------------------------
 
   const OnboardingObject({required this.onboardingItems})
       : assert(onboardingItems.length >= 2);
@@ -31,9 +33,17 @@ Details:
 
 class OnboardingDetail {
   final String detailTitle;
+  // The title of your detail
+  // ------------------------------
   final String detailBody;
+  // The body of the detail that provides a short pitch about it.
+  // ------------------------------
   final Image detailImage;
+  // The image related to the detail.
+  // ------------------------------
   final IconData detailCategoryIcon;
+  // The icon related to the category.
+  // ------------------------------
 
   const OnboardingDetail(
       {required this.detailTitle,

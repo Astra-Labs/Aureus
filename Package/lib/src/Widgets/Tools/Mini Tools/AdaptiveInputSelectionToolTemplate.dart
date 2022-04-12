@@ -29,7 +29,7 @@ class AdaptiveInputSelectionToolTemplate extends ToolCardTemplate {
                   buttonHint: "Selects text as input mode",
                   buttonIcon: Assets.window,
                   buttonAction: () => {
-                        selectedAdaptation = adaptiveInput.text,
+                        toolTemplateMaster.inputType = adaptiveInput.text,
                         toolTemplateMaster.notifyObserverForward()
                       }),
               const SizedBox(height: 10.0),
@@ -39,7 +39,7 @@ class AdaptiveInputSelectionToolTemplate extends ToolCardTemplate {
                   buttonHint: "Selects video recording as input mode",
                   buttonIcon: Assets.camera,
                   buttonAction: () => {
-                        selectedAdaptation = adaptiveInput.video,
+                        toolTemplateMaster.inputType = adaptiveInput.video,
                         toolTemplateMaster.notifyObserverForward()
                       }),
               const SizedBox(height: 10.0),
@@ -49,7 +49,7 @@ class AdaptiveInputSelectionToolTemplate extends ToolCardTemplate {
                   buttonHint: "Selects voice recording as input mode",
                   buttonIcon: Assets.play,
                   buttonAction: () => {
-                        selectedAdaptation = adaptiveInput.voice,
+                        toolTemplateMaster.inputType = adaptiveInput.voice,
                         toolTemplateMaster.notifyObserverForward()
                       }),
               const SizedBox(height: 10.0),
@@ -59,7 +59,7 @@ class AdaptiveInputSelectionToolTemplate extends ToolCardTemplate {
                   buttonHint: "Selects drawing as input mode",
                   buttonIcon: Assets.pencil,
                   buttonAction: () => {
-                        selectedAdaptation = adaptiveInput.draw,
+                        toolTemplateMaster.inputType = adaptiveInput.draw,
                         toolTemplateMaster.notifyObserverForward()
                       }),
             ],
