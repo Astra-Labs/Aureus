@@ -64,6 +64,7 @@ class PageHeaderElement extends StatelessWidget {
           minHeight: labelSizing.height * 2),
       child: Column(
         children: [
+          const SizedBox(height: 10.0),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

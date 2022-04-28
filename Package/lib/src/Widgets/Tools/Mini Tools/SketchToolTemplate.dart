@@ -24,7 +24,7 @@ class SketchToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: []);
+        toolChildren: const [_SketchInputCard()]);
   }
 
   @override
@@ -60,7 +60,7 @@ class _SketchInputCardState extends State<_SketchInputCard> {
       onPanUpdate: onPanUpdate,
       onPanEnd: onPanEnd,
       child: RepaintBoundary(
-        child: Container(
+        child: SizedBox(
             width: size.layoutItemWidth(1, screenSize),
             height: size.layoutItemHeight(2, screenSize),
             child: CustomPaint(painter: PainterCanvas as CustomPainter)),
@@ -120,8 +120,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     var colorCircle1 = GestureDetector(
         onTap: () => {changeColor(colorOne)},
         child: Container(
-            width: size.responsiveSize(50.0),
-            height: size.responsiveSize(50.0),
+            width: size.responsiveSize(35.0),
+            height: size.responsiveSize(35.0),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: colorOne,
@@ -132,8 +132,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     var colorCircle2 = GestureDetector(
         onTap: () => {changeColor(colorTwo)},
         child: Container(
-            width: size.responsiveSize(50.0),
-            height: size.responsiveSize(50.0),
+            width: size.responsiveSize(35.0),
+            height: size.responsiveSize(35.0),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: colorTwo,
@@ -144,8 +144,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     var colorCircle3 = GestureDetector(
         onTap: () => {changeColor(colorThree)},
         child: Container(
-            width: size.responsiveSize(50.0),
-            height: size.responsiveSize(50.0),
+            width: size.responsiveSize(35.0),
+            height: size.responsiveSize(35.0),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: colorThree,
@@ -156,8 +156,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     var colorCircle4 = GestureDetector(
         onTap: () => {changeColor(colorFour)},
         child: Container(
-            width: size.responsiveSize(50.0),
-            height: size.responsiveSize(50.0),
+            width: size.responsiveSize(35.0),
+            height: size.responsiveSize(35.0),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: colorFour,
@@ -168,8 +168,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     var colorCircle5 = GestureDetector(
         onTap: () => {changeColor(colorFive)},
         child: Container(
-            width: size.responsiveSize(50.0),
-            height: size.responsiveSize(50.0),
+            width: size.responsiveSize(35.0),
+            height: size.responsiveSize(35.0),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: colorFive,
@@ -180,8 +180,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     var colorCircle6 = GestureDetector(
         onTap: () => {changeColor(colorSix)},
         child: Container(
-            width: size.responsiveSize(50.0),
-            height: size.responsiveSize(50.0),
+            width: size.responsiveSize(35.0),
+            height: size.responsiveSize(35.0),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: colorSix,
@@ -191,7 +191,7 @@ class _SketchInputCardState extends State<_SketchInputCard> {
 
     var circleScroll = SizedBox(
         height: size.responsiveSize(65.0),
-        width: size.layoutItemWidth(2, size.logicalScreenSize()),
+        width: size.layoutItemWidth(1, size.logicalScreenSize()) * 0.6,
         child: Container(
           decoration:
               CardBackingDecoration(priority: decorationPriority.inactive)
@@ -199,9 +199,11 @@ class _SketchInputCardState extends State<_SketchInputCard> {
           padding: const EdgeInsets.all(10.0),
           alignment: Alignment.center,
           child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 colorCircle1,
                 const SizedBox(width: 5.0),
@@ -228,22 +230,24 @@ class _SketchInputCardState extends State<_SketchInputCard> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              circleScroll,
+              const Spacer(),
               SmolButtonElement(
-                  decorationVariant: decorationPriority.important,
+                  decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Clear',
                   buttonHint: 'Clears the canvas',
                   buttonAction: () => {points.clear()}),
-              const Spacer(),
-              circleScroll
             ]),
         const SizedBox(height: 10.0),
         Container(
+            height: size.layoutItemHeight(1, size.logicalScreenSize()),
+            width: size.layoutItemWidth(1, size.logicalScreenSize()),
             decoration:
                 CardBackingDecoration(priority: decorationPriority.standard)
                     .buildBacking(),
             child: Stack(
               children: [
-                buildCurrentPath(context),
+                //buildCurrentPath(context),
               ],
             ))
       ],

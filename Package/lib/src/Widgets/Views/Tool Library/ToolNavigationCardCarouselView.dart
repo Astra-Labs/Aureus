@@ -37,20 +37,34 @@ class _ToolTemplateCardCarouselViewState
         : widget.customCards;
 
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500))
+        vsync: this, duration: const Duration(milliseconds: 700))
       ..addListener(() {
         setState(() {});
       })
       ..addStatusListener((status) {
-        if (status == AnimationStatus.dismissed) {
+        if (status == AnimationStatus.completed) {
           //resets the container after the animation is reversed
-          setState(() {});
+          setState(() {
+            if (currentCardIndex == (toolChildren.length - 1)) {
+              print("card has hit limit");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        navigationContainer(widget.parentTool).summary!),
+              );
+            } else {
+              currentCardIndex += 1;
+              _controller.reverse();
+            }
+          });
         }
       });
 
     _offset = Tween<Offset>(
-            begin: const Offset(0.0, 0.0), end: const Offset(0.0, 0.0))
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+            begin: const Offset(0.0, 0.35), end: const Offset(0.0, 2.0))
+        .animate(
+            CurvedAnimation(parent: _controller, curve: Curves.decelerate));
 
     super.initState();
   }
@@ -65,26 +79,10 @@ class _ToolTemplateCardCarouselViewState
   //implementation of Aureus Tool Template observer patterns
   @override
   void nextAction() {
-    print(
-        "current index is $currentCardIndex, length is ${widget.parentTool.toolCards!.length}");
     setState(() {
-      _offset = Tween<Offset>(
-              begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
-          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-      //_controller.forward();
-
-      if (currentCardIndex <= toolChildren.length) {
+      if (currentCardIndex < toolChildren.length) {
         print("card hasn't hit limit");
-        currentCardIndex += 1;
-      }
-      if (currentCardIndex == (toolChildren.length)) {
-        print("card has hit limit");
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  navigationContainer(widget.parentTool).summary!),
-        );
+        _controller.forward();
       }
     });
   }
@@ -136,26 +134,37 @@ class _ToolTemplateCardCarouselViewState
                 child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: ProgressIndicatorElement(
-                value: summaryListView.isNotEmpty == true
-                    ? (currentCardIndex / widget.parentTool.toolCards!.length)
-                    : 0.1,
+                value: currentCardIndex == 0
+                    ? 0.1
+                    : (currentCardIndex / toolChildren.length),
               ),
             ))));
 
     var carouselLayout = ContainerWrapperElement(
       children: [
-        PageHeaderElement.withExit(
-            pageTitle: widget.parentTool.toolName,
-            onPageExit: () => {Navigator.pop(context)}),
-        const SizedBox(height: 10.0),
-        const Spacer(),
-        activeCardItem,
-        const Spacer(),
-        const SizedBox(height: 10.0),
-        progressBar
+        SizedBox(
+          width: size.layoutItemWidth(1, size.logicalScreenSize()),
+          height: size.layoutItemHeight(1, size.logicalScreenSize()),
+          child: Stack(alignment: Alignment.center, children: [
+            Positioned(
+                top: _offset.value.dy * (size.logicalWidth()),
+                left: _offset.value.dx * (size.logicalHeight()),
+                child: activeCardItem),
+            Column(
+              children: [
+                PageHeaderElement.withExit(
+                    pageTitle: widget.parentTool.toolName,
+                    onPageExit: () => {Navigator.pop(context)}),
+                const Spacer(),
+                progressBar,
+                const SizedBox(height: 10.0)
+              ],
+            ),
+          ]),
+        )
       ],
       containerVariant: wrapperVariants.fullScreen,
-      takesFullWidth: false,
+      takesFullWidth: true,
     );
 
     return ContainerView(

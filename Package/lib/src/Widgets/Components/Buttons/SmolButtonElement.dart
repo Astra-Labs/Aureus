@@ -21,11 +21,6 @@ class SmolButtonElement extends StatefulWidget {
 }
 
 class _SmolButtonElementState extends State<SmolButtonElement> {
-  BoxDecoration animatedBacking = const BoxDecoration();
-
-  var scale = 1.0;
-  var duration = const Duration(milliseconds: 500);
-
   @override
   void initState() {
     super.initState();
@@ -33,7 +28,6 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
 
   void createButtonInteraction() {
     setState(() {
-      scale = 1.5;
       sensation.createSensation(sensationType.press);
     });
   }
@@ -73,20 +67,16 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
                 ? true
                 : false,
             child: FloatingContainerElement(
-              child: AnimatedScale(
-                scale: scale,
-                duration: duration,
-                child: Container(
-                    constraints: BoxConstraints(
-                        minHeight: minimumButtonTextSize.height + 10,
-                        maxHeight: minimumButtonTextSize.height + 10,
-                        maxWidth: minimumButtonTextSize.width + 20,
-                        minWidth: minimumButtonTextSize.width + 20),
-                    decoration: buttonDecoration,
-                    child: Center(
-                        child: TagOneText(
-                            widget.buttonTitle, widget.decorationVariant))),
-              ),
+              child: Container(
+                  constraints: BoxConstraints(
+                      minHeight: minimumButtonTextSize.height + 10,
+                      maxHeight: minimumButtonTextSize.height + 10,
+                      maxWidth: minimumButtonTextSize.width + 20,
+                      minWidth: minimumButtonTextSize.width + 20),
+                  decoration: buttonDecoration,
+                  child: Center(
+                      child: TagOneText(
+                          widget.buttonTitle, widget.decorationVariant))),
             ),
           )),
     );

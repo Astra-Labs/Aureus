@@ -94,7 +94,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
         ),
         const Spacer(),
         FullWidthButtonElement(
-            buttonTitle: 'Open ${tool.toolName}.',
+            buttonTitle: 'Use tool.',
             buttonHint: 'Starts ${tool.toolName}.',
             currentVariant: decorationPriority.important,
             buttonAction: () => {

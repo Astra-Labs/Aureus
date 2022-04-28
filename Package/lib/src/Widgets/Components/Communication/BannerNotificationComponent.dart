@@ -108,9 +108,8 @@ class _BannerNotificationComponentState
                     .buildBacking(),
             child: Column(
               children: [
-                const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -124,14 +123,14 @@ class _BannerNotificationComponentState
                     ],
                   ),
                 ),
-                const SizedBox(height: 5.0),
+                const SizedBox(height: 2.0),
                 const DividerElement(),
-                const SizedBox(height: 5.0),
+                const SizedBox(height: 3.0),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                   child: slidingProgressBar,
                 ),
-                const SizedBox(height: 5.0),
+                const SizedBox(height: 3.0),
                 const Spacer(),
               ],
             )),

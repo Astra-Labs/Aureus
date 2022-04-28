@@ -48,7 +48,13 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
                     badgeIcon: widget.cardIcon,
                     badgePriority: decorationPriority.standard),
                 const SizedBox(height: 20.0),
-                BodyTwoText(widget.toolPrompt, decorationPriority.standard),
+                Text(
+                  widget.toolPrompt,
+                  style: body2().copyWith(
+                      color: coloration.decorationColor(
+                          decorationVariant: decorationPriority.standard)),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 20.0),
                 Column(children: widget.toolChildren),
                 const SizedBox(height: 20.0)

@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/services.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'dart:math';
 
 /* ------------------ SENSORY -------------------- */
@@ -14,68 +15,92 @@ var sensation = Sensory();
 
 class Sensory {
   // Wraps an Ink & Inkwell widget together and calls
-  // the Aureus sensory engine to provide haptic feedback
+  // the Auus sensory engine to provide haptic feedback
   // and noises from the sound library.
 
-  // Calls the Hpatic Feedback engine and plays
+  // Calls the Haptic Feedback engine and plays
   // an accompanying sound file for the different
   // types of gestures that happen.
+
+  static AudioCache player = AudioCache();
+  var confirmationAudioPath = "confirm1.wav";
+  var praiseAudioPath = "praise1.wav";
+  var errorAudioPath = "praise1.wav";
+  var attentionAudioPath = "praise1.wav";
+  var notificationAudioPath = "praise1.wav";
+  var urgentAudioPath = "praise1.wav";
+  var enableAudioPath = "praise1.wav";
+  var disableAudioPath = "praise1.wav";
+  var swipeAudioPath = "swipe1.wav";
+  var pressAudioPath = "praise1.wav";
+  var holdAudioPath = "praise1.wav";
 
   void createSensation(sensationType sense) {
     switch (sense) {
       case sensationType.confirmation:
         {
           HapticFeedback.lightImpact();
+          player.play(confirmationAudioPath);
           break;
         }
       case sensationType.praise:
         {
           HapticFeedback.lightImpact();
+          player.play(praiseAudioPath);
           break;
         }
       case sensationType.error:
         {
           HapticFeedback.heavyImpact();
+          player.play(errorAudioPath);
           break;
         }
       case sensationType.attention:
         {
           HapticFeedback.vibrate();
+          player.play(attentionAudioPath);
           break;
         }
       case sensationType.notification:
         {
           HapticFeedback.lightImpact();
+          player.play(notificationAudioPath);
           break;
         }
       case sensationType.urgent:
         {
           HapticFeedback.heavyImpact();
+          player.play(urgentAudioPath);
           break;
         }
       case sensationType.enable:
         {
           HapticFeedback.mediumImpact();
+          player.play(enableAudioPath);
           break;
         }
       case sensationType.disable:
         {
           HapticFeedback.selectionClick();
+          player.play(disableAudioPath);
           break;
         }
       case sensationType.swipe:
         {
           HapticFeedback.selectionClick();
+          player.play(swipeAudioPath);
           break;
         }
       case sensationType.press:
         {
           HapticFeedback.selectionClick();
+          player.play(pressAudioPath);
           break;
         }
       case sensationType.hold:
         {
           HapticFeedback.vibrate();
+          player.play(holdAudioPath);
           break;
         }
     }

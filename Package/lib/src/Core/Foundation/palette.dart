@@ -91,7 +91,7 @@ BoxShadow lightShadow() {
 
 BoxShadow darkShadow() {
   return BoxShadow(
-      color: carbon().withOpacity(0.4),
+      color: carbon().withOpacity(0.3),
       offset: const Offset(0.0, 3.0),
       blurRadius: 30.0);
 }

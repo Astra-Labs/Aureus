@@ -21,6 +21,12 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
   var popCount = 0;
 
   @override
+  void initState() {
+    sensation.createSensation(sensationType.praise);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
     List<Widget> nextStepCards = [];
