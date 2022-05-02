@@ -35,18 +35,27 @@ void main() {
       privacyPolicy: 'privacyPolicy');
 
   var resourceNavigation = AureusNavigationTree(
-      SplashScreenView(onLaunch: () => {}),
-      landing1,
-      SettingsView(),
-      OnboardingLandingView(),
-      OnboardingDemoView(toolItems: []),
-      OnboardingInformationView(
-        onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
+      splashScreen: SplashScreenView(onLaunch: () => {}),
+      homeScreen: LandingPage(),
+      settings: SettingsView(),
+      onboardingLanding: OnboardingLandingView(),
+      onboardingDemo: OnboardingDemoView(
+        toolItems: [],
       ),
-      landing1,
-      landing1,
-      HelpCenterView(helpCenter: helpCenterTest),
-      landing1);
+      onboardingInformation: OnboardingInformationView(onboardingDetails: [
+        onboardingInfo1,
+        onboardingInfo2,
+        onboardingInfo3
+      ]),
+      termsOfService: ArticleViewElement(
+          title: "Terms of Service", subheader: "subheader", body: "body"),
+      privacyPolicy: ArticleViewElement(
+          title: "Privacy Policy", subheader: "subheader", body: "body"),
+      signIn: SignInView(
+          onSignIn: () => {}, onSignup: () => {}, onResetInformation: () => {}),
+      signUp: OnboardingLandingView(),
+      helpCenter: HelpCenterView(helpCenter: helpCenterTest),
+      contactSupport: HelpCenterView(helpCenter: helpCenterTest));
 
   packageVariables = AureusResource(
       resourceBranding: resourceBranding,
@@ -83,6 +92,7 @@ class TestingView extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: StandardButtonElement(
+            buttonHint: "Shows an alert controller",
             decorationVariant: decorationPriority.important,
             buttonTitle: 'Alert Controller',
             buttonAction: () =>
@@ -93,6 +103,7 @@ class TestingView extends StatelessWidget {
         child: StandardButtonElement(
             decorationVariant: decorationPriority.important,
             buttonTitle: 'Content Warning',
+            buttonHint: "Shows a content warning",
             buttonAction: () => {
                   notificationMaster.sendContentWarningRequest(
                       'There is a content issue here.', Assets.alertmessage)
@@ -103,6 +114,7 @@ class TestingView extends StatelessWidget {
         child: StandardButtonElement(
             decorationVariant: decorationPriority.important,
             buttonTitle: 'Dropdown Banner',
+            buttonHint: "Shows a dropdown banner",
             buttonAction: () => {
                   notificationMaster.sendAlertNotificationRequest(
                       'Banner request!', Assets.apple)
@@ -113,6 +125,7 @@ class TestingView extends StatelessWidget {
         child: StandardButtonElement(
             decorationVariant: decorationPriority.important,
             buttonTitle: 'Bottom Action Sheet',
+            buttonHint: "Shows a bottom action sheet",
             buttonAction: () =>
                 {notificationMaster.showBottomActionController(bottomData)}),
       )
@@ -124,7 +137,6 @@ class TestingView extends StatelessWidget {
     return ContainerView(
         decorationVariant: decorationPriority.standard,
         builder: containerViewHolder);
-    //return LightLeakView();
   }
 }
 
@@ -167,7 +179,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: LandingPage(),
+        home: OnboardingLandingView(),
         theme: new ThemeData(scaffoldBackgroundColor: coloration.sameColor()));
   }
 }
@@ -226,6 +238,7 @@ class _ToolNavigationTestingState extends State<ToolNavigationTesting> {
       StandardButtonElement(
           decorationVariant: decorationPriority.standard,
           buttonTitle: 'Enter Tool.',
+          buttonHint: "Opens tool flow for the user.",
           buttonAction: () => {
                 Navigator.push(
                     context,
@@ -354,6 +367,7 @@ class LandingPage extends StatelessWidget {
     List<StandardIconButtonElement> buttonItems = [
       StandardIconButtonElement(
           decorationVariant: decorationPriority.standard,
+          buttonHint: "Opens Astra's Github Repository for Aureus",
           buttonTitle: "Find on Github.",
           buttonIcon: Assets.window,
           buttonAction: () =>

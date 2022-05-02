@@ -121,16 +121,19 @@ var inactiveSmolButton = SmolButtonElement(
 
 var standardStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
+    buttonHint: "Completes $fillerTextButton",
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.standard);
 
 var importantStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
+    buttonHint: "Completes $fillerTextButton",
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.important);
 
 var inactiveStandardButton = StandardButtonElement(
     buttonTitle: fillerTextButton,
+    buttonHint: "Completes $fillerTextButton",
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.inactive);
 

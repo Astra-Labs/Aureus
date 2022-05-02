@@ -109,9 +109,7 @@ Map<String, Widget> aureusComponents = {
 
 Map<String, Widget> aureusViews = {
   'Splash Screen': SplashScreenView(
-    onLaunch: () => {
-      Navigator.push(context, MaterialPageRoute(builder: builder))
-    },
+    onLaunch: () => {},
   ),
   'Two Factor Authentication': TFAVerificationView(
       userPhoneNumber: 555555555,
@@ -122,23 +120,21 @@ Map<String, Widget> aureusViews = {
     onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
   ),
   'Onboarding Landing View': OnboardingLandingView(),
-  'Data Opt-in View': DataOptInView(permissionItems: dataPermissions),
+  'Data Opt-in View': DataOptInView(onFinish: () {}),
   'Help Center View': HelpCenterView(helpCenter: helpCenterTest),
-  'Safety Plan Opt In View': SafetyPlanOptInView(),
-  'Safety Plan Options View': SafetyPlanOptionsView(),
+  'Safety Plan Opt In View': SafetyPlanOptInView(exitPoint: AureusViewsView()),
+  'Safety Plan Options View':
+      SafetyPlanOptionsView(exitPoint: AureusViewsView()),
   'Safety Plan Functionality View':
       SafetyPlanFunctionalityView(userSelectedOptions: [
     SafetyPlanOptions.deviceSandbox,
     SafetyPlanOptions.disableScreenshots,
     SafetyPlanOptions.disableNotifications,
-  ], exitPoint: ,),
+  ], exitPoint: AureusViewsView()),
   'Sign In View': SignInView(
       onSignIn: fillerAction,
       onSignup: fillerAction,
       onResetInformation: fillerAction),
-  'Tool Detail View': demoTool.navigationContainer.details,
-  'Tool Next Steps View': demoTool.navigationContainer.nextSteps,
-  'Tool Summary View': demoTool.navigationContainer.summary!
 };
 
 /*Map<String, Widget> aureusToolTemplates = { 

@@ -426,6 +426,8 @@ class _footerCTAState extends State<footerCTA> {
                           StandardButtonElement(
                               decorationVariant: decorationPriority.important,
                               buttonTitle: 'Open Github repo.',
+                              buttonHint:
+                                  "Opens Astra's Github Repository for Aureus",
                               buttonAction: () => {
                                     launchInBrowser(
                                         'https://github.com/Astra-Labs/Aureus')
@@ -433,6 +435,7 @@ class _footerCTAState extends State<footerCTA> {
                           SizedBox(height: 30.0),
                           StandardButtonElement(
                               decorationVariant: decorationPriority.standard,
+                              buttonHint: "Shows you our Gen 2.0 plan",
                               buttonTitle: 'our Gen 2.0 resources.',
                               buttonAction: () => {
                                     launchInBrowser(

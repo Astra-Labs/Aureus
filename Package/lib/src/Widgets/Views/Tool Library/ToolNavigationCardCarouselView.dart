@@ -25,6 +25,7 @@ class _ToolTemplateCardCarouselViewState
   List<ToolCardTemplate> toolChildren = [];
   late AnimationController _controller;
   late Animation<Offset> _offset;
+  bool _visible = false; 
 
   //the index current card being shown
   int currentCardIndex = 0;
@@ -32,39 +33,13 @@ class _ToolTemplateCardCarouselViewState
   @override
   void initState() {
     toolTemplateMaster.registerObserver(this);
+
     toolChildren = widget.customCards.isEmpty
         ? widget.parentTool.toolCards!
         : widget.customCards;
 
-    _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 700))
-      ..addListener(() {
-        setState(() {});
-      })
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          //resets the container after the animation is reversed
-          setState(() {
-            if (currentCardIndex == (toolChildren.length - 1)) {
-              print("card has hit limit");
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        navigationContainer(widget.parentTool).summary!),
-              );
-            } else {
-              currentCardIndex += 1;
-              _controller.reverse();
-            }
-          });
-        }
-      });
-
-    _offset = Tween<Offset>(
-            begin: const Offset(0.0, 0.35), end: const Offset(0.0, 2.0))
-        .animate(
-            CurvedAnimation(parent: _controller, curve: Curves.decelerate));
+      _visible = true; 
+    
 
     super.initState();
   }
@@ -82,7 +57,20 @@ class _ToolTemplateCardCarouselViewState
     setState(() {
       if (currentCardIndex < toolChildren.length) {
         print("card hasn't hit limit");
-        _controller.forward();
+        _visible = false; 
+
+        if (currentCardIndex == (toolChildren.length - 1)) {
+              print("card has hit limit");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        navigationContainer(widget.parentTool).summary!),
+              );
+            } else {
+              currentCardIndex += 1;
+              _visible = true; 
+            }
       }
     });
   }
@@ -92,9 +80,10 @@ class _ToolTemplateCardCarouselViewState
   void previousAction() {
     print('Received previous card instructions from master.');
     setState(() {
-      _controller.reverse();
+      _visible = false; 
       if (currentCardIndex != 0) {
         currentCardIndex -= 1;
+        _visible = true; 
       }
     });
   }
@@ -145,22 +134,19 @@ class _ToolTemplateCardCarouselViewState
         SizedBox(
           width: size.layoutItemWidth(1, size.logicalScreenSize()),
           height: size.layoutItemHeight(1, size.logicalScreenSize()),
-          child: Stack(alignment: Alignment.center, children: [
-            Positioned(
-                top: _offset.value.dy * (size.logicalWidth()),
-                left: _offset.value.dx * (size.logicalHeight()),
-                child: activeCardItem),
-            Column(
-              children: [
-                PageHeaderElement.withExit(
-                    pageTitle: widget.parentTool.toolName,
-                    onPageExit: () => {Navigator.pop(context)}),
-                const Spacer(),
-                progressBar,
-                const SizedBox(height: 10.0)
-              ],
-            ),
-          ]),
+          child: Column(
+            children: [
+              PageHeaderElement.withExit(
+                  pageTitle: widget.parentTool.toolName,
+                  onPageExit: () => {Navigator.pop(context)}),
+              const Spacer(),
+              opacity: _visible ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),(child: activeCardItem),
+              const Spacer(),
+              progressBar,
+              const SizedBox(height: 10.0)
+            ],
+          ),
         )
       ],
       containerVariant: wrapperVariants.fullScreen,

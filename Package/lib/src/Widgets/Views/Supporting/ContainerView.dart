@@ -57,7 +57,12 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void dispose() {
+    //Removes items in the container view
+    resetRequests();
+
+    //unregisters it from the notification master
     notificationMaster.unregisterObserver(this);
+
     _controller.dispose();
     super.dispose();
   }
