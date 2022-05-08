@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //A container that sets the size for the screen with QA-approved padding,
 //and enables the exit bar at the top of the screen when enabled in the safety plan.
 
@@ -9,12 +10,14 @@ class ContainerView extends StatefulWidget {
   final ContainerWrapperElement builder;
   final bool? takesFullWidth;
   final bool? hasBackgroundImage;
+  final bool? showQuickActionBar;
 
   const ContainerView(
       {required this.decorationVariant,
       required this.builder,
       this.takesFullWidth = false,
-      this.hasBackgroundImage = true});
+      this.hasBackgroundImage = true,
+      this.showQuickActionBar = true});
 
   @override
   _ContainerViewState createState() => _ContainerViewState();
@@ -24,15 +27,31 @@ class ContainerView extends StatefulWidget {
 // alert child widgets as important information changes.
 class _ContainerViewState extends State<ContainerView>
     with AureusNotificationObserver, TickerProviderStateMixin {
+  final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
+  late Future<double> actionBarX;
+  late Future<double> actionBarY;
+
+  double holdX = 0.0;
+  double holdY = 0.0;
+
   Widget overlayView = Container();
   var hasOverlayEnabled = false;
   late AnimationController _controller;
   late Animation<Offset> _offset;
+  final GlobalKey quickBarKey = GlobalKey();
 
   @override
   void initState() {
     notificationMaster.registerObserver(this);
     sensation.prepare();
+
+    actionBarY = preferences.then((SharedPreferences preferences) {
+      return preferences.getDouble('barY') ?? 0.6;
+    });
+
+    actionBarX = preferences.then((SharedPreferences preferences) {
+      return preferences.getDouble('barX') ?? 0.4;
+    });
 
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 500))
@@ -163,11 +182,49 @@ class _ContainerViewState extends State<ContainerView>
   @override
   Widget build(BuildContext context) {
     //pull exit bar setting status from Safety Plan
+    var safety = resourceValues.safetySettings;
     const bool hasExitBar = false;
 
     var screenSize = size.logicalScreenSize();
     var screenWidth = size.logicalWidth();
     var screenHeight = size.logicalHeight();
+    var actionBar;
+
+    if (safety.isActionBarDevEnabled == true) {
+      var actionBarWidget = QuickActionBarComponent(
+          key: quickBarKey, tabItems: safety.quickActionItems!);
+
+      var draggableActionBar = Draggable(
+          child: actionBarWidget,
+          feedback: actionBarWidget,
+          childWhenDragging: const SizedBox(width: 1),
+          onDragEnd: (dragDetails) {
+            setState(() {
+              holdX = dragDetails.offset.dx;
+              holdY = dragDetails.offset.dy;
+            });
+          });
+
+      actionBar = draggableActionBar;
+
+      /* actionBar =  FutureBuilder(
+          future: Future.wait([actionBarX, actionBarY]),
+          builder: (context, AsyncSnapshot<List<double>> snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return const CircularProgressIndicator();
+              default:
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  return Positioned(
+                      top: snapshot.data![0] * (size.logicalWidth()),
+                      left: snapshot.data![1] * (size.logicalHeight()),
+                      child: draggableActionBar);
+                }
+            }
+          });*/
+    }
 
     BoxDecoration containerBacking() {
       if (widget.decorationVariant == decorationPriority.important &&
@@ -209,7 +266,13 @@ class _ContainerViewState extends State<ContainerView>
             height: widget.takesFullWidth!
                 ? screenHeight
                 : size.layoutItemHeight(1, screenSize),
-            child: Center(child: widget.builder)));
+            child: Center(
+                child: Stack(children: [
+              widget.builder,
+              safety.isActionBarDevEnabled == true
+                  ? Positioned(top: holdY, left: holdX, child: actionBar)
+                  : const SizedBox(width: 1),
+            ]))));
 
     var overlayItem = SizedBox(
         width: size.logicalWidth(),

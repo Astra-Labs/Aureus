@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 import 'package:test_app/interface_items.dart';
+import 'package:test_app/test_interface.dart';
 import 'package:test_app/view_items.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'landing_interface.dart';
@@ -26,6 +27,21 @@ void main() {
           "An open-source design system for software focused on safety, privacy, and accessibility.",
       safetySettings: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
+          isActionBarDevEnabled: true,
+          quickActionItems: [
+            TabObject.forTextTabbing(
+                onTabSelection: () => {print("item 1")},
+                tabTitle: "Item 1",
+                accessibilityHint: "Opens Item 1"),
+            TabObject.forTextTabbing(
+                tabTitle: "Item 2",
+                onTabSelection: () => {print("item 2")},
+                accessibilityHint: "Opens Item 2"),
+            TabObject.forTextTabbing(
+                tabTitle: "Item 3",
+                onTabSelection: () => {print("item 3")},
+                accessibilityHint: "Opens Item 3"),
+          ],
           eligiblePlanOptions: []),
       developerName: 'Astra Laboratories',
       developerEmail: 'hello@withastra.com',
@@ -65,78 +81,60 @@ void main() {
   runApp(AureusTestApp());
 }
 
+class reworkedExplorationView extends StatefulWidget {
+  @override
+  _reworkedExplorationViewState createState() =>
+      _reworkedExplorationViewState();
+}
+
+class _reworkedExplorationViewState extends State<reworkedExplorationView> {
+  List<ControllerTabObject> tabItems = [
+    ControllerTabObject(
+        tabController: AureusElementsView(),
+        tabTitle: "Elements",
+        accessibilityHint: "Shows you the elements page",
+        tabIcon: Assets.add),
+    ControllerTabObject(
+        tabController: AureusComponentsView(),
+        tabTitle: "Components",
+        accessibilityHint: "Shows you the components",
+        tabIcon: Assets.babycarriage),
+    ControllerTabObject(
+        tabController: AureusViewsView(),
+        tabTitle: "Views",
+        accessibilityHint: "Shows you the views",
+        tabIcon: Assets.hamburgermenu),
+    ControllerTabObject(
+        tabController: AureusToolsView(),
+        tabTitle: "Tools",
+        accessibilityHint: "Shows you the tools",
+        tabIcon: Assets.settings),
+    ControllerTabObject(
+        tabController: TestingView(),
+        tabTitle: "Testing",
+        accessibilityHint: "Shows you the testing page",
+        tabIcon: Assets.pencil)
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    Size screenSize = size.logicalScreenSize();
+
+    return VerticalSideNavBarComponent(tabItems: tabItems);
+  }
+}
+
 class TestingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var bottomData = AlertControllerObject.multipleActions(
-        onCancellation: () => {print('Yee haw my beets')},
-        alertTitle: "Alert Title",
-        alertBody: "Alert Body",
-        alertIcon: Assets.android,
-        actions: [
-          AlertControllerAction(
-              actionName: 'Yee',
-              actionSeverity: AlertControllerActionSeverity.standard,
-              onSelection: () => {}),
-          AlertControllerAction(
-              actionName: 'Haw',
-              actionSeverity: AlertControllerActionSeverity.standard,
-              onSelection: () => {}),
-          AlertControllerAction(
-              actionName: 'MeeBeats',
-              actionSeverity: AlertControllerActionSeverity.standard,
-              onSelection: () => {}),
-        ]);
-
-    List<Widget> buttons = [
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: StandardButtonElement(
-            buttonHint: "Shows an alert controller",
-            decorationVariant: decorationPriority.important,
-            buttonTitle: 'Alert Controller',
-            buttonAction: () =>
-                {notificationMaster.sendAlertControllerRequest(bottomData)}),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: StandardButtonElement(
-            decorationVariant: decorationPriority.important,
-            buttonTitle: 'Content Warning',
-            buttonHint: "Shows a content warning",
-            buttonAction: () => {
-                  notificationMaster.sendContentWarningRequest(
-                      'There is a content issue here.', Assets.alertmessage)
-                }),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: StandardButtonElement(
-            decorationVariant: decorationPriority.important,
-            buttonTitle: 'Dropdown Banner',
-            buttonHint: "Shows a dropdown banner",
-            buttonAction: () => {
-                  notificationMaster.sendAlertNotificationRequest(
-                      'Banner request!', Assets.apple)
-                }),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: StandardButtonElement(
-            decorationVariant: decorationPriority.important,
-            buttonTitle: 'Bottom Action Sheet',
-            buttonHint: "Shows a bottom action sheet",
-            buttonAction: () =>
-                {notificationMaster.showBottomActionController(bottomData)}),
-      )
-    ];
-
     var containerViewHolder = ContainerWrapperElement(
-        children: buttons, containerVariant: wrapperVariants.fullScreen);
+        children: [], containerVariant: wrapperVariants.fullScreen);
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard,
-        builder: containerViewHolder);
+      decorationVariant: decorationPriority.standard,
+      builder: containerViewHolder,
+      showQuickActionBar: true,
+    );
   }
 }
 
@@ -179,7 +177,7 @@ class AureusTestApp extends StatelessWidget {
     }
 
     return MaterialApp(
-        home: OnboardingLandingView(),
+        home: reworkedExplorationView(),
         theme: new ThemeData(scaffoldBackgroundColor: coloration.sameColor()));
   }
 }

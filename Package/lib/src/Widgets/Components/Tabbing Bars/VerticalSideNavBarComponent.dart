@@ -37,34 +37,32 @@ class _VerticalSideNavBarComponentState
       railItems.add(NavigationRailDestination(
         icon: Icon(currentTab.tabIcon, color: coloration.inactiveColor()),
         selectedIcon: Icon(currentTab.tabIcon, color: coloration.accentColor()),
-        label: BodyOneText(currentTab.tabTitle, decorationPriority.standard),
+        label: TagOneText(currentTab.tabTitle, decorationPriority.standard),
       ));
     }
 
     return Scaffold(
       body: Row(
         children: <Widget>[
-          FloatingContainerElement(
-            child: NavigationRail(
-              backgroundColor: coloration.contrastColor().withOpacity(0.10),
-              selectedIndex: _selectedIndex,
-              groupAlignment: 0.0,
-              onDestinationSelected: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  width: 80,
-                  height: 80,
-                  child: coloration.resourceLogo(),
-                ),
+          NavigationRail(
+            backgroundColor: coloration.contrastColor().withOpacity(0.15),
+            selectedIndex: _selectedIndex,
+            groupAlignment: 0.0,
+            onDestinationSelected: (int index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            leading: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: SizedBox(
+                width: 80,
+                height: 80,
+                child: coloration.resourceLogo(),
               ),
-              labelType: NavigationRailLabelType.none,
-              destinations: railItems,
             ),
+            labelType: NavigationRailLabelType.all,
+            destinations: railItems,
           ),
           // This is the main content.
           Expanded(

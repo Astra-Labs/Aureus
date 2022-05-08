@@ -6,7 +6,8 @@ import 'package:aureus/aureus.dart';
 class QuickActionBarComponent extends StatefulWidget {
   final List<TabObject> tabItems;
 
-  const QuickActionBarComponent({required this.tabItems});
+  const QuickActionBarComponent({Key? key, required this.tabItems})
+      : super(key: key);
 
   @override
   _QuickActionBarComponentState createState() =>
@@ -40,8 +41,13 @@ class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    var tabItemNames = [];
-    var tabItemActions = [];
+    List<String> tabItemNames = [];
+    List<VoidCallback> tabItemActions = [];
+
+    for (var element in widget.tabItems) {
+      tabItemNames.add(element.tabTitle);
+      tabItemActions.add(element.onTabSelection);
+    }
 
     var minimizedButton = SecondaryIconButtonElement(
         decorationVariant: decorationPriority.standard,
@@ -52,19 +58,24 @@ class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
     var expandedBar = FloatingContainerElement(
       child: Container(
         width: size.layoutItemWidth(1, screenSize),
-        height: size.layoutItemHeight(6, screenSize),
+        height: size.layoutItemHeight(5, screenSize),
         decoration: CardBackingDecoration(priority: decorationPriority.standard)
             .buildBacking(),
+        padding: const EdgeInsets.all(20.0),
         child: Row(
-          children: [
-            const SmolTextTabbingBarComponent(itemTitles: [], itemActions: []),
-            const SizedBox(width: 10.0),
-            minimizedButton
-          ],
-        ),
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SmolTextTabbingBarComponent(
+                  itemTitles: tabItemNames, itemActions: tabItemActions),
+              const Spacer(),
+              minimizedButton
+            ]),
       ),
     );
 
-    return isExpanded == true ? expandedBar : minimizedButton;
+    return Container(
+      child: isExpanded == true ? expandedBar : minimizedButton,
+    );
   }
 }

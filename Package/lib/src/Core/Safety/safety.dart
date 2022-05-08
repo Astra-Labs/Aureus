@@ -95,9 +95,14 @@ class Safety {
   */
   final List<SafetyPlanOptions> eligiblePlanOptions;
   final SafetyPlanFrequency frequencyUsage;
+  final bool? isActionBarDevEnabled;
+  final List<TabObject>? quickActionItems;
 
   const Safety(
-      {required this.frequencyUsage, required this.eligiblePlanOptions});
+      {required this.frequencyUsage,
+      required this.eligiblePlanOptions,
+      this.isActionBarDevEnabled = false,
+      this.quickActionItems = const []});
 
   SafetyOptionDetails retrieveDetails(SafetyPlanOptions option) {
     switch (option) {
