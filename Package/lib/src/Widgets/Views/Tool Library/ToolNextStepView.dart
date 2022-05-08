@@ -22,8 +22,15 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
 
   @override
   void initState() {
+    sensation.prepare();
     sensation.createSensation(sensationType.praise);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    sensation.dispose();
+    super.dispose();
   }
 
   @override

@@ -28,7 +28,14 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
   @override
   void initState() {
     buttonPriority = widget.decorationVariant;
+    sensation.prepare();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    sensation.dispose();
+    super.dispose();
   }
 
   void createButtonInteraction() {

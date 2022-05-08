@@ -18,7 +18,6 @@ class ContainerWrapperElement extends StatefulWidget {
 class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
     Widget children = widget.containerVariant == wrapperVariants.stackScroll
         ? SingleChildScrollView(
             child: Wrap(

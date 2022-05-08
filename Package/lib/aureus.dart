@@ -100,6 +100,7 @@ export 'src/Widgets/Components/Buttons/StandardButtonElement.dart';
 export 'src/Widgets/Components/Buttons/StandardIconButtonElement.dart';
 
 export 'src/Widgets/Components/Collection Views/DetailCardCarouselComponent.dart';
+export 'src/Widgets/Components/Collection Views/QuickActionBarComponent.dart';
 
 export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';
 export 'src/Widgets/Components/Communication/NotificationComponent.dart';
@@ -118,6 +119,7 @@ export 'src/Widgets/Components/Tabbing Bars/IconTabbingBarComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/NavBarComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/IteratingTabbingComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/SmolTextTabbingBarComponent.dart';
+export 'src/Widgets/Components/Tabbing Bars/VerticalSideNavBarComponent.dart';
 
 //Exporting lib widget views
 
@@ -133,6 +135,7 @@ export 'src/Widgets/Views/2FAVerificationView.dart';
 export 'src/Widgets/Views/LandingPageView.dart';
 export 'src/Widgets/Views/SignInView.dart';
 export 'src/Widgets/Views/SplashScreenView.dart';
+export 'src/Widgets/Views/CheckboxArticleView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
 export 'src/Widgets/Views/SettingsView.dart';

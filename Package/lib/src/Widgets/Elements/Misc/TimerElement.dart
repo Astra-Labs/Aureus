@@ -34,6 +34,8 @@ class _TimerElementState extends State<TimerElement>
       (Timer timer) {
         if (intDuration == 0) {
           timer.cancel();
+          //uses the sensory library to make an attention noise.
+          sensation.createSensation(sensationType.attention);
           if (widget.onFinish != null) {
             widget.onFinish!();
           }
@@ -70,6 +72,7 @@ class _TimerElementState extends State<TimerElement>
     //and then initializes the animation controller.
 
     intDuration = widget.timeAllotment.inSeconds;
+    sensation.prepare();
 
     if (accessibility.accessFeatures.disableAnimations == false ||
         accessibility.accessFeatures.reduceMotion == false) {
@@ -89,6 +92,7 @@ class _TimerElementState extends State<TimerElement>
   @override
   void dispose() {
     pauseTimer();
+    sensation.dispose();
     controller.dispose();
     super.dispose();
   }

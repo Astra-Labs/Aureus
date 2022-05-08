@@ -23,7 +23,14 @@ class SmolButtonElement extends StatefulWidget {
 class _SmolButtonElementState extends State<SmolButtonElement> {
   @override
   void initState() {
+    sensation.prepare();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    sensation.dispose();
+    super.dispose();
   }
 
   void createButtonInteraction() {

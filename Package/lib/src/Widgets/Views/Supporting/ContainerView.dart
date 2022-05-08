@@ -32,6 +32,7 @@ class _ContainerViewState extends State<ContainerView>
   @override
   void initState() {
     notificationMaster.registerObserver(this);
+    sensation.prepare();
 
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 500))
@@ -39,6 +40,10 @@ class _ContainerViewState extends State<ContainerView>
         setState(() {});
       })
       ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          //uses the sensory library to make a notification noise.
+          sensation.createSensation(sensationType.notification);
+        }
         if (status == AnimationStatus.dismissed) {
           //resets the container after the animation is reversed
           setState(() {
@@ -64,6 +69,7 @@ class _ContainerViewState extends State<ContainerView>
     notificationMaster.unregisterObserver(this);
 
     _controller.dispose();
+    sensation.dispose();
     super.dispose();
   }
 

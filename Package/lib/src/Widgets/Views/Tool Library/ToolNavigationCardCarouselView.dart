@@ -23,9 +23,7 @@ class _ToolTemplateCardCarouselViewState
     with AureusToolTemplateObserver, TickerProviderStateMixin {
   late ToolNavigationContainer toolNavigation;
   List<ToolCardTemplate> toolChildren = [];
-  late AnimationController _controller;
-  late Animation<Offset> _offset;
-  bool _visible = false; 
+  bool _visible = false;
 
   //the index current card being shown
   int currentCardIndex = 0;
@@ -38,8 +36,7 @@ class _ToolTemplateCardCarouselViewState
         ? widget.parentTool.toolCards!
         : widget.customCards;
 
-      _visible = true; 
-    
+    _visible = true;
 
     super.initState();
   }
@@ -47,7 +44,6 @@ class _ToolTemplateCardCarouselViewState
   @override
   void dispose() {
     toolTemplateMaster.unregisterObserver(this);
-    _controller.dispose();
     super.dispose();
   }
 
@@ -57,20 +53,20 @@ class _ToolTemplateCardCarouselViewState
     setState(() {
       if (currentCardIndex < toolChildren.length) {
         print("card hasn't hit limit");
-        _visible = false; 
+        _visible = false;
 
         if (currentCardIndex == (toolChildren.length - 1)) {
-              print("card has hit limit");
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        navigationContainer(widget.parentTool).summary!),
-              );
-            } else {
-              currentCardIndex += 1;
-              _visible = true; 
-            }
+          print("card has hit limit");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    navigationContainer(widget.parentTool).summary!),
+          );
+        } else {
+          currentCardIndex += 1;
+          _visible = true;
+        }
       }
     });
   }
@@ -80,10 +76,10 @@ class _ToolTemplateCardCarouselViewState
   void previousAction() {
     print('Received previous card instructions from master.');
     setState(() {
-      _visible = false; 
+      _visible = false;
       if (currentCardIndex != 0) {
         currentCardIndex -= 1;
-        _visible = true; 
+        _visible = true;
       }
     });
   }
@@ -140,8 +136,10 @@ class _ToolTemplateCardCarouselViewState
                   pageTitle: widget.parentTool.toolName,
                   onPageExit: () => {Navigator.pop(context)}),
               const Spacer(),
-              opacity: _visible ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 500),(child: activeCardItem),
+              AnimatedOpacity(
+                  opacity: _visible ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 500),
+                  child: activeCardItem),
               const Spacer(),
               progressBar,
               const SizedBox(height: 10.0)

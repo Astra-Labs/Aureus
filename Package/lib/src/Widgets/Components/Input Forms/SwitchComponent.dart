@@ -15,6 +15,18 @@ class SwitchComponent extends StatefulWidget {
 }
 
 class _SwitchComponentState extends State<SwitchComponent> {
+  @override
+  void initState() {
+    sensation.prepare();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    sensation.dispose();
+    super.dispose();
+  }
+
   void toggleSwitch(bool value) {
     if (widget.isSwitchEnabled == false) {
       if (widget.onEnable != null) {
@@ -22,6 +34,8 @@ class _SwitchComponentState extends State<SwitchComponent> {
       }
       setState(() {
         widget.isSwitchEnabled = true;
+        //uses the sensory library to make an enabled noise.
+        sensation.createSensation(sensationType.enable);
       });
     } else {
       if (widget.onDisable != null) {
@@ -29,6 +43,8 @@ class _SwitchComponentState extends State<SwitchComponent> {
       }
       setState(() {
         widget.isSwitchEnabled = false;
+        //uses the sensory library to make an disable noise.
+        sensation.createSensation(sensationType.disable);
       });
     }
   }

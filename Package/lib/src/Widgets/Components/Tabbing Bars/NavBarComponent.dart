@@ -80,22 +80,24 @@ class _NavBarComponentState extends State<NavBarComponent> {
             ),
             Positioned(
               bottom: 25,
-              child: FloatingContainerElement(
-                  child: Container(
-                      constraints: BoxConstraints(
-                          maxWidth: size.layoutItemWidth(1, screenSize)),
-                      decoration: CardBackingDecoration(
-                              priority: decorationPriority.inactive)
-                          .buildBacking()
-                          .copyWith(borderRadius: BorderRadius.circular(60)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(height: 5),
-                          navigationBar,
-                        ],
-                      ))),
+              child: ClipRect(
+                child: FloatingContainerElement(
+                    child: Container(
+                        constraints: BoxConstraints(
+                            maxWidth: size.layoutItemWidth(1, screenSize)),
+                        decoration: CardBackingDecoration(
+                                priority: decorationPriority.inactive)
+                            .buildBacking()
+                            .copyWith(borderRadius: BorderRadius.circular(60)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(height: 5),
+                            navigationBar,
+                          ],
+                        ))),
+              ),
             ),
           ],
         ),

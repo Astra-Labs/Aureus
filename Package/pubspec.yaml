@@ -20,7 +20,7 @@ dependencies:
   video_player: ^2.3.0
   flutter_map: ^0.14.0
   latlong2: ^0.8.1
-  audioplayers: ^0.20.1
+  just_audio: ^0.9.20
 
 flutter:
   assets:
@@ -34,9 +34,16 @@ flutter:
     - lib/assets/Light Blur - Portrait.png
     - lib/assets/Light Fluid - Landscape.png
     - lib/assets/Light Fluid - Portrait.png
-    - lib/assets/confirm1.wav
-    - lib/assets/praise1.wav
-    - lib/assets/swipe1.wav
+    - lib/assets/sounds/attention.mp3
+    - lib/assets/sounds/confirm.mp3
+    - lib/assets/sounds/disable.mp3
+    - lib/assets/sounds/enable.mp3
+    - lib/assets/sounds/error.mp3
+    - lib/assets/sounds/hold.wav
+    - lib/assets/sounds/notification.mp3
+    - lib/assets/sounds/praise.mp3
+    - lib/assets/sounds/swipe.mp3
+    - lib/assets/sounds/urgent.mp3
 
   fonts:
     - family: Aureus

@@ -29,6 +29,7 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
   @override
   void initState() {
     buttonPriority = widget.decorationVariant;
+    sensation.prepare();
     super.initState();
   }
 
@@ -37,6 +38,12 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
       buttonPriority = decorationPriority.active;
       sensation.createSensation(sensationType.press);
     });
+  }
+
+  @override
+  void dispose() {
+    sensation.dispose();
+    super.dispose();
   }
 
   @override

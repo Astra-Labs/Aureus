@@ -20,10 +20,7 @@ class _SmolTextTabbingBarComponentState
 
   @override
   void initState() {
-    setState(() {
-      _selectedIndex = 0;
-      widget.itemActions[0];
-    });
+    _onItemTapped(0);
     super.initState();
   }
 
@@ -63,12 +60,18 @@ class _SmolTextTabbingBarComponentState
       ));
     }
 
-    return SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.min,
-            children: tabButtons));
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.min,
+                children: tabButtons)),
+        const SizedBox(height: 15),
+      ],
+    );
   }
 }

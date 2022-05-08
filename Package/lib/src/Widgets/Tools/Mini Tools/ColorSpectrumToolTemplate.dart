@@ -257,6 +257,7 @@ class _CircleColorPickerState extends State<CircleColorPicker>
   @override
   void initState() {
     super.initState();
+    sensation.prepare();
     _hueController = AnimationController(
       vsync: this,
       value: widget.initialHue,
@@ -275,6 +276,7 @@ class _CircleColorPickerState extends State<CircleColorPicker>
   @override
   void dispose() {
     widget.controller?.removeListener(_setColor);
+    sensation.dispose();
     super.dispose();
   }
 

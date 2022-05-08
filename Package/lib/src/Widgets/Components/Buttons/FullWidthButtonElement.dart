@@ -40,6 +40,8 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   void initState() {
     buttonPriority = widget.currentVariant;
 
+    sensation.prepare();
+
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 5))
           ..addListener(() {
@@ -70,6 +72,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   @override
   void dispose() {
     _controller.dispose();
+    sensation.dispose();
     super.dispose();
   }
 
