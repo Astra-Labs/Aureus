@@ -52,8 +52,8 @@ class _BottomActionSheetComponentState
               minWidth: size.layoutItemWidth(1, screenSize),
               maxWidth: size.layoutItemWidth(1, screenSize),
               minHeight: size.layoutItemHeight(3, screenSize),
-              maxHeight: size.layoutItemHeight(1, screenSize) * 0.6),
-          padding: const EdgeInsets.all(30.0),
+              maxHeight: size.layoutItemHeight(2, screenSize)),
+          padding: const EdgeInsets.all(15.0),
           alignment: Alignment.center,
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +82,7 @@ class _BottomActionSheetComponentState
                     widget.alertData.alertTitle, decorationPriority.standard),
                 BodyOneText(
                     widget.alertData.alertBody, decorationPriority.standard),
-                const SizedBox(height: 30.0),
+                const SizedBox(height: 20.0),
                 SizedBox(
                   height: size.layoutItemHeight(4, screenSize),
                   child: SingleChildScrollView(

@@ -36,7 +36,6 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
             title: widget.articleTitle,
             subheader: widget.articleSubheader,
             body: widget.articleBody),
-        const Spacer(),
         const DividerElement(),
         Row(
           children: [
@@ -60,11 +59,10 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
             buttonAction: () {
               widget.onFinish();
             }),
-        const Spacer(),
       ],
     );
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+        decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }

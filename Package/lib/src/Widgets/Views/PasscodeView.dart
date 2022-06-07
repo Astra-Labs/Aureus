@@ -12,6 +12,7 @@ class PasscodeView extends StatefulWidget {
 
 class _PasscodeViewState extends State<PasscodeView> {
   var entryText = '';
+  var digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   @override
   void initState() {
@@ -56,10 +57,15 @@ class _PasscodeViewState extends State<PasscodeView> {
         }
       },
       child: Container(
-        width: size.responsiveSize(50.0),
-        height: size.responsiveSize(50.0),
-        decoration: BoxDecoration(
-            shape: BoxShape.circle, color: coloration.accentColor()),
+        width: size.responsiveSize(80.0),
+        height: size.responsiveSize(80.0),
+        decoration: ButtonBackingDecoration(
+                variant: buttonDecorationVariants.circle,
+                priority: decorationPriority.standard)
+            .buildBacking(),
+        child: Center(
+          child: BodyOneText("$number", decorationPriority.standard),
+        ),
       ),
     );
   }
@@ -67,6 +73,11 @@ class _PasscodeViewState extends State<PasscodeView> {
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
+    List<Widget> digitButtons = [];
+
+    digits.forEach((element) {
+      digitButtons.add(createNumberButton(element));
+    });
 
     var entryFieldBox = FloatingContainerElement(
         child: Container(
@@ -75,21 +86,26 @@ class _PasscodeViewState extends State<PasscodeView> {
             alignment: Alignment.center,
             child: HeadingFourText(entryText, decorationPriority.standard)));
 
-    var viewLayout = const ContainerWrapperElement(
+    var viewLayout = ContainerWrapperElement(
       children: [
-        DividingHeaderElement(
+        const DividingHeaderElement(
             headerText: 'Passcode',
             subheaderText: 'Input your passcode below.'),
-        SizedBox(height: 20.0),
+        const SizedBox(height: 20.0),
+        Wrap(
+          runSpacing: 10,
+          spacing: 10,
+          children: digitButtons,
+        ),
       ],
       containerVariant: wrapperVariants.fullScreen,
-      takesFullWidth: true,
+      takesFullWidth: false,
     );
 
     return ContainerView(
       decorationVariant: decorationPriority.important,
       builder: viewLayout,
-      takesFullWidth: true,
+      takesFullWidth: false,
     );
   }
 }

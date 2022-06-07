@@ -97,6 +97,8 @@ class _ContainerViewState extends State<ContainerView>
     print('container view: resetting overlay');
     setState(() {
       _controller.reverse();
+      overlayView = Container();
+      hasOverlayEnabled = false;
     });
   }
 

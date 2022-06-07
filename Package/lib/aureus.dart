@@ -139,6 +139,7 @@ export 'src/Widgets/Views/CheckboxArticleView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
 export 'src/Widgets/Views/SettingsView.dart';
+export 'src/Widgets/Views/PasscodeView.dart';
 export 'src/Widgets/Views/Tool Library/ToolDetailView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNextStepView.dart';
 export 'src/Widgets/Views/Tool Library/ToolSummaryView.dart';

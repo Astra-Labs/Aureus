@@ -22,17 +22,16 @@ class ArticleViewElement extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 20.0),
-            Flexible(child: HeadingOneText(title, decorationPriority.standard)),
+            HeadingOneText(title, decorationPriority.standard),
             const SizedBox(height: 5.0),
-            Flexible(
-                child: SubheaderText(subheader, decorationPriority.standard)),
+            SubheaderText(subheader, decorationPriority.standard),
             const SizedBox(height: 10.0),
             const DividerElement(),
             const SizedBox(height: 10.0),
-            Flexible(child: BodyOneText(body, decorationPriority.standard)),
+            BodyOneText(body, decorationPriority.standard),
             const SizedBox(height: 20.0),
           ],
         ),

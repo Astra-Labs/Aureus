@@ -282,13 +282,11 @@ class Accessibility {
       required MediaQueryData query}) {
     //creates variable that contains MediaQuery information to return proper sizing
 
-    var screenSize = size.logicalScreenSize();
-
     TextPainter textPainter = TextPainter(
         text: TextSpan(text: textInput, style: textStyle),
         textScaleFactor: query.textScaleFactor,
         textDirection: textDirection)
-      ..layout(maxWidth: size.layoutItemWidth(1, screenSize));
+      ..layout(maxWidth: (size.logicalWidth() * 3));
 
     return textPainter.size;
   }

@@ -69,17 +69,17 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
             }
           },
           child: PulseShadowElement(
-            pulseWidth: minimumButtonTextSize.width * 2,
+            pulseWidth: minimumButtonTextSize.width + 20,
             isActive: widget.decorationVariant == decorationPriority.important
                 ? true
                 : false,
             child: FloatingContainerElement(
               child: Container(
                   constraints: BoxConstraints(
-                      minHeight: minimumButtonTextSize.height + 10,
-                      maxHeight: minimumButtonTextSize.height + 10,
-                      maxWidth: minimumButtonTextSize.width + 20,
-                      minWidth: minimumButtonTextSize.width + 20),
+                      minHeight: minimumButtonTextSize.height + 20,
+                      maxHeight: minimumButtonTextSize.height + 20,
+                      maxWidth: minimumButtonTextSize.width + 30,
+                      minWidth: minimumButtonTextSize.width + 30),
                   decoration: buttonDecoration,
                   child: Center(
                       child: TagOneText(

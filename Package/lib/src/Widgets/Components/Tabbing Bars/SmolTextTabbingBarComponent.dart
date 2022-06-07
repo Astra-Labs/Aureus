@@ -51,7 +51,7 @@ class _SmolTextTabbingBarComponentState
 
     for (var element in tabItems) {
       tabButtons.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(0.0, 10.0, 15.0, 10.0),
         child: SmolButtonElement(
             decorationVariant: element.tabPriority!,
             buttonTitle: element.tabTitle,
