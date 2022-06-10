@@ -51,7 +51,7 @@ class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
 
     var minimizedButton = SecondaryIconButtonElement(
         decorationVariant: decorationPriority.standard,
-        buttonIcon: isExpanded ? Assets.expand : Assets.no,
+        buttonIcon: isExpanded ? Assets.no : Assets.expand,
         buttonHint: "buttonHint",
         buttonAction: _onItemTapped);
 

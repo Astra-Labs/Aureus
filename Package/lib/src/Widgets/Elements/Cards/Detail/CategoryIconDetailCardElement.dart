@@ -20,43 +20,41 @@ class CategoryIconDetailCardElement extends StatelessWidget {
       child: Container(
           //this will be the rounded card backing
           constraints: BoxConstraints(
-              maxWidth: size.layoutItemWidth(2, screenSize) * 0.95,
+              maxWidth: size.layoutItemWidth(2, screenSize) * 0.9,
               minHeight: size.layoutItemHeight(3, screenSize)),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           alignment: Alignment.center,
           clipBehavior: Clip.antiAlias,
-          child: SizedBox(
-              width: size.layoutItemWidth(2, screenSize) - 20,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      SizedBox(height: size.responsiveSize(30.0)),
-                      Icon(cardIcon,
-                          size: size.responsiveSize(60),
-                          color: coloration.decorationColor(
-                              decorationVariant: decorationVariant)),
-                      SizedBox(height: size.responsiveSize(30.0)),
-                      Text(cardLabel.toUpperCase(),
-                          textAlign: TextAlign.center,
-                          style: heading4().copyWith(
-                            color: coloration.decorationColor(
-                                decorationVariant: decorationVariant),
-                          )),
-                      const SizedBox(height: 5.0),
-                      Text(cardBody,
-                          textAlign: TextAlign.center,
-                          style: body1().copyWith(
-                            color: coloration.decorationColor(
-                                decorationVariant: decorationVariant),
-                          )),
-                      const SizedBox(height: 10.0),
-                    ]),
-              ))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  SizedBox(height: size.responsiveSize(30.0)),
+                  Icon(cardIcon,
+                      size: size.responsiveSize(60),
+                      color: coloration.decorationColor(
+                          decorationVariant: decorationVariant)),
+                  SizedBox(height: size.responsiveSize(30.0)),
+                  Text(cardLabel.toUpperCase(),
+                      textAlign: TextAlign.center,
+                      style: heading4().copyWith(
+                        color: coloration.decorationColor(
+                            decorationVariant: decorationVariant),
+                      )),
+                  const SizedBox(height: 5.0),
+                  Text(cardBody,
+                      textAlign: TextAlign.center,
+                      style: body1().copyWith(
+                        color: coloration.decorationColor(
+                            decorationVariant: decorationVariant),
+                      )),
+                  const SizedBox(height: 10.0),
+                ]),
+          )),
     );
   }
 }

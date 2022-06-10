@@ -26,6 +26,7 @@ class CheckboxArticleView extends StatefulWidget {
 
 class _CheckboxArticleViewState extends State<CheckboxArticleView> {
   var isEnabled = false;
+  var screenSize = size.logicalScreenSize();
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +37,36 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
             title: widget.articleTitle,
             subheader: widget.articleSubheader,
             body: widget.articleBody),
-        const DividerElement(),
-        Row(
-          children: [
-            BodyOneText(
-                widget.checkboxDescription, decorationPriority.standard),
-            SwitchComponent(() {
-              isEnabled == true;
-            }, () {
-              isEnabled == false;
-            })
-          ],
+        FloatingContainerElement(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            constraints:
+                BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
+            decoration:
+                CardBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            child: Row(
+              children: [
+                BodyOneText(
+                    widget.checkboxDescription, decorationPriority.standard),
+                const Spacer(),
+                SwitchComponent(() {
+                  setState(() {
+                    isEnabled == true;
+                  });
+                }, () {
+                  setState(() {
+                    isEnabled == false;
+                  });
+                })
+              ],
+            ),
+          ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         StandardIconButtonElement(
             decorationVariant: isEnabled == true
-                ? decorationPriority.standard
+                ? decorationPriority.important
                 : decorationPriority.inactive,
             buttonTitle: "Continue",
             buttonIcon: Assets.next,

@@ -69,7 +69,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
             }
           },
           child: PulseShadowElement(
-            pulseWidth: minimumButtonTextSize.width + 20,
+            pulseWidth: minimumButtonTextSize.width + 50,
             isActive: widget.decorationVariant == decorationPriority.important
                 ? true
                 : false,

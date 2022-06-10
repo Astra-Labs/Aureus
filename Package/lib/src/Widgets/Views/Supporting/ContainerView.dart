@@ -192,6 +192,8 @@ class _ContainerViewState extends State<ContainerView>
     var screenHeight = size.logicalHeight();
     var actionBar;
 
+    holdY = screenHeight * 0.8;
+
     if (safety.isActionBarDevEnabled == true) {
       var actionBarWidget = QuickActionBarComponent(
           key: quickBarKey, tabItems: safety.quickActionItems!);
