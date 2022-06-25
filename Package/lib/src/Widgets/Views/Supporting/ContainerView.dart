@@ -260,7 +260,8 @@ class _ContainerViewState extends State<ContainerView>
             ? containerBacking()
             : const BoxDecoration(color: Colors.transparent),
         padding: widget.takesFullWidth!
-            ? const EdgeInsets.all(0.0)
+            ? EdgeInsets.fromLTRB(
+                0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0)
             : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w0),
                 0.0, size.heightOf(weight: sizingWeight.w0)),
         child: SizedBox(

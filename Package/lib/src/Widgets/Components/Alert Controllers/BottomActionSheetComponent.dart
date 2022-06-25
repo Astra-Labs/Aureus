@@ -56,7 +56,7 @@ class _BottomActionSheetComponentState
           padding: const EdgeInsets.all(15.0),
           alignment: Alignment.center,
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               mainAxisSize: MainAxisSize.min,
               children: [

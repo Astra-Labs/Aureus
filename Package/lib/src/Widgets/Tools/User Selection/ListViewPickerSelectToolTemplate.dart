@@ -43,19 +43,23 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
       toolPrompt: templatePrompt,
       toolChildren: [
         Container(
-          height: 100,
-          decoration: InputBackingDecoration().buildBacking(),
-          padding: const EdgeInsets.all(12.0),
-          child: CupertinoPicker(
-              backgroundColor: Colors.transparent,
-              itemExtent: 40,
-              magnification: 1.2,
-              diameterRatio: 1.9,
-              onSelectedItemChanged: (int index) {
-                selectedItem = pickerOptions[index];
-              },
-              children: pickerList),
-        ),
+            height: 100,
+            decoration: InputBackingDecoration().buildBacking(),
+            padding: const EdgeInsets.all(12.0),
+            child: CupertinoTheme(
+              data: CupertinoThemeData(
+                brightness: brightness(),
+              ),
+              child: CupertinoPicker(
+                  backgroundColor: Colors.transparent,
+                  itemExtent: 40,
+                  magnification: 1.2,
+                  diameterRatio: 1.9,
+                  onSelectedItemChanged: (int index) {
+                    selectedItem = pickerOptions[index];
+                  },
+                  children: pickerList),
+            )),
         const SizedBox(height: 20.0),
         const DividerElement(),
         const SizedBox(height: 20.0),

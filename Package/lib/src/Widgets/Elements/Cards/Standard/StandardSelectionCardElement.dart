@@ -61,7 +61,7 @@ class _StandardSelectionCardElementState
         onTap: toggleCard,
         child: SizedBox(
             width: size.layoutItemWidth(4, screenSize),
-            height: size.layoutItemHeight(6, screenSize),
+            height: size.layoutItemHeight(5, screenSize),
             child: Container(
                 decoration: CardBackingDecoration(
                         priority: widget.isCardSelected

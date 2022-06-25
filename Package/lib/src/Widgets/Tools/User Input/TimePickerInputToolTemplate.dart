@@ -23,11 +23,15 @@ class TimePickerInputToolTemplate extends ToolCardTemplate {
   Widget returnActiveToolCard() {
     var timerDuration = const Duration(seconds: 1);
 
-    var timerPicker = CupertinoTimerPicker(
-        mode: CupertinoTimerPickerMode.hm,
-        onTimerDurationChanged: (duration) {
-          timerDuration = duration;
-        });
+    var timerPicker = CupertinoTheme(
+        data: CupertinoThemeData(
+          brightness: brightness(),
+        ),
+        child: CupertinoTimerPicker(
+            mode: CupertinoTimerPickerMode.hm,
+            onTimerDurationChanged: (duration) {
+              timerDuration = duration;
+            }));
 
     return BaseCardToolTemplate(
         isActive: true,

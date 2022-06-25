@@ -22,11 +22,15 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
   @override
   Widget returnActiveToolCard() {
     var dateChosen = DateTime.now();
-    var datePicker = CupertinoDatePicker(
-        mode: CupertinoDatePickerMode.dateAndTime,
-        onDateTimeChanged: (date) {
-          dateChosen = date;
-        });
+    var datePicker = CupertinoTheme(
+        data: CupertinoThemeData(
+          brightness: brightness(),
+        ),
+        child: CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.dateAndTime,
+            onDateTimeChanged: (date) {
+              dateChosen = date;
+            }));
 
     return BaseCardToolTemplate(
         isActive: true,

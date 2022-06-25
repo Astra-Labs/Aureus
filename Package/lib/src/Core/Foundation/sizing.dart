@@ -73,7 +73,7 @@ class Sizing {
       scaleFactor = 1.0;
     } else if (shortSide >= 550 && shortSide < 900) {
       //needs tablet scale
-      scaleFactor = 1.25;
+      scaleFactor = 1.29;
     } else if (shortSide >= 900) {
       //needs web phone scale
       scaleFactor = 1.35;

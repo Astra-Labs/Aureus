@@ -56,15 +56,18 @@ class _PasscodeViewState extends State<PasscodeView> {
           entryText = entryText + number.toString();
         }
       },
-      child: Container(
-        width: size.responsiveSize(80.0),
-        height: size.responsiveSize(80.0),
-        decoration: ButtonBackingDecoration(
-                variant: buttonDecorationVariants.circle,
-                priority: decorationPriority.standard)
-            .buildBacking(),
-        child: Center(
-          child: BodyOneText("$number", decorationPriority.standard),
+      child: Padding(
+        padding: EdgeInsets.all(size.responsiveSize(17.0)),
+        child: Container(
+          width: size.responsiveSize(80.0),
+          height: size.responsiveSize(80.0),
+          decoration: ButtonBackingDecoration(
+                  variant: buttonDecorationVariants.circle,
+                  priority: decorationPriority.standard)
+              .buildBacking(),
+          child: Center(
+            child: BodyOneText("$number", decorationPriority.standard),
+          ),
         ),
       ),
     );
@@ -92,11 +95,63 @@ class _PasscodeViewState extends State<PasscodeView> {
             headerText: 'Passcode',
             subheaderText: 'Input your passcode below.'),
         const SizedBox(height: 20.0),
-        Wrap(
-          runSpacing: 10,
-          spacing: 10,
-          children: digitButtons,
-        ),
+        entryFieldBox,
+        const SizedBox(height: 20.0),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                createNumberButton(1),
+                createNumberButton(2),
+                createNumberButton(3),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                createNumberButton(4),
+                createNumberButton(5),
+                createNumberButton(6),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                createNumberButton(7),
+                createNumberButton(8),
+                createNumberButton(9),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: "Clear",
+                    buttonHint: "buttonHint",
+                    buttonAction: () => {}),
+                createNumberButton(0),
+                SmolButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonTitle: "Finish",
+                    buttonHint: "buttonHint",
+                    buttonAction: () => {}),
+              ],
+            ),
+          ],
+        )
       ],
       containerVariant: wrapperVariants.fullScreen,
       takesFullWidth: false,

@@ -19,7 +19,7 @@ class DividingHeaderElement extends StatelessWidget {
           HeadingOneText(headerText, decorationPriority.standard),
           const SizedBox(height: 10.0),
           BodyOneText(subheaderText, decorationPriority.standard),
-          const SizedBox(height: 10.0),
+          const SizedBox(height: 20.0),
           const DividerElement(),
           const SizedBox(height: 10.0),
         ],
