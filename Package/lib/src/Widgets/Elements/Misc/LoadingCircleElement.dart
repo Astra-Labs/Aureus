@@ -21,7 +21,7 @@ class _LoadingCircleElementState extends State<LoadingCircleElement>
         accessibility.accessFeatures.reduceMotion == false) {
       controller = AnimationController(
         vsync: this,
-        duration: const Duration(milliseconds: 1500),
+        duration: const Duration(milliseconds: 10000),
       )..addListener(() {
           setState(() {});
         });
@@ -66,7 +66,7 @@ class _LoadingCircleElementState extends State<LoadingCircleElement>
               ),
             ),
           ),
-          HeadingTwoText('Loading', decorationPriority.standard)
+          HeadingOneText('Loading', decorationPriority.standard)
         ]),
       ),
     );

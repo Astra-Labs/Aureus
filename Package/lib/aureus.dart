@@ -144,7 +144,6 @@ export 'src/Widgets/Views/Tool Library/ToolDetailView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNextStepView.dart';
 export 'src/Widgets/Views/Tool Library/ToolSummaryView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNavigationCardCarouselView.dart';
-export 'src/Widgets/Views/Supporting/LightLeakView.dart';
 
 //Exporting lib tool templates
 

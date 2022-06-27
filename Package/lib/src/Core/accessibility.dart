@@ -304,7 +304,7 @@ class Accessibility {
       scaleFactor = 1.1;
     } else if (shortSide >= 550 && shortSide < 900) {
       //needs tablet scale
-      scaleFactor = 1.18;
+      scaleFactor = 1.25;
     } else if (shortSide >= 900) {
       //needs web phone scale
       scaleFactor = 1.35;

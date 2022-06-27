@@ -47,7 +47,7 @@ class _StandardSelectionCardElementState
       decoration:
           BoxDecoration(shape: BoxShape.circle, color: coloration.sameColor()),
       child: Icon(Assets.yes,
-          color: coloration.contrastColor(), size: responsiveRadius - 15),
+          color: coloration.contrastColor(), size: responsiveRadius - 5),
     );
 
     return Semantics.fromProperties(

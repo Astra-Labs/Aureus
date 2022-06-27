@@ -20,8 +20,8 @@ class ContentWarningComponent extends StatelessWidget {
 
     var warningLayout = Container(
         constraints: BoxConstraints(
-            minHeight: size.layoutItemHeight(1, screenSize) * 0.6,
-            maxHeight: size.layoutItemHeight(1, screenSize) * 0.6,
+            minHeight: size.layoutItemHeight(2, screenSize),
+            maxHeight: size.layoutItemHeight(2, screenSize),
             minWidth: size.layoutItemWidth(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize)),
         decoration: CardBackingDecoration(priority: decorationPriority.inverted)
@@ -33,13 +33,17 @@ class ContentWarningComponent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
               children: [
+                const SizedBox(height: 10.0),
+                const Spacer(),
                 const IconBadge(
                     badgeIcon: Assets.alertmessage,
                     badgePriority: decorationPriority.important),
-                const SizedBox(height: 15.0),
+                const SizedBox(height: 10.0),
+                const Spacer(),
                 HeadingThreeText(
                     "Content Warning", decorationPriority.standard),
                 const SizedBox(height: 10.0),
+                const Spacer(),
                 BodyOneText(warningDescription, decorationPriority.standard),
                 const SizedBox(height: 20.0),
                 const Spacer(),
@@ -53,12 +57,14 @@ class ContentWarningComponent extends StatelessWidget {
                     buttonIcon: Assets.next,
                     buttonAction: () => {onContinue()}),
                 const SizedBox(height: 15.0),
+                const Spacer(),
                 StandardIconButtonElement(
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Go back',
                     buttonHint: "Takes you to the previous screen.",
                     buttonIcon: Assets.no,
                     buttonAction: () => {Navigator.pop(context)}),
+                const Spacer(),
               ]),
         ));
 

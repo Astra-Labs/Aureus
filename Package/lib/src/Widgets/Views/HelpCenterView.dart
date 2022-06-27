@@ -36,7 +36,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
           child: GridCardElement(
               decorationVariant: decorationPriority.standard,
               cardLabel: element.articleTitle,
-              gridSize: Size(size.layoutItemWidth(1, screenSize),
+              gridSize: Size(size.layoutItemWidth(1, screenSize) * 0.9,
                   size.layoutItemHeight(1, screenSize))),
         ));
       }
@@ -45,6 +45,15 @@ class _HelpCenterViewState extends State<HelpCenterView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: SecondaryIconButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonIcon: Assets.back,
+              buttonHint: 'Exit search',
+              buttonAction: () => {Navigator.pop(context)}),
+        ),
+        const SizedBox(height: 30.0),
         const DividingHeaderElement(
             headerText: 'Help Center',
             subheaderText:

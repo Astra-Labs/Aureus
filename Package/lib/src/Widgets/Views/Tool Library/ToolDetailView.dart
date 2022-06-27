@@ -37,7 +37,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: 50.0),
+                const SizedBox(height: 10.0),
                 Align(
                   alignment: Alignment.topRight,
                   child: SecondaryIconButtonElement(

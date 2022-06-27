@@ -62,15 +62,22 @@ class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
         decoration: CardBackingDecoration(priority: decorationPriority.standard)
             .buildBacking(),
         padding: const EdgeInsets.all(20.0),
-        child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SmolTextTabbingBarComponent(
-                  itemTitles: tabItemNames, itemActions: tabItemActions),
-              const Spacer(),
-              minimizedButton
-            ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TagTwoText("Quick Actions", decorationPriority.standard),
+            const SizedBox(height: 5.0),
+            Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SmolTextTabbingBarComponent(
+                      itemTitles: tabItemNames, itemActions: tabItemActions),
+                  const Spacer(),
+                  minimizedButton
+                ]),
+          ],
+        ),
       ),
     );
 

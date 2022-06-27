@@ -40,7 +40,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
             decorationVariant: currentIndex == _selectedIndex
                 ? decorationPriority.important
                 : decorationPriority.standard,
-            buttonHint: 'Changes tab to ${element.tabTitle}',
+            buttonHint: element.accessibilityHint,
             buttonIcon: element.tabIcon),
       );
 
