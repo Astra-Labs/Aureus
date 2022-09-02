@@ -71,7 +71,8 @@ class NotificationComponent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: BodyOneText(notificationBody, notificationPriority),
+            child: Expanded(
+                child: BodyOneText(notificationBody, notificationPriority)),
           )
         ]);
     return FloatingContainerElement(
