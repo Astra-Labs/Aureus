@@ -50,11 +50,15 @@ class _PasscodeViewState extends State<PasscodeView> {
   Widget createNumberButton(int number) {
     return GestureDetector(
       onTap: () {
-        if (entryText.length == widget.passcode.length) {
-          tryPassword();
-        } else {
-          entryText = entryText + number.toString();
-        }
+        setState(() {
+          print("a tap has occured");
+          if (entryText.length == widget.passcode.length) {
+            tryPassword();
+          } else {
+            var newEntry = entryText + number.toString();
+            entryText = newEntry;
+          }
+        });
       },
       child: Padding(
         padding: EdgeInsets.all(size.responsiveSize(17.0)),
@@ -66,7 +70,7 @@ class _PasscodeViewState extends State<PasscodeView> {
                   priority: decorationPriority.standard)
               .buildBacking(),
           child: Center(
-            child: BodyOneText("$number", decorationPriority.standard),
+            child: HeadingThreeText("$number", decorationPriority.standard),
           ),
         ),
       ),
@@ -94,16 +98,16 @@ class _PasscodeViewState extends State<PasscodeView> {
         const DividingHeaderElement(
             headerText: 'Passcode',
             subheaderText: 'Input your passcode below.'),
-        const SizedBox(height: 20.0),
+        const SizedBox(height: 40.0),
         entryFieldBox,
-        const SizedBox(height: 20.0),
+        const SizedBox(height: 40.0),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -113,7 +117,7 @@ class _PasscodeViewState extends State<PasscodeView> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -123,7 +127,7 @@ class _PasscodeViewState extends State<PasscodeView> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -132,8 +136,10 @@ class _PasscodeViewState extends State<PasscodeView> {
                 createNumberButton(9),
               ],
             ),
+            Center(child: createNumberButton(0)),
+            const SizedBox(height: 40.0),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -142,7 +148,7 @@ class _PasscodeViewState extends State<PasscodeView> {
                     buttonTitle: "Clear",
                     buttonHint: "buttonHint",
                     buttonAction: () => {}),
-                createNumberButton(0),
+                const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: "Finish",
