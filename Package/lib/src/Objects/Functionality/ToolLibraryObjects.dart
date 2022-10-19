@@ -35,13 +35,15 @@ class CoreTool {
   // This allows Aureus to auto-generate a flow for you, and to
   // carry the template data from usage to summary.
 
-  CoreTool(this.toolCards,
-      {required this.toolName,
-      required this.toolDescription,
-      required this.toolDetails,
-      required this.toolIcon,
-      required this.entryPoint,
-      required this.nextSteps});
+  CoreTool({
+    required this.toolName,
+    required this.toolDescription,
+    required this.toolDetails,
+    required this.toolIcon,
+    required this.entryPoint,
+    required this.nextSteps,
+    this.toolCards,
+  });
 }
 
 // The navigation container that holds your tool functionality.

@@ -36,7 +36,7 @@ class _DataDetailViewState extends State<DataDetailView> {
     }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.fullScreen,
+        containerVariant: wrapperVariants.stackScroll,
         children: [
           Center(
             child: Column(
@@ -44,17 +44,15 @@ class _DataDetailViewState extends State<DataDetailView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const SizedBox(height: 10.0),
-                  HeadingThreeText(widget.title, decorationPriority.standard),
-                  const SizedBox(height: 20.0),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        children: summaryItems,
-                      ),
-                    ),
-                  )
+                  PageHeaderElement.withExit(
+                      pageTitle: '${widget.title}',
+                      onPageExit: () => {Navigator.pop(context)}),
+                  const SizedBox(height: 20),
+                  const DividerElement(),
+                  const SizedBox(height: 20),
+                  Column(
+                    children: summaryItems,
+                  ),
                 ]),
           )
         ]);

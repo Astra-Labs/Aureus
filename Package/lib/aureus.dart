@@ -41,6 +41,7 @@ export 'src/Objects/Views/OnboardingObjects.dart';
 
 //MARK: - Functionality Objects
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
+export 'src/Objects/Functionality/DataDetailObjects.dart';
 export 'src/Objects/Observers/ResourceObserver.dart';
 export 'src/Objects/Observers/NotificationObserver.dart';
 
