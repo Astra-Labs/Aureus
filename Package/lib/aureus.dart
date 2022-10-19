@@ -12,6 +12,7 @@ export 'package:google_fonts/google_fonts.dart';
 export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
 export 'src/Core/Safety/safety.dart';
+
 export 'src/Core/Foundation/palette.dart';
 export 'src/Core/Foundation/sensory.dart';
 export 'src/Core/Foundation/sizing.dart';
@@ -39,7 +40,6 @@ export 'src/Objects/Views/HelpCenterObjects.dart';
 export 'src/Objects/Views/OnboardingObjects.dart';
 
 //MARK: - Functionality Objects
-export 'src/Objects/Functionality/AccessibilityObjects.dart';
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
 export 'src/Objects/Observers/ResourceObserver.dart';
 export 'src/Objects/Observers/NotificationObserver.dart';
@@ -53,20 +53,36 @@ export 'src/Objects/Views/routes.dart';
 //MARK: - Widget Elements
 export 'src/Widgets/Elements/Badges/BadgeElement.dart';
 
+// -------------------------- Cards
+// ------------------------------------------------ Standard
 export 'src/Widgets/Elements/Cards/Standard/StandardCardElement.dart';
 export 'src/Widgets/Elements/Cards/Standard/StandardBadgeCardElement.dart';
+export 'src/Widgets/Elements/Cards/Standard/StandardSwitchCardElement.dart';
+export 'src/Widgets/Elements/Cards/Standard/StandardSelectionCardElement.dart';
+// ------------------------------------------------ Detail
 export 'src/Widgets/Elements/Cards/Detail/DetailCardElement.dart';
 export 'src/Widgets/Elements/Cards/Detail/DetailBadgeCardElement.dart';
 export 'src/Widgets/Elements/Cards/Detail/DetailCarouselCardElement.dart';
+export 'src/Widgets/Elements/Cards/Detail/CategoryIconDetailCardElement.dart';
+// ------------------------------------------------ Complex
 export 'src/Widgets/Elements/Cards/Complex/ComplexCardElement.dart';
 export 'src/Widgets/Elements/Cards/Complex/ComplexBadgeCardElement.dart';
-export 'src/Widgets/Elements/Cards/Detail/CategoryIconDetailCardElement.dart';
-export 'src/Widgets/Elements/Cards/Standard/StandardSwitchCardElement.dart';
-export 'src/Widgets/Elements/Cards/Standard/StandardSelectionCardElement.dart';
 export 'src/Widgets/Elements/Cards/Complex/ComplexSwitchCardElement.dart';
+// ------------------------------------------------ Grid
 export 'src/Widgets/Elements/Cards/Grid/GridCardElement.dart';
 export 'src/Widgets/Elements/Cards/Grid/GridBadgeCardElement.dart';
+// ------------------------------------------------ Task
+export 'src/Widgets/Elements/Cards/Task/ExpandingTaskCardElement.dart';
+// ------------------------------------------------ Data Visualization
+export 'src/Widgets/Elements/Cards/Data Visualization/AddressDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/BaseDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/PhotoDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/TextFieldDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/TextViewDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/VideoRecordingDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/VoiceRecordingDataCardElement.dart';
 
+// -------------------------- Info Hierachy
 export 'src/Widgets/Elements/Info Hierarchy/ArticleViewElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/TabSubheaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/MissionHeaderElement.dart';
@@ -74,6 +90,7 @@ export 'src/Widgets/Elements/Info Hierarchy/PageHeaderElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/DividerElement.dart';
 export 'src/Widgets/Elements/Info Hierarchy/DividingHeaderElement.dart';
 
+// -------------------------- Misc Elements
 export 'src/Widgets/Elements/Misc/ContainerWrapperElement.dart';
 export 'src/Widgets/Elements/Misc/FloatingContainerElement.dart';
 export 'src/Widgets/Elements/Misc/CompletionCircleElement.dart';
@@ -83,25 +100,30 @@ export 'src/Widgets/Elements/Misc/TimerElement.dart';
 export 'src/Widgets/Elements/Misc/PulseShadowElement.dart';
 export 'src/Widgets/Elements/Misc/EclipseShadowElement.dart';
 
+// -------------------------- User Input
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
 export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SliderElement.dart';
 
 //Exporting lib widget components
+// -------------------------- Alert Controllers
 export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
 export 'src/Widgets/Components/Alert Controllers/ContentWarningComponent.dart';
 export 'src/Widgets/Components/Alert Controllers/BottomActionSheetComponent.dart';
 
+// -------------------------- Buttons
 export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
 export 'src/Widgets/Components/Buttons/IconButtonElement.dart';
 export 'src/Widgets/Components/Buttons/SmolButtonElement.dart';
 export 'src/Widgets/Components/Buttons/StandardButtonElement.dart';
 export 'src/Widgets/Components/Buttons/StandardIconButtonElement.dart';
 
+// -------------------------- Collection Views
 export 'src/Widgets/Components/Collection Views/DetailCardCarouselComponent.dart';
 export 'src/Widgets/Components/Collection Views/QuickActionBarComponent.dart';
 
+// -------------------------- Communication
 export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';
 export 'src/Widgets/Components/Communication/NotificationComponent.dart';
 export 'src/Widgets/Components/Communication/SearchBarComponent.dart';
@@ -111,10 +133,12 @@ export 'src/Widgets/Components/Communication/CookieBannerComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
 export 'src/Widgets/Components/Communication/BannerNotificationComponent.dart';
 
+// -------------------------- Input Forms
 export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
 export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';
 export 'src/Widgets/Components/Input Forms/SwitchComponent.dart';
 
+// -------------------------- Tabbing Bars
 export 'src/Widgets/Components/Tabbing Bars/IconTabbingBarComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/NavBarComponent.dart';
 export 'src/Widgets/Components/Tabbing Bars/IteratingTabbingComponent.dart';
@@ -123,28 +147,33 @@ export 'src/Widgets/Components/Tabbing Bars/VerticalSideNavBarComponent.dart';
 
 //Exporting lib widget views
 
+// -------------------------- Onboarding
 export 'src/Widgets/Views/Onboarding/OnboardingDemoView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingInformationView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingLandingView.dart';
+// -------------------------- Misc
 export 'src/Widgets/Views/DataConsentView.dart';
 export 'src/Widgets/Views/HelpCenterView.dart';
-export 'src/Widgets/Views/Supporting/ContainerView.dart';
-export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
-export 'src/Widgets/Views/Safety Plan/SafetyPlanOptionsView.dart';
+export 'src/Widgets/Views/DataDetailView.dart';
 export 'src/Widgets/Views/2FAVerificationView.dart';
 export 'src/Widgets/Views/LandingPageView.dart';
 export 'src/Widgets/Views/SignInView.dart';
 export 'src/Widgets/Views/SplashScreenView.dart';
 export 'src/Widgets/Views/CheckboxArticleView.dart';
-export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
-export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
 export 'src/Widgets/Views/SettingsView.dart';
 export 'src/Widgets/Views/PasscodeView.dart';
+// -------------------------- Supporting
+export 'src/Widgets/Views/Supporting/ContainerView.dart';
+// -------------------------- Safety Plan
+export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanOptionsView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
+export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
+// -------------------------- Tool Library
 export 'src/Widgets/Views/Tool Library/ToolDetailView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNextStepView.dart';
 export 'src/Widgets/Views/Tool Library/ToolSummaryView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNavigationCardCarouselView.dart';
-export 'src/Widgets/Views/DataDetailView.dart';
 
 //Exporting lib tool templates
 

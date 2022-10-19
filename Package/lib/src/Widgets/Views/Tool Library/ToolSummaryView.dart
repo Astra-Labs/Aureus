@@ -34,7 +34,7 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
     }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.fullScreen,
+        containerVariant: wrapperVariants.stackScroll,
         children: [
           Center(
             child: Column(
@@ -50,7 +50,8 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
                       child: Container(
                           width: size.layoutItemWidth(1, screenSize),
                           constraints: BoxConstraints(
-                              maxHeight: size.layoutItemHeight(2, screenSize),
+                              maxHeight:
+                                  size.layoutItemHeight(1, screenSize) * 0.55,
                               minHeight: size.layoutItemHeight(5, screenSize)),
                           padding: const EdgeInsets.all(15.0),
                           decoration: LayerBackingDecoration(

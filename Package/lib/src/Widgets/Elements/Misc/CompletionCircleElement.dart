@@ -67,7 +67,7 @@ class _CompletionCircleElementState extends State<CompletionCircleElement>
                     backgroundColor: coloration.inactiveColor(),
                     color: coloration.accentColor(),
                     value: controller.value,
-                    strokeWidth: 3.0,
+                    strokeWidth: 2.0,
                     semanticsLabel: 'Progress Indicator'),
               ),
             ),

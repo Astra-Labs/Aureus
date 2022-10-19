@@ -265,7 +265,7 @@ class Sizing {
       //item needs to be full height with w1 padding
 
       isDesktopDisplay()
-          ? sizingHeight = area.height * 0.89
+          ? sizingHeight = area.height * 0.80
           : sizingHeight = area.height * 0.806;
     } else if (sections == 2) {
       //item needs to be 1/2 height for 2 sections
