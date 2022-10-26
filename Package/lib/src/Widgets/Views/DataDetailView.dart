@@ -10,7 +10,7 @@ USAGE:
 
 class DataDetailView extends StatefulWidget {
   final String title;
-  final List<ToolCardTemplate> detailCards;
+  final List<DataDetailCard> detailCards;
   DataDetailView({Key? key, required this.title, required this.detailCards})
       : assert(detailCards.isNotEmpty == true,
             'Data Detail View requires cards to show data, and to allow the user to edit data.'),
@@ -23,16 +23,22 @@ class DataDetailView extends StatefulWidget {
 class _DataDetailViewState extends State<DataDetailView> {
   bool isEditing = false;
 
+  void updateEditingState() {
+    setState(() {
+      isEditing ? isEditing == false : isEditing == true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
     List<Widget> summaryItems = [];
 
     for (var element in widget.detailCards) {
       summaryItems.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
-        child: element.returnTemplateSummary(),
-      ));
+          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
+          child: isEditing
+              ? element.returnEditDataCard()
+              : element.returnReadDataCard()));
     }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
@@ -44,9 +50,27 @@ class _DataDetailViewState extends State<DataDetailView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  PageHeaderElement.withExit(
-                      pageTitle: '${widget.title}',
-                      onPageExit: () => {Navigator.pop(context)}),
+                  PageHeaderElement.withOptionsExit(
+                      pageTitle: widget.title,
+                      onPageExit: () => {Navigator.pop(context)},
+                      onPageDetails: () => {
+                            notificationMaster.showBottomActionController(
+                                AlertControllerObject.singleAction(
+                                    onCancellation: () => {},
+                                    alertTitle: "What do you want to do?",
+                                    alertBody: "Select an option below.",
+                                    alertIcon: Assets.alertmessage,
+                                    actions: [
+                                  AlertControllerAction(
+                                      actionName: isEditing
+                                          ? "Finish editing"
+                                          : "Start editing",
+                                      actionSeverity:
+                                          AlertControllerActionSeverity
+                                              .standard,
+                                      onSelection: updateEditingState)
+                                ]))
+                          }),
                   const SizedBox(height: 20),
                   const DividerElement(),
                   const SizedBox(height: 20),

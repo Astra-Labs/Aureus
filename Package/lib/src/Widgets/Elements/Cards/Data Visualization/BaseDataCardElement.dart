@@ -28,26 +28,27 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
     return FloatingContainerElement(
         child: Container(
             constraints: BoxConstraints(
+                maxHeight: size.heightOf(weight: sizingWeight.w3),
+                minHeight: size.heightOf(weight: sizingWeight.w1),
                 maxWidth: size.layoutItemWidth(1, screenSize),
-                minWidth: size.layoutItemWidth(1, screenSize),
-                minHeight: size.layoutItemHeight(5, screenSize),
-                maxHeight: size.layoutItemHeight(3, screenSize)),
+                minWidth: size.layoutItemWidth(1, screenSize)),
             decoration: CardBackingDecoration(
                     priority: widget.isBeingEdited
                         ? decorationPriority.active
                         : decorationPriority.inactive)
                 .buildBacking(),
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                BodyTwoText(widget.detailLabel, decorationPriority.standard),
-                const SizedBox(height: 20.0),
-                Column(children: widget.detailChildren),
-                const SizedBox(height: 20.0)
-              ],
+            padding: const EdgeInsets.all(30.0),
+            child: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BodyTwoText(widget.detailLabel, decorationPriority.standard),
+                  const SizedBox(height: 20.0),
+                  Column(children: widget.detailChildren),
+                ],
+              ),
             )));
   }
 }

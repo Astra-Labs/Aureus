@@ -9,7 +9,8 @@ USAGE:
 */
 
 class AddressDataCardElement extends DataDetailCard {
-  AddressDataCardElement() : super(dataLabel: "", detailChildren: []);
+  AddressDataCardElement({required dataLabel})
+      : super(dataLabel: dataLabel, detailChildren: []);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -20,7 +21,7 @@ class AddressDataCardElement extends DataDetailCard {
   Widget returnReadDataCard() {
     return BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: dataLabel,
       detailChildren: [],
     );
   }
@@ -31,7 +32,7 @@ class AddressDataCardElement extends DataDetailCard {
 
     return BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: dataLabel,
       detailChildren: [],
     );
   }

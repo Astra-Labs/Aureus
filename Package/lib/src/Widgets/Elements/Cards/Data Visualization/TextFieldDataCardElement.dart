@@ -9,31 +9,33 @@ USAGE:
 */
 
 class TextFieldDataCardElement extends DataDetailCard {
-  TextFieldDataCardElement() : super(dataLabel: "", detailChildren: []);
+  TextFieldDataCardElement({required dataLabel})
+      : super(dataLabel: dataLabel, detailChildren: []);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
-  // for display purposes. Write to dataMap in ActiveCard,
-  // and read in SummaryCard.
+  // for display purposes.
   var dataMap = [];
 
   @override
   Widget returnReadDataCard() {
-    return BaseDataDetailCard(
+    return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [],
+      detailChildren: [
+        TextField(),
+      ],
     );
   }
 
   @override
   Widget returnEditingDataCard() {
-    var cardController = TextEditingController();
-
-    return BaseDataDetailCard(
+    return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [],
+      detailChildren: [
+        TextField(),
+      ],
     );
   }
 }
