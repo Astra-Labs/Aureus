@@ -2,10 +2,10 @@ import 'package:aureus/aureus.dart';
 
 class SingleDataTypeUserInputElement extends StatefulWidget {
   final String dataPlaceholder;
-  final TextEditingController itemTextEditingController =
-      TextEditingController();
+  final TextEditingController itemTextEditingController;
 
-  SingleDataTypeUserInputElement({required this.dataPlaceholder});
+  SingleDataTypeUserInputElement(
+      {required this.dataPlaceholder, required this.itemTextEditingController});
 
   @override
   _SingleDataTypeUserInputElementState createState() =>

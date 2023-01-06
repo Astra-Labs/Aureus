@@ -35,53 +35,61 @@ class _DataDetailViewState extends State<DataDetailView> {
 
     for (var element in widget.detailCards) {
       summaryItems.add(Padding(
-          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
-          child: isEditing
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20.0),
+          child: isEditing == true
               ? element.returnEditDataCard()
               : element.returnReadDataCard()));
     }
 
+    var screenSize = size.logicalScreenSize();
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.stackScroll,
+        containerVariant: wrapperVariants.fullScreen,
         children: [
-          Center(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  PageHeaderElement.withOptionsExit(
-                      pageTitle: widget.title,
-                      onPageExit: () => {Navigator.pop(context)},
-                      onPageDetails: () => {
-                            notificationMaster.showBottomActionController(
-                                AlertControllerObject.singleAction(
-                                    onCancellation: () => {},
-                                    alertTitle: "What do you want to do?",
-                                    alertBody: "Select an option below.",
-                                    alertIcon: Assets.alertmessage,
-                                    actions: [
-                                  AlertControllerAction(
-                                      actionName: isEditing
-                                          ? "Finish editing"
-                                          : "Start editing",
-                                      actionSeverity:
-                                          AlertControllerActionSeverity
-                                              .standard,
-                                      onSelection: updateEditingState)
-                                ]))
-                          }),
-                  const SizedBox(height: 20),
-                  const DividerElement(),
-                  const SizedBox(height: 20),
-                  Column(
-                    children: summaryItems,
+          PageHeaderElement.withOptionsExit(
+              pageTitle: widget.title,
+              onPageExit: () => {Navigator.pop(context)},
+              onPageDetails: () => {
+                    notificationMaster.showBottomActionController(
+                        AlertControllerObject.singleAction(
+                            onCancellation: () => {},
+                            alertTitle: "What would you like to do?",
+                            alertBody: "Select an option below.",
+                            alertIcon: Assets.alertmessage,
+                            actions: [
+                          AlertControllerAction(
+                              actionName: isEditing
+                                  ? "Finish editing"
+                                  : "Start editing",
+                              actionSeverity:
+                                  AlertControllerActionSeverity.standard,
+                              onSelection: updateEditingState)
+                        ]))
+                  }),
+          SizedBox(
+              width: size.layoutItemWidth(1, screenSize),
+              height: size.layoutItemWidth(1, screenSize),
+              child: SingleChildScrollView(
+                  child: Column(
+                children: const [
+                  BaseDataDetailCard(
+                    detailLabel: "Bitch ???",
+                    detailChildren: [],
+                    isBeingEdited: false,
                   ),
-                ]),
-          )
+                  SizedBox(height: 20),
+                  BaseDataDetailCard(
+                    detailLabel: "Bitch ???",
+                    detailChildren: [],
+                    isBeingEdited: false,
+                  )
+                ],
+              )))
         ]);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);
   }
 }
+
+// summaryItems

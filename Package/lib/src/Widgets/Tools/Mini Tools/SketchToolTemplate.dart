@@ -246,7 +246,7 @@ class _SketchInputCardState extends State<_SketchInputCard> {
                 CardBackingDecoration(priority: decorationPriority.standard)
                     .buildBacking(),
             child: Stack(
-              children: [
+              children: const [
                 //buildCurrentPath(context),
               ],
             ))

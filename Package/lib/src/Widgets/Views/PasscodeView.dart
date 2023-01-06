@@ -79,12 +79,11 @@ class _PasscodeViewState extends State<PasscodeView> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
     List<Widget> digitButtons = [];
 
-    digits.forEach((element) {
+    for (var element in digits) {
       digitButtons.add(createNumberButton(element));
-    });
+    }
 
     var entryFieldBox = FloatingContainerElement(
         child: Container(

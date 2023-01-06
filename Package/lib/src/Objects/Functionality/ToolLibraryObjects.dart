@@ -123,7 +123,7 @@ class ToolNavigationPage {
 // user takes on the card.
 
 class AureusToolTemplateMaster {
-  List<AureusToolTemplateObserver> _observers = [];
+  final List<AureusToolTemplateObserver> _observers = [];
   adaptiveInput inputType = adaptiveInput.text;
 
   void registerObserver(AureusToolTemplateObserver observer) {

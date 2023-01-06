@@ -7,7 +7,7 @@ import 'package:aureus/aureus.dart';
 var notificationMaster = AureusNotificationMaster();
 
 class AureusNotificationMaster {
-  List<AureusNotificationObserver> _observers = [];
+  final List<AureusNotificationObserver> _observers = [];
 
   void registerObserver(AureusNotificationObserver observer) {
     print('registering observer');

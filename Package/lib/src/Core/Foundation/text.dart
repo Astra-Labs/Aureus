@@ -1,7 +1,4 @@
-import 'dart:typed_data';
-import 'dart:ui' as ui;
 import 'package:aureus/aureus.dart';
-import 'package:flutter/services.dart';
 
 /* ------------------ TEXT CLASSES -------------------- */
 

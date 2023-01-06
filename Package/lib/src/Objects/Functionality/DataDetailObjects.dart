@@ -26,7 +26,7 @@ class DataDetail {
 // users to edit / modify information within the view
 
 class AureusDataDetailMaster {
-  List<AureusDataDetailObserver> _observers = [];
+  final List<AureusDataDetailObserver> _observers = [];
 
   void registerObserver(AureusDataDetailObserver observer) {
     _observers.add(observer);

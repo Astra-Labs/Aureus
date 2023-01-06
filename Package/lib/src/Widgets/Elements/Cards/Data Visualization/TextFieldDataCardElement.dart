@@ -22,20 +22,16 @@ class TextFieldDataCardElement extends DataDetailCard {
     return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [
-        TextField(),
-      ],
+      detailChildren: const [],
     );
   }
 
   @override
-  Widget returnEditingDataCard() {
+  Widget returnEditDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [
-        TextField(),
-      ],
+      detailChildren: const [],
     );
   }
 }

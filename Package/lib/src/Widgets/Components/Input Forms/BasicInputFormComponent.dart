@@ -70,7 +70,10 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
             return Padding(
                 padding: size.universalPadding(),
                 child: SingleDataTypeUserInputElement(
-                    dataPlaceholder: currentObject.placeholder));
+                  dataPlaceholder: currentObject.placeholder,
+                  itemTextEditingController:
+                      currentObject.textEditingController,
+                ));
           });
     }
 

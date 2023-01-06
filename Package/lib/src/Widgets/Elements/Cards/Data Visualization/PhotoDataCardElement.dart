@@ -9,7 +9,8 @@ USAGE:
 */
 
 class PhotoDataCardElement extends DataDetailCard {
-  PhotoDataCardElement() : super(dataLabel: "", detailChildren: []);
+  PhotoDataCardElement({required dataLabel})
+      : super(dataLabel: dataLabel, detailChildren: []);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -21,18 +22,18 @@ class PhotoDataCardElement extends DataDetailCard {
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [],
+      detailChildren: const [],
     );
   }
 
   @override
-  Widget returnEditingDataCard() {
+  Widget returnEditDataCard() {
     var cardController = TextEditingController();
 
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [],
+      detailChildren: const [],
     );
   }
 }

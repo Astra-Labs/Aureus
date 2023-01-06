@@ -5,13 +5,15 @@ import 'package:aureus/aureus.dart';
 
 class TFAVerificationView extends StatefulWidget {
   final double userPhoneNumber;
+  final TextEditingController textEditingController;
   final VoidCallback onUserSubmission;
   final VoidCallback issueVerificationCode;
 
   const TFAVerificationView(
       {required this.userPhoneNumber,
       required this.issueVerificationCode,
-      required this.onUserSubmission});
+      required this.onUserSubmission,
+      required this.textEditingController});
 
   @override
   _TFAVerificationViewState createState() => _TFAVerificationViewState();
@@ -28,8 +30,10 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
       return 'Please enter the code we sent to your phone number ending in ${numberToString.substring(numberToString.length - 4)}';
     }
 
-    var singleDataTypeUserInputElement =
-        SingleDataTypeUserInputElement(dataPlaceholder: 'Type code here.');
+    var singleDataTypeUserInputElement = SingleDataTypeUserInputElement(
+      dataPlaceholder: 'Type code here.',
+      itemTextEditingController: widget.textEditingController,
+    );
 
     var containerWrapper = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,

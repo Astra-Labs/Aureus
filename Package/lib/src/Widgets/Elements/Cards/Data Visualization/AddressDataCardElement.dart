@@ -22,18 +22,18 @@ class AddressDataCardElement extends DataDetailCard {
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: dataLabel,
-      detailChildren: [],
+      detailChildren: const [],
     );
   }
 
   @override
-  Widget returnEditingDataCard() {
+  Widget returnEditDataCard() {
     var cardController = TextEditingController();
 
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: dataLabel,
-      detailChildren: [],
+      detailChildren: const [],
     );
   }
 }

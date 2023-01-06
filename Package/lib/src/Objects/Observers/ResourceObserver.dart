@@ -3,7 +3,7 @@
 // items on size, accessibility, or platform brightness change.
 
 class AureusResourceMaster {
-  List<AureusResourceObserver> _observers = [];
+  final List<AureusResourceObserver> _observers = [];
 
   void registerObserver(AureusResourceObserver observer) {
     _observers.add(observer);

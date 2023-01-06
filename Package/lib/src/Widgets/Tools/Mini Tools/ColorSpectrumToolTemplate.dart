@@ -28,8 +28,8 @@ class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: [
-          const _ColorSpectrumInputCard(),
+        toolChildren: const [
+          _ColorSpectrumInputCard(),
         ]);
   }
 

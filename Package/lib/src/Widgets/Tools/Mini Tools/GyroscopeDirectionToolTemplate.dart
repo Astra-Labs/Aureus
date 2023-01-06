@@ -23,7 +23,7 @@ class GyroscopeDirectionToolTemplate extends ToolCardTemplate {
         isActive: true,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: [_GyroscopeDirectionCard()]);
+        toolChildren: const [_GyroscopeDirectionCard()]);
   }
 
   @override

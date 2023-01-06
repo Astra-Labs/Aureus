@@ -9,7 +9,8 @@ USAGE:
 */
 
 class VoiceRecordingDataCardElement extends DataDetailCard {
-  VoiceRecordingDataCardElement() : super(dataLabel: "", detailChildren: []);
+  VoiceRecordingDataCardElement({required dataLabel})
+      : super(dataLabel: dataLabel, detailChildren: []);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -21,18 +22,18 @@ class VoiceRecordingDataCardElement extends DataDetailCard {
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [],
+      detailChildren: const [],
     );
   }
 
   @override
-  Widget returnEditingDataCard() {
+  Widget returnEditDataCard() {
     var cardController = TextEditingController();
 
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: [],
+      detailChildren: const [],
     );
   }
 }

@@ -5,10 +5,18 @@ class SignInView extends StatefulWidget {
   final VoidCallback onSignup;
   final VoidCallback onResetInformation;
 
+  // These controllers allow you to access the text editing controllers, to check for the correct
+  // username and password.
+
+  final TextEditingController usernameTextController;
+  final TextEditingController passwordTextController;
+
   const SignInView(
       {required this.onSignIn,
       required this.onSignup,
-      required this.onResetInformation});
+      required this.onResetInformation,
+      required this.usernameTextController,
+      required this.passwordTextController});
 
   @override
   _SignInViewState createState() => _SignInViewState();
@@ -45,9 +53,15 @@ class _SignInViewState extends State<SignInView> {
           alignment: Alignment.center,
           child: Column(
             children: [
-              SingleDataTypeUserInputElement(dataPlaceholder: "Username"),
+              SingleDataTypeUserInputElement(
+                dataPlaceholder: "Username",
+                itemTextEditingController: widget.usernameTextController,
+              ),
               const SizedBox(height: 5.0),
-              SingleDataTypeUserInputElement(dataPlaceholder: "Password"),
+              SingleDataTypeUserInputElement(
+                dataPlaceholder: "Password",
+                itemTextEditingController: widget.passwordTextController,
+              ),
               const SizedBox(height: 5.0),
               StandardButtonElement(
                   decorationVariant: decorationPriority.important,

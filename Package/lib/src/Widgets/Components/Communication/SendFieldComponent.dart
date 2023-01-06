@@ -5,8 +5,10 @@ import 'package:aureus/aureus.dart';
 
 class SendFieldComponent extends StatefulWidget {
   final VoidCallback onSend;
+  final TextEditingController textEditController;
 
-  const SendFieldComponent({required this.onSend});
+  const SendFieldComponent(
+      {required this.onSend, required this.textEditController});
 
   @override
   _SendFieldComponentState createState() => _SendFieldComponentState();
@@ -30,7 +32,8 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SingleDataTypeUserInputElement(
-                dataPlaceholder: 'Write message here.'),
+                dataPlaceholder: 'Write message here.',
+                itemTextEditingController: widget.textEditController),
             SecondaryIconButtonElement(
                 buttonIcon: Assets.paperplane,
                 buttonAction: widget.onSend,
