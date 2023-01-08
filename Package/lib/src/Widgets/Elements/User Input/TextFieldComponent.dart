@@ -4,20 +4,25 @@ class StandardTextFieldComponent extends StatelessWidget {
   final String hintText;
   final decorationPriority decorationVariant;
   final TextEditingController textFieldController;
+  final bool isEnabled;
 
   const StandardTextFieldComponent(
       {required this.hintText,
+      required this.isEnabled,
       required this.decorationVariant,
       required this.textFieldController});
 
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
-
-    return SizedBox(
-      width: size.layoutItemWidth(1, screenSize),
-      height: size.layoutItemHeight(6, screenSize),
+    return Container(
+      constraints: BoxConstraints(
+        minWidth: size.layoutItemWidth(2, screenSize),
+        minHeight: size.layoutItemHeight(6, screenSize),
+        maxWidth: size.layoutItemWidth(1, screenSize),
+      ),
       child: TextFormField(
+          enabled: isEnabled,
           style: body2().copyWith(
               color: coloration.decorationColor(
                   decorationVariant: decorationVariant)),

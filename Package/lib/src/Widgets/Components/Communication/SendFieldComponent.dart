@@ -32,8 +32,10 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SingleDataTypeUserInputElement(
-                dataPlaceholder: 'Write message here.',
-                itemTextEditingController: widget.textEditController),
+              dataPlaceholder: 'Write message here.',
+              itemTextEditingController: widget.textEditController,
+              isEnabled: true,
+            ),
             SecondaryIconButtonElement(
                 buttonIcon: Assets.paperplane,
                 buttonAction: widget.onSend,

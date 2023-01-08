@@ -6,13 +6,15 @@ class BaseUserInputObject {
   final TextInputType textInputType;
   final userInputType dataTypeInputVariance;
   final TextEditingController textEditingController;
+  final bool isEnabled;
 
   const BaseUserInputObject(
       {required this.placeholder,
       required this.accessibilityHint,
       required this.textInputType,
       required this.dataTypeInputVariance,
-      required this.textEditingController})
+      required this.textEditingController,
+      required this.isEnabled})
       : assert(placeholder != ''),
         assert(accessibilityHint != '');
 }
@@ -21,13 +23,14 @@ class SingleUserInputTypeObject extends BaseUserInputObject {
   userInputType typeVariance = userInputType.singleDataType;
 
   SingleUserInputTypeObject(placeholder, accessibilityHint, textInputType,
-      typeVariance, textEditingController)
+      typeVariance, textEditingController, isEnabled)
       : super(
             placeholder: placeholder,
             accessibilityHint: accessibilityHint,
             textInputType: textInputType,
             dataTypeInputVariance: typeVariance,
-            textEditingController: textEditingController);
+            textEditingController: textEditingController,
+            isEnabled: isEnabled);
 }
 
 class MultiUserInputTypeObject extends BaseUserInputObject {
@@ -38,14 +41,16 @@ class MultiUserInputTypeObject extends BaseUserInputObject {
       required placeholder,
       required accessibilityHint,
       required textInputType,
-      required textEditingController})
+      required textEditingController,
+      required isEnabled})
       : assert(dataLabel != ''),
         super(
             placeholder: placeholder,
             accessibilityHint: accessibilityHint,
             textInputType: textInputType,
             dataTypeInputVariance: userInputType.multiDataType,
-            textEditingController: textEditingController);
+            textEditingController: textEditingController,
+            isEnabled: isEnabled);
 }
 
 class LongInputFormGroupingObject {

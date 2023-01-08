@@ -56,11 +56,13 @@ class _SignInViewState extends State<SignInView> {
               SingleDataTypeUserInputElement(
                 dataPlaceholder: "Username",
                 itemTextEditingController: widget.usernameTextController,
+                isEnabled: true,
               ),
               const SizedBox(height: 5.0),
               SingleDataTypeUserInputElement(
                 dataPlaceholder: "Password",
                 itemTextEditingController: widget.passwordTextController,
+                isEnabled: true,
               ),
               const SizedBox(height: 5.0),
               StandardButtonElement(

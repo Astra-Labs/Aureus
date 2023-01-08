@@ -28,7 +28,6 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
     return FloatingContainerElement(
         child: Container(
             constraints: BoxConstraints(
-                maxHeight: size.heightOf(weight: sizingWeight.w3),
                 minHeight: size.heightOf(weight: sizingWeight.w1),
                 maxWidth: size.layoutItemWidth(1, screenSize),
                 minWidth: size.layoutItemWidth(1, screenSize)),
@@ -39,7 +38,7 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
                 .buildBacking(),
             padding: const EdgeInsets.all(30.0),
             child: Center(
-              child: Row(
+              child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -53,8 +53,10 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
             return Padding(
                 padding: size.universalPadding(),
                 child: MultipleDataTypeUserInputElement(
-                    dataLabel: currentObject.dataLabel,
-                    dataPlaceholder: currentObject.placeholder));
+                  dataLabel: currentObject.dataLabel,
+                  dataPlaceholder: currentObject.placeholder,
+                  isEnabled: currentObject.isEnabled,
+                ));
           });
     } else if (widget.singleVarianceInputObjects != [] &&
         widget.multiVarianceInputObjects == []) {
@@ -73,6 +75,7 @@ class _BasicInputFormComponentState extends State<BasicInputFormComponent> {
                   dataPlaceholder: currentObject.placeholder,
                   itemTextEditingController:
                       currentObject.textEditingController,
+                  isEnabled: currentObject.isEnabled,
                 ));
           });
     }

@@ -30,7 +30,8 @@ class SingleInputToolTemplate extends ToolCardTemplate {
           StandardTextFieldComponent(
               hintText: 'Answer here.',
               decorationVariant: decorationPriority.standard,
-              textFieldController: cardController),
+              textFieldController: cardController,
+              isEnabled: true),
           const DividerElement(),
           const SizedBox(height: 20.0),
           Row(

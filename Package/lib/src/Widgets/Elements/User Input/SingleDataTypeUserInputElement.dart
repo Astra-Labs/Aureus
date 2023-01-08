@@ -3,9 +3,12 @@ import 'package:aureus/aureus.dart';
 class SingleDataTypeUserInputElement extends StatefulWidget {
   final String dataPlaceholder;
   final TextEditingController itemTextEditingController;
+  final bool isEnabled;
 
-  SingleDataTypeUserInputElement(
-      {required this.dataPlaceholder, required this.itemTextEditingController});
+  const SingleDataTypeUserInputElement(
+      {required this.dataPlaceholder,
+      required this.itemTextEditingController,
+      required this.isEnabled});
 
   @override
   _SingleDataTypeUserInputElementState createState() =>
@@ -22,7 +25,8 @@ class _SingleDataTypeUserInputElementState
       child: StandardTextFieldComponent(
           decorationVariant: decorationPriority.standard,
           hintText: widget.dataPlaceholder,
-          textFieldController: widget.itemTextEditingController),
+          textFieldController: widget.itemTextEditingController,
+          isEnabled: widget.isEnabled),
     );
   }
 }

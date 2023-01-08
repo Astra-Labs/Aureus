@@ -41,6 +41,7 @@ class _LongInputFormComponentState extends State<LongInputFormComponent> {
                           dataPlaceholder: currentObject.placeholder,
                           itemTextEditingController:
                               currentObject.textEditingController,
+                          isEnabled: currentObject.isEnabled,
                         ));
                   }));
         });

@@ -3,11 +3,14 @@ import 'package:aureus/aureus.dart';
 class MultipleDataTypeUserInputElement extends StatefulWidget {
   final String dataLabel;
   final String dataPlaceholder;
+  final bool isEnabled;
   final TextEditingController itemTextEditingController =
       TextEditingController();
 
   MultipleDataTypeUserInputElement(
-      {required this.dataLabel, required this.dataPlaceholder});
+      {required this.dataLabel,
+      required this.dataPlaceholder,
+      required this.isEnabled});
 
   @override
   _MultipleDataTypeUserInputElementState createState() =>
@@ -27,7 +30,8 @@ class _MultipleDataTypeUserInputElementState
         child: StandardTextFieldComponent(
             decorationVariant: decorationPriority.standard,
             hintText: widget.dataPlaceholder,
-            textFieldController: widget.itemTextEditingController),
+            textFieldController: widget.itemTextEditingController,
+            isEnabled: true),
       ),
     ]);
   }

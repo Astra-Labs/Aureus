@@ -9,7 +9,9 @@ USAGE:
 */
 
 class TextFieldDataCardElement extends DataDetailCard {
-  TextFieldDataCardElement({required dataLabel})
+  final TextEditingController textEditingController;
+  TextFieldDataCardElement(
+      {required dataLabel, required this.textEditingController})
       : super(dataLabel: dataLabel, detailChildren: []);
 
   // Array that holds the values neccessary to read
@@ -17,21 +19,33 @@ class TextFieldDataCardElement extends DataDetailCard {
   // for display purposes.
   var dataMap = [];
 
+  var isTextEnabled = false;
+
+  late var textFieldElement = SingleDataTypeUserInputElement(
+    dataPlaceholder: dataLabel,
+    itemTextEditingController: textEditingController,
+    isEnabled: isTextEnabled,
+  );
+
   @override
   Widget returnReadDataCard() {
-    return const BaseDataDetailCard(
+    isTextEnabled = false;
+
+    return BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
-      detailChildren: const [],
+      detailLabel: dataLabel,
+      detailChildren: [textFieldElement],
     );
   }
 
   @override
   Widget returnEditDataCard() {
-    return const BaseDataDetailCard(
+    isTextEnabled = true;
+
+    return BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
-      detailChildren: const [],
+      detailLabel: dataLabel,
+      detailChildren: [textFieldElement],
     );
   }
 }

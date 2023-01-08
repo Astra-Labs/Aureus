@@ -33,6 +33,7 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
     var singleDataTypeUserInputElement = SingleDataTypeUserInputElement(
       dataPlaceholder: 'Type code here.',
       itemTextEditingController: widget.textEditingController,
+      isEnabled: true,
     );
 
     var containerWrapper = ContainerWrapperElement(

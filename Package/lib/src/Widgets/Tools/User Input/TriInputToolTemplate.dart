@@ -42,15 +42,18 @@ class TriInputToolTemplate extends ToolCardTemplate {
           StandardTextFieldComponent(
               hintText: textPrompt1,
               decorationVariant: decorationPriority.standard,
-              textFieldController: textField1Controller),
+              textFieldController: textField1Controller,
+              isEnabled: true),
           StandardTextFieldComponent(
               hintText: textPrompt2,
               decorationVariant: decorationPriority.standard,
-              textFieldController: textField2Controller),
+              textFieldController: textField2Controller,
+              isEnabled: true),
           StandardTextFieldComponent(
               hintText: textPrompt3,
               decorationVariant: decorationPriority.standard,
-              textFieldController: textField3Controller),
+              textFieldController: textField3Controller,
+              isEnabled: true),
           const SizedBox(height: 5),
           const DividerElement(),
           const SizedBox(height: 20.0),
