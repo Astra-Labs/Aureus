@@ -101,25 +101,28 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            SecondaryIconButtonElement(
-                                decorationVariant: (_selectedIndex == 0)
-                                    ? decorationPriority.inactive
-                                    : decorationPriority.important,
-                                buttonIcon: Assets.back,
-                                buttonHint:
-                                    'Changes selection to previous tab item.',
-                                buttonAction: () =>
-                                    {_onItemTapped(_selectedIndex -= 1)}),
-                            SecondaryIconButtonElement(
-                                decorationVariant:
-                                    (_selectedIndex > (tabItems.length - 2))
-                                        ? decorationPriority.inactive
-                                        : decorationPriority.important,
-                                buttonIcon: Assets.next,
-                                buttonHint:
-                                    'Changes selection to next tab item.',
-                                buttonAction: () =>
-                                    {_onItemTapped(_selectedIndex += 1)})
+                            IconButtonElement(
+                              decorationVariant: (_selectedIndex == 0)
+                                  ? decorationPriority.inactive
+                                  : decorationPriority.important,
+                              buttonIcon: Assets.back,
+                              buttonHint:
+                                  'Changes selection to previous tab item.',
+                              buttonAction: () =>
+                                  {_onItemTapped(_selectedIndex -= 1)},
+                              buttonPriority: buttonSize.secondary,
+                            ),
+                            IconButtonElement(
+                              decorationVariant:
+                                  (_selectedIndex > (tabItems.length - 2))
+                                      ? decorationPriority.inactive
+                                      : decorationPriority.important,
+                              buttonIcon: Assets.next,
+                              buttonHint: 'Changes selection to next tab item.',
+                              buttonAction: () =>
+                                  {_onItemTapped(_selectedIndex += 1)},
+                              buttonPriority: buttonSize.secondary,
+                            )
                           ],
                         )
                       ],
@@ -180,23 +183,27 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          SecondaryIconButtonElement(
-                              decorationVariant: (_selectedIndex == 0)
-                                  ? decorationPriority.inactive
-                                  : decorationPriority.important,
-                              buttonIcon: Assets.back,
-                              buttonHint: 'Previous Item',
-                              buttonAction: () =>
-                                  {_onItemTapped(_selectedIndex -= 1)}),
-                          SecondaryIconButtonElement(
-                              decorationVariant:
-                                  (_selectedIndex > (tabItems.length - 2))
-                                      ? decorationPriority.inactive
-                                      : decorationPriority.important,
-                              buttonIcon: Assets.next,
-                              buttonHint: 'Next Item',
-                              buttonAction: () =>
-                                  {_onItemTapped(_selectedIndex += 1)})
+                          IconButtonElement(
+                            decorationVariant: (_selectedIndex == 0)
+                                ? decorationPriority.inactive
+                                : decorationPriority.important,
+                            buttonIcon: Assets.back,
+                            buttonHint: 'Previous Item',
+                            buttonAction: () =>
+                                {_onItemTapped(_selectedIndex -= 1)},
+                            buttonPriority: buttonSize.secondary,
+                          ),
+                          IconButtonElement(
+                            decorationVariant:
+                                (_selectedIndex > (tabItems.length - 2))
+                                    ? decorationPriority.inactive
+                                    : decorationPriority.important,
+                            buttonIcon: Assets.next,
+                            buttonHint: 'Next Item',
+                            buttonAction: () =>
+                                {_onItemTapped(_selectedIndex += 1)},
+                            buttonPriority: buttonSize.secondary,
+                          )
                         ],
                       )
                     ],

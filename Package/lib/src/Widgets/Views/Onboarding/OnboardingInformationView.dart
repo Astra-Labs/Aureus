@@ -64,21 +64,24 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
-              PrimaryIconButtonElement(
-                  decorationVariant: (_selectedIndex == 0)
-                      ? decorationPriority.inactive
-                      : decorationPriority.important,
-                  buttonIcon: Assets.back,
-                  buttonHint: 'Previous Item',
-                  buttonAction: () => {_onItemTapped(_selectedIndex -= 1)}),
-              PrimaryIconButtonElement(
+              IconButtonElement(
+                decorationVariant: (_selectedIndex == 0)
+                    ? decorationPriority.inactive
+                    : decorationPriority.important,
+                buttonIcon: Assets.back,
+                buttonHint: 'Previous Item',
+                buttonAction: () => {_onItemTapped(_selectedIndex -= 1)},
+                buttonPriority: buttonSize.primary,
+              ),
+              IconButtonElement(
                   decorationVariant:
                       (_selectedIndex > (widget.onboardingDetails.length - 2))
                           ? decorationPriority.inactive
                           : decorationPriority.important,
                   buttonIcon: Assets.next,
                   buttonHint: 'Next Item',
-                  buttonAction: () => {_onItemTapped(_selectedIndex += 1)})
+                  buttonAction: () => {_onItemTapped(_selectedIndex += 1)},
+                  buttonPriority: buttonSize.primary)
             ],
           )
         ]);
@@ -126,23 +129,27 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      PrimaryIconButtonElement(
-                          decorationVariant: (_selectedIndex == 0)
-                              ? decorationPriority.inactive
-                              : decorationPriority.important,
-                          buttonIcon: Assets.back,
-                          buttonHint: 'Previous Item',
-                          buttonAction: () =>
-                              {_onItemTapped(_selectedIndex -= 1)}),
-                      PrimaryIconButtonElement(
-                          decorationVariant: (_selectedIndex >
-                                  (widget.onboardingDetails.length - 2))
-                              ? decorationPriority.inactive
-                              : decorationPriority.important,
-                          buttonIcon: Assets.next,
-                          buttonHint: 'Next Item',
-                          buttonAction: () =>
-                              {_onItemTapped(_selectedIndex += 1)})
+                      IconButtonElement(
+                        decorationVariant: (_selectedIndex == 0)
+                            ? decorationPriority.inactive
+                            : decorationPriority.important,
+                        buttonIcon: Assets.back,
+                        buttonHint: 'Previous Item',
+                        buttonAction: () =>
+                            {_onItemTapped(_selectedIndex -= 1)},
+                        buttonPriority: buttonSize.primary,
+                      ),
+                      IconButtonElement(
+                        decorationVariant: (_selectedIndex >
+                                (widget.onboardingDetails.length - 2))
+                            ? decorationPriority.inactive
+                            : decorationPriority.important,
+                        buttonIcon: Assets.next,
+                        buttonHint: 'Next Item',
+                        buttonAction: () =>
+                            {_onItemTapped(_selectedIndex += 1)},
+                        buttonPriority: buttonSize.primary,
+                      )
                     ],
                   )
                 ],
@@ -171,11 +178,13 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
       children: [
         Align(
             alignment: Alignment.topRight,
-            child: SecondaryIconButtonElement(
-                decorationVariant: decorationPriority.standard,
-                buttonIcon: Assets.no,
-                buttonHint: 'Return to onboarding landing',
-                buttonAction: () => {Navigator.pop(context)})),
+            child: IconButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonIcon: Assets.no,
+              buttonHint: 'Return to onboarding landing',
+              buttonAction: () => {Navigator.pop(context)},
+              buttonPriority: buttonSize.secondary,
+            )),
         HeadingOneText(
             "Meet ${resourceValues.name}.", decorationPriority.standard),
         iconTabBar,

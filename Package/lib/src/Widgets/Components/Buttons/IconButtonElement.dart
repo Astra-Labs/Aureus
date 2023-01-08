@@ -4,24 +4,25 @@ import 'package:aureus/aureus.dart';
 //Doc Link:
 
 //big circular icon buttons that are greater than 70x70 and are intended to be the main action of the page (e.g: add, message, etc).
-class PrimaryIconButtonElement extends StatefulWidget {
+class IconButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
   final IconData buttonIcon;
   final String buttonHint;
   final VoidCallback buttonAction;
+  final buttonSize buttonPriority;
 
-  const PrimaryIconButtonElement(
+  const IconButtonElement(
       {required this.decorationVariant,
       required this.buttonIcon,
       required this.buttonHint,
-      required this.buttonAction});
+      required this.buttonAction,
+      required this.buttonPriority});
 
   @override
-  _PrimaryIconButtonElementState createState() =>
-      _PrimaryIconButtonElementState();
+  _IconButtonElementState createState() => _IconButtonElementState();
 }
 
-class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
+class _IconButtonElementState extends State<IconButtonElement> {
   //Switches decoration to active, and then returns it to current variant.
 
   late decorationPriority buttonPriority;
@@ -50,9 +51,13 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
   Widget build(BuildContext context) {
     bool isButtonEnabled =
         widget.decorationVariant == decorationPriority.inactive ? false : true;
+
     BoxDecoration buttonBacking = ButtonBackingDecoration(
             variant: buttonDecorationVariants.circle, priority: buttonPriority)
         .buildBacking();
+
+    var buttonScale =
+        (widget.buttonPriority == buttonSize.primary ? 80.0 : 45.0);
 
     return Semantics.fromProperties(
       excludeSemantics: true,
@@ -69,102 +74,21 @@ class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
             }
           },
           child: PulseShadowElement(
-            pulseWidth: 80.0,
+            pulseWidth: buttonScale,
             isActive: widget.decorationVariant == decorationPriority.important
                 ? true
                 : false,
             child: FloatingContainerElement(
               child: SizedBox(
-                  width: 80.0,
-                  height: 80.0,
+                  width: buttonScale,
+                  height: buttonScale,
                   child: Container(
                     decoration: buttonBacking,
                     child: Icon(widget.buttonIcon,
                         color: coloration.decorationColor(
                             decorationVariant: buttonPriority),
-                        size: 65.0),
+                        size: (buttonScale - 15)),
                   )),
-            ),
-          )),
-    );
-  }
-}
-
-//tiny babey icon buttons that are 60x60 or less.
-// ignore: must_be_immutable
-class SecondaryIconButtonElement extends StatefulWidget {
-  final decorationPriority decorationVariant;
-  final IconData buttonIcon;
-  final String buttonHint;
-  final VoidCallback buttonAction;
-  bool isMutuallyExclusive;
-
-  SecondaryIconButtonElement(
-      {Key? key,
-      required this.decorationVariant,
-      required this.buttonIcon,
-      required this.buttonHint,
-      required this.buttonAction,
-      this.isMutuallyExclusive = false})
-      : super(key: key);
-
-  @override
-  _SecondaryIconButtonElementState createState() =>
-      _SecondaryIconButtonElementState();
-}
-
-class _SecondaryIconButtonElementState
-    extends State<SecondaryIconButtonElement> {
-  late decorationPriority buttonPriority;
-
-  @override
-  void initState() {
-    buttonPriority = widget.decorationVariant;
-    super.initState();
-  }
-
-  void createButtonInteraction() {
-    setState(() {
-      buttonPriority = decorationPriority.active;
-      sensation.createSensation(sensationType.press);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    bool isButtonEnabled =
-        widget.decorationVariant == decorationPriority.inactive ? false : true;
-
-    return Semantics.fromProperties(
-      excludeSemantics: true,
-      properties: SemanticsWrapper.button(
-          isEnabled: isButtonEnabled,
-          label: 'Icon Button',
-          hint: widget.buttonHint,
-          isMutuallyExclusive: widget.isMutuallyExclusive),
-      child: GestureDetector(
-          onTap: () {
-            if (isButtonEnabled == true) {
-              widget.buttonAction();
-            }
-          },
-          child: PulseShadowElement(
-            pulseWidth: 50.0,
-            isActive: widget.decorationVariant == decorationPriority.important
-                ? true
-                : false,
-            child: Container(
-              width: 50.0,
-              height: 50.0,
-              decoration: ButtonBackingDecoration(
-                      variant: buttonDecorationVariants.circle,
-                      priority: widget.decorationVariant)
-                  .buildBacking(),
-              alignment: Alignment.center,
-              child: Icon(widget.buttonIcon,
-                  color: coloration.decorationColor(
-                      decorationVariant: widget.decorationVariant),
-                  size: 40.0),
             ),
           )),
     );

@@ -28,25 +28,29 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SecondaryIconButtonElement(
-                  decorationVariant: decorationPriority.important,
-                  buttonIcon: Assets.no,
-                  buttonHint: 'Responds no to the prompt.',
-                  buttonAction: () => {
-                        print('Pressed no!'),
-                        dataMap.insert(0, false),
-                        onNextCard()
-                      }),
+              IconButtonElement(
+                decorationVariant: decorationPriority.important,
+                buttonIcon: Assets.no,
+                buttonHint: 'Responds no to the prompt.',
+                buttonAction: () => {
+                  print('Pressed no!'),
+                  dataMap.insert(0, false),
+                  onNextCard()
+                },
+                buttonPriority: buttonSize.secondary,
+              ),
               const Spacer(),
-              SecondaryIconButtonElement(
-                  decorationVariant: decorationPriority.important,
-                  buttonIcon: Assets.yes,
-                  buttonHint: 'Responds yes to the prompt.',
-                  buttonAction: () => {
-                        print('Pressed yes!'),
-                        dataMap.insert(0, true),
-                        onNextCard()
-                      }),
+              IconButtonElement(
+                decorationVariant: decorationPriority.important,
+                buttonIcon: Assets.yes,
+                buttonHint: 'Responds yes to the prompt.',
+                buttonAction: () => {
+                  print('Pressed yes!'),
+                  dataMap.insert(0, true),
+                  onNextCard()
+                },
+                buttonPriority: buttonSize.secondary,
+              ),
             ],
           )
         ]);

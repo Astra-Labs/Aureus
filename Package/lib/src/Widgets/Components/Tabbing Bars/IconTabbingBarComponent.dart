@@ -34,14 +34,16 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
 
       var tabItem = Padding(
         padding: const EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
-        child: SecondaryIconButtonElement(
-            buttonAction: () =>
-                {element.onTabSelection(), _onItemTapped(currentIndex)},
-            decorationVariant: currentIndex == _selectedIndex
-                ? decorationPriority.important
-                : decorationPriority.standard,
-            buttonHint: element.accessibilityHint,
-            buttonIcon: element.tabIcon),
+        child: IconButtonElement(
+          buttonAction: () =>
+              {element.onTabSelection(), _onItemTapped(currentIndex)},
+          decorationVariant: currentIndex == _selectedIndex
+              ? decorationPriority.important
+              : decorationPriority.standard,
+          buttonHint: element.accessibilityHint,
+          buttonIcon: element.tabIcon,
+          buttonPriority: buttonSize.secondary,
+        ),
       );
 
       tabItems.add(tabItem);

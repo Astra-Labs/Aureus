@@ -47,11 +47,13 @@ class _HelpCenterViewState extends State<HelpCenterView> {
       children: [
         Align(
           alignment: Alignment.topLeft,
-          child: SecondaryIconButtonElement(
-              decorationVariant: decorationPriority.standard,
-              buttonIcon: Assets.back,
-              buttonHint: 'Exit search',
-              buttonAction: () => {Navigator.pop(context)}),
+          child: IconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonIcon: Assets.back,
+            buttonHint: 'Exit search',
+            buttonAction: () => {Navigator.pop(context)},
+            buttonPriority: buttonSize.secondary,
+          ),
         ),
         const SizedBox(height: 30.0),
         const DividingHeaderElement(
@@ -96,11 +98,13 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
-        SecondaryIconButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonIcon: Assets.back,
-            buttonHint: 'Return to Help Center.',
-            buttonAction: () => {Navigator.pop(context)}),
+        IconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonIcon: Assets.back,
+          buttonHint: 'Return to Help Center.',
+          buttonAction: () => {Navigator.pop(context)},
+          buttonPriority: buttonSize.secondary,
+        ),
         const Spacer(),
         const IconBadge(
             badgeIcon: Assets.lock, badgePriority: decorationPriority.standard),

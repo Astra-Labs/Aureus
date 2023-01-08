@@ -36,11 +36,13 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
               itemTextEditingController: widget.textEditController,
               isEnabled: true,
             ),
-            SecondaryIconButtonElement(
-                buttonIcon: Assets.paperplane,
-                buttonAction: widget.onSend,
-                buttonHint: 'Sends the value in the text field.',
-                decorationVariant: decorationPriority.important)
+            IconButtonElement(
+              buttonIcon: Assets.paperplane,
+              buttonAction: widget.onSend,
+              buttonHint: 'Sends the value in the text field.',
+              decorationVariant: decorationPriority.important,
+              buttonPriority: buttonSize.secondary,
+            )
           ]),
     );
   }

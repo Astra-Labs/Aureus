@@ -22,21 +22,25 @@ class PageHeaderElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget buttonOptions() {
-      var exitButton = SecondaryIconButtonElement(
-          decorationVariant: decorationPriority.standard,
-          buttonIcon: Assets.no,
-          buttonHint: 'Exit $pageTitle',
-          buttonAction: onPageExit);
+      var exitButton = IconButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonIcon: Assets.no,
+        buttonHint: 'Exit $pageTitle',
+        buttonAction: onPageExit,
+        buttonPriority: buttonSize.secondary,
+      );
 
       if (onPageDetails != null) {
         //has been initialized with details & exit button.
         return Row(
           children: [
-            SecondaryIconButtonElement(
-                decorationVariant: decorationPriority.standard,
-                buttonIcon: Assets.more1,
-                buttonHint: 'Shows options for $pageTitle',
-                buttonAction: onPageDetails!),
+            IconButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonIcon: Assets.more1,
+              buttonHint: 'Shows options for $pageTitle',
+              buttonAction: onPageDetails!,
+              buttonPriority: buttonSize.secondary,
+            ),
             const SizedBox(width: 15.0),
             exitButton
           ],

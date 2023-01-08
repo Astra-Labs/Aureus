@@ -49,11 +49,13 @@ class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
       tabItemActions.add(element.onTabSelection);
     }
 
-    var minimizedButton = SecondaryIconButtonElement(
-        decorationVariant: decorationPriority.standard,
-        buttonIcon: isExpanded ? Assets.no : Assets.expand,
-        buttonHint: "buttonHint",
-        buttonAction: _onItemTapped);
+    var minimizedButton = IconButtonElement(
+      decorationVariant: decorationPriority.standard,
+      buttonIcon: isExpanded ? Assets.no : Assets.expand,
+      buttonHint: "buttonHint",
+      buttonAction: _onItemTapped,
+      buttonPriority: buttonSize.secondary,
+    );
 
     var expandedBar = FloatingContainerElement(
       child: Container(

@@ -163,30 +163,36 @@ class _MicrophoneInputCardState extends State<_MicrophoneInputCard>
     var controlBar = Row(
       children: [
         const Spacer(),
-        SecondaryIconButtonElement(
-            decorationVariant: _isRecording == true && _isPaused != true
-                ? decorationPriority.inactive
-                : decorationPriority.important,
-            buttonIcon: Assets.play,
-            buttonHint:
-                _isPaused == false ? "Starts recording." : "Resumes recording.",
-            buttonAction: () => {_isPaused == false ? _start() : _resume()}),
+        IconButtonElement(
+          decorationVariant: _isRecording == true && _isPaused != true
+              ? decorationPriority.inactive
+              : decorationPriority.important,
+          buttonIcon: Assets.play,
+          buttonHint:
+              _isPaused == false ? "Starts recording." : "Resumes recording.",
+          buttonAction: () => {_isPaused == false ? _start() : _resume()},
+          buttonPriority: buttonSize.secondary,
+        ),
         const Spacer(),
-        SecondaryIconButtonElement(
-            decorationVariant: _isRecording == true && _isPaused != true
-                ? decorationPriority.standard
-                : decorationPriority.inactive,
-            buttonIcon: Assets.pause,
-            buttonHint: "Pauses recording.",
-            buttonAction: () => {_pause()}),
+        IconButtonElement(
+          decorationVariant: _isRecording == true && _isPaused != true
+              ? decorationPriority.standard
+              : decorationPriority.inactive,
+          buttonIcon: Assets.pause,
+          buttonHint: "Pauses recording.",
+          buttonAction: () => {_pause()},
+          buttonPriority: buttonSize.secondary,
+        ),
         const Spacer(),
-        SecondaryIconButtonElement(
-            decorationVariant: _isRecording == true
-                ? decorationPriority.standard
-                : decorationPriority.inactive,
-            buttonIcon: Assets.yes,
-            buttonHint: "Finishes recording.",
-            buttonAction: () => {_stop()}),
+        IconButtonElement(
+          decorationVariant: _isRecording == true
+              ? decorationPriority.standard
+              : decorationPriority.inactive,
+          buttonIcon: Assets.yes,
+          buttonHint: "Finishes recording.",
+          buttonAction: () => {_stop()},
+          buttonPriority: buttonSize.secondary,
+        ),
         const Spacer(),
       ],
     );

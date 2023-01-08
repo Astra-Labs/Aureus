@@ -30,11 +30,13 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                   filled: true,
                   suffixIcon: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: SecondaryIconButtonElement(
-                        buttonIcon: Assets.next,
-                        buttonAction: widget.onSearch,
-                        buttonHint: 'Searches for the term you enter.',
-                        decorationVariant: decorationPriority.standard),
+                    child: IconButtonElement(
+                      buttonIcon: Assets.next,
+                      buttonAction: widget.onSearch,
+                      buttonHint: 'Searches for the term you enter.',
+                      decorationVariant: decorationPriority.standard,
+                      buttonPriority: buttonSize.secondary,
+                    ),
                   ),
                   border: InputBorder.none,
                   focusedBorder: OutlineInputBorder(

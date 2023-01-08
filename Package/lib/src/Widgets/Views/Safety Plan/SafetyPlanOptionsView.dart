@@ -46,21 +46,23 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
         const Spacer(),
         Align(
           alignment: Alignment.bottomRight,
-          child: PrimaryIconButtonElement(
-              decorationVariant: userSelectedOptions.isEmpty
-                  ? decorationPriority.inactive
-                  : decorationPriority.important,
-              buttonIcon: Assets.next,
-              buttonHint: 'Go to next page',
-              buttonAction: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SafetyPlanFunctionalityView(
-                              exitPoint: widget.exitPoint,
-                              userSelectedOptions: userSelectedOptions),
-                        ))
-                  }),
+          child: IconButtonElement(
+            decorationVariant: userSelectedOptions.isEmpty
+                ? decorationPriority.inactive
+                : decorationPriority.important,
+            buttonIcon: Assets.next,
+            buttonHint: 'Go to next page',
+            buttonAction: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SafetyPlanFunctionalityView(
+                        exitPoint: widget.exitPoint,
+                        userSelectedOptions: userSelectedOptions),
+                  ))
+            },
+            buttonPriority: buttonSize.primary,
+          ),
         )
       ],
     );

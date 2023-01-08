@@ -141,11 +141,13 @@ class _CameraInputCardState extends State<_CameraInputCard> {
                     ],
                   )),
               const Spacer(),
-              SecondaryIconButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonIcon: Assets.no,
-                  buttonHint: "Exits the camera.",
-                  buttonAction: () => {Navigator.pop(context)}),
+              IconButtonElement(
+                decorationVariant: decorationPriority.standard,
+                buttonIcon: Assets.no,
+                buttonHint: "Exits the camera.",
+                buttonAction: () => {Navigator.pop(context)},
+                buttonPriority: buttonSize.secondary,
+              ),
             ],
           )),
     ]);
@@ -163,11 +165,13 @@ class _CameraInputCardState extends State<_CameraInputCard> {
             Positioned(top: 60, child: topBar),
             Positioned(
                 bottom: 45,
-                child: PrimaryIconButtonElement(
-                    decorationVariant: decorationPriority.important,
-                    buttonIcon: Icons.circle_outlined,
-                    buttonHint: "Takes a photo.",
-                    buttonAction: () => {_takePhoto()})),
+                child: IconButtonElement(
+                  decorationVariant: decorationPriority.important,
+                  buttonIcon: Icons.circle_outlined,
+                  buttonHint: "Takes a photo.",
+                  buttonAction: () => {_takePhoto()},
+                  buttonPriority: buttonSize.primary,
+                )),
             Container(
                 width: size.responsiveSize(250),
                 height: size.responsiveSize(250),

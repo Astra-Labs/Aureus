@@ -146,11 +146,13 @@ class _PromptListInputCardState extends State<_PromptListInputCard> {
           children: [
             textField,
             const Spacer(),
-            SecondaryIconButtonElement(
-                decorationVariant: decorationPriority.standard,
-                buttonIcon: Assets.add,
-                buttonHint: 'Add an item to the list',
-                buttonAction: () => {addItem()}),
+            IconButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonIcon: Assets.add,
+              buttonHint: 'Add an item to the list',
+              buttonAction: () => {addItem()},
+              buttonPriority: buttonSize.secondary,
+            ),
           ],
         ),
         const SizedBox(height: 20.0),

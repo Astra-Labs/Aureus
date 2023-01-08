@@ -45,11 +45,13 @@ class _DataOptInViewState extends State<DataOptInView> {
             }),
         Align(
           alignment: Alignment.bottomRight,
-          child: PrimaryIconButtonElement(
-              decorationVariant: decorationPriority.important,
-              buttonIcon: Assets.next,
-              buttonHint: 'Go to next page',
-              buttonAction: () => {widget.onFinish()}),
+          child: IconButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonIcon: Assets.next,
+            buttonHint: 'Go to next page',
+            buttonAction: () => {widget.onFinish()},
+            buttonPriority: buttonSize.secondary,
+          ),
         )
       ],
     );

@@ -140,11 +140,13 @@ class _VideoRecordInputCardState extends State<_VideoRecordInputCard> {
               children: [
                 HeadingTwoText("Record", decorationPriority.standard),
                 const Spacer(),
-                SecondaryIconButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonIcon: Assets.no,
-                    buttonHint: "Exits the recording studio.",
-                    buttonAction: () => {Navigator.pop(context)}),
+                IconButtonElement(
+                  decorationVariant: decorationPriority.standard,
+                  buttonIcon: Assets.no,
+                  buttonHint: "Exits the recording studio.",
+                  buttonAction: () => {Navigator.pop(context)},
+                  buttonPriority: buttonSize.secondary,
+                ),
               ],
             ),
           ),
@@ -196,14 +198,15 @@ class _VideoRecordInputCardState extends State<_VideoRecordInputCard> {
                       buttonHint: "Clears and restarts recording.",
                       buttonAction: () => {_clearVideo()}),
                   const SizedBox(width: 30.0),
-                  PrimaryIconButtonElement(
-                      decorationVariant: decorationPriority.important,
-                      buttonIcon:
-                          _isRecording ? Icons.circle : Icons.circle_outlined,
-                      buttonHint: _isRecording
-                          ? "Pauses recording."
-                          : "Starts recording",
-                      buttonAction: () => {_manageVideo()}),
+                  IconButtonElement(
+                    decorationVariant: decorationPriority.important,
+                    buttonIcon:
+                        _isRecording ? Icons.circle : Icons.circle_outlined,
+                    buttonHint:
+                        _isRecording ? "Pauses recording." : "Starts recording",
+                    buttonAction: () => {_manageVideo()},
+                    buttonPriority: buttonSize.primary,
+                  ),
                   const SizedBox(width: 30.0),
                   SmolButtonElement(
                       decorationVariant: _isRecording == true

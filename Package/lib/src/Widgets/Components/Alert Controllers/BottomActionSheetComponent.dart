@@ -69,10 +69,11 @@ class _BottomActionSheetComponentState
                         badgeIcon: widget.alertData.alertIcon,
                         badgePriority: decorationPriority.important),
                     const Spacer(),
-                    SecondaryIconButtonElement(
+                    IconButtonElement(
                         decorationVariant: decorationPriority.standard,
                         buttonIcon: Assets.no,
                         buttonHint: "Exits action sheet",
+                        buttonPriority: buttonSize.secondary,
                         buttonAction: () =>
                             {notificationMaster.resetRequests()})
                   ],

@@ -64,12 +64,14 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
                                 children: [
                                   const TabSubheaderElement(title: 'Summary'),
                                   const Spacer(),
-                                  SecondaryIconButtonElement(
-                                      decorationVariant:
-                                          decorationPriority.standard,
-                                      buttonIcon: Assets.hamburgermenu,
-                                      buttonHint: 'Summary Actions',
-                                      buttonAction: () => {})
+                                  IconButtonElement(
+                                    decorationVariant:
+                                        decorationPriority.standard,
+                                    buttonIcon: Assets.hamburgermenu,
+                                    buttonHint: 'Summary Actions',
+                                    buttonAction: () => {},
+                                    buttonPriority: buttonSize.secondary,
+                                  )
                                 ],
                               ),
                               const SizedBox(height: 15.0),

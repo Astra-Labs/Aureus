@@ -40,11 +40,13 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                 const SizedBox(height: 10.0),
                 Align(
                   alignment: Alignment.topRight,
-                  child: SecondaryIconButtonElement(
-                      decorationVariant: decorationPriority.standard,
-                      buttonIcon: Assets.no,
-                      buttonHint: 'Exit ${tool.toolName} details',
-                      buttonAction: () => {Navigator.pop(context)}),
+                  child: IconButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonIcon: Assets.no,
+                    buttonHint: 'Exit ${tool.toolName} details',
+                    buttonAction: () => {Navigator.pop(context)},
+                    buttonPriority: buttonSize.secondary,
+                  ),
                 ),
                 const Spacer(),
                 IconBadge(

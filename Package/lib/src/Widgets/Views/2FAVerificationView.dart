@@ -63,15 +63,17 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
         const Spacer(),
         Align(
           alignment: Alignment.bottomRight,
-          child: PrimaryIconButtonElement(
-              decorationVariant: decorationPriority.important,
-              buttonIcon: Assets.next,
-              buttonHint: 'Finish submitting verification code',
-              buttonAction: () => {
-                    userSubmittedCode = singleDataTypeUserInputElement
-                        .itemTextEditingController.text,
-                    widget.onUserSubmission
-                  }),
+          child: IconButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonIcon: Assets.next,
+            buttonHint: 'Finish submitting verification code',
+            buttonAction: () => {
+              userSubmittedCode =
+                  singleDataTypeUserInputElement.itemTextEditingController.text,
+              widget.onUserSubmission
+            },
+            buttonPriority: buttonSize.primary,
+          ),
         )
       ],
     );
