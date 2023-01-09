@@ -50,7 +50,7 @@ class _DataOptInViewState extends State<DataOptInView> {
             buttonIcon: Assets.next,
             buttonHint: 'Go to next page',
             buttonAction: () => {widget.onFinish()},
-            buttonPriority: buttonSize.secondary,
+            buttonPriority: buttonSize.primary,
           ),
         )
       ],
