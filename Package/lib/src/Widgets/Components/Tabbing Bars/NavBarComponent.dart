@@ -80,7 +80,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
             ),
             Positioned(
               bottom: 25,
-              child: ClipRect(
+              child: ClipRRect(
                 child: FloatingContainerElement(
                     child: Container(
                         constraints: BoxConstraints(

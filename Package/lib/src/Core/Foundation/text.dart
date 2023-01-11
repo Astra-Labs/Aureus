@@ -17,11 +17,13 @@ TextStyle heading1() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(26),
           fontWeight: FontWeight.w400,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(26),
           fontWeight: FontWeight.w200,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
 TextStyle heading2() {
@@ -30,12 +32,12 @@ TextStyle heading2() {
           fontSize: accessibility.responsiveTextSize(21),
           fontWeight: FontWeight.w500,
           letterSpacing: 1.2,
-        )
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(21),
           fontWeight: FontWeight.w300,
           letterSpacing: 1.2,
-        );
+          decoration: TextDecoration.none);
 }
 
 TextStyle heading3() {
@@ -43,11 +45,13 @@ TextStyle heading3() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w700,
-          letterSpacing: 1.0)
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w500,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
 TextStyle heading4() {
@@ -55,11 +59,13 @@ TextStyle heading4() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(14),
           fontWeight: FontWeight.w800,
-          letterSpacing: 1.0)
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(14),
           fontWeight: FontWeight.w600,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
 TextStyle subheading() {
@@ -67,11 +73,13 @@ TextStyle subheading() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w500,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w300,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
 TextStyle body1() {
@@ -79,11 +87,13 @@ TextStyle body1() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(14),
           fontWeight: FontWeight.w400,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(14),
           fontWeight: FontWeight.w200,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
 TextStyle body2() {
@@ -91,11 +101,13 @@ TextStyle body2() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(15),
           fontWeight: FontWeight.w500,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(14),
           fontWeight: FontWeight.w300,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
 TextStyle button1() {
@@ -103,11 +115,13 @@ TextStyle button1() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w700,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w500,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
 TextStyle button2() {
@@ -115,11 +129,13 @@ TextStyle button2() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(12),
           fontWeight: FontWeight.w600,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(12),
           fontWeight: FontWeight.w400,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
 TextStyle tag1() {
@@ -127,11 +143,13 @@ TextStyle tag1() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(10),
           fontWeight: FontWeight.w900,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(10),
           fontWeight: FontWeight.w700,
-          letterSpacing: 1.5);
+          letterSpacing: 1.5,
+          decoration: TextDecoration.none);
 }
 
 TextStyle tag2() {
@@ -139,11 +157,13 @@ TextStyle tag2() {
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(10),
           fontWeight: FontWeight.w800,
-          letterSpacing: 0.4)
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
       : GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(10),
           fontWeight: FontWeight.w600,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
 class TitleCase {
