@@ -15,8 +15,6 @@ class SendFieldComponent extends StatefulWidget {
 }
 
 class _SendFieldComponentState extends State<SendFieldComponent> {
-  TextEditingController sendFieldController = TextEditingController(text: '');
-
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();

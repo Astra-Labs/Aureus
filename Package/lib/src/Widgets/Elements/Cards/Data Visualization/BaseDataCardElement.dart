@@ -22,29 +22,23 @@ class BaseDataDetailCard extends StatefulWidget {
 class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
-
     //checks if widget is actively engaged, and returns proper layout.
     return FloatingContainerElement(
         child: Container(
-            constraints: BoxConstraints(
-                minHeight: size.heightOf(weight: sizingWeight.w1),
-                maxWidth: size.layoutItemWidth(1, screenSize),
-                minWidth: size.layoutItemWidth(1, screenSize)),
             decoration: CardBackingDecoration(
-                    priority: widget.isBeingEdited
-                        ? decorationPriority.active
-                        : decorationPriority.inactive)
+                    priority: widget.isBeingEdited == true
+                        ? decorationPriority.standard
+                        : decorationPriority.standard)
                 .buildBacking(),
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(20.0),
             child: Center(
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BodyTwoText(widget.detailLabel, decorationPriority.standard),
-                  const SizedBox(height: 20.0),
+                  const SizedBox(height: 10.0),
                   Column(children: widget.detailChildren),
                 ],
               ),

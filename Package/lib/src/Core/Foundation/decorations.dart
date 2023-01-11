@@ -7,13 +7,10 @@ A set of classes that dynamically create BoxDecorations in accordance with the
 design system principles for each kind of interactivity.
 
 Some classes have their own custom variants that further differentiate them. 
-You can
-
 Every backing decoration inherits from the Parent - Base Backing Decoration. 
 
 */
 
-// 🛑
 class BaseBackingDecoration {
   final decorationPriority priority;
 
@@ -41,8 +38,6 @@ class BaseBackingDecoration {
   }
 }
 
-// 🛑
-//
 class ButtonBackingDecoration extends BaseBackingDecoration {
   final buttonDecorationVariants variant;
 
@@ -98,7 +93,6 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
   }
 }
 
-// 🛑
 class LayerBackingDecoration extends BaseBackingDecoration {
   LayerBackingDecoration({required priority}) : super(priority: priority) {
     decorationCornerRadius = BorderRadius.circular(10.0);
@@ -127,7 +121,6 @@ class LayerBackingDecoration extends BaseBackingDecoration {
   }
 }
 
-// 🛑
 class CardBackingDecoration extends BaseBackingDecoration {
   CardBackingDecoration({required priority}) : super(priority: priority) {
     //defining variants for the specific priority
@@ -172,7 +165,6 @@ class CardBackingDecoration extends BaseBackingDecoration {
   }
 }
 
-// 🛑
 class InputBackingDecoration extends BaseBackingDecoration {
   InputBackingDecoration() : super(priority: decorationPriority.standard) {
     //defining variants for the specific mode
@@ -187,7 +179,6 @@ class InputBackingDecoration extends BaseBackingDecoration {
   }
 }
 
-// 🛑
 class TabItemBackingDecoration extends BaseBackingDecoration {
   final tabItemDecorationVariants variant;
 

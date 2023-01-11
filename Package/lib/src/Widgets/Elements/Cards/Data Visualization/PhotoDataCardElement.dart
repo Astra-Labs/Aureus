@@ -9,8 +9,7 @@ USAGE:
 */
 
 class PhotoDataCardElement extends DataDetailCard {
-  PhotoDataCardElement({required dataLabel})
-      : super(dataLabel: dataLabel, detailChildren: []);
+  PhotoDataCardElement({required dataLabel}) : super(dataLabel: dataLabel);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

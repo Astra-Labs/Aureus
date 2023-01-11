@@ -13,6 +13,7 @@ export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
 export 'src/Core/Safety/safety.dart';
 
+export 'src/Core/Foundation/animation.dart';
 export 'src/Core/Foundation/palette.dart';
 export 'src/Core/Foundation/sensory.dart';
 export 'src/Core/Foundation/sizing.dart';
@@ -103,6 +104,7 @@ export 'src/Widgets/Elements/Misc/EclipseShadowElement.dart';
 
 // -------------------------- User Input
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
+export 'src/Widgets/Elements/User Input/TextViewComponent.dart';
 export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SliderElement.dart';

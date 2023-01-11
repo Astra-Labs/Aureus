@@ -9,8 +9,7 @@ USAGE:
 */
 
 class AddressDataCardElement extends DataDetailCard {
-  AddressDataCardElement({required dataLabel})
-      : super(dataLabel: dataLabel, detailChildren: []);
+  AddressDataCardElement({required dataLabel}) : super(dataLabel: dataLabel);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card
@@ -23,6 +22,7 @@ class AddressDataCardElement extends DataDetailCard {
   var address2TextController = TextEditingController();
   var cityTextController = TextEditingController();
   var stateTextController = TextEditingController();
+  var zipcodeTextController = TextEditingController();
   var countryTextController = TextEditingController();
 
   late var address1TextField = SingleDataTypeUserInputElement(
@@ -49,6 +49,12 @@ class AddressDataCardElement extends DataDetailCard {
     isEnabled: isTextEnabled,
   );
 
+  late var zipcodeTextField = SingleDataTypeUserInputElement(
+    dataPlaceholder: "Zipcode",
+    itemTextEditingController: zipcodeTextController,
+    isEnabled: isTextEnabled,
+  );
+
   late var countryTextField = SingleDataTypeUserInputElement(
     dataPlaceholder: "Country",
     itemTextEditingController: countryTextController,
@@ -60,6 +66,7 @@ class AddressDataCardElement extends DataDetailCard {
     address2TextController,
     cityTextController,
     stateTextController,
+    zipcodeTextController,
     countryTextController
   ];
 
@@ -67,12 +74,9 @@ class AddressDataCardElement extends DataDetailCard {
     address1TextField,
     address2TextField,
     cityTextField,
-    Row(
-      children: [
-        stateTextField,
-        countryTextField,
-      ],
-    ),
+    stateTextField,
+    zipcodeTextField,
+    countryTextField,
   ];
 
   @override

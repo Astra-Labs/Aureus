@@ -60,9 +60,8 @@ class DataDetailCard {
   // The string describing what the data is
   // ------------------------------
   final String dataLabel;
-  final List<Widget> detailChildren;
 
-  const DataDetailCard({required this.dataLabel, required this.detailChildren});
+  const DataDetailCard({required this.dataLabel});
 
   void editInformation() {
     dataDetailMaster.notifyObserverToUpdate();

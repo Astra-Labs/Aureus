@@ -69,22 +69,8 @@ class _DataDetailViewState extends State<DataDetailView> {
           SizedBox(
               width: size.layoutItemWidth(1, screenSize),
               height: size.layoutItemWidth(1, screenSize),
-              child: SingleChildScrollView(
-                  child: Column(
-                children: const [
-                  BaseDataDetailCard(
-                    detailLabel: "Bitch ???",
-                    detailChildren: [],
-                    isBeingEdited: false,
-                  ),
-                  SizedBox(height: 20),
-                  BaseDataDetailCard(
-                    detailLabel: "Bitch ???",
-                    detailChildren: [],
-                    isBeingEdited: false,
-                  )
-                ],
-              )))
+              child:
+                  SingleChildScrollView(child: Column(children: summaryItems)))
         ]);
 
     return ContainerView(

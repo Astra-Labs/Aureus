@@ -50,7 +50,7 @@ class Sizing {
   }
 
   bool isDesktopDisplay() {
-    if (logicalWidth() > logicalHeight()) {
+    if (logicalWidth() >= logicalHeight()) {
       return false;
     } else if (logicalWidth() < logicalHeight()) {
       return true;
@@ -72,7 +72,7 @@ class Sizing {
       //needs tablet scale
       scaleFactor = 1.0;
     } else if (shortSide >= 550 && shortSide < 900) {
-      //needs tablet scale
+      //needs slightly larger tablet scale
       scaleFactor = 1.29;
     } else if (shortSide >= 900) {
       //needs web phone scale
@@ -84,7 +84,7 @@ class Sizing {
 
   // Basic padding that can be used for anything.
   EdgeInsets universalPadding() {
-    return const EdgeInsets.fromLTRB(20, 10, 20, 10);
+    return const EdgeInsets.fromLTRB(10, 10, 10, 10);
   }
 
   // Returns the % of screen height for the weight passed

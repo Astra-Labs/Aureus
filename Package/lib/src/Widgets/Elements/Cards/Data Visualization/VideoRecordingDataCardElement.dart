@@ -10,7 +10,7 @@ USAGE:
 
 class VideoRecordingDataCardElement extends DataDetailCard {
   VideoRecordingDataCardElement({required dataLabel})
-      : super(dataLabel: dataLabel, detailChildren: []);
+      : super(dataLabel: dataLabel);
 
   // Array that holds the values neccessary to read
   // and write what a user entered into the prompt card

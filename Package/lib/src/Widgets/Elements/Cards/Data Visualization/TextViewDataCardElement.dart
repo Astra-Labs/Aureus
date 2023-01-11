@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:aureus/src/Widgets/Elements/User%20Input/TextViewComponent.dart';
 
 /*
 
@@ -9,31 +10,38 @@ USAGE:
 */
 
 class TextViewDataCardElement extends DataDetailCard {
-  TextViewDataCardElement({required dataLabel})
-      : super(dataLabel: dataLabel, detailChildren: []);
+  final TextEditingController textEditingController;
+  TextViewDataCardElement(
+      {required dataLabel, required this.textEditingController})
+      : super(dataLabel: dataLabel);
 
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes.
-  var dataMap = [];
+  var isTextEnabled = false;
+
+  late var textViewElement = TextViewComponent(
+      textFieldController: textEditingController,
+      hintText: dataLabel,
+      isEnabled: isTextEnabled,
+      detailLabel: dataLabel);
 
   @override
   Widget returnReadDataCard() {
+    isTextEnabled = false;
+
     return BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
-      detailChildren: const [],
+      detailLabel: dataLabel,
+      detailChildren: [textViewElement],
     );
   }
 
   @override
   Widget returnEditDataCard() {
-    var cardController = TextEditingController();
+    isTextEnabled = true;
 
     return BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
-      detailChildren: const [],
+      detailLabel: dataLabel,
+      detailChildren: [textViewElement],
     );
   }
 }
