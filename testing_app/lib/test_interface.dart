@@ -108,13 +108,32 @@ Map<String, Widget> aureusComponents = {
 };
 
 Map<String, Widget> aureusViews = {
+  "Passcode": PasscodeView(
+      onCorrectPasscode: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Passcode correct!", Assets.lock)
+          },
+      passcode: [1, 2, 3, 4]),
+  "Settings": SettingsView(),
+  "Checkbox Article View": CheckboxArticleView(
+      articleTitle: "Lorem",
+      articleSubheader: "Ipsum loremt",
+      articleBody:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      checkboxDescription: "sed do eiusmod",
+      onFinish: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Article agreed to!", Assets.yes)
+          }),
   'Splash Screen': SplashScreenView(
     onLaunch: () => {},
   ),
   'Two Factor Authentication': TFAVerificationView(
-      userPhoneNumber: 555555555,
-      issueVerificationCode: () => {print('verification code issued!')},
-      onUserSubmission: () => {print('user submitted code!')}),
+    userPhoneNumber: 555555555,
+    issueVerificationCode: () => {print('verification code issued!')},
+    onUserSubmission: () => {print('user submitted code!')},
+    textEditingController: textEditor,
+  ),
   'Onboarding Demo View': OnboardingDemoView(toolItems: []),
   'Onboarding Information View': OnboardingInformationView(
     onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
@@ -132,9 +151,12 @@ Map<String, Widget> aureusViews = {
     SafetyPlanOptions.disableNotifications,
   ], exitPoint: AureusViewsView()),
   'Sign In View': SignInView(
-      onSignIn: fillerAction,
-      onSignup: fillerAction,
-      onResetInformation: fillerAction),
+    onSignIn: fillerAction,
+    onSignup: fillerAction,
+    onResetInformation: fillerAction,
+    usernameTextController: textEditor,
+    passwordTextController: textEditor,
+  ),
 };
 
 /*Map<String, Widget> aureusToolTemplates = { 
@@ -205,6 +227,124 @@ class _AureusComponentsViewState extends State<AureusComponentsView> {
 }
 
 /*  TOOLS  */
+
+var testingTool = CoreTool(
+    toolName: "Test Tool",
+    toolDescription:
+        "This is a tool meant to show you all of the card options available in Aureus, and to give you a code example of what building and implementing a tool looks like.",
+    toolDetails: {
+      "Android": Assets.android,
+      "iOS": Assets.apple,
+      "Web": Assets.window,
+    },
+    toolIcon: Assets.medicine,
+    entryPoint: OnboardingLandingView(),
+    toolCards: [
+      DatePickerInputToolTemplate(
+          templatePrompt: "I'm the DatePickerInputToolTemplate.",
+          badgeIcon: Assets.add),
+      DualColumnInputToolTemplate(
+          prompt1: "Prompt 1",
+          prompt2: "Prompt 2",
+          templatePrompt: "I'm the DualColumnInputToolTemplate.",
+          badgeIcon: Assets.add),
+      PromptListUserInputToolTemplate(
+          templatePrompt: "I'm the PromptListUserInputToolTemplate.",
+          badgeIcon: Assets.add),
+      SingleInputToolTemplate(
+          templatePrompt: "I'm the SingleInputToolTemplate.",
+          badgeIcon: Assets.add),
+      SingleSliderToolTemplate(
+          templatePrompt: "I'm the SingleSliderToolTemplate.",
+          badgeIcon: Assets.add),
+      TimePickerInputToolTemplate(
+          templatePrompt: "I'm the TimePickerInputToolTemplate.",
+          badgeIcon: Assets.add),
+      TriInputToolTemplate(
+          textPrompt1: "text prompt 1",
+          textPrompt2: "text prompt 2",
+          textPrompt3: "text prompt 3",
+          templatePrompt: "I'm the TriInputToolTemplate.",
+          badgeIcon: Assets.add),
+      AdaptiveInputSelectionToolTemplate(),
+      AdaptiveInputToolTemplate(
+          templatePrompt: "I'm the AdaptiveInputToolTemplate.",
+          badgeIcon: Assets.add),
+      CameraInputToolTemplate(
+          templatePrompt: "I'm the CameraInputToolTemplate.",
+          badgeIcon: Assets.add),
+      ColorSpectrumInputToolTemplate(
+          templatePrompt: "I'm the ColorSpectrumInputToolTemplate.",
+          badgeIcon: Assets.add),
+      MicrophoneInputToolTemplate(
+          templatePrompt: "I'm the MicrophoneInputToolTemplate.",
+          badgeIcon: Assets.add),
+      SensoryMapToolTemplate(
+          templatePrompt: "I'm the SensoryMapToolTemplate.",
+          badgeIcon: Assets.add),
+      SketchToolTemplate(
+          templatePrompt: "I'm the SketchToolTemplate.", badgeIcon: Assets.add),
+      TimerToolTemplate(
+          allotment: Duration(seconds: 10),
+          onFinish: () => {
+                notificationMaster.sendAlertNotificationRequest(
+                    "Timer finished!", Assets.apple)
+              },
+          templatePrompt: "I'm the TimerToolTemplate.",
+          badgeIcon: Assets.add),
+      VideoInputToolTemplate(
+          templatePrompt: "I'm the VideoInputToolTemplate.",
+          badgeIcon: Assets.add),
+      GridCardSelectToolTemplate(
+          templatePrompt: "I'm the .",
+          badgeIcon: Assets.add,
+          cardItems: ["Card 1", "Card 2", "Card 3"]),
+      ListViewButtonSelectToolTemplate(
+          listItems: {
+            "I'll show you a notification.": () => {
+                  notificationMaster.sendAlertNotificationRequest(
+                      "Notification sent!", Assets.camera)
+                },
+            "I'll bring up an alert controller.": () => {
+                  notificationMaster.sendAlertControllerRequest(
+                      AlertControllerObject.singleAction(
+                          onCancellation: () {
+                            notificationMaster.resetRequests();
+                          },
+                          alertTitle: "Alert Controller!",
+                          alertBody: "Hi!",
+                          alertIcon: Assets.android,
+                          actions: [
+                        AlertControllerAction(
+                            actionName: "Dismiss",
+                            actionSeverity:
+                                AlertControllerActionSeverity.standard,
+                            onSelection: () => {})
+                      ]))
+                }
+          },
+          templatePrompt: "I'm the ListViewButtonSelectToolTemplate.",
+          badgeIcon: Assets.add),
+      ListViewPickerSelectToolTemplate(
+          pickerOptions: [
+            "List Item 1",
+            "List Item 2",
+            "List Item 3",
+            "List Item 4"
+          ],
+          templatePrompt: "I'm the ListViewPickerSelectToolTemplate.",
+          badgeIcon: Assets.add),
+      YesNoButtonSelectToolTemplate(
+          templatePrompt: "I'm the YesNoButtonSelectToolTemplate.",
+          badgeIcon: Assets.add)
+    ],
+    nextSteps: {
+      "Show an action bar": () => {},
+      "Send a notification": () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Notification sent!", Assets.camera)
+          },
+    });
 
 class AureusToolsView extends StatefulWidget {
   const AureusToolsView();

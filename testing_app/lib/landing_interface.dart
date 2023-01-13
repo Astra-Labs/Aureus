@@ -242,15 +242,16 @@ class _landingHeaderState extends State<landingHeader> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              SecondaryIconButtonElement(
+                              IconButtonElement(
                                   decorationVariant: (_selectedIndex == 0)
                                       ? decorationPriority.inactive
                                       : decorationPriority.important,
                                   buttonIcon: Assets.back,
                                   buttonHint: 'Previous Item',
                                   buttonAction: () =>
-                                      {_onItemTapped(_selectedIndex -= 1)}),
-                              SecondaryIconButtonElement(
+                                      {_onItemTapped(_selectedIndex -= 1)},
+                                  buttonPriority: buttonSize.secondary),
+                              IconButtonElement(
                                   decorationVariant: (_selectedIndex >
                                           (boxInformation.length - 2))
                                       ? decorationPriority.inactive
@@ -258,7 +259,8 @@ class _landingHeaderState extends State<landingHeader> {
                                   buttonIcon: Assets.next,
                                   buttonHint: 'Next Item',
                                   buttonAction: () =>
-                                      {_onItemTapped(_selectedIndex += 1)})
+                                      {_onItemTapped(_selectedIndex += 1)},
+                                  buttonPriority: buttonSize.secondary)
                             ],
                           ),
                         ]),
@@ -400,7 +402,7 @@ class _footerCTAState extends State<footerCTA> {
         children: [
           Spacer(),
           HeadingOneText(
-              'Aureus is currently in beta at Astra Labs, and not available for external use.',
+              'Aureus is currently in beta at Astra Laboratories, and not available for external use.',
               decorationPriority.standard),
           SizedBox(height: 20.0),
           BodyOneText(
@@ -496,12 +498,12 @@ class _webLandingViewState extends State<webLandingView> {
                       maxHeight: screenHeight,
                       minWidth: screenWidth,
                       maxWidth: screenWidth),
-                  decoration: BoxDecoration(
+                  /*decoration: BoxDecoration(
                     image: DecorationImage(
                       image: widget.landscapeBacking.image,
                       fit: BoxFit.cover,
                     ),
-                  ),
+                  ),*/
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -527,13 +529,8 @@ class _webLandingViewState extends State<webLandingView> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      SizedBox(height: 60.0),
-                      webLandingPageDemo(),
-                      SizedBox(height: 60.0),
-                      /*landingHeader(),
-                      SizedBox(height: 60.0),*/
-                      breakoutArea(),
-                      SizedBox(height: 60.0),
+                      /*SizedBox(height: 60.0),
+                      webLandingPageDemo(),*/
                       footerCTA(),
                       SizedBox(height: 60.0)
                     ],
@@ -584,12 +581,12 @@ class _mobileLandingViewState extends State<mobileLandingView> {
                     maxHeight: screenHeight * 1.5,
                     minWidth: screenWidth,
                     maxWidth: screenWidth),
-                decoration: BoxDecoration(
+                /*decoration: BoxDecoration(
                   image: DecorationImage(
                     image: widget.landscapeBacking.image,
                     fit: BoxFit.cover,
                   ),
-                ),
+                ),*/
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -630,12 +627,8 @@ class _mobileLandingViewState extends State<mobileLandingView> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    SizedBox(height: 30.0),
-                    mobileLandingPageDemo(),
-                    SizedBox(height: 30.0),
-                    /*landingHeader(),
-                    SizedBox(height: 30.0),*/
-                    breakoutArea(),
+                    /*SizedBox(height: 30.0),
+                    mobileLandingPageDemo(),*/
                     SizedBox(height: 30.0),
                     footerCTA(),
                     SizedBox(height: 30.0)

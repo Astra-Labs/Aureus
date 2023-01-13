@@ -99,15 +99,16 @@ class _IteratingComponentState extends State<IteratingComponent> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            SecondaryIconButtonElement(
+                            IconButtonElement(
                                 decorationVariant: (_selectedIndex == 0)
                                     ? decorationPriority.inactive
                                     : decorationPriority.important,
                                 buttonIcon: Assets.back,
                                 buttonHint: 'Previous Item',
                                 buttonAction: () =>
-                                    {_onItemTapped(_selectedIndex -= 1)}),
-                            SecondaryIconButtonElement(
+                                    {_onItemTapped(_selectedIndex -= 1)},
+                                buttonPriority: buttonSize.secondary),
+                            IconButtonElement(
                                 decorationVariant:
                                     (_selectedIndex > (tabItems.length - 2))
                                         ? decorationPriority.inactive
@@ -115,7 +116,8 @@ class _IteratingComponentState extends State<IteratingComponent> {
                                 buttonIcon: Assets.next,
                                 buttonHint: 'Next Item',
                                 buttonAction: () =>
-                                    {_onItemTapped(_selectedIndex += 1)})
+                                    {_onItemTapped(_selectedIndex += 1)},
+                                buttonPriority: buttonSize.secondary)
                           ],
                         )
                       ],
@@ -127,16 +129,64 @@ class _IteratingComponentState extends State<IteratingComponent> {
           )
         ]);
 
-    Widget webInformationCard = Row(
+    Widget webInformationCard = Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
+            child: FloatingContainerElement(
+              child: Container(
+                constraints: BoxConstraints(
+                    maxHeight: size.layoutItemHeight(3, screenSize)),
+                decoration:
+                    CardBackingDecoration(priority: decorationPriority.inactive)
+                        .buildBacking(),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    TagOneText(currentTitle, decorationPriority.standard),
+                    Spacer(),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        IconButtonElement(
+                            decorationVariant: (_selectedIndex == 0)
+                                ? decorationPriority.inactive
+                                : decorationPriority.important,
+                            buttonIcon: Assets.back,
+                            buttonHint: 'Previous Item',
+                            buttonAction: () =>
+                                {_onItemTapped(_selectedIndex -= 1)},
+                            buttonPriority: buttonSize.secondary),
+                        SizedBox(width: 10),
+                        IconButtonElement(
+                            decorationVariant:
+                                (_selectedIndex > (tabItems.length - 2))
+                                    ? decorationPriority.inactive
+                                    : decorationPriority.important,
+                            buttonIcon: Assets.next,
+                            buttonHint: 'Next Item',
+                            buttonAction: () =>
+                                {_onItemTapped(_selectedIndex += 1)},
+                            buttonPriority: buttonSize.secondary)
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              width: size.layoutItemWidth(1, screenSize) * 0.6,
-              height: size.layoutItemHeight(2, screenSize),
+              width: size.layoutItemWidth(2, screenSize),
+              height: size.layoutItemHeight(3, screenSize),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -149,58 +199,6 @@ class _IteratingComponentState extends State<IteratingComponent> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FloatingContainerElement(
-              child: Container(
-                constraints: BoxConstraints(
-                    maxHeight: size.layoutItemHeight(3, screenSize),
-                    maxWidth: size.layoutItemWidth(3, screenSize) * 1.2),
-                decoration:
-                    CardBackingDecoration(priority: decorationPriority.inactive)
-                        .buildBacking(),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Spacer(),
-                      Flexible(
-                          child: TagOneText(
-                              currentTitle, decorationPriority.standard)),
-                      Spacer(),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          SecondaryIconButtonElement(
-                              decorationVariant: (_selectedIndex == 0)
-                                  ? decorationPriority.inactive
-                                  : decorationPriority.important,
-                              buttonIcon: Assets.back,
-                              buttonHint: 'Previous Item',
-                              buttonAction: () =>
-                                  {_onItemTapped(_selectedIndex -= 1)}),
-                          SecondaryIconButtonElement(
-                              decorationVariant:
-                                  (_selectedIndex > (tabItems.length - 2))
-                                      ? decorationPriority.inactive
-                                      : decorationPriority.important,
-                              buttonIcon: Assets.next,
-                              buttonHint: 'Next Item',
-                              buttonAction: () =>
-                                  {_onItemTapped(_selectedIndex += 1)})
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          )
         ]);
 
     Widget informationCard = SizedBox(

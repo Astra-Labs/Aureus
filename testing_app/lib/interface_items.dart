@@ -41,11 +41,19 @@ var divider = DividerElement();
 var slider = SliderElement();
 var timer = TimerElement(timeAllotment: Duration(seconds: 30));
 
-var singleInput =
-    SingleDataTypeUserInputElement(dataPlaceholder: fillerPlaceholder);
+var textEditor = TextEditingController();
+
+var singleInput = SingleDataTypeUserInputElement(
+  dataPlaceholder: fillerPlaceholder,
+  itemTextEditingController: textEditor,
+  isEnabled: true,
+);
 
 var multiInput = MultipleDataTypeUserInputElement(
-    dataLabel: fillerTextSubheader, dataPlaceholder: fillerPlaceholder);
+  dataLabel: fillerTextSubheader,
+  dataPlaceholder: fillerPlaceholder,
+  isEnabled: true,
+);
 
 var standardFullWidthButton = FullWidthButtonElement(
     buttonTitle: fillerTextButton,
@@ -65,41 +73,47 @@ var inactiveFullWidthButton = FullWidthButtonElement(
     buttonHint: 'Hint here!',
     buttonAction: fillerAction);
 
-var standardPrimaryIconButton = PrimaryIconButtonElement(
+var standardPrimaryIconButton = IconButtonElement(
     buttonIcon: fillerIcon1,
     buttonHint: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.standard);
+    decorationVariant: decorationPriority.standard,
+    buttonPriority: buttonSize.primary);
 
-var importantPrimaryIconButton = PrimaryIconButtonElement(
+var importantPrimaryIconButton = IconButtonElement(
     buttonIcon: fillerIcon1,
     buttonHint: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.important,
+    buttonPriority: buttonSize.primary);
 
-var inactivePrimaryIconButton = PrimaryIconButtonElement(
+var inactivePrimaryIconButton = IconButtonElement(
     buttonIcon: fillerIcon1,
     buttonHint: fillerTextButton,
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.inactive);
+    decorationVariant: decorationPriority.inactive,
+    buttonPriority: buttonSize.primary);
 
-var standardSecondaryIconButton = SecondaryIconButtonElement(
+var standardSecondaryIconButton = IconButtonElement(
     buttonIcon: fillerIcon1,
     buttonHint: 'Hint here!',
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.standard);
+    decorationVariant: decorationPriority.standard,
+    buttonPriority: buttonSize.secondary);
 
-var importantSecondaryIconButton = SecondaryIconButtonElement(
+var importantSecondaryIconButton = IconButtonElement(
     buttonIcon: fillerIcon1,
     buttonHint: 'Hint here!',
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.important);
+    decorationVariant: decorationPriority.important,
+    buttonPriority: buttonSize.secondary);
 
-var inactiveSecondaryIconButton = SecondaryIconButtonElement(
+var inactiveSecondaryIconButton = IconButtonElement(
     buttonIcon: fillerIcon1,
     buttonHint: 'Hint here!',
     buttonAction: fillerAction,
-    decorationVariant: decorationPriority.inactive);
+    decorationVariant: decorationPriority.inactive,
+    buttonPriority: buttonSize.secondary);
 
 var standardSmolButton = SmolButtonElement(
     buttonTitle: fillerTextButton,
@@ -198,7 +212,10 @@ var readNotification = NotificationComponent(
 
 var searchBar = SearchBarComponent(onSearch: fillerAction);
 
-var sendField = SendFieldComponent(onSend: fillerAction);
+var sendField = SendFieldComponent(
+  onSend: fillerAction,
+  textEditController: textEditor,
+);
 
 Widget testStandardCard = Playground().filledCardObject(
     cardVariant: cardType.standardCard,

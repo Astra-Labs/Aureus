@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 import 'package:test_app/interface_items.dart';
+import 'package:test_app/generation_app.dart';
 import 'package:test_app/test_interface.dart';
 import 'package:test_app/view_items.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -52,7 +53,7 @@ void main() {
 
   var resourceNavigation = AureusNavigationTree(
       splashScreen: SplashScreenView(onLaunch: () => {}),
-      homeScreen: LandingPage(),
+      homeScreen: GenerationLandingPage(),
       settings: SettingsView(),
       onboardingLanding: OnboardingLandingView(),
       onboardingDemo: OnboardingDemoView(
@@ -68,7 +69,12 @@ void main() {
       privacyPolicy: ArticleViewElement(
           title: "Privacy Policy", subheader: "subheader", body: "body"),
       signIn: SignInView(
-          onSignIn: () => {}, onSignup: () => {}, onResetInformation: () => {}),
+        onSignIn: () => {},
+        onSignup: () => {},
+        onResetInformation: () => {},
+        usernameTextController: textEditor,
+        passwordTextController: textEditor,
+      ),
       signUp: OnboardingLandingView(),
       helpCenter: HelpCenterView(helpCenter: helpCenterTest),
       contactSupport: HelpCenterView(helpCenter: helpCenterTest));
@@ -105,9 +111,16 @@ class _reworkedExplorationViewState extends State<reworkedExplorationView> {
         accessibilityHint: "Shows you the views",
         tabIcon: Assets.hamburgermenu),
     ControllerTabObject(
-        tabController: AureusToolsView(),
+        tabController: ToolDetailView(
+          parentTool: testingTool,
+        ),
         tabTitle: "Tools",
         accessibilityHint: "Shows you the tools",
+        tabIcon: Assets.settings),
+    ControllerTabObject(
+        tabController: TestingDataDetailView(),
+        tabTitle: "Data",
+        accessibilityHint: "Lets you try the data detail view",
         tabIcon: Assets.settings),
     ControllerTabObject(
         tabController: TestingView(),
@@ -127,8 +140,11 @@ class _reworkedExplorationViewState extends State<reworkedExplorationView> {
 class TestingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var containerViewHolder = ContainerWrapperElement(
-        children: [], containerVariant: wrapperVariants.fullScreen);
+    var containerViewHolder = ContainerWrapperElement(children: [
+      AddressDataCardElement(
+        dataLabel: "Address",
+      ).returnEditDataCard(),
+    ], containerVariant: wrapperVariants.fullScreen);
 
     return ContainerView(
       decorationVariant: decorationPriority.standard,
@@ -182,6 +198,15 @@ class AureusTestApp extends StatelessWidget {
   }
 }
 
+class TestingDataDetailView extends DataDetailView {
+  TestingDataDetailView()
+      : super(title: 'Testing', detailCards: [
+          TextViewDataCardElement(
+              dataLabel: "Testing",
+              textEditingController: TextEditingController())
+        ]);
+}
+
 class ToolNavigationTesting extends StatefulWidget {
   const ToolNavigationTesting();
   @override
@@ -190,38 +215,37 @@ class ToolNavigationTesting extends StatefulWidget {
 
 class _ToolNavigationTestingState extends State<ToolNavigationTesting> {
   var testingTool = CoreTool(
-    [
-      SingleInputToolTemplate(
-        templatePrompt: 'Yes No Tool Template',
-        badgeIcon: Assets.alert,
-      ),
-      DualColumnInputToolTemplate(
+      toolName: 'Guided Cooldown',
+      toolDescription:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      toolDetails: {
+        'SMS Based': Assets.alertmessage,
+        'Kid-friendly': Assets.babycarriage,
+        'Requires brain': Assets.brain,
+      },
+      entryPoint: OnboardingLandingView(),
+      nextSteps: {
+        'Print hi': () => {print('hi')},
+        'Print hey': () => {print('hey')},
+        'Print why': () => {print('why')},
+        'Print money': () => {print('money')}
+      },
+      toolIcon: Assets.medicine,
+      toolCards: [
+        SingleInputToolTemplate(
           templatePrompt: 'Yes No Tool Template',
           badgeIcon: Assets.alert,
-          prompt1: 'Pros',
-          prompt2: 'Cons'),
-      SingleSliderToolTemplate(
-          templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert),
-      SingleInputToolTemplate(
-          templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert)
-    ],
-    toolName: 'Guided Cooldown',
-    toolDescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    toolDetails: {
-      'SMS Based': Assets.alertmessage,
-      'Kid-friendly': Assets.babycarriage,
-      'Requires brain': Assets.brain,
-    },
-    entryPoint: OnboardingLandingView(),
-    nextSteps: {
-      'Print hi': () => {print('hi')},
-      'Print hey': () => {print('hey')},
-      'Print why': () => {print('why')},
-      'Print money': () => {print('money')}
-    },
-    toolIcon: Assets.medicine,
-  );
+        ),
+        DualColumnInputToolTemplate(
+            templatePrompt: 'Yes No Tool Template',
+            badgeIcon: Assets.alert,
+            prompt1: 'Pros',
+            prompt2: 'Cons'),
+        SingleSliderToolTemplate(
+            templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert),
+        SingleInputToolTemplate(
+            templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert)
+      ]);
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +253,7 @@ class _ToolNavigationTestingState extends State<ToolNavigationTesting> {
 
     var containerWrapper = ContainerWrapperElement(children: [
       DividingHeaderElement(
-          headerText: 'Welcome, Soylent Whore.',
+          headerText: 'Welcome, human.',
           subheaderText:
               'This page is to help a very tired Amanda to debug the Core Tools, their containers, and more.'),
       SizedBox(height: 70.0),
