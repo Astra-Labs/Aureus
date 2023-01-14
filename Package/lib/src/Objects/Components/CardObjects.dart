@@ -1,5 +1,87 @@
 import 'package:aureus/aureus.dart';
 
+class AureusCards {
+  Widget filledCardObject(
+      {required cardType cardVariant, required CardObject cardData}) {
+    switch (cardVariant) {
+
+      //should be card object type of: standard
+      case cardType.standardCard:
+        {
+          return StandardCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!);
+        }
+
+      //should be card object type of: standardIcon
+      case cardType.standardBadgeCard:
+        {
+          return StandardBadgeCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: detailed
+      case cardType.detailCard:
+        {
+          return DetailCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!);
+        }
+
+      //should be card object type of: detailedIcon
+      case cardType.detailBadgeCard:
+        {
+          return DetailBadgeCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: standardIcon
+      case cardType.detailCarouselCard:
+        {
+          return DetailCarouselCardElement(
+              cardLabel: cardData.cardLabel!, cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: complex
+      case cardType.complexCard:
+        {
+          return ComplexCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardDetailCarousel: cardData.cardDetailCarousel!);
+        }
+
+      //should be card object type of: complexIcon
+      case cardType.complexBadgeCard:
+        {
+          return ComplexBadgeCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardDetailCarousel: cardData.cardDetailCarousel!,
+              cardIcon: cardData.cardIcon!);
+        }
+
+      //should be card object type of: complex
+      case cardType.categoryIconDetailCard:
+        {
+          return CategoryIconDetailCardElement(
+              decorationVariant: cardData.decorationVariant,
+              cardLabel: cardData.cardLabel!,
+              cardBody: cardData.cardBody!,
+              cardIcon: cardData.cardIcon!);
+        }
+    }
+  }
+}
+
 class CardObject {
   decorationPriority decorationVariant;
   String? cardLabel;
