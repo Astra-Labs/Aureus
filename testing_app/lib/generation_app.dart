@@ -1,7 +1,7 @@
 import 'package:aureus/aureus.dart';
 import 'package:test_app/interface_items.dart';
 import 'package:test_app/test_interface.dart';
-import 'package:test_app/view_items.dart';
+import 'package:test_app/src/Supporting/viewItems.dart';
 import 'landing_interface.dart';
 
 class GenerationLandingPage extends StatelessWidget {

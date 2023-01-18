@@ -1,5 +1,4 @@
-import 'package:aureus/aureus.dart';
-import 'package:test_app/interface_items.dart';
+part of AureusTestingApp;
 
 HelpCenterObject helpCenterTest = HelpCenterObject(articleCategories: [
   helpCenterCategoryOne,

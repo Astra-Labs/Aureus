@@ -1,5 +1,5 @@
 import 'package:aureus/aureus.dart';
-import 'package:test_app/main.dart';
+import 'package:test_app/src/Supporting/main.dart';
 import 'package:test_app/test_interface.dart';
 
 Image initializationDemoImage() {

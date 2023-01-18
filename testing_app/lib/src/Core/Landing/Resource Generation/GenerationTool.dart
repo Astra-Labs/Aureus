@@ -1,4 +1,4 @@
-
+part of AureusTestingApp;
 
 class GenerationTool extends CoreTool {
   GenerationTool()
