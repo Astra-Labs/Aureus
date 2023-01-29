@@ -55,31 +55,33 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return Semantics.fromProperties(
-      properties: SemanticsWrapper.button(
-          isEnabled: isButtonEnabled,
-          label: widget.buttonTitle,
-          hint: widget.buttonHint,
-          isMutuallyExclusive: false),
-      child: GestureDetector(
-          onTap: () {
-            if (isButtonEnabled == true) {
-              createButtonInteraction();
-              widget.buttonAction();
-            }
-          },
-          child: FloatingContainerElement(
-            child: Container(
-                constraints: BoxConstraints(
-                    minHeight: minimumButtonTextSize.height + 20,
-                    maxHeight: minimumButtonTextSize.height + 20,
-                    maxWidth: minimumButtonTextSize.width + 30,
-                    minWidth: minimumButtonTextSize.width + 30),
-                decoration: buttonDecoration,
-                child: Center(
-                    child: TagOneText(
-                        widget.buttonTitle, widget.decorationVariant))),
-          )),
+    return Focus(
+      child: Semantics.fromProperties(
+        properties: SemanticsWrapper.button(
+            isEnabled: isButtonEnabled,
+            label: widget.buttonTitle,
+            hint: widget.buttonHint,
+            isMutuallyExclusive: false),
+        child: GestureDetector(
+            onTap: () {
+              if (isButtonEnabled == true) {
+                createButtonInteraction();
+                widget.buttonAction();
+              }
+            },
+            child: FloatingContainerElement(
+              child: Container(
+                  constraints: BoxConstraints(
+                      minHeight: minimumButtonTextSize.height + 20,
+                      maxHeight: minimumButtonTextSize.height + 20,
+                      maxWidth: minimumButtonTextSize.width + 30,
+                      minWidth: minimumButtonTextSize.width + 30),
+                  decoration: buttonDecoration,
+                  child: Center(
+                      child: TagOneText(
+                          widget.buttonTitle, widget.decorationVariant))),
+            )),
+      ),
     );
   }
 }

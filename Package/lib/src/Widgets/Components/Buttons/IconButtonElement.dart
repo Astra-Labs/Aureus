@@ -59,38 +59,40 @@ class _IconButtonElementState extends State<IconButtonElement> {
     var buttonScale =
         (widget.buttonPriority == buttonSize.primary ? 80.0 : 45.0);
 
-    return Semantics.fromProperties(
-      excludeSemantics: true,
-      properties: SemanticsWrapper.button(
-          isEnabled: isButtonEnabled,
-          label: 'Icon Button',
-          hint: widget.buttonHint,
-          isMutuallyExclusive: false),
-      child: GestureDetector(
-          onTap: () {
-            if (isButtonEnabled == true) {
-              createButtonInteraction();
-              widget.buttonAction();
-            }
-          },
-          child: PulseShadowElement(
-            pulseWidth: buttonScale,
-            isActive: widget.decorationVariant == decorationPriority.important
-                ? true
-                : false,
-            child: FloatingContainerElement(
-              child: SizedBox(
-                  width: buttonScale,
-                  height: buttonScale,
-                  child: Container(
-                    decoration: buttonBacking,
-                    child: Icon(widget.buttonIcon,
-                        color: coloration.decorationColor(
-                            decorationVariant: buttonPriority),
-                        size: (buttonScale - 15)),
-                  )),
-            ),
-          )),
+    return Focus(
+      child: Semantics.fromProperties(
+        excludeSemantics: true,
+        properties: SemanticsWrapper.button(
+            isEnabled: isButtonEnabled,
+            label: 'Icon Button',
+            hint: widget.buttonHint,
+            isMutuallyExclusive: false),
+        child: GestureDetector(
+            onTap: () {
+              if (isButtonEnabled == true) {
+                createButtonInteraction();
+                widget.buttonAction();
+              }
+            },
+            child: PulseShadowElement(
+              pulseWidth: buttonScale,
+              isActive: widget.decorationVariant == decorationPriority.important
+                  ? true
+                  : false,
+              child: FloatingContainerElement(
+                child: SizedBox(
+                    width: buttonScale,
+                    height: buttonScale,
+                    child: Container(
+                      decoration: buttonBacking,
+                      child: Icon(widget.buttonIcon,
+                          color: coloration.decorationColor(
+                              decorationVariant: buttonPriority),
+                          size: (buttonScale - 15)),
+                    )),
+              ),
+            )),
+      ),
     );
   }
 }

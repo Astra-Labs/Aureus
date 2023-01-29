@@ -60,35 +60,37 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
 
     var screenSize = size.logicalScreenSize();
 
-    return Semantics.fromProperties(
-      properties: SemanticsWrapper.button(
-          isEnabled: isButtonEnabled,
-          label: widget.buttonTitle,
-          hint: widget.buttonHint,
-          isMutuallyExclusive: false),
-      child: GestureDetector(
-          onTap: () {
-            if (isButtonEnabled == true) {
-              createButtonInteraction();
-              widget.buttonAction();
-            }
-          },
-          child: PulseShadowElement(
-            pulseWidth: size.layoutItemWidth(1, screenSize),
-            isActive: widget.decorationVariant == decorationPriority.important
-                ? true
-                : false,
-            child: FloatingContainerElement(
-              child: SizedBox(
-                  width: size.layoutItemWidth(1, screenSize),
-                  height: minimumButtonTextSize.height + 45,
-                  child: Container(
-                      decoration: buttonDecoration,
-                      child: Center(
-                          child: ButtonTwoText(
-                              widget.buttonTitle, widget.decorationVariant)))),
-            ),
-          )),
+    return Focus(
+      child: Semantics.fromProperties(
+        properties: SemanticsWrapper.button(
+            isEnabled: isButtonEnabled,
+            label: widget.buttonTitle,
+            hint: widget.buttonHint,
+            isMutuallyExclusive: false),
+        child: GestureDetector(
+            onTap: () {
+              if (isButtonEnabled == true) {
+                createButtonInteraction();
+                widget.buttonAction();
+              }
+            },
+            child: PulseShadowElement(
+              pulseWidth: size.layoutItemWidth(1, screenSize),
+              isActive: widget.decorationVariant == decorationPriority.important
+                  ? true
+                  : false,
+              child: FloatingContainerElement(
+                child: SizedBox(
+                    width: size.layoutItemWidth(1, screenSize),
+                    height: minimumButtonTextSize.height + 45,
+                    child: Container(
+                        decoration: buttonDecoration,
+                        child: Center(
+                            child: ButtonTwoText(widget.buttonTitle,
+                                widget.decorationVariant)))),
+              ),
+            )),
+      ),
     );
   }
 }

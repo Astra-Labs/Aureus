@@ -102,43 +102,45 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return Semantics.fromProperties(
-      properties: SemanticsWrapper.button(
-          isEnabled: isButtonEnabled,
-          label: widget.buttonTitle,
-          hint: widget.buttonHint,
-          isMutuallyExclusive: false),
-      child: InkWell(
-          onTap: () {
-            if (isButtonEnabled == true) {
-              createButtonInteraction();
-              widget.buttonAction();
-            }
-          },
-          child: PulseShadowElement(
-            pulseWidth: screenWidth,
-            isActive: widget.currentVariant == decorationPriority.important
-                ? true
-                : false,
-            child: Container(
-                constraints: BoxConstraints(
-                  minHeight: minimumButtonTextSize.height * 3,
-                  maxHeight: minimumButtonTextSize.height * 3,
-                  minWidth: screenWidth,
-                ),
-                decoration:
-                    widget.currentVariant == decorationPriority.important
-                        ? BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [_gradient1.value, _gradient2.value]),
-                            color: coloration.contrastColor())
-                        : buttonDecoration,
-                child: Center(
-                    child: ButtonOneText(
-                        widget.buttonTitle, widget.currentVariant))),
-          )),
+    return Focus(
+      child: Semantics.fromProperties(
+        properties: SemanticsWrapper.button(
+            isEnabled: isButtonEnabled,
+            label: widget.buttonTitle,
+            hint: widget.buttonHint,
+            isMutuallyExclusive: false),
+        child: InkWell(
+            onTap: () {
+              if (isButtonEnabled == true) {
+                createButtonInteraction();
+                widget.buttonAction();
+              }
+            },
+            child: PulseShadowElement(
+              pulseWidth: screenWidth,
+              isActive: widget.currentVariant == decorationPriority.important
+                  ? true
+                  : false,
+              child: Container(
+                  constraints: BoxConstraints(
+                    minHeight: minimumButtonTextSize.height * 3,
+                    maxHeight: minimumButtonTextSize.height * 3,
+                    minWidth: screenWidth,
+                  ),
+                  decoration:
+                      widget.currentVariant == decorationPriority.important
+                          ? BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [_gradient1.value, _gradient2.value]),
+                              color: coloration.contrastColor())
+                          : buttonDecoration,
+                  child: Center(
+                      child: ButtonOneText(
+                          widget.buttonTitle, widget.currentVariant))),
+            )),
+      ),
     );
   }
 }
