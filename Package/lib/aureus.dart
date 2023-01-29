@@ -19,40 +19,41 @@ export 'src/Core/Foundation/sensory.dart';
 export 'src/Core/Foundation/sizing.dart';
 export 'src/Core/Foundation/text.dart';
 export 'src/Core/Foundation/decorations.dart';
+export 'src/Core/Foundation/enums.dart';
 
 /* ------------------ OBJECTS -------------------- */
 /* Where the files that contain the objects that Aureus is built on are contained. Not every widget will have a corresponding object, but more complex widgets do. */
 
-//MARK - Observer Object
+//Observer Object
 export 'src/Objects/Observers/ResourceObserver.dart';
 
-//MARK: - Element Objects
+//Element Objects
 export 'src/Objects/Elements/AlertControllerObjects.dart';
 
-//MARK: - Component Objects
+//Component Objects
 export 'src/Objects/Components/CardObjects.dart';
 export 'src/Objects/Components/InputFormObjects.dart';
 export 'src/Objects/Components/Icons.dart';
 export 'src/Objects/Components/TabbingBarObjects.dart';
 
-//MARK: - View Objects
+//View Objects
 export 'src/Objects/Functionality/DataConsentObjects.dart';
 export 'src/Objects/Views/HelpCenterObjects.dart';
 export 'src/Objects/Views/OnboardingObjects.dart';
 
-//MARK: - Functionality Objects
+//Functionality Objects
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
 export 'src/Objects/Functionality/DataDetailObjects.dart';
 export 'src/Objects/Observers/ResourceObserver.dart';
 export 'src/Objects/Observers/NotificationObserver.dart';
 
-//MARK: - Sensory Objects
+//Sensory Objects
 export 'src/Objects/Views/routes.dart';
 
 /* ------------------ WIDGETS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
 
-//MARK: - Widget Elements
+//Widget Elements
 export 'src/Widgets/Elements/Badges/BadgeElement.dart';
 
 // -------------------------- Cards
