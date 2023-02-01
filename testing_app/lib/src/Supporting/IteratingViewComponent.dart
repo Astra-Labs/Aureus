@@ -1,4 +1,4 @@
-import 'package:aureus/aureus.dart';
+part of AureusTestingApp;
 
 class IteratingComponent extends StatefulWidget {
   final List<String> itemTitles;

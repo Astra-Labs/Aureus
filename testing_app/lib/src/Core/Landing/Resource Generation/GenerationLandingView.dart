@@ -1,8 +1,4 @@
-import 'package:aureus/aureus.dart';
-import 'package:test_app/interface_items.dart';
-import 'package:test_app/test_interface.dart';
-import 'package:test_app/src/Supporting/viewItems.dart';
-import 'landing_interface.dart';
+part of AureusTestingApp;
 
 class GenerationLandingPage extends StatelessWidget {
   // This widget is the root of your application.

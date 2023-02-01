@@ -31,7 +31,7 @@ class _reworkedExplorationViewState extends State<reworkedExplorationView> {
         accessibilityHint: "Shows you the tools",
         tabIcon: Assets.settings),
     ControllerTabObject(
-        tabController: TestingDataDetailView(),
+        tabController: DataDetailView(),
         tabTitle: "Data",
         accessibilityHint: "Lets you try the data detail view",
         tabIcon: Assets.settings),

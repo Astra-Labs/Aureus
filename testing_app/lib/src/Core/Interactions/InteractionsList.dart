@@ -1,4 +1,4 @@
-import 'package:aureus/aureus.dart';
+part of AureusTestingApp;
 
 //where all backing / foundational variable items in aureus are initiated for testing
 
@@ -194,25 +194,24 @@ var buttonBackingTest = ListView.builder(
 
 //4 options
 var layerBackingTest = ListView.builder(
-  padding: const EdgeInsets.all(8),
-  shrinkWrap: true,
-  itemCount: layerBackings.length,
-  scrollDirection: Axis.horizontal,
-  itemBuilder: (BuildContext context, int index) {
-    return Container(
-      height: 50,
-      width: 350,
-      child: Center(
-          child: Container(
-              width: 350,
-              height: 50,
-              decoration: layerBackings[index],
-              child: Center(
-                  child: BodyOneText(
-                      'Layer $index', decorationPriority.standard)))),
-    );
-  }
-);
+    padding: const EdgeInsets.all(8),
+    shrinkWrap: true,
+    itemCount: layerBackings.length,
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+        height: 50,
+        width: 350,
+        child: Center(
+            child: Container(
+                width: 350,
+                height: 50,
+                decoration: layerBackings[index],
+                child: Center(
+                    child: BodyOneText(
+                        'Layer $index', decorationPriority.standard)))),
+      );
+    });
 
 //12 options
 var cardBackingTest = ListView.builder(

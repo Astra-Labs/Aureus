@@ -1,4 +1,4 @@
-part of AureusTestingApp;
+import 'testingAppLibrary.dart';
 
 void main() {
   var resourceBranding = AureusBranding(
