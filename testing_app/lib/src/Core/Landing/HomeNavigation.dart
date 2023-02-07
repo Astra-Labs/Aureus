@@ -1,12 +1,11 @@
 part of AureusTestingApp;
 
-class reworkedExplorationView extends StatefulWidget {
+class ExplorationView extends StatefulWidget {
   @override
-  _reworkedExplorationViewState createState() =>
-      _reworkedExplorationViewState();
+  _ExplorationViewState createState() => _ExplorationViewState();
 }
 
-class _reworkedExplorationViewState extends State<reworkedExplorationView> {
+class _ExplorationViewState extends State<ExplorationView> {
   List<ControllerTabObject> tabItems = [
     ControllerTabObject(
         tabController: AureusElementsView(),
@@ -31,7 +30,12 @@ class _reworkedExplorationViewState extends State<reworkedExplorationView> {
         accessibilityHint: "Shows you the tools",
         tabIcon: Assets.settings),
     ControllerTabObject(
-        tabController: DataDetailView(),
+        tabController: AureusSafetyView(),
+        tabTitle: "Safety",
+        accessibilityHint: "Shows you the safety features within Aurues",
+        tabIcon: Assets.person),
+    ControllerTabObject(
+        tabController: AureusDataDetailView(),
         tabTitle: "Data",
         accessibilityHint: "Lets you try the data detail view",
         tabIcon: Assets.settings),
@@ -44,8 +48,6 @@ class _reworkedExplorationViewState extends State<reworkedExplorationView> {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = size.logicalScreenSize();
-
     return VerticalSideNavBarComponent(tabItems: tabItems);
   }
 }

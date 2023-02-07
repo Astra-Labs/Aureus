@@ -1,7 +1,4 @@
-import 'dart:html';
-
 import 'testingAppLibrary.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   var resourceBranding = AureusBranding(
@@ -84,23 +81,13 @@ void main() {
   runApp(AureusTestApp());
 }
 
-Future<void> launchInBrowser(String url) async {
-  if (!await launch(
-    url,
-    forceSafariVC: false,
-    forceWebView: false,
-  )) {
-    throw 'Could not launch $url';
-  }
-}
-
-void precacheImages(List<String> assets, BuildContext context) {
-  assets.forEach((elementName) {
-    precacheImage(AssetImage(elementName), context);
-  });
-}
-
 class AureusTestApp extends StatelessWidget {
+  void precacheImages(List<String> assets, BuildContext context) {
+    assets.forEach((elementName) {
+      precacheImage(AssetImage(elementName), context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var darkImageCache = [
@@ -128,13 +115,23 @@ class AureusTestApp extends StatelessWidget {
         context);
 
     return MaterialApp(
-        home: reworkedExplorationView(),
+        home: ExplorationView(),
         theme: new ThemeData(scaffoldBackgroundColor: coloration.sameColor()));
   }
 }
 
 class LandingPage extends StatelessWidget {
   // This widget is the root of your application.
+  Future<void> launchInBrowser(String url) async {
+    // ignore: deprecated_member_use
+    if (!await launch(
+      url,
+      forceSafariVC: false,
+      forceWebView: false,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,23 +146,21 @@ class LandingPage extends StatelessWidget {
     ];
 
     Image landingUIOverlayImage() {
-      if (brightness() == Brightness.light) {
-        return Image(image: AssetImage('assets/Light Mode - Preview.png'));
-      } else if (brightness() == Brightness.dark) {
-        return Image(image: AssetImage('assets/Dark Mode - Preview.png'));
-      }
-      throw ('Unexpected platform brightness issue. Please check the implementation.');
+      return Image(
+          image: brightness() == Brightness.light
+              ? AssetImage('assets/Light Mode - Preview.png')
+              : AssetImage('assets/Dark Mode - Preview.png'));
     }
 
     Image landscapeBackgroundImage() {
-      if (brightness() == Brightness.light) {
-        return Image.network(
-            'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80');
-      } else if (brightness() == Brightness.dark) {
-        return Image.network(
-            'https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
-      }
-      throw ('Unexpected platform brightness issue. Please check the implementation.');
+      return Image(
+          image: brightness() == Brightness.light
+              ? Image.network(
+                      'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80')
+                  .image
+              : Image.network(
+                      'https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80')
+                  .image);
     }
 
     return Scaffold(

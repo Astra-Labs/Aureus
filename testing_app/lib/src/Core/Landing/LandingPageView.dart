@@ -386,6 +386,17 @@ class footerCTA extends StatefulWidget {
 }
 
 class _footerCTAState extends State<footerCTA> {
+  Future<void> launchInBrowser(String url) async {
+    // ignore: deprecated_member_use
+    if (!await launch(
+      url,
+      forceSafariVC: false,
+      forceWebView: false,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = size.logicalScreenSize();
