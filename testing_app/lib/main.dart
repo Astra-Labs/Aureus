@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'testingAppLibrary.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   var resourceBranding = AureusBranding(
@@ -91,220 +94,42 @@ Future<void> launchInBrowser(String url) async {
   }
 }
 
+void precacheImages(List<String> assets, BuildContext context) {
+  assets.forEach((elementName) {
+    precacheImage(AssetImage(elementName), context);
+  });
+}
+
 class AureusTestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Color backgroundColor = lavender();
+    var darkImageCache = [
+      "assets/Dark-Fluid.png",
+      "assets/Dark-Blur.png",
+      "assets/Icon - Dark Mode.png",
+      "assets/Dark Mode - Preview.png",
+      "assets/Dark-Mode-Demo.png",
+      "assets/Import-Sample-Dark-Mode.png",
+      "assets/Landing-Example-Dark-Mode.png",
+    ];
 
-    if (brightness() == Brightness.dark) {
-      backgroundColor = black();
-      precacheImage(AssetImage('assets/Dark-Fluid.png'), context);
-      precacheImage(AssetImage('assets/Dark-Blur.png'), context);
-      precacheImage(AssetImage('assets/Icon - Dark Mode.png'), context);
-      precacheImage(AssetImage('assets/Dark Mode - Preview.png'), context);
-      precacheImage(AssetImage('assets/Dark-Mode-Demo.png'), context);
-      precacheImage(AssetImage('assets/Import-Sample-Dark-Mode.png'), context);
-      precacheImage(
-          AssetImage('assets/Landing-Example-Dark-Mode.png'), context);
-    } else if (brightness() == Brightness.light) {
-      backgroundColor = white();
+    var lightImageCache = [
+      "assets/Light-Fluid.png",
+      "assets/Light-Blur.png",
+      "assets/Icon - Light Mode.png",
+      "assets/Light Mode - Preview.png",
+      "assets/Light-Mode-Demo.png",
+      "assets/Import-Sample-Light-Mode.png",
+      "assets/Landing-Example-Light-Mode.png",
+    ];
 
-      precacheImage(AssetImage('assets/Light-Fluid.png'), context);
-      precacheImage(AssetImage('assets/Light-Blur.png'), context);
-      precacheImage(AssetImage('assets/Icon - Light Mode.png'), context);
-      precacheImage(AssetImage('assets/Light Mode - Preview.png'), context);
-      precacheImage(AssetImage('assets/Light-Mode-Demo.png'), context);
-      precacheImage(AssetImage('assets/Import-Sample-Light-Mode.png'), context);
-      precacheImage(
-          AssetImage('assets/Landing-Example-Light-Mode.png'), context);
-    }
+    precacheImages(
+        brightness() == Brightness.light ? lightImageCache : darkImageCache,
+        context);
 
     return MaterialApp(
         home: reworkedExplorationView(),
         theme: new ThemeData(scaffoldBackgroundColor: coloration.sameColor()));
-  }
-}
-
-class TestingDataDetailView extends DataDetailView {
-  TestingDataDetailView()
-      : super(title: 'Testing', detailCards: [
-          TextViewDataCardElement(
-              dataLabel: "Testing",
-              textEditingController: TextEditingController())
-        ]);
-}
-
-class ToolNavigationTesting extends StatefulWidget {
-  const ToolNavigationTesting();
-  @override
-  _ToolNavigationTestingState createState() => _ToolNavigationTestingState();
-}
-
-class _ToolNavigationTestingState extends State<ToolNavigationTesting> {
-  var testingTool = CoreTool(
-      toolName: 'Guided Cooldown',
-      toolDescription:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      toolDetails: {
-        'SMS Based': Assets.alertmessage,
-        'Kid-friendly': Assets.babycarriage,
-        'Requires brain': Assets.brain,
-      },
-      entryPoint: OnboardingLandingView(),
-      nextSteps: {
-        'Print hi': () => {print('hi')},
-        'Print hey': () => {print('hey')},
-        'Print why': () => {print('why')},
-        'Print money': () => {print('money')}
-      },
-      toolIcon: Assets.medicine,
-      toolCards: [
-        SingleInputToolTemplate(
-          templatePrompt: 'Yes No Tool Template',
-          badgeIcon: Assets.alert,
-        ),
-        DualColumnInputToolTemplate(
-            templatePrompt: 'Yes No Tool Template',
-            badgeIcon: Assets.alert,
-            prompt1: 'Pros',
-            prompt2: 'Cons'),
-        SingleSliderToolTemplate(
-            templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert),
-        SingleInputToolTemplate(
-            templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert)
-      ]);
-
-  @override
-  Widget build(BuildContext context) {
-    var toolContainer = navigationContainer(testingTool);
-
-    var containerWrapper = ContainerWrapperElement(children: [
-      DividingHeaderElement(
-          headerText: 'Welcome, human.',
-          subheaderText:
-              'This page is to help a very tired Amanda to debug the Core Tools, their containers, and more.'),
-      SizedBox(height: 70.0),
-      StandardButtonElement(
-          decorationVariant: decorationPriority.standard,
-          buttonTitle: 'Enter Tool.',
-          buttonHint: "Opens tool flow for the user.",
-          buttonAction: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => toolContainer.details,
-                    ))
-              }),
-    ], containerVariant: wrapperVariants.fullScreen);
-
-    return ContainerView(
-        decorationVariant: decorationPriority.standard,
-        builder: containerWrapper);
-  }
-}
-
-class ToolCardTesting extends StatefulWidget {
-  const ToolCardTesting();
-  @override
-  _ToolCardTestingState createState() => _ToolCardTestingState();
-}
-
-class _ToolCardTestingState extends State<ToolCardTesting> {
-  @override
-  Widget build(BuildContext context) {
-    var yesNoTool = YesNoButtonSelectToolTemplate(
-        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
-    var yesNoActive = yesNoTool.returnActiveToolCard();
-    var yesNoInactive = yesNoTool.returnTemplateSummary();
-
-    var singleInputTool = SingleInputToolTemplate(
-        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
-    var singleInputActive = singleInputTool.returnActiveToolCard();
-    var singleInputInactive = singleInputTool.returnTemplateSummary();
-
-    var dualColumnTool = DualColumnInputToolTemplate(
-        templatePrompt: 'Yes No Tool Template',
-        badgeIcon: Assets.alert,
-        prompt1: 'Pros',
-        prompt2: 'Cons');
-    var dualColumnInputActive = dualColumnTool.returnActiveToolCard();
-    var dualColumnInputInactive = dualColumnTool.returnTemplateSummary();
-
-    var triInputTool = TriInputToolTemplate(
-        templatePrompt: 'Yes No Tool Template',
-        badgeIcon: Assets.alert,
-        textPrompt1: 'Idea #1',
-        textPrompt2: 'Idea #2',
-        textPrompt3: 'Idea #3');
-    var triInputActive = triInputTool.returnActiveToolCard();
-    var triInputInactive = triInputTool.returnTemplateSummary();
-
-    var sliderTool = SingleSliderToolTemplate(
-        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
-    var sliderActive = sliderTool.returnActiveToolCard();
-    var sliderInactive = sliderTool.returnTemplateSummary();
-
-    var listPickerTool = ListViewPickerSelectToolTemplate(
-        templatePrompt: 'Yes No Tool Template',
-        badgeIcon: Assets.alert,
-        pickerOptions: [
-          'Iced Caramel Macchiato',
-          'Iced Vanilla Latte',
-          'Iced Mint Mocha',
-          'Iced Chai Tea',
-          'Iced Matcha Green Tea'
-        ]);
-    var listPickerActive = listPickerTool.returnActiveToolCard();
-    var listPickerInactive = listPickerTool.returnTemplateSummary();
-
-    var listButtonPicker = ListViewButtonSelectToolTemplate(
-        templatePrompt: 'Yes No Tool Template',
-        badgeIcon: Assets.alert,
-        listItems: {
-          'Print hi': () => {print('hi')},
-          'Print hey': () => {print('hey')},
-          'Print why': () => {print('why')},
-          'Print money': () => {print('money')},
-        });
-    var listButtonPickerActive = listButtonPicker.returnActiveToolCard();
-    var listButtonPickerInactive = listButtonPicker.returnTemplateSummary();
-
-    var pulseCard = PulseInputToolTemplate(
-        templatePrompt: 'Yes No Tool Template', badgeIcon: Assets.alert);
-    var pulseActive = pulseCard.returnActiveToolCard();
-    var pulseInactive = pulseCard.returnTemplateSummary();
-
-    var timerTool = TimerToolTemplate(
-        templatePrompt: 'Yes No Tool Template',
-        badgeIcon: Assets.alert,
-        allotment: Duration(seconds: 10),
-        onFinish: () => {print('yee haw!')});
-    var timerActive = timerTool.returnActiveToolCard();
-    var timerInactive = timerTool.returnTemplateSummary();
-
-    var wrapper = ContainerWrapperElement(children: [
-      yesNoActive,
-      yesNoInactive,
-      singleInputActive,
-      singleInputInactive,
-      dualColumnInputActive,
-      dualColumnInputInactive,
-      triInputActive,
-      triInputInactive,
-      sliderActive,
-      sliderInactive,
-      listPickerActive,
-      listPickerInactive,
-      listButtonPickerActive,
-      listButtonPickerInactive,
-      pulseActive,
-      pulseInactive,
-      timerActive,
-      timerInactive
-    ], containerVariant: wrapperVariants.stackScroll);
-
-    return ContainerView(
-        decorationVariant: decorationPriority.important, builder: wrapper);
   }
 }
 

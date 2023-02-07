@@ -1,13 +1,13 @@
 part of AureusTestingApp;
 
-class AureusDataDetailView extends StatefulWidget {
-  const AureusDataDetailView();
+class AureusSafetyView extends StatefulWidget {
+  const AureusSafetyView();
 
   @override
-  _AureusDataDetailViewState createState() => _AureusDataDetailViewState();
+  _AureusSafetyViewState createState() => _AureusSafetyViewState();
 }
 
-class _AureusDataDetailViewState extends State<AureusDataDetailView> {
+class _AureusSafetyViewState extends State<AureusSafetyView> {
   List<Widget> viewGridCards = [];
 
   @override
@@ -66,13 +66,4 @@ class _AureusDataDetailViewState extends State<AureusDataDetailView> {
     return ContainerView(
         decorationVariant: decorationPriority.important, builder: viewLayout);
   }
-}
-
-class TestingDataDetailView extends DataDetailView {
-  TestingDataDetailView()
-      : super(title: 'Testing', detailCards: [
-          TextViewDataCardElement(
-              dataLabel: "Testing",
-              textEditingController: TextEditingController())
-        ]);
 }

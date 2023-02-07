@@ -2,7 +2,6 @@ library AureusTestingApp;
 
 // IMPORTS <- (owo)
 import 'package:aureus/aureus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 // EXPORTS (owo) ->
 export 'package:aureus/aureus.dart';
@@ -20,6 +19,14 @@ part 'src/Core/Elements/ElementsView.dart';
 //  ------------------------- INTERACTIONS
 part 'src/Core/Interactions/InteractionsList.dart';
 part 'src/Core/Interactions/InteractionsView.dart';
+
+//  ------------------------- DATA DETAIL
+part 'src/Core/Data Detail/DataDetailList.dart';
+part 'src/Core/Data Detail/DataDetailView.dart';
+
+//  ------------------------- SAFETY
+part 'src/Core/Safety/SafetyList.dart';
+part 'src/Core/Safety/SafetyView.dart';
 
 //  ------------------------- TOOLS
 part 'src/Core/Tools/ToolsList.dart';
