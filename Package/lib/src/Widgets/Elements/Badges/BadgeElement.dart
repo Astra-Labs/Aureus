@@ -33,23 +33,23 @@ class IconBadge extends StatelessWidget {
             background looking invisible. 
             
              */
-            if (brightness() == Brightness.light) {
-              baseDecoration.decorationFill = darkModeFill();
-            } else if (brightness() == Brightness.dark) {
-              baseDecoration.decorationFill = lightModeFill();
-            }
+
+            baseDecoration.decorationFill =
+                palette.brightness() == Brightness.light
+                    ? palette.lightModeFill()
+                    : palette.darkModeFill();
 
             break;
           }
         case decorationPriority.important:
           {
-            if (brightness() == Brightness.dark) {
-              backingGradient = lightGradient();
-              backingHaze = pastelShadow();
-            } else if (brightness() == Brightness.light) {
-              backingGradient = darkGradient();
-              backingHaze = darkShadow();
-            }
+            backingGradient = palette.brightness() == Brightness.light
+                ? palette.lightGradient()
+                : palette.darkGradient();
+
+            backingHaze = palette.brightness() == Brightness.light
+                ? palette.pastelShadow()
+                : palette.darkShadow();
 
             baseDecoration.decorationGradient = backingGradient;
             baseDecoration.decorationHaze = backingHaze;
@@ -64,13 +64,13 @@ class IconBadge extends StatelessWidget {
 
         case decorationPriority.inverted:
           {
-            if (brightness() == Brightness.dark) {
-              backingGradient = darkGradient();
-              backingHaze = darkShadow();
-            } else if (brightness() == Brightness.light) {
-              backingGradient = lightGradient();
-              backingHaze = lightShadow();
-            }
+            backingGradient = palette.brightness() == Brightness.light
+                ? palette.lightGradient()
+                : palette.darkGradient();
+
+            backingHaze = palette.brightness() == Brightness.light
+                ? palette.pastelShadow()
+                : palette.darkShadow();
 
             baseDecoration.decorationGradient = backingGradient;
             baseDecoration.decorationHaze = backingHaze;

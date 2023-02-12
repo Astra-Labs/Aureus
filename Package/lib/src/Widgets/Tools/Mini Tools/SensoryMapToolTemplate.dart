@@ -58,8 +58,8 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
     return Container(
       width: diameter,
       height: diameter,
-      decoration:
-          BoxDecoration(border: universalBorder(), shape: BoxShape.circle),
+      decoration: BoxDecoration(
+          border: palette.universalBorder(), shape: BoxShape.circle),
     );
   }
 

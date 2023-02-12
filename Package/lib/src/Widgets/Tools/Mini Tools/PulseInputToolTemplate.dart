@@ -202,7 +202,7 @@ class _PulseMapCardState extends State<_PulseMapCard> {
             decoration: BoxDecoration(
                 color: coloration.accentColor(),
                 shape: BoxShape.circle,
-                boxShadow: [pastelShadow()])));
+                boxShadow: [palette.pastelShadow()])));
 
     var inactiveDot = Padding(
         padding: const EdgeInsets.all(7.0),

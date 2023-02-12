@@ -11,6 +11,7 @@ export 'package:google_fonts/google_fonts.dart';
 
 export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
+export 'src/Core/coloration.dart';
 export 'src/Core/Safety/safety.dart';
 
 export 'src/Core/Foundation/animation.dart';
@@ -32,7 +33,6 @@ export 'src/Objects/Elements/AlertControllerObjects.dart';
 
 //Component Objects
 export 'src/Objects/Components/CardObjects.dart';
-export 'src/Objects/Components/InputFormObjects.dart';
 export 'src/Objects/Components/Icons.dart';
 export 'src/Objects/Components/TabbingBarObjects.dart';
 
@@ -136,11 +136,7 @@ export 'src/Widgets/Components/Communication/BlankScreenComponent.dart';
 export 'src/Widgets/Components/Communication/CookieBannerComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
 export 'src/Widgets/Components/Communication/BannerNotificationComponent.dart';
-
-// -------------------------- Input Forms
-export 'src/Widgets/Components/Input Forms/BasicInputFormComponent.dart';
-export 'src/Widgets/Components/Input Forms/LongInputFormComponent.dart';
-export 'src/Widgets/Components/Input Forms/SwitchComponent.dart';
+export 'src/Widgets/Components/Communication/SwitchComponent.dart';
 
 // -------------------------- Tabbing Bars
 export 'src/Widgets/Components/Tabbing Bars/IconTabbingBarComponent.dart';
@@ -155,19 +151,26 @@ export 'src/Widgets/Components/Tabbing Bars/VerticalSideNavBarComponent.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingDemoView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingInformationView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingLandingView.dart';
-// -------------------------- Misc
-export 'src/Widgets/Views/DataConsentView.dart';
-export 'src/Widgets/Views/HelpCenterView.dart';
-export 'src/Widgets/Views/DataDetailView.dart';
-export 'src/Widgets/Views/2FAVerificationView.dart';
-export 'src/Widgets/Views/LandingPageView.dart';
-export 'src/Widgets/Views/SignInView.dart';
-export 'src/Widgets/Views/SplashScreenView.dart';
-export 'src/Widgets/Views/CheckboxArticleView.dart';
-export 'src/Widgets/Views/SettingsView.dart';
-export 'src/Widgets/Views/PasscodeView.dart';
+// -------------------------- Utilities
+export 'src/Widgets/Views/Utilities/DataConsentView.dart';
+export 'src/Widgets/Views/Utilities/2FAVerificationView.dart';
+export 'src/Widgets/Views/Utilities/SettingsView.dart';
+export 'src/Widgets/Views/Utilities/PasscodeView.dart';
+
+// -------------------------- Info Hierarchy
+export 'src/Widgets/Views/Info Hierarchy/HelpCenterView.dart';
+export 'src/Widgets/Views/Info Hierarchy/DataDetailView.dart';
+export 'src/Widgets/Views/Info Hierarchy/CheckboxArticleView.dart';
+
+// -------------------------- Landing
+export 'src/Widgets/Views/Landing/LandingPageView.dart';
+export 'src/Widgets/Views/Landing/SignInView.dart';
+export 'src/Widgets/Views/Landing/SplashScreenView.dart';
+
 // -------------------------- Supporting
 export 'src/Widgets/Views/Supporting/ContainerView.dart';
+// -------------------------- Misc
+export 'src/Widgets/Views/Misc/PoetryGradientView.dart';
 // -------------------------- Safety Plan
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptionsView.dart';
@@ -187,7 +190,6 @@ export 'src/Widgets/Tools/BasePageToolTemplate.dart';
 // -------------------------- Mini Tools
 export 'src/Widgets/Tools/Mini Tools/CameraInputToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/ColorSpectrumToolTemplate.dart';
-export 'src/Widgets/Tools/Mini Tools/GyroscopeDirectionToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/MapInputToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/MicrophoneInputToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/PulseInputToolTemplate.dart';

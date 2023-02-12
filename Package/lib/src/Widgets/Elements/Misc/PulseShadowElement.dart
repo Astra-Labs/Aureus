@@ -56,6 +56,7 @@ class _PulseShadowElementState extends State<PulseShadowElement>
     return widget.isActive == true
         ? Container(
             width: widget.pulseWidth,
+            clipBehavior: Clip.none,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(widget.pulseWidth / 2),
                 boxShadow: [

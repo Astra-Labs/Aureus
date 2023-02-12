@@ -91,103 +91,55 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     });
   }
 
+  Widget returnColorCircle(Color color) {
+    return GestureDetector(
+        onTap: () => {changeColor(color)},
+        child: Container(
+            width: size.responsiveSize(35.0),
+            height: size.responsiveSize(35.0),
+            padding: const EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: color,
+                border: activeColor == color
+                    ? palette.universalBorder()
+                    : Border.all(color: Colors.transparent))));
+  }
+
   @override
   Widget build(BuildContext context) {
-    Color colorOne = brightness() == Brightness.light
+    Color colorOne = palette.brightness() == Brightness.light
         ? const Color.fromRGBO(176, 9, 9, 1.0)
         : const Color.fromRGBO(255, 203, 203, 1.0);
 
-    Color colorTwo = brightness() == Brightness.light
+    Color colorTwo = palette.brightness() == Brightness.light
         ? const Color.fromRGBO(212, 126, 46, 1.0)
         : const Color.fromRGBO(255, 188, 126, 1.0);
 
-    Color colorThree = brightness() == Brightness.light
+    Color colorThree = palette.brightness() == Brightness.light
         ? const Color.fromRGBO(195, 179, 32, 1.0)
         : const Color.fromRGBO(255, 246, 165, 1.0);
 
-    Color colorFour = brightness() == Brightness.light
+    Color colorFour = palette.brightness() == Brightness.light
         ? const Color.fromRGBO(51, 151, 16, 1.0)
         : const Color.fromRGBO(183, 255, 157, 1.0);
 
-    Color colorFive = brightness() == Brightness.light
+    Color colorFive = palette.brightness() == Brightness.light
         ? const Color.fromRGBO(39, 93, 175, 1.0)
         : const Color.fromRGBO(173, 209, 255, 1.0);
 
-    Color colorSix = brightness() == Brightness.light
+    Color colorSix = palette.brightness() == Brightness.light
         ? const Color.fromRGBO(121, 12, 172, 1.0)
         : const Color.fromRGBO(228, 171, 255, 1.0);
 
-    var colorCircle1 = GestureDetector(
-        onTap: () => {changeColor(colorOne)},
-        child: Container(
-            width: size.responsiveSize(35.0),
-            height: size.responsiveSize(35.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorOne,
-                border: activeColor == colorOne
-                    ? universalBorder()
-                    : Border.all(color: Colors.transparent))));
-
-    var colorCircle2 = GestureDetector(
-        onTap: () => {changeColor(colorTwo)},
-        child: Container(
-            width: size.responsiveSize(35.0),
-            height: size.responsiveSize(35.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorTwo,
-                border: activeColor == colorTwo
-                    ? universalBorder()
-                    : Border.all(color: Colors.transparent))));
-
-    var colorCircle3 = GestureDetector(
-        onTap: () => {changeColor(colorThree)},
-        child: Container(
-            width: size.responsiveSize(35.0),
-            height: size.responsiveSize(35.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorThree,
-                border: activeColor == colorThree
-                    ? universalBorder()
-                    : Border.all(color: Colors.transparent))));
-
-    var colorCircle4 = GestureDetector(
-        onTap: () => {changeColor(colorFour)},
-        child: Container(
-            width: size.responsiveSize(35.0),
-            height: size.responsiveSize(35.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorFour,
-                border: activeColor == colorFour
-                    ? universalBorder()
-                    : Border.all(color: Colors.transparent))));
-
-    var colorCircle5 = GestureDetector(
-        onTap: () => {changeColor(colorFive)},
-        child: Container(
-            width: size.responsiveSize(35.0),
-            height: size.responsiveSize(35.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorFive,
-                border: activeColor == colorFive
-                    ? universalBorder()
-                    : Border.all(color: Colors.transparent))));
-
-    var colorCircle6 = GestureDetector(
-        onTap: () => {changeColor(colorSix)},
-        child: Container(
-            width: size.responsiveSize(35.0),
-            height: size.responsiveSize(35.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorSix,
-                border: activeColor == colorSix
-                    ? universalBorder()
-                    : Border.all(color: Colors.transparent))));
+    var colorCircles = [
+      returnColorCircle(colorOne),
+      returnColorCircle(colorTwo),
+      returnColorCircle(colorThree),
+      returnColorCircle(colorFour),
+      returnColorCircle(colorFive),
+      returnColorCircle(colorSix),
+    ];
 
     var circleScroll = SizedBox(
         height: size.responsiveSize(65.0),
@@ -204,19 +156,7 @@ class _SketchInputCardState extends State<_SketchInputCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: [
-                colorCircle1,
-                const SizedBox(width: 5.0),
-                colorCircle2,
-                const SizedBox(width: 5.0),
-                colorCircle3,
-                const SizedBox(width: 5.0),
-                colorCircle4,
-                const SizedBox(width: 5.0),
-                colorCircle5,
-                const SizedBox(width: 5.0),
-                colorCircle6
-              ],
+              children: colorCircles,
             ),
           ),
         ));

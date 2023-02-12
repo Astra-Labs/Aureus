@@ -13,13 +13,9 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
   Widget build(BuildContext context) {
     //because the bar breaks from current backing build conventions due to safety reasons, we have a custom variable that simply returns a color instead of .buildBacking();
     Color barBacking() {
-      if (brightness() == Brightness.light) {
-        return white();
-      } else if (brightness() == Brightness.dark) {
-        return black();
-      }
-
-      return white();
+      return palette.brightness() == Brightness.light
+          ? palette.white()
+          : palette.black();
     }
 
     Alignment barAlignment() {
@@ -85,7 +81,8 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
           decoration: BoxDecoration(
             color: barBacking(),
             border: Border(
-                bottom: BorderSide(color: steel().withOpacity(0.3), width: 1)),
+                bottom: BorderSide(
+                    color: palette.steel().withOpacity(0.3), width: 1)),
           )),
     );
   }

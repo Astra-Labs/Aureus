@@ -36,11 +36,11 @@ class _LandingPageViewState extends State<LandingPageView> {
           HeadingOneText(resourceValues.mission, decorationPriority.standard)
         ]);
 
-    Image homeScreenOverlay = brightness() == Brightness.light
+    Image homeScreenOverlay = palette.brightness() == Brightness.light
         ? widget.lightModeUIOverlay
         : widget.darkModeUIOverlay;
 
-    Image landscapeBacking = brightness() == Brightness.light
+    Image landscapeBacking = palette.brightness() == Brightness.light
         ? widget.lightModeLandscapeBacking
         : widget.darkModeLandscapeBacking;
 

@@ -21,6 +21,7 @@ of the Aureus license, and can result in having your license revoked.
 - If an account IS needed, use reccuringUse. 
 
 */
+
 enum SafetyPlanFrequency {
   singleUse, // software is used once, but doesn't have an account linked to it or isn't intended for long term visits.
   recurringUse // user has account with software, and is required to register to use.

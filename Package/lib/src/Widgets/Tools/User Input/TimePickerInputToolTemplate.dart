@@ -25,7 +25,7 @@ class TimePickerInputToolTemplate extends ToolCardTemplate {
 
     var timerPicker = CupertinoTheme(
         data: CupertinoThemeData(
-          brightness: brightness(),
+          brightness: palette.brightness(),
         ),
         child: CupertinoTimerPicker(
             mode: CupertinoTimerPickerMode.hm,

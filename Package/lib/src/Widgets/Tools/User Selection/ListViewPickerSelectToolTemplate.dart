@@ -48,7 +48,7 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
             padding: const EdgeInsets.all(12.0),
             child: CupertinoTheme(
               data: CupertinoThemeData(
-                brightness: brightness(),
+                brightness: palette.brightness(),
               ),
               child: CupertinoPicker(
                   backgroundColor: Colors.transparent,

@@ -24,7 +24,7 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
     var dateChosen = DateTime.now();
     var datePicker = CupertinoTheme(
         data: CupertinoThemeData(
-          brightness: brightness(),
+          brightness: palette.brightness(),
         ),
         child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.dateAndTime,

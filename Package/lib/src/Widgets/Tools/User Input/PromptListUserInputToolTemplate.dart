@@ -118,7 +118,8 @@ class _PromptListInputCardState extends State<_PromptListInputCard> {
               filled: true,
               border: InputBorder.none,
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: lavender(), width: 1.0)),
+                  borderSide:
+                      BorderSide(color: palette.lavender(), width: 1.0)),
               enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                       color: coloration

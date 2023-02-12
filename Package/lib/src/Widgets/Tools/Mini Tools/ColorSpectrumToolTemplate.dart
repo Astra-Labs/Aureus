@@ -355,7 +355,7 @@ class _LightnessSliderState extends State<_LightnessSlider>
                 horizontal: widget.thumbSize / 3,
               ),
               decoration: BoxDecoration(
-                border: universalBorder(),
+                border: palette.universalBorder(),
                 borderRadius: const BorderRadius.all(Radius.circular(6)),
                 gradient: LinearGradient(
                   stops: const [0, 0.4, 1],
@@ -641,7 +641,7 @@ class _Thumb extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: steel(),
+        color: palette.steel(),
         boxShadow: const [
           BoxShadow(
             color: Color.fromARGB(16, 0, 0, 0),

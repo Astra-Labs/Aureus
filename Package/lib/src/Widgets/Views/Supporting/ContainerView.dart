@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:aureus/aureus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //A container that sets the size for the screen with QA-approved padding,
@@ -23,8 +25,6 @@ class ContainerView extends StatefulWidget {
   _ContainerViewState createState() => _ContainerViewState();
 }
 
-// Widgets Binding Observer is added to the Container View to automatically
-// alert child widgets as important information changes.
 class _ContainerViewState extends State<ContainerView>
     with AureusNotificationObserver, TickerProviderStateMixin {
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
@@ -42,6 +42,8 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void initState() {
+    log("state initiation");
+
     notificationMaster.registerObserver(this);
     sensation.prepare();
 
@@ -81,11 +83,10 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void dispose() {
+    print('view disposed!');
+
     //Removes items in the container view
     resetRequests();
-
-    //unregisters it from the notification master
-    notificationMaster.unregisterObserver(this);
 
     _controller.dispose();
     sensation.dispose();
@@ -94,11 +95,15 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void resetRequests() {
+    print('-----------------------------------');
     print('container view: resetting overlay');
+
+    overlayView = Container();
+    hasOverlayEnabled = false;
+    notificationMaster.unregisterObserver(this);
+
     setState(() {
       _controller.reverse();
-      overlayView = Container();
-      hasOverlayEnabled = false;
     });
   }
 
@@ -201,7 +206,6 @@ class _ContainerViewState extends State<ContainerView>
       var draggableActionBar = Draggable(
           child: actionBarWidget,
           feedback: actionBarWidget,
-          childWhenDragging: const SizedBox(width: 1),
           onDragEnd: (dragDetails) {
             setState(() {
               holdX = dragDetails.offset.dx;
@@ -210,24 +214,6 @@ class _ContainerViewState extends State<ContainerView>
           });
 
       actionBar = draggableActionBar;
-
-      /* actionBar =  FutureBuilder(
-          future: Future.wait([actionBarX, actionBarY]),
-          builder: (context, AsyncSnapshot<List<double>> snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return const CircularProgressIndicator();
-              default:
-                if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  return Positioned(
-                      top: snapshot.data![0] * (size.logicalWidth()),
-                      left: snapshot.data![1] * (size.logicalHeight()),
-                      child: draggableActionBar);
-                }
-            }
-          });*/
     }
 
     BoxDecoration containerBacking() {
@@ -240,7 +226,9 @@ class _ContainerViewState extends State<ContainerView>
             fit: BoxFit.cover,
           ),
         );
-      } else if (widget.decorationVariant == decorationPriority.standard &&
+      }
+
+      if (widget.decorationVariant == decorationPriority.standard &&
           widget.hasBackgroundImage == true) {
         //returns secondary image defined in AureusStylization
         return BoxDecoration(
@@ -253,24 +241,37 @@ class _ContainerViewState extends State<ContainerView>
       return const BoxDecoration();
     }
 
+    // Calculates width based on parameters
+    var containerWidth = widget.takesFullWidth!
+        ? screenWidth
+        : size.layoutItemWidth(1, screenSize);
+
+    //Calucates height based on parameters
+    var containerHeight = widget.takesFullWidth!
+        ? screenHeight
+        : size.layoutItemHeight(1, screenSize);
+
+    // Creates decoration depending on params w/ background images
+    var containerDecoration = widget.hasBackgroundImage == true
+        ? containerBacking()
+        : const BoxDecoration(color: Colors.transparent);
+
+    // Sets padding according to full width or not
+    var containerPadding = widget.takesFullWidth!
+        ? EdgeInsets.fromLTRB(
+            0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0)
+        : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w0), 0.0,
+            size.heightOf(weight: sizingWeight.w0));
+
+    // Builds the backing container
     Container backingContainer = Container(
         alignment: Alignment.center,
         width: screenWidth,
-        decoration: widget.hasBackgroundImage == true
-            ? containerBacking()
-            : const BoxDecoration(color: Colors.transparent),
-        padding: widget.takesFullWidth!
-            ? EdgeInsets.fromLTRB(
-                0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0)
-            : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w0),
-                0.0, size.heightOf(weight: sizingWeight.w0)),
+        decoration: containerDecoration,
+        padding: containerPadding,
         child: SizedBox(
-            width: widget.takesFullWidth!
-                ? screenWidth
-                : size.layoutItemWidth(1, screenSize),
-            height: widget.takesFullWidth!
-                ? screenHeight
-                : size.layoutItemHeight(1, screenSize),
+            width: containerWidth,
+            height: containerHeight,
             child: Center(
                 child: Stack(children: [
               widget.builder,
@@ -279,6 +280,7 @@ class _ContainerViewState extends State<ContainerView>
                   : const SizedBox(width: 1),
             ]))));
 
+    // Builds an overlay item to hold any items coming into the view
     var overlayItem = SizedBox(
         width: size.logicalWidth(),
         height: size.logicalHeight(),

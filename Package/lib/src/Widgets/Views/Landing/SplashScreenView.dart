@@ -29,9 +29,9 @@ class _SplashScreenViewState extends State<SplashScreenView> {
         width: screenSize.width,
         height: screenSize.height,
         decoration: BoxDecoration(
-            gradient: brightness() == Brightness.light
-                ? lightGradient()
-                : darkGradient()),
+            gradient: palette.brightness() == Brightness.light
+                ? palette.lightGradient()
+                : palette.darkGradient()),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

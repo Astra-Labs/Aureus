@@ -16,7 +16,7 @@ TextStyle heading1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(26),
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -30,7 +30,7 @@ TextStyle heading2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(21),
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           letterSpacing: 1.2,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -44,7 +44,7 @@ TextStyle heading3() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w800,
           letterSpacing: 1.0,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -58,7 +58,7 @@ TextStyle heading4() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(14),
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w900,
           letterSpacing: 1.0,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -72,7 +72,7 @@ TextStyle subheading() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -86,7 +86,7 @@ TextStyle body1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(14),
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -100,7 +100,7 @@ TextStyle body2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(15),
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -114,7 +114,7 @@ TextStyle button1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(17),
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w800,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -128,7 +128,7 @@ TextStyle button2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w700,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -156,7 +156,7 @@ TextStyle tag2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.exo(
           fontSize: accessibility.responsiveTextSize(10),
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w900,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.exo(
@@ -292,97 +292,3 @@ class TagTwoText extends Text {
           semanticsLabel: data,
         );
 }
-
-// Takes a gradient and masks it
-// over the parameters
-// --------------------------------------
-class GradientText extends StatelessWidget {
-  final String text;
-  // The text to be displayed
-  // ------------------------
-  final TextStyle style;
-  // The style that you want it to be
-  // ------------------------
-  final Gradient gradient;
-  // The gradient to overlay the text
-  // ------------------------
-
-  const GradientText({
-    required this.text,
-    required this.gradient,
-    required this.style,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
-      child: Text(text, style: style),
-    );
-  }
-}
-
-/*
-// Takes the primary image from the alternate style and masks it
-// over the parameters
-// --------------------------------------
-class ImageOverlayText extends StatefulWidget {
-  final String text;
-  // The text to be displayed
-  // ------------------------
-  final TextStyle style;
-  // The style that you want it to be
-  // ------------------------
-
-  const ImageOverlayText({
-    required this.text,
-    required this.style,
-  });
-
-  @override
-  _ImageOverlayTextState createState() => _ImageOverlayTextState();
-}
-
-class _ImageOverlayTextState extends State<ImageOverlayText> {
-  Float64List matrix4 = Matrix4.identity().storage;
-  late Future<ui.Image> imgFuture;
-
-  var altImage = brightness() == Brightness.light
-      ? resourceValues.darkMode.primaryImage
-      : resourceValues.lightMode.primaryImage;
-
-  // Loads image into format usable with shader.
-  Future<ui.Image> loadImage() async {
-    var fileData = Uint8List.sublistView(await rootBundle.load(altImage));
-    return await decodeImageFromList(fileData);
-  }
-
-  @override
-  void initState() {
-    imgFuture = loadImage();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: imgFuture,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Text(
-            widget.text,
-            style: widget.style.copyWith(
-                foreground: Paint()
-                  ..shader = ImageShader(snapshot.data as ui.Image,
-                      TileMode.clamp, TileMode.clamp, matrix4)),
-          );
-        } else {
-          return Text(widget.text);
-        }
-      },
-    );
-  }
-}*/

@@ -28,7 +28,7 @@ class NotificationComponent extends StatelessWidget {
     BoxDecoration boxDecoration =
         CardBackingDecoration(priority: notificationPriority).buildBacking();
     BoxDecoration readIndicatorDecoration = hasNotificationBeenRead
-        ? BoxDecoration(color: white().withOpacity(0.0))
+        ? BoxDecoration(color: palette.white().withOpacity(0.0))
         : BoxDecoration(color: coloration.sameColor(), shape: BoxShape.circle);
 
     var screenSize = size.logicalScreenSize();

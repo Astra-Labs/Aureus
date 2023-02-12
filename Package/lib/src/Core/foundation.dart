@@ -37,41 +37,7 @@ class AureusResource extends StatefulWidget {
   _AureusResourceState createState() => _AureusResourceState();
 }
 
-class _AureusResourceState extends State<AureusResource>
-    with WidgetsBindingObserver {
-  @override
-  void initState() {
-    WidgetsBinding.instance!.addObserver(this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
-    super.dispose();
-  }
-
-  // When the window changes, the container view uses
-  // the observer pattern to reload the children.
-  @override
-  void didChangeMetrics() {
-    setState(() {});
-  }
-
-  // When the user changes between light / dark mode, the container view uses
-  // the observer pattern to reload the children.
-  @override
-  void didChangePlatformBrightness() {
-    setState(() {});
-  }
-
-  // When the user changes accessibility features, the container view uses
-  // the observer pattern to reload the children.
-  @override
-  void didChangeAccessibilityFeatures() {
-    setState(() {});
-  }
-
+class _AureusResourceState extends State<AureusResource> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -28,8 +28,6 @@ class VideoRecordingDataCardElement extends DataDetailCard {
 
   @override
   Widget returnEditDataCard() {
-    var cardController = TextEditingController();
-
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",

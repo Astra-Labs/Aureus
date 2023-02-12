@@ -11,16 +11,20 @@ class AureusNotificationMaster {
 
   void registerObserver(AureusNotificationObserver observer) {
     print('registering observer');
+    print('-----------------------------------');
     _observers.add(observer);
   }
 
   void unregisterObserver(AureusNotificationObserver observer) {
     print('unregistering observer');
+    print('-----------------------------------');
+    observer.resetRequests();
     _observers.remove(observer);
   }
 
   void resetRequests() {
     print('removes requests');
+    print('-----------------------------------');
     for (var observer in _observers) {
       observer.resetRequests();
     }
@@ -53,7 +57,6 @@ class AureusNotificationMaster {
 
   void showBottomActionController(AlertControllerObject data) {
     print('notifying observers to show bottom sheet.');
-    print('observers are $_observers');
     for (var observer in _observers) {
       observer.showBottomActionController(data);
     }

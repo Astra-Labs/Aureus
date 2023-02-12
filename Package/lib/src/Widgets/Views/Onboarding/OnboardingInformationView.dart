@@ -50,7 +50,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                   minHeight: size.layoutItemHeight(2, screenSize)),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
-                  border: universalBorder(),
+                  border: palette.universalBorder(),
                   image: DecorationImage(
                     image: currentItem.detailImage.image,
                     fit: BoxFit.cover,
@@ -99,7 +99,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                     minWidth: size.layoutItemWidth(2, screenSize)),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
-                    border: universalBorder(),
+                    border: palette.universalBorder(),
                     image: DecorationImage(
                       image: currentItem.detailImage.image,
                       fit: BoxFit.cover,

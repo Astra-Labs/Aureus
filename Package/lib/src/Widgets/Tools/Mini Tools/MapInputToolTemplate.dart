@@ -69,7 +69,7 @@ class _MapInputCardState extends State<_MapInputCard> {
       width: size.layoutItemWidth(1, screenSize),
       height: size.layoutItemHeight(2, screenSize),
       child: Container(
-        decoration: BoxDecoration(border: universalBorder()),
+        decoration: BoxDecoration(border: palette.universalBorder()),
         child: FlutterMap(
           options: MapOptions(
             bounds: LatLngBounds(LatLng(58.8, 6.1), LatLng(59, 6.2)),

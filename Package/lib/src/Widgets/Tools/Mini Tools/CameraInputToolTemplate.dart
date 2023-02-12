@@ -177,7 +177,7 @@ class _CameraInputCardState extends State<_CameraInputCard> {
                 height: size.responsiveSize(250),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: universalBorder(),
+                  border: palette.universalBorder(),
                 )),
           ],
         ));

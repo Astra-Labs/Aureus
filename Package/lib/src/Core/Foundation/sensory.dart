@@ -1,3 +1,4 @@
+import 'package:aureus/aureus.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -31,7 +32,6 @@ class Sensory {
     player.dispose();
   }
 
-  //static AudioCache player = AudioCache(prefix: 'assets/sounds/');
   var confirmationAudioPath = "sounds/confirm.mp3";
   var praiseAudioPath = "sounds/praise.mp3";
   var errorAudioPath = "sounds/error.mp3";
@@ -125,18 +125,4 @@ class Sensory {
         }
     }
   }
-}
-
-enum sensationType {
-  confirmation,
-  praise,
-  error,
-  attention,
-  notification,
-  urgent,
-  enable,
-  disable,
-  swipe,
-  press,
-  hold,
 }

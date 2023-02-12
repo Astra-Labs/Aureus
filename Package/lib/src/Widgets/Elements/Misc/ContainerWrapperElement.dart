@@ -31,21 +31,18 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
             children: widget.children,
           );
 
+    var paddingInset = size.widthOf(weight: sizingWeight.w0) / 2;
+
+    var wrapperPadding = widget.takesFullWidth == true
+        ? const EdgeInsets.all(0.0)
+        : EdgeInsets.all(paddingInset);
+
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       return Container(
-          constraints: BoxConstraints(
-              minWidth: MediaQuery.of(context).size.width,
-              maxWidth: MediaQuery.of(context).size.width,
-              minHeight: MediaQuery.of(context).size.height,
-              maxHeight: MediaQuery.of(context).size.height),
-          padding: widget.takesFullWidth == true
-              ? const EdgeInsets.all(0.0)
-              : EdgeInsets.fromLTRB(
-                  size.widthOf(weight: sizingWeight.w0) / 2,
-                  size.widthOf(weight: sizingWeight.w1) / 2,
-                  size.widthOf(weight: sizingWeight.w0) / 2,
-                  size.widthOf(weight: sizingWeight.w0) / 2),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          padding: wrapperPadding,
           child: children);
     });
   }
