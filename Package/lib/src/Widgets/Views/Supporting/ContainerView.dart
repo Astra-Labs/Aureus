@@ -2,8 +2,17 @@ import 'dart:developer';
 
 import 'package:aureus/aureus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-//A container that sets the size for the screen with QA-approved padding,
-//and enables the exit bar at the top of the screen when enabled in the safety plan.
+
+/*--------- CONTAINER VIEW ----------*/
+
+// A container that sets the size for the screen,
+// enables the exit bar at the top of the screen when enabled in
+// the safety plan, and shows notifications / prompts to the user.
+// Think of this view as the 'glue' that holds Aureus together.
+
+// ALL VIEWS IN AN AUREUS RESOURCE SHOULD BE A CONTAINER VIEW.
+// If you do not use ContainerView, you will not be able to access
+// the NotificationObserver or some built-in Safety Plan features.
 
 class ContainerView extends StatefulWidget {
   //determines if primary landing page (fluid decoration),

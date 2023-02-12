@@ -1,7 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SEND FIELD ----------*/
 //A text field and icon button used to send communications to a receipent
-//Doc Link:
 
 class SendFieldComponent extends StatefulWidget {
   final VoidCallback onSend;

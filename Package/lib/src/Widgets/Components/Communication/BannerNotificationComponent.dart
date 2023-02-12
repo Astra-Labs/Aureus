@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- BANNER NOTIFICATION ----------*/
+// A small banner that drops down from the top of a screen to alert the user
+// of something.
+
 class BannerNotificationComponent extends StatefulWidget {
   final String body;
   final IconData icon;

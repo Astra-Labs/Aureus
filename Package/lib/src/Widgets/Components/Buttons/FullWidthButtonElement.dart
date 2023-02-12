@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- FULL WIDTH BUTTON ----------*/
 //A full width button that acts as the main CTA for a screen.
 
 class FullWidthButtonElement extends StatefulWidget {
@@ -32,6 +33,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   late Animation _gradient1;
   late Animation _gradient2;
   late decorationPriority buttonPriority;
+
   AureusStylization currentStyle = palette.brightness() == Brightness.light
       ? packageVariables.resourceBranding.lightModeStyle
       : packageVariables.resourceBranding.darkModeStyle;

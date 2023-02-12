@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 
-//A vertically & horizontally centered alert controller
+/*--------- BOTTOM ACTION SHEET COMPONENT ----------*/
+// An action sheet on the bottom of the screen. Use when the user
+// can choose more than 2 actions.
 
 class BottomActionSheetComponent extends StatefulWidget {
   final AlertControllerObject alertData;

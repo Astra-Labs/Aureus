@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 
-//A vertically & horizontally centered alert controller
+/*--------- CENTERED ACTION SHEET COMPONENT ----------*/
+// A vertically & horizontally centered alert controller
+// Use when there is only 1-2 actions, otherwise use Bottom Action Sheet
 
 class CenteredAlertControllerComponent extends StatefulWidget {
   final AlertControllerObject alertData;

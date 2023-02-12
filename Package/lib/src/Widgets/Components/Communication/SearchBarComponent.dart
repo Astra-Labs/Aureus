@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SEARCH BAR COMPONENT ----------*/
+
 class SearchBarComponent extends StatefulWidget {
   final VoidCallback onSearch;
 

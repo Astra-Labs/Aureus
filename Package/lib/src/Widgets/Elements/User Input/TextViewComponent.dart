@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//A text field and icon button used to send communications to a receipent
-//Doc Link:
+/*--------- TEXT VIEW COMPONENT ----------*/
 
 class TextViewComponent extends StatefulWidget {
   final TextEditingController textFieldController;

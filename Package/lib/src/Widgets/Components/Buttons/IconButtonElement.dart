@@ -1,9 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- ICON BUTTON ----------*/
 //A small, circular button that uses an icon to communicate its' purpose
-//Doc Link:
-
-//big circular icon buttons that are greater than 70x70 and are intended to be the main action of the page (e.g: add, message, etc).
+//big circular icon buttons that are greater than 70x70 and are intended
+//to be the main action of the page (e.g: add, message, etc).
 class IconButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
   final IconData buttonIcon;

@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SMOL BUTTON OWO ----------*/
 //A small, rounded tab button
 
 class SmolButtonElement extends StatefulWidget {

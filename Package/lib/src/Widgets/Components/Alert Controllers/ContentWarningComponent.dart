@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- CONTENT WARNING COMPONENT ----------*/
 // Shows a content warning with a blur over the content behind the item.
 
 class ContentWarningComponent extends StatelessWidget {

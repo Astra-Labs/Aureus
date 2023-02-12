@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- ITERATING TABBING COMPONENT ----------*/
 //An icon tabbing bar and accompanying card that acts as an onboarding walkthrough
+
 class IteratingTabbingComponent extends StatefulWidget {
   final List<String> itemTitles;
   final List<Widget> itemWidgets;

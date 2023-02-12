@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//An icon tabbing bar and card that acts as an onboarding walkthrough
-//Doc Link:
+/*--------- SWITCH COMPONENT ----------*/
 
 class SwitchComponent extends StatefulWidget {
   bool isSwitchEnabled = false;

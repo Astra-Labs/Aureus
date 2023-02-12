@@ -1,7 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- STANDARD BUTTON ----------*/
 //A 80% width button that acts as a standard button for the UDS
-//Doc Link:
 
 class StandardButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;

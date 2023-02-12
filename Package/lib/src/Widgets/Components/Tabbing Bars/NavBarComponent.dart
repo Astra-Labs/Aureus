@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- Nav Bar Component ----------*/
+
 class NavBarComponent extends StatefulWidget {
   //tab items input will be checked to be icon only
   final List<ControllerTabObject> tabItems;

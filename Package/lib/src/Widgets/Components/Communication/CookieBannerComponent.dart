@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- COOKIE BANNER ----------*/
+// A y/n banner to ask a user to accept cookies on the website.
+
 class CookieBannerComponent extends StatefulWidget {
   final String cookieMessage;
   final VoidCallback onCookieAccept;

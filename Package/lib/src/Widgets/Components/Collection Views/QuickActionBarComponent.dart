@@ -1,7 +1,11 @@
 import 'package:aureus/aureus.dart';
 
-// A group of smol buttons that acts as a tabbing bar to change data
-// It can be shrunk, and moved around through a ContainerView.
+/*--------- QUICK ACTION BAR ----------*/
+// A group of smol buttons that acts as a tabbing bar to do actions
+// This is used in the Safety Functionality to allow people to quickly go
+// to speciality tools from any page in an Aureus Resource.
+// You can control which views show a Quick Action Bar (if your safety
+// settings enable it) within the ContainerView initializer parameters.
 
 class QuickActionBarComponent extends StatefulWidget {
   final List<TabObject> tabItems;

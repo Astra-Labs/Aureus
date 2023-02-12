@@ -1,7 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- NOTIFICATION COMPONENT ----------*/
 //A notification card that describes a message to the user
-//Doc Link:
 
 class NotificationComponent extends StatelessWidget {
   final String notificationSubCategory;
