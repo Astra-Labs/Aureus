@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SETTINGS VIEW ----------*/
+
 class SettingsView extends StatefulWidget {
   const SettingsView();
 

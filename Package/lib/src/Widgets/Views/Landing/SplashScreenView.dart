@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:aureus/aureus.dart';
 
+/*--------- SPLASH SCREEN VIEW ----------*/
+
 class SplashScreenView extends StatefulWidget {
   final VoidCallback onLaunch;
   const SplashScreenView({required this.onLaunch});

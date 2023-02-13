@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- GRID CARD SELECT TOOL ----------*/
 
 class GridCardSelectToolTemplate extends ToolCardTemplate {
   final List<String> cardItems;

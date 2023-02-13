@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- DIVIDING HEADER ELEMENT ----------*/
+
 class DividingHeaderElement extends StatelessWidget {
   final String headerText;
   final String subheaderText;

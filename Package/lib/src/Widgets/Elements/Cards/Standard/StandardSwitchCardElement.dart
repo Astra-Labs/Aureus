@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- STANDARD SWITCH CARD ----------*/
+
 class StandardSwitchCardElement extends StatefulWidget {
   final String switchDescription;
   final VoidCallback onEnable;

@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- DIVIDER ELEMENT ----------*/
+
 class DividerElement extends StatelessWidget {
   const DividerElement({Key? key}) : super(key: key);
 

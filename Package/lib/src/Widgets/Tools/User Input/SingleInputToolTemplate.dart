@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- SINGLE INPUT TOOL ----------*/
 
 class SingleInputToolTemplate extends ToolCardTemplate {
   SingleInputToolTemplate({required templatePrompt, required badgeIcon})

@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
+/*--------- DATA OPT-IN VIEW ----------*/
 
 class DataOptInView extends StatefulWidget {
   final VoidCallback onFinish;

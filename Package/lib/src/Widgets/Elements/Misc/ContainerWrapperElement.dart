@@ -1,14 +1,17 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- CONTAINER WRAPPER ----------*/
+
 class ContainerWrapperElement extends StatefulWidget {
   final List<Widget> children;
   final wrapperVariants containerVariant;
   final bool takesFullWidth;
 
-  const ContainerWrapperElement(
+  ContainerWrapperElement(
       {required this.children,
       required this.containerVariant,
-      this.takesFullWidth = false});
+      this.takesFullWidth = false})
+      : assert(children.isNotEmpty == true);
 
   @override
   _ContainerWrapperElementState createState() =>

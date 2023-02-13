@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- LANDING PAGE VIEW ----------*/
+
 class LandingPageView extends StatefulWidget {
   final Image lightModeLandscapeBacking;
   final Image darkModeLandscapeBacking;

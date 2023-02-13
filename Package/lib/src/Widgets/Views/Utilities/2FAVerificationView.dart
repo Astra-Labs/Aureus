@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//
-//Doc Link:
+/*--------- 2FA VERIFICATION VIEW ----------*/
 
 class TFAVerificationView extends StatefulWidget {
   final double userPhoneNumber;

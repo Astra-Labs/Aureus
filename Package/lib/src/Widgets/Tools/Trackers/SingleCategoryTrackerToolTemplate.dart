@@ -12,6 +12,6 @@ class SingleCategoryTrackerToolTemplate extends ToolNavigationPage {
   SingleCategoryTrackerToolTemplate({parentTool})
       : super(
             parentTool: parentTool,
-            pageBody: const ContainerWrapperElement(
+            pageBody: ContainerWrapperElement(
                 children: [], containerVariant: wrapperVariants.fullScreen));
 }

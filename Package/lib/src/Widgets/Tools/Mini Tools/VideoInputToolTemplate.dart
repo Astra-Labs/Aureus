@@ -4,6 +4,8 @@ import 'package:aureus/aureus.dart';
 import 'package:camera/camera.dart';
 import 'package:video_player/video_player.dart';
 
+/*--------- VIDEO INPUT TOOL ----------*/
+
 class VideoInputToolTemplate extends ToolCardTemplate {
   VideoInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);

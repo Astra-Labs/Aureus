@@ -4,13 +4,7 @@ import 'dart:math';
 
 typedef ColorCodeBuilder = Widget Function(BuildContext context, Color color);
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- COLOR SPECTRUM TOOL ----------*/
 
 class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
   ColorSpectrumInputToolTemplate({required templatePrompt, required badgeIcon})

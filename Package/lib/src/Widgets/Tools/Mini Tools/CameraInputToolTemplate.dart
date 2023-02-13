@@ -2,13 +2,7 @@ import 'package:aureus/aureus.dart';
 import 'package:camera/camera.dart';
 import 'dart:io';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- CAMERA INPUT TOOL ----------*/
 
 class CameraInputToolTemplate extends ToolCardTemplate {
   CameraInputToolTemplate({required templatePrompt, required badgeIcon})

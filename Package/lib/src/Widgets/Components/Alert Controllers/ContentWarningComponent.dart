@@ -64,7 +64,10 @@ class ContentWarningComponent extends StatelessWidget {
                     buttonTitle: 'Go back',
                     buttonHint: "Takes you to the previous screen.",
                     buttonIcon: Assets.no,
-                    buttonAction: () => {Navigator.pop(context)}),
+                    buttonAction: () => {
+                          Navigator.pop(context),
+                          notificationMaster.resetRequests()
+                        }),
                 const Spacer(),
               ]),
         ));

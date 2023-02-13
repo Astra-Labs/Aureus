@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SAFETY PLAN SETTINGS VIEW ----------*/
+
 class SafetyPlanSettingsView extends StatefulWidget {
   const SafetyPlanSettingsView();
 

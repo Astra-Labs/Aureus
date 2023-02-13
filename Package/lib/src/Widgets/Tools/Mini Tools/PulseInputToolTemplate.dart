@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- PULSE INPUT TOOL TEMPLATE ----------*/
+
 /*
 -------------------------------
 IN BETA DEVELOPMENT - DO NOT USE

@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- DETAIL CAROUSEL CARD ----------*/
+
 class DetailCarouselCardElement extends StatelessWidget {
   final String cardLabel;
   final IconData cardIcon;

@@ -2,6 +2,8 @@ import 'package:aureus/aureus.dart';
 import 'dart:math';
 import 'dart:ui';
 
+/*--------- POETRY GRADIENT VIEW ----------*/
+
 class PoetryGradientView extends StatefulWidget {
   final List<String> poetryArray;
   const PoetryGradientView({required this.poetryArray});
@@ -88,7 +90,7 @@ class NoiseAnimationWidget extends StatefulWidget {
 }
 
 class _NoiseAnimationWidgetState extends State<NoiseAnimationWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _noiseAnimationController;
   late AnimationController _gradientAnimationController;
 
@@ -110,10 +112,12 @@ class _NoiseAnimationWidgetState extends State<NoiseAnimationWidget>
 
   @override
   Widget build(BuildContext context) {
+    // The animated builder for the custom painter
     var animationBuilder = AnimatedBuilder(
         animation: _noiseAnimationController,
         builder: (BuildContext ctx, Widget? w) {
           return CustomPaint(
+            size: size.logicalScreenSize(),
             painter: NoisePainter(
               width: size.logicalWidth(),
               height: size.logicalHeight(),
@@ -121,15 +125,23 @@ class _NoiseAnimationWidgetState extends State<NoiseAnimationWidget>
           );
         });
 
+    // A sized box widget to ensure the animated builder is neatly contained.
+    var builderBox = SizedBox(
+      width: size.logicalWidth(),
+      height: size.logicalHeight(),
+      child: animationBuilder,
+    );
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
-        children: [animationBuilder]);
+        takesFullWidth: true,
+        children: [builderBox]);
 
     return ContainerView(
       decorationVariant: decorationPriority.important,
       builder: viewLayout,
       hasBackgroundImage: false,
-      takesFullWidth: false,
+      takesFullWidth: true,
       showQuickActionBar: false,
     );
   }

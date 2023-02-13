@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- VOICE RECORDING DATA CARD ----------*/
 
 class VoiceRecordingDataCardElement extends DataDetailCard {
   VoiceRecordingDataCardElement({required dataLabel})

@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- LOADING CIRCLE ----------*/
 //A bar that indicators progress for a given task.
 
 class LoadingCircleElement extends StatefulWidget {

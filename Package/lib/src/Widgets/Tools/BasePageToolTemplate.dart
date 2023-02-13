@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- BASE PAGE TOOL TEMPLATE ----------*/
 // The base class for a page tool template.
 // A PAGE is a tool template that uses a full page, and
 // is accessed within a card navigation object. It's used solo,

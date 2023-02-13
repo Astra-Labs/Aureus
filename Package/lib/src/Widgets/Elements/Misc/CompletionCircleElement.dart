@@ -1,7 +1,9 @@
 import 'package:aureus/aureus.dart';
 
-// A floating circle with a gradient that's filled according to how complete
-// something is. Used for showing completion at the end of a task or action.
+/*--------- COMPLETION CIRCLE ELEMENT ----------*/
+// A floating circle with a gradient that's filled according
+// to how complete something is. Used for showing completion
+// at the end of a task or action.
 
 class CompletionCircleElement extends StatefulWidget {
   final double progressValue;

@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- TAB SUBHEADER ELEMENT ----------*/
+
 class TabSubheaderElement extends StatelessWidget {
   final String title;
 

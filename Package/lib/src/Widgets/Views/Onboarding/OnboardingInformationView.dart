@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- ONBOARDING INFORMATION VIEW ----------*/
+
 class OnboardingInformationView extends StatefulWidget {
   final List<OnboardingDetail> onboardingDetails;
 

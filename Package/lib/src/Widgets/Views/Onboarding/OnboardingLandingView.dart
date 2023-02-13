@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- ONBOARDING LANDING VIEW ----------*/
+
 class OnboardingLandingView extends StatefulWidget {
   const OnboardingLandingView();
 

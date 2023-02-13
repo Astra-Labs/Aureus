@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- ONBOARDING DEMO VIEW ----------*/
+
 class OnboardingDemoView extends StatefulWidget {
   final List<CoreTool> toolItems;
 

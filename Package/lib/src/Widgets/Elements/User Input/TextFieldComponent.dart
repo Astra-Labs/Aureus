@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- TEXT FIELD COMPONENT ----------*/
+
 class StandardTextFieldComponent extends StatelessWidget {
   final String hintText;
   final decorationPriority decorationVariant;

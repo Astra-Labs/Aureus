@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- COMPLEX SWITCH CARD ----------*/
+
 class ComplexSwitchCardElement extends StatelessWidget {
   final String cardLabel;
   final String cardBody;

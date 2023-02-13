@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- VERTICAL SIDE NAV BAR ----------*/
+
 class VerticalSideNavBarComponent extends StatefulWidget {
   //tab items input will be checked to be icon only
   final List<ControllerTabObject> tabItems;

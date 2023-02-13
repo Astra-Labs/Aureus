@@ -273,7 +273,7 @@ class Safety {
         } else if (element.fallbackOption ==
             SafetyFallBackOptions.errorController) {
           executableCode = () => {
-                Navigator.push(
+                Navigator.pushReplacement(
                     actionContext,
                     MaterialPageRoute(
                       builder: (context) => alertControllerModal,
@@ -430,7 +430,7 @@ class _SafetyPlanFunctionalityViewState
                         actionName: "Ok!",
                         actionSeverity: AlertControllerActionSeverity.standard,
                         onSelection: () => {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => widget.exitPoint,
@@ -449,7 +449,7 @@ class _SafetyPlanFunctionalityViewState
             AlertControllerAction(
                 actionName: "Ok.",
                 actionSeverity: AlertControllerActionSeverity.standard,
-                onSelection: () => {notificationMaster.resetRequests()})
+                onSelection: () => {})
           ]));
     });
   }

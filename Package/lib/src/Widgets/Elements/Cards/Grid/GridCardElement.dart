@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- GRID CARD ----------*/
+
 class GridCardElement extends StatelessWidget {
   final decorationPriority decorationVariant;
   final String cardLabel;

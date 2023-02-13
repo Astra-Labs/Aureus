@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- BASE DATA DETAIL CARD ----------*/
+
 // The base class for a card tool template.
 // A CARD is a tool template that doesn't take up a full page, and
 // is accessed within a card carousel only. It's used in conjunction with

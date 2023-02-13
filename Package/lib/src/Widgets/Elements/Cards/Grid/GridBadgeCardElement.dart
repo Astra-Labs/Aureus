@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- GRID BADGE CARD ----------*/
+
 class GridBadgeCardElement extends StatelessWidget {
   final decorationPriority decorationVariant;
   final String cardLabel;

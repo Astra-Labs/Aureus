@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- VIDEO RECORDING DATA CARD ----------*/
 
 class VideoRecordingDataCardElement extends DataDetailCard {
   VideoRecordingDataCardElement({required dataLabel})

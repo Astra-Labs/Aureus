@@ -1,6 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//A bar that indicators progress for a given task.
+/*--------- ARTICLE VIEW ELEMENT ----------*/
 
 class ArticleViewElement extends StatelessWidget {
   final String title;

@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SAFETY PLAN OPTIONS VIEW ----------*/
+
 class SafetyPlanOptionsView extends StatefulWidget {
   final Widget exitPoint;
 

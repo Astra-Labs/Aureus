@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- INPUT SUMMARY TOOL ----------*/
+
 class InputSummaryToolTemplate extends ToolCardTemplate {
   InputSummaryToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);

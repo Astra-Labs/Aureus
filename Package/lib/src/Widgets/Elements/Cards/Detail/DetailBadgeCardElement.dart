@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- DETAIL BADGE CARD ----------*/
+
 class DetailBadgeCardElement extends StatelessWidget {
   final decorationPriority decorationVariant;
   final String cardLabel;

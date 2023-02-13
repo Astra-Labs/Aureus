@@ -1,8 +1,8 @@
 import 'package:aureus/aureus.dart';
 import 'dart:async';
 
+/*--------- TIMER ELEMENT ----------*/
 //A backing that acts as a timer.
-//Doc Link:
 
 // ignore: must_be_immutable
 class TimerElement extends StatefulWidget {

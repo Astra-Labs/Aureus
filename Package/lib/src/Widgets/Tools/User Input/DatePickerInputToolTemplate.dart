@@ -1,13 +1,7 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- DATE PICKER INPUT TOOL ----------*/
 
 class DatePickerInputToolTemplate extends ToolCardTemplate {
   DatePickerInputToolTemplate({required templatePrompt, required badgeIcon})

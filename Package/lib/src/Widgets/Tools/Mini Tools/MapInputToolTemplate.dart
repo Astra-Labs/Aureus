@@ -2,6 +2,8 @@ import 'package:aureus/aureus.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+/*--------- MAP INPUT TOOL ----------*/
+
 /*
 -------------------------------
 IN BETA DEVELOPMENT - DO NOT USE

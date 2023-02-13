@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- TOOL NEXT STEPS VIEW ----------*/
 
 class ToolNextStepsView extends StatefulWidget {
   final CoreTool parentTool;

@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- COMPLEX CARD ----------*/
+
 class ComplexCardElement extends StatelessWidget {
   final decorationPriority decorationVariant;
   final String cardLabel;

@@ -2,6 +2,8 @@
 
 import 'package:aureus/aureus.dart';
 
+/*--------- TOOL TEMPLATE CARD CAROUSEL VIEW ----------*/
+
 class ToolTemplateCardCarouselView extends StatefulWidget {
   final CoreTool parentTool;
   List<ToolCardTemplate> customCards;

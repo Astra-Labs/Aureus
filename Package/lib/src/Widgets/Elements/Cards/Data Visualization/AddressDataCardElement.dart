@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- ADDRESS DATA CARD ----------*/
 
 class AddressDataCardElement extends DataDetailCard {
   AddressDataCardElement({required dataLabel}) : super(dataLabel: dataLabel);

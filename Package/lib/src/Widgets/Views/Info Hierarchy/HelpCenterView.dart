@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 
-//The main container for the entire Help Center functionality that controls the layout, views, and more.
+/*--------- HELP CENTER VIEW ----------*/
+// The main container for the entire Help Center functionality
+// that controls the layout, views, and more.
 class HelpCenterView extends StatefulWidget {
   final HelpCenterObject helpCenter;
 

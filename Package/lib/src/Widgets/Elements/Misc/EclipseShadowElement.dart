@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- ECLIPSE SHADOW ----------*/
 // Using the data provided from the AureusStylization class,
 // creates a moving eclipse that appears to eclipse and pass behind
 // the child object.

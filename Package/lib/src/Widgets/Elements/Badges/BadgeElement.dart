@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 
-//A circle with an icon that is meant to act as a category label, but not as a button.
+/*--------- ICON BADGE ----------*/
+// A circle with an icon that is meant to act as a category
+// label, but not as a button.
 
 class IconBadge extends StatelessWidget {
   final IconData badgeIcon;

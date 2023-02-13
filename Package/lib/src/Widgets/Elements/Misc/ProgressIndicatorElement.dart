@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- PROGRESS INDICATOR ----------*/
 //A bar that indicators progress for a given task.
 
 class ProgressIndicatorElement extends StatefulWidget {

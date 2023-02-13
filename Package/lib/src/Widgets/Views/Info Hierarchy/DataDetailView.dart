@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- DATA DETAIL VIEW ----------*/
 
 class DataDetailView extends StatefulWidget {
   final String title;

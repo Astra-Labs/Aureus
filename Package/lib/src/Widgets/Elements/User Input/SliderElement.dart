@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SLIDER ELEMENT ----------*/
+
 // ignore: must_be_immutable
 class SliderElement extends StatefulWidget {
   var slideValue = 0.0;

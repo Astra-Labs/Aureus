@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SMOL TEXT TABBING BAR ----------*/
 //A group of smol buttons that acts as a tabbing bar to change data
 
 class SmolTextTabbingBarComponent extends StatefulWidget {

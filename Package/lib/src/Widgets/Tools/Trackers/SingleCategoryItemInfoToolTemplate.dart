@@ -12,6 +12,6 @@ class SingleCategoryItemInfoToolTemplate extends ToolNavigationPage {
   SingleCategoryItemInfoToolTemplate({required parentTool})
       : super(
             parentTool: parentTool,
-            pageBody: const ContainerWrapperElement(
+            pageBody: ContainerWrapperElement(
                 children: [], containerVariant: wrapperVariants.fullScreen));
 }

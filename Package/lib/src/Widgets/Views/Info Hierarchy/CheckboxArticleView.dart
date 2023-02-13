@@ -1,11 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- CHECKBOX ARTICLE VIEW ----------*/
 // This is a view that displays an article, and a checkbox.
 // When the user agrees to the checkbox and moves forward, it calls
 // the param onFinish.
 // --------------------------------
 // This should be used for legal documents that MUST be agreed to in order
 // to use the software. e.g: terms of service, cookie policy, etc.
+
 class CheckboxArticleView extends StatefulWidget {
   final String articleTitle;
   final String articleSubheader;

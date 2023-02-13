@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SAFETY PLAN LOG IN AUDIT VIEW ----------*/
+
 class SafetyPlanLogInAuditView extends StatefulWidget {
   const SafetyPlanLogInAuditView();
 
@@ -11,7 +13,7 @@ class SafetyPlanLogInAuditView extends StatefulWidget {
 class _SafetyPlanLogInAuditViewState extends State<SafetyPlanLogInAuditView> {
   @override
   Widget build(BuildContext context) {
-    ContainerWrapperElement viewLayout = const ContainerWrapperElement(
+    ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen, children: []);
 
     return ContainerView(

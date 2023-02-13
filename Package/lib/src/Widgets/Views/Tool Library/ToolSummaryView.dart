@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- TOOL SUMMARY VIEW ----------*/
 
 class ToolSummaryView extends StatefulWidget {
   final CoreTool parentTool;

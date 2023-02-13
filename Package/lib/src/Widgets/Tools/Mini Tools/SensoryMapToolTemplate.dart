@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- SENSORY MAP TOOL ----------*/
+
 class SensoryMapToolTemplate extends ToolCardTemplate {
   SensoryMapToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);

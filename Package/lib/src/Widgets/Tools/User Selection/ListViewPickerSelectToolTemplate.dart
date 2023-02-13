@@ -1,13 +1,7 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- LIST VIEW PICKER SELECT TOOL ----------*/
 
 class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
   final List<String> pickerOptions;

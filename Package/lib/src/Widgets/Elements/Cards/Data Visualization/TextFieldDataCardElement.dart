@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- TEXT FIELD DATA CARD ----------*/
 
 class TextFieldDataCardElement extends DataDetailCard {
   final TextEditingController textEditingController;

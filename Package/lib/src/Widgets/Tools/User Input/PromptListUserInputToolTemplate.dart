@@ -2,13 +2,7 @@
 
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- PROMPT LIST USER INPUT TOOL ----------*/
 
 class PromptListUserInputToolTemplate extends ToolCardTemplate {
   PromptListUserInputToolTemplate({required templatePrompt, required badgeIcon})

@@ -1,13 +1,7 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- TIME PICKER INPUT TOOL ----------*/
 
 class TimePickerInputToolTemplate extends ToolCardTemplate {
   TimePickerInputToolTemplate({required templatePrompt, required badgeIcon})

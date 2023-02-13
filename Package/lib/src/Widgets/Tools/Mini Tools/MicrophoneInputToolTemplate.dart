@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:aureus/aureus.dart';
 import 'package:record/record.dart';
 
+/*--------- MICROPHONE INPUT TOOL TEMPLATE ----------*/
+
 class MicrophoneInputToolTemplate extends ToolCardTemplate {
   MicrophoneInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);

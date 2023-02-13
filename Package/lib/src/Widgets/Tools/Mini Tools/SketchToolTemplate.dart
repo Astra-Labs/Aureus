@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- SKETCH TOOL ----------*/
 
 class SketchToolTemplate extends ToolCardTemplate {
   SketchToolTemplate({required templatePrompt, required badgeIcon})

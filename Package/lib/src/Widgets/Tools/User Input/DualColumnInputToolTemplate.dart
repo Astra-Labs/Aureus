@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- DUAL COLUMN INPUT TOOL ----------*/
 
 class DualColumnInputToolTemplate extends ToolCardTemplate {
   final String prompt1;

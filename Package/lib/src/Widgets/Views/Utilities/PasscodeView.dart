@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- PASSCODE VIEW ----------*/
+
 class PasscodeView extends StatefulWidget {
   final VoidCallback onCorrectPasscode;
   final List<int> passcode;

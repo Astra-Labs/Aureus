@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:aureus/aureus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,7 +33,10 @@ class ContainerView extends StatefulWidget {
 }
 
 class _ContainerViewState extends State<ContainerView>
-    with AureusNotificationObserver, TickerProviderStateMixin {
+    with
+        AureusNotificationObserver,
+        TickerProviderStateMixin,
+        WidgetsBindingObserver {
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   late Future<double> actionBarX;
   late Future<double> actionBarY;
@@ -51,8 +52,6 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void initState() {
-    log("state initiation");
-
     notificationMaster.registerObserver(this);
     sensation.prepare();
 
@@ -93,6 +92,7 @@ class _ContainerViewState extends State<ContainerView>
   @override
   void dispose() {
     print('view disposed!');
+    notificationMaster.unregisterObserver(this);
 
     //Removes items in the container view
     resetRequests();
@@ -104,12 +104,8 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void resetRequests() {
-    print('-----------------------------------');
-    print('container view: resetting overlay');
-
     overlayView = Container();
     hasOverlayEnabled = false;
-    notificationMaster.unregisterObserver(this);
 
     setState(() {
       _controller.reverse();

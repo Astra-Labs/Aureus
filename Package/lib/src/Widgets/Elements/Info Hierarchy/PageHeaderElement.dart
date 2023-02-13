@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-//A backing that acts as a timer.
-//Doc Link:
+/*--------- PAGE HEADER ELEMENT ----------*/
 
 // ignore: must_be_immutable
 class PageHeaderElement extends StatelessWidget {

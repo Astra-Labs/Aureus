@@ -1,5 +1,6 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- ADAPTIVE INPUT SELECTION TOOL ----------*/
 // A tool template that changes the input style for
 // a select few tool templates (hence adaptive input).
 // ---------------------------------

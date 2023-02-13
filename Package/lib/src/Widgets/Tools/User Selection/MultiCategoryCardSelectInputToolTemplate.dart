@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- MULTI CATEGORY CARD SELECT INPUT ----------*/
 
 class MultiCategoryCardSelectInputToolTemplate extends ToolCardTemplate {
   MultiCategoryCardSelectInputToolTemplate(

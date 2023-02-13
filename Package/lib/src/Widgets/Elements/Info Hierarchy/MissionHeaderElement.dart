@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- MISSION HEADER ----------*/
+
 class MissionHeaderElement extends StatelessWidget {
   const MissionHeaderElement({Key? key}) : super(key: key);
 

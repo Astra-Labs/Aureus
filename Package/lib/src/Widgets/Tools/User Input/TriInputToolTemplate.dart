@@ -1,12 +1,6 @@
 import 'package:aureus/aureus.dart';
 
-/*
-
-DESCRIPTION: 
--------------------
-USAGE: 
-
-*/
+/*--------- TRIINPUT TOOL ----------*/
 
 class TriInputToolTemplate extends ToolCardTemplate {
   final String textPrompt1;

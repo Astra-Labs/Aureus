@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- STANDARD SELECTION CARD ----------*/
+
 class StandardSelectionCardElement extends StatefulWidget {
   final String cardName;
   bool isCardSelected = false;

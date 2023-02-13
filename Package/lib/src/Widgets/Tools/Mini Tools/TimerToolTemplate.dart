@@ -1,5 +1,7 @@
 import 'package:aureus/aureus.dart';
 
+/*--------- TIMER TOOL ----------*/
+
 class TimerToolTemplate extends ToolCardTemplate {
   final Duration allotment;
   final VoidCallback onFinish;
