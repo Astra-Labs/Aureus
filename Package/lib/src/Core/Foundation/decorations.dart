@@ -157,6 +157,13 @@ class CardBackingDecoration extends BaseBackingDecoration {
       decorationCornerRadius = BorderRadius.circular(10.0);
       decorationFill = coloration.inactiveColor().withOpacity(0.1);
     } else if (priority == decorationPriority.important) {
+      if (palette.brightness() == Brightness.light) {
+        decorationGradient = palette.darkGradient();
+        decorationHaze = palette.lightShadow();
+      } else if (palette.brightness() == Brightness.dark) {
+        decorationGradient = palette.lightGradient();
+        decorationHaze = palette.darkShadow();
+      }
       decorationCornerRadius = BorderRadius.circular(20.0);
       decorationBorder = palette.universalBorder();
     } else if (priority == decorationPriority.standard) {

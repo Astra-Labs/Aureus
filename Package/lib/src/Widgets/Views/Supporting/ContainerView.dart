@@ -265,7 +265,7 @@ class _ContainerViewState extends State<ContainerView>
     var containerPadding = widget.takesFullWidth!
         ? EdgeInsets.fromLTRB(
             0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0)
-        : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w0), 0.0,
+        : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w1), 0.0,
             size.heightOf(weight: sizingWeight.w0));
 
     // Builds the backing container
@@ -276,7 +276,7 @@ class _ContainerViewState extends State<ContainerView>
         padding: containerPadding,
         child: SizedBox(
             width: containerWidth,
-            height: containerHeight,
+            height: screenHeight,
             child: Center(
                 child: Stack(children: [
               widget.builder,
