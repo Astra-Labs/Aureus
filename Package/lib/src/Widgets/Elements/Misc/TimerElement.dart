@@ -23,12 +23,11 @@ class _TimerElementState extends State<TimerElement>
   var timeString = '';
 
   void startTimer() {
-    print('timer started!');
-
+    print("timer string is $timeString");
+    print("int duration is $intDuration");
     _isTimerActive = true;
     controller.forward();
 
-    var intDuration = (widget.timeAllotment.inSeconds);
     _timer = Timer.periodic(
       const Duration(seconds: 1),
       (Timer timer) {
@@ -49,6 +48,8 @@ class _TimerElementState extends State<TimerElement>
 
   void pauseTimer() {
     setState(() {
+      print("timer string is $timeString");
+      print("int duration is $intDuration");
       _isTimerActive = false;
       _timer.cancel();
       controller.stop();
@@ -81,8 +82,7 @@ class _TimerElementState extends State<TimerElement>
         duration: Duration(seconds: intDuration),
       )..addListener(() {
           setState(() {
-            timeString = formatHHMMSS(controller.duration!.inSeconds -
-                controller.lastElapsedDuration!.inSeconds);
+            timeString = formatHHMMSS(intDuration);
           });
         });
       super.initState();

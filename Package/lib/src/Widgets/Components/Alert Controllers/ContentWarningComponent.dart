@@ -19,6 +19,23 @@ class ContentWarningComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
+    var buttonRow = Row(
+      children: [
+        SmolButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: 'Continue',
+            buttonHint: "Clears the content warning, and continues.",
+            buttonAction: () => {onContinue()}),
+        const Spacer(),
+        SmolButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: 'Go back',
+            buttonHint: "Takes you to the previous screen.",
+            buttonAction: () =>
+                {Navigator.pop(context), notificationMaster.resetRequests()})
+      ],
+    );
+
     var warningLayout = Container(
         constraints: BoxConstraints(
             minHeight: size.layoutItemHeight(2, screenSize),
@@ -47,28 +64,8 @@ class ContentWarningComponent extends StatelessWidget {
                 const Spacer(),
                 BodyOneText(warningDescription, decorationPriority.standard),
                 const SizedBox(height: 20.0),
-                const Spacer(),
-                const DividerElement(),
+                buttonRow,
                 const SizedBox(height: 20.0),
-                const Spacer(),
-                StandardIconButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Continue',
-                    buttonHint: "Clears the content warning, and continues.",
-                    buttonIcon: Assets.next,
-                    buttonAction: () => {onContinue()}),
-                const SizedBox(height: 15.0),
-                const Spacer(),
-                StandardIconButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Go back',
-                    buttonHint: "Takes you to the previous screen.",
-                    buttonIcon: Assets.no,
-                    buttonAction: () => {
-                          Navigator.pop(context),
-                          notificationMaster.resetRequests()
-                        }),
-                const Spacer(),
               ]),
         ));
 

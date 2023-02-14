@@ -21,6 +21,22 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
+    var buttonRow = Row(
+      children: [
+        SmolButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: 'Accept',
+            buttonHint: 'Accepts cookies from ${resourceValues.name}',
+            buttonAction: widget.onCookieAccept),
+        const Spacer(),
+        SmolButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: 'Deny',
+            buttonHint: 'Denies cookies from ${resourceValues.name}',
+            buttonAction: widget.onCookieDeny)
+      ],
+    );
+
     return Container(
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(3, screenSize),
@@ -43,17 +59,7 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
               const SizedBox(height: 10.0),
               BodyOneText(widget.cookieMessage, decorationPriority.standard),
               const SizedBox(height: 10.0),
-              StandardButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonTitle: 'Accept',
-                  buttonHint: 'Accepts cookies from ${resourceValues.name}',
-                  buttonAction: widget.onCookieAccept),
-              const SizedBox(height: 5.0),
-              StandardButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonTitle: 'Deny',
-                  buttonHint: 'Denies cookies from ${resourceValues.name}',
-                  buttonAction: widget.onCookieDeny),
+              buttonRow,
               const SizedBox(height: 20.0),
             ],
           ),
