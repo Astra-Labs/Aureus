@@ -22,8 +22,7 @@ class CategoryIconDetailCardElement extends StatelessWidget {
       child: Container(
           //this will be the rounded card backing
           constraints: BoxConstraints(
-              maxWidth: size.layoutItemWidth(2, screenSize) * 0.9,
-              minHeight: size.layoutItemHeight(3, screenSize)),
+              maxWidth: size.layoutItemWidth(2, screenSize) * 0.9),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           alignment: Alignment.center,

@@ -19,10 +19,7 @@ class DetailCarouselCardElement extends StatelessWidget {
 
     return Container(
       constraints: BoxConstraints(
-          minWidth: labelSize.width + 40,
-          maxWidth: labelSize.width + 50,
-          minHeight: labelSize.height + 30,
-          maxHeight: labelSize.height + 30),
+          minWidth: labelSize.width + 40, minHeight: labelSize.height + 30),
       decoration: CardBackingDecoration(priority: decorationPriority.inactive)
           .buildBacking(),
       padding: const EdgeInsets.all(8.0),
@@ -32,6 +29,7 @@ class DetailCarouselCardElement extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(cardIcon, color: coloration.contrastColor().withOpacity(0.8)),
+          const SizedBox(width: 5.0),
           Text(cardLabel.toUpperCase(),
               style: tag2().copyWith(color: coloration.contrastColor()),
               textAlign: TextAlign.right)

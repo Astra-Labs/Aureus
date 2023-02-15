@@ -171,8 +171,8 @@ class _TimerElementState extends State<TimerElement>
               decorationVariant: _isTimerActive == true
                   ? decorationPriority.standard
                   : decorationPriority.inactive,
-              buttonTitle: 'Cancel',
-              buttonHint: 'Cancels the timer.',
+              buttonTitle: 'Reset',
+              buttonHint: 'Resets the timer.',
               buttonAction: () => {resetTimer()}),
         ]),
       ),

@@ -75,11 +75,11 @@ class NotificationComponent extends StatelessWidget {
                 child: BodyOneText(notificationBody, notificationPriority)),
           )
         ]);
+
     return FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
               minHeight: size.layoutItemHeight(6, screenSize),
-              maxHeight: size.layoutItemHeight(4, screenSize),
               minWidth: size.layoutItemWidth(1, screenSize),
               maxWidth: size.layoutItemWidth(1, screenSize)),
           alignment: Alignment.center,

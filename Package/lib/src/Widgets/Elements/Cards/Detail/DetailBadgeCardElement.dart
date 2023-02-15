@@ -22,7 +22,7 @@ class DetailBadgeCardElement extends StatelessWidget {
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize),
-            maxHeight: size.layoutItemHeight(4, screenSize)),
+            minHeight: size.layoutItemHeight(4, screenSize)),
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         clipBehavior: Clip.hardEdge,
@@ -32,14 +32,14 @@ class DetailBadgeCardElement extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Spacer(),
+                  const SizedBox(height: 10),
                   IconBadge(
                       badgeIcon: cardIcon, badgePriority: decorationVariant),
                   const SizedBox(height: 10),
                   HeadingFourText(cardLabel, decorationVariant),
                   const SizedBox(height: 10),
                   BodyOneText(cardBody, decorationVariant),
-                  const Spacer(),
+                  const SizedBox(height: 10),
                 ])));
   }
 }

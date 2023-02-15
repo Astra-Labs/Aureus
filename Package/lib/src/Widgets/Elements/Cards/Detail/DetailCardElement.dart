@@ -21,7 +21,7 @@ class DetailCardElement extends StatelessWidget {
           constraints: BoxConstraints(
               minWidth: size.layoutItemWidth(1, screenSize),
               maxWidth: size.layoutItemWidth(1, screenSize),
-              maxHeight: size.layoutItemHeight(4, screenSize)),
+              minHeight: size.layoutItemHeight(4, screenSize)),
           decoration:
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           clipBehavior: Clip.hardEdge,
@@ -31,12 +31,10 @@ class DetailCardElement extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Spacer(),
                     HeadingFourText(cardLabel, decorationVariant),
                     const Padding(
                         padding: EdgeInsets.fromLTRB(0, 4.0, 0.0, 4.0)),
                     BodyOneText(cardBody, decorationVariant),
-                    const Spacer(),
                   ]))),
     );
   }

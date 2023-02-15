@@ -41,8 +41,7 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(3, screenSize),
             maxWidth: size.layoutItemWidth(2, screenSize),
-            minHeight: size.layoutItemHeight(4, screenSize),
-            maxHeight: size.layoutItemHeight(3, screenSize)),
+            minHeight: size.layoutItemHeight(4, screenSize)),
         decoration: CardBackingDecoration(priority: decorationPriority.inverted)
             .buildBacking(),
         child: Padding(
@@ -60,7 +59,7 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
               BodyOneText(widget.cookieMessage, decorationPriority.standard),
               const SizedBox(height: 10.0),
               buttonRow,
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 10.0),
             ],
           ),
         ));
