@@ -17,24 +17,28 @@ class DetailCarouselCardElement extends StatelessWidget {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return Container(
+    var detailCarouselContent = Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(cardIcon, color: coloration.contrastColor().withOpacity(0.8)),
+        const SizedBox(width: 5.0),
+        Text(cardLabel.toUpperCase(),
+            style: tag2().copyWith(color: coloration.contrastColor()),
+            textAlign: TextAlign.right)
+      ],
+    );
+
+    var detailCarouselContainer = Container(
       constraints: BoxConstraints(
           minWidth: labelSize.width + 40, minHeight: labelSize.height + 30),
       decoration: CardBackingDecoration(priority: decorationPriority.inactive)
           .buildBacking(),
       padding: const EdgeInsets.all(8.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(cardIcon, color: coloration.contrastColor().withOpacity(0.8)),
-          const SizedBox(width: 5.0),
-          Text(cardLabel.toUpperCase(),
-              style: tag2().copyWith(color: coloration.contrastColor()),
-              textAlign: TextAlign.right)
-        ],
-      ),
+      child: detailCarouselContent,
     );
+
+    return detailCarouselContainer;
   }
 }

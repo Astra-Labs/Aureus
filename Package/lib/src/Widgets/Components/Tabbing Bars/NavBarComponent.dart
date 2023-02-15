@@ -58,7 +58,39 @@ class _NavBarComponentState extends State<NavBarComponent> {
       onTap: _onItemTapped,
     );
 
-    return Scaffold(
+    var navBarComponent = Positioned(
+      bottom: 25,
+      child: ClipRRect(
+        child: FloatingContainerElement(
+            child: Container(
+                constraints: BoxConstraints(
+                    maxWidth: size.layoutItemWidth(1, screenSize)),
+                decoration:
+                    CardBackingDecoration(priority: decorationPriority.inactive)
+                        .buildBacking()
+                        .copyWith(borderRadius: BorderRadius.circular(60)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 5),
+                    navigationBar,
+                  ],
+                ))),
+      ),
+    );
+
+    var navBarContainer = Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: coloration.primaryImage().image,
+            fit: BoxFit.cover,
+          ),
+        ));
+
+    var navBarScaffold = Scaffold(
       backgroundColor: Colors.transparent,
       extendBody: true,
       extendBodyBehindAppBar: true,
@@ -68,42 +100,16 @@ class _NavBarComponentState extends State<NavBarComponent> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: coloration.primaryImage().image,
-                    fit: BoxFit.cover,
-                  ),
-                )),
+            navBarContainer,
             Center(
               child: _pages.elementAt(_selectedIndex),
             ),
-            Positioned(
-              bottom: 25,
-              child: ClipRRect(
-                child: FloatingContainerElement(
-                    child: Container(
-                        constraints: BoxConstraints(
-                            maxWidth: size.layoutItemWidth(1, screenSize)),
-                        decoration: CardBackingDecoration(
-                                priority: decorationPriority.inactive)
-                            .buildBacking()
-                            .copyWith(borderRadius: BorderRadius.circular(60)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SizedBox(height: 5),
-                            navigationBar,
-                          ],
-                        ))),
-              ),
-            ),
+            navBarComponent,
           ],
         ),
       ),
     );
+
+    return navBarScaffold;
   }
 }

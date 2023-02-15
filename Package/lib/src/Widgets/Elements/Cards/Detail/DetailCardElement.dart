@@ -16,7 +16,16 @@ class DetailCardElement extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return FloatingContainerElement(
+    var detailCardContent = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          HeadingFourText(cardLabel, decorationVariant),
+          const Padding(padding: EdgeInsets.fromLTRB(0, 4.0, 0.0, 4.0)),
+          BodyOneText(cardBody, decorationVariant),
+        ]);
+
+    var detailCardContainer = FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
               minWidth: size.layoutItemWidth(1, screenSize),
@@ -26,16 +35,9 @@ class DetailCardElement extends StatelessWidget {
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           clipBehavior: Clip.hardEdge,
           child: Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    HeadingFourText(cardLabel, decorationVariant),
-                    const Padding(
-                        padding: EdgeInsets.fromLTRB(0, 4.0, 0.0, 4.0)),
-                    BodyOneText(cardBody, decorationVariant),
-                  ]))),
+              padding: const EdgeInsets.all(13.0), child: detailCardContent)),
     );
+
+    return detailCardContainer;
   }
 }

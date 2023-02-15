@@ -20,7 +20,26 @@ class ComplexSwitchCardElement extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return Padding(
+    var complexSwitchTopContent = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconBadge(
+            badgeIcon: cardIcon, badgePriority: decorationPriority.standard),
+        SwitchComponent(onEnable, onDisable)
+      ],
+    );
+
+    var complexSwitchContent = Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          complexSwitchTopContent,
+          const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+          HeadingFourText(cardLabel, decorationPriority.standard),
+          BodyOneText(cardBody, decorationPriority.standard)
+        ]);
+
+    var complexSwitchContainer = Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
       child: Container(
           constraints: BoxConstraints(
@@ -33,28 +52,9 @@ class ComplexSwitchCardElement extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: IconBadge(
-                              badgeIcon: cardIcon,
-                              badgePriority: decorationPriority.standard),
-                        ),
-                        Align(
-                            alignment: Alignment.topRight,
-                            child: SwitchComponent(onEnable, onDisable))
-                      ],
-                    ),
-                    const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
-                    HeadingFourText(cardLabel, decorationPriority.standard),
-                    BodyOneText(cardBody, decorationPriority.standard)
-                  ]))),
+              child: complexSwitchContent)),
     );
+
+    return complexSwitchContainer;
   }
 }

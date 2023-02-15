@@ -145,37 +145,39 @@ class _TimerElementState extends State<TimerElement>
       ]),
     );
 
+    var buttonRow = SizedBox(
+      width: responsiveSize,
+      child: Row(children: [
+        SmolButtonElement(
+            decorationVariant: _isTimerActive == true
+                ? decorationPriority.inactive
+                : decorationPriority.important,
+            buttonTitle: 'Start',
+            buttonHint: 'Starts the timer.',
+            buttonAction: () => {startTimer()}),
+        const Spacer(),
+        SmolButtonElement(
+            decorationVariant: _isTimerActive == true
+                ? decorationPriority.standard
+                : decorationPriority.inactive,
+            buttonTitle: 'Pause',
+            buttonHint: 'Pauses the timer.',
+            buttonAction: () => {pauseTimer()}),
+        const Spacer(),
+        SmolButtonElement(
+            decorationVariant: _isTimerActive == true
+                ? decorationPriority.standard
+                : decorationPriority.inactive,
+            buttonTitle: 'Reset',
+            buttonHint: 'Resets the timer.',
+            buttonAction: () => {resetTimer()}),
+      ]),
+    );
+
     return Column(children: [
       timerCircle,
       const SizedBox(height: 30.0),
-      SizedBox(
-        width: responsiveSize,
-        child: Row(children: [
-          SmolButtonElement(
-              decorationVariant: _isTimerActive == true
-                  ? decorationPriority.inactive
-                  : decorationPriority.important,
-              buttonTitle: 'Start',
-              buttonHint: 'Starts the timer.',
-              buttonAction: () => {startTimer()}),
-          const Spacer(),
-          SmolButtonElement(
-              decorationVariant: _isTimerActive == true
-                  ? decorationPriority.standard
-                  : decorationPriority.inactive,
-              buttonTitle: 'Pause',
-              buttonHint: 'Pauses the timer.',
-              buttonAction: () => {pauseTimer()}),
-          const Spacer(),
-          SmolButtonElement(
-              decorationVariant: _isTimerActive == true
-                  ? decorationPriority.standard
-                  : decorationPriority.inactive,
-              buttonTitle: 'Reset',
-              buttonHint: 'Resets the timer.',
-              buttonAction: () => {resetTimer()}),
-        ]),
-      ),
+      buttonRow,
     ]);
   }
 }

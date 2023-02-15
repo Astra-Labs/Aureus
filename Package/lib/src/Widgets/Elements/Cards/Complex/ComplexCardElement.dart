@@ -18,7 +18,23 @@ class ComplexCardElement extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return Container(
+    var complexCardContent = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        const Spacer(),
+        HeadingFourText(cardLabel, decorationVariant),
+        const SizedBox(height: 20),
+        const Spacer(),
+        BodyOneText(cardBody, decorationVariant),
+        const SizedBox(height: 20),
+        DetailCardCarouselComponent(cardDetailCarousel: cardDetailCarousel),
+        const Spacer(),
+      ],
+    );
+
+    var complexCardContainer = Container(
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         constraints: BoxConstraints(
@@ -26,22 +42,8 @@ class ComplexCardElement extends StatelessWidget {
             maxHeight: size.layoutItemHeight(3, screenSize)),
         clipBehavior: Clip.antiAlias,
         child: Padding(
-            padding: const EdgeInsets.all(13.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const Spacer(),
-                HeadingFourText(cardLabel, decorationVariant),
-                const SizedBox(height: 20),
-                const Spacer(),
-                BodyOneText(cardBody, decorationVariant),
-                const SizedBox(height: 20),
-                DetailCardCarouselComponent(
-                    cardDetailCarousel: cardDetailCarousel),
-                const Spacer(),
-              ],
-            )));
+            padding: const EdgeInsets.all(13.0), child: complexCardContent));
+
+    return complexCardContainer;
   }
 }

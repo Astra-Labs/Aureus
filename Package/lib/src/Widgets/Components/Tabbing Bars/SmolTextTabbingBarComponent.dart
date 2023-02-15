@@ -61,18 +61,21 @@ class _SmolTextTabbingBarComponentState
       ));
     }
 
-    return Column(
+    var smolTextContent = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
+        children: tabButtons);
+
+    var smolTextContainer = Column(
       children: [
         const SizedBox(height: 10),
         SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.min,
-                children: tabButtons)),
+            scrollDirection: Axis.horizontal, child: smolTextContent),
         const SizedBox(height: 15),
       ],
     );
+
+    return smolTextContainer;
   }
 }

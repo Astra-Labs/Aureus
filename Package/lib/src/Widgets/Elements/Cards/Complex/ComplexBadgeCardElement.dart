@@ -20,7 +20,29 @@ class ComplexBadgeCardElement extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return Container(
+    var complexBadgeCardTopContent = Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        HeadingFourText(cardLabel, decorationVariant),
+        IconBadge(badgeIcon: cardIcon, badgePriority: decorationVariant)
+      ],
+    );
+
+    var complexBadgeContent = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        complexBadgeCardTopContent,
+        const SizedBox(height: 10),
+        BodyOneText(cardBody, decorationVariant),
+        DetailCardCarouselComponent(cardDetailCarousel: cardDetailCarousel)
+      ],
+    );
+
+    var complexBadgeContainer = Container(
         decoration:
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         constraints: BoxConstraints(
@@ -28,27 +50,8 @@ class ComplexBadgeCardElement extends StatelessWidget {
             maxHeight: size.layoutItemHeight(3, screenSize)),
         clipBehavior: Clip.antiAlias,
         child: Padding(
-            padding: const EdgeInsets.all(13.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    HeadingFourText(cardLabel, decorationVariant),
-                    IconBadge(
-                        badgeIcon: cardIcon, badgePriority: decorationVariant)
-                  ],
-                ),
-                const SizedBox(height: 10),
-                BodyOneText(cardBody, decorationVariant),
-                DetailCardCarouselComponent(
-                    cardDetailCarousel: cardDetailCarousel)
-              ],
-            )));
+            padding: const EdgeInsets.all(13.0), child: complexBadgeContent));
+
+    return complexBadgeContainer;
   }
 }

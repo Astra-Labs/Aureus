@@ -3,8 +3,8 @@ import 'package:aureus/aureus.dart';
 /*--------- VERTICAL SIDE NAV BAR ----------*/
 
 class VerticalSideNavBarComponent extends StatefulWidget {
-  //tab items input will be checked to be icon only
   final List<ControllerTabObject> tabItems;
+  //tab items input will be checked to be icon only
 
   const VerticalSideNavBarComponent({required this.tabItems})
       : assert(tabItems.length >= 2);
@@ -43,29 +43,31 @@ class _VerticalSideNavBarComponentState
       ));
     }
 
-    return Scaffold(
+    var navigationRail = NavigationRail(
+      backgroundColor: coloration.contrastColor().withOpacity(0.15),
+      selectedIndex: _selectedIndex,
+      groupAlignment: 0.0,
+      onDestinationSelected: (int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      leading: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: SizedBox(
+          width: 80,
+          height: 80,
+          child: coloration.resourceLogo(),
+        ),
+      ),
+      labelType: NavigationRailLabelType.all,
+      destinations: railItems,
+    );
+
+    var navigationRailScaffold = Scaffold(
       body: Row(
         children: <Widget>[
-          NavigationRail(
-            backgroundColor: coloration.contrastColor().withOpacity(0.15),
-            selectedIndex: _selectedIndex,
-            groupAlignment: 0.0,
-            onDestinationSelected: (int index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            leading: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: SizedBox(
-                width: 80,
-                height: 80,
-                child: coloration.resourceLogo(),
-              ),
-            ),
-            labelType: NavigationRailLabelType.all,
-            destinations: railItems,
-          ),
+          navigationRail,
           // This is the main content.
           Expanded(
             child: widgetItems[_selectedIndex],
@@ -73,5 +75,7 @@ class _VerticalSideNavBarComponentState
         ],
       ),
     );
+
+    return navigationRailScaffold;
   }
 }

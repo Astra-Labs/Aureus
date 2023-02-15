@@ -18,7 +18,20 @@ class DetailBadgeCardElement extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return Container(
+    var detailBadgeContent = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const SizedBox(height: 10),
+          IconBadge(badgeIcon: cardIcon, badgePriority: decorationVariant),
+          const SizedBox(height: 10),
+          HeadingFourText(cardLabel, decorationVariant),
+          const SizedBox(height: 10),
+          BodyOneText(cardBody, decorationVariant),
+          const SizedBox(height: 10),
+        ]);
+
+    var detailBadgeContainer = Container(
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize),
@@ -27,19 +40,8 @@ class DetailBadgeCardElement extends StatelessWidget {
             CardBackingDecoration(priority: decorationVariant).buildBacking(),
         clipBehavior: Clip.hardEdge,
         child: Padding(
-            padding: const EdgeInsets.all(13.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const SizedBox(height: 10),
-                  IconBadge(
-                      badgeIcon: cardIcon, badgePriority: decorationVariant),
-                  const SizedBox(height: 10),
-                  HeadingFourText(cardLabel, decorationVariant),
-                  const SizedBox(height: 10),
-                  BodyOneText(cardBody, decorationVariant),
-                  const SizedBox(height: 10),
-                ])));
+            padding: const EdgeInsets.all(13.0), child: detailBadgeContent));
+
+    return detailBadgeContainer;
   }
 }

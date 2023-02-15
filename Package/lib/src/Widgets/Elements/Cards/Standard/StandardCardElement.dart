@@ -13,7 +13,11 @@ class StandardCardElement extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return FloatingContainerElement(
+    var standardCardContent = Align(
+        alignment: Alignment.topLeft,
+        child: BodyTwoText(cardLabel, decorationVariant));
+
+    var standardCardContainer = FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
               minWidth: size.layoutItemWidth(4, screenSize),
@@ -24,10 +28,10 @@ class StandardCardElement extends StatelessWidget {
               CardBackingDecoration(priority: decorationVariant).buildBacking(),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Align(
-                alignment: Alignment.topLeft,
-                child: BodyTwoText(cardLabel, decorationVariant)),
+            child: standardCardContent,
           )),
     );
+
+    return standardCardContainer;
   }
 }

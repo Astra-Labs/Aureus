@@ -22,7 +22,25 @@ class GridBadgeCardElement extends StatelessWidget {
 
     var screenSize = size.logicalScreenSize();
 
-    return FloatingContainerElement(
+    var gridBadgeContent = Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Align(
+            alignment: Alignment.topLeft,
+            child: IconBadge(
+                badgeIcon: cardIcon, badgePriority: decorationVariant)),
+        Align(
+            alignment: Alignment.bottomLeft,
+            child: SizedBox(
+                width: labelSize.width,
+                height: labelSize.height,
+                child: BodyTwoText(cardLabel, decorationVariant))),
+      ],
+    );
+
+    var gridBadgeContainer = FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
               minWidth: size.layoutItemWidth(3, screenSize),
@@ -34,24 +52,10 @@ class GridBadgeCardElement extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: IconBadge(
-                        badgeIcon: cardIcon, badgePriority: decorationVariant)),
-                Align(
-                    alignment: Alignment.bottomLeft,
-                    child: SizedBox(
-                        width: labelSize.width,
-                        height: labelSize.height,
-                        child: BodyTwoText(cardLabel, decorationVariant))),
-              ],
-            ),
+            child: gridBadgeContent,
           )),
     );
+
+    return gridBadgeContainer;
   }
 }

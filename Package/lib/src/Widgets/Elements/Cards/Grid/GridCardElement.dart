@@ -17,7 +17,11 @@ class GridCardElement extends StatelessWidget {
     var maxWidth =
         size.isDesktopDisplay() ? gridSize.width / 2 : gridSize.width / 3.2;
 
-    return FloatingContainerElement(
+    var gridCardContent = Align(
+        alignment: Alignment.topLeft,
+        child: BodyTwoText(cardLabel, decorationVariant));
+
+    var gridCardContainer = FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
               minWidth: maxWidth,
@@ -29,10 +33,10 @@ class GridCardElement extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Align(
-                alignment: Alignment.topLeft,
-                child: BodyTwoText(cardLabel, decorationVariant)),
+            child: gridCardContent,
           )),
     );
+
+    return gridCardContainer;
   }
 }

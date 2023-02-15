@@ -54,19 +54,18 @@ class _PulseShadowElementState extends State<PulseShadowElement>
 
   @override
   Widget build(BuildContext context) {
-    return widget.isActive == true
-        ? Container(
-            width: widget.pulseWidth,
-            clipBehavior: Clip.none,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(widget.pulseWidth / 2),
-                boxShadow: [
-                  BoxShadow(
-                      color:
-                          coloration.accentColor().withOpacity(_opacity.value),
-                      blurRadius: _pulse.value),
-                ]),
-            child: widget.child)
-        : widget.child;
+    var pulseShadowContainer = Container(
+        width: widget.pulseWidth,
+        clipBehavior: Clip.none,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(widget.pulseWidth / 2),
+            boxShadow: [
+              BoxShadow(
+                  color: coloration.accentColor().withOpacity(_opacity.value),
+                  blurRadius: _pulse.value),
+            ]),
+        child: widget.child);
+
+    return widget.isActive == true ? pulseShadowContainer : widget.child;
   }
 }

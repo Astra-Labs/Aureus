@@ -230,32 +230,32 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
                   : webInformationCard)),
     );
 
+    var iteratingTabbingBar = FloatingContainerElement(
+        child: Container(
+            width: size.layoutItemWidth(1, screenSize),
+            height: size.layoutItemHeight(6, screenSize),
+            padding: const EdgeInsets.all(8),
+            decoration:
+                LayerBackingDecoration(priority: decorationPriority.inactive)
+                    .buildBacking(),
+            child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.min,
+                    children: tabButtons))));
+
+    var iteratingTabbingInformation = Padding(
+      padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
+      child: informationCard,
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
-      children: [
-        FloatingContainerElement(
-            child: SizedBox(
-                width: size.layoutItemWidth(1, screenSize),
-                height: size.layoutItemHeight(6, screenSize),
-                child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: LayerBackingDecoration(
-                            priority: decorationPriority.inactive)
-                        .buildBacking(),
-                    child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            mainAxisSize: MainAxisSize.min,
-                            children: tabButtons))))),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
-          child: informationCard,
-        )
-      ],
+      children: [iteratingTabbingBar, iteratingTabbingInformation],
     );
   }
 }
