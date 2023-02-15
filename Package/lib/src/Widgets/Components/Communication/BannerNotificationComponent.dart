@@ -76,7 +76,6 @@ class _BannerNotificationComponentState
     setState(() {
       // Reverses the animation controller and runs on launch VoidCallback
       animationController.reverse();
-      print('done bitch');
       //dispose();
     });
   }
@@ -84,6 +83,7 @@ class _BannerNotificationComponentState
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
+
     var slidingProgressBar = ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: LinearProgressIndicator(
@@ -96,51 +96,59 @@ class _BannerNotificationComponentState
               'Time Left: ${1.0 - slideAnimation.value * 15} seconds',
         ));
 
-    return Focus(
+    var bannerNotificationSubContent = Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        BodyTwoText(widget.body, decorationPriority.standard),
+        const Spacer(),
+        const IconBadge(
+            badgeIcon: Assets.alertmessage,
+            badgePriority: decorationPriority.important),
+      ],
+    );
+
+    var bannerNotificationContent = Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: bannerNotificationSubContent,
+        ),
+        const SizedBox(height: 2.0),
+        const DividerElement(),
+        const SizedBox(height: 3.0),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+          child: slidingProgressBar,
+        ),
+        const SizedBox(height: 3.0),
+        const Spacer(),
+      ],
+    );
+
+    var bannerNotificationContainer = FloatingContainerElement(
+      child: Container(
+          constraints: BoxConstraints(
+              minWidth: size.layoutItemWidth(1, screenSize),
+              maxWidth: size.layoutItemWidth(1, screenSize),
+              minHeight: size.layoutItemHeight(6, screenSize),
+              maxHeight: size.layoutItemHeight(6, screenSize)),
+          decoration:
+              CardBackingDecoration(priority: decorationPriority.standard)
+                  .buildBacking(),
+          child: bannerNotificationContent),
+    );
+
+    var bannerNotificationInteractor = Focus(
       child: GestureDetector(
         onVerticalDragEnd: (end) {
           notificationMaster.resetRequests();
         },
-        child: FloatingContainerElement(
-          child: Container(
-              constraints: BoxConstraints(
-                  minWidth: size.layoutItemWidth(1, screenSize),
-                  maxWidth: size.layoutItemWidth(1, screenSize),
-                  minHeight: size.layoutItemHeight(6, screenSize),
-                  maxHeight: size.layoutItemHeight(6, screenSize)),
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.standard)
-                      .buildBacking(),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        BodyTwoText(widget.body, decorationPriority.standard),
-                        const Spacer(),
-                        const IconBadge(
-                            badgeIcon: Assets.alertmessage,
-                            badgePriority: decorationPriority.important),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 2.0),
-                  const DividerElement(),
-                  const SizedBox(height: 3.0),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-                    child: slidingProgressBar,
-                  ),
-                  const SizedBox(height: 3.0),
-                  const Spacer(),
-                ],
-              )),
-        ),
+        child: bannerNotificationContainer,
       ),
     );
+
+    return bannerNotificationInteractor;
   }
 }

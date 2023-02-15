@@ -14,7 +14,23 @@ class BlankScreenComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return FloatingContainerElement(
+    var blankScreenContent = Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Spacer(),
+          const IconBadge(
+              badgeIcon: Assets.alertmessage,
+              badgePriority: decorationPriority.important),
+          const SizedBox(height: 8.0),
+          HeadingThreeText(cardTitle, decorationPriority.standard),
+          const SizedBox(height: 8.0),
+          BodyOneText(cardBody, decorationPriority.standard),
+          const Spacer(),
+        ]);
+
+    var blankScreenContainer = FloatingContainerElement(
       child: Container(
           //this will be the rounded card backing
           constraints: BoxConstraints(
@@ -27,22 +43,10 @@ class BlankScreenComponent extends StatelessWidget {
                   .buildBacking(),
           child: Padding(
             padding: const EdgeInsets.all(35.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Spacer(),
-                  const IconBadge(
-                      badgeIcon: Assets.alertmessage,
-                      badgePriority: decorationPriority.important),
-                  const SizedBox(height: 8.0),
-                  HeadingThreeText(cardTitle, decorationPriority.standard),
-                  const SizedBox(height: 8.0),
-                  BodyOneText(cardBody, decorationPriority.standard),
-                  const Spacer(),
-                ]),
+            child: blankScreenContent,
           )),
     );
+
+    return blankScreenContainer;
   }
 }

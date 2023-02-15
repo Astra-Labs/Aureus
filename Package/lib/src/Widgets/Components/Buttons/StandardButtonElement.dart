@@ -5,9 +5,17 @@ import 'package:aureus/aureus.dart';
 
 class StandardButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
+  // The current decoration priority of the button.
+  // ------------------------------
   final String buttonTitle;
+  // The title of your button
+  // ------------------------------
   final String buttonHint;
+  // What your button does. Used for tooltips / accessibility information.
+  // ------------------------------
   final VoidCallback buttonAction;
+  // The action that your button completes.
+  // ------------------------------
 
   const StandardButtonElement(
       {required this.decorationVariant,
@@ -60,37 +68,39 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
 
     var screenSize = size.logicalScreenSize();
 
-    return Focus(
-      child: Semantics.fromProperties(
-        properties: SemanticsWrapper.button(
-            isEnabled: isButtonEnabled,
-            label: widget.buttonTitle,
-            hint: widget.buttonHint,
-            isMutuallyExclusive: false),
-        child: GestureDetector(
-            onTap: () {
-              if (isButtonEnabled == true) {
-                createButtonInteraction();
-                widget.buttonAction();
-              }
-            },
-            child: PulseShadowElement(
-              pulseWidth: size.layoutItemWidth(1, screenSize),
-              isActive: widget.decorationVariant == decorationPriority.important
-                  ? true
-                  : false,
-              child: FloatingContainerElement(
-                child: SizedBox(
-                    width: size.layoutItemWidth(1, screenSize),
-                    height: minimumButtonTextSize.height + 45,
-                    child: Container(
-                        decoration: buttonDecoration,
-                        child: Center(
-                            child: ButtonTwoText(widget.buttonTitle,
-                                widget.decorationVariant)))),
-              ),
-            )),
-      ),
+    var standardButtonContent = FloatingContainerElement(
+      child: SizedBox(
+          width: size.layoutItemWidth(1, screenSize),
+          height: minimumButtonTextSize.height + 45,
+          child: Container(
+              decoration: buttonDecoration,
+              child: Center(
+                  child: ButtonTwoText(
+                      widget.buttonTitle, widget.decorationVariant)))),
+    );
+
+    var standardButtonInteractor = GestureDetector(
+        onTap: () {
+          if (isButtonEnabled == true) {
+            createButtonInteraction();
+            widget.buttonAction();
+          }
+        },
+        child: PulseShadowElement(
+          pulseWidth: size.layoutItemWidth(1, screenSize),
+          isActive: widget.decorationVariant == decorationPriority.important
+              ? true
+              : false,
+          child: standardButtonContent,
+        ));
+
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: standardButtonInteractor,
     );
   }
 }

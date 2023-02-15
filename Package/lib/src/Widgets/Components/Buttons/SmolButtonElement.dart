@@ -5,9 +5,20 @@ import 'package:aureus/aureus.dart';
 
 class SmolButtonElement extends StatefulWidget {
   final decorationPriority decorationVariant;
+  // The current decoration priority of the button.
+  // ------------------------------
+
   final String buttonTitle;
+  // The title of your button
+  // ------------------------------
+
   final String buttonHint;
+  // What your button does. Used for tooltips / accessibility information.
+  // ------------------------------
+
   final VoidCallback buttonAction;
+  // The action that your button completes.
+  // ------------------------------
 
   const SmolButtonElement(
       {Key? key,
@@ -56,33 +67,34 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return Focus(
-      child: Semantics.fromProperties(
-        properties: SemanticsWrapper.button(
-            isEnabled: isButtonEnabled,
-            label: widget.buttonTitle,
-            hint: widget.buttonHint,
-            isMutuallyExclusive: false),
-        child: GestureDetector(
-            onTap: () {
-              if (isButtonEnabled == true) {
-                createButtonInteraction();
-                widget.buttonAction();
-              }
-            },
-            child: FloatingContainerElement(
-              child: Container(
-                  constraints: BoxConstraints(
-                      minHeight: minimumButtonTextSize.height + 20,
-                      maxHeight: minimumButtonTextSize.height + 20,
-                      maxWidth: minimumButtonTextSize.width + 30,
-                      minWidth: minimumButtonTextSize.width + 30),
-                  decoration: buttonDecoration,
-                  child: Center(
-                      child: TagOneText(
-                          widget.buttonTitle, widget.decorationVariant))),
-            )),
-      ),
+    var smolButtonContent = FloatingContainerElement(
+      child: Container(
+          constraints: BoxConstraints(
+              minHeight: minimumButtonTextSize.height + 20,
+              maxHeight: minimumButtonTextSize.height + 20,
+              maxWidth: minimumButtonTextSize.width + 30,
+              minWidth: minimumButtonTextSize.width + 30),
+          decoration: buttonDecoration,
+          child: Center(
+              child: TagOneText(widget.buttonTitle, widget.decorationVariant))),
+    );
+
+    var smolButtonInteractor = GestureDetector(
+        onTap: () {
+          if (isButtonEnabled == true) {
+            createButtonInteraction();
+            widget.buttonAction();
+          }
+        },
+        child: smolButtonContent);
+
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: smolButtonInteractor,
     );
   }
 }

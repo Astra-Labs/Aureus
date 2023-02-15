@@ -7,12 +7,15 @@ class FullWidthButtonElement extends StatefulWidget {
   final String buttonTitle;
   // The title of your button
   // ------------------------------
+
   final String buttonHint;
   // What your button does. Used for tooltips / accessibility information.
   // ------------------------------
+
   final decorationPriority currentVariant;
   // The current decoration priority of the button.
   // ------------------------------
+
   final VoidCallback buttonAction;
   // The action that your button completes.
   // ------------------------------
@@ -104,43 +107,45 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
+    var fullWidthButtonContent = Container(
+        constraints: BoxConstraints(
+          minHeight: minimumButtonTextSize.height * 3,
+          maxHeight: minimumButtonTextSize.height * 3,
+          minWidth: screenWidth,
+        ),
+        decoration: widget.currentVariant == decorationPriority.important
+            ? BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [_gradient1.value, _gradient2.value]),
+                color: coloration.contrastColor())
+            : buttonDecoration,
+        child: Center(
+            child: ButtonOneText(widget.buttonTitle, widget.currentVariant)));
+
+    var fullWidthButtonInteractor = InkWell(
+        onTap: () {
+          if (isButtonEnabled == true) {
+            createButtonInteraction();
+            widget.buttonAction();
+          }
+        },
+        child: PulseShadowElement(
+          pulseWidth: screenWidth,
+          isActive: widget.currentVariant == decorationPriority.important
+              ? true
+              : false,
+          child: fullWidthButtonContent,
+        ));
+
     return Semantics.fromProperties(
       properties: SemanticsWrapper.button(
           isEnabled: isButtonEnabled,
           label: widget.buttonTitle,
           hint: widget.buttonHint,
           isMutuallyExclusive: false),
-      child: InkWell(
-          onTap: () {
-            if (isButtonEnabled == true) {
-              createButtonInteraction();
-              widget.buttonAction();
-            }
-          },
-          child: PulseShadowElement(
-            pulseWidth: screenWidth,
-            isActive: widget.currentVariant == decorationPriority.important
-                ? true
-                : false,
-            child: Container(
-                constraints: BoxConstraints(
-                  minHeight: minimumButtonTextSize.height * 3,
-                  maxHeight: minimumButtonTextSize.height * 3,
-                  minWidth: screenWidth,
-                ),
-                decoration:
-                    widget.currentVariant == decorationPriority.important
-                        ? BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [_gradient1.value, _gradient2.value]),
-                            color: coloration.contrastColor())
-                        : buttonDecoration,
-                child: Center(
-                    child: ButtonOneText(
-                        widget.buttonTitle, widget.currentVariant))),
-          )),
+      child: fullWidthButtonInteractor,
     );
   }
 }

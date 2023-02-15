@@ -33,50 +33,56 @@ class NotificationComponent extends StatelessWidget {
 
     var screenSize = size.logicalScreenSize();
 
+    var notificationTopContent = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          TagTwoText(notificationSubCategory, notificationPriority),
+          TagTwoText(
+              '${notificationReceived.month}/${notificationReceived.day}/${notificationReceived.year}',
+              notificationPriority)
+        ],
+      ),
+    );
+
+    var notificationMidContent = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            HeadingFourText(notificationHeader, notificationPriority),
+            Center(
+              child: Container(
+                  width: 10,
+                  height: 10,
+                  alignment: Alignment.center,
+                  decoration: readIndicatorDecoration),
+            )
+          ]),
+    );
+
+    var notificationBottomContent = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child:
+          Expanded(child: BodyOneText(notificationBody, notificationPriority)),
+    );
+
     Column notificationContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                TagTwoText(notificationSubCategory, notificationPriority),
-                TagTwoText(
-                    '${notificationReceived.month}/${notificationReceived.day}/${notificationReceived.year}',
-                    notificationPriority)
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  HeadingFourText(notificationHeader, notificationPriority),
-                  Center(
-                    child: Container(
-                        width: 10,
-                        height: 10,
-                        alignment: Alignment.center,
-                        decoration: readIndicatorDecoration),
-                  )
-                ]),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Expanded(
-                child: BodyOneText(notificationBody, notificationPriority)),
-          )
+          notificationTopContent,
+          notificationMidContent,
+          notificationBottomContent
         ]);
 
-    return FloatingContainerElement(
+    var notificationComponentContainer = FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
               minHeight: size.layoutItemHeight(6, screenSize),
@@ -87,5 +93,7 @@ class NotificationComponent extends StatelessWidget {
           decoration: boxDecoration,
           child: Center(child: notificationContent)),
     );
+
+    return notificationComponentContainer;
   }
 }

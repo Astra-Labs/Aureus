@@ -51,22 +51,25 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
 
     var screenSize = size.logicalScreenSize();
 
-    return FloatingContainerElement(
-      child: SizedBox(
-          width: size.layoutItemWidth(1, screenSize),
-          height: size.layoutItemHeight(6, screenSize),
-          child: Container(
-              padding: const EdgeInsets.all(8),
-              decoration:
-                  LayerBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
-              child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      mainAxisSize: MainAxisSize.min,
-                      children: tabItems)))),
-    );
+    var iconTabbingBarContent = SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: tabItems));
+
+    var iconTabbingBarContainer = FloatingContainerElement(
+        child: SizedBox(
+            width: size.layoutItemWidth(1, screenSize),
+            height: size.layoutItemHeight(6, screenSize),
+            child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: LayerBackingDecoration(
+                        priority: decorationPriority.inactive)
+                    .buildBacking(),
+                child: iconTabbingBarContent)));
+
+    return iconTabbingBarContainer;
   }
 }

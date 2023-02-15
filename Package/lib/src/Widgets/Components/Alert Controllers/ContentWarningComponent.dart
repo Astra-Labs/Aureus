@@ -36,7 +36,28 @@ class ContentWarningComponent extends StatelessWidget {
       ],
     );
 
-    var warningLayout = Container(
+    var warningLayerContent = Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 10.0),
+          const Spacer(),
+          const IconBadge(
+              badgeIcon: Assets.alertmessage,
+              badgePriority: decorationPriority.important),
+          const SizedBox(height: 10.0),
+          const Spacer(),
+          HeadingThreeText("Content Warning", decorationPriority.standard),
+          const SizedBox(height: 10.0),
+          const Spacer(),
+          BodyOneText(warningDescription, decorationPriority.standard),
+          const SizedBox(height: 20.0),
+          buttonRow,
+          const SizedBox(height: 20.0),
+        ]);
+
+    var warningLayoutContainer = Container(
         constraints: BoxConstraints(
             minHeight: size.layoutItemHeight(2, screenSize),
             maxHeight: size.layoutItemHeight(2, screenSize),
@@ -46,29 +67,9 @@ class ContentWarningComponent extends StatelessWidget {
             .buildBacking(),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 10.0),
-                const Spacer(),
-                const IconBadge(
-                    badgeIcon: Assets.alertmessage,
-                    badgePriority: decorationPriority.important),
-                const SizedBox(height: 10.0),
-                const Spacer(),
-                HeadingThreeText(
-                    "Content Warning", decorationPriority.standard),
-                const SizedBox(height: 10.0),
-                const Spacer(),
-                BodyOneText(warningDescription, decorationPriority.standard),
-                const SizedBox(height: 20.0),
-                buttonRow,
-                const SizedBox(height: 20.0),
-              ]),
+          child: warningLayerContent,
         ));
 
-    return warningLayout;
+    return warningLayoutContainer;
   }
 }
