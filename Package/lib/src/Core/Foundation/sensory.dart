@@ -45,7 +45,7 @@ class Sensory {
   var holdAudioPath = "sounds/hold.mp3";
 
   Future<void> createSensation(sensationType sense) async {
-    /*switch (sense) {
+    switch (sense) {
       case sensationType.confirmation:
         {
           HapticFeedback.lightImpact();
@@ -123,6 +123,6 @@ class Sensory {
           player.play();
           break;
         }
-    }*/
+    }
   }
 }

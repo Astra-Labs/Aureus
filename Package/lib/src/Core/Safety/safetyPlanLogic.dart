@@ -1,72 +1,4 @@
-import 'package:aureus/aureus.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-/*--------- IMPORTANT ----------*/
-
-/* 
-
-Tampering with the implementation of the Safety Plan, or harvesting the 
-information for marketing or data collection purposes is against the terms 
-of the Aureus license, and can result in having your license revoked. 
-
-*/
-
-/*--------- ENUMS ----------*/
-
-// ---------------------------------------------
-
-/* An enum that determines if account creation is linked to the software. 
-
-- If an account is not needed to access functionality within your app, use singleUse. 
-- If an account IS needed, use reccuringUse. 
-
-*/
-
-enum SafetyPlanFrequency {
-  singleUse, // software is used once, but doesn't have an account linked to it or isn't intended for long term visits.
-  recurringUse // user has account with software, and is required to register to use.
-}
-
-// ---------------------------------------------
-/* 
-
-An enum that holds the current safety plan options a user can choose. 
-
-*/
-
-enum SafetyPlanOptions {
-  disableNotifications, //doesn't allow app to send notifications
-  disableBiometrics, //disables biometrics as a log-in method
-  enable2FA, //enables 2FA with a passcode
-  onlyNeccessaryEmails, //opts out of emails unrelated to urgent account information
-  localDataStorage, //aims to store data locally instead of on a server
-  failedPasscodeDataDeletion, //deletes user data after 10 failed passcode attempts
-  exitBar, //shows a permanent exit bar on the screen that shuts down when pressed
-  disableScreenshots, //stops screen recordings and screenshots
-  deviceSandbox, //stops the resources from using other features on the device that can be logged (e.g: opening a browser or sending a message)
-  logFailedAttempts //keeps track of all of the failed log in attempts for the user to review.
-}
-
-/* 
-
-A class that metadata about what the different options mean. 
-
-*/
-
-class SafetyOptionDetails {
-  final String name;
-  final String description;
-  final IconData icon;
-  final String functionalityChange;
-
-  const SafetyOptionDetails(
-      {required this.name,
-      required this.description,
-      required this.icon,
-      required this.functionalityChange});
-}
-
-// ---------------------------------------------
+part of aureus_safety_plan;
 
 /*--------- SAFETY ----------*/
 
@@ -74,30 +6,47 @@ class SafetyOptionDetails {
 // safety plan for the user.
 
 class Safety {
-  /* 
-  
-  A map that contains Safety Plan options that ALL software can complete.
-  If you pass an empty list to productEligiblePlanOptions, basePlanOptions
-  will be used to create a safety plan for the user. 
-  
-  */
   static Map<SafetyPlanOptions, bool> basePlanOptions = {
     SafetyPlanOptions.deviceSandbox: true,
     SafetyPlanOptions.exitBar: true,
     SafetyPlanOptions.disableScreenshots: true
   };
-
   /* 
-  
+  A map that contains Safety Plan options that ALL software can complete.
+  If you pass an empty list to productEligiblePlanOptions, basePlanOptions
+  will be used to create a safety plan for the user. 
+  */
+  // --------------------------------------------------
+
+  static const detailMetaData = SafetyOptionDetailMetadata();
+  // A reference to the metadata class in a separate file
+  // --------------------------------------------------
+
+  final List<SafetyPlanOptions> eligiblePlanOptions;
+  /* 
   A map that contains product specific Safety Plan options aside from the base options
   This is where YOU pass to Aureus what options you can adopt. Please ensure
   ALL ELIGIBLE plan options are choosen when passed to packageVariables in initialization. 
-  
   */
-  final List<SafetyPlanOptions> eligiblePlanOptions;
+  // --------------------------------------------------
+
   final SafetyPlanFrequency frequencyUsage;
+  // The frequency usage is how often you anticipate someone to use your piece of software.
+  // --------------------------------------------------
+
   final bool? isActionBarDevEnabled;
+  // This is if you are using a quick action bar that allows user to access
+  // certain functionality on every single page. This is helpful if you have
+  // 'emergency' features that need to be accessed on every page (e.g: dealing
+  //  with suicidal users who may emergency access a tool).
+  // --------------------------------------------------
+
   final List<TabObject>? quickActionItems;
+  // If you do want a quick action bar to appear on every screen, these are
+  // the objects that will show up in the bar. The tabs can do anything from
+  // call an emergency hotline, to segue users to a specific tool. The idea
+  // is to limit these to really sensitive resources that need to be close at all times
+  // --------------------------------------------------
 
   const Safety(
       {required this.frequencyUsage,
@@ -105,185 +54,80 @@ class Safety {
       this.isActionBarDevEnabled = false,
       this.quickActionItems = const []});
 
-  SafetyOptionDetails retrieveDetails(SafetyPlanOptions option) {
-    switch (option) {
-      case SafetyPlanOptions.onlyNeccessaryEmails:
-        return onlyNeccessaryEmailsDetails();
+  /*
 
-      case SafetyPlanOptions.disableNotifications:
-        return disableNotificationsDetails();
+  Takes a list of fallbacks (options that a specific piece of code violates,
+  and the desired fallback to complete instead). You should use this to check
+  if the piece of code you wrote violated a SafetyPlan request.
+  
+  To use an action SafetyCheck, provide:
+    - fallbackItems: A list of rules that you may violate, and the fallback code you want to execute
+    - primaryItem: the action you want to take if the user's safetyPlan allows it.   
 
-      case SafetyPlanOptions.disableBiometrics:
-        return disableBiometricsDetails();
+    For example, before sending a notification you would provide the context, 
+    the fallback items in case a user doesn't want notifications (the alt code to execute would be nothing), 
+    and the primary item would be scheduling / sending the notification. 
 
-      case SafetyPlanOptions.enable2FA:
-        return enable2FADetails();
+    Keep in mind this is a future, and requires the proper handling for async 
+    code. If you're a beginner, another area you might recognize async code from 
+    is a networking request. It's relatively similar to requesting data from an API! 
 
-      case SafetyPlanOptions.localDataStorage:
-        return localDataStorageDetails();
+    So think of it as querying a user's "safety API" while giving the error handling
+    directly to the API itself. The VoidCallback you're given is the executable code to run. 
 
-      case SafetyPlanOptions.failedPasscodeDataDeletion:
-        return failedPasscodeDataDeletionDetails();
+    You can learn about how to handle futures in dart here: 
+  */
 
-      case SafetyPlanOptions.exitBar:
-        return exitBarDetails();
-
-      case SafetyPlanOptions.disableScreenshots:
-        return disableScreenshotsDetails();
-
-      case SafetyPlanOptions.deviceSandbox:
-        return deviceSandboxDetails();
-
-      case SafetyPlanOptions.logFailedAttempts:
-        return logFailedAttemptsDetails();
-    }
-  }
-
-  SafetyOptionDetails onlyNeccessaryEmailsDetails() {
-    return const SafetyOptionDetails(
-        name: 'Only receieve neccessary emails.',
-        description:
-            'Opts you out of any emails outside of required account functionality emails.',
-        icon: Assets.mail,
-        functionalityChange:
-            'You will not be sent any emails outside of required account functionality.');
-  }
-
-  SafetyOptionDetails disableNotificationsDetails() {
-    return SafetyOptionDetails(
-        name: 'Disable notifications.',
-        description:
-            'Stops us from sending you push notifications that may show up on your phone / browser screen.',
-        icon: Assets.paperplane,
-        functionalityChange:
-            'You will not receive push notifications from ${resourceValues.name}');
-  }
-
-  SafetyOptionDetails disableBiometricsDetails() {
-    return SafetyOptionDetails(
-        name: 'Disable biometrics.',
-        description:
-            'Turns off the ability to access or make changes to your account with biometric (TouchID / FaceID) authentication.',
-        icon: Assets.person,
-        functionalityChange:
-            "You won't be able to use your face or fingerprints to perform actions on ${resourceValues.name}");
-  }
-
-  SafetyOptionDetails enable2FADetails() {
-    return SafetyOptionDetails(
-        name: 'Enable Two Factor Authentication.',
-        description:
-            "Asks you for a secondary passcode to finish signing in. You'll set this passcode later on.",
-        icon: Assets.stop,
-        functionalityChange:
-            'You will not be able to access ${resourceValues.name} without a secondary passcode.');
-  }
-
-  SafetyOptionDetails localDataStorageDetails() {
-    return const SafetyOptionDetails(
-        name: 'Request local data storage.',
-        description:
-            'Keeps your data off of the cloud by encrypting it locally on your local device, instead of using a database and servers.',
-        icon: Assets.pencil,
-        functionalityChange:
-            'This will stop you from having access to data back-ups and cloud access. You will only be able to access information from the device it was originally stored on.');
-  }
-
-  SafetyOptionDetails failedPasscodeDataDeletionDetails() {
-    return SafetyOptionDetails(
-        name: 'Delete data after failed log-in attempts.',
-        description:
-            'Automatically deletes all usuable data on ${resourceValues.name} if you enter your password or code incorrectly more than 10 times.',
-        icon: Assets.alert,
-        functionalityChange:
-            'You will not be able to retrieve any account data after it has been deleted. To continue using ${resourceValues.name}, you will need to re-set up an account from scratch.');
-  }
-
-  SafetyOptionDetails exitBarDetails() {
-    return SafetyOptionDetails(
-        name: 'Show an emergency exit bar.',
-        description:
-            'Has an exit bar that allows you to quickly leave ${resourceValues.name} on every screen.',
-        icon: Assets.expand,
-        functionalityChange:
-            'You will see an exit bar on every screen you access.');
-  }
-
-  SafetyOptionDetails disableScreenshotsDetails() {
-    return SafetyOptionDetails(
-        name: 'Disable screenshots.',
-        description: 'Screenshots / screen recordings will be blocked.',
-        icon: Assets.lock,
-        functionalityChange:
-            'You will not be able to take screenshots or screen recordings inside of ${resourceValues.name}');
-  }
-
-  SafetyOptionDetails deviceSandboxDetails() {
-    return SafetyOptionDetails(
-        name: 'Sandbox your device.',
-        description:
-            'Disables ${resourceValues.name} from doing anything outside of its container. This disables opening links, exporting items, sending messages, sending data to a server, and more.',
-        icon: Assets.link,
-        functionalityChange:
-            'You will not be able to complete any functionality that requires ${resourceValues.name} to use a 3rd party service. This will completely block it from having contact with the rest of your device.');
-  }
-
-  SafetyOptionDetails logFailedAttemptsDetails() {
-    return const SafetyOptionDetails(
-        name: 'Track failed log-in attempts.',
-        description: 'Keeps a log of failed attempts to access your account.',
-        icon: Assets.alertmessage,
-        functionalityChange:
-            'You will have a log available in settings of failed log-in attempts.');
-  }
-
-  // Takes a list of fallbacks (options that a specific piece of code violates,
-  // and the desired fallback to complete instead)
-  Future<VoidCallback> actionSafetyCheck(BuildContext actionContext,
+  Future<VoidCallback> actionSafetyCheck(
       List<SafetyPlanFallback> fallbackItems, VoidCallback primaryItem) async {
-    VoidCallback executableCode = () => {};
-
-    var screenWidth = size.logicalWidth();
-    var screenHeight = size.logicalHeight();
-
-    Widget alertControllerModal = SizedBox(
-      width: screenWidth,
-      height: screenHeight,
-      child: FloatingContainerElement(
-          child: Center(
-              child: CenteredAlertControllerComponent(
-                  alertData: AlertControllerObject.singleAction(
-                      onCancellation: () => {Navigator.pop(actionContext)},
-                      alertTitle: "Error!",
-                      alertBody:
-                          "You requested an action that was disabled by your Safety Plan settings.",
-                      alertIcon: Icons.alternate_email_outlined,
-                      actions: [
-            AlertControllerAction(
-                actionName: "Okay.",
-                actionSeverity: AlertControllerActionSeverity.standard,
-                onSelection: () => {Navigator.pop(actionContext)})
-          ])))),
-    );
+    VoidCallback executableCode = primaryItem;
 
     for (var element in fallbackItems) {
-      if (await _SafetyPlan()._readSetting(element.safetyOption) == true) {
+      if (await _SafetyPlanStorageLayer()._readSetting(element.safetyOption) ==
+          true) {
         if (element.fallbackOption == SafetyFallBackOptions.alternateCode) {
           executableCode = element.fallbackCode!;
         } else if (element.fallbackOption ==
             SafetyFallBackOptions.errorController) {
-          executableCode = () => {
-                Navigator.pushReplacement(
-                    actionContext,
-                    MaterialPageRoute(
-                      builder: (context) => alertControllerModal,
-                    ))
-              };
+          executableCode = () {
+            var safetyOption =
+                detailMetaData.retrieveDetails(element.safetyOption).name;
+
+            // Creates an alert controller object to show to the user.
+            var disabledAlertControllerObject = AlertControllerObject.singleAction(
+                onCancellation: () => {},
+                alertTitle: "Blocked Action",
+                alertBody:
+                    "You requested an action that was disabled by your Safety Plan settings. The setting blocking this action is $safetyOption. You can go into your settings to change your Safety Plan settings at any time.",
+                alertIcon: Assets.alertmessage,
+                actions: [
+                  AlertControllerAction(
+                      actionName: "Okay.",
+                      actionSeverity: AlertControllerActionSeverity.standard,
+                      onSelection: () => {}),
+                ]);
+
+            notificationMaster
+                .sendAlertControllerRequest(disabledAlertControllerObject);
+          };
         }
       }
     }
 
     return executableCode;
+  }
+
+  // --------------------------------------------------
+
+  // An interface to record failed log-in attempts for users to look back at.
+  void recordFailedLogInAttempt() {
+    var date = DateTime.now();
+    _SafetyPlanStorageLayer().writeLogIn(date.toString());
+  }
+
+  Future<List<String>> readAllFailedLogInAttempts() async {
+    var attempts = await _SafetyPlanStorageLayer().readFailedLogInAttempts;
+    return attempts;
   }
 }
 
@@ -298,13 +142,14 @@ Aureus sets a safety plan through the 3 associated screens:
 - SafetyPlanConfirmationView
 - SafetyPlanFunctionalityView
 
-After that, you interact with the Safety Plan by writing 
+After that, you interact with the Safety Plan by using the actionSafetyCheck function in SafetyPlan
 
 */
 
-class _SafetyPlan {
+class _SafetyPlanStorageLayer {
   final _storage = const FlutterSecureStorage();
 
+  // Switches the option into the relevant key for writing / retrival
   String safetyPlanKey(SafetyPlanOptions option) {
     switch (option) {
       case SafetyPlanOptions.onlyNeccessaryEmails:
@@ -339,20 +184,24 @@ class _SafetyPlan {
     }
   }
 
+  // READ / WRITE SETTINGS
+  // --------------------------------------------------
+
+  // Reads a setting
   Future<bool> _readSetting(SafetyPlanOptions option) async {
     final settings = _storage.read(key: safetyPlanKey(option));
-
     return settings.toString() == "true" ? true : false;
   }
 
+  // Writes a setting
   Future<void> _writeSetting(SafetyPlanOptions option, bool isEnabled) async {
     await _storage.write(
         key: safetyPlanKey(option), value: isEnabled.toString());
   }
 
+  // Reads ALL settings
   Future<Map<SafetyPlanOptions, bool>> get readSettings async {
     // pull settings from local storage here
-
     Map<SafetyPlanOptions, bool> settings = {};
 
     for (var element in SafetyPlanOptions.values) {
@@ -362,11 +211,42 @@ class _SafetyPlan {
     return settings;
   }
 
-  //write settings directly to local storage
+  //write ALL settings specified in the parameters directly to local storage
   Future<void> writeSettings(Map<SafetyPlanOptions, bool> newSettings) async {
     for (var element in newSettings.entries) {
       _writeSetting(element.key, element.value);
     }
+  }
+
+  // READ / WRITE FAILED LOG IN ATTEMPTS
+  // --------------------------------------------------
+
+  var logInKey = "";
+
+  // Reads ALL failed log in attempts
+  Future<List<String>> get readFailedLogInAttempts async {
+    // pull settings from local storage here
+    List<String> attempts = [];
+
+    var data = _storage.read(key: logInKey);
+
+    // Waits for the future to complete, and then separates them based
+    // on the "+" symbol into their attempts.
+    data.whenComplete(() => {});
+
+    return attempts;
+  }
+
+  //Writes a failed log-in attempt.
+  Future<void> writeLogIn(String logInData) async {
+    // There needs to be some way to separate the String with special characters
+    // to determine the separate attempts, since you can only write single strings
+    // to the local storage.
+
+    var previousAttempts = await _storage.read(key: logInKey);
+    var updatedAttempts = previousAttempts ?? "" + logInData;
+
+    await _storage.write(key: logInKey, value: updatedAttempts);
   }
 }
 
@@ -416,7 +296,7 @@ class _SafetyPlanFunctionalityViewState
   List<ComplexSwitchCardElement> optionCards = [];
 
   void updateSettings() {
-    _SafetyPlan().writeSettings(userEnabledSettings).then(
+    _SafetyPlanStorageLayer().writeSettings(userEnabledSettings).then(
         (value) => {
               notificationMaster.sendAlertControllerRequest(
                   AlertControllerObject.singleAction(
@@ -459,7 +339,7 @@ class _SafetyPlanFunctionalityViewState
     var screenSize = size.logicalScreenSize();
 
     for (var element in widget.userSelectedOptions) {
-      var safetyObject = resourceValues.safetySettings.retrieveDetails(element);
+      var safetyObject = Safety.detailMetaData.retrieveDetails(element);
       optionCards.add(ComplexSwitchCardElement(
           onEnable: () =>
               {userEnabledSettings.putIfAbsent(element, () => true)},
@@ -514,6 +394,13 @@ class _SafetyPlanFunctionalityViewState
   }
 }
 
+// Safety Plan Modification View
+// ------------------------------------------------
+// Dev Note: This view is located within the safety.dart file
+// to make sure that access to SafetyPlan isn't accessible outside
+// of the filescope. This is how access modifers work in Dart,
+// which is frustrating but just how it be right now.
+
 class _PlanModificationLoadingView extends StatefulWidget {
   final Map<SafetyPlanOptions, bool> userEnabledSettings;
   final Widget exitPoint;
@@ -532,7 +419,8 @@ class _PlanModificationLoadingViewState
   Widget build(BuildContext context) {
     var futureViewLayout = ContainerWrapperElement(children: [
       FutureBuilder<void>(
-        future: _SafetyPlan().writeSettings(widget.userEnabledSettings),
+        future:
+            _SafetyPlanStorageLayer().writeSettings(widget.userEnabledSettings),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the screen and the alert controller confirmation.

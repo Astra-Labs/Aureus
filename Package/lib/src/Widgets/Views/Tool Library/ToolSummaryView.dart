@@ -4,6 +4,7 @@ import 'package:aureus/aureus.dart';
 
 class ToolSummaryView extends StatefulWidget {
   final CoreTool parentTool;
+
   ToolSummaryView({Key? key, required this.parentTool})
       : assert(parentTool.toolCards!.isNotEmpty == true,
             'Tool Summary View requires the parent CoreTool to have tool cards in the navigation container.'),

@@ -25,7 +25,8 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
       eligibleOptionCards.add(StandardSwitchCardElement(
           onEnable: () => {userSelectedOptions.add(element)},
           onDisable: () => {userSelectedOptions.remove(element)},
-          switchDescription: safety.retrieveDetails(element).name));
+          switchDescription:
+              Safety.detailMetaData.retrieveDetails(element).name));
     }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(

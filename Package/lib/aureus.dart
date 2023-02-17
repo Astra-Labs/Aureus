@@ -12,7 +12,7 @@ export 'package:google_fonts/google_fonts.dart';
 export 'src/Core/foundation.dart';
 export 'src/Core/accessibility.dart';
 export 'src/Core/coloration.dart';
-export 'src/Core/Safety/safety.dart';
+export 'src/Core/Safety/safetyLib.dart';
 
 export 'src/Core/Foundation/animation.dart';
 export 'src/Core/Foundation/palette.dart';

@@ -22,8 +22,6 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
   Widget build(BuildContext context) {
     List<Widget> eligibleOptionCards = [];
 
-    var safety = resourceValues.safetySettings;
-
     var screenSize = size.logicalScreenSize();
 
     for (var element in productSafetyObject.eligiblePlanOptions) {
@@ -32,7 +30,8 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
         child: StandardSwitchCardElement(
             onEnable: () => {},
             onDisable: () => {},
-            switchDescription: safety.retrieveDetails(element).name),
+            switchDescription:
+                Safety.detailMetaData.retrieveDetails(element).name),
       ));
     }
 
