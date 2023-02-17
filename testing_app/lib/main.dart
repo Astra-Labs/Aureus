@@ -4,14 +4,16 @@ void main() {
   var resourceBranding = AureusBranding(
       fontFamily: 'Exo',
       lightModeStyle: AureusStylization(
-          contrastGradient: LinearGradient(colors: [carbon(), black()]),
-          accentColor: Color.fromRGBO(225, 230, 255, 1.0),
+          contrastGradient:
+              LinearGradient(colors: [palette.carbon(), palette.black()]),
+          accentColor: palette.carbon(),
           primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
       darkModeStyle: AureusStylization(
-          contrastGradient: LinearGradient(colors: [melt(), frost()]),
-          accentColor: lavender(),
+          contrastGradient:
+              LinearGradient(colors: [palette.melt(), palette.frost()]),
+          accentColor: palette.lavender(),
           primaryImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
@@ -111,7 +113,9 @@ class AureusTestApp extends StatelessWidget {
     ];
 
     precacheImages(
-        brightness() == Brightness.light ? lightImageCache : darkImageCache,
+        palette.brightness() == Brightness.light
+            ? lightImageCache
+            : darkImageCache,
         context);
 
     return MaterialApp(
@@ -147,14 +151,14 @@ class LandingPage extends StatelessWidget {
 
     Image landingUIOverlayImage() {
       return Image(
-          image: brightness() == Brightness.light
+          image: palette.brightness() == Brightness.light
               ? AssetImage('assets/Light Mode - Preview.png')
               : AssetImage('assets/Dark Mode - Preview.png'));
     }
 
     Image landscapeBackgroundImage() {
       return Image(
-          image: brightness() == Brightness.light
+          image: palette.brightness() == Brightness.light
               ? Image.network(
                       'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80')
                   .image

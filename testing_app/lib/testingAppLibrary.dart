@@ -10,17 +10,20 @@ export 'package:url_launcher/url_launcher.dart';
 
 // CORE -------------------------
 
-//  ------------------------- COMPONENTS
-part 'src/Core/Components/ComponentsList.dart';
-part 'src/Core/Components/ComponentsView.dart';
-
-//  ------------------------- ELEMENTS
-part 'src/Core/Elements/ElementsList.dart';
-part 'src/Core/Elements/ElementsView.dart';
+//  ------------------------- UI COMPS
+part 'src/Core/UI Components/Views/ViewsList.dart';
+part 'src/Core/UI Components/Views/ViewSubView.dart';
+part 'src/Core/UI Components/Elements/ElementsList.dart';
+part 'src/Core/UI Components/Elements/ElementsSubView.dart';
+part 'src/Core/UI Components/Components/ComponentsList.dart';
+part 'src/Core/UI Components/Components/ComponentsSubView.dart';
+part 'src/Core/UI Components/UIComponentsView.dart';
 
 //  ------------------------- INTERACTIONS
 part 'src/Core/Interactions/InteractionsList.dart';
 part 'src/Core/Interactions/InteractionsView.dart';
+part 'src/Core/Interactions/SensationActionsList.dart';
+part 'src/Core/Interactions/ContainerActionsList.dart';
 
 //  ------------------------- DATA DETAIL
 part 'src/Core/Data Detail/DataDetailList.dart';
@@ -32,11 +35,6 @@ part 'src/Core/Safety/SafetyView.dart';
 
 //  ------------------------- TOOLS
 part 'src/Core/Tools/ToolsList.dart';
-part 'src/Core/Tools/ToolsView.dart';
-
-//  ------------------------- VIEWS
-part 'src/Core/Views/ViewsList.dart';
-part 'src/Core/Views/ViewsView.dart';
 
 //  ------------------------- LANDING
 part 'src/Core/Landing/HomeNavigation.dart';

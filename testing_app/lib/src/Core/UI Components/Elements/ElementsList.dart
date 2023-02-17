@@ -7,7 +7,6 @@ part of AureusTestingApp;
 Map<String, Widget> aureusElements = {
   'Typography': textTestListView,
   'Tab Subheader': tabSubheader,
-  'Divider': divider,
   'Slider': slider,
   'Timer': timer,
   'Standard Text Field': singleInput,
@@ -100,14 +99,11 @@ List<Text> textTesting = [
 ];
 
 var textTestListView = ListView.separated(
-  padding: const EdgeInsets.all(8),
+  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
   shrinkWrap: true,
   itemCount: textTesting.length,
   itemBuilder: (BuildContext context, int index) {
-    return Container(
-        height: 50,
-        width: 350,
-        child: Container(width: 350, height: 50, child: textTesting[index]));
+    return textTesting[index];
   },
   separatorBuilder: (BuildContext context, int index) => const Divider(),
 );

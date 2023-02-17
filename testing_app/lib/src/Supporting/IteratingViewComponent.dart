@@ -134,53 +134,40 @@ class _IteratingComponentState extends State<IteratingComponent> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FloatingContainerElement(
-              child: Container(
-                constraints: BoxConstraints(
-                    maxHeight: size.layoutItemHeight(3, screenSize)),
-                decoration:
-                    CardBackingDecoration(priority: decorationPriority.inactive)
-                        .buildBacking(),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    TagOneText(currentTitle, decorationPriority.standard),
-                    Spacer(),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        IconButtonElement(
-                            decorationVariant: (_selectedIndex == 0)
-                                ? decorationPriority.inactive
-                                : decorationPriority.important,
-                            buttonIcon: Assets.back,
-                            buttonHint: 'Previous Item',
-                            buttonAction: () =>
-                                {_onItemTapped(_selectedIndex -= 1)},
-                            buttonPriority: buttonSize.secondary),
-                        SizedBox(width: 10),
-                        IconButtonElement(
-                            decorationVariant:
-                                (_selectedIndex > (tabItems.length - 2))
-                                    ? decorationPriority.inactive
-                                    : decorationPriority.important,
-                            buttonIcon: Assets.next,
-                            buttonHint: 'Next Item',
-                            buttonAction: () =>
-                                {_onItemTapped(_selectedIndex += 1)},
-                            buttonPriority: buttonSize.secondary)
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              TagOneText(currentTitle, decorationPriority.standard),
+              Spacer(),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  IconButtonElement(
+                      decorationVariant: (_selectedIndex == 0)
+                          ? decorationPriority.inactive
+                          : decorationPriority.important,
+                      buttonIcon: Assets.back,
+                      buttonHint: 'Previous Item',
+                      buttonAction: () => {_onItemTapped(_selectedIndex -= 1)},
+                      buttonPriority: buttonSize.secondary),
+                  SizedBox(width: 10),
+                  IconButtonElement(
+                      decorationVariant:
+                          (_selectedIndex > (tabItems.length - 2))
+                              ? decorationPriority.inactive
+                              : decorationPriority.important,
+                      buttonIcon: Assets.next,
+                      buttonHint: 'Next Item',
+                      buttonAction: () => {_onItemTapped(_selectedIndex += 1)},
+                      buttonPriority: buttonSize.secondary),
+                  SizedBox(width: 10),
+                ],
+              )
+            ],
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

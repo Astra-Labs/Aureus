@@ -1,13 +1,13 @@
 part of AureusTestingApp;
 
 Image initializationDemoImage() {
-  if (brightness() == Brightness.light) {
+  if (palette.brightness() == Brightness.light) {
     return Image(
       image: AssetImage('assets/Landing-Example-Light-Mode.png'),
       semanticLabel:
           'A code editor that shows how to write a landing page using Aureus.',
     );
-  } else if (brightness() == Brightness.dark) {
+  } else if (palette.brightness() == Brightness.dark) {
     return Image(
         image: AssetImage('assets/Landing-Example-Dark-Mode.png'),
         semanticLabel:
@@ -17,13 +17,13 @@ Image initializationDemoImage() {
 }
 
 Image demoCreationImage() {
-  if (brightness() == Brightness.light) {
+  if (palette.brightness() == Brightness.light) {
     return Image(
       image: AssetImage('assets/Light-Mode-Demo.png'),
       semanticLabel:
           'A phone and tablet side by side showing a landing page from Aureus.',
     );
-  } else if (brightness() == Brightness.dark) {
+  } else if (palette.brightness() == Brightness.dark) {
     return Image(
       image: AssetImage('assets/Dark-Mode-Demo.png'),
       semanticLabel:
@@ -287,7 +287,7 @@ class _breakoutAreaState extends State<breakoutArea> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AureusElementsView(),
+                    builder: (context) => AureusComponentsView(),
                   ))
             },
         child: CategoryIconDetailCardElement(
@@ -317,7 +317,7 @@ class _breakoutAreaState extends State<breakoutArea> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AureusViewsView(),
+                    builder: (context) => AureusComponentsView(),
                   ))
             },
         child: CategoryIconDetailCardElement(

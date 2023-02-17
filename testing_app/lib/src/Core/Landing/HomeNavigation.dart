@@ -8,20 +8,10 @@ class ExplorationView extends StatefulWidget {
 class _ExplorationViewState extends State<ExplorationView> {
   List<ControllerTabObject> tabItems = [
     ControllerTabObject(
-        tabController: AureusElementsView(),
-        tabTitle: "Elements",
-        accessibilityHint: "Shows you the elements page",
-        tabIcon: Assets.add),
-    ControllerTabObject(
         tabController: AureusComponentsView(),
-        tabTitle: "Components",
-        accessibilityHint: "Shows you the components",
-        tabIcon: Assets.babycarriage),
-    ControllerTabObject(
-        tabController: AureusViewsView(),
-        tabTitle: "Views",
-        accessibilityHint: "Shows you the views",
-        tabIcon: Assets.hamburgermenu),
+        tabTitle: "UI",
+        accessibilityHint: "Shows you all of the UI Components in Aureus.",
+        tabIcon: Assets.add),
     ControllerTabObject(
         tabController: ToolDetailView(
           parentTool: testingTool,
@@ -39,11 +29,6 @@ class _ExplorationViewState extends State<ExplorationView> {
         tabTitle: "Data",
         accessibilityHint: "Lets you try the data detail view",
         tabIcon: Assets.settings),
-    ControllerTabObject(
-        tabController: TestingView(),
-        tabTitle: "Testing",
-        accessibilityHint: "Shows you the testing page",
-        tabIcon: Assets.pencil)
   ];
 
   @override
