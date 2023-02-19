@@ -36,11 +36,15 @@ class _PasscodeViewState extends State<PasscodeView> {
   }
 
   void resetScreen() {
-    entryText = "";
+    setState(() {
+      entryText = "";
+    });
   }
 
   void addDigit(String item) {
-    entryText = entryText + item;
+    setState(() {
+      entryText = entryText + item;
+    });
   }
 
   void tryPassword() {
@@ -54,13 +58,31 @@ class _PasscodeViewState extends State<PasscodeView> {
     }
   }
 
-  void resetPassword() {}
+  void resetPassword() {
+    notificationMaster.sendAlertNotificationRequest(
+        "Incorrect passcode.", Assets.alert);
+    resetScreen();
+  }
 
   Widget createNumberButton(int number) {
+    var numberButton = Padding(
+      padding: EdgeInsets.all(size.responsiveSize(17.0)),
+      child: Container(
+        width: size.responsiveSize(80.0),
+        height: size.responsiveSize(80.0),
+        decoration: ButtonBackingDecoration(
+                variant: buttonDecorationVariants.circle,
+                priority: decorationPriority.standard)
+            .buildBacking(),
+        child: Center(
+          child: HeadingThreeText("$number", decorationPriority.standard),
+        ),
+      ),
+    );
+
     return GestureDetector(
       onTap: () {
         setState(() {
-          print("a tap has occured");
           if (entryText.length == widget.passcode.length) {
             tryPassword();
           } else {
@@ -69,20 +91,7 @@ class _PasscodeViewState extends State<PasscodeView> {
           }
         });
       },
-      child: Padding(
-        padding: EdgeInsets.all(size.responsiveSize(17.0)),
-        child: Container(
-          width: size.responsiveSize(80.0),
-          height: size.responsiveSize(80.0),
-          decoration: ButtonBackingDecoration(
-                  variant: buttonDecorationVariants.circle,
-                  priority: decorationPriority.standard)
-              .buildBacking(),
-          child: Center(
-            child: HeadingThreeText("$number", decorationPriority.standard),
-          ),
-        ),
-      ),
+      child: numberButton,
     );
   }
 
@@ -109,14 +118,14 @@ class _PasscodeViewState extends State<PasscodeView> {
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: "Clear",
-            buttonHint: "buttonHint",
-            buttonAction: () => {}),
+            buttonHint: "Clears the password field.",
+            buttonAction: resetScreen),
         const Spacer(),
         SmolButtonElement(
             decorationVariant: decorationPriority.important,
             buttonTitle: "Finish",
-            buttonHint: "buttonHint",
-            buttonAction: () => {}),
+            buttonHint: "Finishes inputting the password.",
+            buttonAction: tryPassword),
       ],
     );
 
@@ -161,7 +170,7 @@ class _PasscodeViewState extends State<PasscodeView> {
       ],
     );
 
-    var viewLayout = ContainerWrapperElement(
+    var mobileViewLayout = ContainerWrapperElement(
       children: [
         const DividingHeaderElement(
             headerText: 'Passcode',
@@ -175,9 +184,58 @@ class _PasscodeViewState extends State<PasscodeView> {
       takesFullWidth: false,
     );
 
+    var desktopContentBox = SizedBox(
+      height: size.layoutItemHeight(1, size.logicalScreenSize()),
+      width: size.layoutItemWidth(2, size.logicalScreenSize()) * 0.8,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Spacer(),
+          const DividingHeaderElement(
+              headerText: 'Passcode',
+              subheaderText: 'Input your passcode to continue.'),
+          const SizedBox(height: 40.0),
+          entryFieldBox,
+          const Spacer(),
+        ],
+      ),
+    );
+
+    var desktopPasscodeInputBox = SizedBox(
+      height: size.layoutItemHeight(1, size.logicalScreenSize()),
+      width: size.layoutItemWidth(2, size.logicalScreenSize()) * 0.8,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Spacer(),
+          column,
+          const Spacer(),
+        ],
+      ),
+    );
+
+    var desktopViewLayout = ContainerWrapperElement(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            desktopContentBox,
+            const Spacer(),
+            desktopPasscodeInputBox,
+          ],
+        ),
+      ],
+      containerVariant: wrapperVariants.fullScreen,
+    );
+
     return ContainerView(
       decorationVariant: decorationPriority.important,
-      builder: viewLayout,
+      builder: size.isDesktopDisplay() == true
+          ? desktopViewLayout
+          : mobileViewLayout,
       takesFullWidth: false,
     );
   }

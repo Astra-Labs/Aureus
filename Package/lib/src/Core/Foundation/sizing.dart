@@ -57,10 +57,10 @@ class Sizing {
 
   /// Determines whether or not the current screen is a hamburger / hot dog orientation
   bool isDesktopDisplay() {
-    if (logicalWidth() >= logicalHeight()) {
-      return false;
-    } else if (logicalWidth() < logicalHeight()) {
+    if (logicalWidth() > logicalHeight()) {
       return true;
+    } else if (logicalWidth() <= logicalHeight()) {
+      return false;
     }
 
     throw ('An impossible ratio was returned when determining isDesktopDisplay');
@@ -234,28 +234,28 @@ class Sizing {
     if (sections == 1) {
       //item needs to be full width with w1 padding
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.90
           : sizingWidth = area.width * 0.60;
     } else if (sections == 2) {
       //item needs to be 1/2 width for 2 sections
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.45
           : sizingWidth = area.width * 0.30;
     } else if (sections == 3) {
       //item needs to be 1/3 width for 3 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.33
           : sizingWidth = area.width * 0.12;
     } else if (sections == 4) {
       //item needs to be 1/4 width for 4 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.24
           : sizingWidth = area.width * 0.092;
     } else if (sections == 5) {
       //item needs to be 1/5 width for 5 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.21
           : sizingWidth = area.width * 0.080;
     }
@@ -270,34 +270,34 @@ class Sizing {
     if (sections == 1) {
       //item needs to be full height with w1 padding
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.80
           : sizingHeight = area.height * 0.806;
     } else if (sections == 2) {
       //item needs to be 1/2 height for 2 sections
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.43
           : sizingHeight = area.height * 0.397;
     } else if (sections == 3) {
       //item needs to be 1/3 height for 3 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.287
           : sizingHeight = area.height * 0.264;
     } else if (sections == 4) {
       //item needs to be 1/4 height for 4 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.216
           : sizingHeight = area.height * 0.195;
     } else if (sections == 5) {
       //item needs to be 1/5 height for 5 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.168
           : sizingHeight = area.height * 0.155;
     } else if (sections <= 6) {
       //item needs to be 1/5 height for 5 sections
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.100
           : sizingHeight = area.height * 0.097;
     }

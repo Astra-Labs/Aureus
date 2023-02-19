@@ -213,10 +213,7 @@ class _LandingPageViewState extends State<LandingPageView> {
               fit: BoxFit.cover,
             ),
           ),
-          child: SizedBox(
-              width: screenWidth,
-              height: screenHeight,
-              child: size.isDesktopDisplay() ? mobileView : webView)),
+          child: webView),
     );
   }
 }
