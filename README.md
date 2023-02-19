@@ -1,5 +1,5 @@
 # Aureus
-## Open-source design system library for user safety critical applications.
+#### (In beta) open-source design system library for user safety critical applications.
 
 [![Hippocratic License HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV](https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV&labelColor=5e2751&color=bc8c3d)](https://firstdonoharm.dev/version/3/0/cl-eco-extr-ffd-media-mil-soc-sv.html)
 
@@ -32,11 +32,26 @@ When you're working in tough / crisis situations, a lot of industry design patte
 * We also have semantic wrappers that can easily be used to extend accessibility to custom components built outside of the library, making accessibility easier to adopt.
 
 ---------------------
+### Running the documentation
+Since Aureus is in beta, you will need to download a local copy of the package onto your computer, and run the documentation on a local server. 
+
+1) Navigate to the Package folder of the directory to be within the codebase 
+2) In the terminal, run the command: 
+
+dart pub global run dhttpd --path doc/api
+
+3) Open your preferred browser, and enter the URL as http://localhost:8080/
+
+---------------------
 
 It contains 
 * 100+ out of the box components, elements, and templated views that automatically adjust to light / dark mode, and desktop / tablet / mobile usage to make it deployable across all platforms and modes. 
 * pre-integrated safety functionality, permissions & data handling, and accessibility support that will hopefully meet Level AA compliance with WCAG 2.1. 
 * implementation guides & documentation for easy understanding. 
+
+---------------------
+
+
 
 # Links
 
