@@ -14,3 +14,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_AUREUS_TESTAPP }}'
           projectId: aureus-testapp
+          entry-point: ./Example App
