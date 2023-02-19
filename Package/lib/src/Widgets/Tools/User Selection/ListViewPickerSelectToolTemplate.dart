@@ -1,6 +1,10 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- LIST VIEW PICKER SELECT TOOL ----------*/
 
 class ListViewPickerSelectToolTemplate extends ToolCardTemplate {

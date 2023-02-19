@@ -1,10 +1,17 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- SEND FIELD ----------*/
-//A text field and icon button used to send communications to a receipent
+/// A text field and icon button used to send communications to a receipent
 
 class SendFieldComponent extends StatefulWidget {
+  /// What to do when the user presses send
   final VoidCallback onSend;
+
+  /// A text editor linked to the send field
   final TextEditingController textEditController;
 
   const SendFieldComponent(
@@ -24,10 +31,11 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SingleDataTypeUserInputElement(
-            dataPlaceholder: 'Write message here.',
-            itemTextEditingController: widget.textEditController,
+          StandardTextFieldComponent(
+            hintText: 'Write message here.',
             isEnabled: true,
+            decorationVariant: decorationPriority.standard,
+            textFieldController: widget.textEditController,
           ),
           IconButtonElement(
             buttonIcon: Assets.paperplane,

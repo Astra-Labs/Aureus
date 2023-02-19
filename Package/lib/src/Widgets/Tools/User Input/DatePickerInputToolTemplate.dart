@@ -1,6 +1,10 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- DATE PICKER INPUT TOOL ----------*/
 
 class DatePickerInputToolTemplate extends ToolCardTemplate {

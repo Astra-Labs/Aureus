@@ -2,6 +2,10 @@ import 'package:aureus/aureus.dart';
 import 'dart:async';
 import 'dart:math';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 typedef ColorCodeBuilder = Widget Function(BuildContext context, Color color);
 
 /*--------- COLOR SPECTRUM TOOL ----------*/
@@ -45,7 +49,7 @@ class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
 // https://github.com/itome/flutter_circle_color_picker
 // It's been modified to fit Aureus' needs within
 // the legal context of the MIT license, but credit
-// should be 100% given to them for creating this.
+// should be 100% given to them for creating this. :-)
 
 class _ColorSpectrumInputCard extends StatefulWidget {
   const _ColorSpectrumInputCard();
@@ -148,93 +152,102 @@ class _CircleColorPickerState extends State<CircleColorPicker>
 
   @override
   Widget build(BuildContext context) {
+    var builderContainer = Container(
+      width: widget.size.width - 100,
+      height: widget.size.height - 100,
+      decoration: BoxDecoration(
+        color: _color,
+        shape: BoxShape.circle,
+        border: Border.all(
+          width: 3,
+          color: HSLColor.fromColor(_color)
+              .withLightness(
+                _lightnessController.value * 4 / 5,
+              )
+              .toColor(),
+        ),
+      ),
+    );
+
+    var animatedBuilder = AnimatedBuilder(
+      animation: _hueController,
+      builder: (context, child) {
+        return AnimatedBuilder(
+          animation: _lightnessController,
+          builder: (context, _) {
+            return Center(
+              child: builderContainer,
+            );
+          },
+        );
+      },
+    );
+
+    var container = Container(
+      decoration: CardBackingDecoration(priority: decorationPriority.inactive)
+          .buildBacking(),
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(5.0),
+      child: _HuePicker(
+        hue: _hueController.value,
+        size: Size(
+          widget.size.width - 25,
+          widget.size.height - 25,
+        ),
+        strokeWidth: widget.strokeWidth,
+        thumbSize: widget.thumbSize,
+        onEnded: _onEnded,
+        onChanged: (hue) {
+          setState(() {
+            _hueController.value = hue;
+          });
+        },
+      ),
+    );
+
+    var rotatedBox = RotatedBox(
+        quarterTurns: 1,
+        child: _LightnessSlider(
+          width: widget.size.width - 25,
+          thumbSize: 26,
+          hue: _hueController.value,
+          lightness: _lightnessController.value,
+          onEnded: _onEnded,
+          onChanged: (lightness) {
+            _lightnessController.value = lightness;
+          },
+        ));
+
+    var pickerRow = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            container,
+            animatedBuilder,
+          ],
+        ),
+        const Spacer(),
+        Container(
+          decoration:
+              CardBackingDecoration(priority: decorationPriority.inactive)
+                  .buildBacking(),
+          padding: const EdgeInsets.all(5.0),
+          alignment: Alignment.center,
+          child: rotatedBox,
+        ),
+      ],
+    );
+
     return SizedBox(
       width: widget.size.width + 40,
       height: widget.size.height + 80,
       child: Center(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    Container(
-                      decoration: CardBackingDecoration(
-                              priority: decorationPriority.inactive)
-                          .buildBacking(),
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(5.0),
-                      child: _HuePicker(
-                        hue: _hueController.value,
-                        size: Size(
-                          widget.size.width - 25,
-                          widget.size.height - 25,
-                        ),
-                        strokeWidth: widget.strokeWidth,
-                        thumbSize: widget.thumbSize,
-                        onEnded: _onEnded,
-                        onChanged: (hue) {
-                          setState(() {
-                            _hueController.value = hue;
-                          });
-                        },
-                      ),
-                    ),
-                    AnimatedBuilder(
-                      animation: _hueController,
-                      builder: (context, child) {
-                        return AnimatedBuilder(
-                          animation: _lightnessController,
-                          builder: (context, _) {
-                            return Center(
-                              child: Container(
-                                width: widget.size.width - 100,
-                                height: widget.size.height - 100,
-                                decoration: BoxDecoration(
-                                  color: _color,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    width: 3,
-                                    color: HSLColor.fromColor(_color)
-                                        .withLightness(
-                                          _lightnessController.value * 4 / 5,
-                                        )
-                                        .toColor(),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                Container(
-                  decoration: CardBackingDecoration(
-                          priority: decorationPriority.inactive)
-                      .buildBacking(),
-                  padding: const EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: RotatedBox(
-                      quarterTurns: 1,
-                      child: _LightnessSlider(
-                        width: widget.size.width - 25,
-                        thumbSize: 26,
-                        hue: _hueController.value,
-                        lightness: _lightnessController.value,
-                        onEnded: _onEnded,
-                        onChanged: (lightness) {
-                          _lightnessController.value = lightness;
-                        },
-                      )),
-                ),
-              ],
-            ),
+            pickerRow,
             const SizedBox(height: 30.0),
             StandardButtonElement(
                 decorationVariant: decorationPriority.standard,
@@ -327,7 +340,53 @@ class _LightnessSliderState extends State<_LightnessSlider>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    var container = Container(
+      width: double.infinity,
+      height: 12,
+      margin: EdgeInsets.symmetric(
+        horizontal: widget.thumbSize / 3,
+      ),
+      decoration: BoxDecoration(
+        border: palette.universalBorder(),
+        borderRadius: const BorderRadius.all(Radius.circular(6)),
+        gradient: LinearGradient(
+          stops: const [0, 0.4, 1],
+          colors: [
+            HSLColor.fromAHSL(1, widget.hue, 1, 0).toColor(),
+            HSLColor.fromAHSL(1, widget.hue, 1, 0.5).toColor(),
+            HSLColor.fromAHSL(1, widget.hue, 1, 0.9).toColor(),
+          ],
+        ),
+      ),
+    );
+
+    var sizedBox = SizedBox(
+      width: widget.width,
+      height: widget.thumbSize,
+      child: Stack(
+        alignment: Alignment.centerLeft,
+        children: <Widget>[
+          container,
+          Positioned(
+            left: widget.lightness * (widget.width - widget.thumbSize),
+            child: ScaleTransition(
+              scale: _scaleController,
+              child: _Thumb(
+                size: widget.thumbSize,
+                color: HSLColor.fromAHSL(
+                  1,
+                  widget.hue,
+                  1,
+                  widget.lightness,
+                ).toColor(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    var gestureDetector = GestureDetector(
       onPanDown: _onDown,
       onPanCancel: _onCancel,
       onHorizontalDragStart: _onStart,
@@ -336,50 +395,10 @@ class _LightnessSliderState extends State<_LightnessSlider>
       onVerticalDragStart: _onStart,
       onVerticalDragUpdate: _onUpdate,
       onVerticalDragEnd: _onEnd,
-      child: SizedBox(
-        width: widget.width,
-        height: widget.thumbSize,
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              height: 12,
-              margin: EdgeInsets.symmetric(
-                horizontal: widget.thumbSize / 3,
-              ),
-              decoration: BoxDecoration(
-                border: palette.universalBorder(),
-                borderRadius: const BorderRadius.all(Radius.circular(6)),
-                gradient: LinearGradient(
-                  stops: const [0, 0.4, 1],
-                  colors: [
-                    HSLColor.fromAHSL(1, widget.hue, 1, 0).toColor(),
-                    HSLColor.fromAHSL(1, widget.hue, 1, 0.5).toColor(),
-                    HSLColor.fromAHSL(1, widget.hue, 1, 0.9).toColor(),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              left: widget.lightness * (widget.width - widget.thumbSize),
-              child: ScaleTransition(
-                scale: _scaleController,
-                child: _Thumb(
-                  size: widget.thumbSize,
-                  color: HSLColor.fromAHSL(
-                    1,
-                    widget.hue,
-                    1,
-                    widget.lightness,
-                  ).toColor(),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      child: sizedBox,
     );
+
+    return gestureDetector;
   }
 
   @override
@@ -457,10 +476,46 @@ class _HuePickerState extends State<_HuePicker> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final minSize = min(widget.size.width, widget.size.height);
+
     final offset = _CircleTween(
       minSize / 2 - widget.thumbSize / 2,
     ).lerp(widget.hue * pi / 180);
-    return GestureDetector(
+
+    var sizedBox = SizedBox.expand(
+      child: Padding(
+        padding: EdgeInsets.all(
+          widget.thumbSize / 2 - widget.strokeWidth,
+        ),
+        child: CustomPaint(
+          painter: _CirclePickerPainter(widget.strokeWidth),
+        ),
+      ),
+    );
+
+    var positioned = Positioned(
+      left: offset.dx,
+      top: offset.dy,
+      child: ScaleTransition(
+        scale: _scaleController,
+        child: _Thumb(
+          size: widget.thumbSize,
+          color: HSLColor.fromAHSL(1, widget.hue, 1, 0.5).toColor(),
+        ),
+      ),
+    );
+
+    var sizedBox2 = SizedBox(
+      width: widget.size.width,
+      height: widget.size.height,
+      child: Stack(
+        children: <Widget>[
+          sizedBox,
+          positioned,
+        ],
+      ),
+    );
+
+    var gestureDetector = GestureDetector(
       onPanDown: _onDown,
       onPanCancel: _onCancel,
       onHorizontalDragStart: _onStart,
@@ -469,36 +524,10 @@ class _HuePickerState extends State<_HuePicker> with TickerProviderStateMixin {
       onVerticalDragStart: _onStart,
       onVerticalDragUpdate: _onUpdate,
       onVerticalDragEnd: _onEnd,
-      child: SizedBox(
-        width: widget.size.width,
-        height: widget.size.height,
-        child: Stack(
-          children: <Widget>[
-            SizedBox.expand(
-              child: Padding(
-                padding: EdgeInsets.all(
-                  widget.thumbSize / 2 - widget.strokeWidth,
-                ),
-                child: CustomPaint(
-                  painter: _CirclePickerPainter(widget.strokeWidth),
-                ),
-              ),
-            ),
-            Positioned(
-              left: offset.dx,
-              top: offset.dy,
-              child: ScaleTransition(
-                scale: _scaleController,
-                child: _Thumb(
-                  size: widget.thumbSize,
-                  color: HSLColor.fromAHSL(1, widget.hue, 1, 0.5).toColor(),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      child: sizedBox2,
     );
+
+    return gestureDetector;
   }
 
   @override
@@ -630,20 +659,22 @@ class _Thumb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var boxDecoration = BoxDecoration(
+      shape: BoxShape.circle,
+      color: palette.steel(),
+      boxShadow: const [
+        BoxShadow(
+          color: Color.fromARGB(16, 0, 0, 0),
+          blurRadius: 4,
+          spreadRadius: 4,
+        )
+      ],
+    );
+
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: palette.steel(),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromARGB(16, 0, 0, 0),
-            blurRadius: 4,
-            spreadRadius: 4,
-          )
-        ],
-      ),
+      decoration: boxDecoration,
       alignment: Alignment.center,
       child: Container(
         width: size - 6,

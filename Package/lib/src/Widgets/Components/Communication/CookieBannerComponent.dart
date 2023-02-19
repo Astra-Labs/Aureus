@@ -1,11 +1,20 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- COOKIE BANNER ----------*/
-// A y/n banner to ask a user to accept cookies on the website.
+/// A y/n banner to ask a user to accept cookies on the website.
 
 class CookieBannerComponent extends StatefulWidget {
+  /// A message to ask about cookie permission
   final String cookieMessage;
+
+  /// What to do if user accepts cookies
   final VoidCallback onCookieAccept;
+
+  /// What to do if user denies cookies
   final VoidCallback onCookieDeny;
   const CookieBannerComponent(
       {required this.cookieMessage,

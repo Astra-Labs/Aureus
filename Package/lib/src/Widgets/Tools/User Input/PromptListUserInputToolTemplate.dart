@@ -1,5 +1,9 @@
 // ignore_for_file: must_be_immutable
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 import 'package:aureus/aureus.dart';
 
 /*--------- PROMPT LIST USER INPUT TOOL ----------*/

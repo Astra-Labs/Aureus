@@ -1,52 +1,46 @@
 part of aureus_safety_plan;
 
+/// {@category Safety}
+
 /*--------- SAFETY ----------*/
 
-// A class that contains data regarding how to handle creating a
-// safety plan for the user.
+/// A class that contains data regarding how to handle creating a
+/// safety plan for the user.
 
 class Safety {
+  /// A map that contains Safety Plan options that ALL software can complete.
+  /// If you pass an empty list to productEligiblePlanOptions, basePlanOptions
+  /// will be used to create a safety plan for the user.
+
   static Map<SafetyPlanOptions, bool> basePlanOptions = {
     SafetyPlanOptions.deviceSandbox: true,
     SafetyPlanOptions.exitBar: true,
     SafetyPlanOptions.disableScreenshots: true
   };
-  /* 
-  A map that contains Safety Plan options that ALL software can complete.
-  If you pass an empty list to productEligiblePlanOptions, basePlanOptions
-  will be used to create a safety plan for the user. 
-  */
-  // --------------------------------------------------
 
+  /// A reference to the metadata class in a separate file
   static const detailMetaData = SafetyOptionDetailMetadata();
-  // A reference to the metadata class in a separate file
-  // --------------------------------------------------
 
+  /// A map that contains product specific Safety Plan options aside from the base options
+  /// This is where YOU pass to Aureus what options you can adopt. Please ensure
+  /// ALL ELIGIBLE plan options are choosen when passed to packageVariables in initialization.
   final List<SafetyPlanOptions> eligiblePlanOptions;
-  /* 
-  A map that contains product specific Safety Plan options aside from the base options
-  This is where YOU pass to Aureus what options you can adopt. Please ensure
-  ALL ELIGIBLE plan options are choosen when passed to packageVariables in initialization. 
-  */
-  // --------------------------------------------------
 
+  /// The frequency usage is how often you anticipate someone to use your piece of software.
   final SafetyPlanFrequency frequencyUsage;
-  // The frequency usage is how often you anticipate someone to use your piece of software.
-  // --------------------------------------------------
+
+  /// This is if you are using a quick action bar that allows user to access
+  /// certain functionality on every single page. This is helpful if you have
+  /// 'emergency' features that need to be accessed on every page (e.g: dealing
+  ///  with suicidal users who may emergency access a tool).
 
   final bool? isActionBarDevEnabled;
-  // This is if you are using a quick action bar that allows user to access
-  // certain functionality on every single page. This is helpful if you have
-  // 'emergency' features that need to be accessed on every page (e.g: dealing
-  //  with suicidal users who may emergency access a tool).
-  // --------------------------------------------------
 
+  /// If you do want a quick action bar to appear on every screen, these are
+  /// the objects that will show up in the bar. The tabs can do anything from
+  /// call an emergency hotline, to segue users to a specific tool. The idea
+  /// is to limit these to really sensitive resources that need to be close at all times
   final List<TabObject>? quickActionItems;
-  // If you do want a quick action bar to appear on every screen, these are
-  // the objects that will show up in the bar. The tabs can do anything from
-  // call an emergency hotline, to segue users to a specific tool. The idea
-  // is to limit these to really sensitive resources that need to be close at all times
-  // --------------------------------------------------
 
   const Safety(
       {required this.frequencyUsage,
@@ -54,29 +48,26 @@ class Safety {
       this.isActionBarDevEnabled = false,
       this.quickActionItems = const []});
 
-  /*
-
-  Takes a list of fallbacks (options that a specific piece of code violates,
-  and the desired fallback to complete instead). You should use this to check
-  if the piece of code you wrote violated a SafetyPlan request.
-  
-  To use an action SafetyCheck, provide:
-    - fallbackItems: A list of rules that you may violate, and the fallback code you want to execute
-    - primaryItem: the action you want to take if the user's safetyPlan allows it.   
-
-    For example, before sending a notification you would provide the context, 
-    the fallback items in case a user doesn't want notifications (the alt code to execute would be nothing), 
-    and the primary item would be scheduling / sending the notification. 
-
-    Keep in mind this is a future, and requires the proper handling for async 
-    code. If you're a beginner, another area you might recognize async code from 
-    is a networking request. It's relatively similar to requesting data from an API! 
-
-    So think of it as querying a user's "safety API" while giving the error handling
-    directly to the API itself. The VoidCallback you're given is the executable code to run. 
-
-    You can learn about how to handle futures in dart here: 
-  */
+  /// Takes a list of fallbacks (options that a specific piece of code violates,
+  /// and the desired fallback to complete instead). You should use this to check
+  /// if the piece of code you wrote violated a SafetyPlan request.
+  ///
+  ///  To use an action SafetyCheck, provide:
+  ///   - fallbackItems: A list of rules that you may violate, and the fallback code you want to execute
+  /// - primaryItem: the action you want to take if the user's safetyPlan allows it.
+  ///
+  /// For example, before sending a notification you would provide the context,
+  /// the fallback items in case a user doesn't want notifications (the alt code to execute would be nothing),
+  /// and the primary item would be scheduling / sending the notification.
+  ///
+  /// Keep in mind this is a future, and requires the proper handling for async
+  /// code. If you're a beginner, another area you might recognize async code from
+  /// is a networking request. It's relatively similar to requesting data from an API!
+  ///
+  /// So think of it as querying a user's "safety API" while giving the error handling
+  /// directly to the API itself. The VoidCallback you're given is the executable code to run.
+  ///
+  /// You can learn about how to handle futures in dart here.
 
   Future<VoidCallback> actionSafetyCheck(
       List<SafetyPlanFallback> fallbackItems, VoidCallback primaryItem) async {
@@ -117,9 +108,7 @@ class Safety {
     return executableCode;
   }
 
-  // --------------------------------------------------
-
-  // An interface to record failed log-in attempts for users to look back at.
+  /// An interface to record failed log-in attempts for users to look back at.
   void recordFailedLogInAttempt() {
     var date = DateTime.now();
     _SafetyPlanStorageLayer().writeLogIn(date.toString());
@@ -132,24 +121,23 @@ class Safety {
 }
 
 /*--------- SAFETY PLAN ----------*/
-/*
-
-To reduce risk of abuse, all Safety Plan settings are handled directly by Aureus, 
-and not passed to the developer. 
-
-Aureus sets a safety plan through the 3 associated screens: 
-- SafetyPlanOptInView
-- SafetyPlanConfirmationView
-- SafetyPlanFunctionalityView
-
-After that, you interact with the Safety Plan by using the actionSafetyCheck function in SafetyPlan
-
-*/
+///
+///
+/// To reduce risk of abuse, all Safety Plan settings are handled directly by Aureus,
+/// and not passed to the developer.
+///
+/// Aureus sets a safety plan through the 3 associated screens:
+/// - SafetyPlanOptInView
+/// - SafetyPlanConfirmationView
+/// - SafetyPlanFunctionalityView
+///
+/// After that, you interact with the Safety Plan by using the actionSafetyCheck function in SafetyPlan
 
 class _SafetyPlanStorageLayer {
+  /// initializes a storage layer in FlutterSecureStorage
   final _storage = const FlutterSecureStorage();
 
-  // Switches the option into the relevant key for writing / retrival
+  /// Switches the option into the relevant key for writing / retrival
   String safetyPlanKey(SafetyPlanOptions option) {
     switch (option) {
       case SafetyPlanOptions.onlyNeccessaryEmails:
@@ -185,22 +173,24 @@ class _SafetyPlanStorageLayer {
   }
 
   // READ / WRITE SETTINGS
-  // --------------------------------------------------
 
-  // Reads a setting
+  /// Reads a setting
   Future<bool> _readSetting(SafetyPlanOptions option) async {
+    print("Reading a setting!");
     final settings = _storage.read(key: safetyPlanKey(option));
     return settings.toString() == "true" ? true : false;
   }
 
-  // Writes a setting
+  /// Writes a setting
   Future<void> _writeSetting(SafetyPlanOptions option, bool isEnabled) async {
+    print("Writing a setting!");
     await _storage.write(
         key: safetyPlanKey(option), value: isEnabled.toString());
   }
 
-  // Reads ALL settings
+  /// Reads ALL settings
   Future<Map<SafetyPlanOptions, bool>> get readSettings async {
+    print("Reading ALL settings!");
     // pull settings from local storage here
     Map<SafetyPlanOptions, bool> settings = {};
 
@@ -211,20 +201,21 @@ class _SafetyPlanStorageLayer {
     return settings;
   }
 
-  //write ALL settings specified in the parameters directly to local storage
+  /// write ALL settings specified in the parameters directly to local storage
   Future<void> writeSettings(Map<SafetyPlanOptions, bool> newSettings) async {
+    print("Writing all settings!");
     for (var element in newSettings.entries) {
       _writeSetting(element.key, element.value);
     }
   }
 
   // READ / WRITE FAILED LOG IN ATTEMPTS
-  // --------------------------------------------------
 
   var logInKey = "";
 
-  // Reads ALL failed log in attempts
+  /// Reads ALL failed log in attempts
   Future<List<String>> get readFailedLogInAttempts async {
+    print("Reading failed log in attempts!");
     // pull settings from local storage here
     List<String> attempts = [];
 
@@ -237,8 +228,9 @@ class _SafetyPlanStorageLayer {
     return attempts;
   }
 
-  //Writes a failed log-in attempt.
+  /// Writes a failed log-in attempt.
   Future<void> writeLogIn(String logInData) async {
+    print("Writing failed log in attempts");
     // There needs to be some way to separate the String with special characters
     // to determine the separate attempts, since you can only write single strings
     // to the local storage.
@@ -250,11 +242,29 @@ class _SafetyPlanStorageLayer {
   }
 }
 
-enum SafetyFallBackOptions { errorController, alternateCode }
+/// An enum for you to choose a fallback option if the user's safety plan
+/// settings are violated
+///
+enum SafetyFallBackOptions {
+  /// Shows an alert controller telling the user an action cannot be completed
+  /// because of their settings
+  errorController,
 
+  /// Runs an alternate piece of code
+  alternateCode
+}
+
+/// A class that creates a 'fallback'. This is what you give to the Safety Plan
+/// to execute code on your behalf, depending on the user's safety settings.
 class SafetyPlanFallback {
+  /// Describes what option you may be 'violating'
   final SafetyPlanOptions safetyOption;
+
+  /// How you want to handle that violation
   final SafetyFallBackOptions fallbackOption;
+
+  /// If you want to use the alternate code error option, this is
+  /// the code that will alternatively be run.
   final VoidCallback? fallbackCode;
 
   const SafetyPlanFallback(this.safetyOption, this.fallbackOption,
@@ -263,7 +273,9 @@ class SafetyPlanFallback {
             fallbackOption == SafetyFallBackOptions.errorController);
 }
 
+/// A class that acts as a 'wrapper' for the safety plan
 class SafetyPlanObject {
+  /// A map for each option and where or not it's enabled
   final Map<SafetyPlanOptions, bool> settings;
 
   const SafetyPlanObject({required this.settings})
@@ -277,7 +289,11 @@ class SafetyPlanObject {
 // of the filescope.
 
 class SafetyPlanFunctionalityView extends StatefulWidget {
+  /// The user selected options that they want to enable
   final List<SafetyPlanOptions> userSelectedOptions;
+
+  /// Where the user should go after their safety plan has been written. E.G
+  /// to the home screen, to another onboarding screen, etc.
   final Widget exitPoint;
 
   const SafetyPlanFunctionalityView(
@@ -395,7 +411,7 @@ class _SafetyPlanFunctionalityViewState
 }
 
 // Safety Plan Modification View
-// ------------------------------------------------
+
 // Dev Note: This view is located within the safety.dart file
 // to make sure that access to SafetyPlan isn't accessible outside
 // of the filescope. This is how access modifers work in Dart,

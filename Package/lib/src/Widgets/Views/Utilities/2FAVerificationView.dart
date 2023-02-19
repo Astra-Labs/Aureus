@@ -1,11 +1,22 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- 2FA VERIFICATION VIEW ----------*/
 
 class TFAVerificationView extends StatefulWidget {
+  ///
   final double userPhoneNumber;
+
+  ///
   final TextEditingController textEditingController;
+
+  ///
   final VoidCallback onUserSubmission;
+
+  ///
   final VoidCallback issueVerificationCode;
 
   const TFAVerificationView(
@@ -29,11 +40,40 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
       return 'Please enter the code we sent to your phone number ending in ${numberToString.substring(numberToString.length - 4)}';
     }
 
-    var singleDataTypeUserInputElement = SingleDataTypeUserInputElement(
-      dataPlaceholder: 'Type code here.',
-      itemTextEditingController: widget.textEditingController,
+    var singleDataTypeUserInputElement = StandardTextFieldComponent(
+      hintText: 'Type code here.',
+      textFieldController: widget.textEditingController,
+      decorationVariant: decorationPriority.standard,
       isEnabled: true,
     );
+
+    var align = Align(
+      alignment: Alignment.bottomRight,
+      child: IconButtonElement(
+        decorationVariant: decorationPriority.important,
+        buttonIcon: Assets.next,
+        buttonHint: 'Finish submitting verification code',
+        buttonAction: () => {
+          userSubmittedCode =
+              singleDataTypeUserInputElement.textFieldController.text,
+          widget.onUserSubmission
+        },
+        buttonPriority: buttonSize.primary,
+      ),
+    );
+
+    var row = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          BodyOneText("Didn't receieve a code?", decorationPriority.standard),
+          SmolButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'Resend code',
+              buttonHint: 'Sends a new verification code to your number.',
+              buttonAction: () => {})
+        ]);
 
     var containerWrapper = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
@@ -46,34 +86,9 @@ class _TFAVerificationViewState extends State<TFAVerificationView> {
         const SizedBox(
           height: 20,
         ),
-        Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              BodyOneText(
-                  "Didn't receieve a code?", decorationPriority.standard),
-              SmolButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonTitle: 'Resend code',
-                  buttonHint: 'Sends a new verification code to your number.',
-                  buttonAction: () => {})
-            ]),
+        row,
         const Spacer(),
-        Align(
-          alignment: Alignment.bottomRight,
-          child: IconButtonElement(
-            decorationVariant: decorationPriority.important,
-            buttonIcon: Assets.next,
-            buttonHint: 'Finish submitting verification code',
-            buttonAction: () => {
-              userSubmittedCode =
-                  singleDataTypeUserInputElement.itemTextEditingController.text,
-              widget.onUserSubmission
-            },
-            buttonPriority: buttonSize.primary,
-          ),
-        )
+        align
       ],
     );
 

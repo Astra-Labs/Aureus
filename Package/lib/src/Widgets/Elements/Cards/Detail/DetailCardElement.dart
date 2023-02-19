@@ -1,10 +1,19 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- DETAIL CARD ----------*/
 
 class DetailCardElement extends StatelessWidget {
+  ///
   final decorationPriority decorationVariant;
+
+  ///
   final String cardLabel;
+
+  ///
   final String cardBody;
 
   const DetailCardElement(

@@ -2,13 +2,12 @@ import 'package:aureus/aureus.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 
+/// {@category Foundation}
+
 /* ------------------ SENSORY -------------------- */
-/*
 
-This class contains the sensory components of Aureus. This covers animations, 
-haptics, our sound library, and more. 
-
-*/
+/// This class contains the sensory components of Aureus. This covers animations,
+/// haptics, our sound library, and more.
 
 var sensation = Sensory();
 
@@ -44,6 +43,7 @@ class Sensory {
   var pressAudioPath = "sounds/enable.mp3";
   var holdAudioPath = "sounds/hold.mp3";
 
+  /// A function that calls the Haptic Engine and the sound library.
   Future<void> createSensation(sensationType sense) async {
     switch (sense) {
       case sensationType.confirmation:

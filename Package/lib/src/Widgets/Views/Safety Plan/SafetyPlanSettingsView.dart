@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- SAFETY PLAN SETTINGS VIEW ----------*/
 
 class SafetyPlanSettingsView extends StatefulWidget {
@@ -35,6 +39,15 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
       ));
     }
 
+    var sizedBox = SizedBox(
+        width: size.layoutItemWidth(1, screenSize),
+        height: size.layoutItemHeight(1, screenSize),
+        child: SingleChildScrollView(
+            child: (ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: eligibleOptionCards))));
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
@@ -42,14 +55,7 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
             pageTitle: 'Safety Plan Settings',
             onPageExit: () => {Navigator.pop(context)}),
         const Spacer(),
-        SizedBox(
-            width: size.layoutItemWidth(1, screenSize),
-            height: size.layoutItemHeight(1, screenSize),
-            child: SingleChildScrollView(
-                child: (ListView(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    children: eligibleOptionCards)))),
+        sizedBox,
       ],
     );
 

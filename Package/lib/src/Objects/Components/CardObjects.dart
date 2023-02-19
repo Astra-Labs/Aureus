@@ -1,6 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Objects}
+/// {@image <image alt='' src=''>}
+
 class AureusCards {
+  /// Returns a filled widget with the card data and variant provided
+  /// [cardType] - The type of card you want to get back
+  /// [cardData] - The data for that card
+
   Widget filledCardObject(
       {required cardType cardVariant, required CardObject cardData}) {
     switch (cardVariant) {

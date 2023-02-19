@@ -1,9 +1,16 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- STANDARD CARD ----------*/
 
 class StandardCardElement extends StatelessWidget {
+  ///
   final decorationPriority decorationVariant;
+
+  ///
   final String cardLabel;
 
   const StandardCardElement(

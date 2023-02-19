@@ -1,7 +1,11 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- ICON TABBING BAR COMPONENT ----------*/
-//A group of icon buttons on a card that acts as a tabbing bar to change data
+/// A group of icon buttons on a card that acts as a tabbing bar to change data
 
 class IconTabbingBarComponent extends StatefulWidget {
   final List<TabObject> tabItems;

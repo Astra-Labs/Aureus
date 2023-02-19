@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- DIVIDER ELEMENT ----------*/
 
 class DividerElement extends StatelessWidget {

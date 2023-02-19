@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- BASE DATA DETAIL CARD ----------*/
 
 // The base class for a card tool template.

@@ -1,10 +1,21 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- CONTAINER WRAPPER ----------*/
+/// Used in conjuction with a [ContainerView] to 'layout' the elements. This
+/// is where you should pass all of the view's children.
 
 class ContainerWrapperElement extends StatefulWidget {
+  ///
   final List<Widget> children;
+
+  ///
   final wrapperVariants containerVariant;
+
+  ///
   final bool takesFullWidth;
 
   ContainerWrapperElement(

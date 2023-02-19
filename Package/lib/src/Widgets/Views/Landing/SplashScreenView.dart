@@ -1,10 +1,14 @@
 import 'dart:async';
-
 import 'package:aureus/aureus.dart';
+
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
 
 /*--------- SPLASH SCREEN VIEW ----------*/
 
 class SplashScreenView extends StatefulWidget {
+  ///
   final VoidCallback onLaunch;
   const SplashScreenView({required this.onLaunch});
 
@@ -27,6 +31,25 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
+    var column = Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        const Spacer(),
+        Container(
+            height: 80.0,
+            width: 80.0,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: coloration.resourceLogo().image,
+              fit: BoxFit.cover,
+            ))),
+        const SizedBox(height: 40.0),
+        HeadingTwoText(resourceValues.name, decorationPriority.standard),
+        const Spacer(),
+      ],
+    );
+
     return Container(
         width: screenSize.width,
         height: screenSize.height,
@@ -35,24 +58,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
                 ? palette.lightGradient()
                 : palette.darkGradient()),
         child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Spacer(),
-              Container(
-                  height: 80.0,
-                  width: 80.0,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                    image: coloration.resourceLogo().image,
-                    fit: BoxFit.cover,
-                  ))),
-              const SizedBox(height: 40.0),
-              HeadingTwoText(resourceValues.name, decorationPriority.standard),
-              const Spacer(),
-            ],
-          ),
+          child: column,
         ));
   }
 }

@@ -1,9 +1,16 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- STANDARD SELECTION CARD ----------*/
 
 class StandardSelectionCardElement extends StatefulWidget {
+  ///
   final String cardName;
+
+  ///
   bool isCardSelected = false;
 
   StandardSelectionCardElement({required this.cardName});

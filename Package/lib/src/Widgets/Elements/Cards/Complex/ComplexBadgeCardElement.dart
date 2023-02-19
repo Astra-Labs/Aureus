@@ -1,12 +1,25 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- COMPLEX BADGE CARD ----------*/
 
 class ComplexBadgeCardElement extends StatelessWidget {
+  ///
   final decorationPriority decorationVariant;
+
+  ///
   final String cardLabel;
+
+  ///
   final String cardBody;
+
+  ///
   final Map<String, IconData> cardDetailCarousel;
+
+  ///
   final IconData cardIcon;
 
   const ComplexBadgeCardElement(

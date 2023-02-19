@@ -1,7 +1,11 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- LOADING CIRCLE ----------*/
-//A bar that indicators progress for a given task.
+/// A bar that indicators progress for a given task.
 
 class LoadingCircleElement extends StatefulWidget {
   const LoadingCircleElement();
@@ -40,36 +44,42 @@ class _LoadingCircleElementState extends State<LoadingCircleElement>
 
   @override
   Widget build(BuildContext context) {
-    return PulseShadowElement(
+    var circularProgressIndicator = CircularProgressIndicator(
+        backgroundColor: coloration.inactiveColor(),
+        color: coloration.accentColor(),
+        value: controller.value,
+        strokeWidth: 3.0,
+        semanticsLabel: 'Loading Indicator');
+
+    var floatingContainerElement = FloatingContainerElement(
+      child: SizedBox(
+        width: 200.0,
+        height: 200.0,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: coloration.accentColor().withOpacity(0.2),
+                shape: BoxShape.circle),
+            child: circularProgressIndicator,
+          ),
+        ),
+      ),
+    );
+
+    var pulseShadowElement = PulseShadowElement(
       pulseWidth: 200.0,
       isActive: true,
       child: SizedBox(
         width: 200.0,
         height: 200.0,
         child: Stack(alignment: Alignment.center, children: [
-          FloatingContainerElement(
-            child: SizedBox(
-              width: 200.0,
-              height: 200.0,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: coloration.accentColor().withOpacity(0.2),
-                      shape: BoxShape.circle),
-                  child: CircularProgressIndicator(
-                      backgroundColor: coloration.inactiveColor(),
-                      color: coloration.accentColor(),
-                      value: controller.value,
-                      strokeWidth: 3.0,
-                      semanticsLabel: 'Loading Indicator'),
-                ),
-              ),
-            ),
-          ),
+          floatingContainerElement,
           HeadingOneText('Loading', decorationPriority.standard)
         ]),
       ),
     );
+
+    return pulseShadowElement;
   }
 }

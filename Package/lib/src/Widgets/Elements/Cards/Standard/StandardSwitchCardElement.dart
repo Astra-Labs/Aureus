@@ -1,11 +1,22 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- STANDARD SWITCH CARD ----------*/
 
 class StandardSwitchCardElement extends StatefulWidget {
+  ///
   final String switchDescription;
+
+  ///
   final VoidCallback onEnable;
+
+  ///
   final VoidCallback onDisable;
+
+  ///
   bool isSwitchEnabled = false;
 
   StandardSwitchCardElement(

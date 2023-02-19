@@ -1,18 +1,31 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- CHECKBOX ARTICLE VIEW ----------*/
-// This is a view that displays an article, and a checkbox.
-// When the user agrees to the checkbox and moves forward, it calls
-// the param onFinish.
-// --------------------------------
-// This should be used for legal documents that MUST be agreed to in order
-// to use the software. e.g: terms of service, cookie policy, etc.
+/// This is a view that displays an article, and a checkbox.
+/// When the user agrees to the checkbox and moves forward, it calls
+/// the param onFinish.
+
+/// This should be used for legal documents that MUST be agreed to in order
+/// to use the software. e.g: terms of service, cookie policy, etc.
 
 class CheckboxArticleView extends StatefulWidget {
+  ///
   final String articleTitle;
+
+  ///
   final String articleSubheader;
+
+  ///
   final String articleBody;
+
+  ///
   final String checkboxDescription;
+
+  ///
   final VoidCallback onFinish;
 
   const CheckboxArticleView(
@@ -32,6 +45,34 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
 
   @override
   Widget build(BuildContext context) {
+    var switchComponent = SwitchComponent(() {
+      setState(() {
+        isEnabled == true;
+      });
+    }, () {
+      setState(() {
+        isEnabled == false;
+      });
+    });
+
+    var floatingContainerElement = FloatingContainerElement(
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        constraints:
+            BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
+        decoration: CardBackingDecoration(priority: decorationPriority.inactive)
+            .buildBacking(),
+        child: Row(
+          children: [
+            BodyOneText(
+                widget.checkboxDescription, decorationPriority.standard),
+            const Spacer(),
+            switchComponent
+          ],
+        ),
+      ),
+    );
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
@@ -39,32 +80,7 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
             title: widget.articleTitle,
             subheader: widget.articleSubheader,
             body: widget.articleBody),
-        FloatingContainerElement(
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            constraints:
-                BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
-            child: Row(
-              children: [
-                BodyOneText(
-                    widget.checkboxDescription, decorationPriority.standard),
-                const Spacer(),
-                SwitchComponent(() {
-                  setState(() {
-                    isEnabled == true;
-                  });
-                }, () {
-                  setState(() {
-                    isEnabled == false;
-                  });
-                })
-              ],
-            ),
-          ),
-        ),
+        floatingContainerElement,
         const SizedBox(height: 20),
         StandardIconButtonElement(
             decorationVariant: isEnabled == true

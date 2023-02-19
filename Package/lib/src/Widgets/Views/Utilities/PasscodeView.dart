@@ -1,9 +1,16 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- PASSCODE VIEW ----------*/
 
 class PasscodeView extends StatefulWidget {
+  ///
   final VoidCallback onCorrectPasscode;
+
+  ///
   final List<int> passcode;
 
   const PasscodeView({required this.onCorrectPasscode, required this.passcode});
@@ -94,6 +101,66 @@ class _PasscodeViewState extends State<PasscodeView> {
             alignment: Alignment.center,
             child: HeadingFourText(entryText, decorationPriority.standard)));
 
+    var row = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        SmolButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: "Clear",
+            buttonHint: "buttonHint",
+            buttonAction: () => {}),
+        const Spacer(),
+        SmolButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonTitle: "Finish",
+            buttonHint: "buttonHint",
+            buttonAction: () => {}),
+      ],
+    );
+
+    var column = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            createNumberButton(1),
+            createNumberButton(2),
+            createNumberButton(3),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            createNumberButton(4),
+            createNumberButton(5),
+            createNumberButton(6),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            createNumberButton(7),
+            createNumberButton(8),
+            createNumberButton(9),
+          ],
+        ),
+        Center(child: createNumberButton(0)),
+        const SizedBox(height: 40.0),
+        row,
+      ],
+    );
+
     var viewLayout = ContainerWrapperElement(
       children: [
         const DividingHeaderElement(
@@ -102,63 +169,7 @@ class _PasscodeViewState extends State<PasscodeView> {
         const SizedBox(height: 40.0),
         entryFieldBox,
         const SizedBox(height: 40.0),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                createNumberButton(1),
-                createNumberButton(2),
-                createNumberButton(3),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                createNumberButton(4),
-                createNumberButton(5),
-                createNumberButton(6),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                createNumberButton(7),
-                createNumberButton(8),
-                createNumberButton(9),
-              ],
-            ),
-            Center(child: createNumberButton(0)),
-            const SizedBox(height: 40.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: "Clear",
-                    buttonHint: "buttonHint",
-                    buttonAction: () => {}),
-                const Spacer(),
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.important,
-                    buttonTitle: "Finish",
-                    buttonHint: "buttonHint",
-                    buttonAction: () => {}),
-              ],
-            ),
-          ],
-        )
+        column
       ],
       containerVariant: wrapperVariants.fullScreen,
       takesFullWidth: false,

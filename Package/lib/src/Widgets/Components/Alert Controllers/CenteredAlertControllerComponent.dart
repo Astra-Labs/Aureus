@@ -1,13 +1,16 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- CENTERED ACTION SHEET COMPONENT ----------*/
-// A vertically & horizontally centered alert controller
-// Use when there is only 1-2 actions, otherwise use Bottom Action Sheet
+/// A vertically & horizontally centered alert controller
+/// Use when there is only 1-2 actions, otherwise use Bottom Action Sheet
 
 class CenteredAlertControllerComponent extends StatefulWidget {
+  /// The data object that dictates how your alert controller behaves.
   final AlertControllerObject alertData;
-  // The data object that dictates how your alert controller behaves.
-  // ------------------------------
 
   const CenteredAlertControllerComponent({required this.alertData});
 

@@ -1,13 +1,21 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- PULSE SHADOW ----------*/
-// Using the data provided from the AureusStylization class,
-// creates a moving eclipse that appears to eclipse and pass behind
-// the child object.
+///  Using the data provided from the AureusStylization class,
+/// creates a 'pulse' that breathes behind an object.
 
 class PulseShadowElement extends StatefulWidget {
+  ///
   final Widget child;
+
+  ///
   final bool isActive;
+
+  ///
   final double pulseWidth;
 
   const PulseShadowElement(

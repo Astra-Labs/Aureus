@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- SINGLE SLIDER INPUT TOOL ----------*/
 
 class SingleSliderToolTemplate extends ToolCardTemplate {

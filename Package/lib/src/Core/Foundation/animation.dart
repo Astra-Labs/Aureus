@@ -1,12 +1,10 @@
 import 'package:aureus/aureus.dart';
 import 'dart:math';
 
+/// {@category Foundation}
+
 /* ------------------ ANIMATIONS -------------------- */
-/*
-
-Animations in the form of widgets that are used throughout Aureus.
-
-*/
+/// Animations in the form of widgets that are used throughout Aureus.
 
 class CircleAnimation extends StatelessWidget {
   final Alignment centerAlignment;

@@ -1,9 +1,14 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- PROGRESS INDICATOR ----------*/
-//A bar that indicators progress for a given task.
+/// A bar that indicators progress for a given task.
 
 class ProgressIndicatorElement extends StatefulWidget {
+  ///
   final double value;
   const ProgressIndicatorElement({required this.value});
 

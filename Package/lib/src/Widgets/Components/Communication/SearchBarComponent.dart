@@ -1,19 +1,26 @@
 import 'package:aureus/aureus.dart';
 
-/*--------- SEARCH BAR COMPONENT ----------*/
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
 
+/*--------- SEARCH BAR COMPONENT ----------*/
+/// A search bar component
 class SearchBarComponent extends StatefulWidget {
+  /// What to do when the user searches
   final VoidCallback onSearch;
 
-  const SearchBarComponent({required this.onSearch});
+  /// A text editor linked to the search bar
+  final TextEditingController textEditController;
+
+  const SearchBarComponent(
+      {required this.onSearch, required this.textEditController});
 
   @override
   _SearchBarComponentState createState() => _SearchBarComponentState();
 }
 
 class _SearchBarComponentState extends State<SearchBarComponent> {
-  TextEditingController searchBarController = TextEditingController(text: '');
-
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
@@ -67,7 +74,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
               style: body2().copyWith(
                   color: coloration.decorationColor(
                       decorationVariant: decorationPriority.standard)),
-              controller: searchBarController,
+              controller: widget.textEditController,
               decoration: inputDecoration,
               autocorrect: false,
               textAlign: TextAlign.left,

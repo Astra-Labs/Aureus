@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 import 'dart:ui';
 
+/// {@category Foundation}
+
 /* ------------------ SIZING -------------------- */
 /*
 
@@ -11,12 +13,12 @@ almost any web / mobile / tablet screen.
 */
 
 class Sizing {
-  //Pixel Ratio of a given device
-
+  /// The sizing window of the application
   SingletonFlutterWindow sizingWindow() {
     return WidgetsBinding.instance!.window;
   }
 
+  ///Pixel Ratio of a given device
   double pixelRatio() {
     return sizingWindow().devicePixelRatio;
   }
@@ -27,28 +29,33 @@ class Sizing {
         sizingWindow().physicalSize.width, sizingWindow().physicalSize.height);
   }
 
+  /// Physical width of the screen
   double physicalWidth() {
     return (physicalScreenSize().width);
   }
 
+  /// Physical height of the screen
   double physicalHeight() {
     return physicalScreenSize().height;
   }
 
-  //Size in physical pixels
+  /// Size in logical pixels
   Size logicalScreenSize() {
     var screenSize = sizingWindow().physicalSize / pixelRatio();
     return Size(screenSize.width, screenSize.height);
   }
 
+  /// Logical width of the screen
   double logicalWidth() {
     return logicalScreenSize().width;
   }
 
+  /// Logical height of the screen
   double logicalHeight() {
     return logicalScreenSize().height;
   }
 
+  /// Determines whether or not the current screen is a hamburger / hot dog orientation
   bool isDesktopDisplay() {
     if (logicalWidth() >= logicalHeight()) {
       return false;
@@ -59,8 +66,8 @@ class Sizing {
     throw ('An impossible ratio was returned when determining isDesktopDisplay');
   }
 
-  //Creates a scale factor to adjust for size differences between
-  //mobile, tablet, and web.
+  /// Creates a scale factor to adjust for size differences between
+  /// mobile, tablet, and web.
   double responsiveSize(double base) {
     double scaleFactor = 0.0;
     double shortSide = logicalScreenSize().shortestSide;
@@ -82,14 +89,13 @@ class Sizing {
     return scaleFactor * base;
   }
 
-  // Basic padding that can be used for anything.
+  /// Basic padding that can be used for anything.
   EdgeInsets universalPadding() {
     return const EdgeInsets.fromLTRB(10, 10, 10, 10);
   }
 
-  // Returns the % of screen height for the weight passed
-  // as a double so it can be used for layout purposes.
-
+  /// Returns the % of screen height for the weight passed
+  /// as a double so it can be used for layout purposes.
   double heightOf({weight = sizingWeight}) {
     double screenWeightedHeight = 0.0;
 
@@ -154,8 +160,8 @@ class Sizing {
     return screenWeightedHeight;
   }
 
-  // Returns the % of screen width for the weight passed
-  // as a double so it can be used for layout purposes.
+  /// Returns the % of screen width for the weight passed
+  /// as a double so it can be used for layout purposes.
   double widthOf({weight = sizingWeight}) {
     double screenWeightedWidth = 0.0;
 
@@ -220,8 +226,8 @@ class Sizing {
     return screenWeightedWidth;
   }
 
-  // Returns a maximum width accounting for padding,
-  // given how many rows, and depending on device type.
+  /// Returns a maximum width accounting for padding,
+  /// given how many rows, and depending on device type.
   double layoutItemWidth(int sections, Size area) {
     double sizingWidth = 0.0;
 

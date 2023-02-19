@@ -1,13 +1,18 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- QUICK ACTION BAR ----------*/
-// A group of smol buttons that acts as a tabbing bar to do actions
-// This is used in the Safety Functionality to allow people to quickly go
-// to speciality tools from any page in an Aureus Resource.
-// You can control which views show a Quick Action Bar (if your safety
-// settings enable it) within the ContainerView initializer parameters.
+/// A group of [SmolButtonElement] that acts as a tabbing bar to do actions
+/// This is used in the Safety Functionality to allow people to quickly go
+/// to speciality tools from any page in an Aureus Resource.
+/// You can control which views show a Quick Action Bar (if your safety
+/// settings enable it) within the [ContainerView] initializer parameters.
 
 class QuickActionBarComponent extends StatefulWidget {
+  /// A list of tab items to be shown in the Quick Action bar.
   final List<TabObject> tabItems;
 
   const QuickActionBarComponent({Key? key, required this.tabItems})

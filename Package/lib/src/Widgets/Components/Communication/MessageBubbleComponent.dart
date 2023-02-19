@@ -1,11 +1,20 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- MESSAGE BUBBLE ----------*/
-//A bubble that contains a text message from a sender or a receiver
+/// A bubble that contains a text message from a sender or a receiver
 
 class MessageBubbleComponent extends StatefulWidget {
+  /// An enum that describes whether this message is from the sender or reciever
   final messagingVariants messageVariant;
+
+  /// The body of the message
   final String messageBody;
+
+  /// The delivery status of the message.
   final communicationStatus currentStatus;
 
   const MessageBubbleComponent(

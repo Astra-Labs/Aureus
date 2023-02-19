@@ -1,13 +1,27 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- NOTIFICATION COMPONENT ----------*/
-//A notification card that describes a message to the user
+/// A notification card that describes a message to the user
 
 class NotificationComponent extends StatelessWidget {
+  /// A 'sub category' of the notification. E.G: Someone's contact name under a text notification
   final String notificationSubCategory;
+
+  /// When it was received
   final DateTime notificationReceived;
+
+  /// The header
   final String notificationHeader;
+
+  /// The notification body
   final String notificationBody;
+
+  /// Whether or not the notification has been read. This is something you
+  /// will have to implement on the developer side.
   final bool hasNotificationBeenRead;
 
   const NotificationComponent(

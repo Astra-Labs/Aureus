@@ -1,10 +1,19 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- ARTICLE VIEW ELEMENT ----------*/
 
 class ArticleViewElement extends StatelessWidget {
+  ///
   final String title;
+
+  ///
   final String subheader;
+
+  ///
   final String body;
 
   const ArticleViewElement(
@@ -16,7 +25,7 @@ class ArticleViewElement extends StatelessWidget {
 
     return SizedBox(
       width: size.layoutItemWidth(1, screenSize),
-      height: size.layoutItemHeight(2, screenSize),
+      height: size.layoutItemHeight(1, screenSize),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

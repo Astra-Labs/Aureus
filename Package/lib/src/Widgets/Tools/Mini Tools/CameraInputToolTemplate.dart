@@ -2,6 +2,10 @@ import 'package:aureus/aureus.dart';
 import 'package:camera/camera.dart';
 import 'dart:io';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- CAMERA INPUT TOOL ----------*/
 
 class CameraInputToolTemplate extends ToolCardTemplate {
@@ -16,6 +20,22 @@ class CameraInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
+    var cardBuilder = Builder(
+      builder: (context) => StandardIconButtonElement(
+          decorationVariant: decorationPriority.important,
+          buttonIcon: Assets.camera,
+          buttonTitle: "Take photo",
+          buttonHint: "Takes you to the camera.",
+          buttonAction: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => _CameraInputCard(
+                          templatePrompt: templatePrompt, cardIcon: badgeIcon),
+                    )),
+              }),
+    );
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
@@ -23,22 +43,7 @@ class CameraInputToolTemplate extends ToolCardTemplate {
         toolChildren: [
           const DividerElement(),
           const SizedBox(height: 30.0),
-          Builder(
-            builder: (context) => StandardIconButtonElement(
-                decorationVariant: decorationPriority.important,
-                buttonIcon: Assets.camera,
-                buttonTitle: "Take photo",
-                buttonHint: "Takes you to the camera.",
-                buttonAction: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => _CameraInputCard(
-                                templatePrompt: templatePrompt,
-                                cardIcon: badgeIcon),
-                          )),
-                    }),
-          )
+          cardBuilder
         ]);
   }
 
@@ -107,6 +112,33 @@ class _CameraInputCardState extends State<_CameraInputCard> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
+    var exitButtonElement = IconButtonElement(
+      decorationVariant: decorationPriority.standard,
+      buttonIcon: Assets.no,
+      buttonHint: "Exits the camera.",
+      buttonAction: () => {Navigator.pop(context)},
+      buttonPriority: buttonSize.secondary,
+    );
+
+    var headerItemContainer = Container(
+        decoration:
+            CardBackingDecoration(priority: decorationPriority.important)
+                .buildBacking(),
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(width: 10.0),
+            IconBadge(
+                badgeIcon: widget.cardIcon,
+                badgePriority: decorationPriority.inverted),
+            const SizedBox(width: 20.0),
+            BodyTwoText(widget.templatePrompt, decorationPriority.important),
+            const SizedBox(width: 10.0),
+          ],
+        ));
+
     var topBar = Column(children: [
       SizedBox(
           width: size.layoutItemWidth(1, screenSize),
@@ -115,33 +147,9 @@ class _CameraInputCardState extends State<_CameraInputCard> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                  decoration: CardBackingDecoration(
-                          priority: decorationPriority.important)
-                      .buildBacking(),
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(width: 10.0),
-                      IconBadge(
-                          badgeIcon: widget.cardIcon,
-                          badgePriority: decorationPriority.inverted),
-                      const SizedBox(width: 20.0),
-                      BodyTwoText(
-                          widget.templatePrompt, decorationPriority.important),
-                      const SizedBox(width: 10.0),
-                    ],
-                  )),
+              headerItemContainer,
               const Spacer(),
-              IconButtonElement(
-                decorationVariant: decorationPriority.standard,
-                buttonIcon: Assets.no,
-                buttonHint: "Exits the camera.",
-                buttonAction: () => {Navigator.pop(context)},
-                buttonPriority: buttonSize.secondary,
-              ),
+              exitButtonElement,
             ],
           )),
     ]);
@@ -222,6 +230,25 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
     var screenSize = size.logicalScreenSize();
     var popCount = 0;
 
+    var retakeButton = StandardIconButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonTitle: 'Retake',
+        buttonIcon: Assets.no,
+        buttonHint: "Goes back to camera.",
+        buttonAction: () => {Navigator.pop(context)});
+
+    var completeButton = StandardIconButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonTitle: "Complete",
+        buttonHint: "Finishes prompt.",
+        buttonIcon: Assets.yes,
+        buttonAction: () => {
+              toolTemplateMaster.notifyObserverForward(),
+              Navigator.of(context).popUntil((_) => popCount++ >= 2),
+              notificationMaster.sendAlertNotificationRequest(
+                  "Camera tool completed.", Assets.camera)
+            });
+
     var controlBar = SizedBox(
         width: size.layoutItemWidth(1, screenSize),
         height: size.layoutItemWidth(2, screenSize),
@@ -236,30 +263,51 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Spacer(),
-                StandardIconButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Retake',
-                    buttonIcon: Assets.no,
-                    buttonHint: "Goes back to camera.",
-                    buttonAction: () => {Navigator.pop(context)}),
+                retakeButton,
                 const SizedBox(height: 20),
-                StandardIconButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: "Complete",
-                    buttonHint: "Finishes prompt.",
-                    buttonIcon: Assets.yes,
-                    buttonAction: () => {
-                          toolTemplateMaster.notifyObserverForward(),
-                          Navigator.of(context)
-                              .popUntil((_) => popCount++ >= 2),
-                          notificationMaster.sendAlertNotificationRequest(
-                              "Camera tool completed.", Assets.camera)
-                        }),
+                completeButton,
                 const Spacer(),
               ],
             ),
           ),
         ));
+
+    var toolPromptRow = Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const SizedBox(width: 10.0),
+        IconBadge(
+            badgeIcon: widget.cardIcon,
+            badgePriority: decorationPriority.inverted),
+        const SizedBox(width: 20.0),
+        BodyTwoText(widget.toolPrompt, decorationPriority.important),
+      ],
+    );
+
+    var imageStack = Stack(
+      alignment: Alignment.center,
+      children: [
+        Image.file(File(widget.file.path),
+            width: screenSize.width,
+            height: screenSize.height,
+            fit: BoxFit.cover),
+        Positioned(
+          top: 45,
+          child: SizedBox(
+            width: size.layoutItemWidth(1, screenSize),
+            height: size.layoutItemHeight(6, screenSize),
+            child: Container(
+                decoration: CardBackingDecoration(
+                        priority: decorationPriority.important)
+                    .buildBacking(),
+                padding: const EdgeInsets.all(8.0),
+                child: toolPromptRow),
+          ),
+        ),
+        Positioned(bottom: 30, child: controlBar)
+      ],
+    );
 
     return ContainerView(
         decorationVariant: decorationPriority.standard,
@@ -271,42 +319,7 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
               SizedBox(
                   width: screenSize.width,
                   height: screenSize.height,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.file(File(widget.file.path),
-                          width: screenSize.width,
-                          height: screenSize.height,
-                          fit: BoxFit.cover),
-                      Positioned(
-                        top: 45,
-                        child: SizedBox(
-                          width: size.layoutItemWidth(1, screenSize),
-                          height: size.layoutItemHeight(6, screenSize),
-                          child: Container(
-                              decoration: CardBackingDecoration(
-                                      priority: decorationPriority.important)
-                                  .buildBacking(),
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const SizedBox(width: 10.0),
-                                  IconBadge(
-                                      badgeIcon: widget.cardIcon,
-                                      badgePriority:
-                                          decorationPriority.inverted),
-                                  const SizedBox(width: 20.0),
-                                  BodyTwoText(widget.toolPrompt,
-                                      decorationPriority.important),
-                                ],
-                              )),
-                        ),
-                      ),
-                      Positioned(bottom: 30, child: controlBar)
-                    ],
-                  ))
+                  child: imageStack)
             ],
             containerVariant: wrapperVariants.fullScreen));
   }

@@ -2,10 +2,16 @@ import 'package:aureus/aureus.dart';
 import 'dart:math';
 import 'dart:ui';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- POETRY GRADIENT VIEW ----------*/
 
 class PoetryGradientView extends StatefulWidget {
+  ///
   final List<String> poetryArray;
+
   const PoetryGradientView({required this.poetryArray});
 
   @override

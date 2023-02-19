@@ -1,9 +1,14 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- HELP CENTER VIEW ----------*/
-// The main container for the entire Help Center functionality
-// that controls the layout, views, and more.
+/// The main container for the entire Help Center functionality
+/// that controls the layout, views, and more.
 class HelpCenterView extends StatefulWidget {
+  ///
   final HelpCenterObject helpCenter;
 
   const HelpCenterView({required this.helpCenter});
@@ -97,6 +102,26 @@ class HelpCenterArticleDetail extends StatefulWidget {
 class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
   @override
   Widget build(BuildContext context) {
+    var container = Container(
+        constraints: BoxConstraints(
+            minWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
+            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
+            minHeight: size.layoutItemHeight(5, size.logicalScreenSize()),
+            maxHeight: size.layoutItemHeight(2, size.logicalScreenSize())),
+        decoration:
+            LayerBackingDecoration(priority: decorationPriority.standard)
+                .buildBacking(),
+        padding: const EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Wrap(
+            children: [
+              BodyOneText(
+                  widget.article.articleBody, decorationPriority.standard)
+            ],
+          ),
+        ));
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
@@ -114,28 +139,11 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
         HeadingThreeText(
             widget.article.articleTitle, decorationPriority.standard),
         const SizedBox(height: 25.0),
-        Container(
-            constraints: BoxConstraints(
-                minWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
-                maxWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
-                minHeight: size.layoutItemHeight(5, size.logicalScreenSize()),
-                maxHeight: size.layoutItemHeight(2, size.logicalScreenSize())),
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.standard)
-                    .buildBacking(),
-            padding: const EdgeInsets.all(20.0),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Wrap(
-                children: [
-                  BodyOneText(
-                      widget.article.articleBody, decorationPriority.standard)
-                ],
-              ),
-            )),
+        container,
         const Spacer(),
       ],
     );
+
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);
   }

@@ -1,10 +1,19 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- STANDARD BADGE CARD ----------*/
 
 class StandardBadgeCardElement extends StatelessWidget {
+  ///
   final decorationPriority decorationVariant;
+
+  ///
   final String cardLabel;
+
+  ///
   final IconData cardIcon;
 
   const StandardBadgeCardElement(

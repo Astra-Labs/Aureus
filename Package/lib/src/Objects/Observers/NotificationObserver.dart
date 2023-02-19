@@ -1,9 +1,11 @@
+import 'package:aureus/aureus.dart';
+
+/// {@category Objects}
+/// {@image <image alt='' src=''>}
+
 // An observer pattern that links to the main scaffold
 // of the container view in order to show alert controllers,
 // in-app notifications, and more.
-
-import 'package:aureus/aureus.dart';
-
 var notificationMaster = AureusNotificationMaster();
 
 class AureusNotificationMaster {
@@ -29,7 +31,7 @@ class AureusNotificationMaster {
         : throwUnregisteredObserverError();
   }
 
-  //Shows an alert controller over the container view.
+  /// Shows an alert controller over the container view.
   void sendAlertControllerRequest(AlertControllerObject data) {
     // Checks that a current observer is registered before moving
     _currentObserver != null
@@ -37,7 +39,7 @@ class AureusNotificationMaster {
         : throwUnregisteredObserverError();
   }
 
-  // Shows a content warning request
+  /// Shows a content warning request
   void sendContentWarningRequest(String description, IconData icon) {
     print('sending content warning request');
 
@@ -46,13 +48,14 @@ class AureusNotificationMaster {
         : throwUnregisteredObserverError();
   }
 
-  // Sends an alert notification request
+  /// Sends an alert notification request
   void sendAlertNotificationRequest(String description, IconData icon) {
     _currentObserver != null
         ? _currentObserver!.showDropdownNotification(description, icon)
         : throwUnregisteredObserverError();
   }
 
+  /// Shows a bottom action controller (aka an 'action sheet')
   void showBottomActionController(AlertControllerObject data) {
     _currentObserver != null
         ? _currentObserver!.showBottomActionController(data)

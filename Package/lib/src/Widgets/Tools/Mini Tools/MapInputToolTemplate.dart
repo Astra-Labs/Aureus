@@ -2,6 +2,10 @@ import 'package:aureus/aureus.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- MAP INPUT TOOL ----------*/
 
 /*
@@ -22,6 +26,18 @@ class MapInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
+    var row = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(),
+          SmolButtonElement(
+              decorationVariant: decorationPriority.important,
+              buttonTitle: 'Next',
+              buttonHint: 'Goes to the next card',
+              buttonAction: () => {onNextCard()}),
+        ]);
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
@@ -29,17 +45,7 @@ class MapInputToolTemplate extends ToolCardTemplate {
         toolChildren: [
           const _MapInputCard(),
           const SizedBox(height: 20.0),
-          Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(),
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.important,
-                    buttonTitle: 'Next',
-                    buttonHint: 'Goes to the next card',
-                    buttonAction: () => {onNextCard()}),
-              ]),
+          row,
         ]);
   }
 
@@ -67,32 +73,37 @@ class _MapInputCardState extends State<_MapInputCard> {
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
-    return SizedBox(
+    var tileLayerOptions = TileLayerOptions(
+        urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        subdomains: ['a', 'b', 'c'],
+        attributionBuilder: (_) {
+          return const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TabSubheaderElement(
+              title: "© OpenStreetMap contributors",
+            ),
+          );
+        });
+
+    var flutterMap = FlutterMap(
+      options: MapOptions(
+        bounds: LatLngBounds(LatLng(58.8, 6.1), LatLng(59, 6.2)),
+        boundsOptions: const FitBoundsOptions(padding: EdgeInsets.all(8.0)),
+      ),
+      layers: [
+        tileLayerOptions,
+      ],
+    );
+
+    var sizedBox = SizedBox(
       width: size.layoutItemWidth(1, screenSize),
       height: size.layoutItemHeight(2, screenSize),
       child: Container(
         decoration: BoxDecoration(border: palette.universalBorder()),
-        child: FlutterMap(
-          options: MapOptions(
-            bounds: LatLngBounds(LatLng(58.8, 6.1), LatLng(59, 6.2)),
-            boundsOptions: const FitBoundsOptions(padding: EdgeInsets.all(8.0)),
-          ),
-          layers: [
-            TileLayerOptions(
-                urlTemplate:
-                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                subdomains: ['a', 'b', 'c'],
-                attributionBuilder: (_) {
-                  return const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: TabSubheaderElement(
-                      title: "© OpenStreetMap contributors",
-                    ),
-                  );
-                }),
-          ],
-        ),
+        child: flutterMap,
       ),
     );
+
+    return sizedBox;
   }
 }

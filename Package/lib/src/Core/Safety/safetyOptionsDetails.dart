@@ -1,11 +1,25 @@
 part of aureus_safety_plan;
 
-// A class that metadata about what the different options mean.
+/// {@category Safety}
+
+/// A class that metadata about what the different safety options mean.
 class SafetyOptionDetails {
   final String name;
+
+  /// The name of an option detail
+  /// ---
   final String description;
+
+  /// The description of what the option DOES
+  /// ---
   final IconData icon;
+
+  /// The icon to describe a safety option
+  /// ---
   final String functionalityChange;
+
+  /// The description of how it changes an application's functionality
+  /// ---
 
   const SafetyOptionDetails(
       {required this.name,
@@ -17,9 +31,9 @@ class SafetyOptionDetails {
 class SafetyOptionDetailMetadata {
   const SafetyOptionDetailMetadata();
 
-  // A helper function that brings up the relevant metadata for each detail.
-  // These are for views where the user selects what options they want / how it
-  // affects the functionality.
+  /// A helper function that brings up the relevant metadata for each detail.
+  /// These are for views where the user selects what options they want / how it
+  /// affects the functionality.
   SafetyOptionDetails retrieveDetails(SafetyPlanOptions option) {
     switch (option) {
       case SafetyPlanOptions.onlyNeccessaryEmails:
@@ -54,6 +68,8 @@ class SafetyOptionDetailMetadata {
     }
   }
 
+  /// A SOD that for only neccessarily emails
+  /// ---
   SafetyOptionDetails onlyNeccessaryEmailsDetails() {
     return const SafetyOptionDetails(
         name: 'Only receieve neccessary emails.',
@@ -64,6 +80,8 @@ class SafetyOptionDetailMetadata {
             'You will not be sent any emails outside of required account functionality.');
   }
 
+  /// A SOD that for disabling local / remote notifications
+  /// ---
   SafetyOptionDetails disableNotificationsDetails() {
     return SafetyOptionDetails(
         name: 'Disable notifications.',
@@ -74,6 +92,8 @@ class SafetyOptionDetailMetadata {
             'You will not receive push notifications from ${resourceValues.name}');
   }
 
+  /// A SOD that disables biometric data
+  /// ---
   SafetyOptionDetails disableBiometricsDetails() {
     return SafetyOptionDetails(
         name: 'Disable biometrics.',
@@ -84,6 +104,8 @@ class SafetyOptionDetailMetadata {
             "You won't be able to use your face or fingerprints to perform actions on ${resourceValues.name}");
   }
 
+  /// A SOD that enables 2FA
+  /// ---
   SafetyOptionDetails enable2FADetails() {
     return SafetyOptionDetails(
         name: 'Enable Two Factor Authentication.',
@@ -94,6 +116,8 @@ class SafetyOptionDetailMetadata {
             'You will not be able to access ${resourceValues.name} without a secondary passcode.');
   }
 
+  /// A SOD that for asks for all items to be saved locally
+  /// ---
   SafetyOptionDetails localDataStorageDetails() {
     return const SafetyOptionDetails(
         name: 'Request local data storage.',
@@ -104,6 +128,8 @@ class SafetyOptionDetailMetadata {
             'This will stop you from having access to data back-ups and cloud access. You will only be able to access information from the device it was originally stored on.');
   }
 
+  /// A SOD that automatically deletes data after failed attempts
+  /// ---
   SafetyOptionDetails failedPasscodeDataDeletionDetails() {
     return SafetyOptionDetails(
         name: 'Delete data after failed log-in attempts.',
@@ -114,6 +140,8 @@ class SafetyOptionDetailMetadata {
             'You will not be able to retrieve any account data after it has been deleted. To continue using ${resourceValues.name}, you will need to re-set up an account from scratch.');
   }
 
+  /// A SOD that keeps an exit bar permanently on every screen
+  /// ---
   SafetyOptionDetails exitBarDetails() {
     return SafetyOptionDetails(
         name: 'Show an emergency exit bar.',
@@ -124,6 +152,8 @@ class SafetyOptionDetailMetadata {
             'You will see an exit bar on every screen you access.');
   }
 
+  /// A SOD to disable screenshots
+  /// ---
   SafetyOptionDetails disableScreenshotsDetails() {
     return SafetyOptionDetails(
         name: 'Disable screenshots.',
@@ -133,6 +163,8 @@ class SafetyOptionDetailMetadata {
             'You will not be able to take screenshots or screen recordings inside of ${resourceValues.name}');
   }
 
+  /// A SOD that sandboxes the user's device
+  /// ---
   SafetyOptionDetails deviceSandboxDetails() {
     return SafetyOptionDetails(
         name: 'Sandbox your device.',
@@ -143,6 +175,8 @@ class SafetyOptionDetailMetadata {
             'You will not be able to complete any functionality that requires ${resourceValues.name} to use a 3rd party service. This will completely block it from having contact with the rest of your device.');
   }
 
+  /// A SOD that logs failed attempts
+  /// ---
   SafetyOptionDetails logFailedAttemptsDetails() {
     return const SafetyOptionDetails(
         name: 'Track failed log-in attempts.',

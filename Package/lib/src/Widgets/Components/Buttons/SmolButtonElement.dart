@@ -1,24 +1,24 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- SMOL BUTTON OWO ----------*/
-//A small, rounded tab button
+/// A small, rounded tab button
 
 class SmolButtonElement extends StatefulWidget {
+  /// The current decoration priority of the button.
   final decorationPriority decorationVariant;
-  // The current decoration priority of the button.
-  // ------------------------------
 
+  /// The title of your button
   final String buttonTitle;
-  // The title of your button
-  // ------------------------------
 
+  /// What your button does. Used for tooltips / accessibility information.
   final String buttonHint;
-  // What your button does. Used for tooltips / accessibility information.
-  // ------------------------------
 
+  /// The action that your button completes.
   final VoidCallback buttonAction;
-  // The action that your button completes.
-  // ------------------------------
 
   const SmolButtonElement(
       {Key? key,

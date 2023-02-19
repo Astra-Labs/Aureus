@@ -1,11 +1,14 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- ADAPTIVE INPUT TOOL ----------*/
-// A tool template that changes the input style for
-// a select few tool templates (hence adaptive input).
-// ---------------------------------
-// This allows people to respond to prompts with video,
-// text, sketch, or voice recording.
+/// A tool template that changes the input style for
+/// a select few tool templates (hence adaptive input).
+/// This allows people to respond to prompts with video,
+/// text, sketch, or voice recording.
 
 class AdaptiveInputToolTemplate extends ToolCardTemplate {
   // Creates variables to be initialize in the constructor

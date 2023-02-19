@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- VOICE RECORDING DATA CARD ----------*/
 
 class VoiceRecordingDataCardElement extends DataDetailCard {

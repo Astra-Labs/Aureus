@@ -1,12 +1,19 @@
 import 'package:aureus/aureus.dart';
 import 'dart:async';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- TIMER ELEMENT ----------*/
-//A backing that acts as a timer.
+/// A component that acts as a timer.
 
 // ignore: must_be_immutable
 class TimerElement extends StatefulWidget {
+  ///
   final Duration timeAllotment;
+
+  ///
   VoidCallback? onFinish;
 
   TimerElement({required this.timeAllotment, this.onFinish});

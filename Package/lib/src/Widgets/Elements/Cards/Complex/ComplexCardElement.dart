@@ -1,11 +1,22 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- COMPLEX CARD ----------*/
 
 class ComplexCardElement extends StatelessWidget {
+  ///
   final decorationPriority decorationVariant;
+
+  ///
   final String cardLabel;
+
+  ///
   final String cardBody;
+
+  ///
   final Map<String, IconData> cardDetailCarousel;
 
   const ComplexCardElement(

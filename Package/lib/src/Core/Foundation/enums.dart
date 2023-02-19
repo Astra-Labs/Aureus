@@ -1,23 +1,36 @@
+/// {@category Foundation}
+
 /* ------------------ ENUMS -------------------- */
 //Global Foundational Enums go here since Dart doesn't support nested types
+
+///
 enum deviceVariants { mobile, desktop, tablet }
 
+///
 enum modeVariants { light, dark }
 
+///
 enum messagingVariants { sender, receiver }
 
+///
 enum communicationStatus { sending, delivered, failed }
 
+///
 enum CardType { standard, badge }
 
+///
 enum userInputType { singleDataType, multiDataType }
 
+///
 enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
 
+///
 enum decorationPriority { standard, important, inactive, inverted, active }
 
+///
 enum buttonSize { primary, secondary }
 
+///
 enum buttonDecorationVariants {
   roundedPill,
   roundedRectangle,
@@ -25,8 +38,10 @@ enum buttonDecorationVariants {
   circle
 }
 
+///
 enum tabItemDecorationVariants { circle, roundedRectangle }
 
+///
 enum cardType {
   standardCard,
   standardBadgeCard,
@@ -38,8 +53,10 @@ enum cardType {
   categoryIconDetailCard,
 }
 
+///
 enum wrapperVariants { stackScroll, fullScreen }
 
+///
 enum dataAccess {
   camera,
   microphone,
@@ -53,6 +70,7 @@ enum dataAccess {
   sensors
 }
 
+///
 enum adaptiveInput {
   text,
   video,
@@ -60,6 +78,7 @@ enum adaptiveInput {
   draw,
 }
 
+///
 enum sensationType {
   confirmation,
   praise,

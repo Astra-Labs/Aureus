@@ -1,7 +1,11 @@
 import 'package:aureus/aureus.dart';
 
-/*--------- SAFETY PLAN LOG IN AUDIT VIEW ----------*/
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
 
+/*--------- SAFETY PLAN LOG IN AUDIT VIEW ----------*/
+///
 class SafetyPlanLogInAuditView extends StatefulWidget {
   const SafetyPlanLogInAuditView();
 

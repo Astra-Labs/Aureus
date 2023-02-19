@@ -1,11 +1,18 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- BANNER NOTIFICATION ----------*/
-// A small banner that drops down from the top of a screen to alert the user
-// of something.
+/// A small banner that drops down from the top of a screen to alert the user
+/// of something.
 
 class BannerNotificationComponent extends StatefulWidget {
+  /// The body of the banner notification
   final String body;
+
+  /// The icon for the banner notification
   final IconData icon;
   const BannerNotificationComponent({required this.body, required this.icon});
 

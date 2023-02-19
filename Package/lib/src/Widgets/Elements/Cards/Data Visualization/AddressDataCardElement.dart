@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- ADDRESS DATA CARD ----------*/
 
 class AddressDataCardElement extends DataDetailCard {
@@ -19,40 +23,46 @@ class AddressDataCardElement extends DataDetailCard {
   var zipcodeTextController = TextEditingController();
   var countryTextController = TextEditingController();
 
-  late var address1TextField = SingleDataTypeUserInputElement(
-    dataPlaceholder: "Street Address 1",
-    itemTextEditingController: address1TextController,
+  late var address1TextField = StandardTextFieldComponent(
     isEnabled: isTextEnabled,
+    decorationVariant: decorationPriority.standard,
+    hintText: '',
+    textFieldController: address1TextController,
   );
 
-  late var address2TextField = SingleDataTypeUserInputElement(
-    dataPlaceholder: "Street Address 2",
-    itemTextEditingController: address2TextController,
+  late var address2TextField = StandardTextFieldComponent(
     isEnabled: isTextEnabled,
+    decorationVariant: decorationPriority.standard,
+    hintText: '',
+    textFieldController: address2TextController,
   );
 
-  late var cityTextField = SingleDataTypeUserInputElement(
-    dataPlaceholder: "City",
-    itemTextEditingController: cityTextController,
+  late var cityTextField = StandardTextFieldComponent(
     isEnabled: isTextEnabled,
+    decorationVariant: decorationPriority.standard,
+    hintText: '',
+    textFieldController: cityTextController,
   );
 
-  late var stateTextField = SingleDataTypeUserInputElement(
-    dataPlaceholder: "State",
-    itemTextEditingController: stateTextController,
+  late var stateTextField = StandardTextFieldComponent(
     isEnabled: isTextEnabled,
+    decorationVariant: decorationPriority.standard,
+    hintText: '',
+    textFieldController: stateTextController,
   );
 
-  late var zipcodeTextField = SingleDataTypeUserInputElement(
-    dataPlaceholder: "Zipcode",
-    itemTextEditingController: zipcodeTextController,
+  late var zipcodeTextField = StandardTextFieldComponent(
     isEnabled: isTextEnabled,
+    decorationVariant: decorationPriority.standard,
+    hintText: '',
+    textFieldController: zipcodeTextController,
   );
 
-  late var countryTextField = SingleDataTypeUserInputElement(
-    dataPlaceholder: "Country",
-    itemTextEditingController: countryTextController,
+  late var countryTextField = StandardTextFieldComponent(
     isEnabled: isTextEnabled,
+    decorationVariant: decorationPriority.standard,
+    hintText: '',
+    textFieldController: countryTextController,
   );
 
   late var textControllers = [

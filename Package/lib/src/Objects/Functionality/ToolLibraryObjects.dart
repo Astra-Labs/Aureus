@@ -1,39 +1,37 @@
 import 'package:aureus/aureus.dart';
 
-/* ------------------ CORE TOOL -------------------- */
-/*
-
-*/
+/// {@category Objects}
+/// {@image <image alt='' src=''>}
 
 class CoreTool {
+  /// The name of your tool
   final String toolName;
-  //The name of your tool
-  // ------------------------------
+
+  /// Description of your tool to be shown in ToolDetailView
   final String toolDescription;
-  //Description of your tool to be shown in ToolDetailView
-  // ------------------------------
+
+  /// Information & Icons to represent important information about
+  /// your tool. To be used in ToolDetailView.
   final Map<String, IconData> toolDetails;
-  //Information & Icons to represent important information about
-  //your tool. To be used in ToolDetailView.
-  // ------------------------------
+
+  /// Specific icon for your tool.
   final IconData toolIcon;
-  //Specific icon for your tool.
-  // ------------------------------
+
+  /// The widget that's the entry point for actually using your tool.
+  /// If you're using tool card templates, it's recommended
+  /// to make the entry point a ToolNavigationCardCarousel
   final Widget entryPoint;
-  // The widget that's the entry point for actually using your tool.
-  // If you're using tool card templates, it's recommended
-  // to make the entry point a ToolNavigationCardCarousel
-  // ------------------------------
+
+  /// A map of a string (which describes action to the user),
+  /// and a corresponding VoidCallback which completes that
+  /// action if the item is pressed that will be shown
+  /// at the end of a tool flow.
   final Map<String, VoidCallback> nextSteps;
-  // A map of a string (which describes action to the user),
-  // and a corresponding VoidCallback which completes that
-  // action if the item is pressed that will be shown
-  // at the end of a tool flow.
-  //----------------------------------------
+
+  /// The list of tool cards that you use within the flow of a Core Tool
+  /// This allows Aureus to auto-generate a flow for you, and to
+  /// carry the template data from usage to summary.
   List<ToolCardTemplate>? toolCards;
-  // The list of tool cards that you use within the flow of a Core Tool
-  // This allows Aureus to auto-generate a flow for you, and to
-  // carry the template data from usage to summary.
 
   CoreTool({
     required this.toolName,
@@ -46,9 +44,9 @@ class CoreTool {
   });
 }
 
-// The navigation container that holds your tool functionality.
-// This is initialized for you based on whether or not you provide
-// tool cards within the CoreTool constructor.
+/// The navigation container that holds your tool functionality.
+/// This is initialized for you based on whether or not you provide
+/// tool cards within the CoreTool constructor.
 ToolNavigationContainer navigationContainer(CoreTool tool) {
   return ToolNavigationContainer(
       tool.toolCards!.isEmpty ? [] : tool.toolCards,
@@ -61,7 +59,6 @@ ToolNavigationContainer navigationContainer(CoreTool tool) {
           ToolNextStepsView(parentTool: tool, nextSteps: tool.nextSteps));
 }
 
-// ------------------------------
 // Dev note from Amanda (3/8/2022): it's currently initalized
 // within a function because implementing this
 // as a variable of the CoreTool class
@@ -72,35 +69,30 @@ ToolNavigationContainer navigationContainer(CoreTool tool) {
 // hard pressed to find another way.
 
 /* ------------------ Tool Navigation Container -------------------- */
-/*
-
-Where you set all of the points of navigation & metadata
-for your tool to be accessed and to go through the tool flow.
-
-*/
+/// Where you set all of the points of navigation & metadata
+/// for your tool to be accessed and to go through the tool flow.
 
 class ToolNavigationContainer {
+  /// An instance of ToolDetailView for this tool.
   ToolDetailView details;
-  // An instance of ToolDetailView for this tool.
-  // ------------------------------
+
+  /// The widget where your tool starts. This is usually a
+  /// ToolNavigationPage, or a ToolCardCarousel.
   Widget? entryPoint;
-  // The widget where your tool starts. This is usually a
-  // ToolNavigationPage, or a ToolCardCarousel.
-  // ------------------------------
+
+  /// The page users go to after they finish using the tool.
+  /// This is what the summary view sends people to when done.
   ToolNextStepsView nextSteps;
-  // The page users go to after they finish using the tool.
-  // This is what the summary view sends people to when done.
-  // ------------------------------
+
+  /// The summary view that gives the user an overview
+  /// of everything they've said. Optional, since it
+  /// requires toolCards below to be initialized.
   ToolSummaryView? summary;
-  // The summary view that gives the user an overview
-  // of everything they've said. Optional, since it
-  // requires toolCards below to be initialized.
-  // ------------------------------
+
+  /// All of the tool card templates used within the view.
+  /// The ToolSummaryView & ToolCardCarouselView use this
+  /// to be able to read & write data across the screens.
   List<ToolCardTemplate>? toolCards;
-  // All of the tool card templates used within the view.
-  // The ToolSummaryView & ToolCardCarouselView use this
-  // to be able to read & write data across the screens.
-  // ------------------------------
 
   ToolNavigationContainer(this.toolCards, this.summary, this.entryPoint,
       {required this.details, required this.nextSteps});
@@ -117,10 +109,10 @@ class ToolNavigationPage {
   const ToolNavigationPage({required this.parentTool, required this.pageBody});
 }
 
-// An observer pattern that the ToolTemplateCardCarouselView
-// uses to receive instructions from the ToolTemplateCards on moving
-// forward / going backward, depending on the interaction that the
-// user takes on the card.
+/// An observer pattern that the ToolTemplateCardCarouselView
+/// uses to receive instructions from the ToolTemplateCards on moving
+/// forward / going backward, depending on the interaction that the
+/// user takes on the card.
 
 class AureusToolTemplateMaster {
   final List<AureusToolTemplateObserver> _observers = [];
@@ -170,12 +162,11 @@ var toolTemplateMaster = AureusToolTemplateMaster();
 /* ------------------ Tool Card Template -------------------- */
 
 class ToolCardTemplate {
+  /// The string describing what to input into a tool
   final String templatePrompt;
-  // The string describing what to input into a tool
-  // ------------------------------
+
+  /// The badge associated with a tool input card
   final IconData badgeIcon;
-  // The badge associated with a tool input card
-  // ------------------------------
 
   const ToolCardTemplate(
       {required this.templatePrompt, required this.badgeIcon});

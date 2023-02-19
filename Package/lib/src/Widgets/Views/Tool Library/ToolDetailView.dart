@@ -1,8 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- TOOL DETAIL VIEW ----------*/
 
 class ToolDetailView extends StatefulWidget {
+  ///
   final CoreTool parentTool;
 
   const ToolDetailView({required this.parentTool});
@@ -18,6 +23,63 @@ class _ToolDetailViewState extends State<ToolDetailView> {
     var toolNavigation = navigationContainer(tool);
     var screenSize = size.logicalScreenSize();
 
+    var fullWidthButtonElement = FullWidthButtonElement(
+        buttonTitle: 'Use tool.',
+        buttonHint: 'Starts ${tool.toolName}.',
+        currentVariant: decorationPriority.important,
+        buttonAction: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => toolNavigation.entryPoint!,
+                  ))
+            });
+
+    var column = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(height: 20.0),
+        const TabSubheaderElement(title: 'Description'),
+        const SizedBox(height: 20.0),
+        Container(
+          padding: const EdgeInsets.all(12.0),
+          decoration:
+              LayerBackingDecoration(priority: decorationPriority.standard)
+                  .buildBacking(),
+          child: BodyOneText(tool.toolDescription, decorationPriority.standard),
+        ),
+        const SizedBox(height: 20.0),
+        const TabSubheaderElement(title: 'Used for'),
+        const SizedBox(height: 20.0),
+        DetailCardCarouselComponent(cardDetailCarousel: tool.toolDetails),
+        const SizedBox(height: 20.0),
+      ],
+    );
+
+    var floatingContainerElement = FloatingContainerElement(
+        child: Container(
+            width: size.layoutItemWidth(1, screenSize),
+            decoration:
+                LayerBackingDecoration(priority: decorationPriority.standard)
+                    .buildBacking(),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+              child: column,
+            )));
+
+    var align = Align(
+      alignment: Alignment.topRight,
+      child: IconButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonIcon: Assets.no,
+        buttonHint: 'Exit ${tool.toolName} details',
+        buttonAction: () => {Navigator.pop(context)},
+        buttonPriority: buttonSize.secondary,
+      ),
+    );
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       takesFullWidth: true,
@@ -32,16 +94,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 10.0),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: IconButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonIcon: Assets.no,
-                    buttonHint: 'Exit ${tool.toolName} details',
-                    buttonAction: () => {Navigator.pop(context)},
-                    buttonPriority: buttonSize.secondary,
-                  ),
-                ),
+                align,
                 const Spacer(),
                 IconBadge(
                     badgeIcon: tool.toolIcon,
@@ -49,57 +102,14 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                 const SizedBox(height: 15.0),
                 HeadingOneText(tool.toolName, decorationPriority.standard),
                 const SizedBox(height: 40.0),
-                FloatingContainerElement(
-                    child: Container(
-                        width: size.layoutItemWidth(1, screenSize),
-                        decoration: LayerBackingDecoration(
-                                priority: decorationPriority.standard)
-                            .buildBacking(),
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const SizedBox(height: 20.0),
-                              const TabSubheaderElement(title: 'Description'),
-                              const SizedBox(height: 20.0),
-                              Container(
-                                padding: const EdgeInsets.all(12.0),
-                                decoration: LayerBackingDecoration(
-                                        priority: decorationPriority.standard)
-                                    .buildBacking(),
-                                child: BodyOneText(tool.toolDescription,
-                                    decorationPriority.standard),
-                              ),
-                              const SizedBox(height: 20.0),
-                              const TabSubheaderElement(title: 'Used for'),
-                              const SizedBox(height: 20.0),
-                              DetailCardCarouselComponent(
-                                  cardDetailCarousel: tool.toolDetails),
-                              const SizedBox(height: 20.0),
-                            ],
-                          ),
-                        ))),
+                floatingContainerElement,
                 const Spacer(),
               ],
             ),
           ),
         ),
         const Spacer(),
-        FullWidthButtonElement(
-            buttonTitle: 'Use tool.',
-            buttonHint: 'Starts ${tool.toolName}.',
-            currentVariant: decorationPriority.important,
-            buttonAction: () => {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => toolNavigation.entryPoint!,
-                      ))
-                })
+        fullWidthButtonElement
       ],
     );
 

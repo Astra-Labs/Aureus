@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- SKETCH TOOL ----------*/
 
 class SketchToolTemplate extends ToolCardTemplate {
@@ -155,35 +159,38 @@ class _SketchInputCardState extends State<_SketchInputCard> {
           ),
         ));
 
+    var row = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          circleScroll,
+          const Spacer(),
+          SmolButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'Clear',
+              buttonHint: 'Clears the canvas',
+              buttonAction: () => {points.clear()}),
+        ]);
+
+    var container = Container(
+        height: size.layoutItemHeight(1, size.logicalScreenSize()),
+        width: size.layoutItemWidth(1, size.logicalScreenSize()),
+        decoration: CardBackingDecoration(priority: decorationPriority.standard)
+            .buildBacking(),
+        child: Stack(
+          children: const [
+            //buildCurrentPath(context),
+          ],
+        ));
+
     return Column(
       children: [
         const SizedBox(height: 10.0),
         const DividerElement(),
         const SizedBox(height: 10.0),
-        Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              circleScroll,
-              const Spacer(),
-              SmolButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonTitle: 'Clear',
-                  buttonHint: 'Clears the canvas',
-                  buttonAction: () => {points.clear()}),
-            ]),
+        row,
         const SizedBox(height: 10.0),
-        Container(
-            height: size.layoutItemHeight(1, size.logicalScreenSize()),
-            width: size.layoutItemWidth(1, size.logicalScreenSize()),
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.standard)
-                    .buildBacking(),
-            child: Stack(
-              children: const [
-                //buildCurrentPath(context),
-              ],
-            ))
+        container
       ],
     );
   }

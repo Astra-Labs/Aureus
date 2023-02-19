@@ -1,24 +1,22 @@
 import 'package:aureus/aureus.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-/*---IMPORTANT---*/
-/*
-  The data consent objects request permissions across operating systems on your behalf, 
-  and keep them managed. However, you must still go into the native codebase 
-  for Android / iOS and manually input what permissions you will be asking for ahead
-  of time, to avoid a crash. Read more about this on the permission handler documentation
-  under setup here: https://pub.dev/packages/permission_handler 
-*/
+/// {@category Objects}
+/// {@image <image alt='' src=''>}
+
+/// The data consent objects request permissions across operating systems on your behalf,
+/// and keep them managed. However, you must still go into the native codebase
+/// for Android / iOS and manually input what permissions you will be asking for ahead
+/// of time, to avoid a crash. Read more about this on the permission handler documentation
+/// under setup here: https://pub.dev/packages/permission_handler
 
 /*--------- DATA CONSENT --------*/
-/*
-*/
-
+/// A class that manages Data consent objects
 class DataConsent {
   const DataConsent();
 
-  // checks permissions on behalf of the user, and runs code if enabled,
-  // shows alert controller to user if not enabled.
+  /// A function that checks permissions on behalf of the user, and runs code if enabled,
+  /// shows alert controller to user if not enabled.
 
   Future<void> consentHandler(VoidCallback onConsent, dataAccess item) async {
     switch (item) {
@@ -95,6 +93,7 @@ class DataConsent {
     }
   }
 
+  /// A DPO that represents camera access.
   DataPermissionObject cameraAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Camera',
@@ -103,6 +102,7 @@ class DataConsent {
         onPermissionOptIn: () => {Permission.camera.request()});
   }
 
+  /// A DPO that represents microphone access.
   DataPermissionObject microphoneAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Microphone',
@@ -111,6 +111,7 @@ class DataConsent {
         onPermissionOptIn: () => {Permission.microphone.request()});
   }
 
+  /// A DPO that represents location access.
   DataPermissionObject locationAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Location',
@@ -119,6 +120,7 @@ class DataConsent {
         onPermissionOptIn: () => {Permission.location.request()});
   }
 
+  /// A DPO that represents bluetooth access.
   DataPermissionObject bluetoothAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Bluetooth',
@@ -127,6 +129,7 @@ class DataConsent {
         onPermissionOptIn: () => {Permission.bluetooth.request()});
   }
 
+  /// A DPO that represents health information access.
   DataPermissionObject healthInformationAccessPermission(
       String permissionUsage) {
     return DataPermissionObject(
@@ -136,6 +139,7 @@ class DataConsent {
         onPermissionOptIn: () => {Permission.activityRecognition.request()});
   }
 
+  /// A DPO that represents tracking access.
   DataPermissionObject trackingAccessPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Tracking',
@@ -145,6 +149,7 @@ class DataConsent {
             {Permission.appTrackingTransparency.request()});
   }
 
+  /// A DPO that represents push notification access.
   DataPermissionObject pushNotificationsAccessPermission(
       String permissionUsage) {
     return DataPermissionObject(
@@ -154,6 +159,7 @@ class DataConsent {
         onPermissionOptIn: () => {Permission.notification.request()});
   }
 
+  /// A DPO that represents email subscription access.
   DataPermissionObject emailSubscriptionPermission(
       String permissionUsage, VoidCallback onPermissionOptIn) {
     return DataPermissionObject(
@@ -163,6 +169,7 @@ class DataConsent {
         onPermissionOptIn: onPermissionOptIn);
   }
 
+  /// A DPO that represents sensor data access.
   DataPermissionObject sensorsPermission(String permissionUsage) {
     return DataPermissionObject(
         permissionName: 'Device Sensors',
@@ -172,21 +179,19 @@ class DataConsent {
   }
 }
 
-/*--------- LEVEL 1 --------*/
-/*
-
-Description: 
-The top level class that contains all of the onboarding detail objects
-
-Details:
--A minimum of 2 onboarding details are required to build an onboarding object. 
-
-*/
+/// A class that represents the metadata of a Data Permission Object.
 
 class DataPermissionObject {
+  /// What the name of the permission is
   final String permissionName;
+
+  /// The description of what you're asking for access of.
   final String permissionDescription;
+
+  /// An icon that describes the permission
   final IconData permissionIcon;
+
+  /// A function that should be called when the user opts in
   final VoidCallback onPermissionOptIn;
 
   const DataPermissionObject(

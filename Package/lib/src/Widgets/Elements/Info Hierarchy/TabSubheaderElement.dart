@@ -1,8 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- TAB SUBHEADER ELEMENT ----------*/
 
 class TabSubheaderElement extends StatelessWidget {
+  ///
   final String title;
 
   const TabSubheaderElement({Key? key, required this.title}) : super(key: key);

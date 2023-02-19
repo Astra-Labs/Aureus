@@ -1,6 +1,9 @@
 library aureus;
 
+/// @nodoc
 export 'package:flutter/material.dart';
+
+/// @nodoc
 export 'package:google_fonts/google_fonts.dart';
 
 /* ------------------ ASSETS -------------------- */
@@ -47,9 +50,6 @@ export 'src/Objects/Functionality/DataDetailObjects.dart';
 export 'src/Objects/Observers/ResourceObserver.dart';
 export 'src/Objects/Observers/NotificationObserver.dart';
 
-//Sensory Objects
-export 'src/Objects/Views/routes.dart';
-
 /* ------------------ WIDGETS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
 
@@ -74,8 +74,6 @@ export 'src/Widgets/Elements/Cards/Complex/ComplexSwitchCardElement.dart';
 // ------------------------------------------------ Grid
 export 'src/Widgets/Elements/Cards/Grid/GridCardElement.dart';
 export 'src/Widgets/Elements/Cards/Grid/GridBadgeCardElement.dart';
-// ------------------------------------------------ Task
-export 'src/Widgets/Elements/Cards/Task/ExpandingTaskCardElement.dart';
 // ------------------------------------------------ Data Visualization
 export 'src/Widgets/Elements/Cards/Data Visualization/AddressDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/BaseDataCardElement.dart';
@@ -106,8 +104,6 @@ export 'src/Widgets/Elements/Misc/EclipseShadowElement.dart';
 // -------------------------- User Input
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
 export 'src/Widgets/Elements/User Input/TextViewComponent.dart';
-export 'src/Widgets/Elements/User Input/MultipleDataTypeUserInputElement.dart';
-export 'src/Widgets/Elements/User Input/SingleDataTypeUserInputElement.dart';
 export 'src/Widgets/Elements/User Input/SliderElement.dart';
 
 //Exporting lib widget components

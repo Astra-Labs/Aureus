@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- VERTICAL SIDE NAV BAR ----------*/
 
 class VerticalSideNavBarComponent extends StatefulWidget {

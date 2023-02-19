@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- SETTINGS VIEW ----------*/
 
 class SettingsView extends StatefulWidget {
@@ -36,6 +40,39 @@ class _SettingsViewState extends State<SettingsView> {
 
   @override
   Widget build(BuildContext context) {
+    var standardButtonElement = StandardButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonTitle:
+            'learn more about ${packageVariables.resourceInformation.name}.',
+        buttonHint:
+            "Shows terms of service, licenses, developer information, and more.",
+        buttonAction: () => {showAboutDialog(context: context)});
+
+    var standardButtonElement2 = StandardButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonTitle: 'modify Safety Plan settings.',
+        buttonHint: "Takes you to modify your safety plan.",
+        buttonAction: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SafetyPlanSettingsView(),
+                  ))
+            });
+
+    var standardButtonElement3 = StandardButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonTitle: 'Use the help center.',
+        buttonHint:
+            "Takes you to the help center to find more information about ${resourceValues.name}",
+        buttonAction: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => resourceValues.help,
+                  ))
+            });
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.stackScroll,
         children: [
@@ -45,38 +82,11 @@ class _SettingsViewState extends State<SettingsView> {
           const SizedBox(height: 20.0),
           const TabSubheaderElement(title: 'I want to'),
           const SizedBox(height: 20.0),
-          StandardButtonElement(
-              decorationVariant: decorationPriority.standard,
-              buttonTitle: 'Use the help center.',
-              buttonHint:
-                  "Takes you to the help center to find more information about ${resourceValues.name}",
-              buttonAction: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => resourceValues.help,
-                        ))
-                  }),
+          standardButtonElement3,
           const SizedBox(height: 10.0),
-          StandardButtonElement(
-              decorationVariant: decorationPriority.standard,
-              buttonTitle: 'modify Safety Plan settings.',
-              buttonHint: "Takes you to modify your safety plan.",
-              buttonAction: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SafetyPlanSettingsView(),
-                        ))
-                  }),
+          standardButtonElement2,
           const SizedBox(height: 10.0),
-          StandardButtonElement(
-              decorationVariant: decorationPriority.standard,
-              buttonTitle:
-                  'learn more about ${packageVariables.resourceInformation.name}.',
-              buttonHint:
-                  "Shows terms of service, licenses, developer information, and more.",
-              buttonAction: () => {showAboutDialog(context: context)})
+          standardButtonElement
         ]);
 
     return ContainerView(

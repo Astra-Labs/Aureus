@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- VIDEO RECORDING DATA CARD ----------*/
 
 class VideoRecordingDataCardElement extends DataDetailCard {

@@ -1,8 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- ONBOARDING DEMO VIEW ----------*/
 
 class OnboardingDemoView extends StatefulWidget {
+  ///
   final List<CoreTool> toolItems;
 
   const OnboardingDemoView({required this.toolItems});

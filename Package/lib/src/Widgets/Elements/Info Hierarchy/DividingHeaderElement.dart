@@ -1,9 +1,16 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- DIVIDING HEADER ELEMENT ----------*/
 
 class DividingHeaderElement extends StatelessWidget {
+  ///
   final String headerText;
+
+  ///
   final String subheaderText;
 
   const DividingHeaderElement(
@@ -21,7 +28,7 @@ class DividingHeaderElement extends StatelessWidget {
           HeadingOneText(headerText, decorationPriority.standard),
           const SizedBox(height: 10.0),
           BodyOneText(subheaderText, decorationPriority.standard),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 10.0),
           const DividerElement(),
           const SizedBox(height: 10.0),
         ],

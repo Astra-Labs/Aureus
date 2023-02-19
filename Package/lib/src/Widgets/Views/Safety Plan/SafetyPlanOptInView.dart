@@ -1,8 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- SAFETY PLAN OPT IN VIEW ----------*/
 
 class SafetyPlanOptInView extends StatefulWidget {
+  ///
   final Widget exitPoint;
 
   const SafetyPlanOptInView({required this.exitPoint});
@@ -14,6 +19,32 @@ class SafetyPlanOptInView extends StatefulWidget {
 class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
   @override
   Widget build(BuildContext context) {
+    var standardButtonElement = StandardButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonTitle: "I don't want safety features.",
+        buttonHint: "Continues without enabling safety features",
+        buttonAction: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => widget.exitPoint,
+                  ))
+            });
+
+    var standardButtonElement2 = StandardButtonElement(
+        decorationVariant: decorationPriority.important,
+        buttonTitle: 'I want additional safety features.',
+        buttonHint: 'Takes you to enable safety features.',
+        buttonAction: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SafetyPlanOptionsView(
+                      exitPoint: widget.exitPoint,
+                    ),
+                  ))
+            });
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
       children: [
@@ -38,31 +69,9 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Column(children: [
-            StandardButtonElement(
-                decorationVariant: decorationPriority.important,
-                buttonTitle: 'I want additional safety features.',
-                buttonHint: 'Takes you to enable safety features.',
-                buttonAction: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SafetyPlanOptionsView(
-                              exitPoint: widget.exitPoint,
-                            ),
-                          ))
-                    }),
+            standardButtonElement2,
             SizedBox(height: size.heightOf(weight: sizingWeight.w0) / 2),
-            StandardButtonElement(
-                decorationVariant: decorationPriority.standard,
-                buttonTitle: "I don't want safety features.",
-                buttonHint: "Continues without enabling safety features",
-                buttonAction: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => widget.exitPoint,
-                          ))
-                    })
+            standardButtonElement
           ]),
         )
       ],

@@ -2,11 +2,19 @@
 
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- TOOL TEMPLATE CARD CAROUSEL VIEW ----------*/
 
 class ToolTemplateCardCarouselView extends StatefulWidget {
+  ///
   final CoreTool parentTool;
+
+  ///
   List<ToolCardTemplate> customCards;
+
   ToolTemplateCardCarouselView(
       {Key? key, required this.parentTool, this.customCards = const []})
       : assert(

@@ -1,12 +1,25 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- LANDING PAGE VIEW ----------*/
 
 class LandingPageView extends StatefulWidget {
+  ///
   final Image lightModeLandscapeBacking;
+
+  ///
   final Image darkModeLandscapeBacking;
+
+  ///
   final Image lightModeUIOverlay;
+
+  ///
   final Image darkModeUIOverlay;
+
+  ///
   final List<StandardIconButtonElement> actionButtons;
 
   const LandingPageView(

@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- GRID CARD SELECT TOOL ----------*/
 
 class GridCardSelectToolTemplate extends ToolCardTemplate {
@@ -32,6 +36,25 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
           child: cardItem));
     }
 
+    var row = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SmolButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'Skip',
+              buttonHint: 'Skips the current card.',
+              buttonAction: () => {onNextCard()}),
+          const Spacer(),
+          SmolButtonElement(
+              decorationVariant: dataMap.isEmpty
+                  ? decorationPriority.inactive
+                  : decorationPriority.important,
+              buttonTitle: 'Next',
+              buttonHint: 'Goes to the next card.',
+              buttonAction: () => {onNextCard()}),
+        ]);
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
@@ -49,24 +72,7 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
           const SizedBox(height: 10.0),
           const DividerElement(),
           const SizedBox(height: 20.0),
-          Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Skip',
-                    buttonHint: 'Skips the current card.',
-                    buttonAction: () => {onNextCard()}),
-                const Spacer(),
-                SmolButtonElement(
-                    decorationVariant: dataMap.isEmpty
-                        ? decorationPriority.inactive
-                        : decorationPriority.important,
-                    buttonTitle: 'Next',
-                    buttonHint: 'Goes to the next card.',
-                    buttonAction: () => {onNextCard()}),
-              ])
+          row
         ]);
   }
 

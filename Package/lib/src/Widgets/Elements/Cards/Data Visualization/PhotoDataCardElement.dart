@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- PHOTO DATA CARD ----------*/
 
 class PhotoDataCardElement extends DataDetailCard {

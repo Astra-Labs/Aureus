@@ -1,12 +1,25 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- COMPLEX SWITCH CARD ----------*/
 
 class ComplexSwitchCardElement extends StatelessWidget {
+  ///
   final String cardLabel;
+
+  ///
   final String cardBody;
+
+  ///
   final IconData cardIcon;
+
+  ///
   final VoidCallback onEnable;
+
+  ///
   final VoidCallback onDisable;
 
   const ComplexSwitchCardElement(

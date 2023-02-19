@@ -1,7 +1,11 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- DETAIL CARD CAROUSEL COMPONENT ----------*/
-//A card that contains a badge and label to describe what the card represents
+/// A card that contains a badge and label to describe what the card represents
 
 class DetailCardCarouselComponent extends StatelessWidget {
   final Map<String, IconData> cardDetailCarousel;

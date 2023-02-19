@@ -1,18 +1,16 @@
 import 'package:aureus/aureus.dart';
 import 'package:flutter/scheduler.dart';
 
+/// {@category Foundation}
+
 /* ------------------ ASSET PALETTE -------------------- */
 
-/* 
-
-This is where all of the gradients, text styles, colors, and other related items 
-are located in Aureus. Since they are global items, you can call them without
-accessing them through any specific class. 
-
-*/
+/// This is where all of the gradients, text styles, colors, and other related items
+/// are located in Aureus. Since they are global items, you can call them without
+/// accessing them through any specific class.
 
 class AureusPalette {
-  // Returns the given 'mode' (light or dark) for the device that Aureus is running on.
+  /// Returns the given 'mode' (light or dark) for the device that Aureus is running on.
   Brightness brightness() {
     return SchedulerBinding.instance!.window.platformBrightness;
   }

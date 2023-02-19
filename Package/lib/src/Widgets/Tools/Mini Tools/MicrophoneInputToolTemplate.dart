@@ -3,6 +3,10 @@ import 'dart:async';
 import 'package:aureus/aureus.dart';
 import 'package:record/record.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- MICROPHONE INPUT TOOL TEMPLATE ----------*/
 
 class MicrophoneInputToolTemplate extends ToolCardTemplate {
@@ -162,41 +166,56 @@ class _MicrophoneInputCardState extends State<_MicrophoneInputCard>
 
   @override
   Widget build(BuildContext context) {
+    var finishRecordingButton = IconButtonElement(
+      decorationVariant: _isRecording == true
+          ? decorationPriority.standard
+          : decorationPriority.inactive,
+      buttonIcon: Assets.yes,
+      buttonHint: "Finishes recording.",
+      buttonAction: () => {_stop()},
+      buttonPriority: buttonSize.secondary,
+    );
+    var pauseRecordingButton = IconButtonElement(
+      decorationVariant: _isRecording == true && _isPaused != true
+          ? decorationPriority.standard
+          : decorationPriority.inactive,
+      buttonIcon: Assets.pause,
+      buttonHint: "Pauses recording.",
+      buttonAction: () => {_pause()},
+      buttonPriority: buttonSize.secondary,
+    );
+    var playRecordingButton = IconButtonElement(
+      decorationVariant: _isRecording == true && _isPaused != true
+          ? decorationPriority.inactive
+          : decorationPriority.important,
+      buttonIcon: Assets.play,
+      buttonHint:
+          _isPaused == false ? "Starts recording." : "Resumes recording.",
+      buttonAction: () => {_isPaused == false ? _start() : _resume()},
+      buttonPriority: buttonSize.secondary,
+    );
+
     var controlBar = Row(
       children: [
         const Spacer(),
-        IconButtonElement(
-          decorationVariant: _isRecording == true && _isPaused != true
-              ? decorationPriority.inactive
-              : decorationPriority.important,
-          buttonIcon: Assets.play,
-          buttonHint:
-              _isPaused == false ? "Starts recording." : "Resumes recording.",
-          buttonAction: () => {_isPaused == false ? _start() : _resume()},
-          buttonPriority: buttonSize.secondary,
-        ),
+        playRecordingButton,
         const Spacer(),
-        IconButtonElement(
-          decorationVariant: _isRecording == true && _isPaused != true
-              ? decorationPriority.standard
-              : decorationPriority.inactive,
-          buttonIcon: Assets.pause,
-          buttonHint: "Pauses recording.",
-          buttonAction: () => {_pause()},
-          buttonPriority: buttonSize.secondary,
-        ),
+        pauseRecordingButton,
         const Spacer(),
-        IconButtonElement(
-          decorationVariant: _isRecording == true
-              ? decorationPriority.standard
-              : decorationPriority.inactive,
-          buttonIcon: Assets.yes,
-          buttonHint: "Finishes recording.",
-          buttonAction: () => {_stop()},
-          buttonPriority: buttonSize.secondary,
-        ),
+        finishRecordingButton,
         const Spacer(),
       ],
+    );
+
+    var recordingIndicatorContainer = Container(
+      decoration: BoxDecoration(
+          color: coloration.accentColor().withOpacity(0.2),
+          shape: BoxShape.circle),
+      child: CircularProgressIndicator(
+          backgroundColor: coloration.inactiveColor(),
+          color: coloration.accentColor(),
+          value: controller.value,
+          strokeWidth: 3.0),
     );
 
     var recordingIndicator = SizedBox(
@@ -212,16 +231,7 @@ class _MicrophoneInputCardState extends State<_MicrophoneInputCard>
               height: 200,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: coloration.accentColor().withOpacity(0.2),
-                      shape: BoxShape.circle),
-                  child: CircularProgressIndicator(
-                      backgroundColor: coloration.inactiveColor(),
-                      color: coloration.accentColor(),
-                      value: controller.value,
-                      strokeWidth: 3.0),
-                ),
+                child: recordingIndicatorContainer,
               ),
             ),
           ),

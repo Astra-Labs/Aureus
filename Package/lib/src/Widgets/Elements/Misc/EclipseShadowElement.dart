@@ -1,13 +1,22 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- ECLIPSE SHADOW ----------*/
-// Using the data provided from the AureusStylization class,
-// creates a moving eclipse that appears to eclipse and pass behind
-// the child object.
+/// Using the data provided from the AureusStylization class,
+/// creates a moving eclipse that appears to eclipse and pass behind
+/// the child object.
 
 class EclipseShadowElement extends StatefulWidget {
+  ///
   final Widget child;
+
+  ///
   final bool isActive;
+
+  ///
   final double eclipseWidth;
 
   const EclipseShadowElement(

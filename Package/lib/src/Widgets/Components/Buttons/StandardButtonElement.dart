@@ -1,21 +1,24 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- STANDARD BUTTON ----------*/
-//A 80% width button that acts as a standard button for the UDS
+/// A 80% width button that acts as a standard button
 
 class StandardButtonElement extends StatefulWidget {
+  /// The current decoration priority of the button.
   final decorationPriority decorationVariant;
-  // The current decoration priority of the button.
-  // ------------------------------
+
+  /// The title of your button
   final String buttonTitle;
-  // The title of your button
-  // ------------------------------
+
+  /// What your button does. Used for tooltips / accessibility information.
   final String buttonHint;
-  // What your button does. Used for tooltips / accessibility information.
-  // ------------------------------
+
+  /// The action that your button completes.
   final VoidCallback buttonAction;
-  // The action that your button completes.
-  // ------------------------------
 
   const StandardButtonElement(
       {required this.decorationVariant,

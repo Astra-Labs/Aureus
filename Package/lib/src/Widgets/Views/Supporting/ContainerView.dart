@@ -1,24 +1,36 @@
 import 'package:aureus/aureus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- CONTAINER VIEW ----------*/
 
-// A container that sets the size for the screen,
-// enables the exit bar at the top of the screen when enabled in
-// the safety plan, and shows notifications / prompts to the user.
-// Think of this view as the 'glue' that holds Aureus together.
-
-// ALL VIEWS IN AN AUREUS RESOURCE SHOULD BE A CONTAINER VIEW.
-// If you do not use ContainerView, you will not be able to access
-// the NotificationObserver or some built-in Safety Plan features.
+/// A container that sets the size for the screen,
+/// enables the exit bar at the top of the screen when enabled in
+/// the safety plan, and shows notifications / prompts to the user.
+/// Think of this view as the 'glue' that holds Aureus together.
+///
+/// ALL VIEWS IN AN AUREUS RESOURCE SHOULD BE A CONTAINER VIEW.
+/// If you do not use ContainerView, you will not be able to access
+/// the NotificationObserver or some built-in Safety Plan features.
 
 class ContainerView extends StatefulWidget {
-  //determines if primary landing page (fluid decoration),
-  //or just secondary page (blur decoration).
+  /// determines if primary landing page (fluid decoration),
+  /// or just secondary page (blur decoration).
   final decorationPriority decorationVariant;
+
+  ///
   final ContainerWrapperElement builder;
+
+  ///
   final bool? takesFullWidth;
+
+  ///
   final bool? hasBackgroundImage;
+
+  ///
   final bool? showQuickActionBar;
 
   const ContainerView(
@@ -91,7 +103,6 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void dispose() {
-    print('view disposed!');
     notificationMaster.unregisterObserver(this);
 
     //Removes items in the container view
@@ -115,7 +126,6 @@ class _ContainerViewState extends State<ContainerView>
   //Displays an alert controller over the current view.
   @override
   void showAlertController(AlertControllerObject data) {
-    print('container view: showing alert controller');
     setState(() {
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
@@ -134,7 +144,6 @@ class _ContainerViewState extends State<ContainerView>
   //Displays a content warning over the current view.
   @override
   void showContentWarning(String description, IconData icon) {
-    print('container view: showing content warning');
     setState(() {
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
@@ -155,7 +164,6 @@ class _ContainerViewState extends State<ContainerView>
   // Displays a dropdown notification at the top of the view.
   @override
   void showDropdownNotification(String description, IconData icon) {
-    print('container view: showing banner notification');
     setState(() {
       _offset = Tween<Offset>(
               begin: const Offset(0.0, -1.0), end: const Offset(0.0, 0.0))
@@ -175,7 +183,6 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void showBottomActionController(AlertControllerObject data) {
-    print('container view: showing bottom action sheet');
     setState(() {
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))

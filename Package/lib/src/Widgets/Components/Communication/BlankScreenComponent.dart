@@ -1,11 +1,18 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- BLANK SCREEN COMPONENT ----------*/
-// Shows a card meant to act as a 'blank' screen placeholder to instruct
-// user on what to do next
+/// Shows a card meant to act as a 'blank' screen placeholder to instruct
+/// user on what to do next
 
 class BlankScreenComponent extends StatelessWidget {
+  /// The title of the blank screen component
   final String cardTitle;
+
+  /// The body description of the blank screen component.
   final String cardBody;
 
   const BlankScreenComponent({required this.cardTitle, required this.cardBody});

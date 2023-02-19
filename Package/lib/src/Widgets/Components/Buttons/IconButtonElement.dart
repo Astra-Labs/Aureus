@@ -1,30 +1,28 @@
 import 'package:aureus/aureus.dart';
 
-/*--------- ICON BUTTON ----------*/
-//A small, circular button that uses an icon to communicate its' purpose
-//big circular icon buttons that are greater than 70x70 and are intended
-//to be the main action of the page (e.g: add, message, etc).
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/// A small, circular button that uses an icon to communicate its' purpose
+/// big circular icon buttons that are greater than 70x70 and are intended
+/// to be the main action of the page (e.g: add, message, etc).
 
 class IconButtonElement extends StatefulWidget {
+  /// The current decoration priority of the button.
   final decorationPriority decorationVariant;
-  // The current decoration priority of the button.
-  // ------------------------------
 
+  /// An icon to visually describe the button
   final IconData buttonIcon;
-  // An icon to visually describe the button
-  // ------------------------------
 
+  /// What your button does. Used for tooltips / accessibility information.
   final String buttonHint;
-  // What your button does. Used for tooltips / accessibility information.
-  // ------------------------------
 
+  /// The action that your button completes.
   final VoidCallback buttonAction;
-  // The action that your button completes.
-  // ------------------------------
 
+  /// The size of your button. Primary means ONLY cta, secondary means multiple CTAs
   final buttonSize buttonPriority;
-  // The size of your button. Primary means ONLY cta, secondary means multiple CTAs
-  // ------------------------------
 
   const IconButtonElement(
       {required this.decorationVariant,

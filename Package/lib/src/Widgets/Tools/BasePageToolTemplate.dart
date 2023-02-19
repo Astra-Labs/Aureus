@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- BASE PAGE TOOL TEMPLATE ----------*/
 // The base class for a page tool template.
 // A PAGE is a tool template that uses a full page, and

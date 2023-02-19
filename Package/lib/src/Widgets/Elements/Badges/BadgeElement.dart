@@ -1,17 +1,20 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- ICON BADGE ----------*/
-// A circle with an icon that is meant to act as a category
-// label, but not as a button.
+/// A circle with an icon that is meant to act as a category
+/// label, but not as a button.
 
 class IconBadge extends StatelessWidget {
+  /// An icon to visually describe the badge. This should give a visual cue
+  /// to the user about what to expect.
   final IconData badgeIcon;
-  // An icon to visually describe the badge. This should give a visual cue to the user about what to expect.
-  // ------------------------------
 
+  /// The current decoration priority of the badge.
   final decorationPriority badgePriority;
-  // The current decoration priority of the badge.
-  // ------------------------------
 
   const IconBadge({required this.badgeIcon, required this.badgePriority});
 

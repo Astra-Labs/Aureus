@@ -1,11 +1,20 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- PAGE HEADER ELEMENT ----------*/
 
 // ignore: must_be_immutable
 class PageHeaderElement extends StatelessWidget {
+  ///
   final String pageTitle;
+
+  ///
   final VoidCallback onPageExit;
+
+  ///
   VoidCallback? onPageDetails;
 
   PageHeaderElement.withExit(
@@ -60,28 +69,31 @@ class PageHeaderElement extends StatelessWidget {
         query: MediaQuery.of(context));
     var screenSize = size.logicalScreenSize();
 
-    return Container(
+    var pageHeaderContent = Column(
+      children: [
+        const SizedBox(height: 10.0),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Flexible(
+                child: HeadingTwoText(pageTitle, decorationPriority.standard)),
+            buttonOptions()
+          ],
+        ),
+        const SizedBox(height: 12.0),
+      ],
+    );
+
+    var pageHeaderContainer = Container(
       constraints: BoxConstraints(
           minWidth: size.layoutItemWidth(1, screenSize),
           maxWidth: size.layoutItemWidth(1, screenSize),
           minHeight: labelSizing.height * 2),
-      child: Column(
-        children: [
-          const SizedBox(height: 10.0),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Flexible(
-                  child:
-                      HeadingTwoText(pageTitle, decorationPriority.standard)),
-              buttonOptions()
-            ],
-          ),
-          const SizedBox(height: 12.0),
-        ],
-      ),
+      child: pageHeaderContent,
     );
+
+    return pageHeaderContainer;
   }
 }

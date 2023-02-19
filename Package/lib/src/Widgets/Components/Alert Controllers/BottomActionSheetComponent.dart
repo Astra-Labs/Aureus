@@ -1,13 +1,16 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
 /*--------- BOTTOM ACTION SHEET COMPONENT ----------*/
-// An action sheet on the bottom of the screen. Use when the user
-// can choose more than 2 actions.
+/// An action sheet on the bottom of the screen. Use when the user
+/// can choose more than 2 actions.
 
 class BottomActionSheetComponent extends StatefulWidget {
+  /// The [AlertControllerObject] data object that dictates how your alert controller behaves.
   final AlertControllerObject alertData;
-  // The data object that dictates how your alert controller behaves.
-  // ------------------------------
 
   const BottomActionSheetComponent({required this.alertData});
 

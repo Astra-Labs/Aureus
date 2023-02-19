@@ -1,5 +1,9 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Tools}
+/// {@image <image alt='' src=''>}
+
 /*--------- TIMER TOOL ----------*/
 
 class TimerToolTemplate extends ToolCardTemplate {
@@ -46,20 +50,5 @@ class TimerToolTemplate extends ToolCardTemplate {
         toolChildren: [
           BodyTwoText('Completed a Timer.', decorationPriority.standard)
         ]);
-  }
-}
-
-class _TimerInputCard extends StatefulWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  _TimerInputCard();
-
-  @override
-  _TimerInputCardState createState() => _TimerInputCardState();
-}
-
-class _TimerInputCardState extends State<_TimerInputCard> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

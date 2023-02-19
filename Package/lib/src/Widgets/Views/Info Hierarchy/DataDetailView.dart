@@ -1,10 +1,18 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- DATA DETAIL VIEW ----------*/
 
 class DataDetailView extends StatefulWidget {
+  ///
   final String title;
+
+  ///
   final List<DataDetailCard> detailCards;
+
   DataDetailView({Key? key, required this.title, required this.detailCards})
       : assert(detailCards.isNotEmpty == true,
             'Data Detail View requires cards to show data, and to allow the user to edit data.'),
@@ -37,29 +45,29 @@ class _DataDetailViewState extends State<DataDetailView> {
 
     var screenSize = size.logicalScreenSize();
 
+    var pageHeaderElement = PageHeaderElement.withOptionsExit(
+        pageTitle: widget.title,
+        onPageExit: () => {Navigator.pop(context)},
+        onPageDetails: () => {
+              notificationMaster.showBottomActionController(
+                  AlertControllerObject.singleAction(
+                      onCancellation: () => {},
+                      alertTitle: "What would you like to do?",
+                      alertBody: "Select an option below.",
+                      alertIcon: Assets.alertmessage,
+                      actions: [
+                    AlertControllerAction(
+                        actionName:
+                            isEditing ? "Finish editing" : "Start editing",
+                        actionSeverity: AlertControllerActionSeverity.standard,
+                        onSelection: updateEditingState)
+                  ]))
+            });
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
         children: [
-          PageHeaderElement.withOptionsExit(
-              pageTitle: widget.title,
-              onPageExit: () => {Navigator.pop(context)},
-              onPageDetails: () => {
-                    notificationMaster.showBottomActionController(
-                        AlertControllerObject.singleAction(
-                            onCancellation: () => {},
-                            alertTitle: "What would you like to do?",
-                            alertBody: "Select an option below.",
-                            alertIcon: Assets.alertmessage,
-                            actions: [
-                          AlertControllerAction(
-                              actionName: isEditing
-                                  ? "Finish editing"
-                                  : "Start editing",
-                              actionSeverity:
-                                  AlertControllerActionSeverity.standard,
-                              onSelection: updateEditingState)
-                        ]))
-                  }),
+          pageHeaderElement,
           SizedBox(
               width: size.layoutItemWidth(1, screenSize),
               height: size.layoutItemWidth(1, screenSize),

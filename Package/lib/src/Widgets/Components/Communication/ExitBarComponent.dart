@@ -1,14 +1,18 @@
 import 'package:aureus/aureus.dart';
 
-/*--------- EXIT BAR ----------*/
-// An exit bar that stays at the top of the user's screen and exits the
-// screen when pressed.
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
 
-// This is not able to be controlled by a developer, as this is a user
-// setting that someone can enable for any AureusResource in their
-// safety plan. Whether or not a user wants to see an ExitBar is
-// handled by Aureus and the ContainerView. You don't need to
-// worry about manual implementation.
+/*--------- EXIT BAR ----------*/
+/// An exit bar that stays at the top of the user's screen and exits the
+/// screen when pressed.
+///
+/// This is not able to be controlled by a developer, as this is a user
+/// setting that someone can enable for any AureusResource in their
+/// safety plan. Whether or not a user wants to see an ExitBar is
+/// handled by Aureus and the ContainerView. You don't need to
+/// worry about manual implementation.
 
 class ExitBarComponent extends StatefulWidget {
   const ExitBarComponent();

@@ -1,8 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
 /*--------- ONBOARDING INFORMATION VIEW ----------*/
 
 class OnboardingInformationView extends StatefulWidget {
+  ///
   final List<OnboardingDetail> onboardingDetails;
 
   const OnboardingInformationView({required this.onboardingDetails});

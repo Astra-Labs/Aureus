@@ -1,10 +1,19 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
 /*--------- GRID BADGE CARD ----------*/
 
 class GridBadgeCardElement extends StatelessWidget {
+  ///
   final decorationPriority decorationVariant;
+
+  ///
   final String cardLabel;
+
+  ///
   final IconData cardIcon;
 
   const GridBadgeCardElement(

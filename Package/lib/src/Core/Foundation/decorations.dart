@@ -1,18 +1,19 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Foundation}
+
 /* ------------------ DECORATIONS -------------------- */
-/*
+///
+/// A set of classes that dynamically create BoxDecorations in accordance with the
+/// design system principles for each kind of interactivity.
 
-A set of classes that dynamically create BoxDecorations in accordance with the 
-design system principles for each kind of interactivity.
-
-Some classes have their own custom variants that further differentiate them. 
-Every backing decoration inherits from the Parent - Base Backing Decoration. 
-
-*/
+/// Some classes have their own custom variants that further differentiate them.
+/// Every backing decoration inherits from the Parent - Base Backing Decoration.
 
 class BaseBackingDecoration {
   final decorationPriority priority;
+
+  /// The decoration priority for the base class.
 
   BaseBackingDecoration({required this.priority});
 
