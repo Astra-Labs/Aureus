@@ -12,12 +12,10 @@ class AureusNotificationMaster {
   AureusNotificationObserver? _currentObserver;
 
   void registerObserver(AureusNotificationObserver observer) {
-    print('registering observer');
     _currentObserver = observer;
   }
 
   void unregisterObserver(AureusNotificationObserver observer) {
-    print('unregistering observer');
     _currentObserver = null;
   }
 
@@ -41,8 +39,6 @@ class AureusNotificationMaster {
 
   /// Shows a content warning request
   void sendContentWarningRequest(String description, IconData icon) {
-    print('sending content warning request');
-
     _currentObserver != null
         ? _currentObserver!.showContentWarning(description, icon)
         : throwUnregisteredObserverError();

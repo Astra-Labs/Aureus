@@ -70,15 +70,12 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
   }
 
   void onPanStart(DragStartDetails details) {
-    print('User started drawing');
     final box = context.findRenderObject() as RenderBox;
     final point = box.globalToLocal(details.globalPosition);
 
     setState(() {
       itemOffset = point;
     });
-
-    print(point);
   }
 
   void onPanUpdate(DragUpdateDetails details) {
@@ -88,13 +85,9 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
     setState(() {
       itemOffset = point;
     });
-
-    print(point);
   }
 
-  void onPanEnd(DragEndDetails details) {
-    print('User ended drawing');
-  }
+  void onPanEnd(DragEndDetails details) {}
 
   @override
   Widget build(BuildContext context) {

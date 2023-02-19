@@ -45,17 +45,6 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
             children: widget.children,
           );
 
-    var paddingInset = size.widthOf(weight: sizingWeight.w0) / 2;
-
-    var wrapperPadding = widget.takesFullWidth == true
-        ? const EdgeInsets.all(0.0)
-        : EdgeInsets.all(paddingInset);
-
-    // This size takes into account the padding created by ContainerView
-    // so there is no overflow warnings.
-    var paddedViewHeight = MediaQuery.of(context).size.height -
-        size.heightOf(weight: sizingWeight.w2);
-
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
       return children;

@@ -30,8 +30,6 @@ class _TimerElementState extends State<TimerElement>
   var timeString = '';
 
   void startTimer() {
-    print("timer string is $timeString");
-    print("int duration is $intDuration");
     _isTimerActive = true;
     controller.forward();
 
@@ -55,8 +53,6 @@ class _TimerElementState extends State<TimerElement>
 
   void pauseTimer() {
     setState(() {
-      print("timer string is $timeString");
-      print("int duration is $intDuration");
       _isTimerActive = false;
       _timer.cancel();
       controller.stop();

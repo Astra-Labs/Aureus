@@ -37,11 +37,7 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
                 decorationVariant: decorationPriority.important,
                 buttonIcon: Assets.no,
                 buttonHint: 'Responds no to the prompt.',
-                buttonAction: () => {
-                  print('Pressed no!'),
-                  dataMap.insert(0, false),
-                  onNextCard()
-                },
+                buttonAction: () => {dataMap.insert(0, false), onNextCard()},
                 buttonPriority: buttonSize.secondary,
               ),
               const Spacer(),
@@ -49,11 +45,7 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
                 decorationVariant: decorationPriority.important,
                 buttonIcon: Assets.yes,
                 buttonHint: 'Responds yes to the prompt.',
-                buttonAction: () => {
-                  print('Pressed yes!'),
-                  dataMap.insert(0, true),
-                  onNextCard()
-                },
+                buttonAction: () => {dataMap.insert(0, true), onNextCard()},
                 buttonPriority: buttonSize.secondary,
               ),
             ],

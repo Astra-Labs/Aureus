@@ -169,36 +169,33 @@ class _LandingPageViewState extends State<LandingPageView> {
               ],
             )));
 
-    var webView = SizedBox(
-        height: screenHeight,
-        width: screenWidth,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    var webView = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                SizedBox(
-                    width: screenWidth / 3.5,
-                    height: screenHeight * 0.5,
-                    child: Center(child: informationHiearchy)),
-                SizedBox(
-                    width: screenWidth / 3.5,
-                    height: screenHeight * 0.88,
-                    child: homeScreenOverlay),
-                SizedBox(
-                    width: screenWidth / 3.5,
-                    height: screenHeight * (0.10 * widget.actionButtons.length),
-                    child: buttonItems),
-              ],
-            ),
-            FloatingContainerElement(child: webPageFooter)
+            SizedBox(
+                width: size.layoutItemWidth(3, screenSize),
+                height: size.layoutItemHeight(1, screenSize),
+                child: Center(child: informationHiearchy)),
+            SizedBox(
+                width: size.layoutItemWidth(3, screenSize),
+                height: size.layoutItemHeight(1, screenSize),
+                child: homeScreenOverlay),
+            SizedBox(
+                width: size.layoutItemWidth(3, screenSize),
+                height: size.layoutItemHeight(1, screenSize),
+                child: buttonItems),
           ],
-        ));
+        ),
+        FloatingContainerElement(child: webPageFooter)
+      ],
+    );
 
     return Scaffold(
       body: Container(
@@ -213,7 +210,10 @@ class _LandingPageViewState extends State<LandingPageView> {
               fit: BoxFit.cover,
             ),
           ),
-          child: webView),
+          child: SizedBox(
+              width: screenWidth,
+              height: screenHeight,
+              child: size.isDesktopDisplay() ? webView : mobileView)),
     );
   }
 }

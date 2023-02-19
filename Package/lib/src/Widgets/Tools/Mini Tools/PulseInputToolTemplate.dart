@@ -162,7 +162,6 @@ class _PulseMapCardState extends State<_PulseMapCard> {
   List<List<int>> selectedMapPattern = [];
 
   void pulseDot(List<int> values) {
-    print('pulsing this dot: ${values[0]} ${values[1]}!');
     Sensory().createSensation(sensationType.praise);
 
     var y = values[0];
@@ -242,7 +241,6 @@ class _PulseMapCardState extends State<_PulseMapCard> {
                         indexMap.map((element) => element).toList()))
                   },
               child: activeDot));
-          print('gave dot $xIndex and $yIndex');
         } else if (currentRow[xIndex] == 0) {
           // is an inactive dot
           tempDotHolding.add(inactiveDot);

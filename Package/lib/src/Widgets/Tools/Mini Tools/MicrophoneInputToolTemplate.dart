@@ -101,7 +101,7 @@ class _MicrophoneInputCardState extends State<_MicrophoneInputCard>
         _startTimer();
       }
     } catch (e) {
-      print(e);
+      throw ("$e");
     }
   }
 

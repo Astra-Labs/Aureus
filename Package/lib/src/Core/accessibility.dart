@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:ui';
 import 'package:aureus/aureus.dart';
 import 'package:flutter/semantics.dart';

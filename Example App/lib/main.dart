@@ -180,7 +180,7 @@ class LandingPage extends StatelessWidget {
     }
 
     return Scaffold(
-        body: size.isDesktopDisplay()
+        body: size.isDesktopDisplay() == false
             ? mobileLandingView(
                 landscapeBacking: landscapeBackgroundImage(),
                 uiOverlay: landingUIOverlayImage(),

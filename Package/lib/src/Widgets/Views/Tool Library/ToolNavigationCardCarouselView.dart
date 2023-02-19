@@ -62,11 +62,9 @@ class _ToolTemplateCardCarouselViewState
   void nextAction() {
     setState(() {
       if (currentCardIndex < toolChildren.length) {
-        print("card hasn't hit limit");
         _visible = false;
 
         if (currentCardIndex == (toolChildren.length - 1)) {
-          print("card has hit limit");
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -84,7 +82,6 @@ class _ToolTemplateCardCarouselViewState
   //implementation of Aureus Tool Template observer patterns
   @override
   void previousAction() {
-    print('Received previous card instructions from master.');
     setState(() {
       _visible = false;
       if (currentCardIndex != 0) {
@@ -107,10 +104,8 @@ class _ToolTemplateCardCarouselViewState
 
     for (var element in toolChildren) {
       if (toolChildren.indexOf(element) == currentCardIndex) {
-        print('is the active card');
         activeCardItem = element.returnActiveToolCard();
       } else if (toolChildren.indexOf(element) < currentCardIndex) {
-        print('is the inactive card');
         summaryListView.insert(
             0,
             Padding(

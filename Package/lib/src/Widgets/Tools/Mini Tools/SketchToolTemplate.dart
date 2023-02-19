@@ -67,21 +67,16 @@ class _SketchInputCardState extends State<_SketchInputCard> {
   }
 
   void onPanStart(DragStartDetails details) {
-    print('User started drawing');
     final box = context.findRenderObject() as RenderBox;
     final point = box.globalToLocal(details.globalPosition);
-    print(point);
   }
 
   void onPanUpdate(DragUpdateDetails details) {
     final box = context.findRenderObject() as RenderBox;
     final point = box.globalToLocal(details.globalPosition);
-    print(point);
   }
 
-  void onPanEnd(DragEndDetails details) {
-    print('User ended drawing');
-  }
+  void onPanEnd(DragEndDetails details) {}
 
   void changeColor(Color color) {
     setState(() {

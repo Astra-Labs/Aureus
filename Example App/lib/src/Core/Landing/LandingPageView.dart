@@ -239,7 +239,7 @@ class _footerCTAState extends State<footerCTA> {
                                               ExplorationView(),
                                         ))
                                   }),
-                          SizedBox(height: 30.0),
+                          Spacer(),
                           StandardButtonElement(
                               decorationVariant: decorationPriority.standard,
                               buttonHint: "Shows you our Gen 2.0 plan",
