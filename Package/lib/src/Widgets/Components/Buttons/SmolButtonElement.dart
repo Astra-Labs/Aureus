@@ -1,23 +1,56 @@
 import 'package:aureus/aureus.dart';
 
-//A small, rounded tab button
-//Doc Link:
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- SMOL BUTTON OWO ----------*/
+/// A small, rounded tab button
 
 class SmolButtonElement extends StatefulWidget {
+  /// The current decoration priority of the button.
   final decorationPriority decorationVariant;
+
+  /// The title of your button
   final String buttonTitle;
+
+  /// What your button does. Used for tooltips / accessibility information.
+  final String buttonHint;
+
+  /// The action that your button completes.
   final VoidCallback buttonAction;
 
   const SmolButtonElement(
-      {required this.decorationVariant,
+      {Key? key,
+      required this.decorationVariant,
       required this.buttonTitle,
-      required this.buttonAction});
+      required this.buttonHint,
+      required this.buttonAction})
+      : super(key: key);
 
   @override
   _SmolButtonElementState createState() => _SmolButtonElementState();
 }
 
 class _SmolButtonElementState extends State<SmolButtonElement> {
+  @override
+  void initState() {
+    sensation.prepare();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    sensation.dispose();
+    super.dispose();
+  }
+
+  void createButtonInteraction() {
+    setState(() {
+      sensation.createSensation(sensationType.press);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
@@ -34,23 +67,34 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return InkWell(
+    var smolButtonContent = FloatingContainerElement(
+      child: Container(
+          constraints: BoxConstraints(
+              minHeight: minimumButtonTextSize.height + 20,
+              maxHeight: minimumButtonTextSize.height + 20,
+              maxWidth: minimumButtonTextSize.width + 30,
+              minWidth: minimumButtonTextSize.width + 30),
+          decoration: buttonDecoration,
+          child: Center(
+              child: TagOneText(widget.buttonTitle, widget.decorationVariant))),
+    );
+
+    var smolButtonInteractor = GestureDetector(
         onTap: () {
           if (isButtonEnabled == true) {
+            createButtonInteraction();
             widget.buttonAction();
           }
         },
-        child: FloatingContainerElement(
-          child: Container(
-              constraints: BoxConstraints(
-                  minHeight: minimumButtonTextSize.height * 1.8,
-                  maxHeight: minimumButtonTextSize.height * 2,
-                  maxWidth: minimumButtonTextSize.width * 1.4,
-                  minWidth: minimumButtonTextSize.width * 1.3),
-              decoration: buttonDecoration,
-              child: Center(
-                  child: TagOneText(
-                      widget.buttonTitle, widget.decorationVariant))),
-        ));
+        child: smolButtonContent);
+
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: smolButtonInteractor,
+    );
   }
 }

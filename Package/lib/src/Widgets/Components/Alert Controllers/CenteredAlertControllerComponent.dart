@@ -1,8 +1,15 @@
 import 'package:aureus/aureus.dart';
 
-//A vertically & horizontally centered alert controller
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- CENTERED ACTION SHEET COMPONENT ----------*/
+/// A vertically & horizontally centered alert controller
+/// Use when there is only 1-2 actions, otherwise use Bottom Action Sheet
 
 class CenteredAlertControllerComponent extends StatefulWidget {
+  /// The data object that dictates how your alert controller behaves.
   final AlertControllerObject alertData;
 
   const CenteredAlertControllerComponent({required this.alertData});
@@ -16,92 +23,67 @@ class _CenteredAlertControllerComponentState
     extends State<CenteredAlertControllerComponent> {
   @override
   Widget build(BuildContext context) {
-    Widget alertControllerActions = Container();
+    List<Widget> actionButtons = [];
 
     var screenSize = size.logicalScreenSize();
+    var actions = widget.alertData.actions;
 
-    if (widget.alertData.actions.length == 1) {
-      //needs a single standard button
-
-      var actionItem = widget.alertData.actions[0];
-
-      alertControllerActions = StandardButtonElement(
-        buttonAction: actionItem.onSelection,
-        buttonTitle: actionItem.actionName,
-        decorationVariant: decorationPriority.standard,
-      );
-    } else if (widget.alertData.actions.length <= 2) {
-      //needs stacked standards button built to severity
-      alertControllerActions = SizedBox(
-        width: size.layoutItemWidth(1, screenSize),
-        child: ListView.separated(
-            shrinkWrap: true,
-            separatorBuilder: (BuildContext context, int index) =>
-                Divider(height: 6.0, color: Colors.white.withOpacity(0.0)),
-            itemCount: widget.alertData.actions.length,
-            itemBuilder: (BuildContext context, int index) {
-              AlertControllerAction actionItem =
-                  widget.alertData.actions[index];
-
-              return StandardButtonElement(
-                buttonAction: actionItem.onSelection,
-                buttonTitle: actionItem.actionName,
-                decorationVariant: decorationPriority.standard,
-              );
-            }),
-      );
+    for (var element in actions) {
+      actionButtons.add(Padding(
+        padding: const EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0),
+        child: StandardButtonElement(
+            decorationVariant:
+                element.actionSeverity == AlertControllerActionSeverity.confirm
+                    ? decorationPriority.important
+                    : decorationPriority.standard,
+            buttonTitle: element.actionName,
+            buttonHint: 'Completes ${element.actionName}',
+            buttonAction: element.onSelection),
+      ));
     }
 
-    //Creates a custom backing to establish high importance.
-    BoxDecoration alertBacking() {
-      var customAlertBacking =
-          BaseBackingDecoration(priority: decorationPriority.standard);
+    var centeredAlertControllerContent = Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconBadge(
+              badgeIcon: widget.alertData.alertIcon,
+              badgePriority: decorationPriority.standard),
+          const SizedBox(height: 20),
+          HeadingThreeText(
+              widget.alertData.alertTitle, decorationPriority.standard),
+          BodyOneText(widget.alertData.alertBody, decorationPriority.standard),
+          const SizedBox(height: 30.0),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: actionButtons,
+          )
+        ]);
 
-      Gradient backingGradient = LinearGradient(colors: []);
-      BoxShadow backingHaze = BoxShadow();
-
-      if (brightness() == Brightness.dark) {
-        backingGradient = darkGradient();
-        backingHaze = pastelShadow();
-      } else if (brightness() == Brightness.light) {
-        backingGradient = lightGradient();
-        backingHaze = darkShadow();
-      }
-
-      customAlertBacking.decorationCornerRadius = BorderRadius.circular(10.0);
-      customAlertBacking.decorationGradient = backingGradient;
-      customAlertBacking.decorationBorder = universalBorder();
-      customAlertBacking.decorationHaze = backingHaze;
-
-      return customAlertBacking.buildBacking();
-    }
-
-    return Container(
-        decoration: alertBacking(),
+    var centeredAlertControllerContainer = Container(
+        decoration: CardBackingDecoration(priority: decorationPriority.inverted)
+            .buildBacking(),
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),
+            maxWidth: size.layoutItemWidth(1, screenSize),
             minHeight: size.layoutItemHeight(3, screenSize),
             maxHeight: size.layoutItemHeight(1, screenSize)),
         child: Padding(
           padding: const EdgeInsets.all(35.0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconBadge(
-                    badgeIcon: widget.alertData.alertIcon,
-                    badgePriority: decorationPriority.standard),
-                SizedBox(height: 20),
-                HeadingThreeText(
-                    widget.alertData.alertTitle, decorationPriority.standard),
-                BodyOneText(
-                    widget.alertData.alertBody, decorationPriority.standard),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 25, 0, 10),
-                  child: alertControllerActions,
-                ),
-              ]),
+          child: centeredAlertControllerContent,
         ));
+
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.customItem(
+          isEnabled: true,
+          label: 'Alert Controller - ${widget.alertData.alertTitle}',
+          hint: widget.alertData.alertBody,
+          isEditable: false,
+          isLiveRegion: true),
+      child: centeredAlertControllerContainer,
+    );
   }
 }

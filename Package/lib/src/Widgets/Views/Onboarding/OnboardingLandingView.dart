@@ -1,6 +1,13 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
+
+/*--------- ONBOARDING LANDING VIEW ----------*/
+
 class OnboardingLandingView extends StatefulWidget {
+  ///
   const OnboardingLandingView();
 
   @override
@@ -13,7 +20,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
         children: [
-          Spacer(),
+          const Spacer(),
           Center(
             child: SizedBox(
                 height: 65.0,
@@ -25,39 +32,62 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                   fit: BoxFit.contain,
                 )))),
           ),
-          Spacer(),
+          const Spacer(),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadingThreeText("I'm ${packageVariables.prodName}",
-                  decorationPriority.standard),
+              HeadingThreeText(
+                  "I'm ${resourceValues.name}", decorationPriority.standard),
               HeadingOneText(
-                  packageVariables.missionTagline, decorationPriority.standard)
+                  resourceValues.mission, decorationPriority.standard)
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Wrap(
             runSpacing: 8.0,
             children: [
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Try out tools',
+                  buttonHint: "Opens demo tool page",
                   buttonIcon: Assets.expand,
-                  buttonAction: () => {print('tool demo!')}),
+                  buttonAction: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  resourceValues.onboardingDemo,
+                            ))
+                      }),
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'See the features',
+                  buttonHint: "Opens feauture information page",
                   buttonIcon: Assets.phone,
-                  buttonAction: () => {print('tool information!')}),
+                  buttonAction: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  resourceValues.onboardingInfo,
+                            ))
+                      }),
               StandardIconButtonElement(
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Get started',
+                  buttonHint: "Takes you to onboarding",
                   buttonIcon: Assets.next,
-                  buttonAction: () => {print('onboarding!')})
+                  buttonAction: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => resourceValues.signUp,
+                            ))
+                      })
             ],
           ),
-          Spacer(),
+          const Spacer(),
         ]);
 
     return ContainerView(

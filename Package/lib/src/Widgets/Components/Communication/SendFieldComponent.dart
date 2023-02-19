@@ -1,43 +1,59 @@
 import 'package:aureus/aureus.dart';
 
-//A text field and icon button used to send communications to a receipent
-//Doc Link:
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- SEND FIELD ----------*/
+/// A text field and icon button used to send communications to a receipent
 
 class SendFieldComponent extends StatefulWidget {
+  /// What to do when the user presses send
   final VoidCallback onSend;
 
-  const SendFieldComponent({required this.onSend});
+  /// A text editor linked to the send field
+  final TextEditingController textEditController;
+
+  const SendFieldComponent(
+      {required this.onSend, required this.textEditController});
 
   @override
   _SendFieldComponentState createState() => _SendFieldComponentState();
 }
 
 class _SendFieldComponentState extends State<SendFieldComponent> {
-  TextEditingController sendFieldController = TextEditingController(text: '');
-
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return Container(
+    var sendFieldContent = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          StandardTextFieldComponent(
+            hintText: 'Write message here.',
+            isEnabled: true,
+            decorationVariant: decorationPriority.standard,
+            textFieldController: widget.textEditController,
+          ),
+          IconButtonElement(
+            buttonIcon: Assets.paperplane,
+            buttonAction: widget.onSend,
+            buttonHint: 'Sends the value in the text field.',
+            decorationVariant: decorationPriority.important,
+            buttonPriority: buttonSize.secondary,
+          )
+        ]);
+
+    var sendFieldContainer = Container(
       constraints: BoxConstraints(
           minHeight: size.layoutItemHeight(6, screenSize),
           maxHeight: size.layoutItemHeight(5, screenSize),
-          minWidth: size.layoutItemWidth(1, screenSize),
           maxWidth: size.layoutItemWidth(1, screenSize)),
-      child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SingleDataTypeUserInputElement(
-                dataPlaceholder: 'Write message here.'),
-            SecondaryIconButtonElement(
-                buttonIcon: Assets.paperplane,
-                buttonAction: widget.onSend,
-                buttonTooltip: 'Send Button',
-                decorationVariant: decorationPriority.important)
-          ]),
+      child: sendFieldContent,
     );
+
+    return sendFieldContainer;
   }
 }

@@ -1,104 +1,113 @@
 import 'package:aureus/aureus.dart';
 
-//A small, circular button that uses an icon to communicate its' purpose
-//Doc Link:
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
 
-//big circular icon buttons that are greater than 70x70 and are intended to be the main action of the page (e.g: add, message, etc).
-class PrimaryIconButtonElement extends StatefulWidget {
+/// A small, circular button that uses an icon to communicate its' purpose
+/// big circular icon buttons that are greater than 70x70 and are intended
+/// to be the main action of the page (e.g: add, message, etc).
+
+class IconButtonElement extends StatefulWidget {
+  /// The current decoration priority of the button.
   final decorationPriority decorationVariant;
+
+  /// An icon to visually describe the button
   final IconData buttonIcon;
-  final String buttonTooltip;
+
+  /// What your button does. Used for tooltips / accessibility information.
+  final String buttonHint;
+
+  /// The action that your button completes.
   final VoidCallback buttonAction;
 
-  const PrimaryIconButtonElement(
+  /// The size of your button. Primary means ONLY cta, secondary means multiple CTAs
+  final buttonSize buttonPriority;
+
+  const IconButtonElement(
       {required this.decorationVariant,
       required this.buttonIcon,
-      required this.buttonTooltip,
-      required this.buttonAction});
+      required this.buttonHint,
+      required this.buttonAction,
+      required this.buttonPriority});
 
   @override
-  _PrimaryIconButtonElementState createState() =>
-      _PrimaryIconButtonElementState();
+  _IconButtonElementState createState() => _IconButtonElementState();
 }
 
-class _PrimaryIconButtonElementState extends State<PrimaryIconButtonElement> {
+class _IconButtonElementState extends State<IconButtonElement> {
+  //Switches decoration to active, and then returns it to current variant.
+
+  late decorationPriority buttonPriority;
+
+  @override
+  void initState() {
+    buttonPriority = widget.decorationVariant;
+    sensation.prepare();
+    super.initState();
+  }
+
+  void createButtonInteraction() {
+    setState(() {
+      buttonPriority = decorationPriority.active;
+      sensation.createSensation(sensationType.press);
+    });
+  }
+
+  @override
+  void dispose() {
+    sensation.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isButtonEnabled =
         widget.decorationVariant == decorationPriority.inactive ? false : true;
+
     BoxDecoration buttonBacking = ButtonBackingDecoration(
-            variant: buttonDecorationVariants.circle,
-            priority: widget.decorationVariant)
+            variant: buttonDecorationVariants.circle, priority: buttonPriority)
         .buildBacking();
 
-    return InkWell(
-        onTap: () {
-          if (isButtonEnabled == true) {
-            widget.buttonAction();
-          }
-        },
-        child: FloatingContainerElement(
-          child: SizedBox(
-              width: 80.0,
-              height: 80.0,
-              child: Container(
-                decoration: buttonBacking,
-                child: Icon(widget.buttonIcon,
-                    color: coloration.decorationColor(
-                        decorationVariant: widget.decorationVariant),
-                    semanticLabel: widget.buttonTooltip,
-                    size: 65.0),
-              )),
-        ));
-  }
-}
+    var buttonScale =
+        (widget.buttonPriority == buttonSize.primary ? 80.0 : 45.0);
 
-//tiny babey icon buttons that are 60x60 or less.
-class SecondaryIconButtonElement extends StatefulWidget {
-  final decorationPriority decorationVariant;
-  final IconData buttonIcon;
-  final String buttonTooltip;
-  final VoidCallback buttonAction;
-
-  const SecondaryIconButtonElement(
-      {required this.decorationVariant,
-      required this.buttonIcon,
-      required this.buttonTooltip,
-      required this.buttonAction});
-
-  @override
-  _SecondaryIconButtonElementState createState() =>
-      _SecondaryIconButtonElementState();
-}
-
-class _SecondaryIconButtonElementState
-    extends State<SecondaryIconButtonElement> {
-  @override
-  Widget build(BuildContext context) {
-    bool isButtonEnabled =
-        widget.decorationVariant == decorationPriority.inactive ? false : true;
-
-    var buttonBackingDecoration = ButtonBackingDecoration(
-        variant: buttonDecorationVariants.circle,
-        priority: widget.decorationVariant);
-
-    return InkWell(
-        onTap: () {
-          if (isButtonEnabled == true) {
-            widget.buttonAction();
-          }
-        },
-        child: SizedBox(
-          width: 55.0,
-          height: 55.0,
+    var iconButtonElementContent = FloatingContainerElement(
+      child: SizedBox(
+          width: buttonScale,
+          height: buttonScale,
           child: Container(
-            decoration: buttonBackingDecoration.buildBacking(),
+            decoration: buttonBacking,
             child: Icon(widget.buttonIcon,
                 color: coloration.decorationColor(
-                    decorationVariant: widget.decorationVariant),
-                semanticLabel: widget.buttonTooltip,
-                size: 35.0),
-          ),
+                    decorationVariant: buttonPriority),
+                size: (buttonScale - 15)),
+          )),
+    );
+
+    var iconButtonElementInteractor = GestureDetector(
+        onTap: () {
+          if (isButtonEnabled == true) {
+            createButtonInteraction();
+            widget.buttonAction();
+          }
+        },
+        child: PulseShadowElement(
+          pulseWidth: buttonScale,
+          isActive: widget.decorationVariant == decorationPriority.important
+              ? true
+              : false,
+          child: iconButtonElementContent,
         ));
+
+    return Semantics.fromProperties(
+      excludeSemantics: true,
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: 'Icon Button',
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: iconButtonElementInteractor,
+    );
   }
 }

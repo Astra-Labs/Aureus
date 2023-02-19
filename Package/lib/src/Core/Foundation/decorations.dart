@@ -1,21 +1,19 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Foundation}
+
 /* ------------------ DECORATIONS -------------------- */
-/*
+///
+/// A set of classes that dynamically create BoxDecorations in accordance with the
+/// design system principles for each kind of interactivity.
 
-A set of classes that dynamically create BoxDecorations in accordance with the 
-design system principles for each kind of interactivity.
+/// Some classes have their own custom variants that further differentiate them.
+/// Every backing decoration inherits from the Parent - Base Backing Decoration.
 
-Some classes have their own custom variants that further differentiate them. 
-You can
-
-Every backing decoration inherits from the Parent - Base Backing Decoration. 
-
-*/
-
-// 🛑
 class BaseBackingDecoration {
   final decorationPriority priority;
+
+  /// The decoration priority for the base class.
 
   BaseBackingDecoration({required this.priority});
 
@@ -41,49 +39,89 @@ class BaseBackingDecoration {
   }
 }
 
-// 🛑
-//
 class ButtonBackingDecoration extends BaseBackingDecoration {
   final buttonDecorationVariants variant;
 
   ButtonBackingDecoration({required this.variant, required priority})
       : super(priority: priority) {
     //defining variants for the specific item
-    if (variant == buttonDecorationVariants.circle) {
-      decorationCornerRadius = BorderRadius.circular(100);
-    } else if (variant == buttonDecorationVariants.roundedPill) {
-      decorationCornerRadius = BorderRadius.circular(30.0);
-    } else if (variant == buttonDecorationVariants.roundedRectangle) {
-      decorationCornerRadius = BorderRadius.circular(7.0);
+
+    switch (variant) {
+      // -- CIRCLE ( )
+      case buttonDecorationVariants.circle:
+        decorationCornerRadius = BorderRadius.circular(100);
+        break;
+      // -- ROUNDED PILL (-----)
+      case buttonDecorationVariants.roundedPill:
+        decorationCornerRadius = BorderRadius.circular(30);
+        break;
+      // -- ROUNDED RECTANGLE {-----}
+      case buttonDecorationVariants.roundedRectangle:
+        decorationCornerRadius = BorderRadius.circular(7);
+        break;
+      // -- EDGED RECTANGLE [-----]
+      case buttonDecorationVariants.edgedRectangle:
+        decorationCornerRadius = BorderRadius.circular(0);
+        break;
     }
 
-    //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
-      //defining variants for the specific mode
-      decorationFill = coloration.inactiveColor();
-    } else if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
-      if (brightness() == Brightness.light) {
-        decorationGradient = darkGradient();
-        decorationBorder = universalBorder();
-      } else if (brightness() == Brightness.dark) {
-        decorationGradient = lightGradient();
-        decorationBorder = universalBorder();
-      }
-    } else if (priority == decorationPriority.standard) {
-      //defining variants for the specific mode
-      if (brightness() == Brightness.light) {
-        decorationFill = lightModeFill();
-        decorationBorder = lightModeBorder();
-      } else if (brightness() == Brightness.dark) {
-        decorationFill = darkModeFill();
-        decorationBorder = darkModeBorder();
-      }
+    switch (priority) {
+      // when something is clickable, but not chosen
+      case decorationPriority.inactive:
+        {
+          decorationFill = coloration.inactiveColor();
+          return;
+        }
+
+      // when something is active, or chosen
+      case decorationPriority.active:
+        {
+          decorationFill = coloration.contrastColor().withOpacity(0.4);
+          decorationBorder = Border.all(
+              color: coloration.contrastColor().withOpacity(0.8), width: 1);
+          break;
+        }
+
+      // when something is standard, but neither inactive nor active.
+      case decorationPriority.standard:
+        {
+          decorationFill = palette.brightness() == Brightness.light
+              ? palette.lightModeFill()
+              : palette.darkModeFill();
+          decorationBorder = palette.brightness() == Brightness.light
+              ? palette.lightModeBorder()
+              : palette.darkModeBorder();
+          break;
+        }
+
+      // Super important, needs highest UI CTA
+      case decorationPriority.important:
+        {
+          decorationGradient = palette.brightness() == Brightness.light
+              ? palette.darkGradient()
+              : palette.lightGradient();
+          decorationBorder = palette.universalBorder();
+          break;
+        }
+
+      // item is inverted to have colors of the opposite mode.
+      case decorationPriority.inverted:
+        {
+          decorationCornerRadius = BorderRadius.circular(20.0);
+          decorationBorder = palette.universalBorder();
+
+          decorationGradient = palette.brightness() == Brightness.light
+              ? palette.lightGradient()
+              : palette.darkGradient();
+          decorationHaze = palette.brightness() == Brightness.light
+              ? palette.darkShadow()
+              : palette.lightShadow();
+          break;
+        }
     }
   }
 }
 
-// 🛑
 class LayerBackingDecoration extends BaseBackingDecoration {
   LayerBackingDecoration({required priority}) : super(priority: priority) {
     decorationCornerRadius = BorderRadius.circular(10.0);
@@ -93,116 +131,135 @@ class LayerBackingDecoration extends BaseBackingDecoration {
       //defining variants for the specific mode
 
       //layers do not show inactive colors because layers aren't interactable by definition, so one statement covers standard & inactive.
-      if (brightness() == Brightness.light) {
-        decorationFill = lightModeFill();
-      } else if (brightness() == Brightness.dark) {
-        decorationFill = darkModeFill();
+      if (palette.brightness() == Brightness.light) {
+        decorationFill = palette.lightModeFill();
+      } else if (palette.brightness() == Brightness.dark) {
+        decorationFill = palette.darkModeFill();
       }
     } else if (priority == decorationPriority.important) {
-      if (brightness() == Brightness.light) {
-        decorationGradient = darkGradient();
-        decorationBorder = universalBorder();
-        decorationHaze = darkShadow();
-      } else if (brightness() == Brightness.dark) {
-        decorationGradient = lightGradient();
-        decorationBorder = universalBorder();
-        decorationHaze = pastelShadow();
+      if (palette.brightness() == Brightness.light) {
+        decorationGradient = palette.darkGradient();
+        decorationBorder = palette.universalBorder();
+        decorationHaze = palette.darkShadow();
+      } else if (palette.brightness() == Brightness.dark) {
+        decorationGradient = palette.lightGradient();
+        decorationBorder = palette.universalBorder();
+        decorationHaze = palette.pastelShadow();
       }
     }
   }
 }
 
-// 🛑
 class CardBackingDecoration extends BaseBackingDecoration {
   CardBackingDecoration({required priority}) : super(priority: priority) {
     //defining variants for the specific priority
     if (priority == decorationPriority.inactive) {
       //defining variants for the specific mode
-
       decorationCornerRadius = BorderRadius.circular(10.0);
       decorationFill = coloration.inactiveColor().withOpacity(0.1);
     } else if (priority == decorationPriority.important) {
-      decorationCornerRadius = BorderRadius.circular(20.0);
-      decorationBorder = universalBorder();
-
-      if (brightness() == Brightness.light) {
-        decorationGradient = darkGradient();
-        decorationHaze = lightShadow();
-      } else if (brightness() == Brightness.dark) {
-        decorationGradient = lightGradient();
-        decorationHaze = lightShadow();
+      if (palette.brightness() == Brightness.light) {
+        decorationGradient = palette.darkGradient();
+        decorationHaze = palette.lightShadow();
+      } else if (palette.brightness() == Brightness.dark) {
+        decorationGradient = palette.lightGradient();
+        decorationHaze = palette.darkShadow();
       }
+      decorationCornerRadius = BorderRadius.circular(20.0);
+      decorationBorder = palette.universalBorder();
     } else if (priority == decorationPriority.standard) {
       //defining variants for the specific mode
+      decorationFill = palette.brightness() == Brightness.light
+          ? palette.lightModeFill()
+          : palette.darkModeFill();
+      decorationBorder = palette.brightness() == Brightness.light
+          ? palette.lightModeBorder()
+          : palette.darkModeBorder();
       decorationCornerRadius = BorderRadius.circular(20.0);
-      if (brightness() == Brightness.light) {
-        decorationFill = lightModeFill();
-        decorationBorder = lightModeBorder();
-      } else if (brightness() == Brightness.dark) {
-        decorationFill = darkModeFill();
-        decorationBorder = darkModeBorder();
+    } else if (priority == decorationPriority.inverted) {
+      decorationCornerRadius = BorderRadius.circular(20.0);
+      decorationBorder = palette.universalBorder();
+
+      if (palette.brightness() == Brightness.light) {
+        decorationGradient = palette.lightGradient();
+        decorationHaze = palette.darkShadow();
+      } else if (palette.brightness() == Brightness.dark) {
+        decorationGradient = palette.darkGradient();
+        decorationHaze = palette.darkShadow();
       }
     }
   }
 }
 
-// 🛑
 class InputBackingDecoration extends BaseBackingDecoration {
   InputBackingDecoration() : super(priority: decorationPriority.standard) {
-    //defining variants for the specific mode
-    if (brightness() == Brightness.light) {
-      decorationFill = lightModeFill();
-      decorationBorder = lightModeBorder();
-    } else if (brightness() == Brightness.dark) {
-      decorationFill = darkModeFill();
-      decorationBorder = darkModeBorder();
-    }
+    decorationFill = palette.brightness() == Brightness.light
+        ? palette.lightModeFill()
+        : palette.darkModeFill();
+    decorationBorder = palette.brightness() == Brightness.light
+        ? palette.lightModeBorder()
+        : palette.darkModeBorder();
     decorationCornerRadius = BorderRadius.circular(7.0);
   }
 }
 
-// 🛑
 class TabItemBackingDecoration extends BaseBackingDecoration {
   final tabItemDecorationVariants variant;
 
   TabItemBackingDecoration({required this.variant, required priority})
       : super(priority: priority) {
-    //defining variants for the specific item
-    if (variant == tabItemDecorationVariants.circle) {
-      decorationCornerRadius = BorderRadius.circular(100);
-    } else if (variant == tabItemDecorationVariants.roundedRectangle) {
-      decorationShape = BoxShape.rectangle;
-      decorationCornerRadius = BorderRadius.circular(30.0);
+    switch (variant) {
+      case tabItemDecorationVariants.circle:
+        {
+          decorationCornerRadius = BorderRadius.circular(100);
+          break;
+        }
+      case tabItemDecorationVariants.roundedRectangle:
+        {
+          decorationShape = BoxShape.rectangle;
+          decorationCornerRadius = BorderRadius.circular(30.0);
+          break;
+        }
     }
 
-    //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
-      decorationFill = coloration.inactiveColor();
-    }
+    switch (priority) {
+      case decorationPriority.standard:
+        {
+          decorationFill = palette.brightness() == Brightness.light
+              ? palette.lightModeFill()
+              : palette.darkModeFill();
+          decorationBorder = palette.brightness() == Brightness.light
+              ? palette.lightModeBorder()
+              : palette.darkModeBorder();
+          return;
+        }
+      case decorationPriority.important:
+        {
+          decorationBorder = palette.universalBorder();
 
-    if (priority == decorationPriority.standard) {
-      //defining variants for the specific mode
-
-      if (brightness() == Brightness.light) {
-        decorationFill = lightModeFill();
-        decorationBorder = lightModeBorder();
-      } else if (brightness() == Brightness.dark) {
-        decorationFill = darkModeFill();
-        decorationBorder = darkModeBorder();
-      }
-    }
-
-    if (priority == decorationPriority.important) {
-      //defining variants for the specific mode
-      decorationBorder = universalBorder();
-
-      if (brightness() == Brightness.light) {
-        decorationGradient = darkGradient();
-        decorationHaze = darkShadow();
-      } else if (brightness() == Brightness.dark) {
-        decorationGradient = lightGradient();
-        decorationHaze = pastelShadow();
-      }
+          decorationGradient = palette.brightness() == Brightness.light
+              ? palette.lightGradient()
+              : palette.darkGradient();
+          decorationHaze = palette.brightness() == Brightness.light
+              ? palette.darkShadow()
+              : palette.lightShadow();
+          return;
+        }
+      case decorationPriority.inactive:
+        {
+          decorationFill = coloration.inactiveColor();
+          return;
+        }
+      // Has no support for this priority in this element
+      case decorationPriority.inverted:
+        {
+          return;
+        }
+      // Has no support for this priority in this element
+      case decorationPriority.active:
+        {
+          return;
+        }
     }
   }
 }

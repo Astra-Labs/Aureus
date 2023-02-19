@@ -1,3 +1,4 @@
 {
-    "files.autoSave": "onWindowChange"
+    "files.autoSave": "onWindowChange",
+    "debug.javascript.usePreview": false
 }

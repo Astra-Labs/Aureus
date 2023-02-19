@@ -1,10 +1,16 @@
 import 'package:aureus/aureus.dart';
 
-class OnboardingDemoView extends StatefulWidget {
-  final List<CoreTool> toolItems;
-  final Widget exitPoint;
+/// {@category Widgets}
+/// {@subCategory Views}
+/// {@image <image alt='' src=''>}
 
-  const OnboardingDemoView({required this.toolItems, required this.exitPoint});
+/*--------- ONBOARDING DEMO VIEW ----------*/
+
+class OnboardingDemoView extends StatefulWidget {
+  ///
+  final List<CoreTool> toolItems;
+
+  const OnboardingDemoView({required this.toolItems});
 
   @override
   _OnboardingDemoViewState createState() => _OnboardingDemoViewState();
@@ -30,9 +36,9 @@ class _OnboardingDemoViewState extends State<OnboardingDemoView> {
       containerVariant: wrapperVariants.fullScreen,
       children: [
         PageHeaderElement.withExit(
-            pageTitle: "${packageVariables.prodName}'s Tools",
-            onPageExit: () => {}),
-        Spacer(),
+            pageTitle: "${resourceValues.name}'s Tools",
+            onPageExit: () => {Navigator.pop(context)}),
+        const Spacer(),
         SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(

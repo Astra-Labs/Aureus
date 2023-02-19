@@ -1,23 +1,33 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
+/*--------- MISSION HEADER ----------*/
+
 class MissionHeaderElement extends StatelessWidget {
+  const MissionHeaderElement({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        HeadingOneText('How can I help?', decorationPriority.standard),
-        AspectRatio(
-            aspectRatio: 1 / 1,
-            child: Container(
-                constraints: BoxConstraints(
-                    minHeight: size.heightOf(weight: sizingWeight.w0),
-                    maxHeight: size.heightOf(weight: sizingWeight.w2),
-                    minWidth: size.widthOf(weight: sizingWeight.w0),
-                    maxWidth: size.widthOf(weight: sizingWeight.w2)),
-                child: coloration.resourceLogo())),
-      ],
+    var responsiveSize = size.responsiveSize(50.0);
+
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.header(label: 'How can I help?'),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          HeadingOneText('How can I help?', decorationPriority.standard),
+          const Spacer(),
+          SizedBox(
+              width: responsiveSize,
+              height: responsiveSize,
+              child: coloration.resourceLogo()),
+        ],
+      ),
     );
   }
 }

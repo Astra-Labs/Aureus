@@ -1,55 +1,122 @@
 import 'package:aureus/aureus.dart';
 
-//A circle with an icon that is meant to act as a category label, but not as a button.
-//Doc Link: https://github.com/Astra-Labs/Aureus/blob/main/Documentation/Aureus-Docs/4%20-%20Elements%20(Materials)/Badges/All.md
+/// {@category Widgets}
+/// {@subCategory Elements}
+/// {@image <image alt='' src=''>}
+
+/*--------- ICON BADGE ----------*/
+/// A circle with an icon that is meant to act as a category
+/// label, but not as a button.
 
 class IconBadge extends StatelessWidget {
+  /// An icon to visually describe the badge. This should give a visual cue
+  /// to the user about what to expect.
   final IconData badgeIcon;
+
+  /// The current decoration priority of the badge.
   final decorationPriority badgePriority;
 
   const IconBadge({required this.badgeIcon, required this.badgePriority});
 
-  @override
-  Widget build(BuildContext context) {
-    var customBadgeBacking =
+  Decoration customBadgeBacking() {
+    var baseDecoration =
         BaseBackingDecoration(priority: decorationPriority.standard);
+    Gradient backingGradient = const LinearGradient(colors: []);
+    BoxShadow backingHaze = const BoxShadow();
+    baseDecoration.decorationCornerRadius = BorderRadius.circular(60.0);
 
-    Gradient backingGradient = LinearGradient(colors: []);
-    BoxShadow backingHaze = BoxShadow();
+    switch (badgePriority) {
+      case decorationPriority.inactive:
+        {
+          /*
 
-    if (brightness() == Brightness.dark) {
-      backingGradient = lightGradient();
-      backingHaze = pastelShadow();
-    } else if (brightness() == Brightness.light) {
-      backingGradient = darkGradient();
-      backingHaze = darkShadow();
+            Since the badges are supposed to be used on top of 
+            important elements, inactive elements will show
+            as the fill of the opposite mode's fill color to 
+            preserve contrast (since layering the mode's fill)
+            on an important priority item will lead to the 
+            background looking invisible. 
+            
+             */
+
+          baseDecoration.decorationFill =
+              palette.brightness() == Brightness.light
+                  ? palette.lightModeFill()
+                  : palette.darkModeFill();
+
+          break;
+        }
+
+      case decorationPriority.important:
+        {
+          backingGradient = palette.brightness() == Brightness.light
+              ? palette.darkGradient()
+              : palette.lightGradient();
+
+          backingHaze = palette.brightness() == Brightness.light
+              ? palette.pastelShadow()
+              : palette.darkShadow();
+
+          baseDecoration.decorationGradient = backingGradient;
+          baseDecoration.decorationHaze = backingHaze;
+          break;
+        }
+
+      case decorationPriority.standard:
+        {
+          baseDecoration.decorationFill = coloration.inactiveColor();
+          break;
+        }
+
+      case decorationPriority.inverted:
+        {
+          backingGradient = palette.brightness() == Brightness.light
+              ? palette.lightGradient()
+              : palette.darkGradient();
+
+          backingHaze = palette.brightness() == Brightness.light
+              ? palette.pastelShadow()
+              : palette.darkShadow();
+
+          baseDecoration.decorationGradient = backingGradient;
+          baseDecoration.decorationHaze = backingHaze;
+          break;
+        }
+
+      case decorationPriority.active:
+        {
+          throw ("BadgeElement cannot be decorationPriority.active, that priority is meant for interactable elements being highlighted and BadgeElement is non-interactable.");
+        }
     }
 
-    customBadgeBacking.decorationCornerRadius = BorderRadius.circular(10.0);
-    customBadgeBacking.decorationGradient = backingGradient;
-    customBadgeBacking.decorationBorder = universalBorder();
-    customBadgeBacking.decorationHaze = backingHaze;
+    return baseDecoration.buildBacking();
+  }
 
-    Size priorityBadge = Size(80.0, 80.0);
-    Size standardBadge = Size(40.0, 40.0);
+  @override
+  Widget build(BuildContext context) {
+    var responsiveBadgeSize = size.responsiveSize(50.0);
+    var responsiveIconSize = size.responsiveSize(35.0);
 
-    Size badgeSizing = badgePriority == decorationPriority.important
-        ? priorityBadge
-        : standardBadge;
+    var badgeContent = Icon(
+      badgeIcon,
+      color: badgePriority == decorationPriority.standard ||
+              badgePriority == decorationPriority.inverted
+          ? coloration.contrastColor()
+          : coloration.sameColor(),
+      size: responsiveIconSize,
+    );
 
-    return SizedBox(
-      width: badgeSizing.width,
-      height: badgeSizing.height,
-      child: Container(
-        decoration: customBadgeBacking
-            .buildBacking()
-            .copyWith(borderRadius: BorderRadius.circular(40)),
-        child: Icon(
-          badgeIcon,
-          color: coloration.sameColor(),
-          size: badgeSizing.width * 0.7,
-        ),
-      ),
+    var badgeContainer = Container(
+      width: responsiveBadgeSize,
+      height: responsiveBadgeSize,
+      alignment: Alignment.center,
+      decoration: customBadgeBacking(),
+      child: badgeContent,
+    );
+
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.ignorable(),
+      child: badgeContainer,
     );
   }
 }

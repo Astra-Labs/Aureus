@@ -1,10 +1,18 @@
 import 'package:aureus/aureus.dart';
 
-//Shows a card meant to act as a 'blank' screen placeholder to instruct user on what to do next
-//Doc Link:
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- BLANK SCREEN COMPONENT ----------*/
+/// Shows a card meant to act as a 'blank' screen placeholder to instruct
+/// user on what to do next
 
 class BlankScreenComponent extends StatelessWidget {
+  /// The title of the blank screen component
   final String cardTitle;
+
+  /// The body description of the blank screen component.
   final String cardBody;
 
   const BlankScreenComponent({required this.cardTitle, required this.cardBody});
@@ -13,7 +21,23 @@ class BlankScreenComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    return FloatingContainerElement(
+    var blankScreenContent = Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Spacer(),
+          const IconBadge(
+              badgeIcon: Assets.alertmessage,
+              badgePriority: decorationPriority.important),
+          const SizedBox(height: 8.0),
+          HeadingThreeText(cardTitle, decorationPriority.standard),
+          const SizedBox(height: 8.0),
+          BodyOneText(cardBody, decorationPriority.standard),
+          const Spacer(),
+        ]);
+
+    var blankScreenContainer = FloatingContainerElement(
       child: Container(
           //this will be the rounded card backing
           constraints: BoxConstraints(
@@ -26,22 +50,10 @@ class BlankScreenComponent extends StatelessWidget {
                   .buildBacking(),
           child: Padding(
             padding: const EdgeInsets.all(35.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Spacer(),
-                  IconBadge(
-                      badgeIcon: Assets.alertmessage,
-                      badgePriority: decorationPriority.important),
-                  SizedBox(height: 8.0),
-                  HeadingThreeText(cardTitle, decorationPriority.standard),
-                  SizedBox(height: 8.0),
-                  BodyOneText(cardBody, decorationPriority.standard),
-                  Spacer(),
-                ]),
+            child: blankScreenContent,
           )),
     );
+
+    return blankScreenContainer;
   }
 }

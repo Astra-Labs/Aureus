@@ -1,8 +1,14 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- NAV BAR COMPONENT ----------*/
+
 class NavBarComponent extends StatefulWidget {
   //tab items input will be checked to be icon only
-  final List<TabObject> tabItems;
+  final List<ControllerTabObject> tabItems;
 
   const NavBarComponent({required this.tabItems})
       : assert(tabItems.length >= 2);
@@ -16,7 +22,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
 
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = <Widget>[];
+  final List<Widget> _pages = <Widget>[];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -27,33 +33,87 @@ class _NavBarComponentState extends State<NavBarComponent> {
   @override
   Widget build(BuildContext context) {
     List<BottomNavigationBarItem> tabbingArray = [];
+    var screenSize = size.logicalScreenSize();
 
-    widget.tabItems.forEach((element) {
+    for (var element in widget.tabItems) {
       //checks to see if current index matches index of tab item. if yes, it's enabled.
-      decorationPriority tabPriority = coloration.itemPriority(
-          _selectedIndex == widget.tabItems.indexOf(element) ? true : false);
 
       var tabItem = BottomNavigationBarItem(
-        icon: Icon(element.tabIcon,
-            color: coloration.decorationColor(decorationVariant: tabPriority)),
+        icon: Icon(element.tabIcon, size: size.responsiveSize(38.0)),
+        label: ".",
         tooltip: element.accessibilityHint,
+        backgroundColor: Colors.transparent,
       );
 
       tabbingArray.add(tabItem);
-    });
+      _pages.add(element.tabController);
+    }
 
-    return Scaffold(
-      body: Center(
-        child: _pages.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: carbon(),
-        items: tabbingArray,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+    var navigationBar = BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      elevation: 0,
+      selectedItemColor: coloration.contrastColor(),
+      unselectedItemColor: coloration.inactiveColor(),
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
+      backgroundColor: Colors.transparent,
+      items: tabbingArray,
+      currentIndex: _selectedIndex,
+      onTap: _onItemTapped,
+    );
+
+    var navBarComponent = Positioned(
+      bottom: 25,
+      child: ClipRRect(
+        child: FloatingContainerElement(
+            child: Container(
+                constraints: BoxConstraints(
+                    maxWidth: size.layoutItemWidth(1, screenSize)),
+                decoration:
+                    CardBackingDecoration(priority: decorationPriority.inactive)
+                        .buildBacking()
+                        .copyWith(borderRadius: BorderRadius.circular(60)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 5),
+                    navigationBar,
+                  ],
+                ))),
       ),
     );
+
+    var navBarContainer = Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: coloration.primaryImage().image,
+            fit: BoxFit.cover,
+          ),
+        ));
+
+    var navBarScaffold = Scaffold(
+      backgroundColor: Colors.transparent,
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            navBarContainer,
+            Center(
+              child: _pages.elementAt(_selectedIndex),
+            ),
+            navBarComponent,
+          ],
+        ),
+      ),
+    );
+
+    return navBarScaffold;
   }
 }

@@ -1,11 +1,20 @@
 import 'package:aureus/aureus.dart';
 
-//A bubble that contains a text message from a sender or a receiver
-//Doc Link:
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- MESSAGE BUBBLE ----------*/
+/// A bubble that contains a text message from a sender or a receiver
 
 class MessageBubbleComponent extends StatefulWidget {
+  /// An enum that describes whether this message is from the sender or reciever
   final messagingVariants messageVariant;
+
+  /// The body of the message
   final String messageBody;
+
+  /// The delivery status of the message.
   final communicationStatus currentStatus;
 
   const MessageBubbleComponent(
@@ -51,21 +60,20 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
         query: MediaQuery.of(context));
 
     var screenSize = size.logicalScreenSize();
-    return Column(
+
+    var messageBubbleContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
         children: [
           Container(
               constraints: BoxConstraints(
-                  minHeight: bodyTextSizing.height * 2.5,
+                  minHeight: bodyTextSizing.height + 20,
                   maxWidth: size.layoutItemWidth(1, screenSize) * 0.7),
-              padding: EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(20.0),
               decoration: backingDecoration,
               child: Center(
-                  child: SizedBox(
-                      width: bodyTextSizing.width,
-                      height: bodyTextSizing.height,
+                  child: Flexible(
                       child: BodyTwoText(widget.messageBody, bubblePriority)))),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -76,5 +84,12 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
                 decorationPriority.standard),
           )
         ]);
+
+    return Align(
+      alignment: widget.messageVariant == messagingVariants.sender
+          ? Alignment.topRight
+          : Alignment.topLeft,
+      child: messageBubbleContent,
+    );
   }
 }

@@ -1,5 +1,18 @@
 import 'package:aureus/aureus.dart';
-//An exit bar that stays at the top of the user's screen and exits the screen when pressed.
+
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- EXIT BAR ----------*/
+/// An exit bar that stays at the top of the user's screen and exits the
+/// screen when pressed.
+///
+/// This is not able to be controlled by a developer, as this is a user
+/// setting that someone can enable for any AureusResource in their
+/// safety plan. Whether or not a user wants to see an ExitBar is
+/// handled by Aureus and the ContainerView. You don't need to
+/// worry about manual implementation.
 
 class ExitBarComponent extends StatefulWidget {
   const ExitBarComponent();
@@ -11,15 +24,13 @@ class ExitBarComponent extends StatefulWidget {
 class _ExitBarComponentState extends State<ExitBarComponent> {
   @override
   Widget build(BuildContext context) {
-    //because the bar breaks from current backing build conventions due to safety reasons, we have a custom variable that simply returns a color instead of .buildBacking();
+    //because the bar breaks from current backing build conventions due
+    //to safety reasons, we have a custom variable that simply returns a
+    //color instead of .buildBacking();
     Color barBacking() {
-      if (brightness() == Brightness.light) {
-        return white();
-      } else if (brightness() == Brightness.dark) {
-        return black();
-      }
-
-      return white();
+      return palette.brightness() == Brightness.light
+          ? palette.white()
+          : palette.black();
     }
 
     Alignment barAlignment() {
@@ -46,7 +57,20 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    return Container(
+    var exitBarRow = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          BodyOneText('Tap the button to exit.', decorationPriority.standard),
+          SmolButtonElement(
+              decorationVariant: decorationPriority.important,
+              buttonTitle: 'Exit now.',
+              buttonHint: 'Closes ',
+              buttonAction: () => {print('Exit for user!')})
+        ]);
+
+    var exitBarContainer = Container(
         constraints: BoxConstraints(
             minHeight: accessibilitySizing.height * 5, minWidth: screenWidth),
         child: Align(
@@ -57,26 +81,27 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
                 minWidth: size.layoutItemWidth(1, screenSize),
                 maxWidth: size.layoutItemWidth(1, screenSize)),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    BodyOneText(
-                        'Tap the button to exit.', decorationPriority.standard),
-                    SmolButtonElement(
-                        decorationVariant: decorationPriority.important,
-                        buttonTitle: 'Exit now.',
-                        buttonAction: () => {print('Exit for user!')})
-                  ]),
+              padding: const EdgeInsets.all(15.0),
+              child: exitBarRow,
             ),
           ),
         ),
         decoration: BoxDecoration(
           color: barBacking(),
           border: Border(
-              bottom: BorderSide(color: steel().withOpacity(0.3), width: 1)),
+              bottom: BorderSide(
+                  color: palette.steel().withOpacity(0.3), width: 1)),
         ));
+
+    return Semantics.fromProperties(
+      properties: SemanticsWrapper.customItem(
+          isEnabled: true,
+          label: 'Exit Bar',
+          hint:
+              'Has an exit bar that allows you to quickly leave ${resourceValues.name} by changing the screen.',
+          isFocusable: true,
+          isEditable: false),
+      child: exitBarContainer,
+    );
   }
 }

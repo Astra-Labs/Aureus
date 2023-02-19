@@ -1,155 +1,187 @@
 import 'package:aureus/aureus.dart';
 
+/// {@category Foundation}
+
 /* ------------------ TEXT CLASSES -------------------- */
 
-/*
-
-This is where the text styles are, and the text widgets that accompany them. 
-Items here also go through the coloration class to be properly rendered for 
-each mode.
-
-*/
+/// This is where the text styles are, and the text widgets that accompany them.
+/// Items here also go through the coloration class to be properly rendered for
+/// each mode.
 
 // Global Text Styles ---------------------------------
 
+var fontChoice = resourceValues.font;
+
+/// The text style for a heading one
 TextStyle heading1() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(26),
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(26),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(29),
           fontWeight: FontWeight.w200,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a heading two
 TextStyle heading2() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(21),
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           letterSpacing: 1.2,
-        )
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(21),
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(24),
           fontWeight: FontWeight.w300,
           letterSpacing: 1.2,
-        );
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a heading three
 TextStyle heading3() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(17),
-          fontWeight: FontWeight.w700,
-          letterSpacing: 1.0)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w800,
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(20),
           fontWeight: FontWeight.w500,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a heading four
 TextStyle heading4() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(14),
-          fontWeight: FontWeight.w800,
-          letterSpacing: 1.0)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w900,
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w600,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a subheading
 TextStyle subheading() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(17),
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(20),
           fontWeight: FontWeight.w300,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a body one
 TextStyle body1() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(14),
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(17),
           fontWeight: FontWeight.w200,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a body two
 TextStyle body2() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(15),
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(14),
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(18),
           fontWeight: FontWeight.w300,
-          letterSpacing: 0.4);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a button one
 TextStyle button1() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(17),
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(17),
+          fontWeight: FontWeight.w800,
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(20),
           fontWeight: FontWeight.w500,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a button two
 TextStyle button2() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w400,
-          letterSpacing: 1.0);
-}
-
-TextStyle tag1() {
-  return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
+      ? GoogleFonts.getFont(fontChoice,
           fontSize: accessibility.responsiveTextSize(12),
           fontWeight: FontWeight.w700,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w500,
-          letterSpacing: 1.5);
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(15),
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
+/// The text style for a tag one
+TextStyle tag1() {
+  return accessibility.accessFeatures.boldText == true
+      ? GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(10),
+          fontWeight: FontWeight.w900,
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(13),
+          fontWeight: FontWeight.w700,
+          letterSpacing: 1.5,
+          decoration: TextDecoration.none);
+}
+
+/// The text style for a tag two
 TextStyle tag2() {
   return accessibility.accessFeatures.boldText == true
-      ? GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
+      ? GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(10),
+          fontWeight: FontWeight.w900,
+          letterSpacing: 0.4,
+          decoration: TextDecoration.none)
+      : GoogleFonts.getFont(fontChoice,
+          fontSize: accessibility.responsiveTextSize(13),
           fontWeight: FontWeight.w600,
-          letterSpacing: 0.4)
-      : GoogleFonts.exo(
-          fontSize: accessibility.responsiveTextSize(12),
-          fontWeight: FontWeight.w400,
-          letterSpacing: 1.0);
+          letterSpacing: 1.0,
+          decoration: TextDecoration.none);
 }
 
+/// A class who's responsibilites is managing TitleCases for typography.
 class TitleCase {
   // A class that converts a string to title casing
-  //E.G: - 'This Is An Example Of Title Case'
 
+  /// A function that converts your string to Title case where applicable
   static String convertToTitleCase(String text) {
     if (text.length <= 1) {
       return text.toUpperCase();
@@ -171,6 +203,7 @@ class TitleCase {
   }
 }
 
+/// A text class that uses the heading one text style
 class HeadingOneText extends Text {
   HeadingOneText(String data, decorationPriority textColor)
       : super(data,
@@ -180,6 +213,7 @@ class HeadingOneText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the heading two text style
 class HeadingTwoText extends Text {
   HeadingTwoText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
@@ -189,6 +223,7 @@ class HeadingTwoText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the heading three text style
 class HeadingThreeText extends Text {
   HeadingThreeText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
@@ -198,6 +233,7 @@ class HeadingThreeText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the heading four text style
 class HeadingFourText extends Text {
   HeadingFourText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
@@ -207,6 +243,7 @@ class HeadingFourText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the subheader text style
 class SubheaderText extends Text {
   SubheaderText(String data, decorationPriority textColor)
       : super(TitleCase.convertToTitleCase(data),
@@ -216,6 +253,7 @@ class SubheaderText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the body one text style
 class BodyOneText extends Text {
   BodyOneText(String data, decorationPriority textColor)
       : super(data,
@@ -225,6 +263,7 @@ class BodyOneText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the body two text style
 class BodyTwoText extends Text {
   BodyTwoText(String data, decorationPriority textColor)
       : super(data,
@@ -234,6 +273,7 @@ class BodyTwoText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the button one text style
 class ButtonOneText extends Text {
   ButtonOneText(String data, decorationPriority textColor)
       : super(data.toUpperCase(),
@@ -243,6 +283,7 @@ class ButtonOneText extends Text {
             semanticsLabel: data);
 }
 
+/// A text class that uses the button two text style
 class ButtonTwoText extends Text {
   ButtonTwoText(String data, decorationPriority textColor)
       : super(
@@ -253,6 +294,7 @@ class ButtonTwoText extends Text {
         );
 }
 
+/// A text class that uses the tag one text style
 class TagOneText extends Text {
   TagOneText(String data, decorationPriority textColor)
       : super(
@@ -263,6 +305,7 @@ class TagOneText extends Text {
         );
 }
 
+/// A text class that uses the tag two text style
 class TagTwoText extends Text {
   TagTwoText(String data, decorationPriority textColor)
       : super(

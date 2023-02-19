@@ -1,0 +1,9 @@
+dartdoc:
+  categories:
+    "Foundation":
+      name: Foundation
+    "Objects":
+      name: Objects
+    "Widgets":
+      name: Widgets
+  categoryOrder: ["Foundation", "Objects", "Widgets"]

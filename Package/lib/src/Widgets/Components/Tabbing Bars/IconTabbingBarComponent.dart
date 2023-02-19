@@ -1,7 +1,11 @@
 import 'package:aureus/aureus.dart';
 
-//A group of icon buttons on a card that acts as a tabbing bar to change data
-//Doc Link:
+/// {@category Widgets}
+/// {@subCategory Components}
+/// {@image <image alt='' src=''>}
+
+/*--------- ICON TABBING BAR COMPONENT ----------*/
+/// A group of icon buttons on a card that acts as a tabbing bar to change data
 
 class IconTabbingBarComponent extends StatefulWidget {
   final List<TabObject> tabItems;
@@ -15,43 +19,61 @@ class IconTabbingBarComponent extends StatefulWidget {
 }
 
 class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     //keeps track of every active / inactive item
 
     List<Widget> tabItems = [];
 
-    widget.tabItems.forEach((element) {
+    for (var element in widget.tabItems) {
+      var currentIndex = widget.tabItems.indexOf(element);
+
       var tabItem = Padding(
-        padding: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
-        child: SecondaryIconButtonElement(
-            buttonAction: () => {},
-            decorationVariant: element.tabPriority,
-            buttonTooltip: element.accessibilityHint,
-            buttonIcon: element.tabIcon),
+        padding: const EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
+        child: IconButtonElement(
+          buttonAction: () =>
+              {element.onTabSelection(), _onItemTapped(currentIndex)},
+          decorationVariant: currentIndex == _selectedIndex
+              ? decorationPriority.important
+              : decorationPriority.standard,
+          buttonHint: element.accessibilityHint,
+          buttonIcon: element.tabIcon,
+          buttonPriority: buttonSize.secondary,
+        ),
       );
 
       tabItems.add(tabItem);
-    });
+    }
 
     var screenSize = size.logicalScreenSize();
 
-    return FloatingContainerElement(
-      child: SizedBox(
-          width: size.layoutItemWidth(1, screenSize),
-          height: size.layoutItemHeight(6, screenSize),
-          child: Container(
-              padding: EdgeInsets.all(8),
-              decoration:
-                  LayerBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
-              child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      mainAxisSize: MainAxisSize.min,
-                      children: tabItems)))),
-    );
+    var iconTabbingBarContent = SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: tabItems));
+
+    var iconTabbingBarContainer = FloatingContainerElement(
+        child: SizedBox(
+            width: size.layoutItemWidth(1, screenSize),
+            height: size.layoutItemHeight(6, screenSize),
+            child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: LayerBackingDecoration(
+                        priority: decorationPriority.inactive)
+                    .buildBacking(),
+                child: iconTabbingBarContent)));
+
+    return iconTabbingBarContainer;
   }
 }

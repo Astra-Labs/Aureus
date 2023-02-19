@@ -1,6 +1,8 @@
 import 'package:aureus/aureus.dart';
 import 'dart:ui';
 
+/// {@category Foundation}
+
 /* ------------------ SIZING -------------------- */
 /*
 
@@ -11,12 +13,12 @@ almost any web / mobile / tablet screen.
 */
 
 class Sizing {
-  //Pixel Ratio of a given device
-
+  /// The sizing window of the application
   SingletonFlutterWindow sizingWindow() {
     return WidgetsBinding.instance!.window;
   }
 
+  ///Pixel Ratio of a given device
   double pixelRatio() {
     return sizingWindow().devicePixelRatio;
   }
@@ -27,67 +29,74 @@ class Sizing {
         sizingWindow().physicalSize.width, sizingWindow().physicalSize.height);
   }
 
+  /// Physical width of the screen
   double physicalWidth() {
     return (physicalScreenSize().width);
   }
 
+  /// Physical height of the screen
   double physicalHeight() {
     return physicalScreenSize().height;
   }
 
-  //Size in physical pixels
+  /// Size in logical pixels
   Size logicalScreenSize() {
     var screenSize = sizingWindow().physicalSize / pixelRatio();
     return Size(screenSize.width, screenSize.height);
   }
 
+  /// Logical width of the screen
   double logicalWidth() {
     return logicalScreenSize().width;
   }
 
+  /// Logical height of the screen
   double logicalHeight() {
     return logicalScreenSize().height;
   }
 
+  /// Determines whether or not the current screen is a hamburger / hot dog orientation
   bool isDesktopDisplay() {
     if (logicalWidth() > logicalHeight()) {
-      return false;
-    } else if (logicalWidth() < logicalHeight()) {
       return true;
+    } else if (logicalWidth() <= logicalHeight()) {
+      return false;
     }
 
     throw ('An impossible ratio was returned when determining isDesktopDisplay');
   }
 
-  //Creates a text scale factor to adjust for size differences between
-  //mobile, tablet, and web.
-  double responsiveTextSize(double base) {
+  /// Creates a scale factor to adjust for size differences between
+  /// mobile, tablet, and web.
+  double responsiveSize(double base) {
     double scaleFactor = 0.0;
     double shortSide = logicalScreenSize().shortestSide;
 
-    if (shortSide < 550) {
+    if (shortSide >= 300) {
       //needs mobile phone scale
+      scaleFactor = 0.80;
+    } else if (shortSide >= 420 && shortSide < 550) {
+      //needs tablet scale
       scaleFactor = 1.0;
     } else if (shortSide >= 550 && shortSide < 900) {
-      //needs tablet scale
-      scaleFactor = 1.15;
+      //needs slightly larger tablet scale
+      scaleFactor = 1.29;
     } else if (shortSide >= 900) {
       //needs web phone scale
-      scaleFactor = 1.30;
+      scaleFactor = 1.35;
     }
 
     return scaleFactor * base;
   }
 
-  // Basic padding that can be used for anything.
+  /// Basic padding that can be used for anything.
   EdgeInsets universalPadding() {
-    return const EdgeInsets.fromLTRB(20, 10, 20, 10);
+    return const EdgeInsets.fromLTRB(10, 10, 10, 10);
   }
 
-  // Returns the % of screen height for the weight passed
-  // as a double so it can be used for layout purposes.
-
-  double heightOf({weight: sizingWeight}) {
+  /// Returns the % of screen height for the weight passed
+  /// as a double so it can be used for layout purposes.
+  double heightOf({weight = sizingWeight}) {
     double screenWeightedHeight = 0.0;
 
     switch (weight) {
@@ -151,9 +160,9 @@ class Sizing {
     return screenWeightedHeight;
   }
 
-  // Returns the % of screen width for the weight passed
-  // as a double so it can be used for layout purposes.
-  double widthOf({weight: sizingWeight}) {
+  /// Returns the % of screen width for the weight passed
+  /// as a double so it can be used for layout purposes.
+  double widthOf({weight = sizingWeight}) {
     double screenWeightedWidth = 0.0;
 
     switch (weight) {
@@ -217,36 +226,36 @@ class Sizing {
     return screenWeightedWidth;
   }
 
-  // Returns a maximum width accounting for padding,
-  // given how many rows, and depending on device type.
+  /// Returns a maximum width accounting for padding,
+  /// given how many rows, and depending on device type.
   double layoutItemWidth(int sections, Size area) {
     double sizingWidth = 0.0;
 
     if (sections == 1) {
       //item needs to be full width with w1 padding
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.90
           : sizingWidth = area.width * 0.60;
     } else if (sections == 2) {
       //item needs to be 1/2 width for 2 sections
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.45
           : sizingWidth = area.width * 0.30;
     } else if (sections == 3) {
       //item needs to be 1/3 width for 3 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.33
           : sizingWidth = area.width * 0.12;
     } else if (sections == 4) {
       //item needs to be 1/4 width for 4 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.24
           : sizingWidth = area.width * 0.092;
     } else if (sections == 5) {
       //item needs to be 1/5 width for 5 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingWidth = area.width * 0.21
           : sizingWidth = area.width * 0.080;
     }
@@ -261,34 +270,34 @@ class Sizing {
     if (sections == 1) {
       //item needs to be full height with w1 padding
 
-      isDesktopDisplay()
-          ? sizingHeight = area.height * 0.89
+      isDesktopDisplay() == false
+          ? sizingHeight = area.height * 0.80
           : sizingHeight = area.height * 0.806;
     } else if (sections == 2) {
       //item needs to be 1/2 height for 2 sections
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.43
           : sizingHeight = area.height * 0.397;
     } else if (sections == 3) {
       //item needs to be 1/3 height for 3 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.287
           : sizingHeight = area.height * 0.264;
     } else if (sections == 4) {
       //item needs to be 1/4 height for 4 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.216
           : sizingHeight = area.height * 0.195;
     } else if (sections == 5) {
       //item needs to be 1/5 height for 5 sections
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.168
           : sizingHeight = area.height * 0.155;
     } else if (sections <= 6) {
       //item needs to be 1/5 height for 5 sections
 
-      isDesktopDisplay()
+      isDesktopDisplay() == false
           ? sizingHeight = area.height * 0.100
           : sizingHeight = area.height * 0.097;
     }
