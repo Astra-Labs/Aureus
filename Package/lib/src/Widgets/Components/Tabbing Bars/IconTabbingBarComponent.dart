@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -70,7 +73,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
             child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: LayerBackingDecoration(
-                        priority: decorationPriority.inactive)
+                        decorationVariant: decorationPriority.inactive)
                     .buildBacking(),
                 child: iconTabbingBarContent)));
 

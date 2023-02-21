@@ -1,14 +1,5 @@
 library aureus;
 
-/// @nodoc
-export 'package:flutter/material.dart';
-
-/// @nodoc
-export 'package:google_fonts/google_fonts.dart';
-
-/* ------------------ ASSETS -------------------- */
-/* Where the widgets that Aureus builds from the objects are contained */
-
 /* ------------------ CORE GLOBALS -------------------- */
 /* Where the widgets that Aureus builds from the objects are contained */
 
@@ -80,7 +71,6 @@ export 'src/Widgets/Elements/Cards/Data Visualization/BaseDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/PhotoDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/TextFieldDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/TextViewDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/VideoRecordingDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/VoiceRecordingDataCardElement.dart';
 
 // -------------------------- Info Hierachy
@@ -218,54 +208,3 @@ export 'src/Widgets/Tools/User Selection/ListViewPickerSelectToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/MultiCategoryCardSelectInputToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/YesNoButtonSelectToolTemplate.dart';
 export 'src/Widgets/Tools/User Selection/GridCardSelectToolTemplate.dart';
-
-/* ------------------ ENUMS -------------------- */
-//Global Foundational Enums go here since Dart doesn't support nested types
-enum deviceVariants { mobile, desktop, tablet }
-enum modeVariants { light, dark }
-enum messagingVariants { sender, receiver }
-enum communicationStatus { sending, delivered, failed }
-enum CardType { standard, badge }
-enum userInputType { singleDataType, multiDataType }
-enum sizingWeight { w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10 }
-enum decorationPriority { standard, important, inactive, inverted, active }
-enum buttonSize { primary, secondary }
-enum buttonDecorationVariants {
-  roundedPill,
-  roundedRectangle,
-  edgedRectangle,
-  circle
-}
-enum tabItemDecorationVariants { circle, roundedRectangle }
-enum cardType {
-  standardCard,
-  standardBadgeCard,
-  detailCard,
-  detailBadgeCard,
-  detailCarouselCard,
-  complexCard,
-  complexBadgeCard,
-  categoryIconDetailCard,
-}
-
-enum wrapperVariants { stackScroll, fullScreen }
-
-enum dataAccess {
-  camera,
-  microphone,
-  bluetooth,
-  pushNotifications,
-  location,
-  contacts,
-  photos,
-  tracking,
-  health,
-  sensors
-}
-
-enum adaptiveInput {
-  text,
-  video,
-  voice,
-  draw,
-}

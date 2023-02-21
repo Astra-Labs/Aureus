@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -60,7 +63,7 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
             height: minimumLabelTextSize.height * 6,
             child: Container(
                 decoration: LayerBackingDecoration(
-                        priority: decorationPriority.inactive)
+                        decorationVariant: decorationPriority.inactive)
                     .buildBacking(),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),

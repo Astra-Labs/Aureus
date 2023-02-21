@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -172,9 +175,9 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
           child: Container(
               padding:
                   EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
+              decoration: CardBackingDecoration(
+                      decorationVariant: decorationPriority.inactive)
+                  .buildBacking(),
               child: size.isDesktopDisplay()
                   ? mobileInformationCard
                   : webInformationCard)),

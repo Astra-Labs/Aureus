@@ -1,5 +1,7 @@
 import 'dart:io';
 
+/// @nodoc
+import 'package:flutter/material.dart';
 import 'package:aureus/aureus.dart';
 import 'package:camera/camera.dart';
 import 'package:video_player/video_player.dart';
@@ -136,9 +138,9 @@ class _VideoRecordInputCardState extends State<_VideoRecordInputCard> {
         height: size.layoutItemWidth(5, screenSize),
         child: FloatingContainerElement(
           child: Container(
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
+            decoration: CardBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
             padding: const EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -164,9 +166,9 @@ class _VideoRecordInputCardState extends State<_VideoRecordInputCard> {
         width: size.layoutItemWidth(1, screenSize),
         height: size.layoutItemHeight(6, screenSize),
         child: Container(
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.important)
-                    .buildBacking(),
+            decoration: CardBackingDecoration(
+                    decorationVariant: decorationPriority.important)
+                .buildBacking(),
             padding: const EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,9 +189,9 @@ class _VideoRecordInputCardState extends State<_VideoRecordInputCard> {
           height: size.layoutItemWidth(3, screenSize),
           child: FloatingContainerElement(
             child: Container(
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
+              decoration: CardBackingDecoration(
+                      decorationVariant: decorationPriority.inactive)
+                  .buildBacking(),
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -312,9 +314,9 @@ class _VideoPlaybackCardState extends State<_VideoPlaybackCard> {
         width: size.layoutItemWidth(1, screenSize),
         height: size.layoutItemHeight(6, screenSize),
         child: Container(
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.important)
-                    .buildBacking(),
+            decoration: CardBackingDecoration(
+                    decorationVariant: decorationPriority.important)
+                .buildBacking(),
             padding: const EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -335,9 +337,9 @@ class _VideoPlaybackCardState extends State<_VideoPlaybackCard> {
           height: size.layoutItemWidth(2, screenSize),
           child: FloatingContainerElement(
             child: Container(
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
+              decoration: CardBackingDecoration(
+                      decorationVariant: decorationPriority.inactive)
+                  .buildBacking(),
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

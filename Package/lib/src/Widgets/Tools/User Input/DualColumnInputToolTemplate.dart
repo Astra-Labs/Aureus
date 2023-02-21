@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Tools}
 /// {@image <image alt='' src=''>}
@@ -176,9 +179,9 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
         children: [
           FloatingContainerElement(
               child: Container(
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
+            decoration: LayerBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
             padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,9 +197,9 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
           const SizedBox(width: 15.0),
           FloatingContainerElement(
               child: Container(
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
+            decoration: LayerBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
             padding: const EdgeInsets.all(15.0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

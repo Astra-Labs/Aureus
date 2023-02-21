@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -69,10 +72,10 @@ class _NavBarComponentState extends State<NavBarComponent> {
             child: Container(
                 constraints: BoxConstraints(
                     maxWidth: size.layoutItemWidth(1, screenSize)),
-                decoration:
-                    CardBackingDecoration(priority: decorationPriority.inactive)
-                        .buildBacking()
-                        .copyWith(borderRadius: BorderRadius.circular(60)),
+                decoration: CardBackingDecoration(
+                        decorationVariant: decorationPriority.inactive)
+                    .buildBacking()
+                    .copyWith(borderRadius: BorderRadius.circular(60)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

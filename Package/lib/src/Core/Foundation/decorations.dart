@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Foundation}
 
 /* ------------------ DECORATIONS -------------------- */
@@ -11,11 +14,10 @@ import 'package:aureus/aureus.dart';
 /// Every backing decoration inherits from the Parent - Base Backing Decoration.
 
 class BaseBackingDecoration {
-  final decorationPriority priority;
+  /// {@macro aureus.decorationPriority}
+  final decorationPriority decorationVariant;
 
-  /// The decoration priority for the base class.
-
-  BaseBackingDecoration({required this.priority});
+  BaseBackingDecoration({required this.decorationVariant});
 
   Border? decorationBorder;
   Color? decorationFill;
@@ -42,8 +44,8 @@ class BaseBackingDecoration {
 class ButtonBackingDecoration extends BaseBackingDecoration {
   final buttonDecorationVariants variant;
 
-  ButtonBackingDecoration({required this.variant, required priority})
-      : super(priority: priority) {
+  ButtonBackingDecoration({required this.variant, required decorationVariant})
+      : super(decorationVariant: decorationVariant) {
     //defining variants for the specific item
 
     switch (variant) {
@@ -65,7 +67,7 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
         break;
     }
 
-    switch (priority) {
+    switch (decorationVariant) {
       // when something is clickable, but not chosen
       case decorationPriority.inactive:
         {
@@ -123,11 +125,12 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
 }
 
 class LayerBackingDecoration extends BaseBackingDecoration {
-  LayerBackingDecoration({required priority}) : super(priority: priority) {
+  LayerBackingDecoration({required decorationVariant})
+      : super(decorationVariant: decorationVariant) {
     decorationCornerRadius = BorderRadius.circular(10.0);
     //defining variants for the specific priority
-    if (priority == decorationPriority.inactive ||
-        priority == decorationPriority.standard) {
+    if (decorationVariant == decorationPriority.inactive ||
+        decorationVariant == decorationPriority.standard) {
       //defining variants for the specific mode
 
       //layers do not show inactive colors because layers aren't interactable by definition, so one statement covers standard & inactive.
@@ -136,7 +139,7 @@ class LayerBackingDecoration extends BaseBackingDecoration {
       } else if (palette.brightness() == Brightness.dark) {
         decorationFill = palette.darkModeFill();
       }
-    } else if (priority == decorationPriority.important) {
+    } else if (decorationVariant == decorationPriority.important) {
       if (palette.brightness() == Brightness.light) {
         decorationGradient = palette.darkGradient();
         decorationBorder = palette.universalBorder();
@@ -151,13 +154,14 @@ class LayerBackingDecoration extends BaseBackingDecoration {
 }
 
 class CardBackingDecoration extends BaseBackingDecoration {
-  CardBackingDecoration({required priority}) : super(priority: priority) {
+  CardBackingDecoration({required decorationVariant})
+      : super(decorationVariant: decorationVariant) {
     //defining variants for the specific priority
-    if (priority == decorationPriority.inactive) {
+    if (decorationVariant == decorationPriority.inactive) {
       //defining variants for the specific mode
       decorationCornerRadius = BorderRadius.circular(10.0);
       decorationFill = coloration.inactiveColor().withOpacity(0.1);
-    } else if (priority == decorationPriority.important) {
+    } else if (decorationVariant == decorationPriority.important) {
       if (palette.brightness() == Brightness.light) {
         decorationGradient = palette.darkGradient();
         decorationHaze = palette.lightShadow();
@@ -167,7 +171,7 @@ class CardBackingDecoration extends BaseBackingDecoration {
       }
       decorationCornerRadius = BorderRadius.circular(20.0);
       decorationBorder = palette.universalBorder();
-    } else if (priority == decorationPriority.standard) {
+    } else if (decorationVariant == decorationPriority.standard) {
       //defining variants for the specific mode
       decorationFill = palette.brightness() == Brightness.light
           ? palette.lightModeFill()
@@ -176,7 +180,7 @@ class CardBackingDecoration extends BaseBackingDecoration {
           ? palette.lightModeBorder()
           : palette.darkModeBorder();
       decorationCornerRadius = BorderRadius.circular(20.0);
-    } else if (priority == decorationPriority.inverted) {
+    } else if (decorationVariant == decorationPriority.inverted) {
       decorationCornerRadius = BorderRadius.circular(20.0);
       decorationBorder = palette.universalBorder();
 
@@ -192,7 +196,8 @@ class CardBackingDecoration extends BaseBackingDecoration {
 }
 
 class InputBackingDecoration extends BaseBackingDecoration {
-  InputBackingDecoration() : super(priority: decorationPriority.standard) {
+  InputBackingDecoration()
+      : super(decorationVariant: decorationPriority.standard) {
     decorationFill = palette.brightness() == Brightness.light
         ? palette.lightModeFill()
         : palette.darkModeFill();
@@ -206,8 +211,8 @@ class InputBackingDecoration extends BaseBackingDecoration {
 class TabItemBackingDecoration extends BaseBackingDecoration {
   final tabItemDecorationVariants variant;
 
-  TabItemBackingDecoration({required this.variant, required priority})
-      : super(priority: priority) {
+  TabItemBackingDecoration({required this.variant, required decorationVariant})
+      : super(decorationVariant: decorationVariant) {
     switch (variant) {
       case tabItemDecorationVariants.circle:
         {
@@ -222,7 +227,7 @@ class TabItemBackingDecoration extends BaseBackingDecoration {
         }
     }
 
-    switch (priority) {
+    switch (decorationVariant) {
       case decorationPriority.standard:
         {
           decorationFill = palette.brightness() == Brightness.light

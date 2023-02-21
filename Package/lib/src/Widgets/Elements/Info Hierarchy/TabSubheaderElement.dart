@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,7 +10,7 @@ import 'package:aureus/aureus.dart';
 /*--------- TAB SUBHEADER ELEMENT ----------*/
 
 class TabSubheaderElement extends StatelessWidget {
-  ///
+  ///The title of the tab subheader.
   final String title;
 
   const TabSubheaderElement({Key? key, required this.title}) : super(key: key);
@@ -29,7 +32,7 @@ class TabSubheaderElement extends StatelessWidget {
               maxWidth: minimumButtonTextSize.width + 20,
               minWidth: minimumButtonTextSize.width + 20),
           decoration: TabItemBackingDecoration(
-                  priority: decorationPriority.standard,
+                  decorationVariant: decorationPriority.standard,
                   variant: tabItemDecorationVariants.roundedRectangle)
               .buildBacking()
               .copyWith(color: coloration.accentColor()),

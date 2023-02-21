@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -73,7 +76,7 @@ class _StandardSelectionCardElementState
             height: size.layoutItemHeight(5, screenSize),
             child: Container(
                 decoration: CardBackingDecoration(
-                        priority: widget.isCardSelected
+                        decorationVariant: widget.isCardSelected
                             ? decorationPriority.important
                             : decorationPriority.inactive)
                     .buildBacking(),

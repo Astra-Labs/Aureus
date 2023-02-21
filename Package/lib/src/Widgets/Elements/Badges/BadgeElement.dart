@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -20,7 +23,7 @@ class IconBadge extends StatelessWidget {
 
   Decoration customBadgeBacking() {
     var baseDecoration =
-        BaseBackingDecoration(priority: decorationPriority.standard);
+        BaseBackingDecoration(decorationVariant: decorationPriority.standard);
     Gradient backingGradient = const LinearGradient(colors: []);
     BoxShadow backingHaze = const BoxShadow();
     baseDecoration.decorationCornerRadius = BorderRadius.circular(60.0);

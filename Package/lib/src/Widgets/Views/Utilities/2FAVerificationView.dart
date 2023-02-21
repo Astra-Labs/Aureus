@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -8,7 +11,7 @@ import 'package:aureus/aureus.dart';
 
 class TFAVerificationView extends StatefulWidget {
   ///
-  final double userPhoneNumber;
+  final List<int> userPhoneNumber;
 
   ///
   final TextEditingController textEditingController;

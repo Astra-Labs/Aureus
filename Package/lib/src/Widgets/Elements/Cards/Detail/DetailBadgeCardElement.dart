@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,7 +10,7 @@ import 'package:aureus/aureus.dart';
 /*--------- DETAIL BADGE CARD ----------*/
 
 class DetailBadgeCardElement extends StatelessWidget {
-  ///
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   ///
@@ -47,8 +50,8 @@ class DetailBadgeCardElement extends StatelessWidget {
             minWidth: size.layoutItemWidth(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize),
             minHeight: size.layoutItemHeight(4, screenSize)),
-        decoration:
-            CardBackingDecoration(priority: decorationVariant).buildBacking(),
+        decoration: CardBackingDecoration(decorationVariant: decorationVariant)
+            .buildBacking(),
         clipBehavior: Clip.hardEdge,
         child: Padding(
             padding: const EdgeInsets.all(13.0), child: detailBadgeContent));

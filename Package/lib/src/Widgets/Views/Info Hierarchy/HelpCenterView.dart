@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -108,9 +111,9 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
             minHeight: size.layoutItemHeight(5, size.logicalScreenSize()),
             maxHeight: size.layoutItemHeight(2, size.logicalScreenSize())),
-        decoration:
-            LayerBackingDecoration(priority: decorationPriority.standard)
-                .buildBacking(),
+        decoration: LayerBackingDecoration(
+                decorationVariant: decorationPriority.standard)
+            .buildBacking(),
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

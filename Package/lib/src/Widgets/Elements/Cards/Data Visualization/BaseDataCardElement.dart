@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -32,7 +35,7 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
     return FloatingContainerElement(
         child: Container(
             decoration: CardBackingDecoration(
-                    priority: widget.isBeingEdited == true
+                    decorationVariant: widget.isBeingEdited == true
                         ? decorationPriority.standard
                         : decorationPriority.standard)
                 .buildBacking(),

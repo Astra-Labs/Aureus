@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -8,7 +11,7 @@ import 'package:aureus/aureus.dart';
 /// A bar that indicators progress for a given task.
 
 class ProgressIndicatorElement extends StatefulWidget {
-  ///
+  /// A value from 1-100 that describes how much something has progressed.
   final double value;
   const ProgressIndicatorElement({required this.value});
 

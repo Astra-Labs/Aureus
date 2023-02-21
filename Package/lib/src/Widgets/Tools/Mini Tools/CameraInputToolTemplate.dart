@@ -1,4 +1,7 @@
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'dart:io';
 
@@ -121,9 +124,9 @@ class _CameraInputCardState extends State<_CameraInputCard> {
     );
 
     var headerItemContainer = Container(
-        decoration:
-            CardBackingDecoration(priority: decorationPriority.important)
-                .buildBacking(),
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.important)
+            .buildBacking(),
         padding: const EdgeInsets.all(8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -254,9 +257,9 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
         height: size.layoutItemWidth(2, screenSize),
         child: FloatingContainerElement(
           child: Container(
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
+            decoration: CardBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -299,7 +302,7 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
             height: size.layoutItemHeight(6, screenSize),
             child: Container(
                 decoration: CardBackingDecoration(
-                        priority: decorationPriority.important)
+                        decorationVariant: decorationPriority.important)
                     .buildBacking(),
                 padding: const EdgeInsets.all(8.0),
                 child: toolPromptRow),

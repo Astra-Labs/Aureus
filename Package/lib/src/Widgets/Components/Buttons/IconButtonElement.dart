@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -9,7 +12,7 @@ import 'package:aureus/aureus.dart';
 /// to be the main action of the page (e.g: add, message, etc).
 
 class IconButtonElement extends StatefulWidget {
-  /// The current decoration priority of the button.
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   /// An icon to visually describe the button
@@ -66,7 +69,8 @@ class _IconButtonElementState extends State<IconButtonElement> {
         widget.decorationVariant == decorationPriority.inactive ? false : true;
 
     BoxDecoration buttonBacking = ButtonBackingDecoration(
-            variant: buttonDecorationVariants.circle, priority: buttonPriority)
+            variant: buttonDecorationVariants.circle,
+            decorationVariant: buttonPriority)
         .buildBacking();
 
     var buttonScale =

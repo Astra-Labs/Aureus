@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Tools}
 /// {@image <image alt='' src=''>}
@@ -99,7 +102,7 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
           height: size.responsiveSize(40),
           decoration: ButtonBackingDecoration(
                   variant: buttonDecorationVariants.circle,
-                  priority: decorationPriority.important)
+                  decorationVariant: decorationPriority.important)
               .buildBacking(),
           child: Icon(
             Icons.circle_outlined,

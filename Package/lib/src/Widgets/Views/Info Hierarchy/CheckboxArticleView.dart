@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -60,7 +63,8 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
         padding: const EdgeInsets.all(10),
         constraints:
             BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
-        decoration: CardBackingDecoration(priority: decorationPriority.inactive)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inactive)
             .buildBacking(),
         child: Row(
           children: [

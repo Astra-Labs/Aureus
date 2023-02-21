@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -8,7 +11,7 @@ import 'package:aureus/aureus.dart';
 /// A 80% width button that acts as a standard button
 
 class StandardButtonElement extends StatefulWidget {
-  /// The current decoration priority of the button.
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   /// The title of your button
@@ -57,7 +60,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
   Widget build(BuildContext context) {
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedRectangle,
-            priority: buttonPriority)
+            decorationVariant: buttonPriority)
         .buildBacking();
 
     bool isButtonEnabled =

@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,10 +10,14 @@ import 'package:aureus/aureus.dart';
 /*--------- TOOL DETAIL VIEW ----------*/
 
 class ToolDetailView extends StatefulWidget {
-  ///
+  /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
-  const ToolDetailView({required this.parentTool});
+  /// If you do not want to use the pre-templated tools flow,
+  /// you can set a custom widget in this parameter to override the flow template.
+  Widget? alternateCTAEntryPoint;
+
+  ToolDetailView({required this.parentTool, this.alternateCTAEntryPoint});
 
   @override
   _ToolDetailViewState createState() => _ToolDetailViewState();
@@ -45,9 +52,9 @@ class _ToolDetailViewState extends State<ToolDetailView> {
         const SizedBox(height: 20.0),
         Container(
           padding: const EdgeInsets.all(12.0),
-          decoration:
-              LayerBackingDecoration(priority: decorationPriority.standard)
-                  .buildBacking(),
+          decoration: LayerBackingDecoration(
+                  decorationVariant: decorationPriority.standard)
+              .buildBacking(),
           child: BodyOneText(tool.toolDescription, decorationPriority.standard),
         ),
         const SizedBox(height: 20.0),
@@ -61,9 +68,9 @@ class _ToolDetailViewState extends State<ToolDetailView> {
     var floatingContainerElement = FloatingContainerElement(
         child: Container(
             width: size.layoutItemWidth(1, screenSize),
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.standard)
-                    .buildBacking(),
+            decoration: LayerBackingDecoration(
+                    decorationVariant: decorationPriority.standard)
+                .buildBacking(),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
               child: column,

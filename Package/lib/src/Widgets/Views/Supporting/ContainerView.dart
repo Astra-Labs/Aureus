@@ -1,4 +1,7 @@
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@category Widgets}
@@ -17,20 +20,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// the NotificationObserver or some built-in Safety Plan features.
 
 class ContainerView extends StatefulWidget {
-  /// determines if primary landing page (fluid decoration),
+  /// Determines if primary landing page (fluid decoration),
   /// or just secondary page (blur decoration).
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   ///
   final ContainerWrapperElement builder;
 
-  ///
+  /// Whether or not the view should take the full width of a screen
   final bool? takesFullWidth;
 
-  ///
+  /// Whether or not the view should have a background image
   final bool? hasBackgroundImage;
 
-  ///
+  /// Whether or not the view should show a quick action bar
   final bool? showQuickActionBar;
 
   const ContainerView(
@@ -211,7 +215,8 @@ class _ContainerViewState extends State<ContainerView>
 
     holdY = screenHeight * 0.8;
 
-    if (safety.isActionBarDevEnabled == true) {
+    if (safety.isActionBarDevEnabled == true &&
+        widget.showQuickActionBar == true) {
       var actionBarWidget = QuickActionBarComponent(
           key: quickBarKey, tabItems: safety.quickActionItems!);
 
@@ -287,7 +292,8 @@ class _ContainerViewState extends State<ContainerView>
             child: Center(
                 child: Stack(children: [
               widget.builder,
-              safety.isActionBarDevEnabled == true
+              (safety.isActionBarDevEnabled == true &&
+                      widget.showQuickActionBar == true)
                   ? Positioned(top: holdY, left: holdX, child: actionBar)
                   : const SizedBox(width: 1),
             ]))));

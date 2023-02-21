@@ -1,5 +1,7 @@
 import 'dart:ui';
-import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
 
 /// {@category Widgets}
 /// {@subCategory Elements}
@@ -10,7 +12,7 @@ import 'package:aureus/aureus.dart';
 /// 'floating above the noise' look. Use it to add depth to custom widgets.
 
 class FloatingContainerElement extends StatelessWidget {
-  ///
+  /// The item that will have a 'floating glass' look behind it.
   final Widget child;
 
   const FloatingContainerElement({required this.child});

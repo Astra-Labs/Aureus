@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -66,7 +69,8 @@ class ContentWarningComponent extends StatelessWidget {
             maxHeight: size.layoutItemHeight(2, screenSize),
             minWidth: size.layoutItemWidth(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize)),
-        decoration: CardBackingDecoration(priority: decorationPriority.inverted)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inverted)
             .buildBacking(),
         child: Padding(
           padding: const EdgeInsets.all(20.0),

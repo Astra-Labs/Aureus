@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -10,7 +13,7 @@ import 'package:aureus/aureus.dart';
 /// at the end of a task or action.
 
 class CompletionCircleElement extends StatefulWidget {
-  ///
+  /// The progress value from 1-100 (aka how filled up the circle is).
   final double progressValue;
 
   const CompletionCircleElement({required this.progressValue});

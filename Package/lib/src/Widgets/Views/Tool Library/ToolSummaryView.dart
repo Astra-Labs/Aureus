@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,11 +10,18 @@ import 'package:aureus/aureus.dart';
 /*--------- TOOL SUMMARY VIEW ----------*/
 
 class ToolSummaryView extends StatefulWidget {
-  ///
+  /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
-  ToolSummaryView({Key? key, required this.parentTool})
-      : assert(parentTool.toolCards!.isNotEmpty == true,
+  /// If you do not want to use the pre-templated tools flow,
+  /// you can set a custom widget in this parameter to override the flow template.
+  Widget? alternateCTAEntryPoint;
+
+  ToolSummaryView({
+    Key? key,
+    required this.parentTool,
+    this.alternateCTAEntryPoint,
+  })  : assert(parentTool.toolCards!.isNotEmpty == true,
             'Tool Summary View requires the parent CoreTool to have tool cards in the navigation container.'),
         super(key: key);
 
@@ -45,22 +55,13 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
                   ))
             });
 
-    var iconButtonElement = IconButtonElement(
-      decorationVariant: decorationPriority.standard,
-      buttonIcon: Assets.hamburgermenu,
-      buttonHint: 'Summary Actions',
-      buttonAction: () => {},
-      buttonPriority: buttonSize.secondary,
-    );
-
     var column = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(
-          children: [
-            const TabSubheaderElement(title: 'Summary'),
-            const Spacer(),
-            iconButtonElement
+          children: const [
+            TabSubheaderElement(title: 'Summary'),
+            Spacer(),
           ],
         ),
         const SizedBox(height: 15.0),
@@ -82,9 +83,9 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
                 maxHeight: size.layoutItemHeight(1, screenSize) * 0.55,
                 minHeight: size.layoutItemHeight(5, screenSize)),
             padding: const EdgeInsets.all(15.0),
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.standard)
-                    .buildBacking(),
+            decoration: LayerBackingDecoration(
+                    decorationVariant: decorationPriority.standard)
+                .buildBacking(),
             child: column));
 
     var column2 = Column(

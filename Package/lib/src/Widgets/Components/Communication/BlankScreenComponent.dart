@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -45,9 +48,9 @@ class BlankScreenComponent extends StatelessWidget {
               maxHeight: size.layoutItemHeight(2, screenSize),
               minWidth: size.layoutItemWidth(1, screenSize),
               maxWidth: size.layoutItemWidth(1, screenSize)),
-          decoration:
-              LayerBackingDecoration(priority: decorationPriority.inactive)
-                  .buildBacking(),
+          decoration: LayerBackingDecoration(
+                  decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
           child: Padding(
             padding: const EdgeInsets.all(35.0),
             child: blankScreenContent,

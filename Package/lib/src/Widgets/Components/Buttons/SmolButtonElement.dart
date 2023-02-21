@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -8,7 +11,7 @@ import 'package:aureus/aureus.dart';
 /// A small, rounded tab button
 
 class SmolButtonElement extends StatefulWidget {
-  /// The current decoration priority of the button.
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   /// The title of your button
@@ -58,7 +61,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
 
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedPill,
-            priority: widget.decorationVariant)
+            decorationVariant: widget.decorationVariant)
         .buildBacking();
 
     Size minimumButtonTextSize = Accessibility.textStringSize(

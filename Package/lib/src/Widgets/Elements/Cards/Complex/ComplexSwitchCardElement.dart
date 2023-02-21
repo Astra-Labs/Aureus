@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -59,9 +62,9 @@ class ComplexSwitchCardElement extends StatelessWidget {
               minWidth: size.layoutItemWidth(1, screenSize),
               maxWidth: size.layoutItemWidth(1, screenSize),
               maxHeight: size.layoutItemHeight(3, screenSize)),
-          decoration:
-              CardBackingDecoration(priority: decorationPriority.inactive)
-                  .buildBacking(),
+          decoration: CardBackingDecoration(
+                  decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
           clipBehavior: Clip.antiAlias,
           child: Padding(
               padding: const EdgeInsets.all(15.0),

@@ -1,9 +1,10 @@
 dartdoc:
+  '--link-to-remote': false
   categories:
-    "Foundation":
+    Foundation:
       name: Foundation
-    "Objects":
+    Objects:
       name: Objects
-    "Widgets":
+    Widgets:
       name: Widgets
   categoryOrder: ["Foundation", "Objects", "Widgets"]

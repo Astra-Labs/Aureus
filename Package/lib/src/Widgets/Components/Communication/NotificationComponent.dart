@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -40,7 +43,8 @@ class NotificationComponent extends StatelessWidget {
         : decorationPriority.important;
 
     BoxDecoration boxDecoration =
-        CardBackingDecoration(priority: notificationPriority).buildBacking();
+        CardBackingDecoration(decorationVariant: notificationPriority)
+            .buildBacking();
     BoxDecoration readIndicatorDecoration = hasNotificationBeenRead
         ? BoxDecoration(color: palette.white().withOpacity(0.0))
         : BoxDecoration(color: coloration.sameColor(), shape: BoxShape.circle);

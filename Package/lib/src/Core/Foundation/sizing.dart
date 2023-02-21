@@ -1,4 +1,8 @@
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
+
 import 'dart:ui';
 
 /// {@category Foundation}

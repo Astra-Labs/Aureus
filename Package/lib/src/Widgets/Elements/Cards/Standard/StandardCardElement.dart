@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,7 +10,7 @@ import 'package:aureus/aureus.dart';
 /*--------- STANDARD CARD ----------*/
 
 class StandardCardElement extends StatelessWidget {
-  ///
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   ///
@@ -32,7 +35,8 @@ class StandardCardElement extends StatelessWidget {
               minHeight: size.layoutItemHeight(5, screenSize),
               maxHeight: size.layoutItemHeight(4, screenSize)),
           decoration:
-              CardBackingDecoration(priority: decorationVariant).buildBacking(),
+              CardBackingDecoration(decorationVariant: decorationVariant)
+                  .buildBacking(),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: standardCardContent,

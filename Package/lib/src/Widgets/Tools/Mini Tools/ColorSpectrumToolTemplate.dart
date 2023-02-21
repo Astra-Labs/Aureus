@@ -1,4 +1,7 @@
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
 
@@ -184,8 +187,9 @@ class _CircleColorPickerState extends State<CircleColorPicker>
     );
 
     var container = Container(
-      decoration: CardBackingDecoration(priority: decorationPriority.inactive)
-          .buildBacking(),
+      decoration:
+          CardBackingDecoration(decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
       alignment: Alignment.center,
       padding: const EdgeInsets.all(5.0),
       child: _HuePicker(
@@ -231,9 +235,9 @@ class _CircleColorPickerState extends State<CircleColorPicker>
         ),
         const Spacer(),
         Container(
-          decoration:
-              CardBackingDecoration(priority: decorationPriority.inactive)
-                  .buildBacking(),
+          decoration: CardBackingDecoration(
+                  decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
           padding: const EdgeInsets.all(5.0),
           alignment: Alignment.center,
           child: rotatedBox,
