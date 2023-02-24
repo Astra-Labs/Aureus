@@ -30,11 +30,6 @@ class _ExplorationViewState extends State<ExplorationView> {
         tabTitle: "Safety",
         accessibilityHint: "Shows you the safety features within Aurues",
         tabIcon: Assets.person),
-    ControllerTabObject(
-        tabController: AureusDataDetailView(),
-        tabTitle: "Data",
-        accessibilityHint: "Lets you try the data detail view",
-        tabIcon: Assets.settings),
   ];
 
   @override
@@ -46,11 +41,8 @@ class _ExplorationViewState extends State<ExplorationView> {
 class TestingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var containerViewHolder = ContainerWrapperElement(children: [
-      AddressDataCardElement(
-        dataLabel: "Address",
-      ).returnEditDataCard(),
-    ], containerVariant: wrapperVariants.fullScreen);
+    var containerViewHolder = ContainerWrapperElement(
+        children: [], containerVariant: wrapperVariants.fullScreen);
 
     return ContainerView(
       decorationVariant: decorationPriority.standard,

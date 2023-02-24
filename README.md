@@ -33,7 +33,7 @@ When you're working in tough / crisis situations, a lot of industry design patte
 
 ---------------------
 ### Running the documentation
-Since Aureus is in beta, you will need to download a local copy of the package onto your computer, and run the documentation on a local server. 
+Since Aureus is in beta, you will need to download a local copy of the package onto your computer, and run the documentation on a local server. This will be fixed later, and hosted online. 
 
 1) Navigate to the Package folder of the directory to be within the codebase 
 2) In the terminal, run the command: 
@@ -51,11 +51,85 @@ It contains
 
 ---------------------
 
+# Getting Started with Aureus 
 
+### Adding the proper libraries 
+Go to pub.dev and download Material, and the Aureus package. Although material is used within Aureus, it does not export it. 
+
+Import the packages in your library file, or in any file that you will be using Aureus in. 
+
+'''
+import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
+'''
+
+### Supporting Flutter Secure Storage 
+Aureus uses the pub.dev package Flutter Secure Storage, to manage the user’s Safety Plan settings without your input. However, there is still some work that needs to be done to make sure the Safety Plan works in your application. 
+
+You do not need to import or export the library, but you do need to configure the settings on specific platforms to make sure it can run. You do not need to configure these settings immediately if you are just using the iOS simulator, but this should be done before any pre-launch QA testing. 
+
+If you are releasing Aureus on 
+- Android
+- Linux 
+- MacOS
+- Web
+
+Then you must go read the flutter_secure_storage documentation to properly configure support before launch. You can find the platform dependent documentation here: https://github.com/mogol/flutter_secure_storage 
+
+### Building your Aureus resource
+
+Before you use any of the items in Aureus, you have to initialize your packageVariables in your main.dart file, before the application is run. You can learn more about each of the parameters in the Aureus documentation. 
+
+'''
+
+void main() {
+ var resourceBranding = AureusBranding(
+     fontFamily: fontFamily,
+     lightModeStyle: lightModeStyle,
+     darkModeStyle: darkModeStyle);
+
+
+ var resourceInformation = AureusInformation(
+     name: name,
+     mission: mission,
+     safetySettings: safetySettings,
+     developerName: developerName,
+     developerEmail: developerEmail,
+     userSupportURL: userSupportURL,
+     requestedDataPermissions: requestedDataPermissions,
+     termsOfService: termsOfService,
+     privacyPolicy: privacyPolicy);
+
+
+ var resourceNavigation = AureusNavigationTree(
+     splashScreen: splashScreen,
+     homeScreen: homeScreen,
+     settings: settings,
+     onboardingLanding: onboardingLanding,
+     onboardingDemo: onboardingDemo,
+     onboardingInformation: onboardingInformation,
+     termsOfService: termsOfService,
+     privacyPolicy: privacyPolicy,
+     signIn: signIn,
+     signUp: signUp,
+     helpCenter: helpCenter,
+     contactSupport: contactSupport);
+
+
+ packageVariables = AureusResource(
+     resourceBranding: resourceBranding,
+     resourceInformation: resourceInformation,
+     resourceNavigation: resourceNavigation);
+
+ runApp(AureusTestApp());
+}
+
+'''
+
+---------------------
 
 # Links
 
 * [You can find Aureus' example app running here](https://withaureus.org/)
 * [You can learn more about Astra here](https://www.withastra.org)
-* [Hop into the documentation in the Github Wiki](https://www.withastra.org)
 * [Learn about the origins and goals behind Aureus](https://codingiswhyicry.medium.com/on-aureus-creating-a-digital-refuge-1-5-63d14300bf3b)

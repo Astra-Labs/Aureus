@@ -18,6 +18,21 @@ void main() {
           secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
 
+  var quickActionItems2 = [
+    TabObject.forTextTabbing(
+        onTabSelection: () => {print("item 1")},
+        tabTitle: "Item 1",
+        accessibilityHint: "Opens Item 1"),
+    TabObject.forTextTabbing(
+        tabTitle: "Item 2",
+        onTabSelection: () => {print("item 2")},
+        accessibilityHint: "Opens Item 2"),
+    TabObject.forTextTabbing(
+        tabTitle: "Item 3",
+        onTabSelection: () => {print("item 3")},
+        accessibilityHint: "Opens Item 3"),
+  ];
+
   var resourceInformation = AureusInformation(
       name: 'Aureus',
       mission:
@@ -25,20 +40,7 @@ void main() {
       safetySettings: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
           isActionBarDevEnabled: true,
-          quickActionItems: [
-            TabObject.forTextTabbing(
-                onTabSelection: () => {print("item 1")},
-                tabTitle: "Item 1",
-                accessibilityHint: "Opens Item 1"),
-            TabObject.forTextTabbing(
-                tabTitle: "Item 2",
-                onTabSelection: () => {print("item 2")},
-                accessibilityHint: "Opens Item 2"),
-            TabObject.forTextTabbing(
-                tabTitle: "Item 3",
-                onTabSelection: () => {print("item 3")},
-                accessibilityHint: "Opens Item 3"),
-          ],
+          quickActionItems: quickActionItems2,
           eligiblePlanOptions: []),
       developerName: 'Astra Laboratories',
       developerEmail: 'hello@withastra.com',
