@@ -10,8 +10,13 @@ import 'package:flutter/material.dart';
 /*--------- HELP CENTER VIEW ----------*/
 /// The main container for the entire Help Center functionality
 /// that controls the layout, views, and more.
+///
+/// A help center is meant to be articles for users to learn more about your
+/// resources, organization, or policies. It's meant to be customer service facing.
+
 class HelpCenterView extends StatefulWidget {
-  ///
+  /// A [HelpCenterObject] that contains all of the data structures for a
+  /// Help Center.
   final HelpCenterObject helpCenter;
 
   const HelpCenterView({required this.helpCenter});

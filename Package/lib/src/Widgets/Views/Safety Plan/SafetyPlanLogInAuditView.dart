@@ -18,8 +18,15 @@ class SafetyPlanLogInAuditView extends StatefulWidget {
 }
 
 class _SafetyPlanLogInAuditViewState extends State<SafetyPlanLogInAuditView> {
+  var failedAttempts =
+      resourceValues.safetySettings.readAllFailedLogInAttempts();
+
   @override
   Widget build(BuildContext context) {
+    /* var futureBuilder = FutureBuilder(builder: builder);
+
+    var failedAttemptsList = ListView.builder(itemBuilder: itemBuilder); */
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen, children: []);
 

@@ -10,7 +10,8 @@ import 'package:flutter/material.dart';
 /*--------- ONBOARDING INFORMATION VIEW ----------*/
 
 class OnboardingInformationView extends StatefulWidget {
-  ///
+  /// A list that contains Onboarding details to display information about
+  /// the resource to the user.
   final List<OnboardingDetail> onboardingDetails;
 
   const OnboardingInformationView({required this.onboardingDetails});

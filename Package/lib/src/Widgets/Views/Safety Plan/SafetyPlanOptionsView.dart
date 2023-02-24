@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 /*--------- SAFETY PLAN OPTIONS VIEW ----------*/
 
 class SafetyPlanOptionsView extends StatefulWidget {
-  ///
+  /// The view that a user should be sent to when they're done.
   final Widget exitPoint;
 
   const SafetyPlanOptionsView({required this.exitPoint});
@@ -33,8 +33,7 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
       eligibleOptionCards.add(StandardSwitchCardElement(
           onEnable: () => {userSelectedOptions.add(element)},
           onDisable: () => {userSelectedOptions.remove(element)},
-          switchDescription:
-              Safety.detailMetaData.retrieveDetails(element).name));
+          cardLabel: Safety.detailMetaData.retrieveDetails(element).name));
     }
 
     var align = Align(

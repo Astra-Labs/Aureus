@@ -16,19 +16,19 @@ import 'package:flutter/material.dart';
 /// to use the software. e.g: terms of service, cookie policy, etc.
 
 class CheckboxArticleView extends StatefulWidget {
-  ///
+  /// The title of your article. E.G: Terms of Service, Privacy Policy.
   final String articleTitle;
 
-  ///
+  /// A subheader that gives a description of the article.
   final String articleSubheader;
 
-  ///
+  /// The entire content of the article body.
   final String articleBody;
 
-  ///
+  /// A label for the checkbox that a user must enable to move forward.
   final String checkboxDescription;
 
-  ///
+  /// An action that should happen when the user agrees and presses 'Finish'
   final VoidCallback onFinish;
 
   const CheckboxArticleView(

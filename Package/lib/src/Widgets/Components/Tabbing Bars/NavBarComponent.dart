@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 /*--------- NAV BAR COMPONENT ----------*/
 
 class NavBarComponent extends StatefulWidget {
-  //tab items input will be checked to be icon only
+  /// A list of controller tab objects that make up the NavBarComponent
   final List<ControllerTabObject> tabItems;
 
   const NavBarComponent({required this.tabItems})

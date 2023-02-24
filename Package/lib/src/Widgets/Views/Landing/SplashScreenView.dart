@@ -11,7 +11,9 @@ import 'package:flutter/material.dart';
 /*--------- SPLASH SCREEN VIEW ----------*/
 
 class SplashScreenView extends StatefulWidget {
-  ///
+  /// A function that the splash screen should run after the animation has completed.
+  /// This should be where you navigate to the next page, and do any logic in determing
+  /// if the user has completed the onboarding process or not.
   final VoidCallback onLaunch;
   const SplashScreenView({required this.onLaunch});
 

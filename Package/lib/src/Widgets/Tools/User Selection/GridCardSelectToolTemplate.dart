@@ -27,7 +27,7 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
     List<Widget> gridItems = [];
 
     for (var element in cardItems) {
-      var cardItem = StandardSelectionCardElement(cardName: element);
+      var cardItem = StandardSelectionCardElement(cardLabel: element);
 
       gridItems.add(InkWell(
           onTap: () => {

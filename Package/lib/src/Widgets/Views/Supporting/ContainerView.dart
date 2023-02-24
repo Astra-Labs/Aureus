@@ -25,7 +25,9 @@ class ContainerView extends StatefulWidget {
   /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
-  ///
+  /// A [ContainerWrapperElement] that builds the 'wrapper' around your elements
+  /// to fit into this ContainerView. Think of it as your elements being wrapped
+  /// in one blanket for warmth and snuggliness, and another for the graphics and pizazz.
   final ContainerWrapperElement builder;
 
   /// Whether or not the view should take the full width of a screen
@@ -262,11 +264,6 @@ class _ContainerViewState extends State<ContainerView>
     var containerWidth = widget.takesFullWidth!
         ? screenWidth
         : size.layoutItemWidth(1, screenSize);
-
-    //Calucates height based on parameters
-    var containerHeight = widget.takesFullWidth!
-        ? screenHeight
-        : size.layoutItemHeight(1, screenSize);
 
     // Creates decoration depending on params w/ background images
     var containerDecoration = widget.hasBackgroundImage == true

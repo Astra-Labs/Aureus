@@ -37,8 +37,7 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
         child: StandardSwitchCardElement(
             onEnable: () => {},
             onDisable: () => {},
-            switchDescription:
-                Safety.detailMetaData.retrieveDetails(element).name),
+            cardLabel: Safety.detailMetaData.retrieveDetails(element).name),
       ));
     }
 

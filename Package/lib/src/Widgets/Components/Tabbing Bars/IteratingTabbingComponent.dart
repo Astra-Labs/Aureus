@@ -7,7 +7,13 @@ import 'package:flutter/material.dart';
 /// An icon tabbing bar and accompanying card that acts as an onboarding walkthrough
 
 class IteratingTabbingComponent extends StatefulWidget {
+  /// A list of strings that describe the title of the tab item.
   final List<String> itemTitles;
+
+  /// A list of Widgets that have a parent tab item to the [itemTitles].
+  /// Make sure the Widgets have the same index as the title, e.g:
+  /// itemTitles: ["Text Ryan", "Call Amanda", "Facetime Fouzan"],
+  /// [textRyanView(), callAmandaView(), facetimeFouzanView()]
   final List<Widget> itemWidgets;
 
   const IteratingTabbingComponent(

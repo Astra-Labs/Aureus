@@ -8,12 +8,18 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DATA DETAIL VIEW ----------*/
+/// A data detail view is similar to using [CoreTool]s. Use a data detail view
+/// when a user is opening up a read/write object. This can be anything from a user
+/// settings page, to a contact page, or a log page.
+///
+/// The data detail view manages the reading / editing states of the detail cards,
+/// so you just have to read / write from a database.
 
 class DataDetailView extends StatefulWidget {
-  ///
+  /// The title of the detail view. E.G: A contact name, 'Settings', etc.
   final String title;
 
-  ///
+  /// A list of data detail cards to show to the user.
   final List<DataDetailCard> detailCards;
 
   DataDetailView({Key? key, required this.title, required this.detailCards})

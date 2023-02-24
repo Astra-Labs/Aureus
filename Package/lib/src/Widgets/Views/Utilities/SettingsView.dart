@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 /*--------- SETTINGS VIEW ----------*/
 
 class SettingsView extends StatefulWidget {
-  const SettingsView();
+  /// A list of [SettingSection]s that build the settings page.
+  final List<SettingSection> settingSections;
+  const SettingsView({required this.settingSections});
 
   @override
   _SettingsViewState createState() => _SettingsViewState();
@@ -43,6 +45,40 @@ class _SettingsViewState extends State<SettingsView> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> settingRows = [];
+
+    for (var section in widget.settingSections) {
+      List<Widget> sectionChildren = [];
+
+      for (var sectionItem in section.sectionItems) {
+        Widget child;
+
+        switch (sectionItem.itemType) {
+          case SettingItemType.standardButton:
+            child = sectionItem.standardButton!;
+            break;
+          case SettingItemType.standardIconButton:
+            child = sectionItem.standardIconButton!;
+            break;
+          case SettingItemType.switchComponent:
+            child = sectionItem.switchComponent!;
+            break;
+        }
+
+        sectionChildren.add(
+          Padding(padding: const EdgeInsets.all(8), child: child),
+        );
+      }
+      var sectionColumn = Column(children: [
+        TabSubheaderElement(title: section.sectionTitle),
+        const SizedBox(height: 10),
+        Column(
+          children: sectionChildren,
+        )
+      ]);
+      settingRows.add(sectionColumn);
+    }
+
     var standardButtonElement = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
         buttonTitle:
@@ -82,6 +118,10 @@ class _SettingsViewState extends State<SettingsView> {
           PageHeaderElement.withExit(
               pageTitle: 'Settings',
               onPageExit: () => {Navigator.pop(context)}),
+          const SizedBox(height: 20.0),
+          Column(
+            children: settingRows,
+          ),
           const SizedBox(height: 20.0),
           const TabSubheaderElement(title: 'I want to'),
           const SizedBox(height: 20.0),

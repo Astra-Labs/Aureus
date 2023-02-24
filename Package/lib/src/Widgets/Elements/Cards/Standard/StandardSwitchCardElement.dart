@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 /*--------- STANDARD SWITCH CARD ----------*/
 
 class StandardSwitchCardElement extends StatefulWidget {
-  ///
-  final String switchDescription;
+  /// The text for the main header of the card.
+  final String cardLabel;;
 
   ///
   final VoidCallback onEnable;
@@ -23,7 +23,7 @@ class StandardSwitchCardElement extends StatefulWidget {
   bool isSwitchEnabled = false;
 
   StandardSwitchCardElement(
-      {required this.switchDescription,
+      {required this.cardLabel,
       required this.onEnable,
       required this.onDisable});
 

@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 /*--------- ONBOARDING LANDING VIEW ----------*/
 
 class OnboardingLandingView extends StatefulWidget {
-  ///
   const OnboardingLandingView();
 
   @override

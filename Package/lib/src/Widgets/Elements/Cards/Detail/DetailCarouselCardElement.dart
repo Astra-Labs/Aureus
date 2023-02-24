@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 /*--------- DETAIL CAROUSEL CARD ----------*/
 
 class DetailCarouselCardElement extends StatelessWidget {
-  ///
+  /// The text for the main header of the card.
   final String cardLabel;
 
   ///

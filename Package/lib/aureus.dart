@@ -34,6 +34,7 @@ export 'src/Objects/Components/TabbingBarObjects.dart';
 export 'src/Objects/Functionality/DataConsentObjects.dart';
 export 'src/Objects/Views/HelpCenterObjects.dart';
 export 'src/Objects/Views/OnboardingObjects.dart';
+export 'src/Objects/Views/SettingsObjects.dart';
 
 //Functionality Objects
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
@@ -185,12 +186,6 @@ export 'src/Widgets/Tools/Mini Tools/TimerToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/AdaptiveInputSelectionToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/AdaptiveInputToolTemplate.dart';
 export 'src/Widgets/Tools/Mini Tools/VideoInputToolTemplate.dart';
-
-// -------------------------- Trackers
-export 'src/Widgets/Tools/Trackers/MultiCategoryItemInfoToolTemplate.dart';
-export 'src/Widgets/Tools/Trackers/MultiCategoryTrackerToolTemplate.dart';
-export 'src/Widgets/Tools/Trackers/SingleCategoryItemInfoToolTemplate.dart';
-export 'src/Widgets/Tools/Trackers/SingleCategoryTrackerToolTemplate.dart';
 
 // -------------------------- User Input
 export 'src/Widgets/Tools/User Input/DualColumnInputToolTemplate.dart';

@@ -13,7 +13,7 @@ class StandardBadgeCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
-  ///
+  /// The text for the main header of the card.
   final String cardLabel;
 
   ///

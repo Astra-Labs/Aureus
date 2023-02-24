@@ -10,13 +10,13 @@ import 'package:flutter/material.dart';
 /*--------- STANDARD SELECTION CARD ----------*/
 
 class StandardSelectionCardElement extends StatefulWidget {
-  ///
-  final String cardName;
+  /// The text for the main header of the card.
+  final String cardLabel;
 
   ///
   bool isCardSelected = false;
 
-  StandardSelectionCardElement({required this.cardName});
+  StandardSelectionCardElement({required this.cardLabel});
 
   @override
   _StandardSelectionCardElementState createState() =>

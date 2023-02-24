@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 /*--------- COMPLEX SWITCH CARD ----------*/
 
 class ComplexSwitchCardElement extends StatelessWidget {
-  ///
+  /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// The text for the body content underneath the header.
   final String cardBody;
 
   ///

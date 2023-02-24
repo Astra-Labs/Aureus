@@ -12,7 +12,7 @@ import 'dart:ui';
 /*--------- POETRY GRADIENT VIEW ----------*/
 
 class PoetryGradientView extends StatefulWidget {
-  ///
+  /// A List with the strings that make up a poem.
   final List<String> poetryArray;
 
   const PoetryGradientView({required this.poetryArray});
