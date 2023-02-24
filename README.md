@@ -58,10 +58,10 @@ Go to pub.dev and download Material, and the Aureus package. Although material i
 
 Import the packages in your library file, or in any file that you will be using Aureus in. 
 
-'''
+```
 import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
-'''
+```
 
 ### Supporting Flutter Secure Storage 
 Aureus uses the pub.dev package Flutter Secure Storage, to manage the user’s Safety Plan settings without your input. However, there is still some work that needs to be done to make sure the Safety Plan works in your application. 
@@ -80,7 +80,7 @@ Then you must go read the flutter_secure_storage documentation to properly confi
 
 Before you use any of the items in Aureus, you have to initialize your packageVariables in your main.dart file, before the application is run. You can learn more about each of the parameters in the Aureus documentation. 
 
-'''
+```
 
 void main() {
  var resourceBranding = AureusBranding(
@@ -124,7 +124,7 @@ void main() {
  runApp(AureusTestApp());
 }
 
-'''
+```
 
 ---------------------
 
