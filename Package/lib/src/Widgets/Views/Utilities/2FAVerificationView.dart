@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,16 +10,20 @@ import 'package:aureus/aureus.dart';
 /*--------- 2FA VERIFICATION VIEW ----------*/
 
 class TFAVerificationView extends StatefulWidget {
-  ///
-  final double userPhoneNumber;
+  /// A list with the user's phone number. We use this list to show the users
+  /// the last 4 digits of their number.
+  final List<int> userPhoneNumber;
 
-  ///
+  /// The [TextEditingController] that should be connected to the verification code
+  /// text field. You'll use this text editing controller to read the code in the other
+  /// actions below.
   final TextEditingController textEditingController;
 
-  ///
+  /// A [VoidCallback] to run when the user presses the submit button. This is where
+  /// you'll check the verification code, and perform success / error handling.
   final VoidCallback onUserSubmission;
 
-  ///
+  /// A [VoidCallback] to run when the user requests another verification code.
   final VoidCallback issueVerificationCode;
 
   const TFAVerificationView(

@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,10 +10,10 @@ import 'package:aureus/aureus.dart';
 /*--------- TEXT FIELD COMPONENT ----------*/
 
 class StandardTextFieldComponent extends StatelessWidget {
-  ///
+  /// A hint to give to the user about what they should type.
   final String hintText;
 
-  ///
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   ///

@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}

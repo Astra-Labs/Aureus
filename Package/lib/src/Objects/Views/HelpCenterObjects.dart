@@ -1,4 +1,5 @@
-import 'package:aureus/aureus.dart';
+/// @nodoc
+import 'package:flutter/material.dart';
 
 /// {@category Objects}
 /// {@image <image alt='' src=''>}

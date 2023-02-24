@@ -121,7 +121,7 @@ class _landingHeaderState extends State<landingHeader> {
                 child: Container(
                   padding: EdgeInsets.all(8.0),
                   decoration: CardBackingDecoration(
-                          priority: decorationPriority.inactive)
+                          decorationVariant: decorationPriority.inactive)
                       .buildBacking(),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
@@ -207,8 +207,8 @@ class _footerCTAState extends State<footerCTA> {
           HeadingOneText(
               'Aureus is currently in beta.', decorationPriority.standard),
           SizedBox(height: 20.0),
-          BodyOneText(
-              "HAHAHAH someone put content here.", decorationPriority.standard),
+          BodyOneText("Someone needs to put content here.",
+              decorationPriority.standard),
           SizedBox(height: 20.0),
           SizedBox(
             width: size.layoutItemWidth(1, screenSize),
@@ -216,7 +216,7 @@ class _footerCTAState extends State<footerCTA> {
             child: FloatingContainerElement(
               child: Container(
                   decoration: LayerBackingDecoration(
-                          priority: decorationPriority.standard)
+                          decorationVariant: decorationPriority.standard)
                       .buildBacking(),
                   child: Padding(
                     padding: EdgeInsets.all(20.0),
@@ -257,7 +257,8 @@ class _footerCTAState extends State<footerCTA> {
                               buttonAction: () => {
                                     launchInBrowser(
                                         'https://github.com/Astra-Labs/Aureus')
-                                  })
+                                  }),
+                          Spacer(),
                         ]),
                   )),
             ),
@@ -296,6 +297,7 @@ class _webLandingViewState extends State<webLandingView> {
     );
 
     return ContainerView(
+      showQuickActionBar: false,
       takesFullWidth: true,
       decorationVariant: decorationPriority.important,
       builder: ContainerWrapperElement(
@@ -378,6 +380,7 @@ class _mobileLandingViewState extends State<mobileLandingView> {
 
     return ContainerView(
       takesFullWidth: true,
+      showQuickActionBar: false,
       decorationVariant: decorationPriority.important,
       builder: ContainerWrapperElement(
           containerVariant: wrapperVariants.stackScroll,

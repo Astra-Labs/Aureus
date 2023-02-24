@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -8,7 +11,7 @@ import 'package:aureus/aureus.dart';
 
 // ignore: must_be_immutable
 class SliderElement extends StatefulWidget {
-  ///
+  /// The slide value from 1-100 (aka how far the slide is).
   var slideValue = 0.0;
 
   @override

@@ -1,6 +1,9 @@
 import 'package:aureus/aureus.dart';
 import 'dart:math';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Foundation}
 
 /* ------------------ ANIMATIONS -------------------- */

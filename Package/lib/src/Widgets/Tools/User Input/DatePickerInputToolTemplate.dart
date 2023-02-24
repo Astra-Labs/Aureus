@@ -1,4 +1,6 @@
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
 import 'package:flutter/cupertino.dart';
 
 /// {@category Widgets}

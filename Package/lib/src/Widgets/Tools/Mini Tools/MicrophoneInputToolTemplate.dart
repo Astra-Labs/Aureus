@@ -1,5 +1,7 @@
 import 'dart:async';
 
+/// @nodoc
+import 'package:flutter/material.dart';
 import 'package:aureus/aureus.dart';
 import 'package:record/record.dart';
 

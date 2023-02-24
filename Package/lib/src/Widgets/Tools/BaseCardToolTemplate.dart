@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Tools}
 /// {@image <image alt='' src=''>}
@@ -36,7 +39,8 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             maxWidth: size.layoutItemWidth(1, screenSize),
             minWidth: size.layoutItemWidth(1, screenSize),
             maxHeight: size.layoutItemHeight(1, screenSize)),
-        decoration: CardBackingDecoration(priority: decorationPriority.standard)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.standard)
             .buildBacking(),
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -68,9 +72,9 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
                 maxWidth: size.layoutItemWidth(1, screenSize),
                 minWidth: size.layoutItemWidth(1, screenSize),
                 maxHeight: size.layoutItemHeight(6, screenSize)),
-            decoration:
-                CardBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
+            decoration: CardBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
             padding: const EdgeInsets.all(15.0),
             child: Row(
               mainAxisSize: MainAxisSize.min,

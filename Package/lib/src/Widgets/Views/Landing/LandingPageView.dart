@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,27 +10,37 @@ import 'package:aureus/aureus.dart';
 /*--------- LANDING PAGE VIEW ----------*/
 
 class LandingPageView extends StatefulWidget {
-  ///
+  /// An image for the light mode landing page background.
   final Image lightModeLandscapeBacking;
 
-  ///
+  /// An image for the dark mode landing page background.
   final Image darkModeLandscapeBacking;
 
-  ///
+  /// An image for the light mode landing page foreground image.
+  /// This should be a UI overlay or logo.
   final Image lightModeUIOverlay;
 
-  ///
+  /// An image for the dark mode landing page foreground image.
+  /// This should be a UI overlay or logo.
   final Image darkModeUIOverlay;
 
-  ///
+  /// A list of [StandardIconButtonElement]s that represent the main
+  /// Calls To Action that you want the user to take. These should be limited to
+  /// 1 or 2 of the most important things on the landing page.
   final List<StandardIconButtonElement> actionButtons;
+
+  /// A [VoidCallback] that performs an action when a user wants to give you
+  /// feedback on your resource. This should link them to a contact page, or
+  /// open an email.
+  final VoidCallback? onGiveFeedback;
 
   const LandingPageView(
       {required this.lightModeLandscapeBacking,
       required this.darkModeLandscapeBacking,
       required this.lightModeUIOverlay,
       required this.darkModeUIOverlay,
-      required this.actionButtons});
+      required this.actionButtons,
+      this.onGiveFeedback});
 
   @override
   _LandingPageViewState createState() => _LandingPageViewState();
@@ -85,14 +98,16 @@ class _LandingPageViewState extends State<LandingPageView> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 BodyOneText(
-                    '${resourceValues.name} is run by Astra Labs, a 501(c)3 non-profit.',
+                    '${resourceValues.name} is run by ${resourceValues.developerName}',
                     decorationPriority.standard),
                 const SizedBox(width: 10.0),
-                SmolButtonElement(
-                    decorationVariant: decorationPriority.standard,
-                    buttonTitle: 'Give Feedback',
-                    buttonHint: 'Opens the place to give feedback.',
-                    buttonAction: () => {}),
+                widget.onGiveFeedback != null
+                    ? SmolButtonElement(
+                        decorationVariant: decorationPriority.standard,
+                        buttonTitle: 'Give Feedback',
+                        buttonHint: 'Opens the place to give feedback.',
+                        buttonAction: () => {})
+                    : const SizedBox(width: 10.0),
                 const SizedBox(width: 10.0),
               ]),
         ));
@@ -122,11 +137,13 @@ class _LandingPageViewState extends State<LandingPageView> {
                       decorationPriority.standard),
                   Row(
                     children: [
-                      SmolButtonElement(
-                          decorationVariant: decorationPriority.standard,
-                          buttonTitle: 'Give Feedback',
-                          buttonHint: 'Opens the place to give feedback.',
-                          buttonAction: () => {}),
+                      widget.onGiveFeedback != null
+                          ? SmolButtonElement(
+                              decorationVariant: decorationPriority.standard,
+                              buttonTitle: 'Give Feedback',
+                              buttonHint: 'Opens the place to give feedback.',
+                              buttonAction: () => {})
+                          : const SizedBox(width: 10.0),
                     ],
                   )
                 ]),

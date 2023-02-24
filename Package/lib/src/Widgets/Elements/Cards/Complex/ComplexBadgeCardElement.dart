@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,13 +10,13 @@ import 'package:aureus/aureus.dart';
 /*--------- COMPLEX BADGE CARD ----------*/
 
 class ComplexBadgeCardElement extends StatelessWidget {
-  ///
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
-  ///
+  /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// The text for the body content underneath the header.
   final String cardBody;
 
   ///
@@ -56,8 +59,8 @@ class ComplexBadgeCardElement extends StatelessWidget {
     );
 
     var complexBadgeContainer = Container(
-        decoration:
-            CardBackingDecoration(priority: decorationVariant).buildBacking(),
+        decoration: CardBackingDecoration(decorationVariant: decorationVariant)
+            .buildBacking(),
         constraints: BoxConstraints(
             maxWidth: size.layoutItemWidth(1, screenSize),
             maxHeight: size.layoutItemHeight(3, screenSize)),

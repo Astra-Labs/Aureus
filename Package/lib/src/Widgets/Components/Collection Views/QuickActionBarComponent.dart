@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -70,7 +73,8 @@ class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
       child: Container(
         width: size.layoutItemWidth(1, screenSize),
         height: size.layoutItemHeight(5, screenSize),
-        decoration: CardBackingDecoration(priority: decorationPriority.standard)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.standard)
             .buildBacking(),
         padding: const EdgeInsets.all(20.0),
         child: Column(

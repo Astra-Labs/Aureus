@@ -2,6 +2,10 @@
 
 import 'dart:ui';
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
+
 import 'package:flutter/semantics.dart';
 
 /// {@category Foundation}

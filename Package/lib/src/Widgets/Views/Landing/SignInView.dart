@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,13 +10,14 @@ import 'package:aureus/aureus.dart';
 /*--------- SIGN IN VIEW ----------*/
 
 class SignInView extends StatefulWidget {
-  ///
+  /// A VoidCallback to run when the user presses Sign In. This is where you should
+  /// check the sign in credentials and do success / error handling
   final VoidCallback onSignIn;
 
-  ///
+  /// A Callback to run when the user presses Sign Up.
   final VoidCallback onSignup;
 
-  ///
+  /// A Callback for when the user wants to reset their information.
   final VoidCallback onResetInformation;
 
   /// These controllers allow you to access the text editing controllers, to check for the correct

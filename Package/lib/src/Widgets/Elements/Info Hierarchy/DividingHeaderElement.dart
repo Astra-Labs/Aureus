@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,10 +10,10 @@ import 'package:aureus/aureus.dart';
 /*--------- DIVIDING HEADER ELEMENT ----------*/
 
 class DividingHeaderElement extends StatelessWidget {
-  ///
+  /// The main header of the element
   final String headerText;
 
-  ///
+  /// The subheader text of the element
   final String subheaderText;
 
   const DividingHeaderElement(

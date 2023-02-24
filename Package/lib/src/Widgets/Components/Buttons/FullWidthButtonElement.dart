@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -96,7 +99,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
     //variables that change how the variants are displayed in build time
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.edgedRectangle,
-            priority: buttonPriority)
+            decorationVariant: buttonPriority)
         .buildBacking();
 
     var screenWidth = size.logicalWidth();

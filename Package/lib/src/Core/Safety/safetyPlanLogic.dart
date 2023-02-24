@@ -5,7 +5,7 @@ part of aureus_safety_plan;
 /*--------- SAFETY ----------*/
 
 /// A class that contains data regarding how to handle creating a
-/// safety plan for the user.
+/// Safety Plan for the user.
 
 class Safety {
   /// A map that contains Safety Plan options that ALL software can complete.

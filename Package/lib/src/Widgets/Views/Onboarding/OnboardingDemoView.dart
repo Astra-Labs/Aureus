@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,7 +10,9 @@ import 'package:aureus/aureus.dart';
 /*--------- ONBOARDING DEMO VIEW ----------*/
 
 class OnboardingDemoView extends StatefulWidget {
-  ///
+  /// A list of CoreTools that are used in the resource, that can be demoed
+  /// from an onboarding page. You can also make sample tools specifically for demo
+  /// purposes.
   final List<CoreTool> toolItems;
 
   const OnboardingDemoView({required this.toolItems});

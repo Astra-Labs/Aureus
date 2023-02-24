@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,7 +10,7 @@ import 'package:aureus/aureus.dart';
 /*--------- SAFETY PLAN OPT IN VIEW ----------*/
 
 class SafetyPlanOptInView extends StatefulWidget {
-  ///
+  /// The view that a user should be sent to when they're done.
   final Widget exitPoint;
 
   const SafetyPlanOptInView({required this.exitPoint});

@@ -1,4 +1,7 @@
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@category Widgets}
@@ -17,20 +20,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// the NotificationObserver or some built-in Safety Plan features.
 
 class ContainerView extends StatefulWidget {
-  /// determines if primary landing page (fluid decoration),
+  /// Determines if primary landing page (fluid decoration),
   /// or just secondary page (blur decoration).
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
-  ///
+  /// A [ContainerWrapperElement] that builds the 'wrapper' around your elements
+  /// to fit into this ContainerView. Think of it as your elements being wrapped
+  /// in one blanket for warmth and snuggliness, and another for the graphics and pizazz.
   final ContainerWrapperElement builder;
 
-  ///
+  /// Whether or not the view should take the full width of a screen
   final bool? takesFullWidth;
 
-  ///
+  /// Whether or not the view should have a background image
   final bool? hasBackgroundImage;
 
-  ///
+  /// Whether or not the view should show a quick action bar
   final bool? showQuickActionBar;
 
   const ContainerView(
@@ -211,7 +217,8 @@ class _ContainerViewState extends State<ContainerView>
 
     holdY = screenHeight * 0.8;
 
-    if (safety.isActionBarDevEnabled == true) {
+    if (safety.isActionBarDevEnabled == true &&
+        widget.showQuickActionBar == true) {
       var actionBarWidget = QuickActionBarComponent(
           key: quickBarKey, tabItems: safety.quickActionItems!);
 
@@ -258,11 +265,6 @@ class _ContainerViewState extends State<ContainerView>
         ? screenWidth
         : size.layoutItemWidth(1, screenSize);
 
-    //Calucates height based on parameters
-    var containerHeight = widget.takesFullWidth!
-        ? screenHeight
-        : size.layoutItemHeight(1, screenSize);
-
     // Creates decoration depending on params w/ background images
     var containerDecoration = widget.hasBackgroundImage == true
         ? containerBacking()
@@ -287,7 +289,8 @@ class _ContainerViewState extends State<ContainerView>
             child: Center(
                 child: Stack(children: [
               widget.builder,
-              safety.isActionBarDevEnabled == true
+              (safety.isActionBarDevEnabled == true &&
+                      widget.showQuickActionBar == true)
                   ? Positioned(top: holdY, left: holdX, child: actionBar)
                   : const SizedBox(width: 1),
             ]))));

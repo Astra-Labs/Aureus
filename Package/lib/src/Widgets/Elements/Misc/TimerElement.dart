@@ -1,4 +1,8 @@
 import 'package:aureus/aureus.dart';
+
+/// @nodoc
+import 'package:flutter/material.dart';
+
 import 'dart:async';
 
 /// {@category Widgets}
@@ -10,10 +14,10 @@ import 'dart:async';
 
 // ignore: must_be_immutable
 class TimerElement extends StatefulWidget {
-  ///
+  /// The amount of time the timer should count down from.
   final Duration timeAllotment;
 
-  ///
+  /// An action that should happen when the timer runs out.
   VoidCallback? onFinish;
 
   TimerElement({required this.timeAllotment, this.onFinish});

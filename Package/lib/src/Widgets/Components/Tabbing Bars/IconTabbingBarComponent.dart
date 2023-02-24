@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -8,6 +11,7 @@ import 'package:aureus/aureus.dart';
 /// A group of icon buttons on a card that acts as a tabbing bar to change data
 
 class IconTabbingBarComponent extends StatefulWidget {
+  /// A list of controller tab objects that make up the tabbing bar
   final List<TabObject> tabItems;
 
   const IconTabbingBarComponent({required this.tabItems})
@@ -70,7 +74,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
             child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: LayerBackingDecoration(
-                        priority: decorationPriority.inactive)
+                        decorationVariant: decorationPriority.inactive)
                     .buildBacking(),
                 child: iconTabbingBarContent)));
 

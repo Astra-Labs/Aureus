@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -68,7 +71,8 @@ class _CookieBannerComponentState extends State<CookieBannerComponent> {
             minWidth: size.layoutItemWidth(3, screenSize),
             maxWidth: size.layoutItemWidth(2, screenSize),
             minHeight: size.layoutItemHeight(4, screenSize)),
-        decoration: CardBackingDecoration(priority: decorationPriority.inverted)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inverted)
             .buildBacking(),
         child: Padding(
           padding: const EdgeInsets.all(13.0),

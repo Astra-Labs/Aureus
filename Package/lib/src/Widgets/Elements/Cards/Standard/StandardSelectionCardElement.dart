@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,13 +10,13 @@ import 'package:aureus/aureus.dart';
 /*--------- STANDARD SELECTION CARD ----------*/
 
 class StandardSelectionCardElement extends StatefulWidget {
-  ///
-  final String cardName;
+  /// The text for the main header of the card.
+  final String cardLabel;
 
   ///
   bool isCardSelected = false;
 
-  StandardSelectionCardElement({required this.cardName});
+  StandardSelectionCardElement({required this.cardLabel});
 
   @override
   _StandardSelectionCardElementState createState() =>
@@ -62,8 +65,8 @@ class _StandardSelectionCardElementState
     return Semantics.fromProperties(
       properties: SemanticsWrapper.toggle(
           isEnabled: widget.isCardSelected,
-          label: widget.cardName,
-          hint: 'Enables or disables ${widget.cardName}',
+          label: widget.cardLabel,
+          hint: 'Enables or disables ${widget.cardLabel}',
           isToggled: widget.isCardSelected,
           isMutuallyExclusive: false),
       child: InkWell(
@@ -73,7 +76,7 @@ class _StandardSelectionCardElementState
             height: size.layoutItemHeight(5, screenSize),
             child: Container(
                 decoration: CardBackingDecoration(
-                        priority: widget.isCardSelected
+                        decorationVariant: widget.isCardSelected
                             ? decorationPriority.important
                             : decorationPriority.inactive)
                     .buildBacking(),
@@ -90,7 +93,7 @@ class _StandardSelectionCardElementState
                         const Spacer(),
                         Flexible(
                           child: TagTwoText(
-                              widget.cardName,
+                              widget.cardLabel,
                               widget.isCardSelected
                                   ? decorationPriority.important
                                   : decorationPriority.standard),

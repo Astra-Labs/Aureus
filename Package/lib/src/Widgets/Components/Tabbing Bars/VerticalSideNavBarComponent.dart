@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -7,8 +10,8 @@ import 'package:aureus/aureus.dart';
 /*--------- VERTICAL SIDE NAV BAR ----------*/
 
 class VerticalSideNavBarComponent extends StatefulWidget {
+  /// A list of controller tab objects that make up the NavBarComponent
   final List<ControllerTabObject> tabItems;
-  //tab items input will be checked to be icon only
 
   const VerticalSideNavBarComponent({required this.tabItems})
       : assert(tabItems.length >= 2);

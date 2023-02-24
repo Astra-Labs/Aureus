@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,8 +10,13 @@ import 'package:aureus/aureus.dart';
 /*--------- HELP CENTER VIEW ----------*/
 /// The main container for the entire Help Center functionality
 /// that controls the layout, views, and more.
+///
+/// A help center is meant to be articles for users to learn more about your
+/// resources, organization, or policies. It's meant to be customer service facing.
+
 class HelpCenterView extends StatefulWidget {
-  ///
+  /// A [HelpCenterObject] that contains all of the data structures for a
+  /// Help Center.
   final HelpCenterObject helpCenter;
 
   const HelpCenterView({required this.helpCenter});
@@ -108,9 +116,9 @@ class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
             maxWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
             minHeight: size.layoutItemHeight(5, size.logicalScreenSize()),
             maxHeight: size.layoutItemHeight(2, size.logicalScreenSize())),
-        decoration:
-            LayerBackingDecoration(priority: decorationPriority.standard)
-                .buildBacking(),
+        decoration: LayerBackingDecoration(
+                decorationVariant: decorationPriority.standard)
+            .buildBacking(),
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,7 +10,7 @@ import 'package:aureus/aureus.dart';
 /*--------- DETAIL CAROUSEL CARD ----------*/
 
 class DetailCarouselCardElement extends StatelessWidget {
-  ///
+  /// The text for the main header of the card.
   final String cardLabel;
 
   ///
@@ -40,8 +43,9 @@ class DetailCarouselCardElement extends StatelessWidget {
     var detailCarouselContainer = Container(
       constraints: BoxConstraints(
           minWidth: labelSize.width + 40, minHeight: labelSize.height + 30),
-      decoration: CardBackingDecoration(priority: decorationPriority.inactive)
-          .buildBacking(),
+      decoration:
+          CardBackingDecoration(decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
       padding: const EdgeInsets.all(8.0),
       child: detailCarouselContent,
     );

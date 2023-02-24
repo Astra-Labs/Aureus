@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Tools}
 /// {@image <image alt='' src=''>}
@@ -138,9 +141,9 @@ class _SketchInputCardState extends State<_SketchInputCard> {
         height: size.responsiveSize(65.0),
         width: size.layoutItemWidth(1, size.logicalScreenSize()) * 0.6,
         child: Container(
-          decoration:
-              CardBackingDecoration(priority: decorationPriority.inactive)
-                  .buildBacking(),
+          decoration: CardBackingDecoration(
+                  decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
           padding: const EdgeInsets.all(10.0),
           alignment: Alignment.center,
           child: SingleChildScrollView(
@@ -170,7 +173,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     var container = Container(
         height: size.layoutItemHeight(1, size.logicalScreenSize()),
         width: size.layoutItemWidth(1, size.logicalScreenSize()),
-        decoration: CardBackingDecoration(priority: decorationPriority.standard)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.standard)
             .buildBacking(),
         child: Stack(
           children: const [

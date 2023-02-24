@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,13 +10,13 @@ import 'package:aureus/aureus.dart';
 /*--------- CATEGORY ICON DETAIL CARD ----------*/
 
 class CategoryIconDetailCardElement extends StatelessWidget {
-  ///
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
-  ///
+  /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// The text for the body content underneath the header.
   final String cardBody;
 
   ///
@@ -62,7 +65,8 @@ class CategoryIconDetailCardElement extends StatelessWidget {
           constraints: BoxConstraints(
               maxWidth: size.layoutItemWidth(2, screenSize) * 0.9),
           decoration:
-              CardBackingDecoration(priority: decorationVariant).buildBacking(),
+              CardBackingDecoration(decorationVariant: decorationVariant)
+                  .buildBacking(),
           alignment: Alignment.center,
           clipBehavior: Clip.antiAlias,
           child: Padding(

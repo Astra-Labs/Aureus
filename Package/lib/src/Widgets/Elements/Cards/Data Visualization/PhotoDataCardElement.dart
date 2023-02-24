@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,12 +10,9 @@ import 'package:aureus/aureus.dart';
 /*--------- PHOTO DATA CARD ----------*/
 
 class PhotoDataCardElement extends DataDetailCard {
-  PhotoDataCardElement({required dataLabel}) : super(dataLabel: dataLabel);
-
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes.
-  var dataMap = [];
+  final Image? photo;
+  PhotoDataCardElement(this.photo, {required dataLabel})
+      : super(dataLabel: dataLabel);
 
   @override
   Widget returnReadDataCard() {

@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -141,9 +144,9 @@ class _BannerNotificationComponentState
               maxWidth: size.layoutItemWidth(1, screenSize),
               minHeight: size.layoutItemHeight(6, screenSize),
               maxHeight: size.layoutItemHeight(6, screenSize)),
-          decoration:
-              CardBackingDecoration(priority: decorationPriority.standard)
-                  .buildBacking(),
+          decoration: CardBackingDecoration(
+                  decorationVariant: decorationPriority.standard)
+              .buildBacking(),
           child: bannerNotificationContent),
     );
 

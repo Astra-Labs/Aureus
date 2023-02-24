@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -34,8 +37,7 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
         child: StandardSwitchCardElement(
             onEnable: () => {},
             onDisable: () => {},
-            switchDescription:
-                Safety.detailMetaData.retrieveDetails(element).name),
+            cardLabel: Safety.detailMetaData.retrieveDetails(element).name),
       ));
     }
 

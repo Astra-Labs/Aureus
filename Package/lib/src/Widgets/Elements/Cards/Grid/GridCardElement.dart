@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,10 +10,10 @@ import 'package:aureus/aureus.dart';
 /*--------- GRID CARD ----------*/
 
 class GridCardElement extends StatelessWidget {
-  ///
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
-  ///
+  /// The text for the main header of the card.
   final String cardLabel;
 
   ///
@@ -38,7 +41,8 @@ class GridCardElement extends StatelessWidget {
               minHeight: maxWidth,
               maxHeight: maxWidth),
           decoration:
-              CardBackingDecoration(priority: decorationVariant).buildBacking(),
+              CardBackingDecoration(decorationVariant: decorationVariant)
+                  .buildBacking(),
           clipBehavior: Clip.hardEdge,
           child: Padding(
             padding: const EdgeInsets.all(12.0),

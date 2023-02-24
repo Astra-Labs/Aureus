@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,13 +10,23 @@ import 'package:aureus/aureus.dart';
 /*--------- TOOL NEXT STEPS VIEW ----------*/
 
 class ToolNextStepsView extends StatefulWidget {
-  ///
+  /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
-  ///
+  /// A map to collect titles and functions that perform next steps. These are
+  /// where you want to connect the user to additional resources, other tools,
+  /// donate buttons if you're running a survey, etc.
   final Map<String, VoidCallback> nextSteps;
 
-  const ToolNextStepsView({required this.parentTool, required this.nextSteps});
+  /// If you do not want to use the pre-templated tools flow,
+  /// you can set a custom widget in this parameter to override the flow template.
+  Widget? alternateCTAEntryPoint;
+
+  ToolNextStepsView({
+    required this.parentTool,
+    required this.nextSteps,
+    this.alternateCTAEntryPoint,
+  });
 
   @override
   _ToolNextStepsViewState createState() => _ToolNextStepsViewState();
@@ -81,8 +94,9 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
     var floatingContainerElement = FloatingContainerElement(
         child: Container(
       width: size.layoutItemWidth(1, screenSize),
-      decoration: LayerBackingDecoration(priority: decorationPriority.inactive)
-          .buildBacking(),
+      decoration:
+          LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: column,

@@ -1,5 +1,11 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
+/// @nodoc
+import 'package:google_fonts/google_fonts.dart';
+
 /// {@category Foundation}
 
 /* ------------------ TEXT CLASSES -------------------- */

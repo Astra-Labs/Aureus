@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -51,7 +54,8 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
     }
 
     BoxDecoration backingDecoration =
-        LayerBackingDecoration(priority: bubblePriority).buildBacking();
+        LayerBackingDecoration(decorationVariant: bubblePriority)
+            .buildBacking();
 
     Size bodyTextSizing = Accessibility.textStringSize(
         textInput: widget.messageBody,

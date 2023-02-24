@@ -18,6 +18,21 @@ void main() {
           secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
 
+  var quickActionItems2 = [
+    TabObject.forTextTabbing(
+        onTabSelection: () => {print("item 1")},
+        tabTitle: "Item 1",
+        accessibilityHint: "Opens Item 1"),
+    TabObject.forTextTabbing(
+        tabTitle: "Item 2",
+        onTabSelection: () => {print("item 2")},
+        accessibilityHint: "Opens Item 2"),
+    TabObject.forTextTabbing(
+        tabTitle: "Item 3",
+        onTabSelection: () => {print("item 3")},
+        accessibilityHint: "Opens Item 3"),
+  ];
+
   var resourceInformation = AureusInformation(
       name: 'Aureus',
       mission:
@@ -25,20 +40,7 @@ void main() {
       safetySettings: Safety(
           frequencyUsage: SafetyPlanFrequency.singleUse,
           isActionBarDevEnabled: true,
-          quickActionItems: [
-            TabObject.forTextTabbing(
-                onTabSelection: () => {print("item 1")},
-                tabTitle: "Item 1",
-                accessibilityHint: "Opens Item 1"),
-            TabObject.forTextTabbing(
-                tabTitle: "Item 2",
-                onTabSelection: () => {print("item 2")},
-                accessibilityHint: "Opens Item 2"),
-            TabObject.forTextTabbing(
-                tabTitle: "Item 3",
-                onTabSelection: () => {print("item 3")},
-                accessibilityHint: "Opens Item 3"),
-          ],
+          quickActionItems: quickActionItems2,
           eligiblePlanOptions: []),
       developerName: 'Astra Laboratories',
       developerEmail: 'hello@withastra.com',
@@ -50,7 +52,63 @@ void main() {
   var resourceNavigation = AureusNavigationTree(
       splashScreen: SplashScreenView(onLaunch: () => {}),
       homeScreen: GenerationLandingPage(),
-      settings: SettingsView(),
+      settings: SettingsView(
+        settingSections: [
+          SettingSection(
+            sectionTitle: "Section 1",
+            sectionItems: [
+              SettingItem.standardButton(
+                  standardButton: StandardButtonElement(
+                      decorationVariant: decorationPriority.standard,
+                      buttonTitle: "Open accessibility page",
+                      buttonHint: "This button opens an accessibility page.",
+                      buttonAction: () => {})),
+              SettingItem.standardIconButton(
+                  standardIconButton: StandardIconButtonElement(
+                      decorationVariant: decorationPriority.standard,
+                      buttonTitle: "Open accessibility page",
+                      buttonIcon: Assets.alertmessage,
+                      buttonHint: "This button opens an accessibility page.",
+                      buttonAction: () => {})),
+            ],
+          ),
+          SettingSection(
+            sectionTitle: "Section 2",
+            sectionItems: [
+              SettingItem.standardSwitchCard(
+                  standardSwitchCard: StandardSwitchCardElement(
+                      cardLabel: "Switch Card",
+                      onEnable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card enabled.",
+                              Assets.alertmessage,
+                            )
+                          },
+                      onDisable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card disabled.",
+                              Assets.alertmessage,
+                            )
+                          })),
+              SettingItem.standardSwitchCard(
+                  standardSwitchCard: StandardSwitchCardElement(
+                      cardLabel: "Switch Card",
+                      onEnable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card enabled.",
+                              Assets.alertmessage,
+                            )
+                          },
+                      onDisable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card disabled.",
+                              Assets.alertmessage,
+                            )
+                          })),
+            ],
+          ),
+        ],
+      ),
       onboardingLanding: OnboardingLandingView(),
       onboardingDemo: OnboardingDemoView(
         toolItems: [],

@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -9,13 +12,16 @@ import 'package:aureus/aureus.dart';
 /// is where you should pass all of the view's children.
 
 class ContainerWrapperElement extends StatefulWidget {
-  ///
+  ///A list of all children you want to be displayed on the page.
   final List<Widget> children;
 
-  ///
+  /// Whether or not your container should only fill the screen,
+  /// or if the items should be free to 'stack' and extend past the
+  /// device height.
   final wrapperVariants containerVariant;
 
-  ///
+  /// Whether or not you want to take the full width of the screen,
+  /// for full width elements, like the [FullWidthButtonElement].
   final bool takesFullWidth;
 
   ContainerWrapperElement(

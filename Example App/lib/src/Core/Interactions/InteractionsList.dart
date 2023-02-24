@@ -5,98 +5,102 @@ part of AureusTestingApp;
 /*  ---------------------------------- BUTTON BACKING  ---------------------------------- */
 Decoration buttonBack1 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.circle,
-        priority: decorationPriority.inactive)
+        decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
 Decoration buttonBack2 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.circle,
-        priority: decorationPriority.standard)
+        decorationVariant: decorationPriority.standard)
     .buildBacking();
 
 Decoration buttonBack3 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.circle,
-        priority: decorationPriority.important)
+        decorationVariant: decorationPriority.important)
     .buildBacking();
 
 Decoration buttonBack4 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.edgedRectangle,
-        priority: decorationPriority.inactive)
+        decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
 Decoration buttonBack5 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.edgedRectangle,
-        priority: decorationPriority.standard)
+        decorationVariant: decorationPriority.standard)
     .buildBacking();
 
 Decoration buttonBack6 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.edgedRectangle,
-        priority: decorationPriority.important)
+        decorationVariant: decorationPriority.important)
     .buildBacking();
 
 Decoration buttonBack7 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedPill,
-        priority: decorationPriority.inactive)
+        decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
 Decoration buttonBack8 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedPill,
-        priority: decorationPriority.standard)
+        decorationVariant: decorationPriority.standard)
     .buildBacking();
 
 Decoration buttonBack9 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedPill,
-        priority: decorationPriority.important)
+        decorationVariant: decorationPriority.important)
     .buildBacking();
 
 Decoration buttonBack10 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedRectangle,
-        priority: decorationPriority.inactive)
+        decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
 Decoration buttonBack11 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedRectangle,
-        priority: decorationPriority.standard)
+        decorationVariant: decorationPriority.standard)
     .buildBacking();
 
 Decoration buttonBack12 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedRectangle,
-        priority: decorationPriority.important)
+        decorationVariant: decorationPriority.important)
     .buildBacking();
 
 /*  ---------------------------------- LAYER BACKING  ---------------------------------- */
 
 Decoration layerBack1 =
-    LayerBackingDecoration(priority: decorationPriority.standard)
+    LayerBackingDecoration(decorationVariant: decorationPriority.standard)
         .buildBacking();
 
 Decoration layerBack2 =
-    LayerBackingDecoration(priority: decorationPriority.inactive)
+    LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
         .buildBacking();
 
 Decoration layerBack3 =
-    LayerBackingDecoration(priority: decorationPriority.important)
+    LayerBackingDecoration(decorationVariant: decorationPriority.important)
         .buildBacking();
 
 /*  ---------------------------------- CARD BACKING  ---------------------------------- */
 
 Decoration cardBack1 =
-    CardBackingDecoration(priority: decorationPriority.inactive).buildBacking();
+    CardBackingDecoration(decorationVariant: decorationPriority.inactive)
+        .buildBacking();
 
 Decoration cardBack2 =
-    CardBackingDecoration(priority: decorationPriority.standard).buildBacking();
+    CardBackingDecoration(decorationVariant: decorationPriority.standard)
+        .buildBacking();
 
 Decoration cardBack3 =
-    CardBackingDecoration(priority: decorationPriority.important)
+    CardBackingDecoration(decorationVariant: decorationPriority.important)
         .buildBacking();
 
 Decoration cardBack4 =
-    CardBackingDecoration(priority: decorationPriority.inactive).buildBacking();
+    CardBackingDecoration(decorationVariant: decorationPriority.inactive)
+        .buildBacking();
 
 Decoration cardBack5 =
-    CardBackingDecoration(priority: decorationPriority.standard).buildBacking();
+    CardBackingDecoration(decorationVariant: decorationPriority.standard)
+        .buildBacking();
 
 Decoration cardBack6 =
-    CardBackingDecoration(priority: decorationPriority.important)
+    CardBackingDecoration(decorationVariant: decorationPriority.important)
         .buildBacking();
 
 /*  ---------------------------------- INPUT BACKING  ---------------------------------- */
@@ -107,32 +111,32 @@ Decoration inputBack1 = InputBackingDecoration().buildBacking();
 
 Decoration tabBack1 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.circle,
-        priority: decorationPriority.inactive)
+        decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
 Decoration tabBack2 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.circle,
-        priority: decorationPriority.standard)
+        decorationVariant: decorationPriority.standard)
     .buildBacking();
 
 Decoration tabBack3 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.circle,
-        priority: decorationPriority.important)
+        decorationVariant: decorationPriority.important)
     .buildBacking();
 
 Decoration tabBack4 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.roundedRectangle,
-        priority: decorationPriority.inactive)
+        decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
 Decoration tabBack5 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.roundedRectangle,
-        priority: decorationPriority.standard)
+        decorationVariant: decorationPriority.standard)
     .buildBacking();
 
 Decoration tabBack6 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.roundedRectangle,
-        priority: decorationPriority.important)
+        decorationVariant: decorationPriority.important)
     .buildBacking();
 
 List<Decoration> buttonBackings = [

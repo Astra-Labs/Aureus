@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -13,19 +16,19 @@ import 'package:aureus/aureus.dart';
 /// to use the software. e.g: terms of service, cookie policy, etc.
 
 class CheckboxArticleView extends StatefulWidget {
-  ///
+  /// The title of your article. E.G: Terms of Service, Privacy Policy.
   final String articleTitle;
 
-  ///
+  /// A subheader that gives a description of the article.
   final String articleSubheader;
 
-  ///
+  /// The entire content of the article body.
   final String articleBody;
 
-  ///
+  /// A label for the checkbox that a user must enable to move forward.
   final String checkboxDescription;
 
-  ///
+  /// An action that should happen when the user agrees and presses 'Finish'
   final VoidCallback onFinish;
 
   const CheckboxArticleView(
@@ -60,7 +63,8 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
         padding: const EdgeInsets.all(10),
         constraints:
             BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
-        decoration: CardBackingDecoration(priority: decorationPriority.inactive)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inactive)
             .buildBacking(),
         child: Row(
           children: [

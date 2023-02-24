@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -7,7 +10,8 @@ import 'package:aureus/aureus.dart';
 /*--------- ONBOARDING INFORMATION VIEW ----------*/
 
 class OnboardingInformationView extends StatefulWidget {
-  ///
+  /// A list that contains Onboarding details to display information about
+  /// the resource to the user.
   final List<OnboardingDetail> onboardingDetails;
 
   const OnboardingInformationView({required this.onboardingDetails});
@@ -172,9 +176,9 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
           child: Container(
               padding:
                   EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
+              decoration: CardBackingDecoration(
+                      decorationVariant: decorationPriority.inactive)
+                  .buildBacking(),
               child: size.isDesktopDisplay()
                   ? mobileInformationCard
                   : webInformationCard)),

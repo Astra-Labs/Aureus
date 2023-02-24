@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -9,7 +12,7 @@ import 'package:aureus/aureus.dart';
 /// This version comes with an icon!
 
 class StandardIconButtonElement extends StatefulWidget {
-  /// The current decoration priority of the button.
+  /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
   /// The title of your button
@@ -63,7 +66,7 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
   Widget build(BuildContext context) {
     BoxDecoration buttonDecoration = ButtonBackingDecoration(
             variant: buttonDecorationVariants.roundedRectangle,
-            priority: buttonPriority)
+            decorationVariant: buttonPriority)
         .buildBacking();
 
     bool isButtonEnabled =

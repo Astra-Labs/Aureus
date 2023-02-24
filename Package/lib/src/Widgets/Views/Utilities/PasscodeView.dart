@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -10,7 +13,9 @@ class PasscodeView extends StatefulWidget {
   ///
   final VoidCallback onCorrectPasscode;
 
-  ///
+  /// A List that contains the passcode. Keeping
+  /// items in a list as opposed to one int solves
+  /// issues with numbers between web / mobile
   final List<int> passcode;
 
   const PasscodeView({required this.onCorrectPasscode, required this.passcode});
@@ -72,7 +77,7 @@ class _PasscodeViewState extends State<PasscodeView> {
         height: size.responsiveSize(80.0),
         decoration: ButtonBackingDecoration(
                 variant: buttonDecorationVariants.circle,
-                priority: decorationPriority.standard)
+                decorationVariant: decorationPriority.standard)
             .buildBacking(),
         child: Center(
           child: HeadingThreeText("$number", decorationPriority.standard),

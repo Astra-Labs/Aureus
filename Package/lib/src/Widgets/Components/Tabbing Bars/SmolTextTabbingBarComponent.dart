@@ -1,14 +1,23 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
 
-/*--------- SMOL TEXT TABBING BAR ----------*/
+/*--------- SMOL TEXT TABBING BAR owo ----------*/
 /// A group of smol buttons that acts as a tabbing bar to change data
 
 class SmolTextTabbingBarComponent extends StatefulWidget {
+  /// A list of strings that describe the title of the tab item.
   final List<String> itemTitles;
+
+  /// A list of VoidCallbacks that provide actions to the [itemTitles].
+  /// Make sure the VoidCallback has the same index as the title, e.g:
+  /// itemTitles: ["Text Ryan", "Call Amanda", "Facetime Fouzan"],
+  /// [textRyan(), callAmanda(), facetimeFouzan()]
   final List<VoidCallback> itemActions;
 
   const SmolTextTabbingBarComponent(

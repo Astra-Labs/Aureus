@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -8,13 +11,19 @@ import 'package:aureus/aureus.dart';
 
 // ignore: must_be_immutable
 class PageHeaderElement extends StatelessWidget {
-  ///
+  /// The title of the page
   final String pageTitle;
 
-  ///
+  /// An action to run when the user wants to exit the page.
+  /// This is typically where you would set Navigator.pop() to
+  /// go back to the previous screen, or add code to save any data that's
+  /// been modified on the page.
   final VoidCallback onPageExit;
 
-  ///
+  /// If you want a details button to show up, this is where
+  /// you write the action that should happen on 'more details'.
+  /// This would be potentially showing an action sheet, or a
+  /// pop up that shows information.
   VoidCallback? onPageDetails;
 
   PageHeaderElement.withExit(

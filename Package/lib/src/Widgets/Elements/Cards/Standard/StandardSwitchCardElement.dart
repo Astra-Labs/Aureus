@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -7,8 +10,8 @@ import 'package:aureus/aureus.dart';
 /*--------- STANDARD SWITCH CARD ----------*/
 
 class StandardSwitchCardElement extends StatefulWidget {
-  ///
-  final String switchDescription;
+  /// The text for the main header of the card.
+  final String cardLabel;
 
   ///
   final VoidCallback onEnable;
@@ -20,7 +23,7 @@ class StandardSwitchCardElement extends StatefulWidget {
   bool isSwitchEnabled = false;
 
   StandardSwitchCardElement(
-      {required this.switchDescription,
+      {required this.cardLabel,
       required this.onEnable,
       required this.onDisable});
 
@@ -45,7 +48,7 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
   @override
   Widget build(BuildContext context) {
     Size minimumLabelTextSize = Accessibility.textStringSize(
-        textInput: widget.switchDescription,
+        textInput: widget.cardLabel,
         textStyle: body1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
@@ -60,7 +63,7 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
             height: minimumLabelTextSize.height * 6,
             child: Container(
                 decoration: LayerBackingDecoration(
-                        priority: decorationPriority.inactive)
+                        decorationVariant: decorationPriority.inactive)
                     .buildBacking(),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -70,8 +73,8 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Flexible(
-                          child: BodyOneText(widget.switchDescription,
-                              decorationPriority.standard),
+                          child: BodyOneText(
+                              widget.cardLabel, decorationPriority.standard),
                         ),
                         SwitchComponent(widget.onEnable, widget.onDisable)
                       ]),

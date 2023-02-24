@@ -2,6 +2,9 @@
 
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
@@ -9,19 +12,26 @@ import 'package:aureus/aureus.dart';
 /*--------- TOOL TEMPLATE CARD CAROUSEL VIEW ----------*/
 
 class ToolTemplateCardCarouselView extends StatefulWidget {
-  ///
+  /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
-  ///
-  List<ToolCardTemplate> customCards;
+  /// Custom cards that are separate from the [parentTool]'s cards. This parameter
+  /// overrides and will be shown over any parentTool cards.
+  List<ToolCardTemplate>? customCards;
 
-  ToolTemplateCardCarouselView(
-      {Key? key, required this.parentTool, this.customCards = const []})
-      : assert(
+  /// If you do not want to use the pre-templated tools flow,
+  /// you can set a custom widget in this parameter to override the flow template.
+  Widget? alternateCTAEntryPoint;
+
+  ToolTemplateCardCarouselView({
+    required this.parentTool,
+    this.customCards,
+    this.alternateCTAEntryPoint,
+  })  : assert(
             parentTool.toolCards!.isNotEmpty == true ||
-                customCards.isNotEmpty == true,
+                customCards?.isNotEmpty == true,
             'ToolTemplateCardCarouselView requires the parent CoreTool to have tool cards in the navigation container, or to pass cards through the constructor.'),
-        super(key: key);
+        super();
 
   @override
   _ToolTemplateCardCarouselViewState createState() =>
@@ -42,9 +52,9 @@ class _ToolTemplateCardCarouselViewState
   void initState() {
     toolTemplateMaster.registerObserver(this);
 
-    toolChildren = widget.customCards.isEmpty
+    toolChildren = widget.customCards == null
         ? widget.parentTool.toolCards!
-        : widget.customCards;
+        : widget.customCards!;
 
     _visible = true;
 
@@ -117,9 +127,9 @@ class _ToolTemplateCardCarouselViewState
     var progressBar = FloatingContainerElement(
         child: Container(
             width: screenSize.width,
-            decoration:
-                LayerBackingDecoration(priority: decorationPriority.inactive)
-                    .buildBacking(),
+            decoration: LayerBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
             child: Center(
                 child: Padding(
               padding: const EdgeInsets.all(20.0),

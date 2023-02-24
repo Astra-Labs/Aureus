@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -10,13 +13,14 @@ import 'package:aureus/aureus.dart';
 /// the child object.
 
 class EclipseShadowElement extends StatefulWidget {
-  ///
+  /// The item that will have a shadow behind it.
   final Widget child;
 
-  ///
+  /// Whether or not the shadow is actively eclipsing.
   final bool isActive;
 
-  ///
+  /// How wide the eclipse should be. For visibility, should be
+  /// at least the width of the child it's around.
   final double eclipseWidth;
 
   const EclipseShadowElement(

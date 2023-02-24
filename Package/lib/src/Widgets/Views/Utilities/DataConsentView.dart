@@ -1,13 +1,21 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
 
 /*--------- DATA OPT-IN VIEW ----------*/
+/// This view requests permissions from the user,
+/// you set what permissions you want in your [AureusInformation]
+/// object of the [packageVariables] for your application.
+///
 
 class DataOptInView extends StatefulWidget {
-  ///
+  /// What you want to happen once the user clicks the next button
+  /// on the bottom of the page.
   final VoidCallback onFinish;
 
   const DataOptInView({required this.onFinish});

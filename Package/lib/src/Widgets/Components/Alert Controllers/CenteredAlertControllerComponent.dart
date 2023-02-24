@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Components}
 /// {@image <image alt='' src=''>}
@@ -64,7 +67,8 @@ class _CenteredAlertControllerComponentState
         ]);
 
     var centeredAlertControllerContainer = Container(
-        decoration: CardBackingDecoration(priority: decorationPriority.inverted)
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inverted)
             .buildBacking(),
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),

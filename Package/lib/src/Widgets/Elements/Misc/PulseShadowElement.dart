@@ -1,5 +1,8 @@
 import 'package:aureus/aureus.dart';
 
+/// @nodoc
+import 'package:flutter/material.dart';
+
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
@@ -9,13 +12,14 @@ import 'package:aureus/aureus.dart';
 /// creates a 'pulse' that breathes behind an object.
 
 class PulseShadowElement extends StatefulWidget {
-  ///
+  /// The item that will have a shadow behind it.
   final Widget child;
 
-  ///
+  /// Whether or not the shadow is actively eclipsing.
   final bool isActive;
 
-  ///
+  /// How wide the eclipse should be. For visibility, should be
+  /// at least the width of the child it's around.
   final double pulseWidth;
 
   const PulseShadowElement(
