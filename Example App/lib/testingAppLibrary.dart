@@ -2,10 +2,12 @@ library AureusTestingApp;
 
 // IMPORTS <- (owo)
 import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // EXPORTS (owo) ->
 export 'package:aureus/aureus.dart';
+export 'package:flutter/material.dart';
 export 'package:url_launcher/url_launcher.dart';
 
 // CORE -------------------------

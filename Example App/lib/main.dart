@@ -50,7 +50,63 @@ void main() {
   var resourceNavigation = AureusNavigationTree(
       splashScreen: SplashScreenView(onLaunch: () => {}),
       homeScreen: GenerationLandingPage(),
-      settings: SettingsView(),
+      settings: SettingsView(
+        settingSections: [
+          SettingSection(
+            sectionTitle: "Section 1",
+            sectionItems: [
+              SettingItem.standardButton(
+                  standardButton: StandardButtonElement(
+                      decorationVariant: decorationPriority.standard,
+                      buttonTitle: "Open accessibility page",
+                      buttonHint: "This button opens an accessibility page.",
+                      buttonAction: () => {})),
+              SettingItem.standardIconButton(
+                  standardIconButton: StandardIconButtonElement(
+                      decorationVariant: decorationPriority.standard,
+                      buttonTitle: "Open accessibility page",
+                      buttonIcon: Assets.alertmessage,
+                      buttonHint: "This button opens an accessibility page.",
+                      buttonAction: () => {})),
+            ],
+          ),
+          SettingSection(
+            sectionTitle: "Section 2",
+            sectionItems: [
+              SettingItem.standardSwitchCard(
+                  standardSwitchCard: StandardSwitchCardElement(
+                      cardLabel: "Switch Card",
+                      onEnable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card enabled.",
+                              Assets.alertmessage,
+                            )
+                          },
+                      onDisable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card disabled.",
+                              Assets.alertmessage,
+                            )
+                          })),
+              SettingItem.standardSwitchCard(
+                  standardSwitchCard: StandardSwitchCardElement(
+                      cardLabel: "Switch Card",
+                      onEnable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card enabled.",
+                              Assets.alertmessage,
+                            )
+                          },
+                      onDisable: () => {
+                            notificationMaster.sendAlertNotificationRequest(
+                              "Switch card disabled.",
+                              Assets.alertmessage,
+                            )
+                          })),
+            ],
+          ),
+        ],
+      ),
       onboardingLanding: OnboardingLandingView(),
       onboardingDemo: OnboardingDemoView(
         toolItems: [],

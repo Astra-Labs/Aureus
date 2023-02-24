@@ -65,8 +65,8 @@ class _StandardSelectionCardElementState
     return Semantics.fromProperties(
       properties: SemanticsWrapper.toggle(
           isEnabled: widget.isCardSelected,
-          label: widget.cardName,
-          hint: 'Enables or disables ${widget.cardName}',
+          label: widget.cardLabel,
+          hint: 'Enables or disables ${widget.cardLabel}',
           isToggled: widget.isCardSelected,
           isMutuallyExclusive: false),
       child: InkWell(
@@ -93,7 +93,7 @@ class _StandardSelectionCardElementState
                         const Spacer(),
                         Flexible(
                           child: TagTwoText(
-                              widget.cardName,
+                              widget.cardLabel,
                               widget.isCardSelected
                                   ? decorationPriority.important
                                   : decorationPriority.standard),

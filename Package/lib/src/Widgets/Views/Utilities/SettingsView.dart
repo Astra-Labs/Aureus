@@ -60,22 +60,37 @@ class _SettingsViewState extends State<SettingsView> {
           case SettingItemType.standardIconButton:
             child = sectionItem.standardIconButton!;
             break;
-          case SettingItemType.switchComponent:
-            child = sectionItem.switchComponent!;
+          case SettingItemType.standardSwitchCard:
+            child = sectionItem.standardSwitchCard!;
             break;
         }
 
         sectionChildren.add(
-          Padding(padding: const EdgeInsets.all(8), child: child),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 10), child: child),
         );
       }
-      var sectionColumn = Column(children: [
+
+      var sectionContent = [
         TabSubheaderElement(title: section.sectionTitle),
         const SizedBox(height: 10),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: sectionChildren,
-        )
-      ]);
+        ),
+        const SizedBox(height: 30),
+        const DividerElement(),
+      ];
+
+      var sectionColumn = Padding(
+        padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: sectionContent),
+      );
+
       settingRows.add(sectionColumn);
     }
 

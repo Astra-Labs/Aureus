@@ -13,6 +13,12 @@ class _ExplorationViewState extends State<ExplorationView> {
         accessibilityHint: "Shows you all of the UI Components in Aureus.",
         tabIcon: Assets.add),
     ControllerTabObject(
+        tabController: AureusInteractionsView(),
+        tabTitle: "Interact",
+        accessibilityHint:
+            "Lets you try the interactibility aspects of Aureus.",
+        tabIcon: Assets.brain),
+    ControllerTabObject(
         tabController: ToolDetailView(
           parentTool: testingTool,
         ),

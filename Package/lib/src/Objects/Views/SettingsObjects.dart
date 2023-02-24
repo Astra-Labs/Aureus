@@ -18,21 +18,21 @@ class SettingSection {
   /// A list of setting items for this section.
   final List<SettingItem> sectionItems;
   const SettingSection({required this.sectionTitle, required this.sectionItems})
-      : assert(sectionTitle != '' && sectionItems.length > 2);
+      : assert(sectionTitle != '' && sectionItems.length >= 1);
 }
 
-enum SettingItemType { switchComponent, standardButton, standardIconButton }
+enum SettingItemType { standardSwitchCard, standardButton, standardIconButton }
 
 class SettingItem {
   SettingItemType itemType;
-  SwitchComponent? switchComponent;
+  StandardSwitchCardElement? standardSwitchCard;
   StandardButtonElement? standardButton;
   StandardIconButtonElement? standardIconButton;
 
-  SettingItem.switchComponent(
-      {required this.switchComponent,
-      this.itemType = SettingItemType.switchComponent})
-      : assert(switchComponent != null);
+  SettingItem.standardSwitchCard(
+      {required this.standardSwitchCard,
+      this.itemType = SettingItemType.standardSwitchCard})
+      : assert(standardSwitchCard != null);
 
   SettingItem.standardButton(
       {required this.standardButton,

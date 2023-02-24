@@ -133,13 +133,69 @@ class exampleAppViews {
   // UTILITIES --------------------------------
 
   var tfaVerificationView = TFAVerificationView(
-    userPhoneNumber: 555555555,
+    userPhoneNumber: [5, 5, 5, 5, 5, 5, 5, 5, 5],
     issueVerificationCode: () => {print('verification code issued!')},
     onUserSubmission: () => {print('user submitted code!')},
     textEditingController: textEditor,
   );
 
-  var settingsView = SettingsView();
+  var settingsView = SettingsView(
+    settingSections: [
+      SettingSection(
+        sectionTitle: "Section 1",
+        sectionItems: [
+          SettingItem.standardButton(
+              standardButton: StandardButtonElement(
+                  decorationVariant: decorationPriority.standard,
+                  buttonTitle: "Open accessibility page",
+                  buttonHint: "This button opens an accessibility page.",
+                  buttonAction: () => {})),
+          SettingItem.standardIconButton(
+              standardIconButton: StandardIconButtonElement(
+                  decorationVariant: decorationPriority.standard,
+                  buttonTitle: "Open accessibility page",
+                  buttonIcon: Assets.alertmessage,
+                  buttonHint: "This button opens an accessibility page.",
+                  buttonAction: () => {})),
+        ],
+      ),
+      SettingSection(
+        sectionTitle: "Section 2",
+        sectionItems: [
+          SettingItem.standardSwitchCard(
+              standardSwitchCard: StandardSwitchCardElement(
+                  cardLabel: "Switch Card",
+                  onEnable: () => {
+                        notificationMaster.sendAlertNotificationRequest(
+                          "Switch card enabled.",
+                          Assets.alertmessage,
+                        )
+                      },
+                  onDisable: () => {
+                        notificationMaster.sendAlertNotificationRequest(
+                          "Switch card disabled.",
+                          Assets.alertmessage,
+                        )
+                      })),
+          SettingItem.standardSwitchCard(
+              standardSwitchCard: StandardSwitchCardElement(
+                  cardLabel: "Switch Card",
+                  onEnable: () => {
+                        notificationMaster.sendAlertNotificationRequest(
+                          "Switch card enabled.",
+                          Assets.alertmessage,
+                        )
+                      },
+                  onDisable: () => {
+                        notificationMaster.sendAlertNotificationRequest(
+                          "Switch card disabled.",
+                          Assets.alertmessage,
+                        )
+                      })),
+        ],
+      ),
+    ],
+  );
 
   var passwordView = PasscodeView(
       onCorrectPasscode: () => {

@@ -14,20 +14,16 @@ Map<String, Widget> aureusComponents = {
           'We show cookies to improve your experience. Please enable cookies. owo.',
       onCookieAccept: () => {print('cookies enabled uwu!')},
       onCookieDeny: () => {print('cookies disabled owo!')}),
-  'Message Bubbles': Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        senderMessageBubble,
-        SizedBox(height: 20),
-        receiverMessageBubble
-      ]),
-  'Notifications': Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children: [unreadNotification, SizedBox(height: 10), readNotification]),
+  'Message Bubbles': Column(children: [
+    senderMessageBubble,
+    SizedBox(height: 20),
+    receiverMessageBubble
+  ]),
+  'Notifications': Column(children: [
+    unreadNotification,
+    SizedBox(height: 10),
+    readNotification,
+  ]),
   'Empty Item Placeholder': blankScreen,
   'Standard Card': testStandardCard,
   'Standard Icon Card': testStandardIconCard,

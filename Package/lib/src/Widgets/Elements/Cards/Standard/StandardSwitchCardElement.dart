@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 class StandardSwitchCardElement extends StatefulWidget {
   /// The text for the main header of the card.
-  final String cardLabel;;
+  final String cardLabel;
 
   ///
   final VoidCallback onEnable;
@@ -48,7 +48,7 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
   @override
   Widget build(BuildContext context) {
     Size minimumLabelTextSize = Accessibility.textStringSize(
-        textInput: widget.switchDescription,
+        textInput: widget.cardLabel,
         textStyle: body1(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
@@ -73,8 +73,8 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Flexible(
-                          child: BodyOneText(widget.switchDescription,
-                              decorationPriority.standard),
+                          child: BodyOneText(
+                              widget.cardLabel, decorationPriority.standard),
                         ),
                         SwitchComponent(widget.onEnable, widget.onDisable)
                       ]),

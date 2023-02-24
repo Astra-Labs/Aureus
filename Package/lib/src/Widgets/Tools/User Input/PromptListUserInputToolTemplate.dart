@@ -96,7 +96,7 @@ class _PromptListInputCardState extends State<_PromptListInputCard> {
     for (var element in widget.promptList) {
       promptListItems.add(Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
-        child: StandardSelectionCardElement(cardName: element),
+        child: StandardSelectionCardElement(cardLabel: element),
       ));
     }
 

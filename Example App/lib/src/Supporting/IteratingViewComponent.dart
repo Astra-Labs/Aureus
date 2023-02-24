@@ -82,7 +82,7 @@ class _IteratingComponentState extends State<IteratingComponent> {
               child: FloatingContainerElement(
                 child: Container(
                   decoration: CardBackingDecoration(
-                          priority: decorationPriority.inactive)
+                          decorationVariant: decorationPriority.inactive)
                       .buildBacking(),
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
@@ -194,9 +194,9 @@ class _IteratingComponentState extends State<IteratingComponent> {
       child: FloatingContainerElement(
           child: Container(
               padding: EdgeInsets.all(8.0),
-              decoration:
-                  CardBackingDecoration(priority: decorationPriority.inactive)
-                      .buildBacking(),
+              decoration: CardBackingDecoration(
+                      decorationVariant: decorationPriority.inactive)
+                  .buildBacking(),
               child: size.isDesktopDisplay()
                   ? mobileInformationCard
                   : webInformationCard)),
@@ -214,7 +214,7 @@ class _IteratingComponentState extends State<IteratingComponent> {
                 child: Container(
                     padding: EdgeInsets.all(8),
                     decoration: LayerBackingDecoration(
-                            priority: decorationPriority.inactive)
+                            decorationVariant: decorationPriority.inactive)
                         .buildBacking(),
                     child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
