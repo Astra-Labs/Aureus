@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- PROMPT LIST USER INPUT TOOL ----------*/
+/// A tool template that gives the user a prompt, where they add their own
+/// items and then select them.
 
 class PromptListUserInputToolTemplate extends ToolCardTemplate {
   PromptListUserInputToolTemplate({required templatePrompt, required badgeIcon})

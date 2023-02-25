@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- VERTICAL SIDE NAV BAR ----------*/
+/// A vertical navigation bar, meant to be used on tablet / web displays.
 
 class VerticalSideNavBarComponent extends StatefulWidget {
   /// A list of controller tab objects that make up the NavBarComponent

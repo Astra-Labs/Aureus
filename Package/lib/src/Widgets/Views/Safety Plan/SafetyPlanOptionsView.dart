@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SAFETY PLAN OPTIONS VIEW ----------*/
+/// A view that allows the user to select their safety plan choices. This is automatically
+/// pulled from [Safety], so it requires no developer input. You set what
+/// options users can enable in your [AureusInformation] section of [packageVariables].
 
 class SafetyPlanOptionsView extends StatefulWidget {
   /// The view that a user should be sent to when they're done.

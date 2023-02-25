@@ -8,13 +8,9 @@ import 'dart:ui';
 /// {@category Foundation}
 
 /* ------------------ SIZING -------------------- */
-/*
 
-This sizing class is the backbone of Aureus - it dynamically 
-keeps track of the screen's sizes, and resizes it appropriately to fit 
-almost any web / mobile / tablet screen. 
-
-*/
+/// Dynamically keeps track of the screen's sizes, and resizes it appropriately to fit
+/// almost any web / mobile / tablet screen.
 
 class Sizing {
   /// The sizing window of the application
@@ -22,12 +18,12 @@ class Sizing {
     return WidgetsBinding.instance!.window;
   }
 
-  ///Pixel Ratio of a given device
+  /// Pixel Ratio of a given device
   double pixelRatio() {
     return sizingWindow().devicePixelRatio;
   }
 
-  //Size in physical pixels
+  /// Size in physical pixels
   Size physicalScreenSize() {
     return Size(
         sizingWindow().physicalSize.width, sizingWindow().physicalSize.height);

@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DUAL COLUMN INPUT TOOL ----------*/
+/// A tool template for providing 2 different columns for input. We use this
+/// for pro/cons flows, and to help users compare and contrast things.
 
 class DualColumnInputToolTemplate extends ToolCardTemplate {
   final String prompt1;

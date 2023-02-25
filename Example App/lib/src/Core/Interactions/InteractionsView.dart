@@ -12,6 +12,10 @@ class _AureusInteractionsViewState extends State<AureusInteractionsView> {
 
   @override
   Widget build(BuildContext context) {
+    var actionsRow = [];
+    var interationsRow = [];
+    var backingsRow = [];
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
         children: [
@@ -22,6 +26,9 @@ class _AureusInteractionsViewState extends State<AureusInteractionsView> {
         ]);
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+      decorationVariant: decorationPriority.important,
+      builder: viewLayout,
+      showQuickActionBar: false,
+    );
   }
 }

@@ -12,6 +12,7 @@ import 'dart:math';
 typedef ColorCodeBuilder = Widget Function(BuildContext context, Color color);
 
 /*--------- COLOR SPECTRUM TOOL ----------*/
+/// A Tool template that allows the user to select a color in response to a prompt.
 
 class ColorSpectrumInputToolTemplate extends ToolCardTemplate {
   ColorSpectrumInputToolTemplate({required templatePrompt, required badgeIcon})
@@ -65,14 +66,14 @@ class _ColorSpectrumInputCardState extends State<_ColorSpectrumInputCard> {
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
-    return CircleColorPicker(
+    return _CircleColorPicker(
         size: Size(size.layoutItemWidth(1, screenSize) * 0.6,
             size.layoutItemWidth(1, screenSize) * 0.6));
   }
 }
 
-class CircleColorPickerController extends ChangeNotifier {
-  CircleColorPickerController({
+class _CircleColorPickerController extends ChangeNotifier {
+  _CircleColorPickerController({
     Color initialColor = const Color.fromARGB(255, 255, 0, 0),
   }) : _color = initialColor;
 
@@ -84,8 +85,8 @@ class CircleColorPickerController extends ChangeNotifier {
   }
 }
 
-class CircleColorPicker extends StatefulWidget {
-  const CircleColorPicker({
+class _CircleColorPicker extends StatefulWidget {
+  const _CircleColorPicker({
     Key? key,
     this.onChanged,
     this.onEnded,
@@ -109,7 +110,7 @@ class CircleColorPicker extends StatefulWidget {
   /// An object to controll picker color dynamically.
   ///
   /// Provide initialColor if needed.
-  final CircleColorPickerController? controller;
+  final _CircleColorPickerController? controller;
 
   /// The size of widget.
   /// Draggable area is thumb widget is included to the size,
@@ -139,7 +140,7 @@ class CircleColorPicker extends StatefulWidget {
   _CircleColorPickerState createState() => _CircleColorPickerState();
 }
 
-class _CircleColorPickerState extends State<CircleColorPicker>
+class _CircleColorPickerState extends State<_CircleColorPicker>
     with TickerProviderStateMixin {
   late AnimationController _lightnessController;
   late AnimationController _hueController;

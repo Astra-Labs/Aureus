@@ -77,8 +77,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
               padding: const EdgeInsets.all(20.0),
               decoration: backingDecoration,
               child: Center(
-                  child: Flexible(
-                      child: BodyTwoText(widget.messageBody, bubblePriority)))),
+                  child: BodyTwoText(widget.messageBody, bubblePriority))),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TagTwoText(

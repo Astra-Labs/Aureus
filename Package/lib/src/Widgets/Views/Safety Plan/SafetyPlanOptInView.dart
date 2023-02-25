@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SAFETY PLAN OPT IN VIEW ----------*/
+/// A view that allows the user to opt into a safety plan. This is automatically
+/// pulled from [Safety], so it requires no developer input.
 
 class SafetyPlanOptInView extends StatefulWidget {
   /// The view that a user should be sent to when they're done.

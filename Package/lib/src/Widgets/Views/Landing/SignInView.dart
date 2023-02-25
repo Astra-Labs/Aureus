@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SIGN IN VIEW ----------*/
+/// A templatized sign in view.
 
 class SignInView extends StatefulWidget {
   /// A VoidCallback to run when the user presses Sign In. This is where you should

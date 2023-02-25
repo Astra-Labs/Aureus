@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- COMPLEX BADGE CARD ----------*/
+/// An extremely detailed card meant to give the most amount of information about
+/// something to a user, with an icon.
 
 class ComplexBadgeCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
@@ -19,10 +21,10 @@ class ComplexBadgeCardElement extends StatelessWidget {
   /// The text for the body content underneath the header.
   final String cardBody;
 
-  ///
+  /// A carousel that provides metadata about something.
   final Map<String, IconData> cardDetailCarousel;
 
-  ///
+  /// An icon that describes the card.
   final IconData cardIcon;
 
   const ComplexBadgeCardElement(

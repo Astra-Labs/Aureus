@@ -45,7 +45,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      HelpCenterArticleDetail(article: element),
+                      HelpCenterArticleDetailView(article: element),
                 ))
           },
           child: GridCardElement(
@@ -98,16 +98,18 @@ class _HelpCenterViewState extends State<HelpCenterView> {
   }
 }
 
-class HelpCenterArticleDetail extends StatefulWidget {
+/// A view that shows a full help center article.
+
+class HelpCenterArticleDetailView extends StatefulWidget {
   final HelpCenterArticle article;
-  const HelpCenterArticleDetail({required this.article});
+  const HelpCenterArticleDetailView({required this.article});
 
   @override
   _HelpCenterArticleDetailState createState() =>
       _HelpCenterArticleDetailState();
 }
 
-class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
+class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetailView> {
   @override
   Widget build(BuildContext context) {
     var container = Container(

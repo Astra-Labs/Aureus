@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- NAV BAR COMPONENT ----------*/
+/// A horizontal, icon only, navigation bar.
 
 class NavBarComponent extends StatefulWidget {
   /// A list of controller tab objects that make up the NavBarComponent

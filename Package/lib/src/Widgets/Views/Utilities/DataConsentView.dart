@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 /// This view requests permissions from the user,
 /// you set what permissions you want in your [AureusInformation]
 /// object of the [packageVariables] for your application.
-///
 
 class DataOptInView extends StatefulWidget {
   /// What you want to happen once the user clicks the next button

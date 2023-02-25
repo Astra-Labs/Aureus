@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- PAGE HEADER ELEMENT ----------*/
+/// A page header with a title, exit button, and optional details button
+/// to allow users to take extra actions on a page.
 
 // ignore: must_be_immutable
 class PageHeaderElement extends StatelessWidget {

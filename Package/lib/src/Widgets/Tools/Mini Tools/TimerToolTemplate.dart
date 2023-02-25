@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TIMER TOOL ----------*/
+/// A Tool template that gives the user a timer to finish a prompt.
 
 class TimerToolTemplate extends ToolCardTemplate {
   final Duration allotment;

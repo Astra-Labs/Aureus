@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:aureus/aureus.dart';
 
 /// @nodoc
@@ -8,12 +10,14 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- STANDARD SELECTION CARD ----------*/
+/// A standard card with an label, that can actively be selected as part of a
+/// group.
 
 class StandardSelectionCardElement extends StatefulWidget {
   /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// Whether or not a card is actively selected.
   bool isCardSelected = false;
 
   StandardSelectionCardElement({required this.cardLabel});

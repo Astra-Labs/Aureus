@@ -45,6 +45,9 @@ class _ComponentsSubviewState extends State<ComponentsSubview> {
     ], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewBuilder);
+      decorationVariant: decorationPriority.standard,
+      builder: viewBuilder,
+      showQuickActionBar: false,
+    );
   }
 }

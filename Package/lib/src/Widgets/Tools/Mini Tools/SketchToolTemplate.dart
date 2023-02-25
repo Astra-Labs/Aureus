@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SKETCH TOOL ----------*/
+/// A Tool template that allows the user to sketch a drawing in response to a prompt.
 
 class SketchToolTemplate extends ToolCardTemplate {
   SketchToolTemplate({required templatePrompt, required badgeIcon})
@@ -64,19 +65,19 @@ class _SketchInputCardState extends State<_SketchInputCard> {
         child: SizedBox(
             width: size.layoutItemWidth(1, screenSize),
             height: size.layoutItemHeight(2, screenSize),
-            child: CustomPaint(painter: PainterCanvas as CustomPainter)),
+            child: CustomPaint(painter: _PainterCanvas as CustomPainter)),
       ),
     );
   }
 
   void onPanStart(DragStartDetails details) {
-    final box = context.findRenderObject() as RenderBox;
-    final point = box.globalToLocal(details.globalPosition);
+    /*final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition); */
   }
 
   void onPanUpdate(DragUpdateDetails details) {
-    final box = context.findRenderObject() as RenderBox;
-    final point = box.globalToLocal(details.globalPosition);
+    /*final box = context.findRenderObject() as RenderBox;
+    final point = box.globalToLocal(details.globalPosition); */
   }
 
   void onPanEnd(DragEndDetails details) {}
@@ -195,19 +196,19 @@ class _SketchInputCardState extends State<_SketchInputCard> {
   }
 }
 
-class PainterCanvas extends CustomPainter {
+class _PainterCanvas extends CustomPainter {
   final Color stroke;
-  const PainterCanvas({required this.stroke});
+  const _PainterCanvas({required this.stroke});
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint toolPaint = Paint()
+    /*Paint toolPaint = Paint()
       ..style = PaintingStyle.stroke
-      ..color = stroke;
+      ..color = stroke;*/
   }
 
   @override
-  bool shouldRepaint(PainterCanvas oldDelegate) {
+  bool shouldRepaint(_PainterCanvas oldDelegate) {
     return true;
   }
 }

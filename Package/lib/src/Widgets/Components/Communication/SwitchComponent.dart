@@ -9,6 +9,7 @@ import 'package:aureus/aureus.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SWITCH COMPONENT ----------*/
+/// A simple switch to represent an on/off state.
 
 class SwitchComponent extends StatefulWidget {
   bool isSwitchEnabled = false;

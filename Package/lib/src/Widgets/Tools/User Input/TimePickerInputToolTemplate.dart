@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TIME PICKER INPUT TOOL ----------*/
+/// A tool template for selecting a time allotment.
 
 class TimePickerInputToolTemplate extends ToolCardTemplate {
   TimePickerInputToolTemplate({required templatePrompt, required badgeIcon})

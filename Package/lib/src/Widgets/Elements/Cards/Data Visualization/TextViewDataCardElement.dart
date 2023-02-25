@@ -21,7 +21,7 @@ class TextViewDataCardElement extends DataDetailCard {
       textFieldController: textEditingController,
       hintText: dataLabel,
       isEnabled: isTextEnabled,
-      detailLabel: dataLabel);
+      prompt: dataLabel);
 
   @override
   Widget returnReadDataCard() {

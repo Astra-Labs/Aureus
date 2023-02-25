@@ -53,11 +53,12 @@ class _CenteredAlertControllerComponentState
           IconBadge(
               badgeIcon: widget.alertData.alertIcon,
               badgePriority: decorationPriority.standard),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           HeadingThreeText(
               widget.alertData.alertTitle, decorationPriority.standard),
+          const SizedBox(height: 10),
           BodyOneText(widget.alertData.alertBody, decorationPriority.standard),
-          const SizedBox(height: 30.0),
+          const SizedBox(height: 10.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

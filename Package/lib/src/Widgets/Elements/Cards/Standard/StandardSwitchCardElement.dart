@@ -8,18 +8,20 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- STANDARD SWITCH CARD ----------*/
+/// A standard card that can be switched on or off.
 
+// ignore: must_be_immutable
 class StandardSwitchCardElement extends StatefulWidget {
   /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// A [VoidCallback] to run when the switch is enabled.
   final VoidCallback onEnable;
 
-  ///
+  /// A [VoidCallback] to run when the switch is disabled.
   final VoidCallback onDisable;
 
-  ///
+  /// Whether or not a card is switched on.
   bool isSwitchEnabled = false;
 
   StandardSwitchCardElement(

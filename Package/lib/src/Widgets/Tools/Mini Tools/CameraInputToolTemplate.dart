@@ -11,6 +11,7 @@ import 'dart:io';
 
 /*--------- CAMERA INPUT TOOL ----------*/
 
+/// A Tool template that allows the user to take a photo in response to a prompt.
 class CameraInputToolTemplate extends ToolCardTemplate {
   CameraInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);

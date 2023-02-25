@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- 2FA VERIFICATION VIEW ----------*/
+/// A view for a user to fill out their 2FA code.
 
 class TFAVerificationView extends StatefulWidget {
   /// A list with the user's phone number. We use this list to show the users

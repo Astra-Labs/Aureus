@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DETAIL BADGE CARD ----------*/
+/// A detailed card with a header, label, and icon.
 
 class DetailBadgeCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
@@ -19,7 +20,7 @@ class DetailBadgeCardElement extends StatelessWidget {
   /// The text for the body content underneath the header.
   final String cardBody;
 
-  ///
+  /// An icon that describes the card.
   final IconData cardIcon;
 
   const DetailBadgeCardElement(

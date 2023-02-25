@@ -224,6 +224,8 @@ class SemanticsWrapper extends SemanticsProperties {
       : super(enabled: false, focusable: false, hidden: true, selected: false);
 }
 
+/// A class that holds functions to accomodate accessibility settings,
+/// such as increased text size, contract, etc.
 class Accessibility {
   final AccessibilityFeatures accessFeatures =
       WidgetsBinding.instance!.window.accessibilityFeatures;

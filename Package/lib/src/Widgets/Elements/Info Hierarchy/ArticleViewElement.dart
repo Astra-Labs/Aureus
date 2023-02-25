@@ -8,15 +8,17 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- ARTICLE VIEW ELEMENT ----------*/
+/// Represents an 'article' to be put into a view. This can be used for
+/// legal documents, blogs, customer service pages, etc.
 
 class ArticleViewElement extends StatelessWidget {
-  ///
+  /// The title of the article
   final String title;
 
-  ///
+  /// A subheader of the article
   final String subheader;
 
-  ///
+  /// The body content of the article.
   final String body;
 
   const ArticleViewElement(

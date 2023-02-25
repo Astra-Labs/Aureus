@@ -20,16 +20,25 @@ void main() {
 
   var quickActionItems2 = [
     TabObject.forTextTabbing(
-        onTabSelection: () => {print("item 1")},
+        onTabSelection: () => {
+              notificationMaster.sendAlertNotificationRequest(
+                  "Item 1 pressed on action bar.", Icons.ac_unit)
+            },
         tabTitle: "Item 1",
         accessibilityHint: "Opens Item 1"),
     TabObject.forTextTabbing(
         tabTitle: "Item 2",
-        onTabSelection: () => {print("item 2")},
+        onTabSelection: () => {
+              notificationMaster.sendAlertNotificationRequest(
+                  "Item 2 pressed on action bar.", Icons.ac_unit)
+            },
         accessibilityHint: "Opens Item 2"),
     TabObject.forTextTabbing(
         tabTitle: "Item 3",
-        onTabSelection: () => {print("item 3")},
+        onTabSelection: () => {
+              notificationMaster.sendAlertNotificationRequest(
+                  "Item 3 pressed on action bar.", Icons.ac_unit)
+            },
         accessibilityHint: "Opens Item 3"),
   ];
 
@@ -217,35 +226,24 @@ class LandingPage extends StatelessWidget {
           buttonIcon: Assets.window,
           buttonAction: () =>
               {launchInBrowser('https://github.com/Astra-Labs/Aureus')}),
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonHint: "Download on pub.dev",
+          buttonTitle: "Download on pub.dev",
+          buttonIcon: Assets.window,
+          buttonAction: () =>
+              {launchInBrowser('https://pub.dev/packages/aureus/install')}),
     ];
 
-    Image landingUIOverlayImage() {
-      return Image(
-          image: palette.brightness() == Brightness.light
-              ? AssetImage('assets/Light Mode - Preview.png')
-              : AssetImage('assets/Dark Mode - Preview.png'));
-    }
-
-    Image landscapeBackgroundImage() {
-      return Image(
-          image: palette.brightness() == Brightness.light
-              ? Image.network(
-                      'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80')
-                  .image
-              : Image.network(
-                      'https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80')
-                  .image);
-    }
-
-    return Scaffold(
-        body: size.isDesktopDisplay() == false
-            ? mobileLandingView(
-                landscapeBacking: landscapeBackgroundImage(),
-                uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems)
-            : webLandingView(
-                landscapeBacking: landscapeBackgroundImage(),
-                uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems));
+    return LandingPageView(
+        lightModeLandscapeBacking: Image.network(
+            'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'),
+        darkModeLandscapeBacking: Image.network(
+            'https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
+        lightModeUIOverlay:
+            Image(image: AssetImage('assets/Light Mode - Preview.png')),
+        darkModeUIOverlay:
+            Image(image: AssetImage('assets/Dark Mode - Preview.png')),
+        actionButtons: buttonItems);
   }
 }

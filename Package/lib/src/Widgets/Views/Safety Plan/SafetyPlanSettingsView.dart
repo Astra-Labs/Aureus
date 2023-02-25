@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SAFETY PLAN SETTINGS VIEW ----------*/
+/// A view that allows the user to modify their Safety Plan settings. This is
+/// automatically pulled from [Safety], so it requires no developer input.
 
 class SafetyPlanSettingsView extends StatefulWidget {
   const SafetyPlanSettingsView();

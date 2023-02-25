@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TAB SUBHEADER ELEMENT ----------*/
+/// A small tab subheader.
 
 class TabSubheaderElement extends StatelessWidget {
   ///The title of the tab subheader.

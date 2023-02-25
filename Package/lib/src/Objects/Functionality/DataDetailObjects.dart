@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /* ------------------ DATA DETAIL -------------------- */
+/// Object that is meant to act as the main data structure for a [DataDetailView].
+/// This contains the title, the detail cards for writing / reading, and any
+/// CTAs to perform additional actions.
 
 class DataDetail {
   /// The name of the detail item (e.g: contact name)
@@ -64,6 +67,7 @@ mixin AureusDataDetailObserver {
 /// A singleton for referring to the master.
 var dataDetailMaster = AureusDataDetailMaster();
 
+/// The base class for a detail cards that adheres to the [AureusDataDetailObserver].
 class DataDetailCard {
   /// The string describing what the data is
 

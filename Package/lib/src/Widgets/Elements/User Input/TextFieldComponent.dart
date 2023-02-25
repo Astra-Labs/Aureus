@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TEXT FIELD COMPONENT ----------*/
+/// A standard text field component for inputting user data. Good for
+/// 1-2 lines of text.
 
 class StandardTextFieldComponent extends StatelessWidget {
   /// A hint to give to the user about what they should type.

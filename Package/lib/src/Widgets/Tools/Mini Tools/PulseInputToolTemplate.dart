@@ -15,6 +15,8 @@ IN BETA DEVELOPMENT - DO NOT USE
 -------------------------------
 */
 
+/// A Tool template that gives the user a grounding mini game with a prompt.
+
 class PulseInputToolTemplate extends ToolCardTemplate {
   PulseInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);

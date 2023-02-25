@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- ONBOARDING INFORMATION VIEW ----------*/
+/// A view that shows an iterating component of [OnboardingDetail]s to give
+/// the user information about the resource before signing up. This is where you
+/// want to discuss features and cool things about your resources.
 
 class OnboardingInformationView extends StatefulWidget {
   /// A list that contains Onboarding details to display information about
@@ -34,6 +37,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
   Widget build(BuildContext context) {
     List<TabObject> tabItems = [];
 
+    _selectedIndex = 0;
     var screenSize = size.logicalScreenSize();
 
     for (var element in widget.onboardingDetails) {
@@ -180,8 +184,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                       decorationVariant: decorationPriority.inactive)
                   .buildBacking(),
               child: size.isDesktopDisplay()
-                  ? mobileInformationCard
-                  : webInformationCard)),
+                  ? webInformationCard
+                  : mobileInformationCard)),
     );
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
@@ -204,6 +208,9 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
     );
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+      decorationVariant: decorationPriority.important,
+      builder: viewLayout,
+      showQuickActionBar: false,
+    );
   }
 }

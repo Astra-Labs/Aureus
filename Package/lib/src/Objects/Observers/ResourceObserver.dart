@@ -4,7 +4,6 @@
 // An observer pattern that all items in Aureus observe
 // that's linked to a WidgetBindingObserver that redraws child
 // items on size, accessibility, or platform brightness change.
-
 class AureusResourceMaster {
   final List<AureusResourceObserver> _observers = [];
 

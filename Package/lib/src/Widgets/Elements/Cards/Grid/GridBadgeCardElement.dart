@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- GRID BADGE CARD ----------*/
+/// A simple, square card with an icon that is meant to be apart of a grid.
 
 class GridBadgeCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
@@ -16,7 +17,7 @@ class GridBadgeCardElement extends StatelessWidget {
   /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// An icon that describes the card.
   final IconData cardIcon;
 
   const GridBadgeCardElement(

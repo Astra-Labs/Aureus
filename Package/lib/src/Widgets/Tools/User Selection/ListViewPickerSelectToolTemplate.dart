@@ -10,12 +10,12 @@ import 'package:flutter/cupertino.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- LIST VIEW PICKER SELECT TOOL ----------*/
+/// A tool template for selecting something from a PickerView
 
 class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
+  /// A list that holds the different options you want to be shown
+  /// in the picker wheel.
   final List<String> pickerOptions;
-  //-------------------------------
-  // A list that holds the different options you want to be shown
-  // in the picker wheel.
 
   ListViewPickerSelectToolTemplate(
       {required this.pickerOptions,

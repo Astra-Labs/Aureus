@@ -8,9 +8,12 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- MISSION HEADER ----------*/
+/// A header that shows a title, and the resource logo.
 
 class MissionHeaderElement extends StatelessWidget {
-  const MissionHeaderElement({Key? key}) : super(key: key);
+  /// An alternate title if you don't want the standard "How can I help?" title.
+  final String? altTitle;
+  const MissionHeaderElement({Key? key, this.altTitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,8 @@ class MissionHeaderElement extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          HeadingOneText('How can I help?', decorationPriority.standard),
+          HeadingOneText(altTitle != null ? altTitle! : 'How can I help?',
+              decorationPriority.standard),
           const Spacer(),
           SizedBox(
               width: responsiveSize,

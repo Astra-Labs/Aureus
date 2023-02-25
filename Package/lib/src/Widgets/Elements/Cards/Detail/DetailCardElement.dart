@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DETAIL CARD ----------*/
+/// A detailed card with a header, and label.
 
 class DetailCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}

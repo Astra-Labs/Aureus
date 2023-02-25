@@ -10,6 +10,7 @@ import 'package:record/record.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- MICROPHONE INPUT TOOL TEMPLATE ----------*/
+/// A Tool template that allows the user to record a voice memo in response to a prompt.
 
 class MicrophoneInputToolTemplate extends ToolCardTemplate {
   MicrophoneInputToolTemplate({required templatePrompt, required badgeIcon})

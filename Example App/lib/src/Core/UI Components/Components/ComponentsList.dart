@@ -8,12 +8,23 @@ Map<String, Widget> aureusComponents = {
   'Content Warning': ContentWarningComponent(
       warningDescription:
           'This article contains mentions of sexual assult and depictions of trauma.',
-      onContinue: () => {print('Yee  haw')}),
+      onContinue: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Content Warning accepted.", Icons.ac_unit)
+          }),
+  'Bottom Action Sheet': bottomActionSheetComponent,
   'Cookie Banner': CookieBannerComponent(
       cookieMessage:
           'We show cookies to improve your experience. Please enable cookies. owo.',
-      onCookieAccept: () => {print('cookies enabled uwu!')},
-      onCookieDeny: () => {print('cookies disabled owo!')}),
+      onCookieAccept: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "(Fake) cookies enabled.", Icons.ac_unit)
+          },
+      onCookieDeny: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "(Fake) cookies disabled.", Icons.ac_unit)
+          }),
+  'Blank Screen': blankScreenComponent,
   'Message Bubbles': Column(children: [
     senderMessageBubble,
     SizedBox(height: 20),
@@ -24,6 +35,7 @@ Map<String, Widget> aureusComponents = {
     SizedBox(height: 10),
     readNotification,
   ]),
+  'Quick Action Bar': quickActionBar,
   'Empty Item Placeholder': blankScreen,
   'Standard Card': testStandardCard,
   'Standard Icon Card': testStandardIconCard,
@@ -33,18 +45,37 @@ Map<String, Widget> aureusComponents = {
   'Complex Card': testComplexCard,
   'Complex Icon Card': testComplexIconCard,
   'Category Card': testCategoryCard,
-  'Detail Carousel': testDetailCarousel
+  'Detail Carousel': testDetailCarousel,
+  'Standard Switch Card': standardSwitchCard,
+  'Standard Selection Card': standardSelectionCard,
+  'Complex Switch Card': complexSwitchCard,
+  'Grid Card': gridCard,
+  'Grid Badge Card': gridBadgeCard,
+  'Text Field': textFieldComponent,
+  'Text View': textViewComponent,
+  'Search Bar': searchBarComponent,
+  'Send Field': sendFieldComponent,
+  'Banner Notification': bannerNotificationComponent,
+  'Icon Tabbing Bar': iconTabbingBarComponent,
+  'Iterating Tabbing Component': iteratingTabbingComponent,
+  'Smol Text Tabbing Bar': smolTextTabbingComponent,
 };
 
 var testAlertControllerAction = AlertControllerAction(
     actionName: 'Yee the haw',
     actionSeverity: AlertControllerActionSeverity.confirm,
-    onSelection: () => {print('yee haw!')});
+    onSelection: () => {
+          notificationMaster.sendAlertNotificationRequest(
+              "Pressed yee the haw.", Icons.ac_unit)
+        });
 
 var testAlertControllerAction2 = AlertControllerAction(
     actionName: 'Haw the yee',
     actionSeverity: AlertControllerActionSeverity.destruct,
-    onSelection: () => {print('haw yee!')});
+    onSelection: () => {
+          notificationMaster.sendAlertNotificationRequest(
+              "Pressed haw the yee.", Icons.ac_unit)
+        });
 
 late AlertControllerObject testAlertControllerObject =
     AlertControllerObject.singleAction(
@@ -64,6 +95,9 @@ AlertControllerObject multipleTestAlertControllerObject =
 
 var alertController =
     CenteredAlertControllerComponent(alertData: testAlertControllerObject);
+
+var bottomActionSheetComponent =
+    BottomActionSheetComponent(alertData: testAlertControllerObject);
 
 var receiverMessageBubble = MessageBubbleComponent(
     messageVariant: messagingVariants.receiver,
@@ -170,6 +204,120 @@ Widget testComplexIconCard = card.filledCardObject(
 Widget testCategoryCard = card.filledCardObject(
     cardVariant: cardType.categoryIconDetailCard,
     cardData: complexIconCardObject);
+
+Widget standardSwitchCard = StandardSwitchCardElement(
+  cardLabel: fillerTextCardName,
+  onEnable: () => {},
+  onDisable: () => {},
+);
+
+Widget standardSelectionCard =
+    StandardSelectionCardElement(cardLabel: fillerTextCardName);
+
+Widget complexSwitchCard = ComplexSwitchCardElement(
+  cardLabel: fillerTextHeader,
+  cardBody: fillerTextBody,
+  cardIcon: fillerIcon1,
+  onEnable: () => {
+    notificationMaster.sendAlertNotificationRequest(
+        "Card enabled", fillerIcon3),
+  },
+  onDisable: () => {
+    notificationMaster.sendAlertNotificationRequest(
+        "Card disabled.", fillerIcon3),
+  },
+);
+
+Widget gridCard = GridCardElement(
+    decorationVariant: decorationPriority.standard,
+    cardLabel: fillerTextCardName,
+    gridSize: Size(300, 300));
+
+Widget gridBadgeCard = GridBadgeCardElement(
+    decorationVariant: decorationPriority.standard,
+    cardLabel: fillerTextCardName,
+    cardIcon: fillerIcon3);
+
+Widget textFieldComponent = StandardTextFieldComponent(
+    hintText: "I am a text field",
+    isEnabled: true,
+    decorationVariant: decorationPriority.standard,
+    textFieldController: textEditor);
+
+Widget textViewComponent = TextViewComponent(
+    textFieldController: textEditor,
+    hintText: "I am a text view!",
+    isEnabled: true,
+    prompt: "Text View Prompt");
+
+Widget quickActionBar = QuickActionBarComponent(tabItems: [
+  TabObject.forTextTabbing(
+      onTabSelection: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Item 1 pressed on action bar.", Icons.ac_unit)
+          },
+      tabTitle: "Item 1",
+      accessibilityHint: "Opens Item 1"),
+  TabObject.forTextTabbing(
+      tabTitle: "Item 2",
+      onTabSelection: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Item 2 pressed on action bar.", Icons.ac_unit)
+          },
+      accessibilityHint: "Opens Item 2"),
+  TabObject.forTextTabbing(
+      tabTitle: "Item 3",
+      onTabSelection: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Item 3 pressed on action bar.", Icons.ac_unit)
+          },
+      accessibilityHint: "Opens Item 3"),
+]);
+
+Widget searchBarComponent =
+    SearchBarComponent(onSearch: () => {}, textEditController: textEditor);
+
+Widget sendFieldComponent =
+    SendFieldComponent(onSend: () => {}, textEditController: textEditor);
+
+Widget blankScreenComponent = BlankScreenComponent(
+    cardTitle: "No Data",
+    cardBody: "Please do [insert action here] to populate this screen.");
+
+Widget bannerNotificationComponent = BannerNotificationComponent(
+    body: fillerTextBody, icon: Assets.babycarriage);
+
+Widget switchComponent = SwitchComponent(
+  () => {},
+  () => {},
+);
+
+Widget iconTabbingBarComponent = IconTabbingBarComponent(tabItems: [
+  tab1,
+  tab2,
+  tab3,
+  tab4,
+]);
+
+Widget iteratingTabbingComponent = IteratingTabbingComponent(itemTitles: [
+  "Standard Button",
+  "Inactive Button",
+  "Important Button"
+], itemWidgets: [
+  standardStandardButton,
+  inactiveStandardButton,
+  importantStandardButton
+]);
+
+Widget smolTextTabbingComponent = SmolTextTabbingBarComponent(itemTitles: [
+  "Item 1",
+  "Item 2",
+  "Item 3"
+], itemActions: [
+  () => {},
+  () => {},
+  () => {},
+]);
 
 Widget testDetailCarousel = DetailCardCarouselComponent(cardDetailCarousel: {
   'Detail 1': fillerIcon1,

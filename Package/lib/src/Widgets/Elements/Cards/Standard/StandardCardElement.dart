@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- STANDARD CARD ----------*/
+/// A standard card with just a title.
 
 class StandardCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}

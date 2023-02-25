@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- GRID CARD ----------*/
-
+/// A simple, square card that is meant to be apart of a grid.
+///
 class GridCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
@@ -16,7 +17,7 @@ class GridCardElement extends StatelessWidget {
   /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// The size of the grid the card is meant to size into.
   final Size gridSize;
 
   const GridCardElement(

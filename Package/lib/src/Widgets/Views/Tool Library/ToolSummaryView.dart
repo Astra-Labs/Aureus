@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:aureus/aureus.dart';
 
 /// @nodoc
@@ -8,6 +10,9 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TOOL SUMMARY VIEW ----------*/
+/// A view that displays a summary of what a user did in [ToolTemplateCardCarouselView].
+/// You must use the [ToolTemplateCardCarouselView] before showing this view, or you
+/// will get many errors.
 
 class ToolSummaryView extends StatefulWidget {
   /// The tool that contains the data to be used in this template.
