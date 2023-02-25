@@ -82,6 +82,8 @@ class _TextViewComponentState extends State<TextViewComponent> {
         maxWidth: size.layoutItemWidth(1, screenSize),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TabSubheaderElement(title: widget.prompt),
           const SizedBox(height: 10),

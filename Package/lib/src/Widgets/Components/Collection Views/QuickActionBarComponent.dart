@@ -14,19 +14,20 @@ import 'package:flutter/material.dart';
 /// You can control which views show a Quick Action Bar (if your safety
 /// settings enable it) within the [ContainerView] initializer parameters.
 
-class QuickActionBarComponent extends StatefulWidget {
+class EmergencyAccessBarComponent extends StatefulWidget {
   /// A list of tab items to be shown in the Quick Action bar.
   final List<TabObject> tabItems;
 
-  const QuickActionBarComponent({Key? key, required this.tabItems})
+  const EmergencyAccessBarComponent({Key? key, required this.tabItems})
       : super(key: key);
 
   @override
-  _QuickActionBarComponentState createState() =>
-      _QuickActionBarComponentState();
+  _EmergencyAccessBarComponentState createState() =>
+      _EmergencyAccessBarComponentState();
 }
 
-class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
+class _EmergencyAccessBarComponentState
+    extends State<EmergencyAccessBarComponent> {
   bool isExpanded = false;
 
   @override
@@ -72,16 +73,16 @@ class _QuickActionBarComponentState extends State<QuickActionBarComponent> {
     var expandedBar = FloatingContainerElement(
       child: Container(
         width: size.layoutItemWidth(1, screenSize),
-        height: size.layoutItemHeight(5, screenSize),
         decoration: CardBackingDecoration(
                 decorationVariant: decorationPriority.standard)
             .buildBacking(),
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TagTwoText("Quick Actions", decorationPriority.standard),
-            const SizedBox(height: 5.0),
+            TagTwoText("Emergency Access", decorationPriority.standard),
+            //const SizedBox(height: 5.0),
             Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,

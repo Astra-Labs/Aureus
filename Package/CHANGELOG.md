@@ -1,3 +1,6 @@
+## 0.0.2 
+- Updated license from Hippocratic to the updated license
+
 ## 0.0.1
 Minor: 
 * Adding flutter lint to clean up some code

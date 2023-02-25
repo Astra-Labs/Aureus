@@ -68,7 +68,6 @@ class _ContainerViewState extends State<ContainerView>
   var hasOverlayEnabled = false;
   late AnimationController _controller;
   late Animation<Offset> _offset;
-  final GlobalKey quickBarKey = GlobalKey();
 
   @override
   void initState() {
@@ -221,8 +220,8 @@ class _ContainerViewState extends State<ContainerView>
 
     if (safety.isActionBarDevEnabled == true &&
         widget.showQuickActionBar == true) {
-      var actionBarWidget = QuickActionBarComponent(
-          key: quickBarKey, tabItems: safety.quickActionItems!);
+      var actionBarWidget =
+          EmergencyAccessBarComponent(tabItems: safety.quickActionItems!);
 
       var draggableActionBar = Draggable(
           child: actionBarWidget,

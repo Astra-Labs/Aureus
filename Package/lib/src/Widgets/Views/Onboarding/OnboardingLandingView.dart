@@ -95,6 +95,9 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
         ]);
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+      decorationVariant: decorationPriority.important,
+      builder: viewLayout,
+      showQuickActionBar: false,
+    );
   }
 }
