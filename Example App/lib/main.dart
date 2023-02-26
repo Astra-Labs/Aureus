@@ -239,7 +239,7 @@ class LandingPage extends StatelessWidget {
         lightModeLandscapeBacking: Image.network(
             'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'),
         darkModeLandscapeBacking: Image.network(
-            'https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
+            'https://images.unsplash.com/photo-1520598608789-0fa45bd26d91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'),
         lightModeUIOverlay:
             Image(image: AssetImage('assets/Light Mode - Preview.png')),
         darkModeUIOverlay:

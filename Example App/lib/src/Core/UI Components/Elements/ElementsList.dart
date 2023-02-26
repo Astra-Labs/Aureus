@@ -122,15 +122,31 @@ List<Text> textTesting = [
   text11
 ];
 
-var textTestListView = ListView.separated(
-  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-  shrinkWrap: true,
-  itemCount: textTesting.length,
-  itemBuilder: (BuildContext context, int index) {
-    return textTesting[index];
-  },
-  separatorBuilder: (BuildContext context, int index) => const Divider(),
+var textTestListView = backingLayer(
+  ListView.separated(
+    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+    shrinkWrap: true,
+    itemCount: textTesting.length,
+    itemBuilder: (BuildContext context, int index) {
+      return textTesting[index];
+    },
+    separatorBuilder: (BuildContext context, int index) => const Divider(),
+  ),
 );
+
+Widget backingLayer(Widget child) {
+  return Container(
+    decoration:
+        LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
+            .buildBacking(),
+    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: child,
+      ),
+    ),
+  );
+}
 
 // ITEMS -----------------------------------------
 
@@ -138,7 +154,7 @@ var tabSubheader = TabSubheaderElement(title: fillerTextSubheader);
 var divider = DividerElement();
 
 var slider = SliderElement();
-var timer = TimerElement(timeAllotment: Duration(seconds: 30));
+var timer = backingLayer(TimerElement(timeAllotment: Duration(seconds: 30)));
 
 var textEditor = TextEditingController();
 
@@ -259,37 +275,46 @@ var inactiveStandardIconButton = StandardIconButtonElement(
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.inactive);
 
-var articleViewElement = ArticleViewElement(
-  title: fillerTextHeader,
-  subheader: fillerTextSubheader,
-  body: fillerTextBody,
+var articleViewElement = backingLayer(
+  ArticleViewElement(
+    title: fillerTextHeader,
+    subheader: fillerTextSubheader,
+    body: fillerTextBody,
+  ),
 );
 
-var missionHeader = MissionHeaderElement();
+var missionHeader = backingLayer(
+  MissionHeaderElement(),
+);
 
-var pageHeaderElement = PageHeaderElement.withExit(
+var pageHeaderElement = backingLayer(PageHeaderElement.withExit(
   pageTitle: fillerTextHeader,
   onPageExit: () => {
     notificationMaster.sendAlertNotificationRequest(
         "Request page exit", Assets.add)
   },
+));
+
+var pageHeaderElement2 = backingLayer(
+  PageHeaderElement.withOptionsExit(
+      pageTitle: fillerTextHeader,
+      onPageDetails: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Requested page details", Assets.add)
+          },
+      onPageExit: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Request page exit", Assets.add)
+          }),
 );
-var pageHeaderElement2 = PageHeaderElement.withOptionsExit(
-    pageTitle: fillerTextHeader,
-    onPageDetails: () => {
-          notificationMaster.sendAlertNotificationRequest(
-              "Requested page details", Assets.add)
-        },
-    onPageExit: () => {
-          notificationMaster.sendAlertNotificationRequest(
-              "Request page exit", Assets.add)
-        });
 
-var dividerElement = DividerElement();
+var dividerElement = backingLayer(DividerElement());
 
-var dividingHeaderElement = DividingHeaderElement(
-  headerText: fillerTextHeader,
-  subheaderText: fillerTextSubheader,
+var dividingHeaderElement = backingLayer(
+  DividingHeaderElement(
+    headerText: fillerTextHeader,
+    subheaderText: fillerTextSubheader,
+  ),
 );
 
 var floatingContainerElement = FloatingContainerElement(
@@ -304,8 +329,10 @@ var floatingContainerElement = FloatingContainerElement(
   ),
 );
 
-var completionCircleElement = CompletionCircleElement(progressValue: 0.2);
+var completionCircleElement =
+    backingLayer(CompletionCircleElement(progressValue: 0.2));
 
-var loadingCircleElement = LoadingCircleElement();
+var loadingCircleElement = backingLayer(LoadingCircleElement());
 
-var progressIndicatorElement = ProgressIndicatorElement(value: 0.5);
+var progressIndicatorElement =
+    backingLayer(ProgressIndicatorElement(value: 0.5));

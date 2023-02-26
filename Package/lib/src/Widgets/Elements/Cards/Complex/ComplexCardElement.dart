@@ -37,16 +37,14 @@ class ComplexCardElement extends StatelessWidget {
     var complexCardContent = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.max,
       children: [
-        const Spacer(),
+        const SizedBox(height: 20),
         HeadingFourText(cardLabel, decorationVariant),
         const SizedBox(height: 20),
-        const Spacer(),
         BodyOneText(cardBody, decorationVariant),
         const SizedBox(height: 20),
         DetailCardCarouselComponent(cardDetailCarousel: cardDetailCarousel),
-        const Spacer(),
+        const SizedBox(height: 20),
       ],
     );
 
@@ -54,8 +52,8 @@ class ComplexCardElement extends StatelessWidget {
         decoration: CardBackingDecoration(decorationVariant: decorationVariant)
             .buildBacking(),
         constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(1, screenSize),
-            maxHeight: size.layoutItemHeight(3, screenSize)),
+          maxWidth: size.layoutItemWidth(1, screenSize),
+        ),
         clipBehavior: Clip.antiAlias,
         child: Padding(
             padding: const EdgeInsets.all(13.0), child: complexCardContent));

@@ -35,7 +35,7 @@ Map<String, Widget> aureusComponents = {
     SizedBox(height: 10),
     readNotification,
   ]),
-  'Quick Action Bar': quickActionBar,
+  'Emergency Access Bar': emergencyAccessBar,
   'Empty Item Placeholder': blankScreen,
   'Standard Card': testStandardCard,
   'Standard Icon Card': testStandardIconCard,
@@ -250,7 +250,7 @@ Widget textViewComponent = TextViewComponent(
     isEnabled: true,
     prompt: "Text View Prompt");
 
-Widget quickActionBar = QuickActionBarComponent(tabItems: [
+Widget emergencyAccessBar = EmergencyAccessBarComponent(tabItems: [
   TabObject.forTextTabbing(
       onTabSelection: () => {
             notificationMaster.sendAlertNotificationRequest(
@@ -285,7 +285,7 @@ Widget blankScreenComponent = BlankScreenComponent(
     cardBody: "Please do [insert action here] to populate this screen.");
 
 Widget bannerNotificationComponent = BannerNotificationComponent(
-    body: fillerTextBody, icon: Assets.babycarriage);
+    body: "I'm notifying you!", icon: Assets.babycarriage);
 
 Widget switchComponent = SwitchComponent(
   () => {},

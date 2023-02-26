@@ -91,7 +91,7 @@ class _SignInViewState extends State<SignInView> {
             buttonTitle: "Sign Up",
             buttonHint: 'Takes you to the sign up view to create an account.',
             buttonAction: widget.onSignup),
-        const SizedBox(width: 20.0),
+        const Spacer(),
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: "Reset Password",
@@ -107,6 +107,9 @@ class _SignInViewState extends State<SignInView> {
     );
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+      decorationVariant: decorationPriority.important,
+      builder: viewLayout,
+      showQuickActionBar: false,
+    );
   }
 }

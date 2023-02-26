@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 
 class StandardBadgeCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
-  final decorationPriority decorationVariant;
+  decorationPriority decorationVariant;
 
   /// The text for the main header of the card.
   final String cardLabel;
@@ -20,7 +20,7 @@ class StandardBadgeCardElement extends StatelessWidget {
   /// An icon that describes the card.
   final IconData cardIcon;
 
-  const StandardBadgeCardElement(
+  StandardBadgeCardElement(
       {required this.decorationVariant,
       required this.cardLabel,
       required this.cardIcon});
@@ -60,6 +60,19 @@ class StandardBadgeCardElement extends StatelessWidget {
           )),
     );
 
-    return standardBadgeContainer;
+    var focusContent = Focus(
+        onFocusChange: (inFocus) => {
+              if (inFocus == true)
+                {
+                  decorationVariant = decorationPriority.important,
+                }
+              else
+                {
+                  decorationVariant = decorationPriority.standard,
+                }
+            },
+        child: standardBadgeContainer);
+
+    return focusContent;
   }
 }
