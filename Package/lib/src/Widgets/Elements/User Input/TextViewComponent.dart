@@ -76,19 +76,21 @@ class _TextViewComponentState extends State<TextViewComponent> {
         textAlign: TextAlign.left,
         keyboardType: TextInputType.text);
 
-    var textView = Container(
-      constraints: BoxConstraints(
-        minHeight: size.layoutItemHeight(3, screenSize),
-        maxWidth: size.layoutItemWidth(1, screenSize),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          TabSubheaderElement(title: widget.prompt),
-          const SizedBox(height: 10),
-          textFormField,
-        ],
+    var textView = FloatingContainerElement(
+      child: Container(
+        constraints: BoxConstraints(
+          minHeight: size.layoutItemHeight(3, screenSize),
+          maxWidth: size.layoutItemWidth(1, screenSize),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TabSubheaderElement(title: widget.prompt),
+            const SizedBox(height: 10),
+            textFormField,
+          ],
+        ),
       ),
     );
 

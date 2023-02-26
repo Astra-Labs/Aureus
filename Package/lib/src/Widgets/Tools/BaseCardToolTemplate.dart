@@ -34,7 +34,8 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    var activeLayout = Container(
+    var activeLayout = FloatingContainerElement(
+      child: Container(
         constraints: BoxConstraints(
             maxWidth: size.layoutItemWidth(1, screenSize),
             minWidth: size.layoutItemWidth(1, screenSize),
@@ -64,7 +65,9 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             Column(children: widget.toolChildren),
             const SizedBox(height: 20.0)
           ],
-        ));
+        ),
+      ),
+    );
 
     var inactiveLayout = FloatingContainerElement(
         child: Container(

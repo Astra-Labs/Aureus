@@ -4,18 +4,23 @@ void main() {
   var resourceBranding = AureusBranding(
       fontFamily: 'Exo',
       lightModeStyle: AureusStylization(
-          contrastGradient:
-              LinearGradient(colors: [palette.carbon(), palette.black()]),
+          contrastGradient: LinearGradient(colors: [
+            Color.fromRGBO(115, 88, 101, 1.0),
+            Color.fromRGBO(48, 56, 76, 1.0),
+          ]),
           accentColor: palette.carbon(),
           primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
       darkModeStyle: AureusStylization(
-          contrastGradient:
-              LinearGradient(colors: [palette.melt(), palette.frost()]),
-          accentColor: palette.lavender(),
+          contrastGradient: LinearGradient(colors: [
+            Color.fromRGBO(211, 209, 223, 1.0),
+            Color.fromRGBO(211, 202, 206, 1.0),
+          ]),
+          accentColor: Color.fromRGBO(216, 223, 240, 1.0),
           primaryImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
-          secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
+          secondaryImage: Image.network(
+              'https://images.unsplash.com/photo-1515140275546-0440fea498d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
 
   var quickActionItems2 = [
@@ -208,7 +213,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<StandardIconButtonElement> buttonItems = [
       StandardIconButtonElement(
-          decorationVariant: decorationPriority.important,
+          decorationVariant: decorationPriority.standard,
           buttonTitle: 'Explore Aureus.',
           buttonHint: "Opens the exploration view for Aureus.",
           buttonIcon: Assets.expand,
@@ -236,14 +241,18 @@ class LandingPage extends StatelessWidget {
     ];
 
     return LandingPageView(
-        lightModeLandscapeBacking: Image.network(
-            'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'),
-        darkModeLandscapeBacking: Image.network(
-            'https://images.unsplash.com/photo-1520598608789-0fa45bd26d91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'),
-        lightModeUIOverlay:
-            Image(image: AssetImage('assets/Light Mode - Preview.png')),
-        darkModeUIOverlay:
-            Image(image: AssetImage('assets/Dark Mode - Preview.png')),
-        actionButtons: buttonItems);
+      lightModeLandscapeBacking: Image.network(
+          'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'),
+      darkModeLandscapeBacking: Image.network(
+          'https://images.unsplash.com/photo-1515140275546-0440fea498d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'),
+      lightModeUIOverlay:
+          Image(image: AssetImage('assets/Light Mode - Preview.png')),
+      darkModeUIOverlay:
+          Image(image: AssetImage('assets/Dark Mode - Preview.png')),
+      actionButtons: buttonItems,
+      onGiveFeedback: () => {
+        launchInBrowser('https://github.com/Astra-Labs/Aureus/issues'),
+      },
+    );
   }
 }

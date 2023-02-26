@@ -46,16 +46,19 @@ class DetailBadgeCardElement extends StatelessWidget {
           const SizedBox(height: 10),
         ]);
 
-    var detailBadgeContainer = Container(
-        constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(1, screenSize),
-            maxWidth: size.layoutItemWidth(1, screenSize),
-            minHeight: size.layoutItemHeight(4, screenSize)),
-        decoration: CardBackingDecoration(decorationVariant: decorationVariant)
-            .buildBacking(),
-        clipBehavior: Clip.hardEdge,
-        child: Padding(
-            padding: const EdgeInsets.all(13.0), child: detailBadgeContent));
+    var detailBadgeContainer = FloatingContainerElement(
+      child: Container(
+          constraints: BoxConstraints(
+              minWidth: size.layoutItemWidth(1, screenSize),
+              maxWidth: size.layoutItemWidth(1, screenSize),
+              minHeight: size.layoutItemHeight(4, screenSize)),
+          decoration:
+              CardBackingDecoration(decorationVariant: decorationVariant)
+                  .buildBacking(),
+          clipBehavior: Clip.hardEdge,
+          child: Padding(
+              padding: const EdgeInsets.all(13.0), child: detailBadgeContent)),
+    );
 
     return detailBadgeContainer;
   }

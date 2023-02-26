@@ -60,15 +60,18 @@ class ComplexBadgeCardElement extends StatelessWidget {
       ],
     );
 
-    var complexBadgeContainer = Container(
-        decoration: CardBackingDecoration(decorationVariant: decorationVariant)
-            .buildBacking(),
-        constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(1, screenSize),
-            maxHeight: size.layoutItemHeight(3, screenSize)),
-        clipBehavior: Clip.antiAlias,
-        child: Padding(
-            padding: const EdgeInsets.all(13.0), child: complexBadgeContent));
+    var complexBadgeContainer = FloatingContainerElement(
+        child: Container(
+            decoration:
+                CardBackingDecoration(decorationVariant: decorationVariant)
+                    .buildBacking(),
+            constraints: BoxConstraints(
+                maxWidth: size.layoutItemWidth(1, screenSize),
+                maxHeight: size.layoutItemHeight(3, screenSize)),
+            clipBehavior: Clip.antiAlias,
+            child: Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: complexBadgeContent)));
 
     return complexBadgeContainer;
   }

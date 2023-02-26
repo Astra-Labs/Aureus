@@ -57,7 +57,8 @@ class ComplexSwitchCardElement extends StatelessWidget {
           BodyOneText(cardBody, decorationPriority.standard)
         ]);
 
-    var complexSwitchContainer = Padding(
+    var complexSwitchContainer = FloatingContainerElement(
+        child: Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
       child: Container(
           constraints: BoxConstraints(
@@ -71,7 +72,7 @@ class ComplexSwitchCardElement extends StatelessWidget {
           child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: complexSwitchContent)),
-    );
+    ));
 
     return complexSwitchContainer;
   }

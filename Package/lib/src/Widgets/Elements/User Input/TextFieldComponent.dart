@@ -72,13 +72,15 @@ class StandardTextFieldComponent extends StatelessWidget {
         textAlign: TextAlign.left,
         keyboardType: TextInputType.text);
 
-    var container = Container(
-      constraints: BoxConstraints(
-        minWidth: size.layoutItemWidth(2, screenSize),
-        minHeight: size.layoutItemHeight(6, screenSize),
-        maxWidth: size.layoutItemWidth(1, screenSize),
+    var container = FloatingContainerElement(
+      child: Container(
+        constraints: BoxConstraints(
+          minWidth: size.layoutItemWidth(2, screenSize),
+          minHeight: size.layoutItemHeight(6, screenSize),
+          maxWidth: size.layoutItemWidth(1, screenSize),
+        ),
+        child: textFormField,
       ),
-      child: textFormField,
     );
 
     return container;

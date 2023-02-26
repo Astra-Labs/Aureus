@@ -70,14 +70,15 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-              constraints: BoxConstraints(
-                  minHeight: bodyTextSizing.height + 20,
-                  maxWidth: size.layoutItemWidth(1, screenSize) * 0.7),
-              padding: const EdgeInsets.all(20.0),
-              decoration: backingDecoration,
-              child: Center(
-                  child: BodyTwoText(widget.messageBody, bubblePriority))),
+          FloatingContainerElement(
+              child: Container(
+                  constraints: BoxConstraints(
+                      minHeight: bodyTextSizing.height + 20,
+                      maxWidth: size.layoutItemWidth(1, screenSize) * 0.7),
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: backingDecoration,
+                  child: Center(
+                      child: BodyTwoText(widget.messageBody, bubblePriority)))),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TagTwoText(

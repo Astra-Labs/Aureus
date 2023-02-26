@@ -48,15 +48,18 @@ class ComplexCardElement extends StatelessWidget {
       ],
     );
 
-    var complexCardContainer = Container(
-        decoration: CardBackingDecoration(decorationVariant: decorationVariant)
-            .buildBacking(),
-        constraints: BoxConstraints(
-          maxWidth: size.layoutItemWidth(1, screenSize),
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: Padding(
-            padding: const EdgeInsets.all(13.0), child: complexCardContent));
+    var complexCardContainer = FloatingContainerElement(
+        child: Container(
+            decoration:
+                CardBackingDecoration(decorationVariant: decorationVariant)
+                    .buildBacking(),
+            constraints: BoxConstraints(
+              maxWidth: size.layoutItemWidth(1, screenSize),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: complexCardContent)));
 
     return complexCardContainer;
   }
