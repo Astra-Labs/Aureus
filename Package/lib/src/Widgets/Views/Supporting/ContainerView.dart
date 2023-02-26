@@ -61,8 +61,7 @@ class _ContainerViewState extends State<ContainerView>
   late Future<double> actionBarX;
   late Future<double> actionBarY;
 
-  double holdX = 0.0;
-  double holdY = 0.0;
+  Offset position = const Offset(0.5, 0.0);
 
   Widget overlayView = Container();
   var hasOverlayEnabled = false;
@@ -75,11 +74,11 @@ class _ContainerViewState extends State<ContainerView>
     sensation.prepare();
 
     actionBarY = preferences.then((SharedPreferences preferences) {
-      return preferences.getDouble('barY') ?? 0.6;
+      return /*preferences.getDouble('barY') ?? */ 0.6;
     });
 
     actionBarX = preferences.then((SharedPreferences preferences) {
-      return preferences.getDouble('barX') ?? 0.4;
+      return /* preferences.getDouble('barX') ?? */ 0.4;
     });
 
     _controller = AnimationController(
@@ -205,6 +204,16 @@ class _ContainerViewState extends State<ContainerView>
     });
   }
 
+  void updateAccessBarPosition(DraggableDetails details) {
+    setState(() {
+      print("drag has ended!");
+      RenderBox? renderBox = context.findRenderObject() as RenderBox;
+      position = renderBox.globalToLocal(details.offset);
+
+      print(position);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     //pull exit bar setting status from Safety Plan
@@ -216,24 +225,29 @@ class _ContainerViewState extends State<ContainerView>
     var screenHeight = size.logicalHeight();
     var actionBar;
 
-    holdY = screenHeight * 0.8;
-
     if (safety.isActionBarDevEnabled == true &&
         widget.showQuickActionBar == true) {
       var actionBarWidget =
           EmergencyAccessBarComponent(tabItems: safety.quickActionItems!);
 
+      /*
+
+      IN FREEZE: this draggable component is being debugged, because it hops around 
+      the screen and 'jumps'. 
       var draggableActionBar = Draggable(
           child: actionBarWidget,
           feedback: actionBarWidget,
-          onDragEnd: (dragDetails) {
+          onDraggableCanceled: (velocity, offset) {
             setState(() {
-              holdX = dragDetails.offset.dx;
-              holdY = dragDetails.offset.dy;
+              RenderBox? renderBox = context.findRenderObject() as RenderBox;
+              position = offset;
             });
           });
 
-      actionBar = draggableActionBar;
+        actionBar = draggableActionBar;
+      */
+
+      actionBar = actionBarWidget;
     }
 
     BoxDecoration containerBacking() {
@@ -279,22 +293,28 @@ class _ContainerViewState extends State<ContainerView>
             size.heightOf(weight: sizingWeight.w0));
 
     // Builds the backing container
+
     Container backingContainer = Container(
-        alignment: Alignment.center,
-        width: screenWidth,
-        decoration: containerDecoration,
-        padding: containerPadding,
-        child: SizedBox(
-            width: containerWidth,
-            height: screenHeight,
-            child: Center(
-                child: Stack(children: [
-              widget.builder,
-              (safety.isActionBarDevEnabled == true &&
-                      widget.showQuickActionBar == true)
-                  ? Positioned(top: holdY, left: holdX, child: actionBar)
-                  : const SizedBox(width: 1),
-            ]))));
+      alignment: Alignment.center,
+      width: screenWidth,
+      decoration: containerDecoration,
+      padding: containerPadding,
+      child: SizedBox(
+        width: containerWidth,
+        height: screenHeight,
+        child: Stack(children: [
+          widget.builder,
+          (safety.isActionBarDevEnabled == true &&
+                  widget.showQuickActionBar == true)
+              ? Positioned(
+                  left: 0.0 * (size.logicalWidth()) /*position.dx*/,
+                  top: 0.5 * (size.logicalHeight()) /*position.dy*/,
+                  child: actionBar,
+                )
+              : const SizedBox(width: 1),
+        ]),
+      ),
+    );
 
     // Builds an overlay item to hold any items coming into the view
     var overlayItem = SizedBox(
