@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- COMPLEX SWITCH CARD ----------*/
+/// A detailed card meant to allow the user to enable or disable it based on
+/// the metadata.
 
 class ComplexSwitchCardElement extends StatelessWidget {
   /// The text for the main header of the card.
@@ -16,13 +18,13 @@ class ComplexSwitchCardElement extends StatelessWidget {
   /// The text for the body content underneath the header.
   final String cardBody;
 
-  ///
+  /// An icon that describes the card.
   final IconData cardIcon;
 
-  ///
+  /// A [VoidCallback] to run when the switch is enabled.
   final VoidCallback onEnable;
 
-  ///
+  /// A [VoidCallback] to run when the switch is disabled.
   final VoidCallback onDisable;
 
   const ComplexSwitchCardElement(
@@ -55,7 +57,8 @@ class ComplexSwitchCardElement extends StatelessWidget {
           BodyOneText(cardBody, decorationPriority.standard)
         ]);
 
-    var complexSwitchContainer = Padding(
+    var complexSwitchContainer = FloatingContainerElement(
+        child: Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
       child: Container(
           constraints: BoxConstraints(
@@ -69,7 +72,7 @@ class ComplexSwitchCardElement extends StatelessWidget {
           child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: complexSwitchContent)),
-    );
+    ));
 
     return complexSwitchContainer;
   }

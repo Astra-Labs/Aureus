@@ -4,32 +4,45 @@ void main() {
   var resourceBranding = AureusBranding(
       fontFamily: 'Exo',
       lightModeStyle: AureusStylization(
-          contrastGradient:
-              LinearGradient(colors: [palette.carbon(), palette.black()]),
-          accentColor: palette.carbon(),
+          contrastGradient: LinearGradient(colors: [
+            palette.black(),
+            Colors.black87,
+          ]),
+          accentColor: palette.black(),
           primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
       darkModeStyle: AureusStylization(
-          contrastGradient:
-              LinearGradient(colors: [palette.melt(), palette.frost()]),
-          accentColor: palette.lavender(),
+          contrastGradient: LinearGradient(colors: [
+            Color.fromRGBO(211, 209, 223, 1.0),
+            palette.white(),
+          ]),
+          accentColor: palette.white(),
           primaryImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
 
   var quickActionItems2 = [
     TabObject.forTextTabbing(
-        onTabSelection: () => {print("item 1")},
+        onTabSelection: () => {
+              notificationMaster.sendAlertNotificationRequest(
+                  "Item 1 pressed on action bar.", Icons.ac_unit)
+            },
         tabTitle: "Item 1",
         accessibilityHint: "Opens Item 1"),
     TabObject.forTextTabbing(
         tabTitle: "Item 2",
-        onTabSelection: () => {print("item 2")},
+        onTabSelection: () => {
+              notificationMaster.sendAlertNotificationRequest(
+                  "Item 2 pressed on action bar.", Icons.ac_unit)
+            },
         accessibilityHint: "Opens Item 2"),
     TabObject.forTextTabbing(
         tabTitle: "Item 3",
-        onTabSelection: () => {print("item 3")},
+        onTabSelection: () => {
+              notificationMaster.sendAlertNotificationRequest(
+                  "Item 3 pressed on action bar.", Icons.ac_unit)
+            },
         accessibilityHint: "Opens Item 3"),
   ];
 
@@ -199,7 +212,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<StandardIconButtonElement> buttonItems = [
       StandardIconButtonElement(
-          decorationVariant: decorationPriority.important,
+          decorationVariant: decorationPriority.standard,
           buttonTitle: 'Explore Aureus.',
           buttonHint: "Opens the exploration view for Aureus.",
           buttonIcon: Assets.expand,
@@ -217,35 +230,28 @@ class LandingPage extends StatelessWidget {
           buttonIcon: Assets.window,
           buttonAction: () =>
               {launchInBrowser('https://github.com/Astra-Labs/Aureus')}),
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonHint: "Download on pub.dev",
+          buttonTitle: "Download on pub.dev",
+          buttonIcon: Assets.window,
+          buttonAction: () =>
+              {launchInBrowser('https://pub.dev/packages/aureus/install')}),
     ];
 
-    Image landingUIOverlayImage() {
-      return Image(
-          image: palette.brightness() == Brightness.light
-              ? AssetImage('assets/Light Mode - Preview.png')
-              : AssetImage('assets/Dark Mode - Preview.png'));
-    }
-
-    Image landscapeBackgroundImage() {
-      return Image(
-          image: palette.brightness() == Brightness.light
-              ? Image.network(
-                      'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80')
-                  .image
-              : Image.network(
-                      'https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80')
-                  .image);
-    }
-
-    return Scaffold(
-        body: size.isDesktopDisplay() == false
-            ? mobileLandingView(
-                landscapeBacking: landscapeBackgroundImage(),
-                uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems)
-            : webLandingView(
-                landscapeBacking: landscapeBackgroundImage(),
-                uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems));
+    return LandingPageView(
+      lightModeLandscapeBacking: Image.network(
+          'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'),
+      darkModeLandscapeBacking: Image.network(
+          'https://images.unsplash.com/photo-1567971952425-873b4b46e01f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80'),
+      lightModeUIOverlay:
+          Image(image: AssetImage('assets/Light Mode - Preview.png')),
+      darkModeUIOverlay:
+          Image(image: AssetImage('assets/Dark Mode - Preview.png')),
+      actionButtons: buttonItems,
+      onGiveFeedback: () => {
+        launchInBrowser('https://github.com/Astra-Labs/Aureus/issues'),
+      },
+    );
   }
 }

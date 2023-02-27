@@ -8,25 +8,27 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TEXT VIEW COMPONENT ----------*/
+/// A standard text view component for inputting user data. Good for
+/// 2+ lines of text.
 
 class TextViewComponent extends StatefulWidget {
-  ///
+  /// A [TextEditingController] in to connect to the component.
   final TextEditingController textFieldController;
 
-  ///
+  /// A hint about what to input into the text field.
   final String hintText;
 
-  ///
+  /// Whether or not the text view is enabled
   final bool isEnabled;
 
-  ///
-  final String detailLabel;
+  /// The 'prompt' of the text view.
+  final String prompt;
 
   const TextViewComponent(
       {required this.textFieldController,
       required this.hintText,
       required this.isEnabled,
-      required this.detailLabel});
+      required this.prompt});
 
   @override
   _TextViewComponentState createState() => _TextViewComponentState();
@@ -64,22 +66,34 @@ class _TextViewComponentState extends State<TextViewComponent> {
         hintText: widget.hintText);
 
     var textFormField = TextFormField(
-        enabled: widget.isEnabled,
-        style: body2().copyWith(
-            color: coloration.decorationColor(
-                decorationVariant: decorationPriority.standard)),
-        controller: widget.textFieldController,
-        decoration: inputDecoration,
-        autocorrect: false,
-        textAlign: TextAlign.left,
-        keyboardType: TextInputType.text);
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      enabled: widget.isEnabled,
+      style: body2().copyWith(
+          color: coloration.decorationColor(
+              decorationVariant: decorationPriority.standard)),
+      controller: widget.textFieldController,
+      decoration: inputDecoration,
+      autocorrect: false,
+      textAlign: TextAlign.left,
+    );
 
     var textView = Container(
       constraints: BoxConstraints(
         minHeight: size.layoutItemHeight(3, screenSize),
         maxWidth: size.layoutItemWidth(1, screenSize),
       ),
-      child: textFormField,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TabSubheaderElement(title: widget.prompt),
+          const SizedBox(height: 10),
+          FloatingContainerElement(
+            child: textFormField,
+          ),
+        ],
+      ),
     );
 
     return textView;

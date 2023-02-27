@@ -45,20 +45,20 @@ class _HelpCenterViewState extends State<HelpCenterView> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      HelpCenterArticleDetail(article: element),
+                      HelpCenterArticleDetailView(article: element),
                 ))
           },
           child: GridCardElement(
               decorationVariant: decorationPriority.standard,
               cardLabel: element.articleTitle,
-              gridSize: Size(size.layoutItemWidth(1, screenSize) * 0.9,
+              gridSize: Size(size.layoutItemWidth(1, screenSize) * 0.5,
                   size.layoutItemHeight(1, screenSize))),
         ));
       }
     });
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.fullScreen,
+      containerVariant: wrapperVariants.stackScroll,
       children: [
         Align(
           alignment: Alignment.topLeft,
@@ -98,16 +98,18 @@ class _HelpCenterViewState extends State<HelpCenterView> {
   }
 }
 
-class HelpCenterArticleDetail extends StatefulWidget {
+/// A view that shows a full help center article.
+
+class HelpCenterArticleDetailView extends StatefulWidget {
   final HelpCenterArticle article;
-  const HelpCenterArticleDetail({required this.article});
+  const HelpCenterArticleDetailView({required this.article});
 
   @override
   _HelpCenterArticleDetailState createState() =>
       _HelpCenterArticleDetailState();
 }
 
-class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetail> {
+class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetailView> {
   @override
   Widget build(BuildContext context) {
     var container = Container(

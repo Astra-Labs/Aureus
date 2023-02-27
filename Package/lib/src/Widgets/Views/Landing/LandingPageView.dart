@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- LANDING PAGE VIEW ----------*/
+/// A simple view meant to act as a templated landing page for a resource.
 
 class LandingPageView extends StatefulWidget {
   /// An image for the light mode landing page background.
@@ -162,7 +163,7 @@ class _LandingPageViewState extends State<LandingPageView> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsets.all(size.widthOf(weight: sizingWeight.w1)),
+                      EdgeInsets.all(size.widthOf(weight: sizingWeight.w0)),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -197,19 +198,20 @@ class _LandingPageViewState extends State<LandingPageView> {
           mainAxisSize: MainAxisSize.max,
           children: [
             SizedBox(
-                width: size.layoutItemWidth(3, screenSize),
+                width: screenWidth / 3.3,
                 height: size.layoutItemHeight(1, screenSize),
                 child: Center(child: informationHiearchy)),
             SizedBox(
-                width: size.layoutItemWidth(3, screenSize),
+                width: screenWidth / 3.3,
                 height: size.layoutItemHeight(1, screenSize),
                 child: homeScreenOverlay),
             SizedBox(
-                width: size.layoutItemWidth(3, screenSize),
-                height: size.layoutItemHeight(1, screenSize),
+                width: screenWidth / 3.3,
+                height: size.layoutItemHeight(2, screenSize),
                 child: buttonItems),
           ],
         ),
+        const Spacer(),
         FloatingContainerElement(child: webPageFooter)
       ],
     );

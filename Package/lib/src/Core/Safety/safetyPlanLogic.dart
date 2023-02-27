@@ -282,11 +282,12 @@ class SafetyPlanObject {
       : assert(settings.length < 0);
 }
 
-// Safety Plan Functionality Opt-in View
-//------------------------------------------------
-// Dev Note: This view is located within the safety.dart file
-// to make sure that access to SafetyPlan isn't accessible outside
-// of the filescope.
+/// This view is located within the safety.dart file
+/// to make sure that access to SafetyPlan isn't accessible outside
+/// of the filescope.
+
+/// A view used by Aureus to double confirm the functionality changes that a
+/// user is requesting, and then saving it to the Storage Layer.
 
 class SafetyPlanFunctionalityView extends StatefulWidget {
   /// The user selected options that they want to enable
@@ -410,7 +411,8 @@ class _SafetyPlanFunctionalityViewState
   }
 }
 
-// Safety Plan Modification View
+/// A view used by Aureus to update the user's safety settings privately
+/// in the Storage Layer.
 
 // Dev Note: This view is located within the safety.dart file
 // to make sure that access to SafetyPlan isn't accessible outside

@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SETTINGS VIEW ----------*/
+/// A view that's meant to allow the user to modify the settings of the resource.
+/// Some of these items are autopopulated from your [AureusInformation] in the
+/// [packageVariables] you set.
 
 class SettingsView extends StatefulWidget {
   /// A list of [SettingSection]s that build the settings page.

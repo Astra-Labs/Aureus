@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DETAIL BADGE CARD ----------*/
+/// A detailed card with a header, label, and icon.
 
 class DetailBadgeCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
@@ -19,7 +20,7 @@ class DetailBadgeCardElement extends StatelessWidget {
   /// The text for the body content underneath the header.
   final String cardBody;
 
-  ///
+  /// An icon that describes the card.
   final IconData cardIcon;
 
   const DetailBadgeCardElement(
@@ -45,16 +46,19 @@ class DetailBadgeCardElement extends StatelessWidget {
           const SizedBox(height: 10),
         ]);
 
-    var detailBadgeContainer = Container(
-        constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(1, screenSize),
-            maxWidth: size.layoutItemWidth(1, screenSize),
-            minHeight: size.layoutItemHeight(4, screenSize)),
-        decoration: CardBackingDecoration(decorationVariant: decorationVariant)
-            .buildBacking(),
-        clipBehavior: Clip.hardEdge,
-        child: Padding(
-            padding: const EdgeInsets.all(13.0), child: detailBadgeContent));
+    var detailBadgeContainer = FloatingContainerElement(
+      child: Container(
+          constraints: BoxConstraints(
+              minWidth: size.layoutItemWidth(1, screenSize),
+              maxWidth: size.layoutItemWidth(1, screenSize),
+              minHeight: size.layoutItemHeight(4, screenSize)),
+          decoration:
+              CardBackingDecoration(decorationVariant: decorationVariant)
+                  .buildBacking(),
+          clipBehavior: Clip.hardEdge,
+          child: Padding(
+              padding: const EdgeInsets.all(13.0), child: detailBadgeContent)),
+    );
 
     return detailBadgeContainer;
   }

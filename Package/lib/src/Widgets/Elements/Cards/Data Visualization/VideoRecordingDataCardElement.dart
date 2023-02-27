@@ -20,19 +20,19 @@ class VideoRecordingDataCardElement extends DataDetailCard {
 
   @override
   Widget returnReadDataCard() {
-    return BaseDataDetailCard(
+    return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: const [],
+      detailChildren: [],
     );
   }
 
   @override
   Widget returnEditDataCard() {
-    return BaseDataDetailCard(
+    return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: const [],
+      detailChildren: [],
     );
   }
 }

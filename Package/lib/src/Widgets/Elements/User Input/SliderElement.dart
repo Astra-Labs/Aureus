@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SLIDER ELEMENT ----------*/
+/// A simple slider to represent a scale of values.
 
 // ignore: must_be_immutable
 class SliderElement extends StatefulWidget {

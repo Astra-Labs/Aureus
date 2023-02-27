@@ -72,17 +72,11 @@ class _BottomActionSheetComponentState
               widget.alertData.alertTitle, decorationPriority.standard),
           BodyOneText(widget.alertData.alertBody, decorationPriority.standard),
           const SizedBox(height: 20.0),
-          SizedBox(
-            height: size.layoutItemHeight(4, screenSize),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.min,
-                children: actionButtons,
-              ),
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: actionButtons,
           ),
         ]);
 
@@ -92,9 +86,7 @@ class _BottomActionSheetComponentState
             .buildBacking(),
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),
-            maxWidth: size.layoutItemWidth(1, screenSize),
-            minHeight: size.layoutItemHeight(3, screenSize),
-            maxHeight: size.layoutItemHeight(2, screenSize)),
+            maxWidth: size.layoutItemWidth(1, screenSize)),
         padding: const EdgeInsets.all(15.0),
         alignment: Alignment.center,
         child: bottomActionSheetContent);

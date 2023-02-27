@@ -41,6 +41,7 @@ class BaseBackingDecoration {
   }
 }
 
+/// The backing decoration for button items.
 class ButtonBackingDecoration extends BaseBackingDecoration {
   final buttonDecorationVariants variant;
 
@@ -124,6 +125,7 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
   }
 }
 
+/// The backing decoration for layer items.
 class LayerBackingDecoration extends BaseBackingDecoration {
   LayerBackingDecoration({required decorationVariant})
       : super(decorationVariant: decorationVariant) {
@@ -153,6 +155,7 @@ class LayerBackingDecoration extends BaseBackingDecoration {
   }
 }
 
+/// The backing decoration for card items.
 class CardBackingDecoration extends BaseBackingDecoration {
   CardBackingDecoration({required decorationVariant})
       : super(decorationVariant: decorationVariant) {
@@ -195,6 +198,7 @@ class CardBackingDecoration extends BaseBackingDecoration {
   }
 }
 
+/// The backing decoration for user input items.
 class InputBackingDecoration extends BaseBackingDecoration {
   InputBackingDecoration()
       : super(decorationVariant: decorationPriority.standard) {
@@ -208,6 +212,7 @@ class InputBackingDecoration extends BaseBackingDecoration {
   }
 }
 
+/// The backing decoration for tab items.
 class TabItemBackingDecoration extends BaseBackingDecoration {
   final tabItemDecorationVariants variant;
 

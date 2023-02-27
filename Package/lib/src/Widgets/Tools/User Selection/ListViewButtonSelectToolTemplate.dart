@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- LIST VIEW BUTTON SELECT TOOL ----------*/
+/// A tool template for selecting one action out of a group of actions.
 
 class ListViewButtonSelectToolTemplate extends ToolCardTemplate {
   final Map<String, VoidCallback> listItems;

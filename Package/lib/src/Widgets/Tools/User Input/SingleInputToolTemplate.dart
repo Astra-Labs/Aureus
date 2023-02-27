@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SINGLE INPUT TOOL ----------*/
+/// A tool template for a user to input into a single text field.
 
 class SingleInputToolTemplate extends ToolCardTemplate {
   SingleInputToolTemplate({required templatePrompt, required badgeIcon})

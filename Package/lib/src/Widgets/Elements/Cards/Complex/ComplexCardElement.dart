@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- COMPLEX CARD ----------*/
+/// An extremely detailed card meant to give the most amount of information about
+/// something to a user, without an icon.
 
 class ComplexCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
@@ -19,7 +21,7 @@ class ComplexCardElement extends StatelessWidget {
   /// The text for the body content underneath the header.
   final String cardBody;
 
-  ///
+  /// A carousel that provides metadata about something.
   final Map<String, IconData> cardDetailCarousel;
 
   const ComplexCardElement(
@@ -35,28 +37,29 @@ class ComplexCardElement extends StatelessWidget {
     var complexCardContent = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.max,
       children: [
-        const Spacer(),
+        const SizedBox(height: 20),
         HeadingFourText(cardLabel, decorationVariant),
         const SizedBox(height: 20),
-        const Spacer(),
         BodyOneText(cardBody, decorationVariant),
         const SizedBox(height: 20),
         DetailCardCarouselComponent(cardDetailCarousel: cardDetailCarousel),
-        const Spacer(),
+        const SizedBox(height: 20),
       ],
     );
 
-    var complexCardContainer = Container(
-        decoration: CardBackingDecoration(decorationVariant: decorationVariant)
-            .buildBacking(),
-        constraints: BoxConstraints(
-            maxWidth: size.layoutItemWidth(1, screenSize),
-            maxHeight: size.layoutItemHeight(3, screenSize)),
-        clipBehavior: Clip.antiAlias,
-        child: Padding(
-            padding: const EdgeInsets.all(13.0), child: complexCardContent));
+    var complexCardContainer = FloatingContainerElement(
+        child: Container(
+            decoration:
+                CardBackingDecoration(decorationVariant: decorationVariant)
+                    .buildBacking(),
+            constraints: BoxConstraints(
+              maxWidth: size.layoutItemWidth(1, screenSize),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: complexCardContent)));
 
     return complexCardContainer;
   }

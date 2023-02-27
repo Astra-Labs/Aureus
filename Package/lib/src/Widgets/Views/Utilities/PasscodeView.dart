@@ -8,9 +8,10 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- PASSCODE VIEW ----------*/
+/// A view for a user to enter a passcode.
 
 class PasscodeView extends StatefulWidget {
-  ///
+  /// A [VoidCallback] to run when the user enters the correct passcode.
   final VoidCallback onCorrectPasscode;
 
   /// A List that contains the passcode. Keeping

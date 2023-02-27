@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- CATEGORY ICON DETAIL CARD ----------*/
+/// A card that's meant to act as a major CTA, or to denote a category.
 
 class CategoryIconDetailCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
@@ -19,7 +20,7 @@ class CategoryIconDetailCardElement extends StatelessWidget {
   /// The text for the body content underneath the header.
   final String cardBody;
 
-  ///
+  /// An icon that describes the card.
   final IconData cardIcon;
 
   const CategoryIconDetailCardElement(

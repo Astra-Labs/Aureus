@@ -8,12 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- YES NO BUTTON SELECT TOOL ----------*/
-/*
-
-Takes a simple bool response from user in response 
-to the prompt. 
-
-*/
+/// A tool template that takes a simple bool response from user in response
+/// to the prompt.
 
 class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
   YesNoButtonSelectToolTemplate({required templatePrompt, required badgeIcon})

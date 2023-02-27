@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TOOL TEMPLATE CARD CAROUSEL VIEW ----------*/
+/// A view that manages and displays any Tool Templates from a [CoreTool]
 
 class ToolTemplateCardCarouselView extends StatefulWidget {
   /// The tool that contains the data to be used in this template.

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SINGLE SLIDER INPUT TOOL ----------*/
+/// A tool template for picking a value on a slider.
 
 class SingleSliderToolTemplate extends ToolCardTemplate {
   SingleSliderToolTemplate({required templatePrompt, required badgeIcon})

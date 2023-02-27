@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- BASE CARD TOOL TEMPLATE ----------*/
-// The base class for a card tool template.
-// A CARD is a tool template that doesn't take up a full page, and
-// is accessed within a card carousel only. It's used in conjunction with
-// other cards, not as a stand alone item.
+/// The base class for a card tool template.
+/// A CARD is a tool template that doesn't take up a full page, and
+/// is accessed within a card carousel only. It's used in conjunction with
+/// other cards, not as a stand alone item.
 
 class BaseCardToolTemplate extends StatefulWidget {
   final bool isActive;
@@ -34,7 +34,8 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    var activeLayout = Container(
+    var activeLayout = FloatingContainerElement(
+      child: Container(
         constraints: BoxConstraints(
             maxWidth: size.layoutItemWidth(1, screenSize),
             minWidth: size.layoutItemWidth(1, screenSize),
@@ -64,7 +65,9 @@ class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
             Column(children: widget.toolChildren),
             const SizedBox(height: 20.0)
           ],
-        ));
+        ),
+      ),
+    );
 
     var inactiveLayout = FloatingContainerElement(
         child: Container(

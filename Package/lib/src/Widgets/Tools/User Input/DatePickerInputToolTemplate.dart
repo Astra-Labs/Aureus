@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DATE PICKER INPUT TOOL ----------*/
+/// A tool template for selecting a date.
 
 class DatePickerInputToolTemplate extends ToolCardTemplate {
   DatePickerInputToolTemplate({required templatePrompt, required badgeIcon})

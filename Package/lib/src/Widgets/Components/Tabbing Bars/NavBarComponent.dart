@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- NAV BAR COMPONENT ----------*/
+/// A horizontal, icon only, navigation bar.
 
 class NavBarComponent extends StatefulWidget {
   /// A list of controller tab objects that make up the NavBarComponent
@@ -43,7 +44,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
 
       var tabItem = BottomNavigationBarItem(
         icon: Icon(element.tabIcon, size: size.responsiveSize(38.0)),
-        label: ".",
+        label: element.accessibilityHint,
         tooltip: element.accessibilityHint,
         backgroundColor: Colors.transparent,
       );
@@ -57,7 +58,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
       elevation: 0,
       selectedItemColor: coloration.contrastColor(),
       unselectedItemColor: coloration.inactiveColor(),
-      showSelectedLabels: true,
+      showSelectedLabels: false,
       showUnselectedLabels: false,
       backgroundColor: Colors.transparent,
       items: tabbingArray,

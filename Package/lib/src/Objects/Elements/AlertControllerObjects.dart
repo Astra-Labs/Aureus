@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 /// {@category Objects}
 /// {@image <image alt='' src=''>}
 
-/// An enum that tells the user what kind of severity an action is.
+/// Tells the user what kind of severity an action is.
 enum AlertControllerActionSeverity { standard, cancel, confirm, destruct }
 
-/// A class that represents all data in an alert controller.
+/// Represents all data in an alert controller.
 class AlertControllerObject {
   /// What to do when the alert controller is cancelled
   final VoidCallback onCancellation;
@@ -43,8 +43,7 @@ class AlertControllerObject {
       : assert(actions.length == 1);
 }
 
-/// A class that specifes an action
-
+/// An action that someone can take on an [AlertControllerObject].
 class AlertControllerAction {
   /// What the name of the action is. E.G: Agree, Send Email, etc
   final String actionName;

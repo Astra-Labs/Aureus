@@ -8,13 +8,19 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- VERTICAL SIDE NAV BAR ----------*/
+/// A vertical navigation bar, meant to be used on tablet / web displays.
 
 class VerticalSideNavBarComponent extends StatefulWidget {
   /// A list of controller tab objects that make up the NavBarComponent
   final List<ControllerTabObject> tabItems;
 
-  const VerticalSideNavBarComponent({required this.tabItems})
-      : assert(tabItems.length >= 2);
+  /// An alternate color to set as the background
+  final Color? altColor;
+
+  const VerticalSideNavBarComponent({
+    required this.tabItems,
+    this.altColor,
+  }) : assert(tabItems.length >= 2);
 
   @override
   _VerticalSideNavBarComponentState createState() =>
@@ -51,7 +57,8 @@ class _VerticalSideNavBarComponentState
     }
 
     var navigationRail = NavigationRail(
-      backgroundColor: coloration.contrastColor().withOpacity(0.15),
+      backgroundColor:
+          widget.altColor ?? coloration.contrastColor().withOpacity(0.15),
       selectedIndex: _selectedIndex,
       groupAlignment: 0.0,
       onDestinationSelected: (int index) {
@@ -62,8 +69,8 @@ class _VerticalSideNavBarComponentState
       leading: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SizedBox(
-          width: 80,
-          height: 80,
+          width: 65,
+          height: 65,
           child: coloration.resourceLogo(),
         ),
       ),

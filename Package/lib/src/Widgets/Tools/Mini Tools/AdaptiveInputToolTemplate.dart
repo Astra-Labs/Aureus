@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- ADAPTIVE INPUT TOOL ----------*/
-/// A tool template that changes the input style for
-/// a select few tool templates (hence adaptive input).
+/// A tool template that corresponds to the input style that the
+/// user selects.
 /// This allows people to respond to prompts with video,
 /// text, sketch, or voice recording.
 

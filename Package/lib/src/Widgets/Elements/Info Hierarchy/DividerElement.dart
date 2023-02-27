@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DIVIDER ELEMENT ----------*/
+/// A small divider that's meant to break up other widgets.
 
 class DividerElement extends StatelessWidget {
   const DividerElement({Key? key}) : super(key: key);

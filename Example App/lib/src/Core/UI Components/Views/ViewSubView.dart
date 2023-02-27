@@ -18,8 +18,6 @@ class _ViewsSubviewState extends State<ViewsSubview> {
 
       // Iterating through the top level of categories to make a sub-carousel
       for (var viewData in viewRow.value) {
-        print(viewData);
-
         var cardElement = Focus(
             child: GestureDetector(
                 onTap: () => {
@@ -80,6 +78,9 @@ class _ViewsSubviewState extends State<ViewsSubview> {
     ], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard, builder: viewBuilder);
+      decorationVariant: decorationPriority.important,
+      builder: viewBuilder,
+      showQuickActionBar: false,
+    );
   }
 }

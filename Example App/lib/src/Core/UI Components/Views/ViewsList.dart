@@ -25,6 +25,10 @@ Map<String, List<viewMetaData>> aureusViewsCategory = {
       viewTitle: "Splash Screen",
       view: views.splashScreenView,
     ),
+    viewMetaData(
+      viewTitle: "Landing Page",
+      view: LandingPage(),
+    ),
   ],
   "Safety Plan": [
     viewMetaData(
@@ -76,10 +80,10 @@ Map<String, List<viewMetaData>> aureusViewsCategory = {
       view: views.helpCenterView,
     ),
   ],
-  "Misc": [
+  /*"Misc": [
     viewMetaData(
         viewTitle: "Poetry Gradient View", view: views.poetryGradientView),
-  ]
+  ]*/
 };
 
 class viewMetaData {
@@ -134,8 +138,14 @@ class exampleAppViews {
 
   var tfaVerificationView = TFAVerificationView(
     userPhoneNumber: [5, 5, 5, 5, 5, 5, 5, 5, 5],
-    issueVerificationCode: () => {print('verification code issued!')},
-    onUserSubmission: () => {print('user submitted code!')},
+    issueVerificationCode: () => {
+      notificationMaster.sendAlertNotificationRequest(
+          "Issed a verification code ;-)", Icons.ac_unit)
+    },
+    onUserSubmission: () => {
+      notificationMaster.sendAlertNotificationRequest(
+          "User submitted the code.", Icons.ac_unit)
+    },
     textEditingController: textEditor,
   );
 

@@ -64,6 +64,32 @@ Map<String, Widget> aureusElements = {
         SizedBox(height: 10),
         inactiveStandardButton
       ]),
+  'Standard Icon Buttons': Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        standardStandardIconButton,
+        SizedBox(height: 10),
+        importantStandardIconButton,
+        SizedBox(height: 10),
+        inactiveStandardIconButton
+      ]),
+  'Article View Element': articleViewElement,
+  'Mission Header': missionHeader,
+  'Page Header': Column(
+    children: [
+      pageHeaderElement,
+      SizedBox(height: 10.0),
+      pageHeaderElement2,
+    ],
+  ),
+  'Divider': dividerElement,
+  'Dividing Header': dividingHeaderElement,
+  'Floating Container': floatingContainerElement,
+  'Completion Circle': completionCircleElement,
+  'Loading Circle': loadingCircleElement,
+  'Progress Indicator': progressIndicatorElement,
 };
 
 // TYPOGRAPHY -----------------------------------------
@@ -96,15 +122,31 @@ List<Text> textTesting = [
   text11
 ];
 
-var textTestListView = ListView.separated(
-  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-  shrinkWrap: true,
-  itemCount: textTesting.length,
-  itemBuilder: (BuildContext context, int index) {
-    return textTesting[index];
-  },
-  separatorBuilder: (BuildContext context, int index) => const Divider(),
+var textTestListView = backingLayer(
+  ListView.separated(
+    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+    shrinkWrap: true,
+    itemCount: textTesting.length,
+    itemBuilder: (BuildContext context, int index) {
+      return textTesting[index];
+    },
+    separatorBuilder: (BuildContext context, int index) => const Divider(),
+  ),
 );
+
+Widget backingLayer(Widget child) {
+  return Container(
+    decoration:
+        LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
+            .buildBacking(),
+    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: child,
+      ),
+    ),
+  );
+}
 
 // ITEMS -----------------------------------------
 
@@ -112,7 +154,7 @@ var tabSubheader = TabSubheaderElement(title: fillerTextSubheader);
 var divider = DividerElement();
 
 var slider = SliderElement();
-var timer = TimerElement(timeAllotment: Duration(seconds: 30));
+var timer = backingLayer(TimerElement(timeAllotment: Duration(seconds: 30)));
 
 var textEditor = TextEditingController();
 
@@ -211,3 +253,86 @@ var inactiveStandardButton = StandardButtonElement(
     buttonHint: "Completes $fillerTextButton",
     buttonAction: fillerAction,
     decorationVariant: decorationPriority.inactive);
+
+var standardStandardIconButton = StandardIconButtonElement(
+    buttonTitle: fillerTextButton,
+    buttonIcon: fillerIcon1,
+    buttonHint: "Completes $fillerTextButton",
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.standard);
+
+var importantStandardIconButton = StandardIconButtonElement(
+    buttonTitle: fillerTextButton,
+    buttonIcon: fillerIcon2,
+    buttonHint: "Completes $fillerTextButton",
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.important);
+
+var inactiveStandardIconButton = StandardIconButtonElement(
+    buttonTitle: fillerTextButton,
+    buttonIcon: fillerIcon3,
+    buttonHint: "Completes $fillerTextButton",
+    buttonAction: fillerAction,
+    decorationVariant: decorationPriority.inactive);
+
+var articleViewElement = backingLayer(
+  ArticleViewElement(
+    title: fillerTextHeader,
+    subheader: fillerTextSubheader,
+    body: fillerTextBody,
+  ),
+);
+
+var missionHeader = backingLayer(
+  MissionHeaderElement(),
+);
+
+var pageHeaderElement = backingLayer(PageHeaderElement.withExit(
+  pageTitle: fillerTextHeader,
+  onPageExit: () => {
+    notificationMaster.sendAlertNotificationRequest(
+        "Request page exit", Assets.add)
+  },
+));
+
+var pageHeaderElement2 = backingLayer(
+  PageHeaderElement.withOptionsExit(
+      pageTitle: fillerTextHeader,
+      onPageDetails: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Requested page details", Assets.add)
+          },
+      onPageExit: () => {
+            notificationMaster.sendAlertNotificationRequest(
+                "Request page exit", Assets.add)
+          }),
+);
+
+var dividerElement = backingLayer(DividerElement());
+
+var dividingHeaderElement = backingLayer(
+  DividingHeaderElement(
+    headerText: fillerTextHeader,
+    subheaderText: fillerTextSubheader,
+  ),
+);
+
+var floatingContainerElement = FloatingContainerElement(
+  child: SizedBox(
+    width: 50,
+    height: 50,
+    child: Container(
+      decoration:
+          CardBackingDecoration(decorationVariant: decorationPriority.standard)
+              .buildBacking(),
+    ),
+  ),
+);
+
+var completionCircleElement =
+    backingLayer(CompletionCircleElement(progressValue: 0.2));
+
+var loadingCircleElement = backingLayer(LoadingCircleElement());
+
+var progressIndicatorElement =
+    backingLayer(ProgressIndicatorElement(value: 0.5));

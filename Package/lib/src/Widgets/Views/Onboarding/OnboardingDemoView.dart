@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- ONBOARDING DEMO VIEW ----------*/
+/// A view that allows users to try tools before onboarding into the app.
+/// This helps the user build trust, and improves conversion rates.
 
 class OnboardingDemoView extends StatefulWidget {
   /// A list of CoreTools that are used in the resource, that can be demoed
@@ -55,6 +57,9 @@ class _OnboardingDemoViewState extends State<OnboardingDemoView> {
     );
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+      decorationVariant: decorationPriority.important,
+      builder: viewLayout,
+      showQuickActionBar: false,
+    );
   }
 }

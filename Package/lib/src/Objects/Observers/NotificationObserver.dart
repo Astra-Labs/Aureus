@@ -6,10 +6,11 @@ import 'package:flutter/material.dart';
 /// {@category Objects}
 /// {@image <image alt='' src=''>}
 
-// An observer pattern that links to the main scaffold
-// of the container view in order to show alert controllers,
-// in-app notifications, and more.
 var notificationMaster = AureusNotificationMaster();
+
+/// An observer pattern that links to the main scaffold
+/// of the container view in order to show alert controllers,
+/// in-app notifications, and more.
 
 class AureusNotificationMaster {
   AureusNotificationObserver? _currentObserver;

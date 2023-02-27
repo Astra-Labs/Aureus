@@ -9,14 +9,19 @@ import 'package:flutter/material.dart';
 
 /*--------- BASE DATA DETAIL CARD ----------*/
 
-// The base class for a card tool template.
-// A CARD is a tool template that doesn't take up a full page, and
-// is accessed within a card carousel only. It's used in conjunction with
-// other cards, not as a stand alone item.
+/// The base class for a Base Data Detail Card.
+/// A detail card is a UI element meant for writing and reading values. These
+/// are accessed within a [DataDetailView] only.
 
 class BaseDataDetailCard extends StatefulWidget {
+  /// Whether or not the card is actively being edited. This is managed by
+  /// [DataDetailView]
   final bool isBeingEdited;
+
+  /// What the 'title' of the detail card is.
   final String detailLabel;
+
+  /// What the children of the card are.
   final List<Widget> detailChildren;
 
   const BaseDataDetailCard(

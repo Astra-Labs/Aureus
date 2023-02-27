@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:aureus/aureus.dart';
 
 /// @nodoc
@@ -8,15 +10,16 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- STANDARD CARD ----------*/
+/// A standard card with just a title.
 
 class StandardCardElement extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
-  final decorationPriority decorationVariant;
+  decorationPriority decorationVariant;
 
   /// The text for the main header of the card.
   final String cardLabel;
 
-  const StandardCardElement(
+  StandardCardElement(
       {required this.decorationVariant, required this.cardLabel});
 
   @override
@@ -43,6 +46,19 @@ class StandardCardElement extends StatelessWidget {
           )),
     );
 
-    return standardCardContainer;
+    var focusContent = Focus(
+        onFocusChange: (inFocus) => {
+              if (inFocus == true)
+                {
+                  decorationVariant = decorationPriority.important,
+                }
+              else
+                {
+                  decorationVariant = decorationPriority.standard,
+                }
+            },
+        child: standardCardContainer);
+
+    return focusContent;
   }
 }

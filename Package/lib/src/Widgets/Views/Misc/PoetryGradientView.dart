@@ -10,6 +10,9 @@ import 'dart:ui';
 /// {@image <image alt='' src=''>}
 
 /*--------- POETRY GRADIENT VIEW ----------*/
+/// A view that animates gradients and noise, while scrolling through a poem.
+/// This is an 'Easter Egg' Astra uses to hide poems within our resources for a
+/// better user experience.
 
 class PoetryGradientView extends StatefulWidget {
   /// A List with the strings that make up a poem.
@@ -51,7 +54,7 @@ class _PoetryGradientViewState extends State<PoetryGradientView> {
   // for the total reading time required by the day to night gradient
 
   int calculateDuration(String item) {
-    var charCount;
+    //var charCount;
 
     return 1;
   }
@@ -75,7 +78,7 @@ class _PoetryGradientViewState extends State<PoetryGradientView> {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
         children: [
-          NoiseAnimationWidget(gradientTime: calculateOverallDuration())
+          _NoiseAnimationWidget(gradientTime: calculateOverallDuration())
         ]);
 
     return ContainerView(
@@ -90,15 +93,15 @@ class _PoetryGradientViewState extends State<PoetryGradientView> {
 
 // NOISE ANIMATION
 
-class NoiseAnimationWidget extends StatefulWidget {
+class _NoiseAnimationWidget extends StatefulWidget {
   final Duration gradientTime;
-  const NoiseAnimationWidget({required this.gradientTime});
+  const _NoiseAnimationWidget({required this.gradientTime});
 
   @override
   _NoiseAnimationWidgetState createState() => _NoiseAnimationWidgetState();
 }
 
-class _NoiseAnimationWidgetState extends State<NoiseAnimationWidget>
+class _NoiseAnimationWidgetState extends State<_NoiseAnimationWidget>
     with TickerProviderStateMixin {
   late AnimationController _noiseAnimationController;
   late AnimationController _gradientAnimationController;
@@ -117,6 +120,7 @@ class _NoiseAnimationWidgetState extends State<NoiseAnimationWidget>
     );
 
     _noiseAnimationController.forward();
+    _gradientAnimationController.forward();
   }
 
   @override
@@ -127,7 +131,7 @@ class _NoiseAnimationWidgetState extends State<NoiseAnimationWidget>
         builder: (BuildContext ctx, Widget? w) {
           return CustomPaint(
             size: size.logicalScreenSize(),
-            painter: NoisePainter(
+            painter: _NoisePainter(
               width: size.logicalWidth(),
               height: size.logicalHeight(),
             ),
@@ -156,11 +160,11 @@ class _NoiseAnimationWidgetState extends State<NoiseAnimationWidget>
   }
 }
 
-class NoisePainter extends CustomPainter {
+class _NoisePainter extends CustomPainter {
   final double width;
   final double height;
 
-  NoisePainter({required this.width, required this.height});
+  _NoisePainter({required this.width, required this.height});
 
   List<Color> colors = [Colors.black, Colors.grey, Colors.white];
 

@@ -86,14 +86,12 @@ class NotificationComponent extends StatelessWidget {
 
     var notificationBottomContent = Padding(
       padding: const EdgeInsets.all(8.0),
-      child:
-          Expanded(child: BodyOneText(notificationBody, notificationPriority)),
+      child: BodyOneText(notificationBody, notificationPriority),
     );
 
     Column notificationContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           notificationTopContent,
           notificationMidContent,

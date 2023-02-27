@@ -28,7 +28,7 @@ class TimerElement extends StatefulWidget {
 
 class _TimerElementState extends State<TimerElement>
     with TickerProviderStateMixin {
-  late Timer _timer;
+  Timer? _timer;
   var _isTimerActive = false;
   var intDuration = 0;
   var timeString = '';
@@ -58,7 +58,7 @@ class _TimerElementState extends State<TimerElement>
   void pauseTimer() {
     setState(() {
       _isTimerActive = false;
-      _timer.cancel();
+      _timer!.cancel();
       controller.stop();
     });
   }
@@ -66,7 +66,7 @@ class _TimerElementState extends State<TimerElement>
   void resetTimer() {
     setState(() {
       _isTimerActive = false;
-      _timer.cancel();
+      _timer!.cancel();
       intDuration = widget.timeAllotment.inSeconds;
       controller.reset();
     });

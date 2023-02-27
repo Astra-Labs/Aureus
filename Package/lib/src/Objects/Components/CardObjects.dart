@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 /// {@category Objects}
 /// {@image <image alt='' src=''>}
 
+/// Helper class for providing using Card elements in Aureus.
+
 class AureusCards {
   /// Returns a filled widget with the card data and variant provided
   /// [cardType] - The type of card you want to get back
@@ -92,6 +94,7 @@ class AureusCards {
   }
 }
 
+/// An object that holds all of the relevant metadata for a card element.
 class CardObject {
   decorationPriority decorationVariant;
   String? cardLabel;

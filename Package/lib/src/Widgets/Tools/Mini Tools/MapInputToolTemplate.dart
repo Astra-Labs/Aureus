@@ -17,6 +17,8 @@ IN BETA DEVELOPMENT - DO NOT USE
 -------------------------------
 */
 
+/// A Tool template that allows the user to select a location on a map in response to a prompt.
+
 class MapInputToolTemplate extends ToolCardTemplate {
   MapInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);

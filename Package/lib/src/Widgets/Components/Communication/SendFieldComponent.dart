@@ -29,33 +29,61 @@ class _SendFieldComponentState extends State<SendFieldComponent> {
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
 
-    var sendFieldContent = Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          StandardTextFieldComponent(
-            hintText: 'Write message here.',
-            isEnabled: true,
-            decorationVariant: decorationPriority.standard,
-            textFieldController: widget.textEditController,
-          ),
-          IconButtonElement(
-            buttonIcon: Assets.paperplane,
-            buttonAction: widget.onSend,
-            buttonHint: 'Sends the value in the text field.',
-            decorationVariant: decorationPriority.important,
-            buttonPriority: buttonSize.secondary,
-          )
-        ]);
+    const errorOutlineInputBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderSide:
+            BorderSide(color: Color.fromRGBO(255, 178, 178, 1.0), width: 1.0));
 
-    var sendFieldContainer = Container(
-      constraints: BoxConstraints(
-          minHeight: size.layoutItemHeight(6, screenSize),
-          maxHeight: size.layoutItemHeight(5, screenSize),
-          maxWidth: size.layoutItemWidth(1, screenSize)),
-      child: sendFieldContent,
+    var standardOutlineInputBorder = OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(
+            color: coloration
+                .decorationColor(decorationVariant: decorationPriority.standard)
+                .withOpacity(0.3),
+            width: 1.0));
+
+    var importantOutlineInputBorder = OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(color: coloration.accentColor(), width: 1.0));
+
+    var sendFieldIcon = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: IconButtonElement(
+        buttonIcon: Assets.paperplane,
+        buttonAction: widget.onSend,
+        buttonHint: 'Sends the message you wrote.',
+        decorationVariant: decorationPriority.standard,
+        buttonPriority: buttonSize.secondary,
+      ),
     );
+
+    var inputDecoration = InputDecoration(
+        fillColor: coloration.contrastColor().withOpacity(0.15),
+        filled: true,
+        suffixIcon: sendFieldIcon,
+        border: InputBorder.none,
+        focusedBorder: importantOutlineInputBorder,
+        enabledBorder: standardOutlineInputBorder,
+        errorBorder: errorOutlineInputBorder,
+        disabledBorder: InputBorder.none,
+        hintStyle: body2()
+            .copyWith(color: coloration.contrastColor().withOpacity(0.7)),
+        hintText: "Send here");
+
+    var sendFieldContainer = SizedBox(
+        width: size.layoutItemWidth(1, screenSize),
+        height: size.layoutItemHeight(6, screenSize),
+        child: FloatingContainerElement(
+          child: TextFormField(
+              style: body2().copyWith(
+                  color: coloration.decorationColor(
+                      decorationVariant: decorationPriority.standard)),
+              controller: widget.textEditController,
+              decoration: inputDecoration,
+              autocorrect: false,
+              textAlign: TextAlign.left,
+              keyboardType: TextInputType.text),
+        ));
 
     return sendFieldContainer;
   }

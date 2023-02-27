@@ -16,21 +16,21 @@ class PhotoDataCardElement extends DataDetailCard {
 
   @override
   Widget returnReadDataCard() {
-    return BaseDataDetailCard(
+    return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: const [],
+      detailChildren: [],
     );
   }
 
   @override
   Widget returnEditDataCard() {
-    var cardController = TextEditingController();
+    // var cardController = TextEditingController();
 
-    return BaseDataDetailCard(
+    return const BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: "",
-      detailChildren: const [],
+      detailChildren: [],
     );
   }
 }

@@ -31,7 +31,7 @@ class CircleAnimation extends StatelessWidget {
         animation: animation,
         builder: (BuildContext context, Widget? _) {
           return ClipPath(
-            clipper: CircularAnimationClip(
+            clipper: _CircularAnimationClip(
               fraction: animation.value,
               centerAlignment: centerAlignment,
               centerOffset: centerOffset,
@@ -44,12 +44,12 @@ class CircleAnimation extends StatelessWidget {
   }
 }
 
-class CircularAnimationClip extends CustomClipper<Path> {
+class _CircularAnimationClip extends CustomClipper<Path> {
   final double fraction;
   final Alignment centerAlignment;
   final Offset centerOffset;
 
-  CircularAnimationClip({
+  _CircularAnimationClip({
     required this.fraction,
     required this.centerAlignment,
     required this.centerOffset,

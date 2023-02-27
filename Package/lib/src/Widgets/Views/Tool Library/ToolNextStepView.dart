@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:aureus/aureus.dart';
 
 /// @nodoc
@@ -8,6 +10,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TOOL NEXT STEPS VIEW ----------*/
+/// A view that displays next steps from a [CoreTool]
 
 class ToolNextStepsView extends StatefulWidget {
   /// The tool that contains the data to be used in this template.

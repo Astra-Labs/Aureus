@@ -4,22 +4,17 @@ part of aureus_safety_plan;
 
 /// A class that metadata about what the different safety options mean.
 class SafetyOptionDetails {
+  /// The name of an option detail
   final String name;
 
-  /// The name of an option detail
-  /// ---
+  /// The description of what the option DOES
   final String description;
 
-  /// The description of what the option DOES
-  /// ---
+  /// The icon to describe a safety option
   final IconData icon;
 
-  /// The icon to describe a safety option
-  /// ---
-  final String functionalityChange;
-
   /// The description of how it changes an application's functionality
-  /// ---
+  final String functionalityChange;
 
   const SafetyOptionDetails(
       {required this.name,
@@ -28,6 +23,7 @@ class SafetyOptionDetails {
       required this.functionalityChange});
 }
 
+/// A class that contains all of the actual metadata.
 class SafetyOptionDetailMetadata {
   const SafetyOptionDetailMetadata();
 

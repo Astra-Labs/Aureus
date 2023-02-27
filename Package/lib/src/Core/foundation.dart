@@ -66,7 +66,9 @@ class AureusBranding {
 }
 
 /*--------- AUREUS STYLIZATION ----------*/
-/// The class that changes our colorization library
+/// A class to hold custom branding and colors for the UI items generated
+/// by Aureus. Each 'mode' has a different stylization, so you'll create
+/// one for light mode and one for dark mode.
 /* ----------------------------------------- */
 class AureusStylization {
   /// A gradient that has colors for high contrast against your current mode. (e.g: A light gradient for dark mode, a dark gradient for light mode.).

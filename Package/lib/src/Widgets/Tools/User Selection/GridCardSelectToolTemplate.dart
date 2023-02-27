@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- GRID CARD SELECT TOOL ----------*/
+/// A tool template for selecting a grid card.
 
 class GridCardSelectToolTemplate extends ToolCardTemplate {
   final List<String> cardItems;

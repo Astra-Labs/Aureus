@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SPLASH SCREEN VIEW ----------*/
+/// A templatized splash screen view. This is the first view your users should
+/// see, and where you should run any downloading / onboarding logic checks.
 
 class SplashScreenView extends StatefulWidget {
   /// A function that the splash screen should run after the animation has completed.

@@ -8,17 +8,17 @@ class AureusComponentsView extends NavBarComponent {
           ControllerTabObject(
               tabTitle: 'Components',
               tabController: ComponentsSubview(),
-              accessibilityHint: 'Changes selected tab to "For You" page.',
+              accessibilityHint: 'Changes selected tab to "Components" page.',
               tabIcon: Assets.paperplane),
           ControllerTabObject(
               tabTitle: 'Elements',
               tabController: ElementsSubview(),
-              accessibilityHint: 'Changes selected tab to "Explore" page.',
+              accessibilityHint: 'Changes selected tab to "Elements" page.',
               tabIcon: Assets.paperplane),
           ControllerTabObject(
               tabTitle: 'Views',
               tabController: ViewsSubview(),
-              accessibilityHint: 'Changes selected tab to "Launch" page.',
+              accessibilityHint: 'Changes selected tab to "Views" page.',
               tabIcon: Assets.paperplane),
         ]);
 }

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DIVIDING HEADER ELEMENT ----------*/
+/// A view header that has a header and a subheader.
 
 class DividingHeaderElement extends StatelessWidget {
   /// The main header of the element

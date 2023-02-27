@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TRIINPUT TOOL ----------*/
+/// A tool template for showing 3 prompts and text fields.
 
 class TriInputToolTemplate extends ToolCardTemplate {
   final String textPrompt1;

@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- ONBOARDING LANDING VIEW ----------*/
+/// A view that should be where the user 'lands' if they haven't been onboarded.
+/// This landing view gets autopopulated with the data from [AureusNavigationTree].
 
 class OnboardingLandingView extends StatefulWidget {
   const OnboardingLandingView();
@@ -93,6 +95,9 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
         ]);
 
     return ContainerView(
-        decorationVariant: decorationPriority.important, builder: viewLayout);
+      decorationVariant: decorationPriority.important,
+      builder: viewLayout,
+      showQuickActionBar: false,
+    );
   }
 }

@@ -86,7 +86,6 @@ class _BannerNotificationComponentState
     setState(() {
       // Reverses the animation controller and runs on launch VoidCallback
       animationController.reverse();
-      //dispose();
     });
   }
 
@@ -120,20 +119,19 @@ class _BannerNotificationComponentState
     );
 
     var bannerNotificationContent = Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(15.0),
           child: bannerNotificationSubContent,
         ),
-        const SizedBox(height: 2.0),
         const DividerElement(),
-        const SizedBox(height: 3.0),
+        const SizedBox(height: 15.0),
         Padding(
-          padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
           child: slidingProgressBar,
         ),
-        const SizedBox(height: 3.0),
-        const Spacer(),
+        const SizedBox(height: 15.0),
       ],
     );
 
@@ -141,9 +139,7 @@ class _BannerNotificationComponentState
       child: Container(
           constraints: BoxConstraints(
               minWidth: size.layoutItemWidth(1, screenSize),
-              maxWidth: size.layoutItemWidth(1, screenSize),
-              minHeight: size.layoutItemHeight(6, screenSize),
-              maxHeight: size.layoutItemHeight(6, screenSize)),
+              maxWidth: size.layoutItemWidth(1, screenSize)),
           decoration: CardBackingDecoration(
                   decorationVariant: decorationPriority.standard)
               .buildBacking(),

@@ -11,6 +11,7 @@ import 'package:video_player/video_player.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- VIDEO INPUT TOOL ----------*/
+/// A Tool template that allows the user to record a video in response to a prompt.
 
 class VideoInputToolTemplate extends ToolCardTemplate {
   VideoInputToolTemplate({required templatePrompt, required badgeIcon})

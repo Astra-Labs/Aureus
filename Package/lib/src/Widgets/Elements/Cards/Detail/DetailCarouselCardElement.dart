@@ -8,12 +8,14 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- DETAIL CAROUSEL CARD ----------*/
+/// A small card with a label and an icon, meant to be used in a
+/// [DetailCardCarouselComponent]
 
 class DetailCarouselCardElement extends StatelessWidget {
   /// The text for the main header of the card.
   final String cardLabel;
 
-  ///
+  /// An icon that describes the card.
   final IconData cardIcon;
 
   const DetailCarouselCardElement(

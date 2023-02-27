@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 /// {@category Objects}
 /// {@image <image alt='' src=''>}
 
+/// A set of objects that makes a 'tool'. Within Astra, we use this to develop
+/// user flows for collecting incident log information, to build mental health
+/// exercises, or to add a contact. A CoreTool can be any sort of flow or resource
+/// for the end user.
 class CoreTool {
   /// The name of your tool
   final String toolName;
@@ -101,17 +105,6 @@ class ToolNavigationContainer {
       {required this.details, required this.nextSteps});
 }
 
-/* ------------------ Tool Navigation Page -------------------- */
-/*
-
-*/
-
-class ToolNavigationPage {
-  final CoreTool parentTool;
-  final ContainerWrapperElement pageBody;
-  const ToolNavigationPage({required this.parentTool, required this.pageBody});
-}
-
 /// An observer pattern that the ToolTemplateCardCarouselView
 /// uses to receive instructions from the ToolTemplateCards on moving
 /// forward / going backward, depending on the interaction that the
@@ -163,6 +156,7 @@ mixin AureusToolTemplateObserver {
 
 var toolTemplateMaster = AureusToolTemplateMaster();
 /* ------------------ Tool Card Template -------------------- */
+/// A base class for all Tool Card Templates to inherit from.
 
 class ToolCardTemplate {
   /// The string describing what to input into a tool

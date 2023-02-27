@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aureus/aureus.dart';
 
 /// @nodoc
@@ -70,7 +72,7 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
               decorationVariant: decorationPriority.important,
               buttonTitle: 'Exit now.',
               buttonHint: 'Closes ',
-              buttonAction: () => {print('Exit for user!')})
+              buttonAction: () => {exit(1)})
         ]);
 
     var exitBarContainer = Container(

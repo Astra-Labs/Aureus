@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- SENSORY MAP TOOL ----------*/
+/// A Tool template that allows the user to mark a sensation in their body in response to a prompt.
 
 class SensoryMapToolTemplate extends ToolCardTemplate {
   SensoryMapToolTemplate({required templatePrompt, required badgeIcon})

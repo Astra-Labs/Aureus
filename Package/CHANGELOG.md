@@ -1,10 +1,15 @@
+## 0.0.2 
+- Updated license from Hippocratic to the updated license
+
 ## 0.0.1
 Minor: 
 * Adding flutter lint to clean up some code
 * Changes & updates throughout constructors to make things easier for developers
 * Refactored TimerElement to have timer functionality. 
+* Refactored entire codebase for read and usability
 
 Added the following items
+- Dart doc support
 - Tabbing bars from test app.
 - Completion Circle Progress Indicator Element 
 - Linear Progress Indicator Element
@@ -19,6 +24,8 @@ Added the following items
 - Tool Navigation Card Carousel View
 - Tool Next Steps 
 - Tool Summary
+- CoreTools
+- And too many to list probably
 
 Major:
 

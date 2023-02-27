@@ -3,6 +3,7 @@ library AureusTestingApp;
 // IMPORTS <- (owo)
 import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // EXPORTS (owo) ->
@@ -22,10 +23,10 @@ part 'src/Core/UI Components/Components/ComponentsSubView.dart';
 part 'src/Core/UI Components/UIComponentsView.dart';
 
 //  ------------------------- INTERACTIONS
-part 'src/Core/Interactions/InteractionsList.dart';
+part 'src/Core/Interactions/Interactions/InteractionsList.dart';
 part 'src/Core/Interactions/InteractionsView.dart';
-part 'src/Core/Interactions/SensationActionsList.dart';
-part 'src/Core/Interactions/ContainerActionsList.dart';
+part 'src/Core/Interactions/Sensations/SensationActionsList.dart';
+part 'src/Core/Interactions/Actions/ContainerActionsList.dart';
 
 //  ------------------------- DATA DETAIL
 part 'src/Core/Data Detail/DataDetailList.dart';
