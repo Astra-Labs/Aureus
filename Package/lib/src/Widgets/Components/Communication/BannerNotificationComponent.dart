@@ -86,7 +86,6 @@ class _BannerNotificationComponentState
     setState(() {
       // Reverses the animation controller and runs on launch VoidCallback
       animationController.reverse();
-      //dispose();
     });
   }
 
@@ -120,6 +119,7 @@ class _BannerNotificationComponentState
     );
 
     var bannerNotificationContent = Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
           padding: const EdgeInsets.all(15.0),

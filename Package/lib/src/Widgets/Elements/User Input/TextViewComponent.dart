@@ -66,31 +66,33 @@ class _TextViewComponentState extends State<TextViewComponent> {
         hintText: widget.hintText);
 
     var textFormField = TextFormField(
-        enabled: widget.isEnabled,
-        style: body2().copyWith(
-            color: coloration.decorationColor(
-                decorationVariant: decorationPriority.standard)),
-        controller: widget.textFieldController,
-        decoration: inputDecoration,
-        autocorrect: false,
-        textAlign: TextAlign.left,
-        keyboardType: TextInputType.text);
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      enabled: widget.isEnabled,
+      style: body2().copyWith(
+          color: coloration.decorationColor(
+              decorationVariant: decorationPriority.standard)),
+      controller: widget.textFieldController,
+      decoration: inputDecoration,
+      autocorrect: false,
+      textAlign: TextAlign.left,
+    );
 
-    var textView = FloatingContainerElement(
-      child: Container(
-        constraints: BoxConstraints(
-          minHeight: size.layoutItemHeight(3, screenSize),
-          maxWidth: size.layoutItemWidth(1, screenSize),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TabSubheaderElement(title: widget.prompt),
-            const SizedBox(height: 10),
-            textFormField,
-          ],
-        ),
+    var textView = Container(
+      constraints: BoxConstraints(
+        minHeight: size.layoutItemHeight(3, screenSize),
+        maxWidth: size.layoutItemWidth(1, screenSize),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TabSubheaderElement(title: widget.prompt),
+          const SizedBox(height: 10),
+          FloatingContainerElement(
+            child: textFormField,
+          ),
+        ],
       ),
     );
 

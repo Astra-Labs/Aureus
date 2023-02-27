@@ -76,7 +76,7 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
     );
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.fullScreen,
+      containerVariant: wrapperVariants.stackScroll,
       children: [
         ArticleViewElement(
             title: widget.articleTitle,

@@ -12,17 +12,40 @@ class _AureusInteractionsViewState extends State<AureusInteractionsView> {
 
   @override
   Widget build(BuildContext context) {
-    var actionsRow = [];
-    var interationsRow = [];
+    Widget returnCard(String title, VoidCallback action) {
+      return StandardCardElement(
+        decorationVariant: decorationPriority.standard,
+        cardLabel: "",
+      );
+    }
+
+    var actionsRow = [
+      returnCard("Show Alert Controller", () {}),
+      returnCard("Show Content Warning", () {}),
+      returnCard("Show Alert Notification Request", () {}),
+      returnCard("Show Bottom Action Sheet", () {}),
+    ];
+
+    var interationsRow = [
+      returnCard("Confirmation", () {}),
+      returnCard("Praise", () {}),
+      returnCard("Error", () {}),
+      returnCard("attention", () {}),
+      returnCard("notification", () {}),
+      returnCard("urgent", () {}),
+      returnCard("enable", () {}),
+      returnCard("disable", () {}),
+      returnCard("swipe", () {}),
+      returnCard("press", () {}),
+      returnCard("hold", () {}),
+    ];
+
     var backingsRow = [];
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,
         children: [
-          ArticleViewElement(
-              title: "Interactions",
-              subheader: "Meet the magic behind Aureus' sensations helper",
-              body: "")
+          HeadingOneText("Interactions", decorationPriority.standard),
         ]);
 
     return ContainerView(

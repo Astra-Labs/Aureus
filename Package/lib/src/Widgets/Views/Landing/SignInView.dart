@@ -86,18 +86,20 @@ class _SignInViewState extends State<SignInView> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.min,
       children: [
+        const Spacer(),
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: "Sign Up",
             buttonHint: 'Takes you to the sign up view to create an account.',
             buttonAction: widget.onSignup),
-        const Spacer(),
+        const SizedBox(width: 30),
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: "Reset Password",
             buttonHint:
                 'Takes you to the reset password view to recover your password.',
             buttonAction: widget.onResetInformation),
+        const Spacer(),
       ],
     );
 

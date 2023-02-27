@@ -35,26 +35,10 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
 
   @override
   Widget build(BuildContext context) {
-    List<TabObject> tabItems = [];
-
     _selectedIndex = 0;
     var screenSize = size.logicalScreenSize();
 
-    for (var element in widget.onboardingDetails) {
-      tabItems.add(TabObject.forIconTabbing(
-          tabIcon: element.detailCategoryIcon,
-          tabPriority:
-              widget.onboardingDetails.indexOf(element) == _selectedIndex
-                  ? decorationPriority.important
-                  : decorationPriority.standard,
-          onTabSelection: () =>
-              {_onItemTapped(widget.onboardingDetails.indexOf(element))},
-          accessibilityHint: element.detailTitle));
-    }
-
     var currentItem = widget.onboardingDetails[_selectedIndex];
-
-    Widget iconTabBar = IconTabbingBarComponent(tabItems: tabItems);
 
     Widget mobileInformationCard = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,8 +94,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
                 constraints: BoxConstraints(
-                    minHeight: size.layoutItemHeight(3, screenSize),
-                    minWidth: size.layoutItemWidth(2, screenSize)),
+                  maxWidth: size.layoutItemWidth(2, screenSize) * 0.7,
+                ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     border: palette.universalBorder(),
@@ -124,20 +108,17 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               constraints: BoxConstraints(
-                  minHeight: size.layoutItemHeight(3, screenSize),
-                  maxWidth: size.layoutItemWidth(2, screenSize) * 0.8),
+                maxWidth: size.layoutItemWidth(2, screenSize),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Spacer(),
-                  Flexible(
-                      child: TagOneText(currentItem.detailTitle,
-                          decorationPriority.standard)),
-                  Flexible(
-                    child: BodyOneText(
-                        currentItem.detailBody, decorationPriority.standard),
-                  ),
+                  TagOneText(
+                      currentItem.detailTitle, decorationPriority.standard),
+                  BodyOneText(
+                      currentItem.detailBody, decorationPriority.standard),
                   const Spacer(),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -150,8 +131,9 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                             : decorationPriority.important,
                         buttonIcon: Assets.back,
                         buttonHint: 'Previous Item',
-                        buttonAction: () =>
-                            {_onItemTapped(_selectedIndex -= 1)},
+                        buttonAction: () => {
+                          _onItemTapped(_selectedIndex -= 1),
+                        },
                         buttonPriority: buttonSize.primary,
                       ),
                       IconButtonElement(
@@ -161,8 +143,9 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                             : decorationPriority.important,
                         buttonIcon: Assets.next,
                         buttonHint: 'Next Item',
-                        buttonAction: () =>
-                            {_onItemTapped(_selectedIndex += 1)},
+                        buttonAction: () => {
+                          _onItemTapped(_selectedIndex += 1),
+                        },
                         buttonPriority: buttonSize.primary,
                       )
                     ],
@@ -177,15 +160,15 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
       width: size.layoutItemWidth(1, screenSize),
       height: size.layoutItemHeight(1, screenSize) * 0.7,
       child: FloatingContainerElement(
-          child: Container(
-              padding:
-                  EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
-              decoration: CardBackingDecoration(
-                      decorationVariant: decorationPriority.inactive)
-                  .buildBacking(),
-              child: size.isDesktopDisplay()
-                  ? webInformationCard
-                  : mobileInformationCard)),
+        child: Container(
+            padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
+            decoration: CardBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
+            child: size.isDesktopDisplay()
+                ? webInformationCard
+                : mobileInformationCard),
+      ),
     );
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
@@ -202,7 +185,6 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
             )),
         HeadingOneText(
             "Meet ${resourceValues.name}.", decorationPriority.standard),
-        iconTabBar,
         informationCard,
       ],
     );

@@ -43,23 +43,16 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
       ));
     }
 
-    var sizedBox = SizedBox(
-        width: size.layoutItemWidth(1, screenSize),
-        height: size.layoutItemHeight(1, screenSize),
-        child: SingleChildScrollView(
-            child: (ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: eligibleOptionCards))));
-
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.fullScreen,
+      containerVariant: wrapperVariants.stackScroll,
       children: [
         PageHeaderElement.withExit(
             pageTitle: 'Safety Plan Settings',
             onPageExit: () => {Navigator.pop(context)}),
         const Spacer(),
-        sizedBox,
+        Column(
+          children: eligibleOptionCards,
+        ),
       ],
     );
 

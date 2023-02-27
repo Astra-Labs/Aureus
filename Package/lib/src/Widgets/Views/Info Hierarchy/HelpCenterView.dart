@@ -51,14 +51,14 @@ class _HelpCenterViewState extends State<HelpCenterView> {
           child: GridCardElement(
               decorationVariant: decorationPriority.standard,
               cardLabel: element.articleTitle,
-              gridSize: Size(size.layoutItemWidth(1, screenSize) * 0.9,
+              gridSize: Size(size.layoutItemWidth(1, screenSize) * 0.5,
                   size.layoutItemHeight(1, screenSize))),
         ));
       }
     });
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.fullScreen,
+      containerVariant: wrapperVariants.stackScroll,
       children: [
         Align(
           alignment: Alignment.topLeft,

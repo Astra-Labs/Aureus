@@ -308,7 +308,7 @@ class _ContainerViewState extends State<ContainerView>
                   widget.showQuickActionBar == true)
               ? Positioned(
                   left: 0.0 * (size.logicalWidth()) /*position.dx*/,
-                  top: 0.5 * (size.logicalHeight()) /*position.dy*/,
+                  top: 0.75 * (size.logicalHeight()) /*position.dy*/,
                   child: actionBar,
                 )
               : const SizedBox(width: 1),

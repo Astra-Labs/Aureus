@@ -5,22 +5,21 @@ void main() {
       fontFamily: 'Exo',
       lightModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [
-            Color.fromRGBO(115, 88, 101, 1.0),
-            Color.fromRGBO(48, 56, 76, 1.0),
+            palette.black(),
+            Colors.black87,
           ]),
-          accentColor: palette.carbon(),
+          accentColor: palette.black(),
           primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
           secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
       darkModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [
             Color.fromRGBO(211, 209, 223, 1.0),
-            Color.fromRGBO(211, 202, 206, 1.0),
+            palette.white(),
           ]),
-          accentColor: Color.fromRGBO(216, 223, 240, 1.0),
+          accentColor: palette.white(),
           primaryImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
-          secondaryImage: Image.network(
-              'https://images.unsplash.com/photo-1515140275546-0440fea498d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'),
+          secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
 
   var quickActionItems2 = [
@@ -244,7 +243,7 @@ class LandingPage extends StatelessWidget {
       lightModeLandscapeBacking: Image.network(
           'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'),
       darkModeLandscapeBacking: Image.network(
-          'https://images.unsplash.com/photo-1515140275546-0440fea498d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'),
+          'https://images.unsplash.com/photo-1567971952425-873b4b46e01f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80'),
       lightModeUIOverlay:
           Image(image: AssetImage('assets/Light Mode - Preview.png')),
       darkModeUIOverlay:

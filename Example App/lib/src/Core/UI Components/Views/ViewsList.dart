@@ -80,10 +80,10 @@ Map<String, List<viewMetaData>> aureusViewsCategory = {
       view: views.helpCenterView,
     ),
   ],
-  "Misc": [
+  /*"Misc": [
     viewMetaData(
         viewTitle: "Poetry Gradient View", view: views.poetryGradientView),
-  ]
+  ]*/
 };
 
 class viewMetaData {
