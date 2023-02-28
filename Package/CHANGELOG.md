@@ -1,3 +1,9 @@
+## 0.0.3 
+- Audited FloatingContainerElements to be more consistent 
+- Refactored more poorly written UI elements for better performance / simplicity 
+- Renamed QuickActionBar to EmergencyAccessBar
+- Removed Draggable from EmergencyAccessBar
+
 ## 0.0.2 
 - Updated license from Hippocratic to the updated license
 

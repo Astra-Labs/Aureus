@@ -178,7 +178,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                             height: size.heightOf(weight: sizingWeight.w0)),
                         SizedBox(
                             height: screenHeight *
-                                (0.15 * widget.actionButtons.length),
+                                (0.1 * widget.actionButtons.length),
                             child: buttonItems),
                         const SizedBox(height: 10.0),
                       ]),
