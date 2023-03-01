@@ -25,6 +25,30 @@ class VideoInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
+    void segueToInput(BuildContext context) => {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => _VideoRecordInputCard(
+                    toolPrompt: templatePrompt, cardIcon: badgeIcon),
+              )),
+        };
+
+    var builder2 = Builder(
+      builder: (context) => StandardIconButtonElement(
+          decorationVariant: decorationPriority.important,
+          buttonIcon: Assets.play,
+          buttonTitle: "Take a video",
+          buttonHint: "Takes you to the camera to film a video.",
+          buttonAction: () => {
+                const DataConsent().consentHandler(() {
+                  const DataConsent().consentHandler(() {
+                    segueToInput(context);
+                  }, dataAccess.microphone);
+                }, dataAccess.camera),
+              }),
+    );
+
     return BaseCardToolTemplate(
         isActive: true,
         cardIcon: badgeIcon,
@@ -32,22 +56,7 @@ class VideoInputToolTemplate extends ToolCardTemplate {
         toolChildren: [
           const DividerElement(),
           const SizedBox(height: 30.0),
-          Builder(
-            builder: (context) => StandardIconButtonElement(
-                decorationVariant: decorationPriority.important,
-                buttonIcon: Assets.play,
-                buttonTitle: "Take a video",
-                buttonHint: "Takes you to the camera.",
-                buttonAction: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => _VideoRecordInputCard(
-                                toolPrompt: templatePrompt,
-                                cardIcon: badgeIcon),
-                          )),
-                    }),
-          )
+          builder2
         ]);
   }
 

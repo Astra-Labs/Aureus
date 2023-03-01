@@ -72,6 +72,7 @@ class StandardTextFieldComponent extends StatelessWidget {
 
     var textFormField = TextFormField(
         enabled: isEnabled,
+        obscureText: isSecureEntry ?? false,
         style: body2().copyWith(
             color: coloration.decorationColor(
                 decorationVariant: decorationVariant)),

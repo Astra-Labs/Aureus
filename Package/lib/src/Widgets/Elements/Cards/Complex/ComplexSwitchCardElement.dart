@@ -51,20 +51,20 @@ class ComplexSwitchCardElement extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          const SizedBox(height: 20),
           complexSwitchTopContent,
-          const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+          const SizedBox(height: 20),
           HeadingFourText(cardLabel, decorationPriority.standard),
-          BodyOneText(cardBody, decorationPriority.standard)
+          const SizedBox(height: 20),
+          BodyOneText(cardBody, decorationPriority.standard),
+          const SizedBox(height: 20),
         ]);
 
     var complexSwitchContainer = FloatingContainerElement(
         child: Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
       child: Container(
-          constraints: BoxConstraints(
-              minWidth: size.layoutItemWidth(1, screenSize),
-              maxWidth: size.layoutItemWidth(1, screenSize),
-              maxHeight: size.layoutItemHeight(3, screenSize)),
+          width: size.layoutItemWidth(1, screenSize),
           decoration: CardBackingDecoration(
                   decorationVariant: decorationPriority.inactive)
               .buildBacking(),

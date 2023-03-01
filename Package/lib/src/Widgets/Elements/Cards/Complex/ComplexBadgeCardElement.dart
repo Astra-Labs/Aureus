@@ -51,10 +51,11 @@ class ComplexBadgeCardElement extends StatelessWidget {
     var complexBadgeContent = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       children: [
+        const SizedBox(height: 20),
         complexBadgeCardTopContent,
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         BodyOneText(cardBody, decorationVariant),
         DetailCardCarouselComponent(cardDetailCarousel: cardDetailCarousel)
       ],
@@ -62,12 +63,10 @@ class ComplexBadgeCardElement extends StatelessWidget {
 
     var complexBadgeContainer = FloatingContainerElement(
         child: Container(
+            width: size.layoutItemWidth(1, screenSize),
             decoration:
                 CardBackingDecoration(decorationVariant: decorationVariant)
                     .buildBacking(),
-            constraints: BoxConstraints(
-                maxWidth: size.layoutItemWidth(1, screenSize),
-                maxHeight: size.layoutItemHeight(3, screenSize)),
             clipBehavior: Clip.antiAlias,
             child: Padding(
                 padding: const EdgeInsets.all(13.0),
