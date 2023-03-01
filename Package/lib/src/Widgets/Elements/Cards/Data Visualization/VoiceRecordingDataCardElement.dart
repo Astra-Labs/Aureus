@@ -10,13 +10,13 @@ import 'package:flutter/material.dart';
 /*--------- VOICE RECORDING DATA CARD ----------*/
 
 class VoiceRecordingDataCardElement extends DataDetailCard {
-  VoiceRecordingDataCardElement({required dataLabel})
-      : super(dataLabel: dataLabel);
-
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes.
-  var dataMap = [];
+  VoiceRecordingDataCardElement({
+    required dataLabel,
+    required onFinishEditing,
+  }) : super(
+          dataLabel: dataLabel,
+          onFinishEditing: onFinishEditing,
+        );
 
   @override
   Widget returnReadDataCard() {

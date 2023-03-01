@@ -12,8 +12,10 @@ import 'package:flutter/material.dart';
 class TextFieldDataCardElement extends DataDetailCard {
   final TextEditingController textEditingController;
   TextFieldDataCardElement(
-      {required dataLabel, required this.textEditingController})
-      : super(dataLabel: dataLabel);
+      {required dataLabel,
+      required this.textEditingController,
+      required onFinishEditing})
+      : super(dataLabel: dataLabel, onFinishEditing: onFinishEditing);
 
   var isTextEnabled = false;
 

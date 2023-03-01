@@ -29,6 +29,10 @@ class TriInputToolTemplate extends ToolCardTemplate {
   // and read in SummaryCard.
   var dataMap = ['yee haw my beans', 'yee haw my toast', 'yee haw my beets'];
 
+  String? answer1;
+  String? answer2;
+  String? answer3;
+
   @override
   Widget returnActiveToolCard() {
     var textField1Controller = TextEditingController();

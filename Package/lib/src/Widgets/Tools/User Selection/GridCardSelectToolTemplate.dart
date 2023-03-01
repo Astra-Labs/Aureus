@@ -21,7 +21,7 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
   // and write what a user entered into the prompt card
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
-  var dataMap = [];
+  List<String> selectedItems = [];
 
   @override
   Widget returnActiveToolCard() {
@@ -33,9 +33,13 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
       gridItems.add(InkWell(
           onTap: () => {
                 if (cardItem.isCardSelected == true)
-                  {dataMap.add(element)}
+                  {
+                    selectedItems.add(element),
+                  }
                 else if (cardItem.isCardSelected == false)
-                  {dataMap.remove(element)}
+                  {
+                    selectedItems.remove(element),
+                  }
               },
           child: cardItem));
     }
@@ -51,7 +55,7 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
               buttonAction: () => {onNextCard()}),
           const Spacer(),
           SmolButtonElement(
-              decorationVariant: dataMap.isEmpty
+              decorationVariant: gridItems.isEmpty
                   ? decorationPriority.inactive
                   : decorationPriority.important,
               buttonTitle: 'Next',
@@ -82,7 +86,7 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    if (dataMap.isEmpty == true) {
+    if (selectedItems.isEmpty == true) {
       throw ('You cannot show a template summary of a tool template without populating dataMap.');
     }
 

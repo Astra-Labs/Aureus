@@ -27,7 +27,8 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
 
-  var dataMap = [];
+  String? answer1;
+  String? answer2;
 
   @override
   Widget returnActiveToolCard() {
@@ -165,8 +166,8 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                     buttonTitle: 'Next',
                     buttonHint: 'Goes to the next card.',
                     buttonAction: () => {
-                          dataMap.insert(0, column1Controller.text),
-                          dataMap.insert(1, column2Controller.text),
+                          answer1 = column1Controller.text,
+                          answer2 = column2Controller.text,
                           onNextCard()
                         }),
               ]),
@@ -192,8 +193,7 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                 children: [
                   TagTwoText(prompt1, decorationPriority.standard),
                   const SizedBox(height: 5.0),
-                  BodyOneText(dataMap.isNotEmpty ? dataMap[0] : '',
-                      decorationPriority.standard)
+                  BodyOneText(answer1 ?? '', decorationPriority.standard)
                 ]),
           )),
           const SizedBox(width: 15.0),
@@ -210,8 +210,7 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
                 children: [
                   TagTwoText(prompt2, decorationPriority.standard),
                   const SizedBox(height: 5.0),
-                  BodyOneText(dataMap.isNotEmpty ? dataMap[1] : '',
-                      decorationPriority.standard)
+                  BodyOneText(answer2 ?? '', decorationPriority.standard)
                 ]),
           ))
         ],
@@ -227,6 +226,6 @@ class DualColumnInputToolTemplate extends ToolCardTemplate {
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: dataMap.isNotEmpty ? filledChildren : skippedChildren);
+        toolChildren: answer1 != null ? filledChildren : skippedChildren);
   }
 }

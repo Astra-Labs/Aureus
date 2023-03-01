@@ -10,12 +10,13 @@ import 'package:flutter/material.dart';
 /*--------- ADDRESS DATA CARD ----------*/
 
 class AddressDataCardElement extends DataDetailCard {
-  AddressDataCardElement({required dataLabel}) : super(dataLabel: dataLabel);
-
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes.
-  var dataMap = [];
+  AddressDataCardElement({
+    required dataLabel,
+    required onFinishEditing,
+  }) : super(
+          dataLabel: dataLabel,
+          onFinishEditing: onFinishEditing,
+        );
 
   var isTextEnabled = true;
 

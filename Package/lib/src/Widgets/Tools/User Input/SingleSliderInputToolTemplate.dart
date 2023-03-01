@@ -14,11 +14,7 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
   SingleSliderToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes. Write to dataMap in ActiveCard,
-  // and read in SummaryCard.
-  var dataMap = [5.0];
+  double? sliderValue;
 
   @override
   Widget returnActiveToolCard() {
@@ -59,14 +55,14 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
                     buttonTitle: 'Next',
                     buttonHint: 'Goes to the next card.',
                     buttonAction: () =>
-                        {dataMap.insert(0, slider.slideValue), onNextCard()}),
+                        {sliderValue = slider.slideValue, onNextCard()}),
               ])
         ]);
   }
 
   @override
   Widget returnTemplateSummary() {
-    if (dataMap.isEmpty == true) {
+    if (sliderValue == null) {
       throw ('You cannot show a template summary of a tool template without populating dataMap.');
     }
 
@@ -75,8 +71,7 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText(
-              'Slider: ${dataMap[0] / 10} / 10', decorationPriority.inactive)
+          BodyOneText('Slider: $sliderValue / 10', decorationPriority.inactive)
         ]);
   }
 }

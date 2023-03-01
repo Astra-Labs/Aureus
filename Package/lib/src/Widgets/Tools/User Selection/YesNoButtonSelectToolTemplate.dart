@@ -19,7 +19,7 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
   // and write what a user entered into the prompt card
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
-  var dataMap = [false];
+  bool? userChoice;
 
   @override
   Widget returnActiveToolCard() {
@@ -36,7 +36,10 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
                 decorationVariant: decorationPriority.important,
                 buttonIcon: Assets.no,
                 buttonHint: 'Responds no to the prompt.',
-                buttonAction: () => {dataMap.insert(0, false), onNextCard()},
+                buttonAction: () => {
+                  userChoice == false,
+                  onNextCard(),
+                },
                 buttonPriority: buttonSize.secondary,
               ),
               const Spacer(),
@@ -44,7 +47,10 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
                 decorationVariant: decorationPriority.important,
                 buttonIcon: Assets.yes,
                 buttonHint: 'Responds yes to the prompt.',
-                buttonAction: () => {dataMap.insert(0, true), onNextCard()},
+                buttonAction: () => {
+                  userChoice == true,
+                  onNextCard(),
+                },
                 buttonPriority: buttonSize.secondary,
               ),
             ],
@@ -56,7 +62,7 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
   Widget returnTemplateSummary() {
     //Returns a badge with yes or no icon depending on answer in user map.
 
-    if (dataMap.isEmpty == true) {
+    if (userChoice == null) {
       throw ('You cannot show a template summary of a tool template without populating dataMap.');
     }
 
@@ -68,7 +74,7 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
           Align(
             alignment: Alignment.centerRight,
             child: IconBadge(
-                badgeIcon: dataMap[0] == true ? Assets.yes : Assets.no,
+                badgeIcon: userChoice == true ? Assets.yes : Assets.no,
                 badgePriority: decorationPriority.important),
           )
         ]);

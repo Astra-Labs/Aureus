@@ -41,12 +41,13 @@ class ContainerView extends StatefulWidget {
   /// Whether or not the view should show a quick action bar
   final bool? showQuickActionBar;
 
-  const ContainerView(
-      {required this.decorationVariant,
-      required this.builder,
-      this.takesFullWidth = false,
-      this.hasBackgroundImage = true,
-      this.showQuickActionBar = true});
+  const ContainerView({
+    required this.decorationVariant,
+    required this.builder,
+    this.takesFullWidth = false,
+    this.hasBackgroundImage = true,
+    this.showQuickActionBar = true,
+  });
 
   @override
   _ContainerViewState createState() => _ContainerViewState();

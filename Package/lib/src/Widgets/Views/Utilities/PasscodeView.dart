@@ -71,11 +71,25 @@ class _PasscodeViewState extends State<PasscodeView> {
   }
 
   Widget createNumberButton(int number) {
+    double responsiveNumButtonSize() {
+      double responsiveSize = 0;
+      var width = size.logicalWidth();
+
+      if (width < 330 || width > 1000) {
+        // Desktop & mobile sizing.
+        responsiveSize = 80;
+      } else if (width > 600) {
+        responsiveSize = 100;
+      }
+
+      return responsiveSize;
+    }
+
     var numberButton = Padding(
       padding: EdgeInsets.all(size.responsiveSize(17.0)),
       child: Container(
-        width: size.responsiveSize(80.0),
-        height: size.responsiveSize(80.0),
+        width: responsiveNumButtonSize(),
+        height: responsiveNumButtonSize(),
         decoration: ButtonBackingDecoration(
                 variant: buttonDecorationVariants.circle,
                 decorationVariant: decorationPriority.standard)
@@ -171,8 +185,6 @@ class _PasscodeViewState extends State<PasscodeView> {
           ],
         ),
         Center(child: createNumberButton(0)),
-        const SizedBox(height: 40.0),
-        row,
       ],
     );
 
@@ -184,7 +196,11 @@ class _PasscodeViewState extends State<PasscodeView> {
         const SizedBox(height: 40.0),
         entryFieldBox,
         const SizedBox(height: 40.0),
-        column
+        const Spacer(),
+        column,
+        const Spacer(),
+        const SizedBox(height: 40.0),
+        row,
       ],
       containerVariant: wrapperVariants.fullScreen,
       takesFullWidth: false,

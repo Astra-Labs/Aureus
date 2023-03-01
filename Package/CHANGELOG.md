@@ -1,3 +1,7 @@
+## 0.0.4
+- Added Consent Handlers to internal components to fix a crashing bug
+
+
 ## 0.0.3 
 - Audited FloatingContainerElements to be more consistent 
 - Refactored more poorly written UI elements for better performance / simplicity 

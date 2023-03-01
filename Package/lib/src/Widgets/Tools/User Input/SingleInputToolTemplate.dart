@@ -14,11 +14,7 @@ class SingleInputToolTemplate extends ToolCardTemplate {
   SingleInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes. Write to dataMap in ActiveCard,
-  // and read in SummaryCard.
-  var dataMap = [];
+  String? answer;
 
   @override
   Widget returnActiveToolCard() {
@@ -50,8 +46,10 @@ class SingleInputToolTemplate extends ToolCardTemplate {
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
                     buttonHint: 'Goes to the next card.',
-                    buttonAction: () =>
-                        {dataMap.insert(0, cardController.text), onNextCard()}),
+                    buttonAction: () => {
+                          answer = cardController.text,
+                          onNextCard(),
+                        }),
               ]),
         ]);
   }
@@ -59,12 +57,12 @@ class SingleInputToolTemplate extends ToolCardTemplate {
   @override
   Widget returnTemplateSummary() {
     return BaseCardToolTemplate(
-        isActive: false,
-        cardIcon: badgeIcon,
-        toolPrompt: templatePrompt,
-        toolChildren: [
-          BodyOneText(dataMap.isNotEmpty ? dataMap[0] : 'Tool Skipped',
-              decorationPriority.inactive)
-        ]);
+      isActive: false,
+      cardIcon: badgeIcon,
+      toolPrompt: templatePrompt,
+      toolChildren: [
+        BodyOneText(answer ?? 'Tool Skipped', decorationPriority.inactive)
+      ],
+    );
   }
 }
