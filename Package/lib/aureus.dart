@@ -70,11 +70,12 @@ export 'src/Widgets/Elements/Cards/Grid/GridBadgeCardElement.dart';
 // These are in beta, and not for use as of right now.
 export 'src/Widgets/Elements/Cards/Data Visualization/AddressDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/BaseDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/PhotoDataCardElement.dart';
+// export 'src/Widgets/Elements/Cards/Data Visualization/PhotoDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/TextFieldDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/TextViewDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/VideoRecordingDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/VoiceRecordingDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/PromptSelectionListCardElement.dart';
+// export 'src/Widgets/Elements/Cards/Data Visualization/VideoRecordingDataCardElement.dart';
+// export 'src/Widgets/Elements/Cards/Data Visualization/VoiceRecordingDataCardElement.dart';
 
 // -------------------------- Info Hierachy
 export 'src/Widgets/Elements/Info Hierarchy/ArticleViewElement.dart';
@@ -104,6 +105,7 @@ export 'src/Widgets/Elements/User Input/SliderElement.dart';
 export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
 export 'src/Widgets/Components/Alert Controllers/ContentWarningComponent.dart';
 export 'src/Widgets/Components/Alert Controllers/BottomActionSheetComponent.dart';
+export 'src/Widgets/Components/Alert Controllers/TextFieldAlertControllerComponent.dart';
 
 // -------------------------- Buttons
 export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';

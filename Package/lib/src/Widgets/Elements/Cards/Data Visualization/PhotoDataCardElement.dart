@@ -25,7 +25,7 @@ class PhotoDataCardElement extends DataDetailCard {
   Widget returnReadDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Photo",
       detailChildren: [],
     );
   }
@@ -36,7 +36,7 @@ class PhotoDataCardElement extends DataDetailCard {
 
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Photo",
       detailChildren: [],
     );
   }

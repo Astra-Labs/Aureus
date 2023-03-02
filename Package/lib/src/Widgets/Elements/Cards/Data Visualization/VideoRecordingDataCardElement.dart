@@ -22,7 +22,7 @@ class VideoRecordingDataCardElement extends DataDetailCard {
   Widget returnReadDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Video",
       detailChildren: [],
     );
   }
@@ -31,7 +31,7 @@ class VideoRecordingDataCardElement extends DataDetailCard {
   Widget returnEditDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Video",
       detailChildren: [],
     );
   }

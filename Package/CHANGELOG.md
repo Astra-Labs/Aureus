@@ -1,6 +1,6 @@
 ## 0.0.4
 - Added Consent Handlers to internal components to fix a crashing bug
-
+- Adding number pad 
 
 ## 0.0.3 
 - Audited FloatingContainerElements to be more consistent 

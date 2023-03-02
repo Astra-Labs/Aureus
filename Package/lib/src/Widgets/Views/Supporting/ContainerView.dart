@@ -196,11 +196,38 @@ class _ContainerViewState extends State<ContainerView>
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
       hasOverlayEnabled = true;
       overlayView = Container(
+        width: size.logicalWidth(),
+        height: size.logicalHeight(),
+        alignment: Alignment.bottomCenter,
+        padding: const EdgeInsets.all(15.0),
+        child: BottomActionSheetComponent(alertData: data),
+      );
+      _controller.forward();
+    });
+  }
+
+  // Displays an alert controller over the current view.
+  @override
+  void showTextFieldAlertController(
+    AlertControllerObject data,
+    TextEditingController controller,
+    String hintText,
+  ) {
+    setState(() {
+      _offset = Tween<Offset>(
+              begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
+          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+      hasOverlayEnabled = true;
+      overlayView = Container(
           width: size.logicalWidth(),
           height: size.logicalHeight(),
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.center,
           padding: const EdgeInsets.all(15.0),
-          child: BottomActionSheetComponent(alertData: data));
+          child: TextFieldAlertControllerComponent(
+            alertData: data,
+            textFieldController: controller,
+            hintText: hintText,
+          ));
       _controller.forward();
     });
   }

@@ -22,18 +22,16 @@ class VoiceRecordingDataCardElement extends DataDetailCard {
   Widget returnReadDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Voice",
       detailChildren: [],
     );
   }
 
   @override
   Widget returnEditDataCard() {
-    //var cardController = TextEditingController();
-
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Voice",
       detailChildren: [],
     );
   }
