@@ -48,6 +48,7 @@ class _ElementsSubviewState extends State<ElementsSubview> {
       decorationVariant: decorationPriority.important,
       builder: viewBuilder,
       showQuickActionBar: false,
+      shouldManageNotifications: false,
     );
   }
 }

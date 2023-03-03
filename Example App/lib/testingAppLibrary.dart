@@ -14,19 +14,27 @@ export 'package:url_launcher/url_launcher.dart';
 // CORE -------------------------
 
 //  ------------------------- UI COMPS
-part 'src/Core/UI Components/Views/ViewsList.dart';
-part 'src/Core/UI Components/Views/ViewSubView.dart';
-part 'src/Core/UI Components/Elements/ElementsList.dart';
-part 'src/Core/UI Components/Elements/ElementsSubView.dart';
-part 'src/Core/UI Components/Components/ComponentsList.dart';
-part 'src/Core/UI Components/Components/ComponentsSubView.dart';
 part 'src/Core/UI Components/UIComponentsView.dart';
 
+part 'src/Core/UI Components/Views/ViewsList.dart';
+part 'src/Core/UI Components/Views/ViewSubView.dart';
+
+part 'src/Core/UI Components/Elements/ElementsList.dart';
+part 'src/Core/UI Components/Elements/ElementsSubView.dart';
+
+part 'src/Core/UI Components/Components/ComponentsList.dart';
+part 'src/Core/UI Components/Components/ComponentsSubView.dart';
+
 //  ------------------------- INTERACTIONS
-part 'src/Core/Interactions/Interactions/InteractionsList.dart';
 part 'src/Core/Interactions/InteractionsView.dart';
-part 'src/Core/Interactions/Sensations/SensationActionsList.dart';
+
+part 'src/Core/Interactions/Interactions/InteractionsList.dart';
+part 'src/Core/Interactions/Interactions/InteractionsSubview.dart';
+
+part 'src/Core/Interactions/Sensations/SensationsSubview.dart';
+
 part 'src/Core/Interactions/Actions/ContainerActionsList.dart';
+part 'src/Core/Interactions/Actions/ActionsSubview.dart';
 
 //  ------------------------- DATA DETAIL
 part 'src/Core/Data Detail/DataDetailList.dart';

@@ -48,6 +48,7 @@ class _ComponentsSubviewState extends State<ComponentsSubview> {
       decorationVariant: decorationPriority.important,
       builder: viewBuilder,
       showQuickActionBar: false,
+      shouldManageNotifications: false,
     );
   }
 }

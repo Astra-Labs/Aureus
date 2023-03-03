@@ -3,279 +3,286 @@ part of AureusTestingApp;
 //where all backing / foundational variable items in aureus are initiated for testing
 
 /*  ---------------------------------- BUTTON BACKING  ---------------------------------- */
-Decoration buttonBack1 = ButtonBackingDecoration(
+
+Decoration _buttonBack1 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.circle,
         decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
-Decoration buttonBack2 = ButtonBackingDecoration(
+Decoration _buttonBack2 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.circle,
         decorationVariant: decorationPriority.standard)
     .buildBacking();
 
-Decoration buttonBack3 = ButtonBackingDecoration(
+Decoration _buttonBack3 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.circle,
         decorationVariant: decorationPriority.important)
     .buildBacking();
 
-Decoration buttonBack4 = ButtonBackingDecoration(
+Decoration _buttonBack4 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.edgedRectangle,
         decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
-Decoration buttonBack5 = ButtonBackingDecoration(
+Decoration _buttonBack5 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.edgedRectangle,
         decorationVariant: decorationPriority.standard)
     .buildBacking();
 
-Decoration buttonBack6 = ButtonBackingDecoration(
+Decoration _buttonBack6 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.edgedRectangle,
         decorationVariant: decorationPriority.important)
     .buildBacking();
 
-Decoration buttonBack7 = ButtonBackingDecoration(
+Decoration _buttonBack7 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedPill,
         decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
-Decoration buttonBack8 = ButtonBackingDecoration(
+Decoration _buttonBack8 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedPill,
         decorationVariant: decorationPriority.standard)
     .buildBacking();
 
-Decoration buttonBack9 = ButtonBackingDecoration(
+Decoration _buttonBack9 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedPill,
         decorationVariant: decorationPriority.important)
     .buildBacking();
 
-Decoration buttonBack10 = ButtonBackingDecoration(
+Decoration _buttonBack10 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedRectangle,
         decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
-Decoration buttonBack11 = ButtonBackingDecoration(
+Decoration _buttonBack11 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedRectangle,
         decorationVariant: decorationPriority.standard)
     .buildBacking();
 
-Decoration buttonBack12 = ButtonBackingDecoration(
+Decoration _buttonBack12 = ButtonBackingDecoration(
         variant: buttonDecorationVariants.roundedRectangle,
         decorationVariant: decorationPriority.important)
     .buildBacking();
 
 /*  ---------------------------------- LAYER BACKING  ---------------------------------- */
 
-Decoration layerBack1 =
+Decoration _layerBack1 =
     LayerBackingDecoration(decorationVariant: decorationPriority.standard)
         .buildBacking();
 
-Decoration layerBack2 =
+Decoration _layerBack2 =
     LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
         .buildBacking();
 
-Decoration layerBack3 =
+Decoration _layerBack3 =
     LayerBackingDecoration(decorationVariant: decorationPriority.important)
         .buildBacking();
 
 /*  ---------------------------------- CARD BACKING  ---------------------------------- */
 
-Decoration cardBack1 =
+Decoration _cardBack1 =
     CardBackingDecoration(decorationVariant: decorationPriority.inactive)
         .buildBacking();
 
-Decoration cardBack2 =
+Decoration _cardBack2 =
     CardBackingDecoration(decorationVariant: decorationPriority.standard)
         .buildBacking();
 
-Decoration cardBack3 =
+Decoration _cardBack3 =
     CardBackingDecoration(decorationVariant: decorationPriority.important)
         .buildBacking();
 
-Decoration cardBack4 =
+Decoration _cardBack4 =
     CardBackingDecoration(decorationVariant: decorationPriority.inactive)
         .buildBacking();
 
-Decoration cardBack5 =
+Decoration _cardBack5 =
     CardBackingDecoration(decorationVariant: decorationPriority.standard)
         .buildBacking();
 
-Decoration cardBack6 =
+Decoration _cardBack6 =
     CardBackingDecoration(decorationVariant: decorationPriority.important)
         .buildBacking();
 
 /*  ---------------------------------- INPUT BACKING  ---------------------------------- */
 
-Decoration inputBack1 = InputBackingDecoration().buildBacking();
+Decoration _inputBack1 = InputBackingDecoration().buildBacking();
 
 /*  ---------------------------------- TAB BACKING  ---------------------------------- */
 
-Decoration tabBack1 = TabItemBackingDecoration(
+Decoration _tabBack1 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.circle,
         decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
-Decoration tabBack2 = TabItemBackingDecoration(
+Decoration _tabBack2 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.circle,
         decorationVariant: decorationPriority.standard)
     .buildBacking();
 
-Decoration tabBack3 = TabItemBackingDecoration(
+Decoration _tabBack3 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.circle,
         decorationVariant: decorationPriority.important)
     .buildBacking();
 
-Decoration tabBack4 = TabItemBackingDecoration(
+Decoration _tabBack4 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.roundedRectangle,
         decorationVariant: decorationPriority.inactive)
     .buildBacking();
 
-Decoration tabBack5 = TabItemBackingDecoration(
+Decoration _tabBack5 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.roundedRectangle,
         decorationVariant: decorationPriority.standard)
     .buildBacking();
 
-Decoration tabBack6 = TabItemBackingDecoration(
+Decoration _tabBack6 = TabItemBackingDecoration(
         variant: tabItemDecorationVariants.roundedRectangle,
         decorationVariant: decorationPriority.important)
     .buildBacking();
 
-List<Decoration> buttonBackings = [
-  buttonBack1,
-  buttonBack2,
-  buttonBack3,
-  buttonBack4,
-  buttonBack5,
-  buttonBack6,
-  buttonBack7,
-  buttonBack8,
-  buttonBack9,
-  buttonBack10,
-  buttonBack11,
-  buttonBack12
+List<Decoration> _buttonBackings = [
+  _buttonBack1,
+  _buttonBack2,
+  _buttonBack3,
+  _buttonBack4,
+  _buttonBack5,
+  _buttonBack6,
+  _buttonBack7,
+  _buttonBack8,
+  _buttonBack9,
+  _buttonBack10,
+  _buttonBack11,
+  _buttonBack12
 ];
 
-List<Decoration> layerBackings = [layerBack1, layerBack2, layerBack3];
-
-List<Decoration> cardBackings = [
-  cardBack1,
-  cardBack2,
-  cardBack3,
-  cardBack4,
-  cardBack5,
-  cardBack6
+List<Decoration> _layerBackings = [
+  _layerBack1,
+  _layerBack2,
+  _layerBack3,
 ];
 
-List<Decoration> inputBackings = [inputBack1];
-List<Decoration> tabBackings = [
-  tabBack1,
-  tabBack2,
-  tabBack3,
-  tabBack4,
-  tabBack5,
-  tabBack6
+List<Decoration> _cardBackings = [
+  _cardBack1,
+  _cardBack2,
+  _cardBack3,
+  _cardBack4,
+  _cardBack5,
+  _cardBack6
 ];
 
+List<Decoration> _inputBackings = [_inputBack1];
+List<Decoration> _tabBackings = [
+  _tabBack1,
+  _tabBack2,
+  _tabBack3,
+  _tabBack4,
+  _tabBack5,
+  _tabBack6
+];
+
+class InteractionBackings {
 //24 options
-var buttonBackingTest = ListView.builder(
-    padding: const EdgeInsets.all(8),
-    shrinkWrap: true,
-    itemCount: buttonBackings.length,
-    scrollDirection: Axis.horizontal,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-        height: 100,
-        width: 350,
-        child: Center(
-            child: Container(
-                width: 350,
-                height: 50,
-                decoration: buttonBackings[index],
-                child: Center(
-                    child: BodyOneText(
-                        'Button $index', decorationPriority.standard)))),
-      );
-    });
+  var buttonBackingTest = ListView.builder(
+      padding: const EdgeInsets.all(8),
+      shrinkWrap: true,
+      itemCount: _buttonBackings.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 100,
+          width: 350,
+          child: Center(
+              child: Container(
+                  width: 350,
+                  height: 50,
+                  decoration: _buttonBackings[index],
+                  child: Center(
+                      child: BodyOneText(
+                          'Button $index', decorationPriority.standard)))),
+        );
+      });
 
 //4 options
-var layerBackingTest = ListView.builder(
-    padding: const EdgeInsets.all(8),
-    shrinkWrap: true,
-    itemCount: layerBackings.length,
-    scrollDirection: Axis.horizontal,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-        height: 50,
-        width: 350,
-        child: Center(
-            child: Container(
-                width: 350,
-                height: 50,
-                decoration: layerBackings[index],
-                child: Center(
-                    child: BodyOneText(
-                        'Layer $index', decorationPriority.standard)))),
-      );
-    });
+  var layerBackingTest = ListView.builder(
+      padding: const EdgeInsets.all(8),
+      shrinkWrap: true,
+      itemCount: _layerBackings.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 50,
+          width: 350,
+          child: Center(
+              child: Container(
+                  width: 350,
+                  height: 50,
+                  decoration: _layerBackings[index],
+                  child: Center(
+                      child: BodyOneText(
+                          'Layer $index', decorationPriority.standard)))),
+        );
+      });
 
 //12 options
-var cardBackingTest = ListView.builder(
-    padding: const EdgeInsets.all(8),
-    shrinkWrap: true,
-    itemCount: cardBackings.length,
-    scrollDirection: Axis.horizontal,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-        height: 50,
-        width: 350,
-        child: Center(
-            child: Container(
-                width: 350,
-                height: 50,
-                decoration: cardBackings[index],
-                child: Center(
-                    child: BodyOneText(
-                        'Card $index', decorationPriority.standard)))),
-      );
-    });
+  var cardBackingTest = ListView.builder(
+      padding: const EdgeInsets.all(8),
+      shrinkWrap: true,
+      itemCount: _cardBackings.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 50,
+          width: 350,
+          child: Center(
+              child: Container(
+                  width: 350,
+                  height: 50,
+                  decoration: _cardBackings[index],
+                  child: Center(
+                      child: BodyOneText(
+                          'Card $index', decorationPriority.standard)))),
+        );
+      });
 
 //2 options
-var inputBackingTest = ListView.builder(
-    padding: const EdgeInsets.all(8),
-    shrinkWrap: true,
-    itemCount: inputBackings.length,
-    scrollDirection: Axis.horizontal,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-        height: 50,
-        width: 350,
-        child: Center(
-            child: Container(
-                width: 350,
-                height: 50,
-                decoration: inputBackings[index],
-                child: Center(
-                    child: BodyOneText(
-                        'Input $index', decorationPriority.standard)))),
-      );
-    });
+  var inputBackingTest = ListView.builder(
+      padding: const EdgeInsets.all(8),
+      shrinkWrap: true,
+      itemCount: _inputBackings.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 50,
+          width: 350,
+          child: Center(
+              child: Container(
+                  width: 350,
+                  height: 50,
+                  decoration: _inputBackings[index],
+                  child: Center(
+                      child: BodyOneText(
+                          'Input $index', decorationPriority.standard)))),
+        );
+      });
 
 //12 options
-ListView tabBackingTest = ListView.builder(
-    padding: const EdgeInsets.all(8),
-    shrinkWrap: true,
-    itemCount: tabBackings.length,
-    scrollDirection: Axis.horizontal,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-        height: 50,
-        width: 350,
-        child: Center(
-            child: Container(
-                width: 350,
-                height: 50,
-                decoration: tabBackings[index],
-                child: Center(
-                    child: BodyOneText(
-                        'Tab $index', decorationPriority.standard)))),
-      );
-    });
+  ListView tabBackingTest = ListView.builder(
+      padding: const EdgeInsets.all(8),
+      shrinkWrap: true,
+      itemCount: _tabBackings.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 50,
+          width: 350,
+          child: Center(
+              child: Container(
+                  width: 350,
+                  height: 50,
+                  decoration: _tabBackings[index],
+                  child: Center(
+                      child: BodyOneText(
+                          'Tab $index', decorationPriority.standard)))),
+        );
+      });
+}

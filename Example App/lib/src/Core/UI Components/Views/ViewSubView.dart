@@ -81,6 +81,7 @@ class _ViewsSubviewState extends State<ViewsSubview> {
       decorationVariant: decorationPriority.important,
       builder: viewBuilder,
       showQuickActionBar: false,
+      shouldManageNotifications: false,
     );
   }
 }

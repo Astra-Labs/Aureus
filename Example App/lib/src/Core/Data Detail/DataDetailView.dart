@@ -4,5 +4,14 @@ part of AureusTestingApp;
 // as of right now.
 
 class AureusDataDetailView extends DataDetailView {
-  AureusDataDetailView() : super(title: 'Testing', detailCards: []);
+  AureusDataDetailView()
+      : super(
+          title: 'Testing',
+          detailCards: [
+            DataDetailList().addressCard,
+            DataDetailList().textFieldCard,
+            DataDetailList().textViewCard,
+            DataDetailList().promptListCard,
+          ],
+        );
 }
