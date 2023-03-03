@@ -2,6 +2,7 @@
 - Added Consent Handlers to internal components to fix a crashing bug
 - Adding number pad component
 - Created NotificationOverlayView to manage notificationMaster.
+- Fixed Sound Library noises not working. 
 
 ## 0.0.3 
 - Audited FloatingContainerElements to be more consistent 
