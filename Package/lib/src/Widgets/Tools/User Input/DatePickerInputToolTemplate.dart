@@ -14,11 +14,7 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
   DatePickerInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes. Write to dataMap in ActiveCard,
-  // and read in SummaryCard.
-  var dataMap = [];
+  DateTime? time;
 
   @override
   Widget returnActiveToolCard() {
@@ -59,15 +55,17 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
                     buttonHint: 'Goes to the next card.',
-                    buttonAction: () =>
-                        {dataMap.insert(0, dateChosen), onNextCard()}),
+                    buttonAction: () => {
+                          time = dateChosen,
+                          onNextCard(),
+                        }),
               ])
         ]);
   }
 
   @override
   Widget returnTemplateSummary() {
-    if (dataMap.isEmpty == true) {
+    if (time == null) {
       throw ('You cannot show a template summary of a tool template without populating dataMap.');
     }
 
@@ -76,7 +74,7 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText('Date Chosen: ${dataMap[0]}', decorationPriority.inactive)
+          BodyOneText('Date Chosen: $time', decorationPriority.inactive)
         ]);
   }
 }

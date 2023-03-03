@@ -43,8 +43,15 @@ class AureusDataDetailMaster {
     _observers.remove(observer);
   }
 
-  /// Telling each DD observer to update
+  /// Telling each DD observer to update into Read
   void notifyObserverToUpdate() {
+    for (var observer in _observers) {
+      observer.updateInformation();
+    }
+  }
+
+  /// Telling each DD observer to update into Read
+  void notifyObserverToFinish() {
     for (var observer in _observers) {
       observer.updateInformation();
     }
@@ -61,6 +68,7 @@ class AureusDataDetailMaster {
 /// A mix-in for implementation of conforming to become a Data Detail Observer
 mixin AureusDataDetailObserver {
   void updateInformation() {}
+  void finishSavingInformation() {}
   void deleteInformation() {}
 }
 
@@ -70,13 +78,22 @@ var dataDetailMaster = AureusDataDetailMaster();
 /// The base class for a detail cards that adheres to the [AureusDataDetailObserver].
 class DataDetailCard {
   /// The string describing what the data is
-
   final String dataLabel;
 
-  const DataDetailCard({required this.dataLabel});
+  /// Any code that should run when the user finishes editing the field.
+  /// This should be where your logic code that modifies a DB entry / object goes.
+  final VoidCallback onFinishEditing;
+
+  const DataDetailCard(
+      {required this.dataLabel, required this.onFinishEditing});
 
   /// Telling the master to make the observers update
   void editInformation() {
+    dataDetailMaster.notifyObserverToUpdate();
+  }
+
+  /// Telling the master to make the observers run the 'onFinishEditing' function
+  void saveInformation() {
     dataDetailMaster.notifyObserverToUpdate();
   }
 

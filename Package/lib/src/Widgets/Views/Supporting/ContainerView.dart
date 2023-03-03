@@ -41,38 +41,34 @@ class ContainerView extends StatefulWidget {
   /// Whether or not the view should show a quick action bar
   final bool? showQuickActionBar;
 
-  const ContainerView(
-      {required this.decorationVariant,
-      required this.builder,
-      this.takesFullWidth = false,
-      this.hasBackgroundImage = true,
-      this.showQuickActionBar = true});
+  /// Whether or not the view should manage recieving notifications.
+  /// This should only be done if the ContainerView is the top most root
+  /// of the view controller hierarchy. If there is a higher widget in the hierarchy
+  /// (like a navigation bar), then the HIGHEST parent should implement [NotificationOverlayView].
+  final bool? shouldManageNotifications;
+
+  const ContainerView({
+    required this.decorationVariant,
+    required this.builder,
+    this.takesFullWidth = false,
+    this.hasBackgroundImage = true,
+    this.showQuickActionBar = true,
+    this.shouldManageNotifications = true,
+  });
 
   @override
   _ContainerViewState createState() => _ContainerViewState();
 }
 
-class _ContainerViewState extends State<ContainerView>
-    with
-        AureusNotificationObserver,
-        TickerProviderStateMixin,
-        WidgetsBindingObserver {
+class _ContainerViewState extends State<ContainerView> {
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   late Future<double> actionBarX;
   late Future<double> actionBarY;
 
   Offset position = const Offset(0.5, 0.0);
 
-  Widget overlayView = Container();
-  var hasOverlayEnabled = false;
-  late AnimationController _controller;
-  late Animation<Offset> _offset;
-
   @override
   void initState() {
-    notificationMaster.registerObserver(this);
-    sensation.prepare();
-
     actionBarY = preferences.then((SharedPreferences preferences) {
       return /*preferences.getDouble('barY') ?? */ 0.6;
     });
@@ -81,142 +77,24 @@ class _ContainerViewState extends State<ContainerView>
       return /* preferences.getDouble('barX') ?? */ 0.4;
     });
 
-    _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500))
-      ..addListener(() {
-        setState(() {});
-      })
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          //uses the sensory library to make a notification noise.
-          sensation.createSensation(sensationType.notification);
-        }
-        if (status == AnimationStatus.dismissed) {
-          //resets the container after the animation is reversed
-          setState(() {
-            overlayView = Container();
-            hasOverlayEnabled = false;
-          });
-        }
-      });
-
-    _offset = Tween<Offset>(
-            begin: const Offset(0.0, 0.0), end: const Offset(0.0, 0.0))
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-
     super.initState();
   }
 
   @override
   void dispose() {
-    notificationMaster.unregisterObserver(this);
-
-    //Removes items in the container view
-    resetRequests();
-
-    _controller.dispose();
-    sensation.dispose();
     super.dispose();
-  }
-
-  @override
-  void resetRequests() {
-    overlayView = Container();
-    hasOverlayEnabled = false;
-
-    setState(() {
-      _controller.reverse();
-    });
-  }
-
-  // Displays an alert controller over the current view.
-  @override
-  void showAlertController(AlertControllerObject data) {
-    setState(() {
-      _offset = Tween<Offset>(
-              begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
-          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-      hasOverlayEnabled = true;
-      overlayView = Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(15.0),
-          child: CenteredAlertControllerComponent(alertData: data));
-      _controller.forward();
-    });
-  }
-
-  //Displays a content warning over the current view.
-  @override
-  void showContentWarning(String description, IconData icon) {
-    setState(() {
-      _offset = Tween<Offset>(
-              begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
-          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-      hasOverlayEnabled = true;
-      overlayView = Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(15.0),
-          child: ContentWarningComponent(
-              warningDescription: description,
-              onContinue: () => {resetRequests()}));
-      _controller.forward();
-    });
-  }
-
-  // Displays a dropdown notification at the top of the view.
-  @override
-  void showDropdownNotification(String description, IconData icon) {
-    setState(() {
-      _offset = Tween<Offset>(
-              begin: const Offset(0.0, -1.0), end: const Offset(0.0, 0.0))
-          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-      hasOverlayEnabled = true;
-      overlayView = Container(
-        width: size.logicalWidth(),
-        height: size.heightOf(weight: sizingWeight.w3),
-        alignment: Alignment.center,
-        padding: EdgeInsets.fromLTRB(
-            0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0),
-        child: BannerNotificationComponent(body: description, icon: icon),
-      );
-      _controller.forward();
-    });
-  }
-
-  @override
-  void showBottomActionController(AlertControllerObject data) {
-    setState(() {
-      _offset = Tween<Offset>(
-              begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
-          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-      hasOverlayEnabled = true;
-      overlayView = Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          alignment: Alignment.bottomCenter,
-          padding: const EdgeInsets.all(15.0),
-          child: BottomActionSheetComponent(alertData: data));
-      _controller.forward();
-    });
   }
 
   void updateAccessBarPosition(DraggableDetails details) {
     setState(() {
-      print("drag has ended!");
       RenderBox? renderBox = context.findRenderObject() as RenderBox;
       position = renderBox.globalToLocal(details.offset);
-
-      print(position);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    //pull exit bar setting status from Safety Plan
+    // pull exit bar setting status from Safety Plan
     var safety = resourceValues.safetySettings;
     const bool hasExitBar = false;
 
@@ -292,8 +170,21 @@ class _ContainerViewState extends State<ContainerView>
         : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w1), 0.0,
             size.heightOf(weight: sizingWeight.w0));
 
-    // Builds the backing container
+    // Builds the backing container with an action bar
 
+    var stack = Stack(children: [
+      widget.builder,
+      (safety.isActionBarDevEnabled == true &&
+              widget.showQuickActionBar == true)
+          ? Positioned(
+              left: 0.0 * (size.logicalWidth()) /*position.dx*/,
+              top: 0.75 * (size.logicalHeight()) /*position.dy*/,
+              child: actionBar,
+            )
+          : const SizedBox(width: 1),
+    ]);
+
+    // Builds the general backing container
     Container backingContainer = Container(
       alignment: Alignment.center,
       width: screenWidth,
@@ -302,60 +193,46 @@ class _ContainerViewState extends State<ContainerView>
       child: SizedBox(
         width: containerWidth,
         height: screenHeight,
-        child: Stack(children: [
-          widget.builder,
-          (safety.isActionBarDevEnabled == true &&
-                  widget.showQuickActionBar == true)
-              ? Positioned(
-                  left: 0.0 * (size.logicalWidth()) /*position.dx*/,
-                  top: 0.75 * (size.logicalHeight()) /*position.dy*/,
-                  child: actionBar,
-                )
-              : const SizedBox(width: 1),
-        ]),
+        child: stack,
       ),
     );
 
-    // Builds an overlay item to hold any items coming into the view
-    var overlayItem = SizedBox(
-        width: size.logicalWidth(),
-        height: size.logicalHeight(),
-        child: Stack(
-          children: [
-            backingContainer,
-            Positioned(
-                top: _offset.value.dy * (size.logicalWidth()),
-                left: _offset.value.dx * (size.logicalHeight()),
-                child: overlayView),
-          ],
-        ));
-
-    if (hasExitBar == true) {
-      return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const ExitBarComponent(),
-                hasOverlayEnabled == true ? overlayItem : backingContainer
-              ],
-            );
-          },
-        ),
-      );
-    } else if (hasExitBar == false) {
-      return Scaffold(
-          backgroundColor: Colors.transparent,
-          body: (LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-              return hasOverlayEnabled == true ? overlayItem : backingContainer;
-            },
-          )));
+    // Adds a notification overlay depending on if it's a nav bar child.
+    // If it's a nav bar child, the notification overlay should be handled by the
+    // TOP MOST nav bar parent.
+    Widget containerContent() {
+      return widget.shouldManageNotifications == true
+          ? NotificationOverlayView(child: backingContainer)
+          : backingContainer;
     }
 
-    throw ErrorDescription('Exit bar value not given.');
+    var exitBarContent = Scaffold(
+      backgroundColor: Colors.transparent,
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const ExitBarComponent(),
+              containerContent(),
+            ],
+          );
+        },
+      ),
+    );
+
+    var nonExitBarContent = Scaffold(
+        backgroundColor: Colors.transparent,
+        body: (LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            return containerContent();
+          },
+        )));
+
+    if (hasExitBar == true) {
+      return exitBarContent;
+    } else if (hasExitBar == false) {}
+    return nonExitBarContent;
   }
 }

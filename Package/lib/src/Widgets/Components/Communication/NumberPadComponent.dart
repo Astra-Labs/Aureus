@@ -4,28 +4,25 @@ import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
 
 /// {@category Widgets}
-/// {@subCategory Views}
+/// {@subCategory Components}
 /// {@image <image alt='' src=''>}
 
-/*--------- PASSCODE VIEW ----------*/
-/// A view for a user to enter a passcode.
+/*--------- NUMBER PAD COMPONENT ----------*/
+/// A component to manage numbers being inputted.
 
-class PasscodeView extends StatefulWidget {
-  /// A [VoidCallback] to run when the user enters the correct passcode.
-  final VoidCallback onCorrectPasscode;
-
-  /// A List that contains the passcode. Keeping
+// ignore: must_be_immutable
+class NumberPadComponent extends StatefulWidget {
+  /// A List that contains the numbers actively in the pad. Keeping
   /// items in a list as opposed to one int solves
-  /// issues with numbers between web / mobile
-  final List<int> passcode;
-
-  const PasscodeView({required this.onCorrectPasscode, required this.passcode});
+  /// issues with numbers between web / mobile. To reset the number pad, set
+  /// the inputted code to be an empty array.
+  List<int>? inputtedCode;
 
   @override
-  _PasscodeViewState createState() => _PasscodeViewState();
+  _NumberPadComponentState createState() => _NumberPadComponentState();
 }
 
-class _PasscodeViewState extends State<PasscodeView> {
+class _NumberPadComponentState extends State<NumberPadComponent> {
   var entryText = '';
   var digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -41,7 +38,7 @@ class _PasscodeViewState extends State<PasscodeView> {
     super.dispose();
   }
 
-  void resetScreen() {
+  void resetPad() {
     setState(() {
       entryText = "";
     });
@@ -51,23 +48,6 @@ class _PasscodeViewState extends State<PasscodeView> {
     setState(() {
       entryText = entryText + item;
     });
-  }
-
-  void tryPassword() {
-    var correct = widget.passcode.toString();
-    var given = entryText.toString();
-
-    if (correct == given) {
-      widget.onCorrectPasscode();
-    } else {
-      resetPassword();
-    }
-  }
-
-  void resetPassword() {
-    notificationMaster.sendAlertNotificationRequest(
-        "Incorrect passcode.", Assets.alert);
-    resetScreen();
   }
 
   Widget createNumberButton(int number) {
@@ -103,12 +83,8 @@ class _PasscodeViewState extends State<PasscodeView> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          if (entryText.length == widget.passcode.length) {
-            tryPassword();
-          } else {
-            var newEntry = entryText + number.toString();
-            entryText = newEntry;
-          }
+          var newEntry = entryText + number.toString();
+          entryText = newEntry;
         });
       },
       child: numberButton,
@@ -129,25 +105,6 @@ class _PasscodeViewState extends State<PasscodeView> {
             padding: const EdgeInsets.all(10.0),
             alignment: Alignment.center,
             child: HeadingFourText(entryText, decorationPriority.standard)));
-
-    var row = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        SmolButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonTitle: "Clear",
-            buttonHint: "Clears the password field.",
-            buttonAction: resetScreen),
-        const Spacer(),
-        SmolButtonElement(
-            decorationVariant: decorationPriority.important,
-            buttonTitle: "Finish",
-            buttonHint: "Finishes inputting the password.",
-            buttonAction: tryPassword),
-      ],
-    );
 
     var column = Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -188,49 +145,27 @@ class _PasscodeViewState extends State<PasscodeView> {
       ],
     );
 
-    var mobileViewLayout = ContainerWrapperElement(
+    var mobileLayout = ContainerWrapperElement(
       children: [
-        const DividingHeaderElement(
-            headerText: 'Passcode',
-            subheaderText: 'Input your passcode below.'),
-        const SizedBox(height: 40.0),
         entryFieldBox,
         const SizedBox(height: 40.0),
         const Spacer(),
         column,
         const Spacer(),
         const SizedBox(height: 40.0),
-        row,
       ],
       containerVariant: wrapperVariants.fullScreen,
       takesFullWidth: false,
     );
 
-    var desktopContentBox = SizedBox(
+    var desktopLayout = SizedBox(
       height: size.layoutItemHeight(1, size.logicalScreenSize()),
       width: size.layoutItemWidth(2, size.logicalScreenSize()) * 0.8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Spacer(),
-          const DividingHeaderElement(
-              headerText: 'Passcode',
-              subheaderText: 'Input your passcode to continue.'),
-          const SizedBox(height: 40.0),
           entryFieldBox,
-          const Spacer(),
-        ],
-      ),
-    );
-
-    var desktopPasscodeInputBox = SizedBox(
-      height: size.layoutItemHeight(1, size.logicalScreenSize()),
-      width: size.layoutItemWidth(2, size.logicalScreenSize()) * 0.8,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
           const Spacer(),
           column,
           const Spacer(),
@@ -238,27 +173,6 @@ class _PasscodeViewState extends State<PasscodeView> {
       ),
     );
 
-    var desktopViewLayout = ContainerWrapperElement(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            desktopContentBox,
-            const Spacer(),
-            desktopPasscodeInputBox,
-          ],
-        ),
-      ],
-      containerVariant: wrapperVariants.fullScreen,
-    );
-
-    return ContainerView(
-      decorationVariant: decorationPriority.important,
-      builder: size.isDesktopDisplay() == true
-          ? desktopViewLayout
-          : mobileViewLayout,
-      takesFullWidth: false,
-    );
+    return size.isDesktopDisplay() == true ? desktopLayout : mobileLayout;
   }
 }

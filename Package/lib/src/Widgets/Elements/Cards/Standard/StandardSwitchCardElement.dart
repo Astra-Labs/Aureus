@@ -62,7 +62,7 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
       child: FloatingContainerElement(
         child: SizedBox(
             width: size.layoutItemWidth(1, screenSize),
-            height: minimumLabelTextSize.height * 6,
+            height: minimumLabelTextSize.height * 3,
             child: Container(
                 decoration: LayerBackingDecoration(
                         decorationVariant: decorationPriority.inactive)

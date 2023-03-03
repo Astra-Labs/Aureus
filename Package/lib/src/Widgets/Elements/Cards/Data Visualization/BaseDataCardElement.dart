@@ -44,16 +44,23 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
                         ? decorationPriority.standard
                         : decorationPriority.standard)
                 .buildBacking(),
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BodyTwoText(widget.detailLabel, decorationPriority.standard),
-                  const SizedBox(height: 10.0),
-                  Column(children: widget.detailChildren),
+                  HeadingFourText(
+                      widget.detailLabel, decorationPriority.standard),
+                  const SizedBox(height: 20.0),
+                  const DividerElement(),
+                  const SizedBox(height: 20.0),
+                  Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: widget.detailChildren),
                 ],
               ),
             )));

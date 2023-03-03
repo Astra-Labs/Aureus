@@ -20,7 +20,10 @@ class StandardSelectionCardElement extends StatefulWidget {
   /// Whether or not a card is actively selected.
   bool isCardSelected = false;
 
-  StandardSelectionCardElement({required this.cardLabel});
+  StandardSelectionCardElement({
+    required this.cardLabel,
+    this.isCardSelected = false,
+  });
 
   @override
   _StandardSelectionCardElementState createState() =>

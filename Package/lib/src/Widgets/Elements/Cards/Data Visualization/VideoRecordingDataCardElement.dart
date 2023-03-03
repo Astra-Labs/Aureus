@@ -10,19 +10,19 @@ import 'package:flutter/material.dart';
 /*--------- VIDEO RECORDING DATA CARD ----------*/
 
 class VideoRecordingDataCardElement extends DataDetailCard {
-  VideoRecordingDataCardElement({required dataLabel})
-      : super(dataLabel: dataLabel);
-
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes.
-  var dataMap = [];
+  VideoRecordingDataCardElement({
+    required dataLabel,
+    required onFinishEditing,
+  }) : super(
+          dataLabel: dataLabel,
+          onFinishEditing: onFinishEditing,
+        );
 
   @override
   Widget returnReadDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Video",
       detailChildren: [],
     );
   }
@@ -31,7 +31,7 @@ class VideoRecordingDataCardElement extends DataDetailCard {
   Widget returnEditDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Video",
       detailChildren: [],
     );
   }

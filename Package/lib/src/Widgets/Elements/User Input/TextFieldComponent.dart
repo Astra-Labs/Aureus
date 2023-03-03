@@ -2,6 +2,7 @@ import 'package:aureus/aureus.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// {@category Widgets}
 /// {@subCategory Elements}
@@ -18,17 +19,25 @@ class StandardTextFieldComponent extends StatelessWidget {
   /// {@macro aureus.decorationPriority}
   final decorationPriority decorationVariant;
 
-  ///
+  /// A text editing controller that owns the text field
   final TextEditingController textFieldController;
 
-  ///
+  /// Whether or not the text field should show the contents of the text field.
+  final TextInputFormatter? textInputFormatter;
+
+  /// Whether or not the text field should be enabled for user interaction.
   final bool isEnabled;
+
+  /// Whether or not the text field should show the contents of the text field.
+  final bool? isSecureEntry;
 
   const StandardTextFieldComponent({
     required this.hintText,
     required this.isEnabled,
     required this.decorationVariant,
     required this.textFieldController,
+    this.textInputFormatter,
+    this.isSecureEntry,
   });
 
   @override
@@ -63,6 +72,7 @@ class StandardTextFieldComponent extends StatelessWidget {
 
     var textFormField = TextFormField(
         enabled: isEnabled,
+        obscureText: isSecureEntry ?? false,
         style: body2().copyWith(
             color: coloration.decorationColor(
                 decorationVariant: decorationVariant)),

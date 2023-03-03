@@ -14,11 +14,7 @@ class TimePickerInputToolTemplate extends ToolCardTemplate {
   TimePickerInputToolTemplate({required templatePrompt, required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes. Write to dataMap in ActiveCard,
-  // and read in SummaryCard.
-  var dataMap = [];
+  Duration? selectedTimerDuration;
 
   @override
   Widget returnActiveToolCard() {
@@ -55,15 +51,17 @@ class TimePickerInputToolTemplate extends ToolCardTemplate {
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
                     buttonHint: 'Goes to the next card.',
-                    buttonAction: () =>
-                        {dataMap.insert(0, timerDuration), onNextCard()}),
+                    buttonAction: () => {
+                          selectedTimerDuration = timerDuration,
+                          onNextCard(),
+                        }),
               ])
         ]);
   }
 
   @override
   Widget returnTemplateSummary() {
-    if (dataMap.isEmpty == true) {
+    if (selectedTimerDuration == null) {
       throw ('You cannot show a template summary of a tool template without populating dataMap.');
     }
 
@@ -72,8 +70,8 @@ class TimePickerInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText(
-              'Duration chosen: ${dataMap[0]}', decorationPriority.inactive)
+          BodyOneText('Duration chosen: $selectedTimerDuration',
+              decorationPriority.inactive)
         ]);
   }
 }

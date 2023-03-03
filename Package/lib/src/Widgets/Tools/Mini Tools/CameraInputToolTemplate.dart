@@ -24,6 +24,16 @@ class CameraInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
+    void segueToInput(BuildContext context) => {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => _CameraInputCard(
+                    templatePrompt: templatePrompt, cardIcon: badgeIcon),
+              ))
+        };
+
+    // Chains data consent handlers together before showing the user a camera.
     var cardBuilder = Builder(
       builder: (context) => StandardIconButtonElement(
           decorationVariant: decorationPriority.important,
@@ -31,12 +41,9 @@ class CameraInputToolTemplate extends ToolCardTemplate {
           buttonTitle: "Take photo",
           buttonHint: "Takes you to the camera.",
           buttonAction: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => _CameraInputCard(
-                          templatePrompt: templatePrompt, cardIcon: badgeIcon),
-                    )),
+                const DataConsent().consentHandler(() {
+                  segueToInput(context);
+                }, dataAccess.camera),
               }),
     );
 

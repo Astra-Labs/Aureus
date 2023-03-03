@@ -31,8 +31,6 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
   Widget build(BuildContext context) {
     List<Widget> eligibleOptionCards = [];
 
-    var screenSize = size.logicalScreenSize();
-
     for (var element in productSafetyObject.eligiblePlanOptions) {
       eligibleOptionCards.add(Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),

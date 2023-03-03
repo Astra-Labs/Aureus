@@ -68,11 +68,13 @@ export 'src/Widgets/Elements/Cards/Grid/GridCardElement.dart';
 export 'src/Widgets/Elements/Cards/Grid/GridBadgeCardElement.dart';
 // ------------------------------------------------ Data Visualization
 // These are in beta, and not for use as of right now.
-// export 'src/Widgets/Elements/Cards/Data Visualization/AddressDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/AddressDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Visualization/BaseDataCardElement.dart';
 // export 'src/Widgets/Elements/Cards/Data Visualization/PhotoDataCardElement.dart';
-// export 'src/Widgets/Elements/Cards/Data Visualization/TextFieldDataCardElement.dart';
-// export 'src/Widgets/Elements/Cards/Data Visualization/TextViewDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/TextFieldDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/TextViewDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Visualization/PromptSelectionListCardElement.dart';
+// export 'src/Widgets/Elements/Cards/Data Visualization/VideoRecordingDataCardElement.dart';
 // export 'src/Widgets/Elements/Cards/Data Visualization/VoiceRecordingDataCardElement.dart';
 
 // -------------------------- Info Hierachy
@@ -103,6 +105,7 @@ export 'src/Widgets/Elements/User Input/SliderElement.dart';
 export 'src/Widgets/Components/Alert Controllers/CenteredAlertControllerComponent.dart';
 export 'src/Widgets/Components/Alert Controllers/ContentWarningComponent.dart';
 export 'src/Widgets/Components/Alert Controllers/BottomActionSheetComponent.dart';
+export 'src/Widgets/Components/Alert Controllers/TextFieldAlertControllerComponent.dart';
 
 // -------------------------- Buttons
 export 'src/Widgets/Components/Buttons/FullWidthButtonElement.dart';
@@ -125,6 +128,7 @@ export 'src/Widgets/Components/Communication/CookieBannerComponent.dart';
 export 'src/Widgets/Components/Communication/ExitBarComponent.dart';
 export 'src/Widgets/Components/Communication/BannerNotificationComponent.dart';
 export 'src/Widgets/Components/Communication/SwitchComponent.dart';
+export 'src/Widgets/Components/Communication/NumberPadComponent.dart';
 
 // -------------------------- Tabbing Bars
 export 'src/Widgets/Components/Tabbing Bars/IconTabbingBarComponent.dart';
@@ -139,6 +143,7 @@ export 'src/Widgets/Components/Tabbing Bars/VerticalSideNavBarComponent.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingDemoView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingInformationView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingLandingView.dart';
+
 // -------------------------- Utilities
 export 'src/Widgets/Views/Utilities/DataConsentView.dart';
 export 'src/Widgets/Views/Utilities/2FAVerificationView.dart';
@@ -157,13 +162,17 @@ export 'src/Widgets/Views/Landing/SplashScreenView.dart';
 
 // -------------------------- Supporting
 export 'src/Widgets/Views/Supporting/ContainerView.dart';
+export 'src/Widgets/Views/Supporting/NotificationOverlayView.dart';
+
 // -------------------------- Misc
 export 'src/Widgets/Views/Misc/PoetryGradientView.dart';
+
 // -------------------------- Safety Plan
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptionsView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
+
 // -------------------------- Tool Library
 export 'src/Widgets/Views/Tool Library/ToolDetailView.dart';
 export 'src/Widgets/Views/Tool Library/ToolNextStepView.dart';

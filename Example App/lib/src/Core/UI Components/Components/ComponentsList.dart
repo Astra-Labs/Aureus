@@ -24,17 +24,18 @@ Map<String, Widget> aureusComponents = {
             notificationMaster.sendAlertNotificationRequest(
                 "(Fake) cookies disabled.", Icons.ac_unit)
           }),
-  'Blank Screen': blankScreenComponent,
   'Message Bubbles': Column(children: [
     senderMessageBubble,
     SizedBox(height: 20),
     receiverMessageBubble
   ]),
-  'Notifications': Column(children: [
-    unreadNotification,
-    SizedBox(height: 10),
-    readNotification,
-  ]),
+  'Notifications': Column(
+    children: [
+      unreadNotification,
+      SizedBox(height: 10),
+      readNotification,
+    ],
+  ),
   'Emergency Access Bar': emergencyAccessBar,
   'Empty Item Placeholder': blankScreen,
   'Standard Card': testStandardCard,

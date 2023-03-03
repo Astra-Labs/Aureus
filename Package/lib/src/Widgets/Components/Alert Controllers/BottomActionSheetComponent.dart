@@ -31,7 +31,7 @@ class _BottomActionSheetComponentState
     var screenSize = size.logicalScreenSize();
     var actions = widget.alertData.actions;
 
-    for (var element in actions) {
+    for (var element in actions!) {
       actionButtons.add(Padding(
         padding: const EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0),
         child: StandardButtonElement(

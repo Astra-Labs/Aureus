@@ -22,25 +22,47 @@ class AlertControllerObject {
   final IconData alertIcon;
 
   /// The actions someone can take on the alert controller.
-  final List<AlertControllerAction> actions;
+  List<AlertControllerAction>? actions;
+
+  /// If using a [TextFieldAlertControllerComponent], this is
+  /// the controller that will hold the text value.
+  TextEditingController? controller;
+
+  /// If using a [TextFieldAlertControllerComponent], this is
+  /// the hint text for the user to know what to type in.
+  String? hintText;
+
+  /// If using a [TextFieldAlertControllerComponent], this is
+  /// code to run after the user finishes typing.
+  VoidCallback? onFinish;
 
   /// A constructor that takes multiple items through the actions list, and otherwise throws an error
-  const AlertControllerObject.multipleActions(
+  AlertControllerObject.multipleActions(
       {required this.onCancellation,
       required this.alertTitle,
       required this.alertBody,
       required this.alertIcon,
       required this.actions})
-      : assert(actions.length >= 2);
+      : assert(actions!.length >= 2);
 
   /// A constructor that takes one item through the actions list, and otherwise throws an error
-  const AlertControllerObject.singleAction(
+  AlertControllerObject.singleAction(
       {required this.onCancellation,
       required this.alertTitle,
       required this.alertBody,
       required this.alertIcon,
       required this.actions})
-      : assert(actions.length == 1);
+      : assert(actions!.length == 1);
+
+  AlertControllerObject.textField(
+      {required this.onCancellation,
+      required this.alertTitle,
+      required this.alertBody,
+      required this.alertIcon,
+      required this.controller,
+      required this.hintText,
+      required this.onFinish})
+      : assert(controller != null && hintText != "");
 }
 
 /// An action that someone can take on an [AlertControllerObject].

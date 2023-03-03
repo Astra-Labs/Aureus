@@ -19,42 +19,33 @@ class _ExplorationViewState extends State<ExplorationView> {
         tabTitle: "Tools",
         accessibilityHint: "Shows you the tools",
         tabIcon: Assets.settings),
+    ControllerTabObject(
+        tabController: AureusDataDetailView(),
+        tabTitle: "Testing",
+        accessibilityHint: "accessibilityHint",
+        tabIcon: Assets.pencil),
     /*
     ControllerTabObject(
         tabController: AureusSafetyView(),
         tabTitle: "Safety",
         accessibilityHint: "Shows you the safety features within Aurues",
-        tabIcon: Assets.person),
-        ControllerTabObject(
+        tabIcon: Assets.person),*/
+    ControllerTabObject(
         tabController: AureusInteractionsView(),
         tabTitle: "Interact",
         accessibilityHint:
             "Lets you try the interactibility aspects of Aureus.",
         tabIcon: Assets.brain),
-    */
   ];
 
   @override
   Widget build(BuildContext context) {
     return VerticalSideNavBarComponent(
+      shouldManageNotifications: true,
       tabItems: tabItems,
       altColor: palette.brightness() == Brightness.light
           ? palette.white()
           : palette.black(),
-    );
-  }
-}
-
-class TestingView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var containerViewHolder = ContainerWrapperElement(
-        children: [], containerVariant: wrapperVariants.fullScreen);
-
-    return ContainerView(
-      decorationVariant: decorationPriority.standard,
-      builder: containerViewHolder,
-      showQuickActionBar: true,
     );
   }
 }

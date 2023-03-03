@@ -27,7 +27,7 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
   // and write what a user entered into the prompt card
   // for display purposes. Write to dataMap in ActiveCard,
   // and read in SummaryCard.
-  var dataMap = [];
+  String? userSelectedItem;
 
   @override
   Widget returnActiveToolCard() {
@@ -79,8 +79,10 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
                   decorationVariant: decorationPriority.important,
                   buttonTitle: 'Next',
                   buttonHint: 'Goes to the next card.',
-                  buttonAction: () =>
-                      {dataMap.insert(0, selectedItem), onNextCard()}),
+                  buttonAction: () => {
+                        userSelectedItem = selectedItem,
+                        onNextCard(),
+                      }),
             ])
       ],
     );
@@ -93,8 +95,7 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText(
-              dataMap.isNotEmpty ? dataMap[0] : 'Picker Selection skipped',
+          BodyOneText(userSelectedItem ?? 'Picker Selection skipped',
               decorationPriority.inactive)
         ]);
   }

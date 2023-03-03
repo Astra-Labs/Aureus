@@ -1,4 +1,4 @@
-# Aureus
+# Meet Aureus
 #### (In beta) open-source design system library for user safety critical applications.
 
 [![Hippocratic License HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV](https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV&labelColor=5e2751&color=bc8c3d)](https://firstdonoharm.dev/version/3/0/cl-eco-extr-ffd-media-mil-soc-sv.html)
@@ -32,7 +32,14 @@ When you're working in tough / crisis situations, a lot of industry design patte
 * We also have semantic wrappers that can easily be used to extend accessibility to custom components built outside of the library, making accessibility easier to adopt.
 
 ---------------------
-### Running the documentation
+
+It contains 
+* 100+ out of the box components, elements, and templated views that automatically adjust to light / dark mode, and desktop / tablet / mobile usage to make it deployable across all platforms and modes. 
+* pre-integrated safety functionality, permissions & data handling, and accessibility support that will hopefully meet Level AA compliance with WCAG 2.1. 
+* implementation guides & documentation for easy understanding. 
+
+---------------------
+## Running the documentation
 Since Aureus is in beta, you will need to download a local copy of the package onto your computer, and run the documentation on a local server. This will be fixed later, and hosted online. 
 
 1) Navigate to the Package folder of the directory to be within the codebase 
@@ -44,14 +51,7 @@ dart pub global run dhttpd --path doc/api
 
 ---------------------
 
-It contains 
-* 100+ out of the box components, elements, and templated views that automatically adjust to light / dark mode, and desktop / tablet / mobile usage to make it deployable across all platforms and modes. 
-* pre-integrated safety functionality, permissions & data handling, and accessibility support that will hopefully meet Level AA compliance with WCAG 2.1. 
-* implementation guides & documentation for easy understanding. 
-
----------------------
-
-# Getting Started with Aureus 
+## Getting Started with Aureus 
 
 ### Adding the proper libraries 
 Go to pub.dev and download Material, and the Aureus package. Although material is used within Aureus, it does not export it. 
@@ -76,7 +76,9 @@ If you are releasing Aureus on
 
 Then you must go read the flutter_secure_storage documentation to properly configure support before launch. You can find the platform dependent documentation here: https://github.com/mogol/flutter_secure_storage 
 
-### Building your Aureus resource
+---------------------
+
+## Building your Aureus resource
 
 Before you use any of the items in Aureus, you have to initialize your packageVariables in your main.dart file, before the application is run. You can learn more about each of the parameters in the Aureus documentation. 
 
@@ -128,7 +130,7 @@ void main() {
 
 ---------------------
 
-# Links
+## Links
 
 * [You can find Aureus' example app running here](https://withaureus.org/)
 * [You can learn more about Astra here](https://www.withastra.org)

@@ -10,15 +10,22 @@ import 'package:flutter/material.dart';
 /*--------- PHOTO DATA CARD ----------*/
 
 class PhotoDataCardElement extends DataDetailCard {
-  final Image? photo;
-  PhotoDataCardElement(this.photo, {required dataLabel})
-      : super(dataLabel: dataLabel);
+  Image? photo;
+
+  PhotoDataCardElement(
+    this.photo, {
+    required dataLabel,
+    required onFinishEditing,
+  }) : super(
+          dataLabel: dataLabel,
+          onFinishEditing: onFinishEditing,
+        );
 
   @override
   Widget returnReadDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Photo",
       detailChildren: [],
     );
   }
@@ -29,7 +36,7 @@ class PhotoDataCardElement extends DataDetailCard {
 
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "",
+      detailLabel: "Photo",
       detailChildren: [],
     );
   }
