@@ -6,12 +6,13 @@ part of AureusTestingApp;
 class AureusDataDetailView extends DataDetailView {
   AureusDataDetailView()
       : super(
-          title: 'Testing',
+          title: 'Data Item',
           detailCards: [
             DataDetailList().addressCard,
             DataDetailList().textFieldCard,
             DataDetailList().textViewCard,
             DataDetailList().promptListCard,
+            DataDetailList().timerCard,
           ],
         );
 }

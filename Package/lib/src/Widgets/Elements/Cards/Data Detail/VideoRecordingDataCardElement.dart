@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- VIDEO RECORDING DATA CARD ----------*/
+/// For use with a [DataDetailView], allows the user to read and
+/// write a video asset from a storage layer that you implement.
 
 class VideoRecordingDataCardElement extends DataDetailCard {
   VideoRecordingDataCardElement({

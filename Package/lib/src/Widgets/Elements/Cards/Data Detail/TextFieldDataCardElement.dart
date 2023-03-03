@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TEXT FIELD DATA CARD ----------*/
+/// For use with a [DataDetailView], allows the user to read and
+/// write a single-line text field from a storage layer that you implement.
 
 class TextFieldDataCardElement extends DataDetailCard {
   final TextEditingController textEditingController;

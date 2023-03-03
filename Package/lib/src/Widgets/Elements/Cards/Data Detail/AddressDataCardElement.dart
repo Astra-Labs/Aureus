@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 
 /*--------- ADDRESS DATA CARD ----------*/
 
+/// For use with a [DataDetailView], allows the user to read and
+/// write a photo from a storage layer that you implement.
+
 class AddressDataCardElement extends DataDetailCard {
   AddressDataCardElement({
     required dataLabel,

@@ -32,28 +32,28 @@ class _SensationsSubviewState extends State<SensationsSubview> {
       returnCard("Error", () {
         sensation.createSensation(sensationType.error);
       }),
-      returnCard("attention", () {
+      returnCard("Attention", () {
         sensation.createSensation(sensationType.attention);
       }),
-      returnCard("notification", () {
+      returnCard("Notification", () {
         sensation.createSensation(sensationType.notification);
       }),
-      returnCard("urgent", () {
+      returnCard("Urgent", () {
         sensation.createSensation(sensationType.urgent);
       }),
-      returnCard("enable", () {
+      returnCard("Enable", () {
         sensation.createSensation(sensationType.enable);
       }),
-      returnCard("disable", () {
+      returnCard("Disable", () {
         sensation.createSensation(sensationType.disable);
       }),
-      returnCard("swipe", () {
+      returnCard("Swipe", () {
         sensation.createSensation(sensationType.swipe);
       }),
-      returnCard("press", () {
+      returnCard("Press", () {
         sensation.createSensation(sensationType.press);
       }),
-      returnCard("hold", () {
+      returnCard("Hold", () {
         sensation.createSensation(sensationType.hold);
       }),
     ];

@@ -68,14 +68,15 @@ export 'src/Widgets/Elements/Cards/Grid/GridCardElement.dart';
 export 'src/Widgets/Elements/Cards/Grid/GridBadgeCardElement.dart';
 // ------------------------------------------------ Data Visualization
 // These are in beta, and not for use as of right now.
-export 'src/Widgets/Elements/Cards/Data Visualization/AddressDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/BaseDataCardElement.dart';
-// export 'src/Widgets/Elements/Cards/Data Visualization/PhotoDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/TextFieldDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/TextViewDataCardElement.dart';
-export 'src/Widgets/Elements/Cards/Data Visualization/PromptSelectionListCardElement.dart';
-// export 'src/Widgets/Elements/Cards/Data Visualization/VideoRecordingDataCardElement.dart';
-// export 'src/Widgets/Elements/Cards/Data Visualization/VoiceRecordingDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Detail/AddressDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Detail/BaseDataCardElement.dart';
+// export 'src/Widgets/Elements/Cards/Data Detail/PhotoDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Detail/TextFieldDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Detail/TextViewDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Detail/TimePickerDataCardElement.dart';
+export 'src/Widgets/Elements/Cards/Data Detail/PromptSelectionListCardElement.dart';
+// export 'src/Widgets/Elements/Cards/Data Detail/VideoRecordingDataCardElement.dart';
+// export 'src/Widgets/Elements/Cards/Data Detail/VoiceRecordingDataCardElement.dart';
 
 // -------------------------- Info Hierachy
 export 'src/Widgets/Elements/Info Hierarchy/ArticleViewElement.dart';

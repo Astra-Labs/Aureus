@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 /// {@image <image alt='' src=''>}
 
 /*--------- TEXT VIEW DATA CARD ----------*/
+/// For use with a [DataDetailView], allows the user to read and
+/// write a multi-line text view from a storage layer that you implement.
 
 class TextViewDataCardElement extends DataDetailCard {
   final TextEditingController textEditingController;

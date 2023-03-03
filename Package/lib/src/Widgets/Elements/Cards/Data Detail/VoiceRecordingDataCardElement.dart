@@ -7,13 +7,12 @@ import 'package:flutter/material.dart';
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
 
-/*--------- PHOTO DATA CARD ----------*/
+/*--------- VOICE RECORDING DATA CARD ----------*/
+/// For use with a [DataDetailView], allows the user to read and
+/// write a voice recording asset from a storage layer that you implement.
 
-class PhotoDataCardElement extends DataDetailCard {
-  Image? photo;
-
-  PhotoDataCardElement(
-    this.photo, {
+class VoiceRecordingDataCardElement extends DataDetailCard {
+  VoiceRecordingDataCardElement({
     required dataLabel,
     required onFinishEditing,
   }) : super(
@@ -25,18 +24,16 @@ class PhotoDataCardElement extends DataDetailCard {
   Widget returnReadDataCard() {
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "Photo",
+      detailLabel: "Voice",
       detailChildren: [],
     );
   }
 
   @override
   Widget returnEditDataCard() {
-    // var cardController = TextEditingController();
-
     return const BaseDataDetailCard(
       isBeingEdited: true,
-      detailLabel: "Photo",
+      detailLabel: "Voice",
       detailChildren: [],
     );
   }

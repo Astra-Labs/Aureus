@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
 
-/*--------- TEXT FIELD DATA CARD ----------*/
+/*--------- PROMPT SELECTION LIST ----------*/
+/// For use with a [DataDetailView], allows the user to read and
+/// write a photo from a storage layer that you implement.
 
 class PromptSelectionCardList extends DataDetailCard {
   // A list that represents all options a user can enable.

@@ -102,7 +102,8 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
     });
   }
 
-  //Displays a content warning over the current view.
+  // Displays a content warning over the current view. A content warning
+  // also gets a blurred background to hide the content behind it.
   @override
   void showContentWarning(String description, IconData icon) {
     setState(() {
@@ -110,14 +111,22 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
       hasOverlayEnabled = true;
-      overlayView = Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(15.0),
-          child: ContentWarningComponent(
-              warningDescription: description,
-              onContinue: () => {resetRequests()}));
+      overlayView = FloatingContainerElement(
+          child: Container(
+        width: size.logicalWidth(),
+        height: size.logicalHeight(),
+        decoration: LayerBackingDecoration(
+                decorationVariant: decorationPriority.standard)
+            .buildBacking(),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(15.0),
+        child: ContentWarningComponent(
+          warningDescription: description,
+          onContinue: () => {
+            resetRequests(),
+          },
+        ),
+      ));
       _controller.forward();
     });
   }

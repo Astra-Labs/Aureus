@@ -21,8 +21,8 @@ class _ExplorationViewState extends State<ExplorationView> {
         tabIcon: Assets.settings),
     ControllerTabObject(
         tabController: AureusDataDetailView(),
-        tabTitle: "Testing",
-        accessibilityHint: "accessibilityHint",
+        tabTitle: "Data",
+        accessibilityHint: "Shows you the tools.",
         tabIcon: Assets.pencil),
     /*
     ControllerTabObject(

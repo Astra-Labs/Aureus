@@ -10,12 +10,12 @@ class AureusInteractionsView extends NavBarComponent {
                 tabController: ActionsSubview(),
                 accessibilityHint: 'Changes selected tab to "Actions" page.',
                 tabIcon: Assets.paperplane),
-            ControllerTabObject(
+            /*ControllerTabObject(
                 tabTitle: 'Interactions',
                 tabController: InteractionsSubview(),
                 accessibilityHint:
                     'Changes selected tab to "Interactions" page.',
-                tabIcon: Assets.paperplane),
+                tabIcon: Assets.paperplane),*/
             ControllerTabObject(
                 tabTitle: 'Sensations',
                 tabController: SensationsSubview(),
