@@ -29,11 +29,17 @@ class DataDetailView extends StatefulWidget {
   /// favorites, this would be the place to put that stuff.
   final Map<String, VoidCallback>? additionalDetails;
 
+  /// If you want to make any changes when the page exits, this is the
+  /// place to do so. For example, saving the edited item to a storage layer,
+  /// finishing up networking stuff, etc.
+  VoidCallback? onPageExit;
+
   DataDetailView(
       {Key? key,
       required this.title,
       required this.detailCards,
-      this.additionalDetails})
+      this.additionalDetails,
+      this.onPageExit})
       : assert(detailCards.isNotEmpty == true,
             'Data Detail View requires cards to show data, and to allow the user to edit data.'),
         super(key: key);
@@ -43,16 +49,20 @@ class DataDetailView extends StatefulWidget {
 }
 
 class _DataDetailViewState extends State<DataDetailView> {
-  bool isEditing = false;
+  ValueNotifier<bool> isEditing = ValueNotifier<bool>(false);
 
   void showEditingAlertController() {
     late AlertControllerObject alertControllerAction;
 
     var actionSheetDetails = [
       AlertControllerAction(
-          actionName: isEditing == true ? "Finish editing" : "Start editing",
+          actionName:
+              isEditing.value == true ? "Finish editing" : "Start editing",
           actionSeverity: AlertControllerActionSeverity.standard,
-          onSelection: updateEditingState)
+          onSelection: () => {
+                updateEditingState(),
+                notificationMaster.resetRequests(),
+              })
     ];
 
     if (widget.additionalDetails != null) {
@@ -88,10 +98,12 @@ class _DataDetailViewState extends State<DataDetailView> {
   }
 
   void updateEditingState() {
-    print("updating editing state!");
-
     setState(() {
-      isEditing == true ? isEditing == false : isEditing == true;
+      if (isEditing.value == true) {
+        isEditing = ValueNotifier<bool>(false);
+      } else {
+        isEditing = ValueNotifier<bool>(true);
+      }
     });
   }
 
@@ -102,14 +114,31 @@ class _DataDetailViewState extends State<DataDetailView> {
     for (var element in widget.detailCards) {
       summaryItems.add(Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 25.0),
-          child: isEditing == true
+          child: isEditing.value == true
               ? element.returnEditDataCard()
               : element.returnReadDataCard()));
     }
 
+    var listener = ValueListenableBuilder<bool>(
+        builder: (BuildContext context, bool value, Widget? child) {
+          List<Widget> summaryItems = [];
+
+          for (var element in widget.detailCards) {
+            summaryItems.add(Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 25.0),
+                child: value == true
+                    ? element.returnEditDataCard()
+                    : element.returnReadDataCard()));
+          }
+
+          return Column(children: summaryItems);
+        },
+        valueListenable: isEditing);
+
     var pageHeaderElement = PageHeaderElement.withOptionsExit(
         pageTitle: widget.title,
         onPageExit: () => {
+              if (widget.onPageExit != null) {widget.onPageExit!()},
               Navigator.pop(context),
             },
         onPageDetails: () => {
@@ -118,10 +147,7 @@ class _DataDetailViewState extends State<DataDetailView> {
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.stackScroll,
-        children: [
-          pageHeaderElement,
-          Column(children: summaryItems),
-        ]);
+        children: [pageHeaderElement, listener]);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);

@@ -32,10 +32,53 @@ class PromptSelectionCardList extends DataDetailCard {
 
   var isTextEnabled = false;
 
+  // Creates a ledger with true / false values for all options
+  Map<String, StandardSelectionCardElement> returnLedger() {
+    Map<String, StandardSelectionCardElement> ledger = {};
+
+    for (var element in allOptions) {
+      if (selectedOptions != null && selectedOptions!.contains(element)) {
+        ledger[element] = StandardSelectionCardElement(
+          cardLabel: element,
+          isCardSelected: true,
+          onSelection: () => {
+            if (selectedOptions != null &&
+                selectedOptions?.contains(element) == true)
+              {
+                selectedOptions!.remove(element),
+              }
+            else if (selectedOptions != null &&
+                selectedOptions?.contains(element) == false)
+              {
+                selectedOptions!.add(element),
+              }
+          },
+        );
+      } else {
+        ledger[element] = ledger[element] = StandardSelectionCardElement(
+          cardLabel: element,
+          isCardSelected: false,
+          onSelection: () => {
+            if (selectedOptions != null &&
+                selectedOptions?.contains(element) == true)
+              {
+                selectedOptions!.remove(element),
+              }
+            else if (selectedOptions != null &&
+                selectedOptions?.contains(element) == false)
+              {
+                selectedOptions!.add(element),
+              }
+          },
+        );
+      }
+    }
+
+    return ledger;
+  }
+
   @override
   Widget returnReadDataCard() {
-    isTextEnabled = false;
-
     List<Widget> children = [];
 
     // Checks if the user has selected any options.
@@ -50,16 +93,20 @@ class PromptSelectionCardList extends DataDetailCard {
       // their selection.
       List<Widget> selectedChildren = [];
 
-      for (var element in selectedOptions!) {
-        var card = Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: StandardCardElement(
-            decorationVariant: decorationPriority.inactive,
-            cardLabel: element,
-          ),
-        );
+      var allCards = returnLedger();
 
-        selectedChildren.add(card);
+      for (var item in allCards.entries) {
+        var itemCard = item.value;
+        if (itemCard.isCardSelected == true) {
+          itemCard.isEnabled = false;
+
+          var card = Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: itemCard,
+          );
+
+          selectedChildren.add(card);
+        }
       } // end of for-loop
 
       var scrollWrapper = SizedBox(
@@ -87,21 +134,18 @@ class PromptSelectionCardList extends DataDetailCard {
   Widget returnEditDataCard() {
     List<Widget> cards = [];
 
-    // Iterates through all of the options to create a selection card for them.
-    for (var element in allOptions) {
-      var isCardSelected = false;
+    var allCards = returnLedger();
 
-      if (selectedOptions?.contains(element) == true) {
-        isCardSelected = true;
-      }
+    for (var item in allCards.entries) {
+      var itemCard = item.value;
 
-      var card = StandardSelectionCardElement(
-        cardLabel: element,
-        isCardSelected: isCardSelected,
+      var card = Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: itemCard,
       );
 
       cards.add(card);
-    }
+    } // end of for-loop
 
     var builder = SizedBox(
       child: SingleChildScrollView(

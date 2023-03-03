@@ -80,7 +80,6 @@ class _TextViewComponentState extends State<TextViewComponent> {
 
     var textView = Container(
       constraints: BoxConstraints(
-        minHeight: size.layoutItemHeight(3, screenSize),
         maxWidth: size.layoutItemWidth(1, screenSize),
       ),
       child: Column(

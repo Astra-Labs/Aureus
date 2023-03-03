@@ -42,7 +42,7 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
             decoration: CardBackingDecoration(
                     decorationVariant: widget.isBeingEdited == true
                         ? decorationPriority.standard
-                        : decorationPriority.standard)
+                        : decorationPriority.inactive)
                 .buildBacking(),
             padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Center(
@@ -61,6 +61,7 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: widget.detailChildren),
+                  const SizedBox(height: 20.0),
                 ],
               ),
             )));

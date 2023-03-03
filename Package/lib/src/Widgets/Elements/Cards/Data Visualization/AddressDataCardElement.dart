@@ -27,47 +27,59 @@ class AddressDataCardElement extends DataDetailCard {
   var zipcodeTextController = TextEditingController();
   var countryTextController = TextEditingController();
 
-  late var address1TextField = StandardTextFieldComponent(
-    isEnabled: isTextEnabled,
-    decorationVariant: decorationPriority.standard,
-    hintText: '',
-    textFieldController: address1TextController,
-  );
+  StandardTextFieldComponent address1TextField() {
+    return StandardTextFieldComponent(
+      isEnabled: isTextEnabled,
+      decorationVariant: decorationPriority.standard,
+      hintText: 'Street Address 1',
+      textFieldController: address1TextController,
+    );
+  }
 
-  late var address2TextField = StandardTextFieldComponent(
-    isEnabled: isTextEnabled,
-    decorationVariant: decorationPriority.standard,
-    hintText: '',
-    textFieldController: address2TextController,
-  );
+  StandardTextFieldComponent address2TextField() {
+    return StandardTextFieldComponent(
+      isEnabled: isTextEnabled,
+      decorationVariant: decorationPriority.standard,
+      hintText: 'Address 2',
+      textFieldController: address2TextController,
+    );
+  }
 
-  late var cityTextField = StandardTextFieldComponent(
-    isEnabled: isTextEnabled,
-    decorationVariant: decorationPriority.standard,
-    hintText: '',
-    textFieldController: cityTextController,
-  );
+  StandardTextFieldComponent cityTextField() {
+    return StandardTextFieldComponent(
+      isEnabled: isTextEnabled,
+      decorationVariant: decorationPriority.standard,
+      hintText: 'City',
+      textFieldController: cityTextController,
+    );
+  }
 
-  late var stateTextField = StandardTextFieldComponent(
-    isEnabled: isTextEnabled,
-    decorationVariant: decorationPriority.standard,
-    hintText: '',
-    textFieldController: stateTextController,
-  );
+  StandardTextFieldComponent stateTextField() {
+    return StandardTextFieldComponent(
+      isEnabled: isTextEnabled,
+      decorationVariant: decorationPriority.standard,
+      hintText: 'State',
+      textFieldController: stateTextController,
+    );
+  }
 
-  late var zipcodeTextField = StandardTextFieldComponent(
-    isEnabled: isTextEnabled,
-    decorationVariant: decorationPriority.standard,
-    hintText: '',
-    textFieldController: zipcodeTextController,
-  );
+  StandardTextFieldComponent zipcodeTextField() {
+    return StandardTextFieldComponent(
+      isEnabled: isTextEnabled,
+      decorationVariant: decorationPriority.standard,
+      hintText: 'Zipcode',
+      textFieldController: zipcodeTextController,
+    );
+  }
 
-  late var countryTextField = StandardTextFieldComponent(
-    isEnabled: isTextEnabled,
-    decorationVariant: decorationPriority.standard,
-    hintText: '',
-    textFieldController: countryTextController,
-  );
+  StandardTextFieldComponent countryTextField() {
+    return StandardTextFieldComponent(
+      isEnabled: isTextEnabled,
+      decorationVariant: decorationPriority.standard,
+      hintText: 'Country',
+      textFieldController: countryTextController,
+    );
+  }
 
   late var textControllers = [
     address1TextController,
@@ -78,14 +90,16 @@ class AddressDataCardElement extends DataDetailCard {
     countryTextController
   ];
 
-  late var textFields = [
-    address1TextField,
-    address2TextField,
-    cityTextField,
-    stateTextField,
-    zipcodeTextField,
-    countryTextField,
-  ];
+  List<StandardTextFieldComponent> textFields() {
+    return [
+      address1TextField(),
+      address2TextField(),
+      cityTextField(),
+      stateTextField(),
+      zipcodeTextField(),
+      countryTextField()
+    ];
+  }
 
   @override
   Widget returnReadDataCard() {
@@ -96,7 +110,7 @@ class AddressDataCardElement extends DataDetailCard {
       detailLabel: dataLabel,
       detailChildren: [
         Column(
-          children: textFields,
+          children: textFields(),
         )
       ],
     );
@@ -111,7 +125,7 @@ class AddressDataCardElement extends DataDetailCard {
       detailLabel: dataLabel,
       detailChildren: [
         Column(
-          children: textFields,
+          children: textFields(),
         )
       ],
     );

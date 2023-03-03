@@ -19,11 +19,13 @@ class TextViewDataCardElement extends DataDetailCard {
 
   var isTextEnabled = false;
 
-  late var textViewElement = TextViewComponent(
-      textFieldController: textEditingController,
-      hintText: dataLabel,
-      isEnabled: isTextEnabled,
-      prompt: dataLabel);
+  TextViewComponent textViewElement() {
+    return TextViewComponent(
+        textFieldController: textEditingController,
+        hintText: dataLabel,
+        isEnabled: isTextEnabled,
+        prompt: dataLabel);
+  }
 
   @override
   Widget returnReadDataCard() {
@@ -32,7 +34,9 @@ class TextViewDataCardElement extends DataDetailCard {
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: dataLabel,
-      detailChildren: [textViewElement],
+      detailChildren: [
+        textViewElement(),
+      ],
     );
   }
 
@@ -43,7 +47,9 @@ class TextViewDataCardElement extends DataDetailCard {
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: dataLabel,
-      detailChildren: [textViewElement],
+      detailChildren: [
+        textViewElement(),
+      ],
     );
   }
 }

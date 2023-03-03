@@ -22,13 +22,15 @@ class TextFieldDataCardElement extends DataDetailCard {
 
   var isTextEnabled = false;
 
-  late var textFieldElement = StandardTextFieldComponent(
-      hintText: dataLabel,
-      isEnabled: isTextEnabled,
-      decorationVariant: isTextEnabled
-          ? decorationPriority.important
-          : decorationPriority.standard,
-      textFieldController: textEditingController);
+  StandardTextFieldComponent textFieldElement() {
+    return StandardTextFieldComponent(
+        hintText: dataLabel,
+        isEnabled: isTextEnabled,
+        decorationVariant: isTextEnabled
+            ? decorationPriority.important
+            : decorationPriority.standard,
+        textFieldController: textEditingController);
+  }
 
   @override
   Widget returnReadDataCard() {
@@ -38,7 +40,7 @@ class TextFieldDataCardElement extends DataDetailCard {
       isBeingEdited: true,
       detailLabel: dataLabel,
       detailChildren: [
-        textFieldElement,
+        textFieldElement(),
       ],
     );
   }
@@ -51,7 +53,7 @@ class TextFieldDataCardElement extends DataDetailCard {
       isBeingEdited: true,
       detailLabel: dataLabel,
       detailChildren: [
-        textFieldElement,
+        textFieldElement(),
       ],
     );
   }
