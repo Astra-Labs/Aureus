@@ -65,14 +65,9 @@ class AureusNotificationMaster {
         : throwUnregisteredObserverError();
   }
 
-  void showTextFieldAlertController(
-    AlertControllerObject data,
-    TextEditingController controller,
-    String hintText,
-  ) {
+  void showTextFieldAlertController(AlertControllerObject data) {
     _currentObserver != null
-        ? _currentObserver!
-            .showTextFieldAlertController(data, controller, hintText)
+        ? _currentObserver!.showTextFieldAlertController(data)
         : throwUnregisteredObserverError();
   }
 }
@@ -83,9 +78,5 @@ mixin AureusNotificationObserver {
   void showContentWarning(String description, IconData icon) {}
   void showDropdownNotification(String description, IconData icon) {}
   void showBottomActionController(AlertControllerObject data) {}
-  void showTextFieldAlertController(
-    AlertControllerObject data,
-    TextEditingController controller,
-    String hintText,
-  ) {}
+  void showTextFieldAlertController(AlertControllerObject data) {}
 }

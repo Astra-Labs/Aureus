@@ -12,23 +12,12 @@ import 'package:flutter/material.dart';
 /// Use when there is only 1-2 actions, otherwise use Bottom Action Sheet
 
 class TextFieldAlertControllerComponent extends StatefulWidget {
-  /// The data object that dictates how your alert controller behaves.
+  /// The data object that dictates how your alert controller behaves. Make
+  /// sure to use the .textField constructor, or else you'll experience bugs!
   final AlertControllerObject alertData;
-
-  /// Text that 'hints' to the user what you want them to type in.
-  final String hintText;
-
-  /// The text field controller that owns the text field
-  final TextEditingController textFieldController;
-
-  /// An action to run when the user is finished typing.
-  final VoidCallback? onFinish;
 
   const TextFieldAlertControllerComponent({
     required this.alertData,
-    required this.hintText,
-    required this.textFieldController,
-    this.onFinish,
   });
 
   @override
@@ -40,64 +29,56 @@ class _TextFieldAlertControllerComponentComponentState
     extends State<TextFieldAlertControllerComponent> {
   @override
   Widget build(BuildContext context) {
-    List<Widget> actionButtons = [];
-
     var screenSize = size.logicalScreenSize();
 
-    var actions = [
-      AlertControllerAction(
-        actionName: "Done",
-        actionSeverity: AlertControllerActionSeverity.confirm,
-        onSelection: () => {},
+    List<Widget> buttonRow = [
+      SmolButtonElement(
+        decorationVariant: decorationPriority.important,
+        buttonTitle: "Done",
+        buttonHint: 'Finishing typing in the text field',
+        buttonAction: widget.alertData.onFinish!,
       ),
-      AlertControllerAction(
-        actionName: "Cancel",
-        actionSeverity: AlertControllerActionSeverity.cancel,
-        onSelection: widget.onFinish ?? () => {},
-      ),
+      const Spacer(),
+      SmolButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: "Cancel",
+          buttonHint: 'Cancels the alert controller',
+          buttonAction: () => {
+                notificationMaster.resetRequests(),
+              }),
     ];
 
-    for (var element in actions) {
-      actionButtons.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0, 5.0, 0.0, 5.0),
-        child: StandardButtonElement(
-            decorationVariant:
-                element.actionSeverity == AlertControllerActionSeverity.confirm
-                    ? decorationPriority.important
-                    : decorationPriority.standard,
-            buttonTitle: element.actionName,
-            buttonHint: 'Completes ${element.actionName}',
-            buttonAction: element.onSelection),
-      ));
-    }
-
-    var centeredAlertControllerContent = Column(
+    var centeredAlertControllerChildren = [
+      IconBadge(
+          badgeIcon: widget.alertData.alertIcon,
+          badgePriority: decorationPriority.standard),
+      const SizedBox(height: 10),
+      HeadingThreeText(
+          widget.alertData.alertTitle, decorationPriority.standard),
+      const SizedBox(height: 10),
+      BodyOneText(widget.alertData.alertBody, decorationPriority.standard),
+      const SizedBox(height: 20.0),
+      StandardTextFieldComponent(
+        hintText: widget.alertData.hintText!,
+        isEnabled: true,
+        decorationVariant: decorationPriority.standard,
+        textFieldController: widget.alertData.controller!,
+      ),
+      const SizedBox(height: 20.0),
+      Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.min,
-        children: [
-          IconBadge(
-              badgeIcon: widget.alertData.alertIcon,
-              badgePriority: decorationPriority.standard),
-          const SizedBox(height: 10),
-          HeadingThreeText(
-              widget.alertData.alertTitle, decorationPriority.standard),
-          const SizedBox(height: 10),
-          BodyOneText(widget.alertData.alertBody, decorationPriority.standard),
-          const SizedBox(height: 10.0),
-          StandardTextFieldComponent(
-            hintText: widget.hintText,
-            isEnabled: true,
-            decorationVariant: decorationPriority.standard,
-            textFieldController: widget.textFieldController,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.min,
-            children: actionButtons,
-          )
-        ]);
+        children: buttonRow,
+      )
+    ];
+
+    var centeredAlertControllerContent = Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.min,
+      children: centeredAlertControllerChildren,
+    );
 
     var centeredAlertControllerContainer = Container(
         decoration: CardBackingDecoration(

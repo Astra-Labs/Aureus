@@ -46,7 +46,7 @@ class _DataDetailViewState extends State<DataDetailView> {
   bool isEditing = false;
 
   void showEditingAlertController() {
-    var alertControllerAction;
+    late AlertControllerObject alertControllerAction;
 
     var actionSheetDetails = [
       AlertControllerAction(

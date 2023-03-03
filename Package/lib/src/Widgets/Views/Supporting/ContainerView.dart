@@ -41,12 +41,18 @@ class ContainerView extends StatefulWidget {
   /// Whether or not the view should show a quick action bar
   final bool? showQuickActionBar;
 
+  /// Whether or not the view is a subchild of a nav bar. This
+  /// is meant to disable the notificationMaster, so the NavBar
+  /// can be the parent that shows the notifications.
+  final bool? isNavBarChild;
+
   const ContainerView({
     required this.decorationVariant,
     required this.builder,
     this.takesFullWidth = false,
     this.hasBackgroundImage = true,
     this.showQuickActionBar = true,
+    this.isNavBarChild = false,
   });
 
   @override
@@ -54,10 +60,7 @@ class ContainerView extends StatefulWidget {
 }
 
 class _ContainerViewState extends State<ContainerView>
-    with
-        AureusNotificationObserver,
-        TickerProviderStateMixin,
-        WidgetsBindingObserver {
+    with AureusNotificationObserver, TickerProviderStateMixin {
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   late Future<double> actionBarX;
   late Future<double> actionBarY;
@@ -71,7 +74,10 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void initState() {
-    notificationMaster.registerObserver(this);
+    if (widget.isNavBarChild == false) {
+      notificationMaster.registerObserver(this);
+    }
+
     sensation.prepare();
 
     actionBarY = preferences.then((SharedPreferences preferences) {
@@ -110,7 +116,9 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void dispose() {
-    notificationMaster.unregisterObserver(this);
+    if (widget.isNavBarChild == false) {
+      notificationMaster.unregisterObserver(this);
+    }
 
     //Removes items in the container view
     resetRequests();
@@ -208,11 +216,7 @@ class _ContainerViewState extends State<ContainerView>
 
   // Displays an alert controller over the current view.
   @override
-  void showTextFieldAlertController(
-    AlertControllerObject data,
-    TextEditingController controller,
-    String hintText,
-  ) {
+  void showTextFieldAlertController(AlertControllerObject data) {
     setState(() {
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
@@ -225,8 +229,6 @@ class _ContainerViewState extends State<ContainerView>
           padding: const EdgeInsets.all(15.0),
           child: TextFieldAlertControllerComponent(
             alertData: data,
-            textFieldController: controller,
-            hintText: hintText,
           ));
       _controller.forward();
     });
@@ -234,17 +236,14 @@ class _ContainerViewState extends State<ContainerView>
 
   void updateAccessBarPosition(DraggableDetails details) {
     setState(() {
-      print("drag has ended!");
       RenderBox? renderBox = context.findRenderObject() as RenderBox;
       position = renderBox.globalToLocal(details.offset);
-
-      print(position);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    //pull exit bar setting status from Safety Plan
+    // pull exit bar setting status from Safety Plan
     var safety = resourceValues.safetySettings;
     const bool hasExitBar = false;
 
