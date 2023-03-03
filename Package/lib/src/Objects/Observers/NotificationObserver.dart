@@ -16,9 +16,7 @@ class AureusNotificationMaster {
   AureusNotificationObserver? _currentObserver;
 
   void registerObserver(AureusNotificationObserver observer) {
-    print('registering observer $observer');
     _currentObserver = observer;
-    print('current observer $_currentObserver');
   }
 
   void unregisterObserver(AureusNotificationObserver observer) {
@@ -30,7 +28,6 @@ class AureusNotificationMaster {
   }
 
   void resetRequests() {
-    print('resetting requests, observer is $_currentObserver');
     _currentObserver != null
         ? _currentObserver!.resetRequests()
         : throwUnregisteredObserverError();

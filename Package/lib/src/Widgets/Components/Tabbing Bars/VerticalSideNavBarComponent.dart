@@ -9,16 +9,23 @@ import 'package:flutter/material.dart';
 
 /*--------- VERTICAL SIDE NAV BAR ----------*/
 /// A vertical navigation bar, meant to be used on tablet / web displays.
+/// If you use this, and have a [ContainerView] as a subchild, make sure to set
+/// [ContainerView.managesNotifications] as false.
 
 class VerticalSideNavBarComponent extends StatefulWidget {
   /// A list of controller tab objects that make up the NavBarComponent
   final List<ControllerTabObject> tabItems;
+
+  /// Whether this NavBar should be responsible for displaying notifications.
+  /// Unless you have a greater parent widget, this should be YES.
+  final bool shouldManageNotifications;
 
   /// An alternate color to set as the background
   final Color? altColor;
 
   const VerticalSideNavBarComponent({
     required this.tabItems,
+    this.shouldManageNotifications = true,
     this.altColor,
   }) : assert(tabItems.length >= 2);
 
@@ -90,6 +97,8 @@ class _VerticalSideNavBarComponentState
       ),
     );
 
-    return navigationRailScaffold;
+    return widget.shouldManageNotifications == true
+        ? NotificationOverlayView(child: navigationRailScaffold)
+        : navigationRailScaffold;
   }
 }

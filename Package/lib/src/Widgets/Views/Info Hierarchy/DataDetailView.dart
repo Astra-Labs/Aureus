@@ -50,7 +50,7 @@ class _DataDetailViewState extends State<DataDetailView> {
 
     var actionSheetDetails = [
       AlertControllerAction(
-          actionName: isEditing ? "Finish editing" : "Start editing",
+          actionName: isEditing == true ? "Finish editing" : "Start editing",
           actionSeverity: AlertControllerActionSeverity.standard,
           onSelection: updateEditingState)
     ];
@@ -88,8 +88,10 @@ class _DataDetailViewState extends State<DataDetailView> {
   }
 
   void updateEditingState() {
+    print("updating editing state!");
+
     setState(() {
-      isEditing ? isEditing == false : isEditing == true;
+      isEditing == true ? isEditing == false : isEditing == true;
     });
   }
 

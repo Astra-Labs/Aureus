@@ -4,7 +4,6 @@ import 'package:aureus/aureus.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@category Widgets}
 /// {@subCategory Views}
@@ -80,9 +79,6 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
   @override
   void resetRequests() {
-    overlayView = Container();
-    hasOverlayEnabled = false;
-
     setState(() {
       _controller.reverse();
     });
@@ -187,7 +183,8 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   @override
   Widget build(BuildContext context) {
     // Builds an overlay item to hold any items coming into the view
-    return SizedBox(
+    return Material(
+      child: SizedBox(
         width: size.logicalWidth(),
         height: size.logicalHeight(),
         child: Stack(
@@ -198,6 +195,8 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
                 left: _offset.value.dx * (size.logicalHeight()),
                 child: overlayView),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

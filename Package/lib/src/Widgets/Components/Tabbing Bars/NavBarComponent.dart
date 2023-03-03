@@ -14,8 +14,14 @@ class NavBarComponent extends StatefulWidget {
   /// A list of controller tab objects that make up the NavBarComponent
   final List<ControllerTabObject> tabItems;
 
-  const NavBarComponent({required this.tabItems})
-      : assert(tabItems.length >= 2);
+  /// Whether this NavBar should be responsible for displaying notifications.
+  /// Unless you have a greater parent widget, this should be YES.
+  final bool shouldManageNotifications;
+
+  const NavBarComponent({
+    required this.tabItems,
+    this.shouldManageNotifications = true,
+  }) : assert(tabItems.length >= 2);
 
   @override
   _NavBarComponentState createState() => _NavBarComponentState();
@@ -118,6 +124,8 @@ class _NavBarComponentState extends State<NavBarComponent> {
       ),
     );
 
-    return navBarScaffold;
+    return widget.shouldManageNotifications == true
+        ? NotificationOverlayView(child: navBarScaffold)
+        : navBarScaffold;
   }
 }

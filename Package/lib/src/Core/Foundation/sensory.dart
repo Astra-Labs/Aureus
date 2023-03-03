@@ -41,11 +41,8 @@ class Sensory {
 
   /// A reusable function to play the sound.
   Future<void> runAudioPlayer(String path) async {
-    print(player.playerState);
     await player.setAsset(path, package: "aureus");
-    print(player.playerState);
     await player.play();
-    print(player.playerState);
   }
 
   /// A function that calls the Haptic Engine and the sound library.
