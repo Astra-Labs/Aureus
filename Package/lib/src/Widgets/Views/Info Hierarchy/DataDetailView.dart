@@ -149,7 +149,12 @@ class _DataDetailViewState extends State<DataDetailView> {
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.stackScroll,
-        children: [pageHeaderElement, listener]);
+        children: [
+          pageHeaderElement,
+          const DividerElement(),
+          const SizedBox(height: 10),
+          listener,
+        ]);
 
     return ContainerView(
         decorationVariant: decorationPriority.standard, builder: viewLayout);

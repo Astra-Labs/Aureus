@@ -1,3 +1,8 @@
+## 0.0.5
+- Added 'Change Account Item' view
+- Added a 'Picker Selection' Data card element.  
+- More QA bugs and fixes 
+
 ## 0.0.4
 - Added Consent Handlers to internal components to fix a crashing bug
 - Adding number pad component

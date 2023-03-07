@@ -54,11 +54,20 @@ void main() {
           frequencyUsage: SafetyPlanFrequency.singleUse,
           isActionBarDevEnabled: true,
           quickActionItems: quickActionItems2,
-          eligiblePlanOptions: []),
+          eligiblePlanOptions: [
+            SafetyPlanOptions.exitBar,
+            SafetyPlanOptions.localDataStorage,
+            SafetyPlanOptions.enable2FA
+          ]),
       developerName: 'Astra Laboratories',
       developerEmail: 'hello@withastra.com',
       userSupportURL: 'https://www.withastra.org/',
-      requestedDataPermissions: [],
+      requestedDataPermissions: [
+        DataConsent().cameraAccessPermission(
+            "We use the camera to demo a Core Tool for you."),
+        DataConsent().microphoneAccessPermission(
+            "We use the microphone to demo a Core Tool for you."),
+      ],
       termsOfService: 'termsOfService',
       privacyPolicy: 'privacyPolicy');
 
@@ -124,7 +133,9 @@ void main() {
       ),
       onboardingLanding: OnboardingLandingView(),
       onboardingDemo: OnboardingDemoView(
-        toolItems: [],
+        toolItems: [
+          testingTool,
+        ],
       ),
       onboardingInformation: OnboardingInformationView(onboardingDetails: [
         onboardingInfo1,
@@ -136,7 +147,10 @@ void main() {
       privacyPolicy: ArticleViewElement(
           title: "Privacy Policy", subheader: "subheader", body: "body"),
       signIn: SignInView(
-        onSignIn: () => {},
+        onSignIn: () => {
+          notificationMaster.sendAlertNotificationRequest(
+              "", Assets.alertmessage)
+        },
         onSignup: () => {},
         onResetInformation: () => {},
         usernameTextController: textEditor,

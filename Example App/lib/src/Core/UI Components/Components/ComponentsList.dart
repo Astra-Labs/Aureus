@@ -60,6 +60,7 @@ Map<String, Widget> aureusComponents = {
   'Icon Tabbing Bar': iconTabbingBarComponent,
   'Iterating Tabbing Component': iteratingTabbingComponent,
   'Smol Text Tabbing Bar': smolTextTabbingComponent,
+  'Number Pad': numPadComponent,
 };
 
 var testAlertControllerAction = AlertControllerAction(
@@ -80,7 +81,9 @@ var testAlertControllerAction2 = AlertControllerAction(
 
 late AlertControllerObject testAlertControllerObject =
     AlertControllerObject.singleAction(
-        onCancellation: () => {print('cancelled')},
+        onCancellation: () => {
+              print('cancelled'),
+            },
         alertTitle: 'Would you like to yee?',
         alertBody: 'Haw. Haw Haw Haw Haw.',
         actions: [testAlertControllerAction],
@@ -326,6 +329,8 @@ Widget testDetailCarousel = DetailCardCarouselComponent(cardDetailCarousel: {
   'Detail 3': fillerIcon3,
   'Detail 4': fillerIcon4,
 });
+
+Widget numPadComponent = NumberPadComponent();
 
 var testingCards = SingleChildScrollView(
     scrollDirection: Axis.vertical,

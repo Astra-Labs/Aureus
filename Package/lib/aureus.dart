@@ -150,6 +150,7 @@ export 'src/Widgets/Views/Utilities/DataConsentView.dart';
 export 'src/Widgets/Views/Utilities/2FAVerificationView.dart';
 export 'src/Widgets/Views/Utilities/SettingsView.dart';
 export 'src/Widgets/Views/Utilities/PasscodeView.dart';
+export 'src/Widgets/Views/Utilities/ChangeAccountItemView.dart';
 
 // -------------------------- Info Hierarchy
 export 'src/Widgets/Views/Info Hierarchy/HelpCenterView.dart';

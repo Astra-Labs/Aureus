@@ -110,7 +110,9 @@ class _BannerNotificationComponentState
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        BodyTwoText(widget.body, decorationPriority.standard),
+        Flexible(
+          child: BodyTwoText(widget.body, decorationPriority.standard),
+        ),
         const Spacer(),
         const IconBadge(
             badgeIcon: Assets.alertmessage,
