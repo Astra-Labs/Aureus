@@ -41,9 +41,11 @@ class CameraInputToolTemplate extends ToolCardTemplate {
           buttonTitle: "Take photo",
           buttonHint: "Takes you to the camera.",
           buttonAction: () => {
-                const DataConsent().consentHandler(() {
+                const DataConsent().consentHandler(dataAccess.camera, () {
                   segueToInput(context);
-                }, dataAccess.camera),
+                }, () {
+                  const DataConsent().showConsentErrorMessage("Camera Access");
+                }),
               }),
     );
 

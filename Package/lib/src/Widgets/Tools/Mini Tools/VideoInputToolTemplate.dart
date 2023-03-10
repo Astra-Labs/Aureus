@@ -35,19 +35,25 @@ class VideoInputToolTemplate extends ToolCardTemplate {
         };
 
     var builder2 = Builder(
-      builder: (context) => StandardIconButtonElement(
-          decorationVariant: decorationPriority.important,
-          buttonIcon: Assets.play,
-          buttonTitle: "Take a video",
-          buttonHint: "Takes you to the camera to film a video.",
-          buttonAction: () => {
-                const DataConsent().consentHandler(() {
-                  const DataConsent().consentHandler(() {
-                    segueToInput(context);
-                  }, dataAccess.microphone);
-                }, dataAccess.camera),
-              }),
-    );
+        builder: (context) => StandardIconButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonIcon: Assets.play,
+            buttonTitle: "Take a video",
+            buttonHint: "Takes you to the camera to film a video.",
+            buttonAction: () => {
+                  const DataConsent().consentHandler(dataAccess.camera, () {
+                    const DataConsent().consentHandler(dataAccess.microphone,
+                        () {
+                      segueToInput(context);
+                    }, () {
+                      const DataConsent()
+                          .showConsentErrorMessage("Microphone Access");
+                    });
+                  }, () {
+                    const DataConsent()
+                        .showConsentErrorMessage("Camera Access");
+                  }),
+                }));
 
     return BaseCardToolTemplate(
         isActive: true,

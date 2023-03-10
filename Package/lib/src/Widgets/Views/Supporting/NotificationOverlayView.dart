@@ -69,6 +69,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   @override
   void dispose() {
     notificationMaster.unregisterObserver(this);
+    notificationMaster.resetRequests();
     //Removes items in the container view
     resetRequests();
 

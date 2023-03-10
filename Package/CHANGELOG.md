@@ -2,6 +2,8 @@
 - Added 'Change Account Item' view
 - Added a 'Picker Selection' Data card element.  
 - More QA bugs and fixes 
+- Reworked DataConsent class to be more code "pretty"
+- Added DataDetailCTA class (but didn't implement it, yet)
 
 ## 0.0.4
 - Added Consent Handlers to internal components to fix a crashing bug

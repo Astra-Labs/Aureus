@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:aureus/aureus.dart';
+import 'package:aureus/src/Objects/Views/DataDetailObjects.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
@@ -31,18 +32,24 @@ class DataDetailView extends StatefulWidget {
   /// favorites, this would be the place to put that stuff.
   final Map<String, VoidCallback>? additionalDetails;
 
+  /// A list of [DataDetailCTA] to show at the bottom of the page. Use this when
+  /// you want the user to do 'something' on the object, e.g: sharing a contact,
+  /// emailing something to someone, etc.
+  final List<DataDetailCTA>? callsToAction;
+
   /// If you want to make any changes when the page exits, this is the
   /// place to do so. For example, saving the edited item to a storage layer,
   /// finishing up networking stuff, etc.
   VoidCallback? onPageExit;
 
-  DataDetailView(
-      {Key? key,
-      required this.title,
-      required this.detailCards,
-      this.additionalDetails,
-      this.onPageExit})
-      : assert(detailCards.isNotEmpty == true,
+  DataDetailView({
+    Key? key,
+    required this.title,
+    required this.detailCards,
+    this.additionalDetails,
+    this.callsToAction,
+    this.onPageExit,
+  })  : assert(detailCards.isNotEmpty == true,
             'Data Detail View requires cards to show data, and to allow the user to edit data.'),
         super(key: key);
 
@@ -137,6 +144,34 @@ class _DataDetailViewState extends State<DataDetailView> {
         },
         valueListenable: isEditing);
 
+    Widget item = Container();
+
+    if (widget.callsToAction != null &&
+        widget.callsToAction!.isNotEmpty == true) {
+      List<Widget> children = [];
+
+      for (var item in widget.callsToAction!) {
+        var button = Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: IconButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonIcon: item.icon,
+            buttonHint: item.hint,
+            buttonAction: item.action,
+            buttonPriority: buttonSize.secondary,
+          ),
+        );
+
+        children.add(button);
+      }
+
+      item = Row(
+        children: children,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+      );
+    }
+
     var pageHeaderElement = PageHeaderElement.withOptionsExit(
         pageTitle: widget.title,
         onPageExit: () => {
@@ -154,6 +189,7 @@ class _DataDetailViewState extends State<DataDetailView> {
           const DividerElement(),
           const SizedBox(height: 10),
           listener,
+          item
         ]);
 
     return ContainerView(
