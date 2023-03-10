@@ -161,7 +161,9 @@ class _TimerElementState extends State<TimerElement>
                 : decorationPriority.important,
             buttonTitle: 'Start',
             buttonHint: 'Starts the timer.',
-            buttonAction: () => {startTimer()}),
+            buttonAction: () => {
+                  startTimer(),
+                }),
         const Spacer(),
         SmolButtonElement(
             decorationVariant: _isTimerActive == true
@@ -169,7 +171,9 @@ class _TimerElementState extends State<TimerElement>
                 : decorationPriority.inactive,
             buttonTitle: 'Pause',
             buttonHint: 'Pauses the timer.',
-            buttonAction: () => {pauseTimer()}),
+            buttonAction: () => {
+                  pauseTimer(),
+                }),
         const Spacer(),
         SmolButtonElement(
             decorationVariant: _isTimerActive == true
@@ -177,7 +181,9 @@ class _TimerElementState extends State<TimerElement>
                 : decorationPriority.inactive,
             buttonTitle: 'Reset',
             buttonHint: 'Resets the timer.',
-            buttonAction: () => {resetTimer()}),
+            buttonAction: () => {
+                  resetTimer(),
+                }),
       ]),
     );
 

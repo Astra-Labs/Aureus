@@ -17,12 +17,20 @@ class StandardSelectionCardElement extends StatefulWidget {
   /// The text for the main header of the card.
   final String cardLabel;
 
+  /// If the card is enabled for user interaction.
+  bool? isEnabled;
+
   /// Whether or not a card is actively selected.
   bool isCardSelected = false;
 
+  /// A function to run when the user presses on the card.
+  VoidCallback? onSelection;
+
   StandardSelectionCardElement({
     required this.cardLabel,
+    this.isEnabled = true,
     this.isCardSelected = false,
+    this.onSelection,
   });
 
   @override
@@ -33,6 +41,10 @@ class StandardSelectionCardElement extends StatefulWidget {
 class _StandardSelectionCardElementState
     extends State<StandardSelectionCardElement> {
   void toggleCard() {
+    if (widget.onSelection != null) {
+      widget.onSelection!();
+    }
+
     if (widget.isCardSelected == false) {
       setState(() {
         widget.isCardSelected = true;
@@ -79,17 +91,21 @@ class _StandardSelectionCardElementState
           Flexible(
             child: TagTwoText(
                 widget.cardLabel,
-                widget.isCardSelected
-                    ? decorationPriority.important
-                    : decorationPriority.standard),
+                widget.isEnabled == true
+                    ? (widget.isCardSelected
+                        ? decorationPriority.important
+                        : decorationPriority.standard)
+                    : decorationPriority.inactive),
           ),
         ]);
 
     var floatingContainerElement = FloatingContainerElement(
       child: Container(
           decoration: CardBackingDecoration(
-                  decorationVariant: widget.isCardSelected
-                      ? decorationPriority.important
+                  decorationVariant: widget.isEnabled == true
+                      ? (widget.isCardSelected
+                          ? decorationPriority.important
+                          : decorationPriority.standard)
                       : decorationPriority.inactive)
               .buildBacking(),
           child: Padding(
@@ -99,7 +115,7 @@ class _StandardSelectionCardElementState
     );
 
     var inkWell = InkWell(
-      onTap: toggleCard,
+      onTap: widget.isEnabled == true ? toggleCard : () => {},
       child: SizedBox(
           width: size.layoutItemWidth(4, screenSize),
           height: size.layoutItemHeight(5, screenSize),
@@ -108,7 +124,7 @@ class _StandardSelectionCardElementState
 
     var semantics = Semantics.fromProperties(
       properties: SemanticsWrapper.toggle(
-          isEnabled: widget.isCardSelected,
+          isEnabled: widget.isEnabled,
           label: widget.cardLabel,
           hint: 'Enables or disables ${widget.cardLabel}',
           isToggled: widget.isCardSelected,

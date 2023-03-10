@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 /// A view that displays an article, and a checkbox.
 /// When the user agrees to the checkbox and moves forward, it calls
-/// the param onFinish.
+/// the param [onFinish].
 /// This should be used for legal documents that MUST be agreed to in order
 /// to use the software. e.g: terms of service, cookie policy, etc.
 

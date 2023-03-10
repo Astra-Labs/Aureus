@@ -82,7 +82,6 @@ class _LandingPageViewState extends State<LandingPageView> {
 
     Container mobilePageFooter = Container(
         width: screenWidth,
-        height: size.layoutItemHeight(2, screenSize),
         decoration: BoxDecoration(
             color: coloration
                 .decorationColor(
@@ -101,7 +100,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                 BodyOneText(
                     '${resourceValues.name} is run by ${resourceValues.developerName}',
                     decorationPriority.standard),
-                const SizedBox(width: 10.0),
+                const SizedBox(width: 30.0),
                 widget.onGiveFeedback != null
                     ? SmolButtonElement(
                         decorationVariant: decorationPriority.standard,
@@ -109,7 +108,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                         buttonHint: 'Opens the place to give feedback.',
                         buttonAction: () => {})
                     : const SizedBox(width: 10.0),
-                const SizedBox(width: 10.0),
+                const SizedBox(width: 30.0),
               ]),
         ));
 
@@ -151,41 +150,34 @@ class _LandingPageViewState extends State<LandingPageView> {
           ),
         ));
 
-    var mobileView = SizedBox(
-        height: screenHeight,
-        width: screenWidth,
-        child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding:
-                      EdgeInsets.all(size.widthOf(weight: sizingWeight.w0)),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                            height: size.heightOf(weight: sizingWeight.w1)),
-                        informationHiearchy,
-                        SizedBox(
-                            height: size.heightOf(weight: sizingWeight.w0)),
-                        homeScreenOverlay,
-                        SizedBox(
-                            height: size.heightOf(weight: sizingWeight.w0)),
-                        SizedBox(
-                            height: screenHeight *
-                                (0.1 * widget.actionButtons.length),
-                            child: buttonItems),
-                        const SizedBox(height: 10.0),
-                      ]),
-                ),
-                FloatingContainerElement(child: mobilePageFooter)
-              ],
-            )));
+    var mobileView = SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0)),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: size.heightOf(weight: sizingWeight.w1)),
+                    informationHiearchy,
+                    SizedBox(height: size.heightOf(weight: sizingWeight.w0)),
+                    homeScreenOverlay,
+                    SizedBox(height: size.heightOf(weight: sizingWeight.w0)),
+                    SizedBox(
+                        height:
+                            screenHeight * (0.1 * widget.actionButtons.length),
+                        child: buttonItems),
+                    const SizedBox(height: 10.0),
+                  ]),
+            ),
+            mobilePageFooter
+          ],
+        ));
 
     var webView = Column(
       crossAxisAlignment: CrossAxisAlignment.start,

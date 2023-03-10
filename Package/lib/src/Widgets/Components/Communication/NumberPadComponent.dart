@@ -16,14 +16,13 @@ class NumberPadComponent extends StatefulWidget {
   /// items in a list as opposed to one int solves
   /// issues with numbers between web / mobile. To reset the number pad, set
   /// the inputted code to be an empty array.
-  List<int>? inputtedCode;
+  List<int> inputtedCode = [];
 
   @override
   _NumberPadComponentState createState() => _NumberPadComponentState();
 }
 
 class _NumberPadComponentState extends State<NumberPadComponent> {
-  var entryText = '';
   var digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   @override
@@ -40,13 +39,13 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
 
   void resetPad() {
     setState(() {
-      entryText = "";
+      widget.inputtedCode = [];
     });
   }
 
-  void addDigit(String item) {
+  void addDigit(int item) {
     setState(() {
-      entryText = entryText + item;
+      widget.inputtedCode.add(item);
     });
   }
 
@@ -55,7 +54,7 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
       double responsiveSize = 0;
       var width = size.logicalWidth();
 
-      if (width < 330 || width > 1000) {
+      if (width < 600 || width > 1000) {
         // Desktop & mobile sizing.
         responsiveSize = 80;
       } else if (width > 600) {
@@ -66,7 +65,7 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
     }
 
     var numberButton = Padding(
-      padding: EdgeInsets.all(size.responsiveSize(17.0)),
+      padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
       child: Container(
         width: responsiveNumButtonSize(),
         height: responsiveNumButtonSize(),
@@ -83,12 +82,15 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          var newEntry = entryText + number.toString();
-          entryText = newEntry;
+          widget.inputtedCode.add(number);
         });
       },
       child: numberButton,
     );
+  }
+
+  String entryCode() {
+    return widget.inputtedCode.join();
   }
 
   @override
@@ -104,40 +106,37 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
             decoration: InputBackingDecoration().buildBacking(),
             padding: const EdgeInsets.all(10.0),
             alignment: Alignment.center,
-            child: HeadingFourText(entryText, decorationPriority.standard)));
+            child: HeadingFourText(entryCode(), decorationPriority.standard)));
 
     var column = Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
           children: [
             createNumberButton(1),
+            const Spacer(),
             createNumberButton(2),
+            const Spacer(),
             createNumberButton(3),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
           children: [
             createNumberButton(4),
+            const Spacer(),
             createNumberButton(5),
+            const Spacer(),
             createNumberButton(6),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
           children: [
             createNumberButton(7),
+            const Spacer(),
             createNumberButton(8),
+            const Spacer(),
             createNumberButton(9),
           ],
         ),
@@ -148,11 +147,9 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
     var mobileLayout = ContainerWrapperElement(
       children: [
         entryFieldBox,
-        const SizedBox(height: 40.0),
-        const Spacer(),
+        const SizedBox(height: 30.0),
         column,
-        const Spacer(),
-        const SizedBox(height: 40.0),
+        const SizedBox(height: 15.0),
       ],
       containerVariant: wrapperVariants.fullScreen,
       takesFullWidth: false,
@@ -166,9 +163,8 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           entryFieldBox,
-          const Spacer(),
+          const SizedBox(height: 30.0),
           column,
-          const Spacer(),
         ],
       ),
     );

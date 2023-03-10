@@ -84,9 +84,9 @@ class StandardTextFieldComponent extends StatelessWidget {
 
     var container = FloatingContainerElement(
       child: Container(
+        padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
         constraints: BoxConstraints(
           minWidth: size.layoutItemWidth(2, screenSize),
-          minHeight: size.layoutItemHeight(6, screenSize),
           maxWidth: size.layoutItemWidth(1, screenSize),
         ),
         child: textFormField,

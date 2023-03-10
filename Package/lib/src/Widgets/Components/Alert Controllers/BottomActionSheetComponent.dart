@@ -85,10 +85,10 @@ class _BottomActionSheetComponentState
                 decorationVariant: decorationPriority.inverted)
             .buildBacking(),
         constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(1, screenSize),
-            maxWidth: size.layoutItemWidth(1, screenSize)),
+          maxWidth: size.layoutItemWidth(1, screenSize),
+          maxHeight: size.layoutItemHeight(1, screenSize),
+        ),
         padding: const EdgeInsets.all(15.0),
-        alignment: Alignment.center,
         child: bottomActionSheetContent);
 
     return Semantics.fromProperties(

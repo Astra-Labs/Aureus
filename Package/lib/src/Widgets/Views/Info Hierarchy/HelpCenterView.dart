@@ -57,6 +57,19 @@ class _HelpCenterViewState extends State<HelpCenterView> {
       }
     });
 
+    var sizedBox = SizedBox(
+      child: SingleChildScrollView(
+        child: Wrap(
+          alignment: WrapAlignment.start,
+          runAlignment: WrapAlignment.spaceEvenly,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 10,
+          runSpacing: 15,
+          children: itemGridCards,
+        ),
+      ),
+    );
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,
       children: [
@@ -75,18 +88,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
             headerText: 'Help Center',
             subheaderText:
                 'Find the answers to your questions about our software and how it works.'),
-        SizedBox(
-          child: SingleChildScrollView(
-            child: Wrap(
-              alignment: WrapAlignment.start,
-              runAlignment: WrapAlignment.spaceEvenly,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 10,
-              runSpacing: 15,
-              children: itemGridCards,
-            ),
-          ),
-        ),
+        sizedBox,
         const Spacer(),
       ],
     );

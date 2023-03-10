@@ -54,6 +54,11 @@ class DataDetailList {
     ],
   );
 
+  var timerCard = TimePickerDataCardElement(
+      dataLabel: "Date",
+      onFinishEditing: () => {},
+      mode: CupertinoDatePickerMode.date);
+
   /* var videoCard = VideoRecordingDataCardElement(
     dataLabel: "Video Card",
     onFinishEditing: () => {

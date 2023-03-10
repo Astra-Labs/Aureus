@@ -1,4 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:aureus/aureus.dart';
+import 'package:aureus/src/Objects/Views/DataDetailObjects.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
@@ -29,12 +32,24 @@ class DataDetailView extends StatefulWidget {
   /// favorites, this would be the place to put that stuff.
   final Map<String, VoidCallback>? additionalDetails;
 
-  DataDetailView(
-      {Key? key,
-      required this.title,
-      required this.detailCards,
-      this.additionalDetails})
-      : assert(detailCards.isNotEmpty == true,
+  /// A list of [DataDetailCTA] to show at the bottom of the page. Use this when
+  /// you want the user to do 'something' on the object, e.g: sharing a contact,
+  /// emailing something to someone, etc.
+  final List<DataDetailCTA>? callsToAction;
+
+  /// If you want to make any changes when the page exits, this is the
+  /// place to do so. For example, saving the edited item to a storage layer,
+  /// finishing up networking stuff, etc.
+  VoidCallback? onPageExit;
+
+  DataDetailView({
+    Key? key,
+    required this.title,
+    required this.detailCards,
+    this.additionalDetails,
+    this.callsToAction,
+    this.onPageExit,
+  })  : assert(detailCards.isNotEmpty == true,
             'Data Detail View requires cards to show data, and to allow the user to edit data.'),
         super(key: key);
 
@@ -43,16 +58,20 @@ class DataDetailView extends StatefulWidget {
 }
 
 class _DataDetailViewState extends State<DataDetailView> {
-  bool isEditing = false;
+  ValueNotifier<bool> isEditing = ValueNotifier<bool>(false);
 
   void showEditingAlertController() {
     late AlertControllerObject alertControllerAction;
 
     var actionSheetDetails = [
       AlertControllerAction(
-          actionName: isEditing == true ? "Finish editing" : "Start editing",
+          actionName:
+              isEditing.value == true ? "Finish editing" : "Start editing",
           actionSeverity: AlertControllerActionSeverity.standard,
-          onSelection: updateEditingState)
+          onSelection: () => {
+                updateEditingState(),
+                notificationMaster.resetRequests(),
+              })
     ];
 
     if (widget.additionalDetails != null) {
@@ -88,10 +107,12 @@ class _DataDetailViewState extends State<DataDetailView> {
   }
 
   void updateEditingState() {
-    print("updating editing state!");
-
     setState(() {
-      isEditing == true ? isEditing == false : isEditing == true;
+      if (isEditing.value == true) {
+        isEditing = ValueNotifier<bool>(false);
+      } else {
+        isEditing = ValueNotifier<bool>(true);
+      }
     });
   }
 
@@ -102,14 +123,59 @@ class _DataDetailViewState extends State<DataDetailView> {
     for (var element in widget.detailCards) {
       summaryItems.add(Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 25.0),
-          child: isEditing == true
+          child: isEditing.value == true
               ? element.returnEditDataCard()
               : element.returnReadDataCard()));
+    }
+
+    var listener = ValueListenableBuilder<bool>(
+        builder: (BuildContext context, bool value, Widget? child) {
+          List<Widget> summaryItems = [];
+
+          for (var element in widget.detailCards) {
+            summaryItems.add(Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 25.0),
+                child: value == true
+                    ? element.returnEditDataCard()
+                    : element.returnReadDataCard()));
+          }
+
+          return Column(children: summaryItems);
+        },
+        valueListenable: isEditing);
+
+    Widget item = Container();
+
+    if (widget.callsToAction != null &&
+        widget.callsToAction!.isNotEmpty == true) {
+      List<Widget> children = [];
+
+      for (var item in widget.callsToAction!) {
+        var button = Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: IconButtonElement(
+            decorationVariant: decorationPriority.important,
+            buttonIcon: item.icon,
+            buttonHint: item.hint,
+            buttonAction: item.action,
+            buttonPriority: buttonSize.secondary,
+          ),
+        );
+
+        children.add(button);
+      }
+
+      item = Row(
+        children: children,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+      );
     }
 
     var pageHeaderElement = PageHeaderElement.withOptionsExit(
         pageTitle: widget.title,
         onPageExit: () => {
+              if (widget.onPageExit != null) {widget.onPageExit!()},
               Navigator.pop(context),
             },
         onPageDetails: () => {
@@ -120,7 +186,10 @@ class _DataDetailViewState extends State<DataDetailView> {
         containerVariant: wrapperVariants.stackScroll,
         children: [
           pageHeaderElement,
-          Column(children: summaryItems),
+          const DividerElement(),
+          const SizedBox(height: 10),
+          listener,
+          item
         ]);
 
     return ContainerView(

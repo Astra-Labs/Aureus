@@ -22,79 +22,63 @@ class DataConsent {
   /// A function that checks permissions on behalf of the user, and runs code if enabled,
   /// shows alert controller to user if not enabled.
 
-  Future<void> consentHandler(VoidCallback onConsent, dataAccess item) async {
+  Future<void> consentHandler(
+      dataAccess item, VoidCallback onConsent, VoidCallback onReject) async {
+    PermissionStatus request;
+
     switch (item) {
       case dataAccess.camera:
         {
-          if (await Permission.camera.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.camera.request();
           break;
         }
       case dataAccess.bluetooth:
         {
-          if (await Permission.bluetooth.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.bluetooth.request();
           break;
         }
       case dataAccess.contacts:
         {
-          if (await Permission.contacts.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.contacts.request();
           break;
         }
       case dataAccess.health:
         {
-          if (await Permission.activityRecognition.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.activityRecognition.request();
           break;
         }
       case dataAccess.location:
         {
-          if (await Permission.location.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.location.request();
           break;
         }
       case dataAccess.microphone:
         {
-          if (await Permission.microphone.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.microphone.request();
           break;
         }
       case dataAccess.photos:
         {
-          if (await Permission.photos.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.photos.request();
           break;
         }
       case dataAccess.pushNotifications:
         {
-          if (await Permission.notification.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.notification.request();
           break;
         }
       case dataAccess.tracking:
         {
-          if (await Permission.appTrackingTransparency.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.appTrackingTransparency.request();
           break;
         }
       case dataAccess.sensors:
         {
-          if (await Permission.sensors.request().isGranted) {
-            onConsent();
-          }
+          request = await Permission.sensors.request();
           break;
         }
     }
+    request.isGranted == true ? onConsent() : onReject();
   }
 
   /// A DPO that represents camera access.
@@ -180,6 +164,27 @@ class DataConsent {
         permissionDescription: permissionUsage,
         permissionIcon: Assets.mail,
         onPermissionOptIn: () => {Permission.sensors.request()});
+  }
+
+  /// A function that sends an error message to the user, telling them
+  /// something cannot be done because they have not enabled permissions.
+  void showConsentErrorMessage(String permissionName, [String? error]) {
+    var alertControllerData = AlertControllerObject.singleAction(
+        onCancellation: () => {},
+        alertTitle: "Uh oh!",
+        alertBody: error ??
+            "We cannot proceed because $permissionName is not enabled. Please go into your settings to change this, and try again.",
+        alertIcon: Assets.alertmessage,
+        actions: [
+          AlertControllerAction(
+              actionName: "Okay.",
+              actionSeverity: AlertControllerActionSeverity.confirm,
+              onSelection: () => {
+                    notificationMaster.resetRequests(),
+                  })
+        ]);
+
+    notificationMaster.sendAlertControllerRequest(alertControllerData);
   }
 }
 

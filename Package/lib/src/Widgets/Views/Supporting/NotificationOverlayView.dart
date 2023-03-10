@@ -69,6 +69,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   @override
   void dispose() {
     notificationMaster.unregisterObserver(this);
+    notificationMaster.resetRequests();
     //Removes items in the container view
     resetRequests();
 
@@ -91,33 +92,55 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+
       hasOverlayEnabled = true;
-      overlayView = Container(
+
+      overlayView = FloatingContainerElement(
+        child: Container(
           width: size.logicalWidth(),
           height: size.logicalHeight(),
+          decoration: LayerBackingDecoration(
+                  decorationVariant: decorationPriority.standard)
+              .buildBacking(),
           alignment: Alignment.center,
           padding: const EdgeInsets.all(15.0),
-          child: CenteredAlertControllerComponent(alertData: data));
+          child: CenteredAlertControllerComponent(alertData: data),
+        ),
+      );
+
       _controller.forward();
     });
   }
 
-  //Displays a content warning over the current view.
+  // Displays a content warning over the current view. A content warning
+  // also gets a blurred background to hide the content behind it.
   @override
   void showContentWarning(String description, IconData icon) {
     setState(() {
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+
       hasOverlayEnabled = true;
-      overlayView = Container(
+
+      overlayView = FloatingContainerElement(
+        child: Container(
           width: size.logicalWidth(),
           height: size.logicalHeight(),
+          decoration: LayerBackingDecoration(
+                  decorationVariant: decorationPriority.standard)
+              .buildBacking(),
           alignment: Alignment.center,
           padding: const EdgeInsets.all(15.0),
           child: ContentWarningComponent(
-              warningDescription: description,
-              onContinue: () => {resetRequests()}));
+            warningDescription: description,
+            onContinue: () => {
+              resetRequests(),
+            },
+          ),
+        ),
+      );
+
       _controller.forward();
     });
   }
@@ -129,7 +152,9 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
       _offset = Tween<Offset>(
               begin: const Offset(0.0, -1.0), end: const Offset(0.0, 0.0))
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+
       hasOverlayEnabled = true;
+
       overlayView = Container(
         width: size.logicalWidth(),
         height: size.heightOf(weight: sizingWeight.w3),
@@ -138,6 +163,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
             0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0),
         child: BannerNotificationComponent(body: description, icon: icon),
       );
+
       _controller.forward();
     });
   }
@@ -148,14 +174,22 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+
       hasOverlayEnabled = true;
-      overlayView = Container(
-        width: size.logicalWidth(),
-        height: size.logicalHeight(),
-        alignment: Alignment.bottomCenter,
-        padding: const EdgeInsets.all(15.0),
-        child: BottomActionSheetComponent(alertData: data),
+
+      overlayView = FloatingContainerElement(
+        child: Container(
+          width: size.logicalWidth(),
+          height: size.logicalHeight(),
+          decoration: LayerBackingDecoration(
+                  decorationVariant: decorationPriority.standard)
+              .buildBacking(),
+          alignment: Alignment.bottomCenter,
+          padding: const EdgeInsets.all(15.0),
+          child: BottomActionSheetComponent(alertData: data),
+        ),
       );
+
       _controller.forward();
     });
   }
@@ -167,15 +201,23 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
           .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+
       hasOverlayEnabled = true;
-      overlayView = Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(15.0),
-          child: TextFieldAlertControllerComponent(
-            alertData: data,
-          ));
+
+      overlayView = FloatingContainerElement(
+        child: Container(
+            width: size.logicalWidth(),
+            height: size.logicalHeight(),
+            decoration: LayerBackingDecoration(
+                    decorationVariant: decorationPriority.standard)
+                .buildBacking(),
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(15.0),
+            child: TextFieldAlertControllerComponent(
+              alertData: data,
+            )),
+      );
+
       _controller.forward();
     });
   }

@@ -14,7 +14,7 @@ void main() {
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
       darkModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [
-            Color.fromRGBO(211, 209, 223, 1.0),
+            Color.fromARGB(255, 243, 237, 241),
             palette.white(),
           ]),
           accentColor: palette.white(),
@@ -54,11 +54,20 @@ void main() {
           frequencyUsage: SafetyPlanFrequency.singleUse,
           isActionBarDevEnabled: true,
           quickActionItems: quickActionItems2,
-          eligiblePlanOptions: []),
+          eligiblePlanOptions: [
+            SafetyPlanOptions.exitBar,
+            SafetyPlanOptions.localDataStorage,
+            SafetyPlanOptions.enable2FA
+          ]),
       developerName: 'Astra Laboratories',
       developerEmail: 'hello@withastra.com',
       userSupportURL: 'https://www.withastra.org/',
-      requestedDataPermissions: [],
+      requestedDataPermissions: [
+        DataConsent().cameraAccessPermission(
+            "We use the camera to demo a Core Tool for you."),
+        DataConsent().microphoneAccessPermission(
+            "We use the microphone to demo a Core Tool for you."),
+      ],
       termsOfService: 'termsOfService',
       privacyPolicy: 'privacyPolicy');
 
@@ -124,7 +133,9 @@ void main() {
       ),
       onboardingLanding: OnboardingLandingView(),
       onboardingDemo: OnboardingDemoView(
-        toolItems: [],
+        toolItems: [
+          testingTool,
+        ],
       ),
       onboardingInformation: OnboardingInformationView(onboardingDetails: [
         onboardingInfo1,
@@ -136,7 +147,10 @@ void main() {
       privacyPolicy: ArticleViewElement(
           title: "Privacy Policy", subheader: "subheader", body: "body"),
       signIn: SignInView(
-        onSignIn: () => {},
+        onSignIn: () => {
+          notificationMaster.sendAlertNotificationRequest(
+              "", Assets.alertmessage)
+        },
         onSignup: () => {},
         onResetInformation: () => {},
         usernameTextController: textEditor,
@@ -240,10 +254,10 @@ class LandingPage extends StatelessWidget {
     ];
 
     return LandingPageView(
-      lightModeLandscapeBacking: Image.network(
-          'https://images.unsplash.com/photo-1526934709557-35f3777499c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'),
-      darkModeLandscapeBacking: Image.network(
-          'https://images.unsplash.com/photo-1567971952425-873b4b46e01f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80'),
+      lightModeLandscapeBacking:
+          Image(image: AssetImage('assets/Light-Blur.png')),
+      darkModeLandscapeBacking:
+          Image(image: AssetImage('assets/Dark-Blur.png')),
       lightModeUIOverlay:
           Image(image: AssetImage('assets/Light Mode - Preview.png')),
       darkModeUIOverlay:
