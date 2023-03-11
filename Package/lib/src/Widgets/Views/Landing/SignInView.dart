@@ -68,6 +68,7 @@ class _SignInViewState extends State<SignInView> {
         const SizedBox(height: 5.0),
         StandardTextFieldComponent(
           hintText: "Password",
+          isSecureEntry: true,
           textFieldController: widget.passwordTextController,
           isEnabled: true,
           decorationVariant: decorationPriority.standard,

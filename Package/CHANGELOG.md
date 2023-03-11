@@ -1,9 +1,17 @@
+## 0.0.6
+- Reworked the ToolTemplateCards returnTemplateSummary to better handle when 
+users don't give an answer. 
+- Allows developers to make AlertControllers mandatory without an exit to force 
+users to answer. (For Verena's incognito mode)
+
+
 ## 0.0.5
 - Added 'Change Account Item' view
 - Added a 'Picker Selection' Data card element.  
 - More QA bugs and fixes 
 - Reworked DataConsent class to be more code "pretty"
-- Added DataDetailCTA class (but didn't implement it, yet)
+- Minor UI nitpicks over DataDetailCards
+- Added DataDetailCTA class and implemented it in DataDetailView.
 
 ## 0.0.4
 - Added Consent Handlers to internal components to fix a crashing bug

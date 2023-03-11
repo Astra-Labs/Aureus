@@ -39,28 +39,46 @@ class PromptListUserInputToolTemplate extends ToolCardTemplate {
                     decorationVariant: decorationPriority.standard,
                     buttonTitle: 'Skip',
                     buttonHint: 'Skips the current card.',
-                    buttonAction: () => {onNextCard()}),
+                    buttonAction: () => {
+                          onNextCard(),
+                        }),
                 const Spacer(),
                 SmolButtonElement(
                     decorationVariant: decorationPriority.important,
                     buttonTitle: 'Next',
                     buttonHint: 'Goes to the next card.',
-                    buttonAction: () =>
-                        {promptItems = inputCard.promptList, onNextCard()}),
+                    buttonAction: () => {
+                          promptItems = inputCard.promptList,
+                          onNextCard(),
+                        }),
               ])
         ]);
   }
 
   @override
   Widget returnTemplateSummary() {
-    if (promptItems == null) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
+    var noItems =
+        BodyOneText("No items selected.", decorationPriority.standard);
+
+    List<Widget> items = [];
+
+    if (promptItems != null) {
+      for (var prompt in promptItems!) {
+        var card = Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: StandardCardElement(
+                decorationVariant: decorationPriority.inactive,
+                cardLabel: prompt));
+
+        items.add(card);
+      }
     }
+
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: const []);
+        toolChildren: promptItems == null ? [noItems] : items);
   }
 }
 

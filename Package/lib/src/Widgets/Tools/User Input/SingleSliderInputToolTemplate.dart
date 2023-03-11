@@ -62,16 +62,16 @@ class SingleSliderToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    if (sliderValue == null) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
-    }
+    var skippedText = "Item skipped";
+    var completedText = 'Slider: $sliderValue / 10';
 
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText('Slider: $sliderValue / 10', decorationPriority.inactive)
+          BodyOneText(sliderValue == null ? skippedText : completedText,
+              decorationPriority.inactive)
         ]);
   }
 }

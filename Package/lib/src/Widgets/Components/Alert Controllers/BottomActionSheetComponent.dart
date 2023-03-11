@@ -45,28 +45,42 @@ class _BottomActionSheetComponentState
       ));
     }
 
+    var exitRow = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconBadge(
+            badgeIcon: widget.alertData.alertIcon,
+            badgePriority: decorationPriority.important),
+        const Spacer(),
+        IconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonIcon: Assets.no,
+            buttonHint: "Exits action sheet",
+            buttonPriority: buttonSize.secondary,
+            buttonAction: () => {notificationMaster.resetRequests()})
+      ],
+    );
+
+    var nonExitRow = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconBadge(
+            badgeIcon: widget.alertData.alertIcon,
+            badgePriority: decorationPriority.important),
+        const Spacer(),
+      ],
+    );
+
     var bottomActionSheetContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconBadge(
-                  badgeIcon: widget.alertData.alertIcon,
-                  badgePriority: decorationPriority.important),
-              const Spacer(),
-              IconButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonIcon: Assets.no,
-                  buttonHint: "Exits action sheet",
-                  buttonPriority: buttonSize.secondary,
-                  buttonAction: () => {notificationMaster.resetRequests()})
-            ],
-          ),
+          widget.alertData.canUserExit == true ? exitRow : nonExitRow,
           const SizedBox(height: 20),
           HeadingThreeText(
               widget.alertData.alertTitle, decorationPriority.standard),

@@ -25,7 +25,7 @@ class ChangeAccountItemView extends StatefulWidget {
 
   /// An input formatter for you to assert any specific regexs or patterns
   /// that the user needs to adhere to.
-  final TextInputFormatter inputFormatter;
+  final TextInputFormatter? inputFormatter;
 
   /// Whether the items should be 'secure text'. This is mostly used for passwords
   /// and such.
@@ -35,7 +35,7 @@ class ChangeAccountItemView extends StatefulWidget {
     required this.onFinish,
     required this.itemTitle,
     required this.textController,
-    required this.inputFormatter,
+    this.inputFormatter,
     this.isSecureTextEntry,
   });
 
@@ -51,7 +51,7 @@ class _ChangeAccountItemViewState extends State<ChangeAccountItemView> {
     secondItemTextController.text = "";
 
     notificationMaster.sendAlertNotificationRequest(
-      widget.itemTitle + "doesn't match.",
+      widget.itemTitle + " doesn't match.",
       Assets.alertmessage,
     );
   }
@@ -70,17 +70,30 @@ class _ChangeAccountItemViewState extends State<ChangeAccountItemView> {
 
   @override
   Widget build(BuildContext context) {
-    var headerText = HeadingOneText(
-        "Change" + widget.itemTitle, decorationPriority.standard);
+    var headerText = Row(
+      children: [
+        HeadingOneText(
+            "Change " + widget.itemTitle, decorationPriority.standard),
+        const Spacer(),
+        IconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonIcon: Assets.no,
+            buttonHint: "Takes you to the previous page.",
+            buttonAction: () => {
+                  Navigator.pop(context),
+                },
+            buttonPriority: buttonSize.secondary)
+      ],
+    );
 
     var firstDraftText = StandardTextFieldComponent(
-        hintText: 'Insert' + widget.itemTitle,
+        hintText: 'Insert ' + widget.itemTitle,
         isEnabled: true,
         decorationVariant: decorationPriority.standard,
         textFieldController: widget.textController);
 
     var secondDraftText = StandardTextFieldComponent(
-        hintText: 'Insert' + widget.itemTitle,
+        hintText: 'Insert ' + widget.itemTitle,
         isEnabled: true,
         decorationVariant: decorationPriority.standard,
         textFieldController: secondItemTextController);

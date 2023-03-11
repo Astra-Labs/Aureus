@@ -37,7 +37,6 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
   @override
   void initState() {
-    notificationMaster.registerObserver(this);
     sensation.prepare();
 
     _controller = AnimationController(
@@ -224,6 +223,8 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
   @override
   Widget build(BuildContext context) {
+    notificationMaster.registerObserver(this);
+
     // Builds an overlay item to hold any items coming into the view
     return Material(
       child: SizedBox(
