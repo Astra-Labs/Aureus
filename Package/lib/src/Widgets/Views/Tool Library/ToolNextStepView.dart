@@ -16,19 +16,16 @@ class ToolNextStepsView extends StatefulWidget {
   /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
-  /// A map to collect titles and functions that perform next steps. These are
-  /// where you want to connect the user to additional resources, other tools,
-  /// donate buttons if you're running a survey, etc.
-  final Map<String, VoidCallback> nextSteps;
+  /// The name of the button that is the main CTA.
+  final String mainCTATitle;
 
-  /// If you do not want to use the pre-templated tools flow,
-  /// you can set a custom widget in this parameter to override the flow template.
-  Widget? alternateCTAEntryPoint;
+  /// What happens when the user clicks the main CTA of the next steps page.
+  final VoidCallback onFinish;
 
-  ToolNextStepsView({
+  const ToolNextStepsView({
     required this.parentTool,
-    required this.nextSteps,
-    this.alternateCTAEntryPoint,
+    required this.mainCTATitle,
+    required this.onFinish,
   });
 
   @override
@@ -36,8 +33,6 @@ class ToolNextStepsView extends StatefulWidget {
 }
 
 class _ToolNextStepsViewState extends State<ToolNextStepsView> {
-  var popCount = 0;
-
   @override
   void initState() {
     sensation.prepare();
@@ -54,10 +49,11 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
   @override
   Widget build(BuildContext context) {
     var screenSize = size.logicalScreenSize();
+
     List<Widget> nextStepCards = [];
     var tool = widget.parentTool;
 
-    for (var element in widget.nextSteps.entries) {
+    for (var element in widget.parentTool.nextSteps.entries) {
       nextStepCards.add(InkWell(
         onTap: () => {element.value()},
         child: Padding(
@@ -69,12 +65,10 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
     }
 
     var fullWidthButtonElement = FullWidthButtonElement(
-        buttonTitle: 'Return home.',
-        buttonHint: 'Takes you to the screen before entering the tool.',
+        buttonTitle: widget.mainCTATitle,
+        buttonHint: 'Completes ' + widget.mainCTATitle,
         currentVariant: decorationPriority.important,
-        buttonAction: () => {
-              Navigator.of(context).popUntil((_) => popCount++ >= 4),
-            });
+        buttonAction: widget.onFinish);
 
     var column = Column(
       mainAxisAlignment: MainAxisAlignment.start,

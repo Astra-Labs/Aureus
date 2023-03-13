@@ -77,6 +77,11 @@ class DataConsent {
           request = await Permission.sensors.request();
           break;
         }
+      case dataAccess.storage:
+        {
+          request = await Permission.storage.request();
+          break;
+        }
     }
     request.isGranted == true ? onConsent() : onReject();
   }
@@ -164,6 +169,15 @@ class DataConsent {
         permissionDescription: permissionUsage,
         permissionIcon: Assets.mail,
         onPermissionOptIn: () => {Permission.sensors.request()});
+  }
+
+  /// A DPO that represents sensor data access.
+  DataPermissionObject storagePermission(String permissionUsage) {
+    return DataPermissionObject(
+        permissionName: 'Storage',
+        permissionDescription: permissionUsage,
+        permissionIcon: Assets.expand,
+        onPermissionOptIn: () => {Permission.storage.request()});
   }
 
   /// A function that sends an error message to the user, telling them

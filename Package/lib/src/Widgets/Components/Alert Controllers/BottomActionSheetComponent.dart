@@ -41,7 +41,10 @@ class _BottomActionSheetComponentState
                     : decorationPriority.standard,
             buttonTitle: element.actionName,
             buttonHint: "Completes the action ${element.actionName}",
-            buttonAction: element.onSelection),
+            buttonAction: () {
+              notificationMaster.resetRequests();
+              element.onSelection();
+            }),
       ));
     }
 
@@ -59,7 +62,9 @@ class _BottomActionSheetComponentState
             buttonIcon: Assets.no,
             buttonHint: "Exits action sheet",
             buttonPriority: buttonSize.secondary,
-            buttonAction: () => {notificationMaster.resetRequests()})
+            buttonAction: () => {
+                  notificationMaster.resetRequests(),
+                })
       ],
     );
 

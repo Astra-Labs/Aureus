@@ -36,7 +36,10 @@ class _TextFieldAlertControllerComponentComponentState
         decorationVariant: decorationPriority.important,
         buttonTitle: "Done",
         buttonHint: 'Finishing typing in the text field',
-        buttonAction: widget.alertData.onFinish!,
+        buttonAction: () {
+          notificationMaster.resetRequests();
+          widget.alertData.onFinish!();
+        },
       ),
       const Spacer(),
       SmolButtonElement(

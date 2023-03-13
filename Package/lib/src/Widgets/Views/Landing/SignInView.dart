@@ -38,6 +38,24 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
+  void onSignIn() {
+    setState(() {
+      widget.onSignIn();
+    });
+  }
+
+  void onResetInformation() {
+    setState(() {
+      widget.onResetInformation();
+    });
+  }
+
+  void onSignUp() {
+    setState(() {
+      widget.onSignup();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var topRow = Row(
@@ -78,7 +96,7 @@ class _SignInViewState extends State<SignInView> {
             decorationVariant: decorationPriority.important,
             buttonTitle: "Sign In",
             buttonHint: "Authenticates your credentials to log you in.",
-            buttonAction: widget.onSignIn)
+            buttonAction: onSignIn)
       ],
     );
 
@@ -92,14 +110,14 @@ class _SignInViewState extends State<SignInView> {
             decorationVariant: decorationPriority.standard,
             buttonTitle: "Sign Up",
             buttonHint: 'Takes you to the sign up view to create an account.',
-            buttonAction: widget.onSignup),
+            buttonAction: onSignUp),
         const SizedBox(width: 30),
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: "Reset Password",
             buttonHint:
                 'Takes you to the reset password view to recover your password.',
-            buttonAction: widget.onResetInformation),
+            buttonAction: onResetInformation),
         const Spacer(),
       ],
     );

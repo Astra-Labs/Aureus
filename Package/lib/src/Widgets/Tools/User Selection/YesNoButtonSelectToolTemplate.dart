@@ -37,7 +37,7 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
                 buttonIcon: Assets.no,
                 buttonHint: 'Responds no to the prompt.',
                 buttonAction: () => {
-                  userChoice == false,
+                  userChoice = false,
                   onNextCard(),
                 },
                 buttonPriority: buttonSize.secondary,
@@ -48,7 +48,7 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
                 buttonIcon: Assets.yes,
                 buttonHint: 'Responds yes to the prompt.',
                 buttonAction: () => {
-                  userChoice == true,
+                  userChoice = true,
                   onNextCard(),
                 },
                 buttonPriority: buttonSize.secondary,
@@ -60,12 +60,6 @@ class YesNoButtonSelectToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    //Returns a badge with yes or no icon depending on answer in user map.
-
-    if (userChoice == null) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
-    }
-
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,

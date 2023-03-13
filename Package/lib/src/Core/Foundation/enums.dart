@@ -123,7 +123,8 @@ enum dataAccess {
   photos,
   tracking,
   health,
-  sensors
+  sensors,
+  storage,
 }
 
 /// {@template aureus.adaptiveInput}

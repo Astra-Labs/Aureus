@@ -3,6 +3,10 @@
 users don't give an answer. 
 - Allows developers to make AlertControllers mandatory without an exit to force 
 users to answer. (For Verena's incognito mode)
+- Reworked the way Tool Cards are handled to remove the automated 'flow'. It was 
+just causing a lot of problems and was super inflexible compared to what was needed. 
+- Fixed a bug that let the ToolTemplateMaster monitor multiple CoreTools at a time, 
+making weird bugs happen and such. 
 
 
 ## 0.0.5

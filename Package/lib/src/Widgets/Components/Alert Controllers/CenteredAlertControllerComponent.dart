@@ -41,7 +41,10 @@ class _CenteredAlertControllerComponentState
                     : decorationPriority.standard,
             buttonTitle: element.actionName,
             buttonHint: 'Completes ${element.actionName}',
-            buttonAction: element.onSelection),
+            buttonAction: () {
+              notificationMaster.resetRequests();
+              element.onSelection();
+            }),
       ));
     }
 

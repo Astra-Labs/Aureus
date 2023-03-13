@@ -34,10 +34,12 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
           onTap: () => {
                 if (cardItem.isCardSelected == true)
                   {
+                    print('selected items are $selectedItems'),
                     selectedItems.add(element),
                   }
                 else if (cardItem.isCardSelected == false)
                   {
+                    print('selected items are $selectedItems'),
                     selectedItems.remove(element),
                   }
               },
@@ -52,7 +54,9 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'Skip',
               buttonHint: 'Skips the current card.',
-              buttonAction: () => {onNextCard()}),
+              buttonAction: () => {
+                    onNextCard(),
+                  }),
           const Spacer(),
           SmolButtonElement(
               decorationVariant: gridItems.isEmpty
@@ -60,7 +64,9 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
                   : decorationPriority.important,
               buttonTitle: 'Next',
               buttonHint: 'Goes to the next card.',
-              buttonAction: () => {onNextCard()}),
+              buttonAction: () => {
+                    onNextCard(),
+                  }),
         ]);
 
     return BaseCardToolTemplate(
@@ -86,14 +92,27 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    if (selectedItems.isEmpty == true) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
+    var noItems =
+        BodyOneText("No items selected.", decorationPriority.standard);
+
+    List<Widget> items = [];
+
+    if (selectedItems.isEmpty == false) {
+      for (var item in selectedItems) {
+        var card = Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: StandardCardElement(
+                decorationVariant: decorationPriority.inactive,
+                cardLabel: item));
+
+        items.add(card);
+      }
     }
 
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: const []);
+        toolChildren: selectedItems.isEmpty ? [noItems] : items);
   }
 }

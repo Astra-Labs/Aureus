@@ -31,14 +31,19 @@ class ContentWarningComponent extends StatelessWidget {
             decorationVariant: decorationPriority.standard,
             buttonTitle: 'Continue',
             buttonHint: "Clears the content warning, and continues.",
-            buttonAction: () => {onContinue()}),
+            buttonAction: () => {
+                  notificationMaster.resetRequests(),
+                  onContinue(),
+                }),
         const Spacer(),
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: 'Go back',
             buttonHint: "Takes you to the previous screen.",
-            buttonAction: () =>
-                {Navigator.pop(context), notificationMaster.resetRequests()})
+            buttonAction: () => {
+                  notificationMaster.resetRequests(),
+                  Navigator.pop(context),
+                })
       ],
     );
 

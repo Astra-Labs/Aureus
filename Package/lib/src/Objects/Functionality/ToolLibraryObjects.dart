@@ -24,11 +24,6 @@ class CoreTool {
   /// Specific icon for your tool.
   final IconData toolIcon;
 
-  /// The widget that's the entry point for actually using your tool.
-  /// If you're using tool card templates, it's recommended
-  /// to make the entry point a ToolNavigationCardCarousel
-  final Widget entryPoint;
-
   /// A map of a string (which describes action to the user),
   /// and a corresponding VoidCallback which completes that
   /// action if the item is pressed that will be shown
@@ -45,35 +40,10 @@ class CoreTool {
     required this.toolDescription,
     required this.toolDetails,
     required this.toolIcon,
-    required this.entryPoint,
     required this.nextSteps,
     this.toolCards,
   });
 }
-
-/// The navigation container that holds your tool functionality.
-/// This is initialized for you based on whether or not you provide
-/// tool cards within the CoreTool constructor.
-ToolNavigationContainer navigationContainer(CoreTool tool) {
-  return ToolNavigationContainer(
-      tool.toolCards!.isEmpty ? [] : tool.toolCards,
-      tool.toolCards!.isNotEmpty ? ToolSummaryView(parentTool: tool) : null,
-      tool.toolCards!.isEmpty
-          ? tool.entryPoint
-          : ToolTemplateCardCarouselView(parentTool: tool),
-      details: ToolDetailView(parentTool: tool),
-      nextSteps:
-          ToolNextStepsView(parentTool: tool, nextSteps: tool.nextSteps));
-}
-
-// Dev note from Amanda (3/8/2022): it's currently initalized
-// within a function because implementing this
-// as a variable of the CoreTool class
-// caused a 'maximum call stack' error.
-// Maybe in the future a better developer than me (Amanda)
-// can figure out a more elegant solution to having a navigation
-// container being initialized like this, but I've been
-// hard pressed to find another way.
 
 /* ------------------ Tool Navigation Container -------------------- */
 /// Where you set all of the points of navigation & metadata
@@ -81,7 +51,7 @@ ToolNavigationContainer navigationContainer(CoreTool tool) {
 
 class ToolNavigationContainer {
   /// An instance of ToolDetailView for this tool.
-  ToolDetailView details;
+  ToolDetailView? details;
 
   /// The widget where your tool starts. This is usually a
   /// ToolNavigationPage, or a ToolCardCarousel.
@@ -89,20 +59,19 @@ class ToolNavigationContainer {
 
   /// The page users go to after they finish using the tool.
   /// This is what the summary view sends people to when done.
-  ToolNextStepsView nextSteps;
+  ToolNextStepsView? nextSteps;
 
   /// The summary view that gives the user an overview
   /// of everything they've said. Optional, since it
   /// requires toolCards below to be initialized.
   ToolSummaryView? summary;
 
-  /// All of the tool card templates used within the view.
-  /// The ToolSummaryView & ToolCardCarouselView use this
-  /// to be able to read & write data across the screens.
-  List<ToolCardTemplate>? toolCards;
-
-  ToolNavigationContainer(this.toolCards, this.summary, this.entryPoint,
-      {required this.details, required this.nextSteps});
+  ToolNavigationContainer({
+    this.summary,
+    this.entryPoint,
+    this.details,
+    this.nextSteps,
+  });
 }
 
 /// An observer pattern that the ToolTemplateCardCarouselView
@@ -113,6 +82,11 @@ class ToolNavigationContainer {
 class AureusToolTemplateMaster {
   final List<AureusToolTemplateObserver> _observers = [];
   adaptiveInput inputType = adaptiveInput.text;
+
+  void resetObservers() {
+    print("removing observers");
+    _observers.clear();
+  }
 
   void registerObserver(AureusToolTemplateObserver observer) {
     _observers.add(observer);
