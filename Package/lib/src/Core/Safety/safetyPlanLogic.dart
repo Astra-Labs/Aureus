@@ -13,7 +13,6 @@ class Safety {
   /// will be used to create a safety plan for the user.
 
   static Map<SafetyPlanOptions, bool> basePlanOptions = {
-    SafetyPlanOptions.deviceSandbox: true,
     SafetyPlanOptions.exitBar: true,
     SafetyPlanOptions.disableScreenshots: true
   };
@@ -163,9 +162,6 @@ class _SafetyPlanStorageLayer {
 
       case SafetyPlanOptions.disableScreenshots:
         return 'disableScreenshots';
-
-      case SafetyPlanOptions.deviceSandbox:
-        return 'deviceSandbox';
 
       case SafetyPlanOptions.logFailedAttempts:
         return 'logFailedAttempts';

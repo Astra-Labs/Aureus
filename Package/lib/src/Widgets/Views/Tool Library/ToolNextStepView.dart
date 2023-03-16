@@ -54,7 +54,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
     var tool = widget.parentTool;
 
     for (var element in widget.parentTool.nextSteps.entries) {
-      nextStepCards.add(InkWell(
+      nextStepCards.add(GestureDetector(
         onTap: () => {element.value()},
         child: Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),

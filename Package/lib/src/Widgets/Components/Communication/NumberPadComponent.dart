@@ -16,7 +16,9 @@ class NumberPadComponent extends StatefulWidget {
   /// items in a list as opposed to one int solves
   /// issues with numbers between web / mobile. To reset the number pad, set
   /// the inputted code to be an empty array.
-  List<int> inputtedCode = [];
+  List<int> inputtedCode;
+
+  NumberPadComponent(Key? key, {required this.inputtedCode}) : super(key: key);
 
   @override
   _NumberPadComponentState createState() => _NumberPadComponentState();
@@ -89,10 +91,6 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
     );
   }
 
-  String entryCode() {
-    return widget.inputtedCode.join();
-  }
-
   @override
   Widget build(BuildContext context) {
     List<Widget> digitButtons = [];
@@ -102,11 +100,13 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
     }
 
     var entryFieldBox = FloatingContainerElement(
-        child: Container(
-            decoration: InputBackingDecoration().buildBacking(),
-            padding: const EdgeInsets.all(10.0),
-            alignment: Alignment.center,
-            child: HeadingFourText(entryCode(), decorationPriority.standard)));
+      child: Container(
+          decoration: InputBackingDecoration().buildBacking(),
+          padding: const EdgeInsets.all(10.0),
+          alignment: Alignment.center,
+          child: HeadingFourText(
+              widget.inputtedCode.join(), decorationPriority.standard)),
+    );
 
     var column = Column(
       mainAxisAlignment: MainAxisAlignment.start,

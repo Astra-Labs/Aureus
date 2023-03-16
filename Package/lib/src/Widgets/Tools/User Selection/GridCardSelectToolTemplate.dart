@@ -30,7 +30,7 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
     for (var element in cardItems) {
       var cardItem = StandardSelectionCardElement(cardLabel: element);
 
-      gridItems.add(InkWell(
+      gridItems.add(GestureDetector(
           onTap: () => {
                 if (cardItem.isCardSelected == true)
                   {

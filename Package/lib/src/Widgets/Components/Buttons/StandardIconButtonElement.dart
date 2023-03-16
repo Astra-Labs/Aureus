@@ -105,7 +105,7 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
               )))),
     );
 
-    var standardIconButtonInteractor = InkWell(
+    var standardIconButtonInteractor = GestureDetector(
         onTap: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();

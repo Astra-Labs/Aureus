@@ -114,7 +114,7 @@ class _StandardSelectionCardElementState
           )),
     );
 
-    var inkWell = InkWell(
+    var inkWell = GestureDetector(
       onTap: widget.isEnabled == true ? toggleCard : () => {},
       child: SizedBox(
           width: size.layoutItemWidth(4, screenSize),

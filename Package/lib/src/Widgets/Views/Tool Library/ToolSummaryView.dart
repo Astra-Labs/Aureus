@@ -24,11 +24,15 @@ class ToolSummaryView extends StatefulWidget {
   /// What to call the action
   final String mainCTATitle;
 
+  /// Whether or not the progress circle should be shown.
+  final bool? showProgressCircle;
+
   ToolSummaryView({
     Key? key,
     required this.parentTool,
     required this.mainCTAAction,
     required this.mainCTATitle,
+    this.showProgressCircle,
   })  : assert(parentTool.toolCards!.isNotEmpty == true,
             'Tool Summary View requires the parent CoreTool to have tool cards in the navigation container.'),
         super(key: key);
@@ -97,7 +101,11 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          const CompletionCircleElement(progressValue: 1),
+          widget.showProgressCircle == true
+              ? const CompletionCircleElement(progressValue: 1)
+              : const SizedBox(
+                  height: 5,
+                ),
           const SizedBox(height: 10.0),
           HeadingThreeText(tool.toolName, decorationPriority.standard),
           const SizedBox(height: 20.0),

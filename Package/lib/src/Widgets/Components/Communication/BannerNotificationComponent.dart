@@ -108,11 +108,9 @@ class _BannerNotificationComponentState
     var bannerNotificationSubContent = Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
-        Flexible(
-          child: BodyTwoText(widget.body, decorationPriority.standard),
-        ),
+        BodyTwoText(widget.body, decorationPriority.standard),
         const Spacer(),
         const IconBadge(
             badgeIcon: Assets.alertmessage,

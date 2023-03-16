@@ -53,10 +53,11 @@ class ComplexBadgeCardElement extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         complexBadgeCardTopContent,
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         BodyOneText(cardBody, decorationVariant),
+        const SizedBox(height: 20),
         DetailCardCarouselComponent(cardDetailCarousel: cardDetailCarousel)
       ],
     );

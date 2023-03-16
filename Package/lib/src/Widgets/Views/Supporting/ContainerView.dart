@@ -208,6 +208,7 @@ class _ContainerViewState extends State<ContainerView> {
 
     var exitBarContent = Scaffold(
       backgroundColor: Colors.transparent,
+      resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Column(
@@ -224,15 +225,13 @@ class _ContainerViewState extends State<ContainerView> {
 
     var nonExitBarContent = Scaffold(
         backgroundColor: Colors.transparent,
+        resizeToAvoidBottomInset: false,
         body: (LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             return containerContent();
           },
         )));
 
-    if (hasExitBar == true) {
-      return exitBarContent;
-    } else if (hasExitBar == false) {}
-    return nonExitBarContent;
+    return hasExitBar == true ? exitBarContent : nonExitBarContent;
   }
 }

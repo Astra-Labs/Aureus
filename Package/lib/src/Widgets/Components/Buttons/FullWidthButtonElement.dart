@@ -127,7 +127,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
         child: Center(
             child: ButtonOneText(widget.buttonTitle, widget.currentVariant)));
 
-    var fullWidthButtonInteractor = InkWell(
+    var fullWidthButtonInteractor = GestureDetector(
         onTap: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();

@@ -7,6 +7,7 @@ users to answer. (For Verena's incognito mode)
 just causing a lot of problems and was super inflexible compared to what was needed. 
 - Fixed a bug that let the ToolTemplateMaster monitor multiple CoreTools at a time, 
 making weird bugs happen and such. 
+- Dropped SafetyPlanOptions.deviceSandbox since it was a pain to implement technically. 
 
 
 ## 0.0.5

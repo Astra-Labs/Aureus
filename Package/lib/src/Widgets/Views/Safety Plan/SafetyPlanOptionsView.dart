@@ -34,8 +34,12 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
 
     for (var element in safety.eligiblePlanOptions) {
       eligibleOptionCards.add(StandardSwitchCardElement(
-          onEnable: () => {userSelectedOptions.add(element)},
-          onDisable: () => {userSelectedOptions.remove(element)},
+          onEnable: () => {
+                userSelectedOptions.add(element),
+              },
+          onDisable: () => {
+                userSelectedOptions.remove(element),
+              },
           cardLabel: Safety.detailMetaData.retrieveDetails(element).name));
     }
 
@@ -64,23 +68,22 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
         width: size.layoutItemWidth(1, screenSize),
         height: size.layoutItemHeight(1, screenSize) * 0.6,
         child: SingleChildScrollView(
-            child: (ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
-                children: eligibleOptionCards))));
+          child: (ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
+              children: eligibleOptionCards)),
+        ));
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.fullScreen,
+      containerVariant: wrapperVariants.stackScroll,
       children: [
         DividingHeaderElement(
             headerText: 'Plan Options',
             subheaderText:
                 'Enable the options below to modify the functionality of ${resourceValues.name}.'),
-        const Spacer(),
-        sizedBox,
-        const Spacer(),
-        align
+        Column(children: eligibleOptionCards),
+        align,
       ],
     );
 

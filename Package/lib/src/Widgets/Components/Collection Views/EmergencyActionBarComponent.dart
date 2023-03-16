@@ -76,23 +76,29 @@ class _EmergencyAccessBarComponentState
         decoration: CardBackingDecoration(
                 decorationVariant: decorationPriority.standard)
             .buildBacking(),
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TagTwoText("Emergency Access", decorationPriority.standard),
-            //const SizedBox(height: 5.0),
-            Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SmolTextTabbingBarComponent(
-                      itemTitles: tabItemNames, itemActions: tabItemActions),
-                  const Spacer(),
-                  minimizedButton
-                ]),
-          ],
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 5.0),
+                TagTwoText("Emergency Access", decorationPriority.standard),
+                const SizedBox(height: 5.0),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SmolTextTabbingBarComponent(
+                          itemTitles: tabItemNames,
+                          itemActions: tabItemActions),
+                      const Spacer(),
+                      minimizedButton
+                    ]),
+              ],
+            ),
+          ),
         ),
       ),
     );

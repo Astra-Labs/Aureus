@@ -65,7 +65,7 @@ class _VerticalSideNavBarComponentState
 
     var navigationRail = NavigationRail(
       backgroundColor:
-          widget.altColor ?? coloration.contrastColor().withOpacity(0.15),
+          widget.altColor ?? coloration.contrastColor().withOpacity(0.30),
       selectedIndex: _selectedIndex,
       groupAlignment: 0.0,
       onDestinationSelected: (int index) {

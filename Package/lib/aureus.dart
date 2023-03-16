@@ -117,7 +117,7 @@ export 'src/Widgets/Components/Buttons/StandardIconButtonElement.dart';
 
 // -------------------------- Collection Views
 export 'src/Widgets/Components/Collection Views/DetailCardCarouselComponent.dart';
-export 'src/Widgets/Components/Collection Views/QuickActionBarComponent.dart';
+export 'src/Widgets/Components/Collection Views/EmergencyActionBarComponent.dart';
 
 // -------------------------- Communication
 export 'src/Widgets/Components/Communication/MessageBubbleComponent.dart';

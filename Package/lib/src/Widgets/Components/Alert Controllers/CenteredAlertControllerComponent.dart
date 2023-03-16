@@ -80,7 +80,7 @@ class _CenteredAlertControllerComponentState
             minHeight: size.layoutItemHeight(3, screenSize),
             maxHeight: size.layoutItemHeight(1, screenSize)),
         child: Padding(
-          padding: const EdgeInsets.all(35.0),
+          padding: const EdgeInsets.all(12.0),
           child: centeredAlertControllerContent,
         ));
 

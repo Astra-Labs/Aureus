@@ -65,12 +65,14 @@ class _SmolTextTabbingBarComponentState
 
     for (var element in tabItems) {
       tabButtons.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 10.0, 15.0, 10.0),
+        padding: const EdgeInsets.fromLTRB(0.0, 3.0, 15.0, 3.0),
         child: SmolButtonElement(
             decorationVariant: element.tabPriority!,
             buttonTitle: element.tabTitle,
             buttonHint: 'Changes selected tab to ${element.tabTitle}.',
-            buttonAction: () => {element.onTabSelection()}),
+            buttonAction: () => {
+                  element.onTabSelection(),
+                }),
       ));
     }
 
@@ -82,10 +84,8 @@ class _SmolTextTabbingBarComponentState
 
     var smolTextContainer = Column(
       children: [
-        const SizedBox(height: 10),
         SingleChildScrollView(
             scrollDirection: Axis.horizontal, child: smolTextContent),
-        const SizedBox(height: 15),
       ],
     );
 
