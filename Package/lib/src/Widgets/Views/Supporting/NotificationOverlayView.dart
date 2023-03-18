@@ -40,7 +40,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
     sensation.prepare();
 
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500))
+        vsync: this, duration: const Duration(milliseconds: 300))
       ..addListener(() {
         setState(() {});
       })
@@ -99,7 +99,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
           width: size.logicalWidth(),
           height: size.logicalHeight(),
           decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.standard)
+                  decorationVariant: decorationPriority.inverted)
               .buildBacking(),
           alignment: Alignment.center,
           padding: const EdgeInsets.all(15.0),
@@ -127,7 +127,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
           width: size.logicalWidth(),
           height: size.logicalHeight(),
           decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.standard)
+                  decorationVariant: decorationPriority.inverted)
               .buildBacking(),
           alignment: Alignment.center,
           padding: const EdgeInsets.all(15.0),
@@ -181,7 +181,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
           width: size.logicalWidth(),
           height: size.logicalHeight(),
           decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.standard)
+                  decorationVariant: decorationPriority.inverted)
               .buildBacking(),
           alignment: Alignment.bottomCenter,
           padding: const EdgeInsets.all(15.0),
@@ -199,7 +199,8 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
     setState(() {
       _offset = Tween<Offset>(
               begin: const Offset(0.0, 1.0), end: const Offset(0.0, 0.0))
-          .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+          .animate(
+              CurvedAnimation(parent: _controller, curve: Curves.decelerate));
 
       hasOverlayEnabled = true;
 
@@ -208,7 +209,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
             width: size.logicalWidth(),
             height: size.logicalHeight(),
             decoration: LayerBackingDecoration(
-                    decorationVariant: decorationPriority.standard)
+                    decorationVariant: decorationPriority.inverted)
                 .buildBacking(),
             alignment: Alignment.center,
             padding: const EdgeInsets.all(15.0),

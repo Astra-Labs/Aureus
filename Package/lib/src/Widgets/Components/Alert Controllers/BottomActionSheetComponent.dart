@@ -99,16 +99,18 @@ class _BottomActionSheetComponentState
           ),
         ]);
 
-    var bottomActionSheetContainer = Container(
-        decoration: CardBackingDecoration(
-                decorationVariant: decorationPriority.inverted)
-            .buildBacking(),
-        constraints: BoxConstraints(
-          maxWidth: size.layoutItemWidth(1, screenSize),
-          maxHeight: size.layoutItemHeight(1, screenSize),
-        ),
-        padding: const EdgeInsets.all(15.0),
-        child: bottomActionSheetContent);
+    var bottomActionSheetContainer = FloatingContainerElement(
+      child: Container(
+          decoration: CardBackingDecoration(
+                  decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
+          constraints: BoxConstraints(
+            maxWidth: size.layoutItemWidth(1, screenSize),
+            maxHeight: size.layoutItemHeight(1, screenSize),
+          ),
+          padding: const EdgeInsets.all(15.0),
+          child: bottomActionSheetContent),
+    );
 
     return Semantics.fromProperties(
       properties: SemanticsWrapper.customItem(

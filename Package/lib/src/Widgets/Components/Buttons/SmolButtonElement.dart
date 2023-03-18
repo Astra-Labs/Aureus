@@ -70,7 +70,8 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var smolButtonContent = FloatingContainerElement(
+    var smolButtonContent = ClipRect(
+        child: FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
               minHeight: minimumButtonTextSize.height + 20,
@@ -80,7 +81,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
           decoration: buttonDecoration,
           child: Center(
               child: TagOneText(widget.buttonTitle, widget.decorationVariant))),
-    );
+    ));
 
     var smolButtonInteractor = GestureDetector(
         onTap: () {

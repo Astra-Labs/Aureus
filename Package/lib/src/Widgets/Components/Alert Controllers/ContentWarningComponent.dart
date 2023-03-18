@@ -66,17 +66,20 @@ class ContentWarningComponent extends StatelessWidget {
       ],
     );
 
-    var warningLayoutContainer = Container(
+    var warningLayoutContainer = FloatingContainerElement(
+      child: Container(
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize)),
         decoration: CardBackingDecoration(
-                decorationVariant: decorationPriority.inverted)
+                decorationVariant: decorationPriority.inactive)
             .buildBacking(),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: warningLayerContent,
-        ));
+        ),
+      ),
+    );
 
     return warningLayoutContainer;
   }

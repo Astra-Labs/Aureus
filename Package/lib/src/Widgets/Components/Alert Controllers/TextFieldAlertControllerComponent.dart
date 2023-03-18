@@ -83,9 +83,10 @@ class _TextFieldAlertControllerComponentComponentState
       children: centeredAlertControllerChildren,
     );
 
-    var centeredAlertControllerContainer = Container(
+    var centeredAlertControllerContainer = FloatingContainerElement(
+      child: Container(
         decoration: CardBackingDecoration(
-                decorationVariant: decorationPriority.inverted)
+                decorationVariant: decorationPriority.inactive)
             .buildBacking(),
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),
@@ -95,7 +96,9 @@ class _TextFieldAlertControllerComponentComponentState
         child: Padding(
           padding: const EdgeInsets.all(35.0),
           child: centeredAlertControllerContent,
-        ));
+        ),
+      ),
+    );
 
     return Semantics.fromProperties(
       properties: SemanticsWrapper.customItem(

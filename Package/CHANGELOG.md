@@ -8,6 +8,7 @@ just causing a lot of problems and was super inflexible compared to what was nee
 - Fixed a bug that let the ToolTemplateMaster monitor multiple CoreTools at a time, 
 making weird bugs happen and such. 
 - Dropped SafetyPlanOptions.deviceSandbox since it was a pain to implement technically. 
+- Fixed bugs within SketchToolTemplateCard
 
 
 ## 0.0.5

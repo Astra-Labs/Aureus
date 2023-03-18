@@ -74,15 +74,20 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
 
     var screenSize = size.logicalScreenSize();
 
-    var standardButtonContent = FloatingContainerElement(
-      child: SizedBox(
+    var standardButtonContent = ClipRect(
+      child: FloatingContainerElement(
+        child: SizedBox(
           width: size.layoutItemWidth(1, screenSize),
           height: minimumButtonTextSize.height + 45,
           child: Container(
-              decoration: buttonDecoration,
-              child: Center(
-                  child: ButtonTwoText(
-                      widget.buttonTitle, widget.decorationVariant)))),
+            decoration: buttonDecoration,
+            child: Center(
+              child:
+                  ButtonTwoText(widget.buttonTitle, widget.decorationVariant),
+            ),
+          ),
+        ),
+      ),
     );
 
     var standardButtonInteractor = GestureDetector(
