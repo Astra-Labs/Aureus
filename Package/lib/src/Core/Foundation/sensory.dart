@@ -78,7 +78,7 @@ class Sensory {
       case sensationType.notification:
         {
           await HapticFeedback.lightImpact();
-          await runAudioPlayer(praiseAudioPath);
+          await runAudioPlayer(attentionAudioPath);
           break;
         }
       case sensationType.urgent:

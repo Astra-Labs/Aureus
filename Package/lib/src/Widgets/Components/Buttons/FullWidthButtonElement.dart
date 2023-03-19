@@ -86,9 +86,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
 
   //Switches decoration to active, and then returns it to current variant.
   void createButtonInteraction() {
-    setState(() {
-      sensation.createSensation(sensationType.press);
-    });
+    sensation.createSensation(sensationType.press);
   }
 
   @override

@@ -99,7 +99,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
           width: size.logicalWidth(),
           height: size.logicalHeight(),
           decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.inverted)
+                  decorationVariant: decorationPriority.inactive)
               .buildBacking(),
           alignment: Alignment.center,
           padding: const EdgeInsets.all(15.0),
@@ -127,7 +127,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
           width: size.logicalWidth(),
           height: size.logicalHeight(),
           decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.inverted)
+                  decorationVariant: decorationPriority.inactive)
               .buildBacking(),
           alignment: Alignment.center,
           padding: const EdgeInsets.all(15.0),
@@ -181,7 +181,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
           width: size.logicalWidth(),
           height: size.logicalHeight(),
           decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.inverted)
+                  decorationVariant: decorationPriority.inactive)
               .buildBacking(),
           alignment: Alignment.bottomCenter,
           padding: const EdgeInsets.all(15.0),
@@ -209,7 +209,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
             width: size.logicalWidth(),
             height: size.logicalHeight(),
             decoration: LayerBackingDecoration(
-                    decorationVariant: decorationPriority.inverted)
+                    decorationVariant: decorationPriority.inactive)
                 .buildBacking(),
             alignment: Alignment.center,
             padding: const EdgeInsets.all(15.0),

@@ -224,13 +224,14 @@ class _ContainerViewState extends State<ContainerView> {
     );
 
     var nonExitBarContent = Scaffold(
-        backgroundColor: Colors.transparent,
-        resizeToAvoidBottomInset: false,
-        body: (LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            return containerContent();
-          },
-        )));
+      backgroundColor: Colors.transparent,
+      resizeToAvoidBottomInset: true,
+      body: (LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return containerContent();
+        },
+      )),
+    );
 
     return hasExitBar == true ? exitBarContent : nonExitBarContent;
   }

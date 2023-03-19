@@ -51,10 +51,7 @@ class _IconButtonElementState extends State<IconButtonElement> {
   }
 
   void createButtonInteraction() {
-    setState(() {
-      buttonPriority = decorationPriority.active;
-      sensation.createSensation(sensationType.press);
-    });
+    sensation.createSensation(sensationType.press);
   }
 
   @override

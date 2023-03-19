@@ -49,9 +49,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
   }
 
   void createButtonInteraction() {
-    setState(() {
-      sensation.createSensation(sensationType.press);
-    });
+    sensation.createSensation(sensationType.press);
   }
 
   @override

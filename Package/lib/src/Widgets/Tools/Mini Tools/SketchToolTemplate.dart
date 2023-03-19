@@ -62,10 +62,16 @@ class _SketchInputCardState extends State<_SketchInputCard> {
   StreamController<_Line> currentLineStreamController =
       StreamController<_Line>.broadcast();
 
+  @override
+  void dispose() {
+    clear();
+    super.dispose();
+  }
+
   Future<void> clear() async {
-    print("clearing!");
     setState(() {
       lines = [];
+      line = _Line([], Colors.transparent, 0.0);
     });
   }
 
@@ -295,8 +301,6 @@ class _Sketcher extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    print("sketcher paints!");
-
     Paint paint = Paint()
       ..color = Colors.redAccent
       ..strokeCap = StrokeCap.round

@@ -50,10 +50,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
   }
 
   void createButtonInteraction() {
-    setState(() {
-      buttonPriority = decorationPriority.active;
-      sensation.createSensation(sensationType.press);
-    });
+    sensation.createSensation(sensationType.press);
   }
 
   @override

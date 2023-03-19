@@ -54,6 +54,7 @@ export 'src/Widgets/Elements/Cards/Standard/StandardCardElement.dart';
 export 'src/Widgets/Elements/Cards/Standard/StandardBadgeCardElement.dart';
 export 'src/Widgets/Elements/Cards/Standard/StandardSwitchCardElement.dart';
 export 'src/Widgets/Elements/Cards/Standard/StandardSelectionCardElement.dart';
+export 'src/Widgets/Elements/Cards/Standard/StandardAccordionCardElement.dart';
 // ------------------------------------------------ Detail
 export 'src/Widgets/Elements/Cards/Detail/DetailCardElement.dart';
 export 'src/Widgets/Elements/Cards/Detail/DetailBadgeCardElement.dart';
@@ -67,7 +68,7 @@ export 'src/Widgets/Elements/Cards/Complex/ComplexSwitchCardElement.dart';
 export 'src/Widgets/Elements/Cards/Grid/GridCardElement.dart';
 export 'src/Widgets/Elements/Cards/Grid/GridBadgeCardElement.dart';
 // ------------------------------------------------ Data Visualization
-// These are in beta, and not for use as of right now.
+// Some of these are in beta, and not for use as of right now.
 export 'src/Widgets/Elements/Cards/Data Detail/AddressDataCardElement.dart';
 export 'src/Widgets/Elements/Cards/Data Detail/BaseDataCardElement.dart';
 // export 'src/Widgets/Elements/Cards/Data Detail/PhotoDataCardElement.dart';

@@ -9,6 +9,7 @@ just causing a lot of problems and was super inflexible compared to what was nee
 making weird bugs happen and such. 
 - Dropped SafetyPlanOptions.deviceSandbox since it was a pain to implement technically. 
 - Fixed bugs within SketchToolTemplateCard
+- Added StandardAccordionCardElement
 
 
 ## 0.0.5
