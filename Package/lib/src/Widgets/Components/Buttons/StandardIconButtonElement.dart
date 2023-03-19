@@ -56,10 +56,7 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
   }
 
   void createButtonInteraction() {
-    setState(() {
-      buttonPriority = decorationPriority.active;
-      sensation.createSensation(sensationType.press);
-    });
+    sensation.createSensation(sensationType.press);
   }
 
   @override
@@ -105,7 +102,7 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
               )))),
     );
 
-    var standardIconButtonInteractor = InkWell(
+    var standardIconButtonInteractor = GestureDetector(
         onTap: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();

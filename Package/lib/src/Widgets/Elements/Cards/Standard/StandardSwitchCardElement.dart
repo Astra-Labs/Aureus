@@ -27,7 +27,8 @@ class StandardSwitchCardElement extends StatefulWidget {
   StandardSwitchCardElement(
       {required this.cardLabel,
       required this.onEnable,
-      required this.onDisable});
+      required this.onDisable,
+      this.isSwitchEnabled = false});
 
   @override
   _StandardSwitchCardElementState createState() =>

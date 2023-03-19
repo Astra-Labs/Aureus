@@ -46,7 +46,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
         children: [
           Container(
               constraints: BoxConstraints(
-                  minHeight: size.layoutItemHeight(2, screenSize)),
+                  maxHeight: size.layoutItemHeight(2, screenSize)),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
                   border: palette.universalBorder(),
@@ -54,10 +54,11 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                     image: currentItem.detailImage.image,
                     fit: BoxFit.cover,
                   ))),
-          const Spacer(),
+          const SizedBox(height: 20),
           TagOneText(currentItem.detailTitle, decorationPriority.standard),
+          const SizedBox(height: 10),
           BodyOneText(currentItem.detailBody, decorationPriority.standard),
-          const Spacer(),
+          const SizedBox(height: 20),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,7 +71,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                 buttonIcon: Assets.back,
                 buttonHint: 'Previous Item',
                 buttonAction: () => {_onItemTapped(_selectedIndex -= 1)},
-                buttonPriority: buttonSize.primary,
+                buttonPriority: buttonSize.secondary,
               ),
               IconButtonElement(
                   decorationVariant:
@@ -80,7 +81,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                   buttonIcon: Assets.next,
                   buttonHint: 'Next Item',
                   buttonAction: () => {_onItemTapped(_selectedIndex += 1)},
-                  buttonPriority: buttonSize.primary)
+                  buttonPriority: buttonSize.secondary)
             ],
           )
         ]);
@@ -91,7 +92,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12.0),
             child: Container(
                 constraints: BoxConstraints(
                   maxWidth: size.layoutItemWidth(2, screenSize) * 0.7,
@@ -134,7 +135,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                         buttonAction: () => {
                           _onItemTapped(_selectedIndex -= 1),
                         },
-                        buttonPriority: buttonSize.primary,
+                        buttonPriority: buttonSize.secondary,
                       ),
                       IconButtonElement(
                         decorationVariant: (_selectedIndex >
@@ -146,7 +147,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
                         buttonAction: () => {
                           _onItemTapped(_selectedIndex += 1),
                         },
-                        buttonPriority: buttonSize.primary,
+                        buttonPriority: buttonSize.secondary,
                       )
                     ],
                   )
@@ -156,19 +157,15 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
           )
         ]);
 
-    Widget informationCard = SizedBox(
-      width: size.layoutItemWidth(1, screenSize),
-      height: size.layoutItemHeight(1, screenSize) * 0.7,
-      child: FloatingContainerElement(
-        child: Container(
-            padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
-            decoration: CardBackingDecoration(
-                    decorationVariant: decorationPriority.inactive)
-                .buildBacking(),
-            child: size.isDesktopDisplay()
-                ? webInformationCard
-                : mobileInformationCard),
-      ),
+    Widget informationCard = FloatingContainerElement(
+      child: Container(
+          padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
+          decoration: CardBackingDecoration(
+                  decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
+          child: size.isDesktopDisplay()
+              ? webInformationCard
+              : mobileInformationCard),
     );
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(

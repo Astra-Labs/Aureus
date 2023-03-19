@@ -16,18 +16,17 @@ class ToolTemplateCardCarouselView extends StatefulWidget {
   /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
+  /// What you want to do when the user finishes the tool cards.
+  final VoidCallback onFinish;
+
   /// Custom cards that are separate from the [parentTool]'s cards. This parameter
   /// overrides and will be shown over any parentTool cards.
   List<ToolCardTemplate>? customCards;
 
-  /// If you do not want to use the pre-templated tools flow,
-  /// you can set a custom widget in this parameter to override the flow template.
-  Widget? alternateCTAEntryPoint;
-
   ToolTemplateCardCarouselView({
     required this.parentTool,
+    required this.onFinish,
     this.customCards,
-    this.alternateCTAEntryPoint,
   })  : assert(
             parentTool.toolCards!.isNotEmpty == true ||
                 customCards?.isNotEmpty == true,
@@ -42,7 +41,6 @@ class ToolTemplateCardCarouselView extends StatefulWidget {
 class _ToolTemplateCardCarouselViewState
     extends State<ToolTemplateCardCarouselView>
     with AureusToolTemplateObserver, TickerProviderStateMixin {
-  late ToolNavigationContainer toolNavigation;
   List<ToolCardTemplate> toolChildren = [];
   bool _visible = false;
 
@@ -76,12 +74,8 @@ class _ToolTemplateCardCarouselViewState
         _visible = false;
 
         if (currentCardIndex == (toolChildren.length - 1)) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    navigationContainer(widget.parentTool).summary!),
-          );
+          toolTemplateMaster.resetObservers();
+          widget.onFinish();
         } else {
           currentCardIndex += 1;
           _visible = true;
@@ -107,21 +101,11 @@ class _ToolTemplateCardCarouselViewState
     //the current, visible active card.
     Widget activeCardItem = Container();
 
-    //the summary of all of the previous cards and their answers
-    List<Widget> summaryListView = [];
-
     var screenSize = size.logicalScreenSize();
-    toolNavigation = navigationContainer(widget.parentTool);
 
     for (var element in toolChildren) {
       if (toolChildren.indexOf(element) == currentCardIndex) {
         activeCardItem = element.returnActiveToolCard();
-      } else if (toolChildren.indexOf(element) < currentCardIndex) {
-        summaryListView.insert(
-            0,
-            Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
-                child: element.returnTemplateSummary()));
       }
     }
 
@@ -150,7 +134,9 @@ class _ToolTemplateCardCarouselViewState
             children: [
               PageHeaderElement.withExit(
                   pageTitle: widget.parentTool.toolName,
-                  onPageExit: () => {Navigator.pop(context)}),
+                  onPageExit: () => {
+                        Navigator.pop(context),
+                      }),
               const Spacer(),
               AnimatedOpacity(
                   opacity: _visible ? 1.0 : 0.0,

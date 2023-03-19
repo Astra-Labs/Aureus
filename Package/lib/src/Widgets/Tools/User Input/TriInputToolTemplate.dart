@@ -23,12 +23,6 @@ class TriInputToolTemplate extends ToolCardTemplate {
       required badgeIcon})
       : super(templatePrompt: templatePrompt, badgeIcon: badgeIcon);
 
-  // Array that holds the values neccessary to read
-  // and write what a user entered into the prompt card
-  // for display purposes. Write to dataMap in ActiveCard,
-  // and read in SummaryCard.
-  var dataMap = ['yee haw my beans', 'yee haw my toast', 'yee haw my beets'];
-
   String? answer1;
   String? answer2;
   String? answer3;
@@ -78,9 +72,9 @@ class TriInputToolTemplate extends ToolCardTemplate {
                     buttonTitle: 'Next',
                     buttonHint: 'Goes to the next card.',
                     buttonAction: () => {
-                          dataMap.insert(0, textField1Controller.text),
-                          dataMap.insert(1, textField2Controller.text),
-                          dataMap.insert(2, textField3Controller.text),
+                          answer1 = textField1Controller.text,
+                          answer2 = textField2Controller.text,
+                          answer3 = textField3Controller.text,
                           onNextCard()
                         }),
               ]),
@@ -90,75 +84,76 @@ class TriInputToolTemplate extends ToolCardTemplate {
   @override
   Widget returnTemplateSummary() {
     //The summary to displayed when the tool is completed.
+    var floatingContainerElement = FloatingContainerElement(
+        child: Container(
+      decoration:
+          LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            TagTwoText(textPrompt1, decorationPriority.standard),
+            const SizedBox(height: 5.0),
+            BodyOneText(
+                answer1 != null ? answer1! : '', decorationPriority.standard)
+          ]),
+    ));
+
+    var floatingContainerElement2 = FloatingContainerElement(
+        child: Container(
+      decoration:
+          LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            TagTwoText(textPrompt2, decorationPriority.standard),
+            const SizedBox(height: 5.0),
+            BodyOneText(
+                answer2 != null ? answer2! : '', decorationPriority.standard)
+          ]),
+    ));
+
+    var floatingContainerElement3 = FloatingContainerElement(
+        child: Container(
+      decoration:
+          LayerBackingDecoration(decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            TagTwoText(textPrompt3, decorationPriority.standard),
+            const SizedBox(height: 5.0),
+            BodyOneText(
+                answer3 != null ? answer3! : '', decorationPriority.standard)
+          ]),
+    ));
+
     var filledChildren = [
       Row(
         children: [
-          FloatingContainerElement(
-              child: Container(
-            decoration: LayerBackingDecoration(
-                    decorationVariant: decorationPriority.inactive)
-                .buildBacking(),
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  TagTwoText(textPrompt1, decorationPriority.standard),
-                  const SizedBox(height: 5.0),
-                  BodyOneText(dataMap.isNotEmpty ? dataMap[0] : '',
-                      decorationPriority.standard)
-                ]),
-          )),
+          floatingContainerElement,
           const SizedBox(width: 15.0),
-          FloatingContainerElement(
-              child: Container(
-            decoration: LayerBackingDecoration(
-                    decorationVariant: decorationPriority.inactive)
-                .buildBacking(),
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  TagTwoText(textPrompt2, decorationPriority.standard),
-                  const SizedBox(height: 5.0),
-                  BodyOneText(dataMap.isNotEmpty ? dataMap[1] : '',
-                      decorationPriority.standard)
-                ]),
-          )),
+          floatingContainerElement2,
           const SizedBox(width: 15.0),
-          FloatingContainerElement(
-              child: Container(
-            decoration: LayerBackingDecoration(
-                    decorationVariant: decorationPriority.inactive)
-                .buildBacking(),
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  TagTwoText(textPrompt3, decorationPriority.standard),
-                  const SizedBox(height: 5.0),
-                  BodyOneText(dataMap.isNotEmpty ? dataMap[2] : '',
-                      decorationPriority.standard)
-                ]),
-          ))
+          floatingContainerElement3
         ],
       )
-    ];
-
-    //The list to displayed when the tool is skipped.
-    var skippedChildren = [
-      BodyOneText('Tool Skipped', decorationPriority.inactive)
     ];
 
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
-        toolChildren: dataMap.isNotEmpty ? filledChildren : skippedChildren);
+        toolChildren: filledChildren);
   }
 }

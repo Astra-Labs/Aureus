@@ -68,7 +68,7 @@ class _StandardSelectionCardElementState
       alignment: Alignment.center,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: coloration.inactiveColor(), width: 2)),
+          border: Border.all(color: coloration.contrastColor(), width: 1)),
     );
 
     var selectedCircle = Container(
@@ -114,11 +114,11 @@ class _StandardSelectionCardElementState
           )),
     );
 
-    var inkWell = InkWell(
+    var inkWell = GestureDetector(
       onTap: widget.isEnabled == true ? toggleCard : () => {},
       child: SizedBox(
           width: size.layoutItemWidth(4, screenSize),
-          height: size.layoutItemHeight(5, screenSize),
+          height: size.layoutItemHeight(6, screenSize),
           child: floatingContainerElement),
     );
 

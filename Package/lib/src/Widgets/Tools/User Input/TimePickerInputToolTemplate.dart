@@ -61,16 +61,16 @@ class TimePickerInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    if (selectedTimerDuration == null) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
-    }
+    var skippedText = 'Item skipped';
+    var completedText = 'Duration chosen: $selectedTimerDuration';
 
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText('Duration chosen: $selectedTimerDuration',
+          BodyOneText(
+              selectedTimerDuration == null ? skippedText : completedText,
               decorationPriority.inactive)
         ]);
   }

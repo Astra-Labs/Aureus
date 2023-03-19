@@ -109,7 +109,9 @@ class _MicrophoneInputCardState extends State<_MicrophoneInputCard>
   }
 
   Future<void> _stop() async {
-    setState(() => {_isRecording = false});
+    setState(() => {
+          _isRecording = false,
+        });
 
     controller.stop();
     _timer?.cancel();

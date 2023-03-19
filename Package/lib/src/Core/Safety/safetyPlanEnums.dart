@@ -43,9 +43,6 @@ enum SafetyPlanOptions {
   /// stops screen recordings and screenshots
   disableScreenshots,
 
-  /// stops the resources from using other features on the device that can be logged (e.g: opening a browser or sending a message)
-  deviceSandbox,
-
   /// keeps track of all of the failed log in attempts for the user to review.
   logFailedAttempts
 }

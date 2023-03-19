@@ -29,7 +29,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   @override
   void initState() {
     super.initState();
-    timer = Timer(const Duration(seconds: 5), () {
+    timer = Timer(const Duration(seconds: 3), () {
       widget.onLaunch();
     });
   }

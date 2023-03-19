@@ -32,26 +32,22 @@ class StandardBadgeCardElement extends StatelessWidget {
     var screenSize = size.logicalScreenSize();
 
     var standardBadgeContent = Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Align(
-            alignment: Alignment.topLeft,
-            child: IconBadge(
-                badgeIcon: cardIcon, badgePriority: decorationVariant)),
-        Align(
-            alignment: Alignment.bottomLeft,
-            child: BodyTwoText(cardLabel, decorationVariant)),
+        IconBadge(badgeIcon: cardIcon, badgePriority: decorationVariant),
+        const SizedBox(height: 10.0),
+        BodyTwoText(cardLabel, decorationVariant),
       ],
     );
 
     var standardBadgeContainer = FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minWidth: size.layoutItemWidth(4, screenSize),
+              minWidth: size.layoutItemWidth(3, screenSize),
               maxWidth: size.layoutItemWidth(3, screenSize),
-              minHeight: size.layoutItemHeight(4, screenSize),
+              minHeight: size.layoutItemHeight(6, screenSize),
               maxHeight: size.layoutItemHeight(3, screenSize)),
           decoration:
               CardBackingDecoration(decorationVariant: decorationVariant)

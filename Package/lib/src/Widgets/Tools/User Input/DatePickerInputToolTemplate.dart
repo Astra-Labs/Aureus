@@ -19,6 +19,7 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
   @override
   Widget returnActiveToolCard() {
     var dateChosen = DateTime.now();
+
     var datePicker = CupertinoTheme(
         data: CupertinoThemeData(
           brightness: palette.brightness(),
@@ -65,16 +66,13 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnTemplateSummary() {
-    if (time == null) {
-      throw ('You cannot show a template summary of a tool template without populating dataMap.');
-    }
-
     return BaseCardToolTemplate(
         isActive: false,
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyOneText('Date Chosen: $time', decorationPriority.inactive)
+          BodyOneText(
+              'Date Chosen: ' + time.toString(), decorationPriority.inactive)
         ]);
   }
 }

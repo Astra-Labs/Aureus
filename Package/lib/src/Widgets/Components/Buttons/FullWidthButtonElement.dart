@@ -86,9 +86,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
 
   //Switches decoration to active, and then returns it to current variant.
   void createButtonInteraction() {
-    setState(() {
-      sensation.createSensation(sensationType.press);
-    });
+    sensation.createSensation(sensationType.press);
   }
 
   @override
@@ -127,7 +125,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
         child: Center(
             child: ButtonOneText(widget.buttonTitle, widget.currentVariant)));
 
-    var fullWidthButtonInteractor = InkWell(
+    var fullWidthButtonInteractor = GestureDetector(
         onTap: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();

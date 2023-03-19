@@ -22,7 +22,6 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
   Safety productSafetyObject = const Safety(
       frequencyUsage: SafetyPlanFrequency.singleUse,
       eligiblePlanOptions: [
-        SafetyPlanOptions.deviceSandbox,
         SafetyPlanOptions.disableNotifications,
         SafetyPlanOptions.failedPasscodeDataDeletion
       ]);
@@ -46,8 +45,9 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
       children: [
         PageHeaderElement.withExit(
             pageTitle: 'Safety Plan Settings',
-            onPageExit: () => {Navigator.pop(context)}),
-        const Spacer(),
+            onPageExit: () => {
+                  Navigator.pop(context),
+                }),
         Column(
           children: eligibleOptionCards,
         ),

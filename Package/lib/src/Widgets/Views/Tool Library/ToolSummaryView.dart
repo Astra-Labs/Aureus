@@ -18,14 +18,21 @@ class ToolSummaryView extends StatefulWidget {
   /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
-  /// If you do not want to use the pre-templated tools flow,
-  /// you can set a custom widget in this parameter to override the flow template.
-  Widget? alternateCTAEntryPoint;
+  /// An action to take on the bottom of the page
+  final VoidCallback mainCTAAction;
+
+  /// What to call the action
+  final String mainCTATitle;
+
+  /// Whether or not the progress circle should be shown.
+  final bool? showProgressCircle;
 
   ToolSummaryView({
     Key? key,
     required this.parentTool,
-    this.alternateCTAEntryPoint,
+    required this.mainCTAAction,
+    required this.mainCTATitle,
+    this.showProgressCircle,
   })  : assert(parentTool.toolCards!.isNotEmpty == true,
             'Tool Summary View requires the parent CoreTool to have tool cards in the navigation container.'),
         super(key: key);
@@ -50,14 +57,10 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
 
     var standardButtonElement = StandardButtonElement(
         decorationVariant: decorationPriority.important,
-        buttonTitle: 'Go to next steps.',
-        buttonHint: "Finishes the tool, and takes you to find more actions.",
+        buttonTitle: widget.mainCTATitle,
+        buttonHint: "Completes " + widget.mainCTATitle,
         buttonAction: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => navigationContainer(tool).nextSteps,
-                  ))
+              widget.mainCTAAction(),
             });
 
     var column = Column(
@@ -98,7 +101,11 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          const CompletionCircleElement(progressValue: 1),
+          widget.showProgressCircle == true
+              ? const CompletionCircleElement(progressValue: 1)
+              : const SizedBox(
+                  height: 5,
+                ),
           const SizedBox(height: 10.0),
           HeadingThreeText(tool.toolName, decorationPriority.standard),
           const SizedBox(height: 20.0),

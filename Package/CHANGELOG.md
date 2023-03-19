@@ -1,9 +1,24 @@
+## 0.0.6
+- Reworked the ToolTemplateCards returnTemplateSummary to better handle when 
+users don't give an answer. 
+- Allows developers to make AlertControllers mandatory without an exit to force 
+users to answer. (For Verena's incognito mode)
+- Reworked the way Tool Cards are handled to remove the automated 'flow'. It was 
+just causing a lot of problems and was super inflexible compared to what was needed. 
+- Fixed a bug that let the ToolTemplateMaster monitor multiple CoreTools at a time, 
+making weird bugs happen and such. 
+- Dropped SafetyPlanOptions.deviceSandbox since it was a pain to implement technically. 
+- Fixed bugs within SketchToolTemplateCard
+- Added StandardAccordionCardElement
+
+
 ## 0.0.5
 - Added 'Change Account Item' view
 - Added a 'Picker Selection' Data card element.  
 - More QA bugs and fixes 
 - Reworked DataConsent class to be more code "pretty"
-- Added DataDetailCTA class (but didn't implement it, yet)
+- Minor UI nitpicks over DataDetailCards
+- Added DataDetailCTA class and implemented it in DataDetailView.
 
 ## 0.0.4
 - Added Consent Handlers to internal components to fix a crashing bug

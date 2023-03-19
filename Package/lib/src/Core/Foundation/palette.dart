@@ -93,7 +93,7 @@ class AureusPalette {
 
   BoxShadow darkShadow() {
     return BoxShadow(
-        color: carbon().withOpacity(0.3),
+        color: carbon().withOpacity(0.2),
         offset: const Offset(0.0, 3.0),
         blurRadius: 30.0);
   }

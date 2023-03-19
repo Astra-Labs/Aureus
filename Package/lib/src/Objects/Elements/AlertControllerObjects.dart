@@ -36,33 +36,41 @@ class AlertControllerObject {
   /// code to run after the user finishes typing.
   VoidCallback? onFinish;
 
+  /// Whether or not a user should be shown an exit button on an
+  /// Alert Controller. Use this to 'force' users into picking an
+  /// option, but use it very sparingly and only when neccessary.
+  bool? canUserExit;
+
   /// A constructor that takes multiple items through the actions list, and otherwise throws an error
-  AlertControllerObject.multipleActions(
-      {required this.onCancellation,
-      required this.alertTitle,
-      required this.alertBody,
-      required this.alertIcon,
-      required this.actions})
-      : assert(actions!.length >= 2);
+  AlertControllerObject.multipleActions({
+    required this.onCancellation,
+    required this.alertTitle,
+    required this.alertBody,
+    required this.alertIcon,
+    required this.actions,
+    this.canUserExit = true,
+  }) : assert(actions!.length >= 2);
 
   /// A constructor that takes one item through the actions list, and otherwise throws an error
-  AlertControllerObject.singleAction(
-      {required this.onCancellation,
-      required this.alertTitle,
-      required this.alertBody,
-      required this.alertIcon,
-      required this.actions})
-      : assert(actions!.length == 1);
+  AlertControllerObject.singleAction({
+    required this.onCancellation,
+    required this.alertTitle,
+    required this.alertBody,
+    required this.alertIcon,
+    required this.actions,
+    this.canUserExit = true,
+  }) : assert(actions!.length == 1);
 
-  AlertControllerObject.textField(
-      {required this.onCancellation,
-      required this.alertTitle,
-      required this.alertBody,
-      required this.alertIcon,
-      required this.controller,
-      required this.hintText,
-      required this.onFinish})
-      : assert(controller != null && hintText != "");
+  AlertControllerObject.textField({
+    required this.onCancellation,
+    required this.alertTitle,
+    required this.alertBody,
+    required this.alertIcon,
+    required this.controller,
+    required this.hintText,
+    required this.onFinish,
+    this.canUserExit = true,
+  }) : assert(controller != null && hintText != "");
 }
 
 /// An action that someone can take on an [AlertControllerObject].

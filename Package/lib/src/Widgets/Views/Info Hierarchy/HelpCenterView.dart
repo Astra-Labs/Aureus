@@ -39,7 +39,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
       itemGridCards.clear();
       for (var element
           in currentHelpCenter.articleCategories[0].categoryArticles) {
-        itemGridCards.add(InkWell(
+        itemGridCards.add(GestureDetector(
           onTap: () => {
             Navigator.push(
                 context,
@@ -89,7 +89,6 @@ class _HelpCenterViewState extends State<HelpCenterView> {
             subheaderText:
                 'Find the answers to your questions about our software and how it works.'),
         sizedBox,
-        const Spacer(),
       ],
     );
 

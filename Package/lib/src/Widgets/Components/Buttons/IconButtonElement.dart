@@ -51,10 +51,7 @@ class _IconButtonElementState extends State<IconButtonElement> {
   }
 
   void createButtonInteraction() {
-    setState(() {
-      buttonPriority = decorationPriority.active;
-      sensation.createSensation(sensationType.press);
-    });
+    sensation.createSensation(sensationType.press);
   }
 
   @override
@@ -76,7 +73,8 @@ class _IconButtonElementState extends State<IconButtonElement> {
     var buttonScale =
         (widget.buttonPriority == buttonSize.primary ? 80.0 : 45.0);
 
-    var iconButtonElementContent = FloatingContainerElement(
+    var iconButtonElementContent = ClipRect(
+        child: FloatingContainerElement(
       child: SizedBox(
           width: buttonScale,
           height: buttonScale,
@@ -87,7 +85,7 @@ class _IconButtonElementState extends State<IconButtonElement> {
                     decorationVariant: buttonPriority),
                 size: (buttonScale - 15)),
           )),
-    );
+    ));
 
     var iconButtonElementInteractor = GestureDetector(
         onTap: () {

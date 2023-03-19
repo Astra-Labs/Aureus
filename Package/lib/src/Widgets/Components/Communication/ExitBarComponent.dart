@@ -77,18 +77,15 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
 
     var exitBarContainer = Container(
         constraints: BoxConstraints(
-            minHeight: accessibilitySizing.height * 5, minWidth: screenWidth),
+            minHeight: accessibilitySizing.height * 3, minWidth: screenWidth),
         child: Align(
           alignment: barAlignment(),
           child: ConstrainedBox(
             constraints: BoxConstraints(
-                minHeight: accessibilitySizing.height * 3,
+                minHeight: accessibilitySizing.height * 2,
                 minWidth: size.layoutItemWidth(1, screenSize),
                 maxWidth: size.layoutItemWidth(1, screenSize)),
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: exitBarRow,
-            ),
+            child: exitBarRow,
           ),
         ),
         decoration: BoxDecoration(

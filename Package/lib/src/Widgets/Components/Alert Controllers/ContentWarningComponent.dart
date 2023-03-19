@@ -31,14 +31,19 @@ class ContentWarningComponent extends StatelessWidget {
             decorationVariant: decorationPriority.standard,
             buttonTitle: 'Continue',
             buttonHint: "Clears the content warning, and continues.",
-            buttonAction: () => {onContinue()}),
+            buttonAction: () => {
+                  notificationMaster.resetRequests(),
+                  onContinue(),
+                }),
         const Spacer(),
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,
             buttonTitle: 'Go back',
             buttonHint: "Takes you to the previous screen.",
-            buttonAction: () =>
-                {Navigator.pop(context), notificationMaster.resetRequests()})
+            buttonAction: () => {
+                  notificationMaster.resetRequests(),
+                  Navigator.pop(context),
+                })
       ],
     );
 
@@ -61,17 +66,20 @@ class ContentWarningComponent extends StatelessWidget {
       ],
     );
 
-    var warningLayoutContainer = Container(
+    var warningLayoutContainer = FloatingContainerElement(
+      child: Container(
         constraints: BoxConstraints(
             minWidth: size.layoutItemWidth(1, screenSize),
             maxWidth: size.layoutItemWidth(1, screenSize)),
         decoration: CardBackingDecoration(
-                decorationVariant: decorationPriority.inverted)
+                decorationVariant: decorationPriority.inactive)
             .buildBacking(),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: warningLayerContent,
-        ));
+        ),
+      ),
+    );
 
     return warningLayoutContainer;
   }

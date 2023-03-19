@@ -1,7 +1,6 @@
 import 'package:aureus/aureus.dart';
-
-/// @nodoc
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 /// {@category Widgets}
 /// {@subCategory Tools}
@@ -9,6 +8,8 @@ import 'package:flutter/material.dart';
 
 /*--------- SKETCH TOOL ----------*/
 /// A Tool template that allows the user to sketch a drawing in response to a prompt.
+/// Credit to KodeCo for creating an amazing and in-depth tutorial that allowed this
+/// to be made: https://www.kodeco.com/25237210-building-a-drawing-app-in-flutter
 
 class SketchToolTemplate extends ToolCardTemplate {
   SketchToolTemplate({required templatePrompt, required badgeIcon})
@@ -50,57 +51,50 @@ class _SketchInputCard extends StatefulWidget {
 }
 
 class _SketchInputCardState extends State<_SketchInputCard> {
-  List<Offset> points = <Offset>[];
-  var canvas = Container();
-  Color activeColor = Colors.amber;
+  final _globalKey = GlobalKey();
+  List<_Line> lines = <_Line>[];
+  var line = _Line([], Colors.black, 1.0);
+  Color activeColor = Colors.black;
+  double selectedWidth = 2.0;
 
-  GestureDetector buildCurrentPath(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+  StreamController<List<_Line>> linesStreamController =
+      StreamController<List<_Line>>.broadcast();
+  StreamController<_Line> currentLineStreamController =
+      StreamController<_Line>.broadcast();
 
-    return GestureDetector(
-      onPanStart: onPanStart,
-      onPanUpdate: onPanUpdate,
-      onPanEnd: onPanEnd,
-      child: RepaintBoundary(
-        child: SizedBox(
-            width: size.layoutItemWidth(1, screenSize),
-            height: size.layoutItemHeight(2, screenSize),
-            child: CustomPaint(painter: _PainterCanvas as CustomPainter)),
-      ),
-    );
+  @override
+  void dispose() {
+    clear();
+    super.dispose();
   }
 
-  void onPanStart(DragStartDetails details) {
-    /*final box = context.findRenderObject() as RenderBox;
-    final point = box.globalToLocal(details.globalPosition); */
-  }
-
-  void onPanUpdate(DragUpdateDetails details) {
-    /*final box = context.findRenderObject() as RenderBox;
-    final point = box.globalToLocal(details.globalPosition); */
-  }
-
-  void onPanEnd(DragEndDetails details) {}
-
-  void changeColor(Color color) {
+  Future<void> clear() async {
     setState(() {
-      activeColor = color;
+      lines = [];
+      line = _Line([], Colors.transparent, 0.0);
     });
   }
 
   Widget returnColorCircle(Color color) {
     return GestureDetector(
-        onTap: () => {changeColor(color)},
-        child: Container(
-            width: size.responsiveSize(35.0),
-            height: size.responsiveSize(35.0),
-            padding: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: color,
-                border: activeColor == color
-                    ? palette.universalBorder()
-                    : Border.all(color: Colors.transparent))));
+      onTap: () => {
+        setState(() {
+          activeColor = color;
+        }),
+      },
+      child: Container(
+        width: size.responsiveSize(35.0),
+        height: size.responsiveSize(35.0),
+        padding: const EdgeInsets.all(5.0),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: color,
+          border: activeColor == color
+              ? Border.all(color: coloration.contrastColor(), width: 2.0)
+              : Border.all(color: Colors.transparent),
+        ),
+      ),
+    );
   }
 
   @override
@@ -129,18 +123,32 @@ class _SketchInputCardState extends State<_SketchInputCard> {
         ? const Color.fromRGBO(121, 12, 172, 1.0)
         : const Color.fromRGBO(228, 171, 255, 1.0);
 
+    Color colorSeven = Colors.white;
+    Color colorEight = Colors.black;
+
     var colorCircles = [
+      const Spacer(),
       returnColorCircle(colorOne),
+      const Spacer(),
       returnColorCircle(colorTwo),
+      const Spacer(),
       returnColorCircle(colorThree),
+      const Spacer(),
       returnColorCircle(colorFour),
+      const Spacer(),
       returnColorCircle(colorFive),
+      const Spacer(),
       returnColorCircle(colorSix),
+      const Spacer(),
+      returnColorCircle(colorSeven),
+      const Spacer(),
+      returnColorCircle(colorEight),
+      const Spacer(),
     ];
 
     var circleScroll = SizedBox(
         height: size.responsiveSize(65.0),
-        width: size.layoutItemWidth(1, size.logicalScreenSize()) * 0.6,
+        width: size.layoutItemWidth(1, size.logicalScreenSize()),
         child: Container(
           decoration: CardBackingDecoration(
                   decorationVariant: decorationPriority.inactive)
@@ -162,53 +170,156 @@ class _SketchInputCardState extends State<_SketchInputCard> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          circleScroll,
-          const Spacer(),
           SmolButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonTitle: 'Clear',
               buttonHint: 'Clears the canvas',
-              buttonAction: () => {points.clear()}),
+              buttonAction: () => {
+                    clear(),
+                  }),
+          const Spacer(),
+          SmolButtonElement(
+              decorationVariant: decorationPriority.standard,
+              buttonTitle: 'Finish',
+              buttonHint: 'Finishes your drawing',
+              buttonAction: () => {
+                    toolTemplateMaster.notifyObserverForward(),
+                  }),
         ]);
 
     var container = Container(
-        height: size.layoutItemHeight(1, size.logicalScreenSize()),
-        width: size.layoutItemWidth(1, size.logicalScreenSize()),
-        decoration: CardBackingDecoration(
-                decorationVariant: decorationPriority.standard)
-            .buildBacking(),
-        child: Stack(
-          children: const [
-            //buildCurrentPath(context),
-          ],
-        ));
+      height: size.layoutItemHeight(3, size.logicalScreenSize()),
+      width: size.layoutItemWidth(1, size.logicalScreenSize()),
+      decoration:
+          CardBackingDecoration(decorationVariant: decorationPriority.standard)
+              .buildBacking(),
+      child: Stack(children: [
+        buildAllPaths(context),
+        buildCurrentPath(context),
+      ]),
+    );
 
     return Column(
       children: [
         const SizedBox(height: 10.0),
         const DividerElement(),
         const SizedBox(height: 10.0),
-        row,
+        circleScroll,
         const SizedBox(height: 10.0),
-        container
+        container,
+        const SizedBox(height: 10.0),
+        row
       ],
     );
   }
+
+  Widget buildCurrentPath(BuildContext context) {
+    return GestureDetector(
+      onPanStart: onPanStart,
+      onPanUpdate: onPanUpdate,
+      onPanEnd: onPanEnd,
+      child: RepaintBoundary(
+        child: Container(
+          height: size.layoutItemHeight(3, size.logicalScreenSize()),
+          width: size.layoutItemWidth(1, size.logicalScreenSize()),
+          padding: const EdgeInsets.all(4.0),
+          color: Colors.transparent,
+          alignment: Alignment.topLeft,
+          child: StreamBuilder<_Line>(
+            stream: currentLineStreamController.stream,
+            builder: (context, snapshot) {
+              return CustomPaint(
+                painter: _Sketcher(
+                  lines: [line],
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildAllPaths(BuildContext context) {
+    return RepaintBoundary(
+      key: _globalKey,
+      child: Container(
+        height: size.layoutItemHeight(3, size.logicalScreenSize()),
+        width: size.layoutItemWidth(1, size.logicalScreenSize()),
+        color: Colors.transparent,
+        padding: const EdgeInsets.all(4.0),
+        alignment: Alignment.topLeft,
+        child: StreamBuilder<List<_Line>>(
+          stream: linesStreamController.stream,
+          builder: (context, snapshot) {
+            return CustomPaint(
+              painter: _Sketcher(
+                lines: lines,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void onPanStart(DragStartDetails details) {
+    RenderBox? box = context.findRenderObject() as RenderBox;
+    Offset point = box.globalToLocal(details.globalPosition);
+    line = _Line([point], activeColor, selectedWidth);
+  }
+
+  void onPanUpdate(DragUpdateDetails details) {
+    RenderBox? box = context.findRenderObject() as RenderBox;
+    Offset point = box.globalToLocal(details.globalPosition);
+
+    List<Offset> path = List.from(line.path)..add(point);
+    line = _Line(path, activeColor, selectedWidth);
+    currentLineStreamController.add(line);
+  }
+
+  void onPanEnd(DragEndDetails details) {
+    lines = List.from(lines)..add(line);
+    linesStreamController.add(lines);
+  }
 }
 
-class _PainterCanvas extends CustomPainter {
-  final Color stroke;
-  const _PainterCanvas({required this.stroke});
+/// A class that holds metadata for the sketch tool template.
+class _Line {
+  final List<Offset> path;
+  final Color color;
+  final double width;
+
+  _Line(this.path, this.color, this.width);
+}
+
+/// A custom painter that manages drawing lines on the canvas.
+class _Sketcher extends CustomPainter {
+  final List<_Line> lines;
+
+  _Sketcher({required this.lines});
 
   @override
   void paint(Canvas canvas, Size size) {
-    /*Paint toolPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..color = stroke;*/
+    Paint paint = Paint()
+      ..color = Colors.redAccent
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 5.0;
+
+    for (int i = 0; i < lines.length; ++i) {
+      if (lines[i] == null) continue;
+      for (int j = 0; j < lines[i].path.length - 1; ++j) {
+        if (lines[i].path[j] != null && lines[i].path[j + 1] != null) {
+          paint.color = lines[i].color;
+          paint.strokeWidth = lines[i].width;
+          canvas.drawLine(lines[i].path[j], lines[i].path[j + 1], paint);
+        }
+      }
+    }
   }
 
   @override
-  bool shouldRepaint(_PainterCanvas oldDelegate) {
+  bool shouldRepaint(_Sketcher oldDelegate) {
     return true;
   }
 }

@@ -56,9 +56,6 @@ class SafetyOptionDetailMetadata {
       case SafetyPlanOptions.disableScreenshots:
         return disableScreenshotsDetails();
 
-      case SafetyPlanOptions.deviceSandbox:
-        return deviceSandboxDetails();
-
       case SafetyPlanOptions.logFailedAttempts:
         return logFailedAttemptsDetails();
     }

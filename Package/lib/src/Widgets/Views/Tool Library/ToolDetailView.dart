@@ -16,11 +16,10 @@ class ToolDetailView extends StatefulWidget {
   /// The tool that contains the data to be used in this template.
   final CoreTool parentTool;
 
-  /// If you do not want to use the pre-templated tools flow,
-  /// you can set a custom widget in this parameter to override the flow template.
-  Widget? alternateCTAEntryPoint;
+  /// An action to run when a user clicks the 'use tool' button.
+  final VoidCallback onUseTool;
 
-  ToolDetailView({required this.parentTool, this.alternateCTAEntryPoint});
+  const ToolDetailView({required this.parentTool, required this.onUseTool});
 
   @override
   _ToolDetailViewState createState() => _ToolDetailViewState();
@@ -30,20 +29,16 @@ class _ToolDetailViewState extends State<ToolDetailView> {
   @override
   Widget build(BuildContext context) {
     var tool = widget.parentTool;
-    var toolNavigation = navigationContainer(tool);
     var screenSize = size.logicalScreenSize();
 
     var fullWidthButtonElement = FullWidthButtonElement(
-        buttonTitle: 'Use tool.',
-        buttonHint: 'Starts ${tool.toolName}.',
-        currentVariant: decorationPriority.important,
-        buttonAction: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => toolNavigation.entryPoint!,
-                  ))
-            });
+      buttonTitle: 'Use tool.',
+      buttonHint: 'Starts ${tool.toolName}.',
+      currentVariant: decorationPriority.important,
+      buttonAction: () => {
+        widget.onUseTool(),
+      },
+    );
 
     var column = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +80,9 @@ class _ToolDetailViewState extends State<ToolDetailView> {
         decorationVariant: decorationPriority.standard,
         buttonIcon: Assets.no,
         buttonHint: 'Exit ${tool.toolName} details',
-        buttonAction: () => {Navigator.pop(context)},
+        buttonAction: () => {
+          Navigator.pop(context),
+        },
         buttonPriority: buttonSize.secondary,
       ),
     );

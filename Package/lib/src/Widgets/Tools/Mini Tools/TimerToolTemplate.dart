@@ -52,7 +52,8 @@ class TimerToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          BodyTwoText('Completed a Timer.', decorationPriority.standard)
+          BodyTwoText(
+              'Completed a Timer for $allotment.', decorationPriority.standard)
         ]);
   }
 }

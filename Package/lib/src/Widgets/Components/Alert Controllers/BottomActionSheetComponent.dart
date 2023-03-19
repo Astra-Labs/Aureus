@@ -41,32 +41,51 @@ class _BottomActionSheetComponentState
                     : decorationPriority.standard,
             buttonTitle: element.actionName,
             buttonHint: "Completes the action ${element.actionName}",
-            buttonAction: element.onSelection),
+            buttonAction: () {
+              notificationMaster.resetRequests();
+              element.onSelection();
+            }),
       ));
     }
+
+    var exitRow = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconBadge(
+            badgeIcon: widget.alertData.alertIcon,
+            badgePriority: decorationPriority.important),
+        const Spacer(),
+        IconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonIcon: Assets.no,
+            buttonHint: "Exits action sheet",
+            buttonPriority: buttonSize.secondary,
+            buttonAction: () => {
+                  notificationMaster.resetRequests(),
+                })
+      ],
+    );
+
+    var nonExitRow = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconBadge(
+            badgeIcon: widget.alertData.alertIcon,
+            badgePriority: decorationPriority.important),
+        const Spacer(),
+      ],
+    );
 
     var bottomActionSheetContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconBadge(
-                  badgeIcon: widget.alertData.alertIcon,
-                  badgePriority: decorationPriority.important),
-              const Spacer(),
-              IconButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonIcon: Assets.no,
-                  buttonHint: "Exits action sheet",
-                  buttonPriority: buttonSize.secondary,
-                  buttonAction: () => {notificationMaster.resetRequests()})
-            ],
-          ),
+          widget.alertData.canUserExit == true ? exitRow : nonExitRow,
           const SizedBox(height: 20),
           HeadingThreeText(
               widget.alertData.alertTitle, decorationPriority.standard),
@@ -80,16 +99,18 @@ class _BottomActionSheetComponentState
           ),
         ]);
 
-    var bottomActionSheetContainer = Container(
-        decoration: CardBackingDecoration(
-                decorationVariant: decorationPriority.inverted)
-            .buildBacking(),
-        constraints: BoxConstraints(
-          maxWidth: size.layoutItemWidth(1, screenSize),
-          maxHeight: size.layoutItemHeight(1, screenSize),
-        ),
-        padding: const EdgeInsets.all(15.0),
-        child: bottomActionSheetContent);
+    var bottomActionSheetContainer = FloatingContainerElement(
+      child: Container(
+          decoration: CardBackingDecoration(
+                  decorationVariant: decorationPriority.inactive)
+              .buildBacking(),
+          constraints: BoxConstraints(
+            maxWidth: size.layoutItemWidth(1, screenSize),
+            maxHeight: size.layoutItemHeight(1, screenSize),
+          ),
+          padding: const EdgeInsets.all(15.0),
+          child: bottomActionSheetContent),
+    );
 
     return Semantics.fromProperties(
       properties: SemanticsWrapper.customItem(
