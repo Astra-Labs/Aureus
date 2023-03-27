@@ -70,8 +70,25 @@ class _IconButtonElementState extends State<IconButtonElement> {
             decorationVariant: buttonPriority)
         .buildBacking();
 
-    var buttonScale =
-        (widget.buttonPriority == buttonSize.primary ? 80.0 : 45.0);
+    var buttonScale = 0.0;
+
+    switch (widget.buttonPriority) {
+      case buttonSize.primary:
+        {
+          buttonScale = 70.0;
+          break;
+        }
+      case buttonSize.secondary:
+        {
+          buttonScale = 35.0;
+          break;
+        }
+      case buttonSize.smolBaby:
+        {
+          buttonScale = 20.0;
+          break;
+        }
+    }
 
     var iconButtonElementContent = ClipRect(
         child: FloatingContainerElement(

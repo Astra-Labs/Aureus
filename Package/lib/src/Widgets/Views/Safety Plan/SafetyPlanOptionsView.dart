@@ -30,7 +30,6 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
     List<StandardSwitchCardElement> eligibleOptionCards = [];
 
     var safety = resourceValues.safetySettings;
-    var screenSize = size.logicalScreenSize();
 
     for (var element in safety.eligiblePlanOptions) {
       eligibleOptionCards.add(StandardSwitchCardElement(
@@ -63,17 +62,6 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
         buttonPriority: buttonSize.primary,
       ),
     );
-
-    var sizedBox = SizedBox(
-        width: size.layoutItemWidth(1, screenSize),
-        height: size.layoutItemHeight(1, screenSize) * 0.6,
-        child: SingleChildScrollView(
-          child: (ListView(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
-              children: eligibleOptionCards)),
-        ));
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,

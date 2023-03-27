@@ -62,12 +62,14 @@ class _EmergencyAccessBarComponentState
       tabItemActions.add(element.onTabSelection);
     }
 
-    var minimizedButton = IconButtonElement(
-      decorationVariant: decorationPriority.standard,
-      buttonIcon: isExpanded ? Assets.no : Assets.expand,
-      buttonHint: "buttonHint",
-      buttonAction: _onItemTapped,
-      buttonPriority: buttonSize.secondary,
+    var minimizedButton = ClipRRect(
+      child: IconButtonElement(
+        decorationVariant: decorationPriority.standard,
+        buttonIcon: isExpanded ? Assets.no : Assets.expand,
+        buttonHint: "buttonHint",
+        buttonAction: _onItemTapped,
+        buttonPriority: buttonSize.secondary,
+      ),
     );
 
     var expandedBar = FloatingContainerElement(

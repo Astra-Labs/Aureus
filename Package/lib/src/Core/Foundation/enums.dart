@@ -57,10 +57,15 @@ enum decorationPriority {
 /// Whether a button is the primary button size (the top 'call to action'
 /// of a page) or a secondary (not top call to action). The different
 /// sizes make it easier for users to prioritize what to do, and provides
-/// better UX.
+/// better UX. Primary is the biggest as a main call to action, and smolBaby
+/// is the smallest (e.g: an exit button for a sub-item, like a card).
 ///
 /// {@endtemplate}
-enum buttonSize { primary, secondary }
+enum buttonSize {
+  primary, // Main call to action
+  secondary, // Secondary, use for navigating / taking actions on whole pages.
+  smolBaby, // Teriarity, use on sub-items within a page.
+}
 
 /// {@template aureus.buttonDecorationVariants}
 ///

@@ -60,7 +60,8 @@ class ContainerView extends StatefulWidget {
   _ContainerViewState createState() => _ContainerViewState();
 }
 
-class _ContainerViewState extends State<ContainerView> {
+class _ContainerViewState extends State<ContainerView>
+    with WidgetsBindingObserver {
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   late Future<double> actionBarX;
   late Future<double> actionBarY;
@@ -77,12 +78,26 @@ class _ContainerViewState extends State<ContainerView> {
       return /* preferences.getDouble('barX') ?? */ 0.4;
     });
 
+    WidgetsBinding.instance!.addObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeMetrics() {
+    setState(() {});
+    super.didChangeMetrics();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    setState(() {});
+    super.didChangeMetrics();
   }
 
   void updateAccessBarPosition(DraggableDetails details) {

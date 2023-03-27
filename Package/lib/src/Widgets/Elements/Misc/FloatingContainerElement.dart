@@ -19,7 +19,7 @@ class FloatingContainerElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
+    return ClipRRect(
       child: BackdropFilter(
           filter: ImageFilter.blur(
               sigmaX: 10, sigmaY: 10, tileMode: TileMode.decal),

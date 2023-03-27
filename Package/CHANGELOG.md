@@ -1,3 +1,6 @@
+## 0.0.7
+- Added a third option to button size for objects smaller than a page.
+
 ## 0.0.6
 - Reworked the ToolTemplateCards returnTemplateSummary to better handle when 
 users don't give an answer. 
@@ -10,6 +13,7 @@ making weird bugs happen and such.
 - Dropped SafetyPlanOptions.deviceSandbox since it was a pain to implement technically. 
 - Fixed bugs within SketchToolTemplateCard
 - Added StandardAccordionCardElement
+- Fixed bug with color changing after being pressed with Aureus buttons
 
 
 ## 0.0.5

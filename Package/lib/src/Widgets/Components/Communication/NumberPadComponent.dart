@@ -58,7 +58,7 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
 
       if (width < 600 || width > 1000) {
         // Desktop & mobile sizing.
-        responsiveSize = 80;
+        responsiveSize = 60;
       } else if (width > 600) {
         responsiveSize = 100;
       }
