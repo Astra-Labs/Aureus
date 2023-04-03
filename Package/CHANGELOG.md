@@ -13,8 +13,7 @@ making weird bugs happen and such.
 - Dropped SafetyPlanOptions.deviceSandbox since it was a pain to implement technically. 
 - Fixed bugs within SketchToolTemplateCard
 - Added StandardAccordionCardElement
-- Fixed bug with color changing after being pressed with Aureus buttons
-
+- Fixed bug with color changing after being pressed with Aureus buttons.
 
 ## 0.0.5
 - Added 'Change Account Item' view

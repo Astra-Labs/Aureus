@@ -80,12 +80,12 @@ class _IconButtonElementState extends State<IconButtonElement> {
         }
       case buttonSize.secondary:
         {
-          buttonScale = 35.0;
+          buttonScale = 43.0;
           break;
         }
       case buttonSize.smolBaby:
         {
-          buttonScale = 20.0;
+          buttonScale = 35.0;
           break;
         }
     }

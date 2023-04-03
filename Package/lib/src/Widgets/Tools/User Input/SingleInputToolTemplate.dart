@@ -30,6 +30,7 @@ class SingleInputToolTemplate extends ToolCardTemplate {
               decorationVariant: decorationPriority.standard,
               textFieldController: cardController,
               isEnabled: true),
+          const SizedBox(height: 10.0),
           const DividerElement(),
           const SizedBox(height: 20.0),
           Row(

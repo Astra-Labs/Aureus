@@ -50,7 +50,7 @@ class Sensory {
   Future<void> createSensation(sensationType sense) async {
     AudioPlayer.clearAssetCache();
 
-    switch (sense) {
+    /*switch (sense) {
       case sensationType.confirmation:
         {
           await HapticFeedback.lightImpact();
@@ -117,6 +117,6 @@ class Sensory {
           await runAudioPlayer(holdAudioPath);
           break;
         }
-    }
+    }*/
   }
 }
