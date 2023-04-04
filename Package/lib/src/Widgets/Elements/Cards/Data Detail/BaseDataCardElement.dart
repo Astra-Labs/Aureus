@@ -46,23 +46,20 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
                 .buildBacking(),
             padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
             child: Center(
-              child: Container(
-                color: Colors.amber,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TagOneText(widget.detailLabel, decorationPriority.standard),
-                    const SizedBox(height: 10.0),
-                    Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: widget.detailChildren),
-                    const SizedBox(height: 10.0),
-                  ],
-                ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TagOneText(widget.detailLabel, decorationPriority.standard),
+                  const SizedBox(height: 10.0),
+                  Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: widget.detailChildren),
+                  const SizedBox(height: 10.0),
+                ],
               ),
             )));
   }
