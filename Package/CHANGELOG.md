@@ -1,5 +1,6 @@
 ## 0.0.7
 - Added a third option to button size for objects smaller than a page.
+- Added RouteObserver to AureusInformation and RouteAware to NotificationOverlayView to fix a bug with the notification master observer not being able to track when someone 'pops' a page. 
 
 ## 0.0.6
 - Reworked the ToolTemplateCards returnTemplateSummary to better handle when 

@@ -28,7 +28,7 @@ class NotificationOverlayView extends StatefulWidget {
 }
 
 class _NotificationOverlayViewState extends State<NotificationOverlayView>
-    with AureusNotificationObserver, TickerProviderStateMixin {
+    with AureusNotificationObserver, TickerProviderStateMixin, RouteAware {
   // A 'stand in' overlay view that will hold the UI components
   Widget overlayView = Container();
   var hasOverlayEnabled = false;
@@ -38,6 +38,10 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   @override
   void initState() {
     sensation.prepare();
+
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      resourceValues.routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
 
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300))
@@ -63,6 +67,22 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
 
     super.initState();
+  }
+
+  @override
+  void didPush() {
+    notificationMaster.unregisterObserver(this);
+    notificationMaster.resetRequests();
+
+    super.didPush();
+  }
+
+  @override
+  void didPop() {
+    notificationMaster.unregisterObserver(this);
+    notificationMaster.resetRequests();
+
+    super.didPop();
   }
 
   @override

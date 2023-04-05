@@ -127,17 +127,23 @@ class AureusInformation {
   /// A privacy policy that determines how you handle the users' data and information.
   final String privacyPolicy;
 
-  const AureusInformation(
-      {required this.name,
-      required this.mission,
-      required this.safetySettings,
-      required this.developerName,
-      required this.developerEmail,
-      required this.userSupportURL,
-      required this.requestedDataPermissions,
-      required this.termsOfService,
-      required this.privacyPolicy})
-      : assert(name != "" &&
+  /// A route observer that's been passed to your main MaterialApp. This needs to be
+  /// given for the [NotificationOverlayView], so that Aureus can properly manage
+  /// what screens are currently being shown to the user.
+  final RouteObserver routeObserver;
+
+  const AureusInformation({
+    required this.name,
+    required this.mission,
+    required this.safetySettings,
+    required this.developerName,
+    required this.developerEmail,
+    required this.userSupportURL,
+    required this.requestedDataPermissions,
+    required this.termsOfService,
+    required this.privacyPolicy,
+    required this.routeObserver,
+  }) : assert(name != "" &&
             mission != "" &&
             developerName != "" &&
             developerEmail != "" &&
@@ -228,6 +234,7 @@ class AureusValues {
       packageVariables.resourceInformation.requestedDataPermissions;
   var tos = packageVariables.resourceInformation.termsOfService;
   var privacy = packageVariables.resourceInformation.privacyPolicy;
+  var routeObserver = packageVariables.resourceInformation.routeObserver;
 
   // Flattened navigation values
   var splash = packageVariables.resourceNavigation.splashScreen;
