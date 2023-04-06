@@ -23,9 +23,9 @@ class SettingsView extends StatefulWidget {
 
 class _SettingsViewState extends State<SettingsView> {
   var aboutDialogue = AboutDialog(
-    applicationName: packageVariables.resourceInformation.name,
+    applicationName: packageVariables!.resourceInformation.name,
     applicationLegalese:
-        'Developed by ${packageVariables.resourceInformation.developerName},',
+        'Developed by ${packageVariables!.resourceInformation.developerName},',
     children: [
       StandardButtonElement(
           decorationVariant: decorationPriority.standard,
@@ -90,7 +90,7 @@ class _SettingsViewState extends State<SettingsView> {
     var standardButtonElement = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
         buttonTitle:
-            'learn more about ${packageVariables.resourceInformation.name}.',
+            'learn more about ${packageVariables!.resourceInformation.name}.',
         buttonHint:
             "Shows terms of service, licenses, developer information, and more.",
         buttonAction: () => {
@@ -118,7 +118,7 @@ class _SettingsViewState extends State<SettingsView> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => resourceValues.help,
+                    builder: (context) => resourceValues.help!,
                   ))
             });
 

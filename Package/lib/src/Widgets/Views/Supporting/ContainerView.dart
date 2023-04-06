@@ -110,7 +110,7 @@ class _ContainerViewState extends State<ContainerView>
   @override
   Widget build(BuildContext context) {
     // pull exit bar setting status from Safety Plan
-    var safety = resourceValues.safetySettings;
+    var safety = resourceValues.safetySettings!;
     const bool hasExitBar = false;
 
     var screenSize = size.logicalScreenSize();

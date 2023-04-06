@@ -22,7 +22,7 @@ class SafetyPlanLogInAuditView extends StatefulWidget {
 
 class _SafetyPlanLogInAuditViewState extends State<SafetyPlanLogInAuditView> {
   var failedAttempts =
-      resourceValues.safetySettings.readAllFailedLogInAttempts();
+      resourceValues.safetySettings!.readAllFailedLogInAttempts();
 
   @override
   Widget build(BuildContext context) {

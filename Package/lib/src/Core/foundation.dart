@@ -180,12 +180,6 @@ class AureusNavigationTree {
   ///  The entry point into your software. (For use in [OnboardingLandingView])
   final Widget onboardingDemo;
 
-  ///  A view that holds your terms of service. This goes in your settings page.
-  final Widget termsOfService;
-
-  ///  A view that holds your privacy policy. This goes in your settings page.
-  final Widget privacyPolicy;
-
   /// A templated help center that addresses common questions / concerns from users.
   final Widget helpCenter;
 
@@ -200,8 +194,6 @@ class AureusNavigationTree {
       required this.onboardingLanding,
       required this.onboardingDemo,
       required this.onboardingInformation,
-      required this.termsOfService,
-      required this.privacyPolicy,
       required this.signIn,
       required this.signUp,
       required this.helpCenter,
@@ -246,8 +238,6 @@ class AureusValues {
   var onboardingInfo =
       packageVariables?.resourceNavigation.onboardingInformation;
   var onboardingDemo = packageVariables?.resourceNavigation.onboardingDemo;
-  var termsOfService = packageVariables?.resourceNavigation.termsOfService;
-  var privacyPolicy = packageVariables?.resourceNavigation.privacyPolicy;
   var help = packageVariables?.resourceNavigation.helpCenter;
   var support = packageVariables?.resourceNavigation.contactSupport;
 }

@@ -62,7 +62,8 @@ class _LandingPageViewState extends State<LandingPageView> {
           HeadingTwoText(
               "I'm ${resourceValues.name}", decorationPriority.standard),
           const SizedBox(height: 4.0),
-          HeadingOneText(resourceValues.mission, decorationPriority.standard)
+          HeadingOneText(
+              resourceValues.mission ?? "", decorationPriority.standard)
         ]);
 
     Image homeScreenOverlay = palette.brightness() == Brightness.light

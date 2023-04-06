@@ -12,22 +12,22 @@ class Coloration {
   /// Returns logo for the proper mode.
   Image resourceLogo() {
     return palette.brightness() == Brightness.light
-        ? resourceValues.lightMode.logo!
-        : resourceValues.darkMode.logo!;
+        ? resourceValues.lightMode!.logo!
+        : resourceValues.darkMode!.logo!;
   }
 
   /// Returns primary image for the proper mode.
   Image primaryImage() {
     return palette.brightness() == Brightness.light
-        ? resourceValues.lightMode.primaryImage!
-        : resourceValues.darkMode.primaryImage!;
+        ? resourceValues.lightMode!.primaryImage!
+        : resourceValues.darkMode!.primaryImage!;
   }
 
   /// Returns secondary image for the proper mode.
   Image secondaryImage() {
     return palette.brightness() == Brightness.light
-        ? resourceValues.lightMode.secondaryImage!
-        : resourceValues.darkMode.secondaryImage!;
+        ? resourceValues.lightMode!.secondaryImage!
+        : resourceValues.darkMode!.secondaryImage!;
   }
 
   /// Coloration for dynamically changing items that use all of the priority variants.
@@ -53,8 +53,8 @@ class Coloration {
   /// Accent color for the given mode.
   Color accentColor() {
     return palette.brightness() == Brightness.light
-        ? resourceValues.lightMode.accentColor
-        : resourceValues.darkMode.accentColor;
+        ? resourceValues.lightMode!.accentColor
+        : resourceValues.darkMode!.accentColor;
   }
 
   /// Returns alternate color to the mode.

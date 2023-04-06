@@ -64,7 +64,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
 
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      resourceValues.routeObserver.subscribe(this, ModalRoute.of(context)!);
+      resourceValues.routeObserver!.subscribe(this, ModalRoute.of(context)!);
     });
 
     super.initState();

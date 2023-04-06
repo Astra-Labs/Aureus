@@ -44,7 +44,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
               HeadingThreeText(
                   "I'm ${resourceValues.name}", decorationPriority.standard),
               HeadingOneText(
-                  resourceValues.mission, decorationPriority.standard)
+                  resourceValues.mission ?? "", decorationPriority.standard)
             ],
           ),
           const Spacer(),
@@ -61,7 +61,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  resourceValues.onboardingDemo,
+                                  resourceValues.onboardingDemo!,
                             ))
                       }),
               StandardIconButtonElement(
@@ -74,7 +74,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  resourceValues.onboardingInfo,
+                                  resourceValues.onboardingInfo!,
                             ))
                       }),
               StandardIconButtonElement(
@@ -86,7 +86,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => resourceValues.signUp,
+                              builder: (context) => resourceValues.signUp!,
                             ))
                       })
             ],
