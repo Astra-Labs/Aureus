@@ -9,7 +9,7 @@ final titleCase = TitleCase();
 final coloration = Coloration();
 final size = Sizing();
 final accessibility = Accessibility();
-late AureusResource packageVariables;
+AureusResource? packageVariables;
 final resourceValues = AureusValues();
 
 /// A custom wrapper of a material app that allows Aureus to handle custom accessibility,
@@ -214,40 +214,40 @@ class AureusNavigationTree {
 /// to read.
 ///
 class AureusValues {
-  var branding = packageVariables.resourceBranding;
-  var information = packageVariables.resourceInformation;
-  var navigation = packageVariables.resourceNavigation;
+  var branding = packageVariables?.resourceBranding;
+  var information = packageVariables?.resourceInformation;
+  var navigation = packageVariables?.resourceNavigation;
 
   // Flattened branding values
-  var font = packageVariables.resourceBranding.fontFamily;
-  var lightMode = packageVariables.resourceBranding.lightModeStyle;
-  var darkMode = packageVariables.resourceBranding.darkModeStyle;
+  var font = packageVariables?.resourceBranding.fontFamily;
+  var lightMode = packageVariables?.resourceBranding.lightModeStyle;
+  var darkMode = packageVariables?.resourceBranding.darkModeStyle;
 
   // Flattened information values
-  var name = packageVariables.resourceInformation.name;
-  var mission = packageVariables.resourceInformation.mission;
-  var safetySettings = packageVariables.resourceInformation.safetySettings;
-  var developerName = packageVariables.resourceInformation.developerName;
-  var developerEmail = packageVariables.resourceInformation.developerEmail;
-  var userSupport = packageVariables.resourceInformation.userSupportURL;
+  var name = packageVariables?.resourceInformation.name;
+  var mission = packageVariables?.resourceInformation.mission;
+  var safetySettings = packageVariables?.resourceInformation.safetySettings;
+  var developerName = packageVariables?.resourceInformation.developerName;
+  var developerEmail = packageVariables?.resourceInformation.developerEmail;
+  var userSupport = packageVariables?.resourceInformation.userSupportURL;
   var dataPermissions =
-      packageVariables.resourceInformation.requestedDataPermissions;
-  var tos = packageVariables.resourceInformation.termsOfService;
-  var privacy = packageVariables.resourceInformation.privacyPolicy;
-  var routeObserver = packageVariables.resourceInformation.routeObserver;
+      packageVariables?.resourceInformation.requestedDataPermissions;
+  var tos = packageVariables?.resourceInformation.termsOfService;
+  var privacy = packageVariables?.resourceInformation.privacyPolicy;
+  var routeObserver = packageVariables?.resourceInformation.routeObserver;
 
   // Flattened navigation values
-  var splash = packageVariables.resourceNavigation.splashScreen;
-  var home = packageVariables.resourceNavigation.homeScreen;
-  var signUp = packageVariables.resourceNavigation.signUp;
-  var signIn = packageVariables.resourceNavigation.signIn;
-  var settings = packageVariables.resourceNavigation.settings;
-  var onboarding = packageVariables.resourceNavigation.onboardingLanding;
+  var splash = packageVariables?.resourceNavigation.splashScreen;
+  var home = packageVariables?.resourceNavigation.homeScreen;
+  var signUp = packageVariables?.resourceNavigation.signUp;
+  var signIn = packageVariables?.resourceNavigation.signIn;
+  var settings = packageVariables?.resourceNavigation.settings;
+  var onboarding = packageVariables?.resourceNavigation.onboardingLanding;
   var onboardingInfo =
-      packageVariables.resourceNavigation.onboardingInformation;
-  var onboardingDemo = packageVariables.resourceNavigation.onboardingDemo;
-  var termsOfService = packageVariables.resourceNavigation.termsOfService;
-  var privacyPolicy = packageVariables.resourceNavigation.privacyPolicy;
-  var help = packageVariables.resourceNavigation.helpCenter;
-  var support = packageVariables.resourceNavigation.contactSupport;
+      packageVariables?.resourceNavigation.onboardingInformation;
+  var onboardingDemo = packageVariables?.resourceNavigation.onboardingDemo;
+  var termsOfService = packageVariables?.resourceNavigation.termsOfService;
+  var privacyPolicy = packageVariables?.resourceNavigation.privacyPolicy;
+  var help = packageVariables?.resourceNavigation.helpCenter;
+  var support = packageVariables?.resourceNavigation.contactSupport;
 }

@@ -38,10 +38,7 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   @override
   void initState() {
     sensation.prepare();
-
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      resourceValues.routeObserver.subscribe(this, ModalRoute.of(context)!);
-    });
+    notificationMaster.registerObserver(this);
 
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300))
@@ -66,13 +63,20 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
             begin: const Offset(0.0, 0.0), end: const Offset(0.0, 0.0))
         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
 
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      resourceValues.routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
+
     super.initState();
   }
 
+/*
   @override
   void didPush() {
     notificationMaster.unregisterObserver(this);
     notificationMaster.resetRequests();
+
+    print("DID PUSH!");
 
     super.didPush();
   }
@@ -82,8 +86,10 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
     notificationMaster.unregisterObserver(this);
     notificationMaster.resetRequests();
 
+    print("DID POP!");
+
     super.didPop();
-  }
+  }*/
 
   @override
   void dispose() {

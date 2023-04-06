@@ -29,7 +29,7 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
   Widget build(BuildContext context) {
     List<StandardSwitchCardElement> eligibleOptionCards = [];
 
-    var safety = resourceValues.safetySettings;
+    var safety = resourceValues.safetySettings!;
 
     for (var element in safety.eligiblePlanOptions) {
       eligibleOptionCards.add(StandardSwitchCardElement(

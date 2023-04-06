@@ -33,16 +33,6 @@ class _SettingsViewState extends State<SettingsView> {
           buttonHint:
               'Brings you to contact support for ${resourceValues.name}',
           buttonAction: () => {}),
-      StandardButtonElement(
-          decorationVariant: decorationPriority.standard,
-          buttonTitle: 'Terms of Service',
-          buttonHint: 'Shows Terms of Service',
-          buttonAction: () => {}),
-      StandardButtonElement(
-          decorationVariant: decorationPriority.standard,
-          buttonTitle: 'Privacy Policy',
-          buttonHint: 'Shows Privacy Policy',
-          buttonAction: () => {})
     ],
   );
 
@@ -103,7 +93,9 @@ class _SettingsViewState extends State<SettingsView> {
             'learn more about ${packageVariables.resourceInformation.name}.',
         buttonHint:
             "Shows terms of service, licenses, developer information, and more.",
-        buttonAction: () => {showAboutDialog(context: context)});
+        buttonAction: () => {
+              showAboutDialog(context: context),
+            });
 
     var standardButtonElement2 = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
@@ -114,7 +106,7 @@ class _SettingsViewState extends State<SettingsView> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const SafetyPlanSettingsView(),
-                  ))
+                  )),
             });
 
     var standardButtonElement3 = StandardButtonElement(
