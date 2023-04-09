@@ -22,6 +22,7 @@ dependencies:
   latlong2: ^0.8.1
   just_audio: ^0.9.20
   shared_preferences: ^2.0.13
+  perichron: ^1.0.0
 
 flutter:
   assets:

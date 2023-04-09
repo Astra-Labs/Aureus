@@ -338,6 +338,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.7"
+  perichron:
+    dependency: "direct main"
+    description:
+      name: perichron
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   permission_handler:
     dependency: "direct main"
     description:
@@ -666,5 +673,5 @@ packages:
     source: hosted
     version: "0.2.0+3"
 sdks:
-  dart: ">=2.15.0 <3.0.0"
+  dart: ">=2.16.2 <3.0.0"
   flutter: ">=2.10.0"
