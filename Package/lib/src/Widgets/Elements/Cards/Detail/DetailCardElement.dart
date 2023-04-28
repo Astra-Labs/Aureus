@@ -43,7 +43,7 @@ class DetailCardElement extends StatelessWidget {
           constraints: BoxConstraints(
               minWidth: size.layoutItemWidth(1, screenSize),
               maxWidth: size.layoutItemWidth(1, screenSize),
-              minHeight: size.layoutItemHeight(4, screenSize)),
+              minHeight: size.layoutItemHeight(6, screenSize)),
           decoration:
               CardBackingDecoration(decorationVariant: decorationVariant)
                   .buildBacking(),

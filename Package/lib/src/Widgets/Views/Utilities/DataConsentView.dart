@@ -43,9 +43,9 @@ class _DataOptInViewState extends State<DataOptInView> {
         physics: const ClampingScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        itemCount: permissionItems.length,
+        itemCount: permissionItems?.length,
         itemBuilder: (BuildContext context, int index) {
-          var currentItem = permissionItems[index];
+          var currentItem = permissionItems![index];
 
           return Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 5.0),

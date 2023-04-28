@@ -52,7 +52,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
               fit: BoxFit.cover,
             ))),
         const SizedBox(height: 40.0),
-        HeadingTwoText(resourceValues.name, decorationPriority.standard),
+        HeadingTwoText(resourceValues.name ?? "", decorationPriority.standard),
         const Spacer(),
       ],
     );

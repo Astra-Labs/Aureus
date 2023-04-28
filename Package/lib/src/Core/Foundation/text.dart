@@ -16,7 +16,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 // Global Text Styles ---------------------------------
 
-var fontChoice = resourceValues.font;
+var fontChoice = resourceValues.font!;
 
 /// The text style for a heading one
 TextStyle heading1() {

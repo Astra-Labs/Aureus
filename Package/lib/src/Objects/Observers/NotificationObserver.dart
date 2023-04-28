@@ -35,6 +35,7 @@ class AureusNotificationMaster {
 
   /// Shows an alert controller over the container view.
   void sendAlertControllerRequest(AlertControllerObject data) {
+    print('sending controller request!');
     // Checks that a current observer is registered before moving
     _currentObserver != null
         ? _currentObserver!.showAlertController(data)

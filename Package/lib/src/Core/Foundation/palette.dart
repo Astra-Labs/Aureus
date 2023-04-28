@@ -21,11 +21,11 @@ class AureusPalette {
 // Gradients ---------------------------------
 
   Gradient lightGradient() {
-    return resourceValues.darkMode.contrastGradient;
+    return resourceValues.darkMode!.contrastGradient;
   }
 
   Gradient darkGradient() {
-    return resourceValues.lightMode.contrastGradient;
+    return resourceValues.lightMode!.contrastGradient;
   }
 
 // Colors ---------------------------------

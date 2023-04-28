@@ -23,9 +23,9 @@ class SettingsView extends StatefulWidget {
 
 class _SettingsViewState extends State<SettingsView> {
   var aboutDialogue = AboutDialog(
-    applicationName: packageVariables.resourceInformation.name,
+    applicationName: packageVariables!.resourceInformation.name,
     applicationLegalese:
-        'Developed by ${packageVariables.resourceInformation.developerName},',
+        'Developed by ${packageVariables!.resourceInformation.developerName},',
     children: [
       StandardButtonElement(
           decorationVariant: decorationPriority.standard,
@@ -33,16 +33,6 @@ class _SettingsViewState extends State<SettingsView> {
           buttonHint:
               'Brings you to contact support for ${resourceValues.name}',
           buttonAction: () => {}),
-      StandardButtonElement(
-          decorationVariant: decorationPriority.standard,
-          buttonTitle: 'Terms of Service',
-          buttonHint: 'Shows Terms of Service',
-          buttonAction: () => {}),
-      StandardButtonElement(
-          decorationVariant: decorationPriority.standard,
-          buttonTitle: 'Privacy Policy',
-          buttonHint: 'Shows Privacy Policy',
-          buttonAction: () => {})
     ],
   );
 
@@ -100,10 +90,12 @@ class _SettingsViewState extends State<SettingsView> {
     var standardButtonElement = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
         buttonTitle:
-            'learn more about ${packageVariables.resourceInformation.name}.',
+            'learn more about ${packageVariables!.resourceInformation.name}.',
         buttonHint:
             "Shows terms of service, licenses, developer information, and more.",
-        buttonAction: () => {showAboutDialog(context: context)});
+        buttonAction: () => {
+              showAboutDialog(context: context),
+            });
 
     var standardButtonElement2 = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
@@ -114,7 +106,7 @@ class _SettingsViewState extends State<SettingsView> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const SafetyPlanSettingsView(),
-                  ))
+                  )),
             });
 
     var standardButtonElement3 = StandardButtonElement(
@@ -126,7 +118,7 @@ class _SettingsViewState extends State<SettingsView> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => resourceValues.help,
+                    builder: (context) => resourceValues.help!,
                   ))
             });
 

@@ -9,7 +9,7 @@ final titleCase = TitleCase();
 final coloration = Coloration();
 final size = Sizing();
 final accessibility = Accessibility();
-late AureusResource packageVariables;
+AureusResource? packageVariables;
 final resourceValues = AureusValues();
 
 /// A custom wrapper of a material app that allows Aureus to handle custom accessibility,
@@ -127,17 +127,23 @@ class AureusInformation {
   /// A privacy policy that determines how you handle the users' data and information.
   final String privacyPolicy;
 
-  const AureusInformation(
-      {required this.name,
-      required this.mission,
-      required this.safetySettings,
-      required this.developerName,
-      required this.developerEmail,
-      required this.userSupportURL,
-      required this.requestedDataPermissions,
-      required this.termsOfService,
-      required this.privacyPolicy})
-      : assert(name != "" &&
+  /// A route observer that's been passed to your main MaterialApp. This needs to be
+  /// given for the [NotificationOverlayView], so that Aureus can properly manage
+  /// what screens are currently being shown to the user.
+  final RouteObserver routeObserver;
+
+  const AureusInformation({
+    required this.name,
+    required this.mission,
+    required this.safetySettings,
+    required this.developerName,
+    required this.developerEmail,
+    required this.userSupportURL,
+    required this.requestedDataPermissions,
+    required this.termsOfService,
+    required this.privacyPolicy,
+    required this.routeObserver,
+  }) : assert(name != "" &&
             mission != "" &&
             developerName != "" &&
             developerEmail != "" &&
@@ -174,12 +180,6 @@ class AureusNavigationTree {
   ///  The entry point into your software. (For use in [OnboardingLandingView])
   final Widget onboardingDemo;
 
-  ///  A view that holds your terms of service. This goes in your settings page.
-  final Widget termsOfService;
-
-  ///  A view that holds your privacy policy. This goes in your settings page.
-  final Widget privacyPolicy;
-
   /// A templated help center that addresses common questions / concerns from users.
   final Widget helpCenter;
 
@@ -194,8 +194,6 @@ class AureusNavigationTree {
       required this.onboardingLanding,
       required this.onboardingDemo,
       required this.onboardingInformation,
-      required this.termsOfService,
-      required this.privacyPolicy,
       required this.signIn,
       required this.signUp,
       required this.helpCenter,
@@ -208,39 +206,38 @@ class AureusNavigationTree {
 /// to read.
 ///
 class AureusValues {
-  var branding = packageVariables.resourceBranding;
-  var information = packageVariables.resourceInformation;
-  var navigation = packageVariables.resourceNavigation;
+  var branding = packageVariables?.resourceBranding;
+  var information = packageVariables?.resourceInformation;
+  var navigation = packageVariables?.resourceNavigation;
 
   // Flattened branding values
-  var font = packageVariables.resourceBranding.fontFamily;
-  var lightMode = packageVariables.resourceBranding.lightModeStyle;
-  var darkMode = packageVariables.resourceBranding.darkModeStyle;
+  var font = packageVariables?.resourceBranding.fontFamily;
+  var lightMode = packageVariables?.resourceBranding.lightModeStyle;
+  var darkMode = packageVariables?.resourceBranding.darkModeStyle;
 
   // Flattened information values
-  var name = packageVariables.resourceInformation.name;
-  var mission = packageVariables.resourceInformation.mission;
-  var safetySettings = packageVariables.resourceInformation.safetySettings;
-  var developerName = packageVariables.resourceInformation.developerName;
-  var developerEmail = packageVariables.resourceInformation.developerEmail;
-  var userSupport = packageVariables.resourceInformation.userSupportURL;
+  var name = packageVariables?.resourceInformation.name;
+  var mission = packageVariables?.resourceInformation.mission;
+  var safetySettings = packageVariables?.resourceInformation.safetySettings;
+  var developerName = packageVariables?.resourceInformation.developerName;
+  var developerEmail = packageVariables?.resourceInformation.developerEmail;
+  var userSupport = packageVariables?.resourceInformation.userSupportURL;
   var dataPermissions =
-      packageVariables.resourceInformation.requestedDataPermissions;
-  var tos = packageVariables.resourceInformation.termsOfService;
-  var privacy = packageVariables.resourceInformation.privacyPolicy;
+      packageVariables?.resourceInformation.requestedDataPermissions;
+  var tos = packageVariables?.resourceInformation.termsOfService;
+  var privacy = packageVariables?.resourceInformation.privacyPolicy;
+  var routeObserver = packageVariables?.resourceInformation.routeObserver;
 
   // Flattened navigation values
-  var splash = packageVariables.resourceNavigation.splashScreen;
-  var home = packageVariables.resourceNavigation.homeScreen;
-  var signUp = packageVariables.resourceNavigation.signUp;
-  var signIn = packageVariables.resourceNavigation.signIn;
-  var settings = packageVariables.resourceNavigation.settings;
-  var onboarding = packageVariables.resourceNavigation.onboardingLanding;
+  var splash = packageVariables?.resourceNavigation.splashScreen;
+  var home = packageVariables?.resourceNavigation.homeScreen;
+  var signUp = packageVariables?.resourceNavigation.signUp;
+  var signIn = packageVariables?.resourceNavigation.signIn;
+  var settings = packageVariables?.resourceNavigation.settings;
+  var onboarding = packageVariables?.resourceNavigation.onboardingLanding;
   var onboardingInfo =
-      packageVariables.resourceNavigation.onboardingInformation;
-  var onboardingDemo = packageVariables.resourceNavigation.onboardingDemo;
-  var termsOfService = packageVariables.resourceNavigation.termsOfService;
-  var privacyPolicy = packageVariables.resourceNavigation.privacyPolicy;
-  var help = packageVariables.resourceNavigation.helpCenter;
-  var support = packageVariables.resourceNavigation.contactSupport;
+      packageVariables?.resourceNavigation.onboardingInformation;
+  var onboardingDemo = packageVariables?.resourceNavigation.onboardingDemo;
+  var help = packageVariables?.resourceNavigation.helpCenter;
+  var support = packageVariables?.resourceNavigation.contactSupport;
 }

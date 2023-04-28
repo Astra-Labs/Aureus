@@ -41,8 +41,8 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   late decorationPriority buttonPriority;
 
   AureusStylization currentStyle = palette.brightness() == Brightness.light
-      ? packageVariables.resourceBranding.lightModeStyle
-      : packageVariables.resourceBranding.darkModeStyle;
+      ? packageVariables!.resourceBranding.lightModeStyle
+      : packageVariables!.resourceBranding.darkModeStyle;
 
   @override
   void initState() {

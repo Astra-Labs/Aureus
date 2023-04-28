@@ -16,7 +16,7 @@ class SignInView extends StatefulWidget {
   final VoidCallback onSignIn;
 
   /// A Callback to run when the user presses Sign Up.
-  final VoidCallback onSignup;
+  final VoidCallback? onSignup;
 
   /// A Callback for when the user wants to reset their information.
   final VoidCallback onResetInformation;
@@ -52,7 +52,7 @@ class _SignInViewState extends State<SignInView> {
 
   void onSignUp() {
     setState(() {
-      widget.onSignup();
+      widget.onSignup!();
     });
   }
 
@@ -106,11 +106,14 @@ class _SignInViewState extends State<SignInView> {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Spacer(),
-        SmolButtonElement(
-            decorationVariant: decorationPriority.standard,
-            buttonTitle: "Sign Up",
-            buttonHint: 'Takes you to the sign up view to create an account.',
-            buttonAction: onSignUp),
+        widget.onSignup == null
+            ? SmolButtonElement(
+                decorationVariant: decorationPriority.standard,
+                buttonTitle: "Sign Up",
+                buttonHint:
+                    'Takes you to the sign up view to create an account.',
+                buttonAction: onSignUp)
+            : Container(),
         const SizedBox(width: 30),
         SmolButtonElement(
             decorationVariant: decorationPriority.standard,

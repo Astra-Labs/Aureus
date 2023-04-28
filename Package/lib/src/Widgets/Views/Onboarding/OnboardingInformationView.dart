@@ -35,56 +35,57 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
 
   @override
   Widget build(BuildContext context) {
-    _selectedIndex = 0;
     var screenSize = size.logicalScreenSize();
-
     var currentItem = widget.onboardingDetails[_selectedIndex];
 
     Widget mobileInformationCard = Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-              constraints: BoxConstraints(
-                  maxHeight: size.layoutItemHeight(2, screenSize)),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  border: palette.universalBorder(),
-                  image: DecorationImage(
-                    image: currentItem.detailImage.image,
-                    fit: BoxFit.cover,
-                  ))),
-          const SizedBox(height: 20),
-          TagOneText(currentItem.detailTitle, decorationPriority.standard),
-          const SizedBox(height: 10),
-          BodyOneText(currentItem.detailBody, decorationPriority.standard),
-          const SizedBox(height: 20),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              IconButtonElement(
-                decorationVariant: (_selectedIndex == 0)
-                    ? decorationPriority.inactive
-                    : decorationPriority.important,
-                buttonIcon: Assets.back,
-                buttonHint: 'Previous Item',
-                buttonAction: () => {_onItemTapped(_selectedIndex -= 1)},
-                buttonPriority: buttonSize.secondary,
-              ),
-              IconButtonElement(
-                  decorationVariant:
-                      (_selectedIndex > (widget.onboardingDetails.length - 2))
-                          ? decorationPriority.inactive
-                          : decorationPriority.important,
-                  buttonIcon: Assets.next,
-                  buttonHint: 'Next Item',
-                  buttonAction: () => {_onItemTapped(_selectedIndex += 1)},
-                  buttonPriority: buttonSize.secondary)
-            ],
-          )
-        ]);
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+            constraints:
+                BoxConstraints(maxHeight: size.layoutItemHeight(2, screenSize)),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0),
+                border: palette.universalBorder(),
+                image: DecorationImage(
+                  image: currentItem.detailImage.image,
+                  fit: BoxFit.cover,
+                ))),
+        const SizedBox(height: 20),
+        TagOneText(currentItem.detailTitle, decorationPriority.standard),
+        const SizedBox(height: 10),
+        BodyOneText(currentItem.detailBody, decorationPriority.standard),
+        const SizedBox(height: 20),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            IconButtonElement(
+              decorationVariant: (_selectedIndex == 0) == true
+                  ? decorationPriority.inactive
+                  : decorationPriority.important,
+              buttonIcon: Assets.back,
+              buttonHint: 'Previous Item',
+              buttonAction: () => {_onItemTapped(_selectedIndex -= 1)},
+              buttonPriority: buttonSize.secondary,
+            ),
+            IconButtonElement(
+                decorationVariant:
+                    (_selectedIndex > (widget.onboardingDetails.length - 2))
+                        ? decorationPriority.inactive
+                        : decorationPriority.important,
+                buttonIcon: Assets.next,
+                buttonHint: 'Next Item',
+                buttonAction: () => {
+                      _onItemTapped(_selectedIndex += 1),
+                    },
+                buttonPriority: buttonSize.secondary)
+          ],
+        )
+      ],
+    );
 
     Widget webInformationCard = Row(
         crossAxisAlignment: CrossAxisAlignment.center,

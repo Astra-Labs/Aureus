@@ -183,6 +183,7 @@ class _SketchInputCardState extends State<_SketchInputCard> {
               buttonTitle: 'Finish',
               buttonHint: 'Finishes your drawing',
               buttonAction: () => {
+                    clear(),
                     toolTemplateMaster.notifyObserverForward(),
                   }),
         ]);
