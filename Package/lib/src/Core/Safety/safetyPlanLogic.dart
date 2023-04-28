@@ -134,7 +134,7 @@ class Safety {
 
 class _SafetyPlanStorageLayer {
   /// initializes a storage layer in FlutterSecureStorage
-  final _storage = const FlutterSecureStorage();
+  final _storage = PerichronStorageLayer();
 
   /// Switches the option into the relevant key for writing / retrival
   String safetyPlanKey(SafetyPlanOptions option) {
@@ -172,21 +172,17 @@ class _SafetyPlanStorageLayer {
 
   /// Reads a setting
   Future<bool> _readSetting(SafetyPlanOptions option) async {
-    print("Reading a setting!");
-    final settings = _storage.read(key: safetyPlanKey(option));
+    final settings = _storage.readItem(safetyPlanKey(option));
     return settings.toString() == "true" ? true : false;
   }
 
   /// Writes a setting
   Future<void> _writeSetting(SafetyPlanOptions option, bool isEnabled) async {
-    print("Writing a setting!");
-    await _storage.write(
-        key: safetyPlanKey(option), value: isEnabled.toString());
+    await _storage.addItem(safetyPlanKey(option), isEnabled.toString());
   }
 
   /// Reads ALL settings
   Future<Map<SafetyPlanOptions, bool>> get readSettings async {
-    print("Reading ALL settings!");
     // pull settings from local storage here
     Map<SafetyPlanOptions, bool> settings = {};
 
@@ -199,23 +195,19 @@ class _SafetyPlanStorageLayer {
 
   /// write ALL settings specified in the parameters directly to local storage
   Future<void> writeSettings(Map<SafetyPlanOptions, bool> newSettings) async {
-    print("Writing all settings!");
     for (var element in newSettings.entries) {
       _writeSetting(element.key, element.value);
     }
   }
 
-  // READ / WRITE FAILED LOG IN ATTEMPTS
-
   var logInKey = "";
 
   /// Reads ALL failed log in attempts
   Future<List<String>> get readFailedLogInAttempts async {
-    print("Reading failed log in attempts!");
     // pull settings from local storage here
     List<String> attempts = [];
 
-    var data = _storage.read(key: logInKey);
+    var data = _storage.readItem(logInKey);
 
     // Waits for the future to complete, and then separates them based
     // on the "+" symbol into their attempts.
@@ -226,15 +218,14 @@ class _SafetyPlanStorageLayer {
 
   /// Writes a failed log-in attempt.
   Future<void> writeLogIn(String logInData) async {
-    print("Writing failed log in attempts");
     // There needs to be some way to separate the String with special characters
     // to determine the separate attempts, since you can only write single strings
     // to the local storage.
 
-    var previousAttempts = await _storage.read(key: logInKey);
+    var previousAttempts = await _storage.readItem(logInKey);
     var updatedAttempts = previousAttempts ?? "" + logInData;
 
-    await _storage.write(key: logInKey, value: updatedAttempts);
+    await _storage.addItem(logInKey, updatedAttempts);
   }
 }
 

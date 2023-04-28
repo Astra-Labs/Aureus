@@ -1,6 +1,11 @@
+## 0.0.8
+Fixing Perichron import bug.
+
 ## 0.0.7
 - Added a third option to button size for objects smaller than a page.
 - Added RouteObserver to AureusInformation and RouteAware to NotificationOverlayView to fix a bug with the notification master observer not being able to track when someone 'pops' a page. 
+- Integrated Perichron, Astra's org-wide storage layer to reuse some code for better 
+scalability
 
 ## 0.0.6
 - Reworked the ToolTemplateCards returnTemplateSummary to better handle when 
