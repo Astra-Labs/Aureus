@@ -1,6 +1,4 @@
 import 'package:aureus/aureus.dart';
-
-import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 
 /// {@category Foundation}
@@ -41,7 +39,7 @@ class Sensory {
 
   /// A reusable function to play the sound.
   Future<void> runAudioPlayer(String path) async {
-    await player.setAsset(path, package: "aureus");
+    await player.setAsset(path);
     await player.play();
   }
 
