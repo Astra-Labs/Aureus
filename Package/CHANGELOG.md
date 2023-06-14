@@ -2,6 +2,7 @@
 - Fixing RouteObserver navigation bug that stops 
 users from navigating forward after going back.
 - Adding basic test structure for testing to be implemented. 
+- Removed RouteObserver from foundation file, we were able to fix a bug without RouteAware! :-)
 
 ## 0.0.8
 Fixing Perichron import bug.

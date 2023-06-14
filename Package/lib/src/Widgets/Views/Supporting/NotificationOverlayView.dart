@@ -28,7 +28,7 @@ class NotificationOverlayView extends StatefulWidget {
 }
 
 class _NotificationOverlayViewState extends State<NotificationOverlayView>
-    with AureusNotificationObserver, TickerProviderStateMixin, RouteAware {
+    with AureusNotificationObserver, TickerProviderStateMixin {
   // A 'stand in' overlay view that will hold the UI components
   Widget overlayView = Container();
   var hasOverlayEnabled = false;
@@ -63,20 +63,6 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
 
     super.initState();
-  }
-
-  @override
-  void didPush() {
-    print("DID PUSH!");
-
-    super.didPush();
-  }
-
-  @override
-  void didPop() {
-    print("DID POP!");
-
-    super.didPop();
   }
 
   @override
@@ -239,7 +225,6 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
-      //resourceValues.routeObserver!.subscribe(this, ModalRoute.of(context)!);
       notificationMaster.registerObserver(this);
     });
 
