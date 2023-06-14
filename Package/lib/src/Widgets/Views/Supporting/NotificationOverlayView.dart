@@ -64,7 +64,6 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
 
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      print('ADDED POST FRAME CALLBACK FOR VIEW');
       resourceValues.routeObserver!.subscribe(this, ModalRoute.of(context)!);
     });
 
@@ -75,18 +74,12 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   void didPush() {
     print("DID PUSH!");
 
-    notificationMaster.unregisterObserver(this);
-    notificationMaster.resetRequests();
-
     super.didPush();
   }
 
   @override
   void didPop() {
     print("DID POP!");
-
-    notificationMaster.unregisterObserver(this);
-    notificationMaster.resetRequests();
 
     super.didPop();
   }
