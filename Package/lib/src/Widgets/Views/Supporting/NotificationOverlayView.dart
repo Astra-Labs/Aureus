@@ -38,7 +38,6 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
   @override
   void initState() {
     sensation.prepare();
-    notificationMaster.registerObserver(this);
 
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300))
@@ -62,10 +61,6 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
     _offset = Tween<Offset>(
             begin: const Offset(0.0, 0.0), end: const Offset(0.0, 0.0))
         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      resourceValues.routeObserver!.subscribe(this, ModalRoute.of(context)!);
-    });
 
     super.initState();
   }
@@ -243,7 +238,10 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
   @override
   Widget build(BuildContext context) {
-    notificationMaster.registerObserver(this);
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      //resourceValues.routeObserver!.subscribe(this, ModalRoute.of(context)!);
+      notificationMaster.registerObserver(this);
+    });
 
     // Builds an overlay item to hold any items coming into the view
     return Material(

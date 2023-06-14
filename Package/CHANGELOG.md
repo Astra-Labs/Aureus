@@ -1,3 +1,8 @@
+## 0.0.9
+- Fixing RouteObserver navigation bug that stops 
+users from navigating forward after going back.
+- Adding basic test structure for testing to be implemented. 
+
 ## 0.0.8
 Fixing Perichron import bug.
 
