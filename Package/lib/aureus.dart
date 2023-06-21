@@ -96,6 +96,7 @@ export 'src/Widgets/Elements/Misc/ProgressIndicatorElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
 export 'src/Widgets/Elements/Misc/PulseShadowElement.dart';
 export 'src/Widgets/Elements/Misc/EclipseShadowElement.dart';
+export 'src/Widgets/Elements/Misc/InteractiveSemanticsWrapper.dart';
 
 // -------------------------- User Input
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';
