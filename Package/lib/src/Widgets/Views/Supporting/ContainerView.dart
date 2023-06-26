@@ -78,13 +78,13 @@ class _ContainerViewState extends State<ContainerView>
       return /* preferences.getDouble('barX') ?? */ 0.4;
     });
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

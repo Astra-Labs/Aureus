@@ -1,3 +1,6 @@
+## 0.0.10
+- Adding InteractiveSemanticsWrapper for better a11y experience
+
 ## 0.0.9
 - Fixing RouteObserver navigation bug that stops 
 users from navigating forward after going back.

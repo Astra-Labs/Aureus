@@ -1,8 +1,8 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/foundation.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 /// {@category Foundation}
 
@@ -15,7 +15,7 @@ import 'package:flutter/scheduler.dart';
 class AureusPalette {
   /// Returns the given 'mode' (light or dark) for the device that Aureus is running on.
   Brightness brightness() {
-    return SchedulerBinding.instance!.window.platformBrightness;
+    return PlatformDispatcher.instance.platformBrightness;
   }
 
 // Gradients ---------------------------------
