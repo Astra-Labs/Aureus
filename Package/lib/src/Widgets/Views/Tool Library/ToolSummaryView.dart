@@ -66,8 +66,8 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
     var column = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          children: const [
+        const Row(
+          children: [
             TabSubheaderElement(title: 'Summary'),
             Spacer(),
           ],

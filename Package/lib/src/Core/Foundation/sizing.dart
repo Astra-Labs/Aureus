@@ -14,8 +14,9 @@ import 'dart:ui';
 
 class Sizing {
   /// The sizing window of the application
-  SingletonFlutterWindow sizingWindow() {
-    return WidgetsBinding.instance!.window;
+  FlutterView sizingWindow() {
+    var view = PlatformDispatcher.instance.implicitView;
+    return view!;
   }
 
   /// Pixel Ratio of a given device
@@ -100,7 +101,6 @@ class Sizing {
     double screenWeightedHeight = 0.0;
 
     switch (weight) {
-
       //MINIMUM HEIGHT OF ITEM - 5%
       case sizingWeight.w0:
         screenWeightedHeight = logicalHeight() * 0.05;
@@ -166,7 +166,6 @@ class Sizing {
     double screenWeightedWidth = 0.0;
 
     switch (weight) {
-
       //MINIMUM WIDTH OF ITEM - 5%
       case sizingWeight.w0:
         screenWeightedWidth = logicalWidth() * 0.05;

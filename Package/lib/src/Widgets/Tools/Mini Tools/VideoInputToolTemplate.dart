@@ -25,14 +25,12 @@ class VideoInputToolTemplate extends ToolCardTemplate {
 
   @override
   Widget returnActiveToolCard() {
-    void segueToInput(BuildContext context) => {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => _VideoRecordInputCard(
-                    toolPrompt: templatePrompt, cardIcon: badgeIcon),
-              )),
-        };
+    void segueToInput(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => _VideoRecordInputCard(
+              toolPrompt: templatePrompt, cardIcon: badgeIcon),
+        ));
 
     var builder2 = Builder(
         builder: (context) => StandardIconButtonElement(

@@ -228,7 +228,7 @@ class SemanticsWrapper extends SemanticsProperties {
 /// such as increased text size, contract, etc.
 class Accessibility {
   final AccessibilityFeatures accessFeatures =
-      WidgetsBinding.instance!.window.accessibilityFeatures;
+      PlatformDispatcher.instance.accessibilityFeatures;
 
   /// creates variable that contains MediaQuery information to return proper sizing
   static Size textStringSize(

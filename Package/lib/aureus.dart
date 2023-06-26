@@ -39,7 +39,6 @@ export 'src/Objects/Views/SettingsObjects.dart';
 //Functionality Objects
 export 'src/Objects/Functionality/ToolLibraryObjects.dart';
 export 'src/Objects/Functionality/DataDetailObjects.dart';
-export 'src/Objects/Observers/ResourceObserver.dart';
 export 'src/Objects/Observers/NotificationObserver.dart';
 
 /* ------------------ WIDGETS -------------------- */
@@ -96,6 +95,7 @@ export 'src/Widgets/Elements/Misc/ProgressIndicatorElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
 export 'src/Widgets/Elements/Misc/PulseShadowElement.dart';
 export 'src/Widgets/Elements/Misc/EclipseShadowElement.dart';
+export 'src/Widgets/Elements/Misc/InteractiveSemanticsWrapper.dart';
 
 // -------------------------- User Input
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';

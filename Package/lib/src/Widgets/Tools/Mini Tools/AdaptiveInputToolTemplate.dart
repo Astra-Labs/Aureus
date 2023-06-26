@@ -38,7 +38,6 @@ class AdaptiveInputToolTemplate extends ToolCardTemplate {
   @override
   Widget returnActiveToolCard() {
     switch (toolTemplateMaster.inputType) {
-
       // returns proper tool for drawing.
       case (adaptiveInput.draw):
         {
@@ -60,14 +59,11 @@ class AdaptiveInputToolTemplate extends ToolCardTemplate {
           return _voiceTool.returnActiveToolCard();
         }
     }
-
-    throw ('An error has occured with returning the active card of an AdaptiveInputToolTemplate.');
   }
 
   @override
   Widget returnTemplateSummary() {
     switch (toolTemplateMaster.inputType) {
-
       // returns proper tool for drawing.
       case (adaptiveInput.draw):
         {
@@ -89,7 +85,5 @@ class AdaptiveInputToolTemplate extends ToolCardTemplate {
           return _voiceTool.returnTemplateSummary();
         }
     }
-
-    throw ('An error has occured with returning the template summary of an AdaptiveInputToolTemplate.');
   }
 }

@@ -448,8 +448,8 @@ class _PlanModificationLoadingViewState
                                 ))
                           })
                 ]));
-            return Column(
-              children: const [],
+            return const Column(
+              children: [],
             );
           } else {
             // Otherwise, display a loading indicator.
