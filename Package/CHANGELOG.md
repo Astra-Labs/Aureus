@@ -1,5 +1,6 @@
 ## 0.0.10
 - Adding InteractiveSemanticsWrapper for better a11y experience
+- Updated Flutter to 3.10
 
 ## 0.0.9
 - Fixing RouteObserver navigation bug that stops 

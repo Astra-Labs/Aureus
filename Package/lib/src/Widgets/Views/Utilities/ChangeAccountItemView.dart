@@ -2,7 +2,7 @@ import 'package:aureus/aureus.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' as services;
 
 /// {@category Widgets}
 /// {@subCategory Views}
@@ -25,7 +25,7 @@ class ChangeAccountItemView extends StatefulWidget {
 
   /// An input formatter for you to assert any specific regexs or patterns
   /// that the user needs to adhere to.
-  final TextInputFormatter? inputFormatter;
+  final services.TextInputFormatter? inputFormatter;
 
   /// Whether the items should be 'secure text'. This is mostly used for passwords
   /// and such.

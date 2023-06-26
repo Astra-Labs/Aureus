@@ -2,7 +2,7 @@ import 'package:aureus/aureus.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' as services;
 
 /// {@category Widgets}
 /// {@subCategory Elements}
@@ -23,7 +23,7 @@ class StandardTextFieldComponent extends StatelessWidget {
   final TextEditingController textFieldController;
 
   /// Whether or not the text field should show the contents of the text field.
-  final TextInputFormatter? textInputFormatter;
+  final services.TextInputFormatter? textInputFormatter;
 
   /// Whether or not the text field should be enabled for user interaction.
   final bool isEnabled;
