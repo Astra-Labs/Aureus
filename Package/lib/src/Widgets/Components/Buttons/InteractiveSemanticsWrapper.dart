@@ -1,4 +1,5 @@
 /// @nodoc
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -23,10 +24,18 @@ class SemanticsWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Focus(
-      child: Semantics.fromProperties(
-        properties: properties,
-        child: child,
+    return Container(
+      padding: const EdgeInsets.all(2.0),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: coloration.accentColor(),
+        ),
+      ),
+      child: Focus(
+        child: Semantics.fromProperties(
+          properties: properties,
+          child: child,
+        ),
       ),
     );
   }
