@@ -81,8 +81,8 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
               child: TagOneText(widget.buttonTitle, widget.decorationVariant))),
     ));
 
-    var smolButtonInteractor = GestureDetector(
-        onTap: () {
+    var smolButtonInteractor = UniversalGestureDetector(
+        onDetect: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();
             widget.buttonAction();
