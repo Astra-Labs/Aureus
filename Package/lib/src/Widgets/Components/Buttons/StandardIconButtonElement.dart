@@ -117,6 +117,13 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
           child: standardIconButtonContent,
         ));
 
-    return standardIconButtonInteractor;
+    return InteractiveSemanticsWrapper(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: standardIconButtonInteractor,
+    );
   }
 }

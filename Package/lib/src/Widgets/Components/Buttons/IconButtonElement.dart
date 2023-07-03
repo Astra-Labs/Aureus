@@ -119,8 +119,7 @@ class _IconButtonElementState extends State<IconButtonElement> {
           child: iconButtonElementContent,
         ));
 
-    return Semantics.fromProperties(
-      excludeSemantics: true,
+    return InteractiveSemanticsWrapper(
       properties: SemanticsWrapper.button(
           isEnabled: isButtonEnabled,
           label: 'Icon Button',

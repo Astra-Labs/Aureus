@@ -90,7 +90,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         },
         child: smolButtonContent);
 
-    return Semantics.fromProperties(
+    return InteractiveSemanticsWrapper(
       properties: SemanticsWrapper.button(
           isEnabled: isButtonEnabled,
           label: widget.buttonTitle,
