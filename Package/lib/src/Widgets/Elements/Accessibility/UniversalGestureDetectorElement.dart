@@ -13,10 +13,12 @@ import 'package:flutter/services.dart';
 class UniversalGestureDetector extends StatefulWidget {
   /// The item that will have a 'floating glass' look behind it.
   final VoidCallback onDetect;
+  final FocusNode node;
   final Widget child;
 
   const UniversalGestureDetector({
     required this.onDetect,
+    required this.node,
     required this.child,
   });
 
@@ -32,11 +34,13 @@ class _UniversalGestureDetectorState extends State<UniversalGestureDetector> {
       focusNode: FocusNode(),
       onKey: (event) {
         if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
-          widget.onDetect();
+          print('ENTER DETECTED');
+          //widget.onDetect();
         }
       },
       child: GestureDetector(
         onTap: widget.onDetect,
+        child: widget.child,
       ),
     );
   }

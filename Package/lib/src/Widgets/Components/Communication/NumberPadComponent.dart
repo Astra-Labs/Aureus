@@ -81,8 +81,9 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
       ),
     );
 
-    return GestureDetector(
-      onTap: () {
+    return UniversalGestureDetector(
+      node: FocusNode(),
+      onDetect: () {
         setState(() {
           widget.inputtedCode.add(number);
         });

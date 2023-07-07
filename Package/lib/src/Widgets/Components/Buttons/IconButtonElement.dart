@@ -104,8 +104,9 @@ class _IconButtonElementState extends State<IconButtonElement> {
           )),
     ));
 
-    var iconButtonElementInteractor = GestureDetector(
-        onTap: () {
+    var iconButtonElementInteractor = UniversalGestureDetector(
+        node: FocusNode(),
+        onDetect: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();
             widget.buttonAction();

@@ -1,3 +1,7 @@
+## 0.0.11
+- Adding UniversalGestureDetectorElement to enable focusing on keyboard and for assistive tech 
+- Adding animation to StandardAccordionCardElement for Verena
+
 ## 0.0.10
 - Adding InteractiveSemanticsWrapper for better a11y experience
 - Updated Flutter to 3.10

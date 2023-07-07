@@ -82,6 +82,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
     ));
 
     var smolButtonInteractor = UniversalGestureDetector(
+        node: FocusNode(),
         onDetect: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();
