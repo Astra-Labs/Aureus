@@ -84,7 +84,6 @@ class AureusToolTemplateMaster {
   adaptiveInput inputType = adaptiveInput.text;
 
   void resetObservers() {
-    print("removing observers");
     _observers.clear();
   }
 

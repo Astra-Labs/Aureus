@@ -34,12 +34,10 @@ class GridCardSelectToolTemplate extends ToolCardTemplate {
           onTap: () => {
                 if (cardItem.isCardSelected == true)
                   {
-                    print('selected items are $selectedItems'),
                     selectedItems.add(element),
                   }
                 else if (cardItem.isCardSelected == false)
                   {
-                    print('selected items are $selectedItems'),
                     selectedItems.remove(element),
                   }
               },
