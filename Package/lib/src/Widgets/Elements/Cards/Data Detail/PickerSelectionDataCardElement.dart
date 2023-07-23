@@ -43,7 +43,7 @@ class TimePickerDataCardElement extends DataDetailCard {
     return BaseDataDetailCard(
       isBeingEdited: true,
       detailLabel: dataLabel,
-      detailChildren: [
+      detailChildren: const [
         SizedBox(
           width: 10,
         )

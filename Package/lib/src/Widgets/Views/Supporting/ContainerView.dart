@@ -89,11 +89,6 @@ class _ContainerViewState extends State<ContainerView>
   }
 
   @override
-  void didChangeMetrics() {
-    super.didChangeMetrics();
-  }
-
-  @override
   void didChangePlatformBrightness() {
     super.didChangeMetrics();
   }
