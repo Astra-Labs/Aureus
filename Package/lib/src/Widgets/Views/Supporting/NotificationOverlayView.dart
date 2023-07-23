@@ -156,10 +156,15 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
       overlayView = Container(
         width: size.logicalWidth(),
-        height: size.heightOf(weight: sizingWeight.w3),
+        height: size.heightOf(
+            weight: sizingWeight.w3, area: size.logicalScreenSize()),
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(
-            0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0),
+            0.0,
+            size.heightOf(
+                weight: sizingWeight.w0, area: size.logicalScreenSize()),
+            0.0,
+            0.0),
         child: BannerNotificationComponent(body: description, icon: icon),
       );
 
@@ -228,17 +233,19 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
       notificationMaster.registerObserver(this);
     });
 
+    var screenSize = MediaQuery.of(context).size;
+
     // Builds an overlay item to hold any items coming into the view
     return Material(
       child: SizedBox(
-        width: size.logicalWidth(),
-        height: size.logicalHeight(),
+        width: screenSize.width,
+        height: screenSize.height,
         child: Stack(
           children: [
             widget.child,
             Positioned(
-                top: _offset.value.dy * (size.logicalWidth()),
-                left: _offset.value.dx * (size.logicalHeight()),
+                top: _offset.value.dy * (screenSize.width),
+                left: _offset.value.dx * (screenSize.height),
                 child: overlayView),
           ],
         ),

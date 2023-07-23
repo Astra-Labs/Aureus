@@ -145,7 +145,7 @@ class _VideoRecordInputCardState extends State<_VideoRecordInputCard> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var topBar = SizedBox(
         width: size.layoutItemWidth(1, screenSize),
@@ -319,7 +319,7 @@ class _VideoPlaybackCardState extends State<_VideoPlaybackCard> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
     var popCount = 0;
 
     var controlBar =

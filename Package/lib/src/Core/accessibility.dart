@@ -1,11 +1,9 @@
 // ignore_for_file: must_be_immutable
 
 import 'dart:ui';
-import 'package:aureus/aureus.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
-
 import 'package:flutter/semantics.dart';
 
 /// {@category Foundation}
@@ -242,16 +240,16 @@ class Accessibility {
         text: TextSpan(text: textInput, style: textStyle),
         textScaleFactor: query.textScaleFactor,
         textDirection: textDirection)
-      ..layout(maxWidth: (size.logicalWidth() * 3));
+      ..layout(
+        maxWidth: (query.size.width * 3),
+      );
 
     return textPainter.size;
   }
 
   /// Creates a text scale factor to adjust for size differences between
   /// mobile, tablet, and web.
-  double responsiveTextSize(double base) {
-    var screenSize = size.logicalScreenSize();
-
+  double responsiveTextSize(double base, Size screenSize) {
     double scaleFactor = 0.0;
     double shortSide = screenSize.shortestSide;
 

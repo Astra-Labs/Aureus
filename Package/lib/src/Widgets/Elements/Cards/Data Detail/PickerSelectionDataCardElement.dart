@@ -45,8 +45,7 @@ class TimePickerDataCardElement extends DataDetailCard {
       detailLabel: dataLabel,
       detailChildren: [
         SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize()),
-          height: size.layoutItemHeight(3, size.logicalScreenSize()),
+          width: 10,
         )
       ],
     );

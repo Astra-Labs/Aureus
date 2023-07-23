@@ -75,7 +75,7 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var standardIconButtonContent = FloatingContainerElement(
       child: SizedBox(

@@ -77,7 +77,7 @@ class _MapInputCard extends StatefulWidget {
 class _MapInputCardState extends State<_MapInputCard> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
     var tileLayerOptions = TileLayerOptions(
         urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         subdomains: ['a', 'b', 'c'],

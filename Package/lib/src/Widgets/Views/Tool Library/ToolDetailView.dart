@@ -29,7 +29,7 @@ class _ToolDetailViewState extends State<ToolDetailView> {
   @override
   Widget build(BuildContext context) {
     var tool = widget.parentTool;
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var fullWidthButtonElement = FullWidthButtonElement(
       buttonTitle: 'Use tool.',

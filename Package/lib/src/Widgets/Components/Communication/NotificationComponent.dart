@@ -49,7 +49,7 @@ class NotificationComponent extends StatelessWidget {
         ? BoxDecoration(color: palette.white().withOpacity(0.0))
         : BoxDecoration(color: coloration.sameColor(), shape: BoxShape.circle);
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var notificationTopContent = Padding(
       padding: const EdgeInsets.all(8.0),

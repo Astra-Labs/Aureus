@@ -57,7 +57,7 @@ class _IconTabbingBarComponentState extends State<IconTabbingBarComponent> {
       tabItems.add(tabItem);
     }
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var iconTabbingBarContent = SingleChildScrollView(
         scrollDirection: Axis.horizontal,

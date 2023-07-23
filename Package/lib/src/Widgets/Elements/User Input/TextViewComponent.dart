@@ -37,7 +37,7 @@ class TextViewComponent extends StatefulWidget {
 class _TextViewComponentState extends State<TextViewComponent> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var focusedBorder = OutlineInputBorder(
         borderSide: BorderSide(color: coloration.accentColor(), width: 1.0));

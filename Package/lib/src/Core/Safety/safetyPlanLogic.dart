@@ -340,7 +340,7 @@ class _SafetyPlanFunctionalityViewState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     for (var element in widget.userSelectedOptions) {
       var safetyObject = Safety.detailMetaData.retrieveDetails(element);

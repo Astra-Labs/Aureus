@@ -32,7 +32,7 @@ class BaseCardToolTemplate extends StatefulWidget {
 class _BaseCardToolTemplateState extends State<BaseCardToolTemplate> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var activeLayout = FloatingContainerElement(
       child: Container(

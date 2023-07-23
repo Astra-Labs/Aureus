@@ -31,19 +31,21 @@ class CategoryIconDetailCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var categoryIconDetailContent = Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,
         children: [
-          SizedBox(height: size.responsiveSize(30.0)),
+          SizedBox(
+              height: size.responsiveSize(30.0, MediaQuery.of(context).size)),
           Icon(cardIcon,
-              size: size.responsiveSize(60),
+              size: size.responsiveSize(60, MediaQuery.of(context).size),
               color: coloration.decorationColor(
                   decorationVariant: decorationVariant)),
-          SizedBox(height: size.responsiveSize(30.0)),
+          SizedBox(
+              height: size.responsiveSize(30.0, MediaQuery.of(context).size)),
           Text(cardLabel.toUpperCase(),
               textAlign: TextAlign.center,
               style: heading4().copyWith(

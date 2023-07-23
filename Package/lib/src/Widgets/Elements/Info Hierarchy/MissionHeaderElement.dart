@@ -17,7 +17,7 @@ class MissionHeaderElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var responsiveSize = size.responsiveSize(50.0);
+    var responsiveSize = size.responsiveSize(50.0, MediaQuery.of(context).size);
 
     return Semantics.fromProperties(
       properties: SemanticsWrapper.header(label: 'How can I help?'),

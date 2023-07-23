@@ -73,7 +73,9 @@ class ListViewPickerSelectToolTemplate extends ToolCardTemplate {
                   decorationVariant: decorationPriority.standard,
                   buttonTitle: 'Skip',
                   buttonHint: 'Skips the current card.',
-                  buttonAction: () => {onNextCard()}),
+                  buttonAction: () => {
+                        onNextCard(),
+                      }),
               const Spacer(),
               SmolButtonElement(
                   decorationVariant: decorationPriority.important,

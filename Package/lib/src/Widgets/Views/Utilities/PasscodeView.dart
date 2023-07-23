@@ -73,7 +73,7 @@ class _PasscodeViewState extends State<PasscodeView> {
   Widget createNumberButton(int number) {
     double responsiveNumButtonSize() {
       double responsiveSize = 0;
-      var width = size.logicalWidth();
+      var width = MediaQuery.of(context).size.width;
 
       if (width < 330 || width > 1000) {
         // Desktop & mobile sizing.
@@ -86,7 +86,8 @@ class _PasscodeViewState extends State<PasscodeView> {
     }
 
     var numberButton = Padding(
-      padding: EdgeInsets.all(size.responsiveSize(17.0)),
+      padding: EdgeInsets.all(
+          size.responsiveSize(17.0, MediaQuery.of(context).size)),
       child: Container(
         width: responsiveNumButtonSize(),
         height: responsiveNumButtonSize(),
@@ -207,8 +208,8 @@ class _PasscodeViewState extends State<PasscodeView> {
     );
 
     var desktopContentBox = SizedBox(
-      height: size.layoutItemHeight(1, size.logicalScreenSize()),
-      width: size.layoutItemWidth(2, size.logicalScreenSize()) * 0.8,
+      height: size.layoutItemHeight(1, MediaQuery.of(context).size),
+      width: size.layoutItemWidth(2, MediaQuery.of(context).size) * 0.8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -225,8 +226,8 @@ class _PasscodeViewState extends State<PasscodeView> {
     );
 
     var desktopPasscodeInputBox = SizedBox(
-      height: size.layoutItemHeight(1, size.logicalScreenSize()),
-      width: size.layoutItemWidth(2, size.logicalScreenSize()) * 0.8,
+      height: size.layoutItemHeight(1, MediaQuery.of(context).size),
+      width: size.layoutItemWidth(2, MediaQuery.of(context).size) * 0.8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -255,7 +256,7 @@ class _PasscodeViewState extends State<PasscodeView> {
 
     return ContainerView(
       decorationVariant: decorationPriority.important,
-      builder: size.isDesktopDisplay() == true
+      builder: size.isDesktopDisplay(MediaQuery.of(context).size) == true
           ? desktopViewLayout
           : mobileViewLayout,
       takesFullWidth: false,

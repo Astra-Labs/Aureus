@@ -121,7 +121,7 @@ class _CameraInputCardState extends State<_CameraInputCard> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var exitButtonElement = IconButtonElement(
       decorationVariant: decorationPriority.standard,
@@ -186,8 +186,8 @@ class _CameraInputCardState extends State<_CameraInputCard> {
                   buttonPriority: buttonSize.primary,
                 )),
             Container(
-                width: size.responsiveSize(250),
-                height: size.responsiveSize(250),
+                width: size.responsiveSize(250, MediaQuery.of(context).size),
+                height: size.responsiveSize(250, MediaQuery.of(context).size),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: palette.universalBorder(),
@@ -238,7 +238,7 @@ class _CameraReviewCard extends StatefulWidget {
 class _CameraReviewCardState extends State<_CameraReviewCard> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
     var popCount = 0;
 
     var retakeButton = StandardIconButtonElement(

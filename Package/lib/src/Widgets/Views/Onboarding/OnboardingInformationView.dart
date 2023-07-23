@@ -35,7 +35,7 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
     var currentItem = widget.onboardingDetails[_selectedIndex];
 
     Widget mobileInformationCard = Column(
@@ -160,11 +160,12 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
 
     Widget informationCard = FloatingContainerElement(
       child: Container(
-          padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0) / 2),
+          padding: EdgeInsets.all(
+              size.widthOf(weight: sizingWeight.w0, area: screenSize) / 2),
           decoration: CardBackingDecoration(
                   decorationVariant: decorationPriority.inactive)
               .buildBacking(),
-          child: size.isDesktopDisplay()
+          child: size.isDesktopDisplay(screenSize)
               ? webInformationCard
               : mobileInformationCard),
     );

@@ -90,13 +90,17 @@ class _ContainerViewState extends State<ContainerView>
 
   @override
   void didChangeMetrics() {
-    setState(() {});
+    setState(() {
+      print('Metrics did change');
+    });
     super.didChangeMetrics();
   }
 
   @override
   void didChangePlatformBrightness() {
-    setState(() {});
+    setState(() {
+      print('Platform brightness changed');
+    });
     super.didChangeMetrics();
   }
 
@@ -113,9 +117,9 @@ class _ContainerViewState extends State<ContainerView>
     var safety = resourceValues.safetySettings!;
     const bool hasExitBar = false;
 
-    var screenSize = size.logicalScreenSize();
-    var screenWidth = size.logicalWidth();
-    var screenHeight = size.logicalHeight();
+    var screenSize = MediaQuery.of(context).size;
+    var screenWidth = screenSize.width;
+    var screenHeight = screenSize.height;
     var actionBar;
 
     if (safety.isActionBarDevEnabled == true &&
@@ -180,10 +184,13 @@ class _ContainerViewState extends State<ContainerView>
 
     // Sets padding according to full width or not
     var containerPadding = widget.takesFullWidth!
-        ? EdgeInsets.fromLTRB(
-            0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0)
-        : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w1), 0.0,
-            size.heightOf(weight: sizingWeight.w0));
+        ? EdgeInsets.fromLTRB(0.0,
+            size.heightOf(weight: sizingWeight.w0, area: screenSize), 0.0, 0.0)
+        : EdgeInsets.fromLTRB(
+            0.0,
+            size.heightOf(weight: sizingWeight.w1, area: screenSize),
+            0.0,
+            size.heightOf(weight: sizingWeight.w0, area: screenSize));
 
     // Builds the backing container with an action bar
 
@@ -192,8 +199,8 @@ class _ContainerViewState extends State<ContainerView>
       (safety.isActionBarDevEnabled == true &&
               widget.showQuickActionBar == true)
           ? Positioned(
-              left: 0.0 * (size.logicalWidth()) /*position.dx*/,
-              top: 0.75 * (size.logicalHeight()) /*position.dy*/,
+              left: 0.0 * (screenWidth) /*position.dx*/,
+              top: 0.75 * (screenHeight) /*position.dy*/,
               child: actionBar,
             )
           : const SizedBox(width: 1),

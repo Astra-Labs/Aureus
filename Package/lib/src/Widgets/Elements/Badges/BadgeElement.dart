@@ -97,8 +97,10 @@ class IconBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var responsiveBadgeSize = size.responsiveSize(50.0);
-    var responsiveIconSize = size.responsiveSize(35.0);
+    var responsiveBadgeSize =
+        size.responsiveSize(50.0, MediaQuery.of(context).size);
+    var responsiveIconSize =
+        size.responsiveSize(35.0, MediaQuery.of(context).size);
 
     var badgeContent = Icon(
       badgeIcon,

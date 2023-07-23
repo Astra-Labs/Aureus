@@ -35,10 +35,7 @@ class DatePickerInputToolTemplate extends ToolCardTemplate {
         cardIcon: badgeIcon,
         toolPrompt: templatePrompt,
         toolChildren: [
-          SizedBox(
-              height: size.responsiveSize(100.0),
-              width: size.responsiveSize(250.0),
-              child: datePicker),
+          SizedBox(height: 100.0, width: 250.0, child: datePicker),
           const SizedBox(height: 10.0),
           const DividerElement(),
           const SizedBox(height: 20.0),

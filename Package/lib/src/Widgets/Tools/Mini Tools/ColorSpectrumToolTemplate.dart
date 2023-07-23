@@ -65,7 +65,7 @@ class _ColorSpectrumInputCard extends StatefulWidget {
 class _ColorSpectrumInputCardState extends State<_ColorSpectrumInputCard> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
     return _CircleColorPicker(
         size: Size(size.layoutItemWidth(1, screenSize) * 0.6,
             size.layoutItemWidth(1, screenSize) * 0.6));

@@ -100,7 +100,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
             decorationVariant: buttonPriority)
         .buildBacking();
 
-    var screenWidth = size.logicalWidth();
+    var screenWidth = MediaQuery.of(context).size.width;
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
         textInput: widget.buttonTitle,

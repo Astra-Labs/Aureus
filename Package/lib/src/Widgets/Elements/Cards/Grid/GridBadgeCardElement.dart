@@ -33,7 +33,7 @@ class GridBadgeCardElement extends StatelessWidget {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var gridBadgeContent = Column(
       crossAxisAlignment: CrossAxisAlignment.center,

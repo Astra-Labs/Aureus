@@ -48,7 +48,7 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     List<Widget> nextStepCards = [];
     var tool = widget.parentTool;

@@ -1,6 +1,7 @@
 ## 0.0.11
 - Adding UniversalGestureDetectorElement to enable focusing on keyboard and for assistive tech 
 - Adding animation to StandardAccordionCardElement for Verena
+- Reworking elements that have access to MediaQuery to use it, so that only elements that have no media query access use the Sizing class. 
 
 ## 0.0.10
 - Adding InteractiveSemanticsWrapper for better a11y experience

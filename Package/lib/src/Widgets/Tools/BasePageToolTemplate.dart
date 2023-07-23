@@ -32,7 +32,8 @@ class BasePageToolTemplate extends StatefulWidget {
 class _BasePageToolTemplateState extends State<BasePageToolTemplate> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
+
     return SizedBox(
         width: screenSize.width,
         height: screenSize.height,

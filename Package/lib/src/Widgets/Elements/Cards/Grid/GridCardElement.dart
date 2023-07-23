@@ -27,8 +27,9 @@ class GridCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var maxWidth =
-        size.isDesktopDisplay() ? gridSize.width / 2 : gridSize.width / 3.2;
+    var maxWidth = size.isDesktopDisplay(MediaQuery.of(context).size)
+        ? gridSize.width / 2
+        : gridSize.width / 3.2;
 
     var gridCardContent = Align(
         alignment: Alignment.topLeft,

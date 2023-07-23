@@ -31,7 +31,7 @@ class DetailBadgeCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var detailBadgeContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,

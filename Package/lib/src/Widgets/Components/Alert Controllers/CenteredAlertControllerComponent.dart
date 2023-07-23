@@ -28,7 +28,7 @@ class _CenteredAlertControllerComponentState
   Widget build(BuildContext context) {
     List<Widget> actionButtons = [];
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
     var actions = widget.alertData.actions;
 
     for (var element in actions!) {

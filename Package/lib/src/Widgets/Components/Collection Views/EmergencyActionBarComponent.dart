@@ -52,7 +52,7 @@ class _EmergencyAccessBarComponentState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     List<String> tabItemNames = [];
     List<VoidCallback> tabItemActions = [];

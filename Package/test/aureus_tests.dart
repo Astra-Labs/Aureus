@@ -3,8 +3,6 @@ library aureus_tests;
 import 'package:test/test.dart';
 export 'package:test/test.dart';
 
-import '../lib/aureus.dart';
-
 // --------------------------- CORE TESTS ---------------------------
 part 'Core Tests/Accessibility Tests/aureus_core_accessibility_test.dart';
 part 'Core Tests/Foundation Tests/aureus_core_foundation_test.dart';

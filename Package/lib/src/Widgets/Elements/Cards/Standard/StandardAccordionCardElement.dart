@@ -56,7 +56,7 @@ class _StandardAccordionCardElementState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var unexpandedChild = Row(
       children: [
