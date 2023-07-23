@@ -5,6 +5,20 @@ class GenerationLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    var generationToolCarousel = ToolDetailView(
+      parentTool: GenerationTool(),
+      onUseTool: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ToolTemplateCardCarouselView(
+                parentTool: GenerationTool(), onFinish: () {}),
+          ),
+        );
+      },
+    );
+
     List<StandardIconButtonElement> buttonItems = [
       StandardIconButtonElement(
           decorationVariant: decorationPriority.standard,
@@ -15,8 +29,16 @@ class GenerationLandingPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) =>
-                            ToolDetailView(parentTool: GenerationTool())))
+                        builder: (_) => ToolDetailView(
+                              parentTool: GenerationTool(),
+                              onUseTool: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            generationToolCarousel));
+                              },
+                            )))
               }),
     ];
 
@@ -41,7 +63,7 @@ class GenerationLandingPage extends StatelessWidget {
     }
 
     return Scaffold(
-        body: size.isDesktopDisplay()
+        body: size.isDesktopDisplay(screenSize)
             ? mobileLandingView(
                 landscapeBacking: landscapeBackgroundImage(),
                 uiOverlay: landingUIOverlayImage(),

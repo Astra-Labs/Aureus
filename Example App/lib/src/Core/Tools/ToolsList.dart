@@ -12,7 +12,6 @@ var testingTool = CoreTool(
       "Web": Assets.window,
     },
     toolIcon: Assets.medicine,
-    entryPoint: OnboardingLandingView(),
     toolCards: [
       DatePickerInputToolTemplate(
           templatePrompt: "I'm the DatePickerInputToolTemplate.",

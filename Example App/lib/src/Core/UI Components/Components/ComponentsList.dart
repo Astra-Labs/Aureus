@@ -52,6 +52,7 @@ Map<String, Widget> aureusComponents = {
   'Complex Switch Card': complexSwitchCard,
   'Grid Card': gridCard,
   'Grid Badge Card': gridBadgeCard,
+  'Accordion': accordionCard,
   'Text Field': textFieldComponent,
   'Text View': textViewComponent,
   'Search Bar': searchBarComponent,
@@ -310,7 +311,7 @@ Widget iteratingTabbingComponent = IteratingTabbingComponent(itemTitles: [
 ], itemWidgets: [
   standardStandardButton,
   inactiveStandardButton,
-  importantStandardButton
+  importantStandardButton,
 ]);
 
 Widget smolTextTabbingComponent = SmolTextTabbingBarComponent(itemTitles: [
@@ -330,7 +331,19 @@ Widget testDetailCarousel = DetailCardCarouselComponent(cardDetailCarousel: {
   'Detail 4': fillerIcon4,
 });
 
-Widget numPadComponent = NumberPadComponent();
+Widget accordionCard = StandardAccordionCardElement(
+    cardLabel: 'Accordion Card',
+    cardBadge: Assets.expand,
+    cardChildren: [
+      standardStandardButton,
+      inactiveStandardButton,
+      importantStandardButton,
+    ]);
+
+Widget numPadComponent = NumberPadComponent(
+  GlobalKey(),
+  inputtedCode: [0, 1, 2, 3],
+);
 
 var testingCards = SingleChildScrollView(
     scrollDirection: Axis.vertical,

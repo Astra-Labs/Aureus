@@ -15,6 +15,7 @@ class _ExplorationViewState extends State<ExplorationView> {
     ControllerTabObject(
         tabController: ToolDetailView(
           parentTool: testingTool,
+          onUseTool: () {},
         ),
         tabTitle: "Tools",
         accessibilityHint: "Shows you the tools",

@@ -125,7 +125,6 @@ class exampleAppViews {
 
   var safetyPlanFunctionalityView =
       SafetyPlanFunctionalityView(userSelectedOptions: [
-    SafetyPlanOptions.deviceSandbox,
     SafetyPlanOptions.disableScreenshots,
     SafetyPlanOptions.disableNotifications,
   ], exitPoint: AureusComponentsView());
