@@ -1,3 +1,6 @@
+## 0.0.12
+- Adding the option to manually add the exit bar to a screen outside of the Safety functionality. 
+
 ## 0.0.11
 - Adding UniversalGestureDetectorElement to enable focusing on keyboard and for assistive tech 
 - Adding animation to StandardAccordionCardElement for Verena

@@ -41,6 +41,10 @@ class ContainerView extends StatefulWidget {
   /// Whether or not the view should show a quick action bar
   final bool? showQuickActionBar;
 
+  /// Whether or not the view should have an exit bar.
+  /// This overrides [Safety] settings made in [AureusInformation]
+  final bool? hasExitBar;
+
   /// Whether or not the view should manage recieving notifications.
   /// This should only be done if the ContainerView is the top most root
   /// of the view controller hierarchy. If there is a higher widget in the hierarchy
@@ -53,6 +57,7 @@ class ContainerView extends StatefulWidget {
     this.takesFullWidth = false,
     this.hasBackgroundImage = true,
     this.showQuickActionBar = true,
+    this.hasExitBar = false,
     this.shouldManageNotifications = true,
   });
 
@@ -104,7 +109,6 @@ class _ContainerViewState extends State<ContainerView>
   Widget build(BuildContext context) {
     // pull exit bar setting status from Safety Plan
     var safety = resourceValues.safetySettings!;
-    const bool hasExitBar = false;
 
     var screenSize = MediaQuery.of(context).size;
     var screenWidth = screenSize.width;
@@ -116,10 +120,8 @@ class _ContainerViewState extends State<ContainerView>
       var actionBarWidget =
           EmergencyAccessBarComponent(tabItems: safety.quickActionItems!);
 
-      /*
-
-      IN FREEZE: this draggable component is being debugged, because it hops around 
-      the screen and 'jumps'. 
+      //IN FREEZE: this draggable component is being debugged, because it hops around
+      // the screen and 'jumps'.
       var draggableActionBar = Draggable(
           child: actionBarWidget,
           feedback: actionBarWidget,
@@ -130,10 +132,9 @@ class _ContainerViewState extends State<ContainerView>
             });
           });
 
-        actionBar = draggableActionBar;
-      */
+      actionBar = draggableActionBar;
 
-      actionBar = actionBarWidget;
+      //actionBar = actionBarWidget;
     }
 
     BoxDecoration containerBacking() {
@@ -244,6 +245,6 @@ class _ContainerViewState extends State<ContainerView>
       )),
     );
 
-    return hasExitBar == true ? exitBarContent : nonExitBarContent;
+    return widget.hasExitBar == true ? exitBarContent : nonExitBarContent;
   }
 }
