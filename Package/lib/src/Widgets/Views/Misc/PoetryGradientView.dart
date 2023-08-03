@@ -125,23 +125,25 @@ class _NoiseAnimationWidgetState extends State<_NoiseAnimationWidget>
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     // The animated builder for the custom painter
     var animationBuilder = AnimatedBuilder(
         animation: _noiseAnimationController,
         builder: (BuildContext ctx, Widget? w) {
           return CustomPaint(
-            size: size.logicalScreenSize(),
+            size: screenSize,
             painter: _NoisePainter(
-              width: size.logicalWidth(),
-              height: size.logicalHeight(),
+              width: screenSize.width,
+              height: screenSize.height,
             ),
           );
         });
 
     // A sized box widget to ensure the animated builder is neatly contained.
     var builderBox = SizedBox(
-      width: size.logicalWidth(),
-      height: size.logicalHeight(),
+      width: screenSize.width,
+      height: screenSize.height,
       child: animationBuilder,
     );
 

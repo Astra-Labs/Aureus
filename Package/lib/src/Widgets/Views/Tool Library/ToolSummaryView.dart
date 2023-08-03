@@ -45,7 +45,7 @@ class _ToolSummaryViewState extends State<ToolSummaryView> {
   @override
   Widget build(BuildContext context) {
     var tool = widget.parentTool;
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
     List<Widget> summaryItems = [];
 
     for (var element in tool.toolCards!) {

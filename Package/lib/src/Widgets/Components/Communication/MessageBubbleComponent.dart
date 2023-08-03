@@ -63,7 +63,7 @@ class _MessageBubbleComponentState extends State<MessageBubbleComponent> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var messageBubbleContent = Column(
         crossAxisAlignment: CrossAxisAlignment.start,

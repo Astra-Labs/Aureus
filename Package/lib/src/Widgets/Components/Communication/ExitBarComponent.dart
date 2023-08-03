@@ -53,8 +53,8 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
       return Alignment.center;
     }
 
-    var screenSize = size.logicalScreenSize();
-    var screenWidth = size.logicalWidth();
+    var screenSize = MediaQuery.of(context).size;
+    var screenWidth = MediaQuery.of(context).size.width;
 
     Size accessibilitySizing = Accessibility.textStringSize(
         textInput: 'Tap the button to quickly exit.',

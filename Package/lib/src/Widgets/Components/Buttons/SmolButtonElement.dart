@@ -81,8 +81,9 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
               child: TagOneText(widget.buttonTitle, widget.decorationVariant))),
     ));
 
-    var smolButtonInteractor = GestureDetector(
-        onTap: () {
+    var smolButtonInteractor = UniversalGestureDetector(
+        node: FocusNode(),
+        onDetect: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();
             widget.buttonAction();
@@ -90,7 +91,7 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         },
         child: smolButtonContent);
 
-    return Semantics.fromProperties(
+    return InteractiveSemanticsWrapper(
       properties: SemanticsWrapper.button(
           isEnabled: isButtonEnabled,
           label: widget.buttonTitle,

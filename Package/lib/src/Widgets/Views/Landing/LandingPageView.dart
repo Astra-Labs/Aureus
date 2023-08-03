@@ -48,12 +48,9 @@ class LandingPageView extends StatefulWidget {
 }
 
 class _LandingPageViewState extends State<LandingPageView> {
-  var screenSize = size.logicalScreenSize();
-  var screenWidth = size.logicalWidth();
-  var screenHeight = size.logicalHeight();
-
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     Column informationHiearchy = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -82,7 +79,7 @@ class _LandingPageViewState extends State<LandingPageView> {
     );
 
     Container mobilePageFooter = Container(
-        width: screenWidth,
+        width: screenSize.width,
         decoration: BoxDecoration(
             color: coloration
                 .decorationColor(
@@ -92,7 +89,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                 top:
                     BorderSide(color: coloration.inactiveColor(), width: 1.0))),
         child: Padding(
-          padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w1)),
+          padding: EdgeInsets.all(
+              size.widthOf(weight: sizingWeight.w1, area: screenSize)),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,7 +112,7 @@ class _LandingPageViewState extends State<LandingPageView> {
         ));
 
     Container webPageFooter = Container(
-        width: screenWidth,
+        width: screenSize.width,
         decoration: BoxDecoration(
             color: coloration
                 .decorationColor(
@@ -124,8 +122,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                 top:
                     BorderSide(color: coloration.inactiveColor(), width: 1.0))),
         child: SizedBox(
-          width: screenWidth,
-          height: screenHeight * 0.15,
+          width: screenSize.width,
+          height: screenSize.height * 0.15,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
             child: Row(
@@ -159,19 +157,26 @@ class _LandingPageViewState extends State<LandingPageView> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsets.all(size.widthOf(weight: sizingWeight.w0)),
+              padding: EdgeInsets.all(
+                  size.widthOf(weight: sizingWeight.w0, area: screenSize)),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: size.heightOf(weight: sizingWeight.w1)),
-                    informationHiearchy,
-                    SizedBox(height: size.heightOf(weight: sizingWeight.w0)),
-                    homeScreenOverlay,
-                    SizedBox(height: size.heightOf(weight: sizingWeight.w0)),
                     SizedBox(
-                        height:
-                            screenHeight * (0.1 * widget.actionButtons.length),
+                        height: size.heightOf(
+                            weight: sizingWeight.w1, area: screenSize)),
+                    informationHiearchy,
+                    SizedBox(
+                        height: size.heightOf(
+                            weight: sizingWeight.w0, area: screenSize)),
+                    homeScreenOverlay,
+                    SizedBox(
+                        height: size.heightOf(
+                            weight: sizingWeight.w0, area: screenSize)),
+                    SizedBox(
+                        height: screenSize.height *
+                            (0.1 * widget.actionButtons.length),
                         child: buttonItems),
                     const SizedBox(height: 10.0),
                   ]),
@@ -191,15 +196,15 @@ class _LandingPageViewState extends State<LandingPageView> {
           mainAxisSize: MainAxisSize.max,
           children: [
             SizedBox(
-                width: screenWidth / 3.3,
+                width: screenSize.width / 3.3,
                 height: size.layoutItemHeight(1, screenSize),
                 child: Center(child: informationHiearchy)),
             SizedBox(
-                width: screenWidth / 3.3,
+                width: screenSize.width / 3.3,
                 height: size.layoutItemHeight(1, screenSize),
                 child: homeScreenOverlay),
             SizedBox(
-                width: screenWidth / 3.3,
+                width: screenSize.width / 3.3,
                 height: size.layoutItemHeight(2, screenSize),
                 child: buttonItems),
           ],
@@ -212,10 +217,10 @@ class _LandingPageViewState extends State<LandingPageView> {
     return Scaffold(
       body: Container(
           constraints: BoxConstraints(
-              minHeight: screenHeight,
-              maxHeight: screenHeight,
-              minWidth: screenWidth,
-              maxWidth: screenWidth),
+              minHeight: screenSize.height,
+              maxHeight: screenSize.height,
+              minWidth: screenSize.width,
+              maxWidth: screenSize.width),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: landscapeBacking.image,
@@ -223,9 +228,9 @@ class _LandingPageViewState extends State<LandingPageView> {
             ),
           ),
           child: SizedBox(
-              width: screenWidth,
-              height: screenHeight,
-              child: size.isDesktopDisplay() ? webView : mobileView)),
+              width: screenSize.width,
+              height: screenSize.height,
+              child: size.isDesktopDisplay(screenSize) ? webView : mobileView)),
     );
   }
 }

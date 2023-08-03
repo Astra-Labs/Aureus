@@ -45,6 +45,7 @@ class _ComponentsSubviewState extends State<ComponentsSubview> {
     ], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
+      hasExitBar: true,
       decorationVariant: decorationPriority.important,
       builder: viewBuilder,
       showQuickActionBar: false,

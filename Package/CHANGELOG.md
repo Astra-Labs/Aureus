@@ -1,3 +1,17 @@
+## 0.0.13
+- Decreased thiccness of font weight for Tag text styles 
+- Improved the contrast of alert controllers for accessibility
+- Fixed bug that gave an overflow error when a ContainerView had an exit bar enabled.
+
+## 0.0.12
+- Adding the option to manually add the exit bar to a screen outside of the Safety functionality. 
+- Fixed inverted coloration issue on one of the backings.
+
+## 0.0.11
+- Adding UniversalGestureDetectorElement to enable focusing on keyboard and for assistive tech 
+- Adding animation to StandardAccordionCardElement for Verena
+- Reworking elements that have access to MediaQuery to use it, so that only elements that have no media query access use the Sizing class. 
+
 ## 0.0.10
 - Adding InteractiveSemanticsWrapper for better a11y experience
 - Updated Flutter to 3.10

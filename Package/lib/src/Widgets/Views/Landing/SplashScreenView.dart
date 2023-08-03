@@ -36,7 +36,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var column = Column(
       crossAxisAlignment: CrossAxisAlignment.center,

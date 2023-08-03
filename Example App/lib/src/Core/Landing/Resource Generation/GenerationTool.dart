@@ -46,7 +46,6 @@ class GenerationTool extends CoreTool {
             "Free": Assets.money,
             "For Beginners": Assets.location,
           },
-          entryPoint: OnboardingLandingView(),
           nextSteps: {
             'See your resource.': () => {},
             'Learn about Astra Laboratories': () => {print('hi')},

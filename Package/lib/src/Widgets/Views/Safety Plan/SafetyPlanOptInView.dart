@@ -24,6 +24,7 @@ class SafetyPlanOptInView extends StatefulWidget {
 class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     var standardButtonElement = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
         buttonTitle: "I don't want safety features.",
@@ -75,7 +76,10 @@ class _SafetyPlanOptInViewState extends State<SafetyPlanOptInView> {
           alignment: Alignment.bottomCenter,
           child: Column(children: [
             standardButtonElement2,
-            SizedBox(height: size.heightOf(weight: sizingWeight.w0) / 2),
+            SizedBox(
+                height:
+                    size.heightOf(weight: sizingWeight.w0, area: screenSize) /
+                        2),
             standardButtonElement
           ]),
         )

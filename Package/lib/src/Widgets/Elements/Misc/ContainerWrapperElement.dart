@@ -42,7 +42,8 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
         ? SingleChildScrollView(
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.start,
-                runSpacing: size.responsiveSize(20.0),
+                runSpacing:
+                    size.responsiveSize(20.0, MediaQuery.of(context).size),
                 children: widget.children))
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,

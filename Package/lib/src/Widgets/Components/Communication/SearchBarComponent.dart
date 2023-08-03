@@ -26,7 +26,7 @@ class SearchBarComponent extends StatefulWidget {
 class _SearchBarComponentState extends State<SearchBarComponent> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     const errorOutlineInputBorder = OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),

@@ -75,7 +75,7 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var standardIconButtonContent = FloatingContainerElement(
       child: SizedBox(
@@ -117,6 +117,13 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
           child: standardIconButtonContent,
         ));
 
-    return standardIconButtonInteractor;
+    return InteractiveSemanticsWrapper(
+      properties: SemanticsWrapper.button(
+          isEnabled: isButtonEnabled,
+          label: widget.buttonTitle,
+          hint: widget.buttonHint,
+          isMutuallyExclusive: false),
+      child: standardIconButtonInteractor,
+    );
   }
 }

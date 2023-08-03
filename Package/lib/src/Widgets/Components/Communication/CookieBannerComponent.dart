@@ -31,7 +31,7 @@ class CookieBannerComponent extends StatefulWidget {
 class _CookieBannerComponentState extends State<CookieBannerComponent> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var buttonRow = Row(
       children: [

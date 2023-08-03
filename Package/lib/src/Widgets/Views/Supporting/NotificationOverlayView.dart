@@ -84,6 +84,21 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
     });
   }
 
+  Widget fullScreenOverlay(Widget child) {
+    return FloatingContainerElement(
+      child: Container(
+        width: size.logicalWidth(),
+        height: size.logicalHeight(),
+        decoration: LayerBackingDecoration(
+                decorationVariant: decorationPriority.inverted)
+            .buildBacking(),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(15.0),
+        child: child,
+      ),
+    );
+  }
+
   /// Displays an alert controller over the current view.
   @override
   void showAlertController(AlertControllerObject data) {
@@ -94,17 +109,8 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
       hasOverlayEnabled = true;
 
-      overlayView = FloatingContainerElement(
-        child: Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.inactive)
-              .buildBacking(),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(15.0),
-          child: CenteredAlertControllerComponent(alertData: data),
-        ),
+      overlayView = fullScreenOverlay(
+        CenteredAlertControllerComponent(alertData: data),
       );
 
       _controller.forward();
@@ -122,21 +128,12 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
       hasOverlayEnabled = true;
 
-      overlayView = FloatingContainerElement(
-        child: Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.inactive)
-              .buildBacking(),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(15.0),
-          child: ContentWarningComponent(
-            warningDescription: description,
-            onContinue: () => {
-              resetRequests(),
-            },
-          ),
+      overlayView = fullScreenOverlay(
+        ContentWarningComponent(
+          warningDescription: description,
+          onContinue: () => {
+            resetRequests(),
+          },
         ),
       );
 
@@ -156,10 +153,15 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
       overlayView = Container(
         width: size.logicalWidth(),
-        height: size.heightOf(weight: sizingWeight.w3),
+        height: size.heightOf(
+            weight: sizingWeight.w3, area: size.logicalScreenSize()),
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(
-            0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0),
+            0.0,
+            size.heightOf(
+                weight: sizingWeight.w0, area: size.logicalScreenSize()),
+            0.0,
+            0.0),
         child: BannerNotificationComponent(body: description, icon: icon),
       );
 
@@ -176,18 +178,8 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
       hasOverlayEnabled = true;
 
-      overlayView = FloatingContainerElement(
-        child: Container(
-          width: size.logicalWidth(),
-          height: size.logicalHeight(),
-          decoration: LayerBackingDecoration(
-                  decorationVariant: decorationPriority.inactive)
-              .buildBacking(),
-          alignment: Alignment.bottomCenter,
-          padding: const EdgeInsets.all(15.0),
-          child: BottomActionSheetComponent(alertData: data),
-        ),
-      );
+      overlayView =
+          fullScreenOverlay(BottomActionSheetComponent(alertData: data));
 
       _controller.forward();
     });
@@ -204,19 +196,9 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
 
       hasOverlayEnabled = true;
 
-      overlayView = FloatingContainerElement(
-        child: Container(
-            width: size.logicalWidth(),
-            height: size.logicalHeight(),
-            decoration: LayerBackingDecoration(
-                    decorationVariant: decorationPriority.inactive)
-                .buildBacking(),
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(15.0),
-            child: TextFieldAlertControllerComponent(
-              alertData: data,
-            )),
-      );
+      overlayView = fullScreenOverlay(TextFieldAlertControllerComponent(
+        alertData: data,
+      ));
 
       _controller.forward();
     });
@@ -228,17 +210,19 @@ class _NotificationOverlayViewState extends State<NotificationOverlayView>
       notificationMaster.registerObserver(this);
     });
 
+    var screenSize = MediaQuery.of(context).size;
+
     // Builds an overlay item to hold any items coming into the view
     return Material(
       child: SizedBox(
-        width: size.logicalWidth(),
-        height: size.logicalHeight(),
+        width: screenSize.width,
+        height: screenSize.height,
         child: Stack(
           children: [
             widget.child,
             Positioned(
-                top: _offset.value.dy * (size.logicalWidth()),
-                left: _offset.value.dx * (size.logicalHeight()),
+                top: _offset.value.dy * (screenSize.width),
+                left: _offset.value.dx * (screenSize.height),
                 child: overlayView),
           ],
         ),

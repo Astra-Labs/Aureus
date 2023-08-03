@@ -57,7 +57,7 @@ class _ViewsSubviewState extends State<ViewsSubview> {
     }
 
     return SizedBox(
-      height: size.layoutItemHeight(1, size.logicalScreenSize()),
+      height: size.layoutItemHeight(1, MediaQuery.of(context).size),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -78,6 +78,7 @@ class _ViewsSubviewState extends State<ViewsSubview> {
     ], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
+      hasExitBar: true,
       decorationVariant: decorationPriority.important,
       builder: viewBuilder,
       showQuickActionBar: false,

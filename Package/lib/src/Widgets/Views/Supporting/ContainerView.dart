@@ -41,6 +41,10 @@ class ContainerView extends StatefulWidget {
   /// Whether or not the view should show a quick action bar
   final bool? showQuickActionBar;
 
+  /// Whether or not the view should have an exit bar.
+  /// This overrides [Safety] settings made in [AureusInformation]
+  final bool? hasExitBar;
+
   /// Whether or not the view should manage recieving notifications.
   /// This should only be done if the ContainerView is the top most root
   /// of the view controller hierarchy. If there is a higher widget in the hierarchy
@@ -53,6 +57,7 @@ class ContainerView extends StatefulWidget {
     this.takesFullWidth = false,
     this.hasBackgroundImage = true,
     this.showQuickActionBar = true,
+    this.hasExitBar = false,
     this.shouldManageNotifications = true,
   });
 
@@ -89,14 +94,7 @@ class _ContainerViewState extends State<ContainerView>
   }
 
   @override
-  void didChangeMetrics() {
-    setState(() {});
-    super.didChangeMetrics();
-  }
-
-  @override
   void didChangePlatformBrightness() {
-    setState(() {});
     super.didChangeMetrics();
   }
 
@@ -111,11 +109,10 @@ class _ContainerViewState extends State<ContainerView>
   Widget build(BuildContext context) {
     // pull exit bar setting status from Safety Plan
     var safety = resourceValues.safetySettings!;
-    const bool hasExitBar = false;
 
-    var screenSize = size.logicalScreenSize();
-    var screenWidth = size.logicalWidth();
-    var screenHeight = size.logicalHeight();
+    var screenSize = MediaQuery.of(context).size;
+    var screenWidth = screenSize.width;
+    var screenHeight = screenSize.height;
     var actionBar;
 
     if (safety.isActionBarDevEnabled == true &&
@@ -123,24 +120,21 @@ class _ContainerViewState extends State<ContainerView>
       var actionBarWidget =
           EmergencyAccessBarComponent(tabItems: safety.quickActionItems!);
 
-      /*
-
-      IN FREEZE: this draggable component is being debugged, because it hops around 
-      the screen and 'jumps'. 
+      //IN FREEZE: this draggable component is being debugged, because it hops around
+      // the screen and 'jumps'.
       var draggableActionBar = Draggable(
           child: actionBarWidget,
           feedback: actionBarWidget,
           onDraggableCanceled: (velocity, offset) {
             setState(() {
-              RenderBox? renderBox = context.findRenderObject() as RenderBox;
+              //RenderBox? renderBox = context.findRenderObject() as RenderBox;
               position = offset;
             });
           });
 
-        actionBar = draggableActionBar;
-      */
+      actionBar = draggableActionBar;
 
-      actionBar = actionBarWidget;
+      //actionBar = actionBarWidget;
     }
 
     BoxDecoration containerBacking() {
@@ -180,10 +174,13 @@ class _ContainerViewState extends State<ContainerView>
 
     // Sets padding according to full width or not
     var containerPadding = widget.takesFullWidth!
-        ? EdgeInsets.fromLTRB(
-            0.0, size.heightOf(weight: sizingWeight.w0), 0.0, 0.0)
-        : EdgeInsets.fromLTRB(0.0, size.heightOf(weight: sizingWeight.w1), 0.0,
-            size.heightOf(weight: sizingWeight.w0));
+        ? EdgeInsets.fromLTRB(0.0,
+            size.heightOf(weight: sizingWeight.w0, area: screenSize), 0.0, 0.0)
+        : EdgeInsets.fromLTRB(
+            0.0,
+            size.heightOf(weight: sizingWeight.w1, area: screenSize),
+            0.0,
+            size.heightOf(weight: sizingWeight.w0, area: screenSize));
 
     // Builds the backing container with an action bar
 
@@ -192,8 +189,8 @@ class _ContainerViewState extends State<ContainerView>
       (safety.isActionBarDevEnabled == true &&
               widget.showQuickActionBar == true)
           ? Positioned(
-              left: 0.0 * (size.logicalWidth()) /*position.dx*/,
-              top: 0.75 * (size.logicalHeight()) /*position.dy*/,
+              left: 0.0 * (screenWidth) /*position.dx*/,
+              top: 0.75 * (screenHeight) /*position.dy*/,
               child: actionBar,
             )
           : const SizedBox(width: 1),
@@ -222,25 +219,25 @@ class _ContainerViewState extends State<ContainerView>
     }
 
     var exitBarContent = Scaffold(
-      backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              const ExitBarComponent(),
-              containerContent(),
-            ],
-          );
-        },
+      body: SingleChildScrollView(
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const ExitBarComponent(),
+                containerContent(),
+              ],
+            );
+          },
+        ),
       ),
     );
 
     var nonExitBarContent = Scaffold(
-      backgroundColor: Colors.transparent,
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: (LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return containerContent();
@@ -248,6 +245,6 @@ class _ContainerViewState extends State<ContainerView>
       )),
     );
 
-    return hasExitBar == true ? exitBarContent : nonExitBarContent;
+    return widget.hasExitBar == true ? exitBarContent : nonExitBarContent;
   }
 }

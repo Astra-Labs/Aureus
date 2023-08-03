@@ -47,6 +47,10 @@ export 'src/Objects/Observers/NotificationObserver.dart';
 //Widget Elements
 export 'src/Widgets/Elements/Badges/BadgeElement.dart';
 
+// -------------------------- Accessibility
+export 'src/Widgets/Elements/Accessibility/InteractiveSemanticsWrapper.dart';
+export 'src/Widgets/Elements/Accessibility/UniversalGestureDetectorElement.dart';
+
 // -------------------------- Cards
 // ------------------------------------------------ Standard
 export 'src/Widgets/Elements/Cards/Standard/StandardCardElement.dart';
@@ -95,7 +99,6 @@ export 'src/Widgets/Elements/Misc/ProgressIndicatorElement.dart';
 export 'src/Widgets/Elements/Misc/TimerElement.dart';
 export 'src/Widgets/Elements/Misc/PulseShadowElement.dart';
 export 'src/Widgets/Elements/Misc/EclipseShadowElement.dart';
-export 'src/Widgets/Elements/Misc/InteractiveSemanticsWrapper.dart';
 
 // -------------------------- User Input
 export 'src/Widgets/Elements/User Input/TextFieldComponent.dart';

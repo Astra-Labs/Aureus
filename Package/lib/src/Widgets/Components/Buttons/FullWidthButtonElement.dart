@@ -100,7 +100,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
             decorationVariant: buttonPriority)
         .buildBacking();
 
-    var screenWidth = size.logicalWidth();
+    var screenWidth = MediaQuery.of(context).size.width;
 
     Size minimumButtonTextSize = Accessibility.textStringSize(
         textInput: widget.buttonTitle,
@@ -125,8 +125,9 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
         child: Center(
             child: ButtonOneText(widget.buttonTitle, widget.currentVariant)));
 
-    var fullWidthButtonInteractor = GestureDetector(
-        onTap: () {
+    var fullWidthButtonInteractor = UniversalGestureDetector(
+        node: FocusNode(),
+        onDetect: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();
             widget.buttonAction();
@@ -140,7 +141,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
           child: fullWidthButtonContent,
         ));
 
-    return Semantics.fromProperties(
+    return InteractiveSemanticsWrapper(
       properties: SemanticsWrapper.button(
           isEnabled: isButtonEnabled,
           label: widget.buttonTitle,

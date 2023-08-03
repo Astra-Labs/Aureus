@@ -29,7 +29,7 @@ class StandardBadgeCardElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var standardBadgeContent = Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -83,8 +83,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
         }),
       },
       child: Container(
-        width: size.responsiveSize(35.0),
-        height: size.responsiveSize(35.0),
+        width: 35.0,
+        height: 35.0,
         padding: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -126,6 +126,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     Color colorSeven = Colors.white;
     Color colorEight = Colors.black;
 
+    var screenSize = MediaQuery.of(context).size;
+
     var colorCircles = [
       const Spacer(),
       returnColorCircle(colorOne),
@@ -147,8 +149,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
     ];
 
     var circleScroll = SizedBox(
-        height: size.responsiveSize(65.0),
-        width: size.layoutItemWidth(1, size.logicalScreenSize()),
+        height: size.responsiveSize(65.0, screenSize),
+        width: size.layoutItemWidth(1, screenSize),
         child: Container(
           decoration: CardBackingDecoration(
                   decorationVariant: decorationPriority.inactive)
@@ -189,8 +191,8 @@ class _SketchInputCardState extends State<_SketchInputCard> {
         ]);
 
     var container = Container(
-      height: size.layoutItemHeight(3, size.logicalScreenSize()),
-      width: size.layoutItemWidth(1, size.logicalScreenSize()),
+      height: size.layoutItemHeight(3, screenSize),
+      width: size.layoutItemWidth(1, screenSize),
       decoration:
           CardBackingDecoration(decorationVariant: decorationPriority.standard)
               .buildBacking(),
@@ -215,14 +217,16 @@ class _SketchInputCardState extends State<_SketchInputCard> {
   }
 
   Widget buildCurrentPath(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return GestureDetector(
       onPanStart: onPanStart,
       onPanUpdate: onPanUpdate,
       onPanEnd: onPanEnd,
       child: RepaintBoundary(
         child: Container(
-          height: size.layoutItemHeight(3, size.logicalScreenSize()),
-          width: size.layoutItemWidth(1, size.logicalScreenSize()),
+          height: size.layoutItemHeight(3, screenSize),
+          width: size.layoutItemWidth(1, screenSize),
           padding: const EdgeInsets.all(4.0),
           color: Colors.transparent,
           alignment: Alignment.topLeft,
@@ -242,11 +246,13 @@ class _SketchInputCardState extends State<_SketchInputCard> {
   }
 
   Widget buildAllPaths(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return RepaintBoundary(
       key: _globalKey,
       child: Container(
-        height: size.layoutItemHeight(3, size.logicalScreenSize()),
-        width: size.layoutItemWidth(1, size.logicalScreenSize()),
+        height: size.layoutItemHeight(3, screenSize),
+        width: size.layoutItemWidth(1, screenSize),
         color: Colors.transparent,
         padding: const EdgeInsets.all(4.0),
         alignment: Alignment.topLeft,
@@ -308,13 +314,10 @@ class _Sketcher extends CustomPainter {
       ..strokeWidth = 5.0;
 
     for (int i = 0; i < lines.length; ++i) {
-      if (lines[i] == null) continue;
       for (int j = 0; j < lines[i].path.length - 1; ++j) {
-        if (lines[i].path[j] != null && lines[i].path[j + 1] != null) {
-          paint.color = lines[i].color;
-          paint.strokeWidth = lines[i].width;
-          canvas.drawLine(lines[i].path[j], lines[i].path[j + 1], paint);
-        }
+        paint.color = lines[i].color;
+        paint.strokeWidth = lines[i].width;
+        canvas.drawLine(lines[i].path[j], lines[i].path[j + 1], paint);
       }
     }
   }

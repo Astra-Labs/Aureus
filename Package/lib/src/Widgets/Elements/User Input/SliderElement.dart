@@ -22,7 +22,7 @@ class SliderElement extends StatefulWidget {
 class _SliderElementState extends State<SliderElement> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var slider = Slider(
       value: widget.slideValue,

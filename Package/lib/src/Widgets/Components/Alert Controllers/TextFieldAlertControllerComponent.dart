@@ -29,7 +29,7 @@ class _TextFieldAlertControllerComponentComponentState
     extends State<TextFieldAlertControllerComponent> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     List<Widget> buttonRow = [
       SmolButtonElement(

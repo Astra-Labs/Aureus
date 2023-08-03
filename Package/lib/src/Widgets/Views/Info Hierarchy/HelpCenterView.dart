@@ -33,7 +33,7 @@ class _HelpCenterViewState extends State<HelpCenterView> {
   Widget build(BuildContext context) {
     var currentHelpCenter = widget.helpCenter;
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     setState(() {
       itemGridCards.clear();
@@ -113,12 +113,14 @@ class HelpCenterArticleDetailView extends StatefulWidget {
 class _HelpCenterArticleDetailState extends State<HelpCenterArticleDetailView> {
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     var container = Container(
         constraints: BoxConstraints(
-            minWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
-            maxWidth: size.layoutItemWidth(1, size.logicalScreenSize()),
-            minHeight: size.layoutItemHeight(5, size.logicalScreenSize()),
-            maxHeight: size.layoutItemHeight(2, size.logicalScreenSize())),
+            minWidth: size.layoutItemWidth(1, screenSize),
+            maxWidth: size.layoutItemWidth(1, screenSize),
+            minHeight: size.layoutItemHeight(5, screenSize),
+            maxHeight: size.layoutItemHeight(2, screenSize)),
         decoration: LayerBackingDecoration(
                 decorationVariant: decorationPriority.standard)
             .buildBacking(),

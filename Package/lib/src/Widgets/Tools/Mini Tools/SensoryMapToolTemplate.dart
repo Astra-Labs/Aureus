@@ -95,12 +95,14 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
 
   @override
   Widget build(BuildContext context) {
+    var area = MediaQuery.of(context).size;
+
     var sensoryMarker = PulseShadowElement(
         isActive: true,
-        pulseWidth: size.responsiveSize(40),
+        pulseWidth: size.responsiveSize(40, area),
         child: Container(
-          width: size.responsiveSize(40),
-          height: size.responsiveSize(40),
+          width: size.responsiveSize(40, area),
+          height: size.responsiveSize(40, area),
           decoration: ButtonBackingDecoration(
                   variant: buttonDecorationVariants.circle,
                   decorationVariant: decorationPriority.important)
@@ -117,17 +119,17 @@ class _SensoryMapInputCardState extends State<_SensoryMapInputCard> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            createMapCircle(size.responsiveSize(275)),
-            createMapCircle(size.responsiveSize(250)),
-            createMapCircle(size.responsiveSize(225)),
-            createMapCircle(size.responsiveSize(200)),
-            createMapCircle(size.responsiveSize(175)),
-            createMapCircle(size.responsiveSize(150)),
-            createMapCircle(size.responsiveSize(125)),
-            createMapCircle(size.responsiveSize(100)),
-            createMapCircle(size.responsiveSize(75)),
-            createMapCircle(size.responsiveSize(50)),
-            createMapCircle(size.responsiveSize(25)),
+            createMapCircle(size.responsiveSize(275, area)),
+            createMapCircle(size.responsiveSize(250, area)),
+            createMapCircle(size.responsiveSize(225, area)),
+            createMapCircle(size.responsiveSize(200, area)),
+            createMapCircle(size.responsiveSize(175, area)),
+            createMapCircle(size.responsiveSize(150, area)),
+            createMapCircle(size.responsiveSize(125, area)),
+            createMapCircle(size.responsiveSize(100, area)),
+            createMapCircle(size.responsiveSize(75, area)),
+            createMapCircle(size.responsiveSize(50, area)),
+            createMapCircle(size.responsiveSize(25, area)),
             const Positioned(
                 top: 0.0, child: TabSubheaderElement(title: "Top")),
             const Positioned(

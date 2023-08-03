@@ -56,9 +56,56 @@ class _StandardAccordionCardElementState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
-    var unexpandedCard = FloatingContainerElement(
+    var unexpandedChild = Row(
+      children: [
+        TagTwoText(widget.cardLabel, decorationPriority.standard),
+        const Spacer(),
+        IconBadge(
+            badgeIcon: widget.cardBadge,
+            badgePriority: decorationPriority.standard)
+      ],
+    );
+
+    var expandedChild = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          children: [
+            TagTwoText(widget.cardLabel, decorationPriority.standard),
+            const Spacer(),
+            IconBadge(
+                badgeIcon: widget.cardBadge,
+                badgePriority: decorationPriority.standard)
+          ],
+        ),
+        const SizedBox(height: 5.0),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: size.layoutItemWidth(1, screenSize),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Wrap(
+                  alignment: WrapAlignment.start,
+                  runAlignment: WrapAlignment.spaceEvenly,
+                  crossAxisAlignment: WrapCrossAlignment.start,
+                  spacing: 10,
+                  runSpacing: 15,
+                  children: widget.cardChildren,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+
+    var accordionCard = FloatingContainerElement(
       child: Container(
         width: size.layoutItemWidth(1, screenSize),
         decoration: CardBackingDecoration(
@@ -67,74 +114,19 @@ class _StandardAccordionCardElementState
         child: Center(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 20.0),
-            child: Row(
-              children: [
-                TagTwoText(widget.cardLabel, decorationPriority.standard),
-                const Spacer(),
-                IconBadge(
-                    badgeIcon: widget.cardBadge,
-                    badgePriority: decorationPriority.standard)
-              ],
+            child: AnimatedCrossFade(
+              firstChild: unexpandedChild,
+              secondChild: expandedChild,
+              crossFadeState: isExpanded == false
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
+              duration: const Duration(seconds: 1),
             ),
           ),
         ),
       ),
     );
 
-    var expandedCard = FloatingContainerElement(
-      child: Container(
-        width: size.layoutItemWidth(1, screenSize),
-        decoration: CardBackingDecoration(
-                decorationVariant: decorationPriority.standard)
-            .buildBacking(),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 5.0),
-                Row(
-                  children: [
-                    TagTwoText(widget.cardLabel, decorationPriority.standard),
-                    const Spacer(),
-                    IconBadge(
-                        badgeIcon: widget.cardBadge,
-                        badgePriority: decorationPriority.standard)
-                  ],
-                ),
-                const SizedBox(height: 5.0),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: size.layoutItemWidth(1, screenSize),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Wrap(
-                          alignment: WrapAlignment.start,
-                          runAlignment: WrapAlignment.spaceEvenly,
-                          crossAxisAlignment: WrapCrossAlignment.start,
-                          spacing: 10,
-                          runSpacing: 15,
-                          children: widget.cardChildren,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-
-    return GestureDetector(
-      onTap: _onItemTapped,
-      child: isExpanded == false ? unexpandedCard : expandedCard,
-    );
+    return GestureDetector(onTap: _onItemTapped, child: accordionCard);
   }
 }

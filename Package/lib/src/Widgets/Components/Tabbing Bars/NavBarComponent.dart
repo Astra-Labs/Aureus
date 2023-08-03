@@ -43,13 +43,14 @@ class _NavBarComponentState extends State<NavBarComponent> {
   @override
   Widget build(BuildContext context) {
     List<BottomNavigationBarItem> tabbingArray = [];
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     for (var element in widget.tabItems) {
       //checks to see if current index matches index of tab item. if yes, it's enabled.
 
       var tabItem = BottomNavigationBarItem(
-        icon: Icon(element.tabIcon, size: size.responsiveSize(38.0)),
+        icon: Icon(element.tabIcon,
+            size: size.responsiveSize(38.0, MediaQuery.of(context).size)),
         label: element.accessibilityHint,
         tooltip: element.accessibilityHint,
         backgroundColor: Colors.transparent,

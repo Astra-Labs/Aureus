@@ -58,9 +58,9 @@ class _StandardSelectionCardElementState
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
-    var responsiveRadius = size.responsiveSize(25);
+    var responsiveRadius = size.responsiveSize(25, MediaQuery.of(context).size);
 
     var unselectedCircle = Container(
       width: responsiveRadius,

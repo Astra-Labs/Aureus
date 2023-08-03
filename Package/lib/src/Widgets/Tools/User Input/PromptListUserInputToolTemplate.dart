@@ -105,7 +105,7 @@ class _PromptListInputCardState extends State<_PromptListInputCard> {
   Widget build(BuildContext context) {
     List<Widget> promptListItems = [];
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     for (var element in widget.promptList) {
       promptListItems.add(Padding(

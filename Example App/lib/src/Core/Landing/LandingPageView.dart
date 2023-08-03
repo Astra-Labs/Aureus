@@ -49,7 +49,7 @@ Column informationHiearchy = Column(
     children: [
       HeadingTwoText("I'm ${resourceValues.name}", decorationPriority.standard),
       SizedBox(height: 4.0),
-      HeadingOneText(resourceValues.mission, decorationPriority.standard)
+      HeadingOneText(resourceValues.mission ?? "", decorationPriority.standard)
     ]);
 
 class landingHeader extends StatefulWidget {
@@ -68,7 +68,7 @@ class _landingHeaderState extends State<landingHeader> {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = size.logicalScreenSize();
+    Size screenSize = MediaQuery.of(context).size;
 
     List<TabObject> unsanitizedTabs = [
       TabObject.forIconTabbing(
@@ -193,7 +193,7 @@ class _footerCTAState extends State<footerCTA> {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = size.logicalScreenSize();
+    Size screenSize = MediaQuery.of(context).size;
 
     return SizedBox(
       width: size.layoutItemWidth(1, screenSize),
@@ -375,8 +375,7 @@ class _mobileLandingViewState extends State<mobileLandingView> {
       children: widget.actionButtons,
     );
 
-    double screenWidth = size.logicalWidth();
-    double screenHeight = size.logicalHeight();
+    var screenSize = MediaQuery.of(context).size;
 
     return ContainerView(
       takesFullWidth: true,
@@ -387,10 +386,10 @@ class _mobileLandingViewState extends State<mobileLandingView> {
           children: [
             Container(
                 constraints: BoxConstraints(
-                    minHeight: screenHeight * 1.5,
-                    maxHeight: screenHeight * 1.5,
-                    minWidth: screenWidth,
-                    maxWidth: screenWidth),
+                    minHeight: screenSize.height * 1.5,
+                    maxHeight: screenSize.height * 1.5,
+                    minWidth: screenSize.width,
+                    maxWidth: screenSize.width),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -398,25 +397,28 @@ class _mobileLandingViewState extends State<mobileLandingView> {
                   children: [
                     Container(
                       child: Padding(
-                        padding: EdgeInsets.all(
-                            size.widthOf(weight: sizingWeight.w1)),
+                        padding: EdgeInsets.all(size.widthOf(
+                            weight: sizingWeight.w1, area: screenSize)),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                  height:
-                                      size.heightOf(weight: sizingWeight.w1)),
+                                  height: size.heightOf(
+                                      weight: sizingWeight.w1,
+                                      area: screenSize)),
                               informationHiearchy,
                               SizedBox(
-                                  height:
-                                      size.heightOf(weight: sizingWeight.w0)),
+                                  height: size.heightOf(
+                                      weight: sizingWeight.w0,
+                                      area: screenSize)),
                               widget.uiOverlay,
                               SizedBox(
-                                  height:
-                                      size.heightOf(weight: sizingWeight.w0)),
+                                  height: size.heightOf(
+                                      weight: sizingWeight.w0,
+                                      area: screenSize)),
                               SizedBox(
-                                  height: screenHeight *
+                                  height: screenSize.height *
                                       (0.15 * widget.actionButtons.length),
                                   child: buttonItems),
                               SizedBox(height: 10.0),

@@ -101,7 +101,7 @@ class _ToolTemplateCardCarouselViewState
     //the current, visible active card.
     Widget activeCardItem = Container();
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     for (var element in toolChildren) {
       if (toolChildren.indexOf(element) == currentCardIndex) {
@@ -128,8 +128,8 @@ class _ToolTemplateCardCarouselViewState
     var carouselLayout = ContainerWrapperElement(
       children: [
         SizedBox(
-          width: size.layoutItemWidth(1, size.logicalScreenSize()),
-          height: size.layoutItemHeight(1, size.logicalScreenSize()),
+          width: size.layoutItemWidth(1, MediaQuery.of(context).size),
+          height: size.layoutItemHeight(1, MediaQuery.of(context).size),
           child: Column(
             children: [
               PageHeaderElement.withExit(

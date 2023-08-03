@@ -122,7 +122,7 @@ class _TimerElementState extends State<TimerElement>
 
   @override
   Widget build(BuildContext context) {
-    var responsiveSize = size.responsiveSize(350);
+    var responsiveSize = size.responsiveSize(350, MediaQuery.of(context).size);
 
     var timerCircle = SizedBox(
       width: responsiveSize,

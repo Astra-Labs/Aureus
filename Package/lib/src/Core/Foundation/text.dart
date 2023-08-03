@@ -22,12 +22,12 @@ var fontChoice = resourceValues.font!;
 TextStyle heading1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(26),
+          fontSize: 26,
           fontWeight: FontWeight.w500,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(29),
+          fontSize: 29,
           fontWeight: FontWeight.w200,
           letterSpacing: 0.4,
           decoration: TextDecoration.none);
@@ -37,12 +37,12 @@ TextStyle heading1() {
 TextStyle heading2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(21),
+          fontSize: 21,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.2,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(24),
+          fontSize: 24,
           fontWeight: FontWeight.w300,
           letterSpacing: 1.2,
           decoration: TextDecoration.none);
@@ -52,12 +52,12 @@ TextStyle heading2() {
 TextStyle heading3() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(17),
+          fontSize: 17,
           fontWeight: FontWeight.w800,
           letterSpacing: 1.0,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(20),
+          fontSize: 20,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.0,
           decoration: TextDecoration.none);
@@ -67,12 +67,12 @@ TextStyle heading3() {
 TextStyle heading4() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(14),
+          fontSize: 14,
           fontWeight: FontWeight.w900,
           letterSpacing: 1.0,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(17),
+          fontSize: 17,
           fontWeight: FontWeight.w600,
           letterSpacing: 1.0,
           decoration: TextDecoration.none);
@@ -82,12 +82,12 @@ TextStyle heading4() {
 TextStyle subheading() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(17),
+          fontSize: 17,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(20),
+          fontSize: 20,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.4,
           decoration: TextDecoration.none);
@@ -97,12 +97,12 @@ TextStyle subheading() {
 TextStyle body1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(14),
+          fontSize: 14,
           fontWeight: FontWeight.w500,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(17),
+          fontSize: 17,
           fontWeight: FontWeight.w200,
           letterSpacing: 0.4,
           decoration: TextDecoration.none);
@@ -112,12 +112,12 @@ TextStyle body1() {
 TextStyle body2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(15),
+          fontSize: 15,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(18),
+          fontSize: 18,
           fontWeight: FontWeight.w300,
           letterSpacing: 0.4,
           decoration: TextDecoration.none);
@@ -127,12 +127,12 @@ TextStyle body2() {
 TextStyle button1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(17),
+          fontSize: 17,
           fontWeight: FontWeight.w800,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(20),
+          fontSize: 20,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.0,
           decoration: TextDecoration.none);
@@ -142,12 +142,12 @@ TextStyle button1() {
 TextStyle button2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(12),
+          fontSize: 12,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(15),
+          fontSize: 15,
           fontWeight: FontWeight.w400,
           letterSpacing: 1.0,
           decoration: TextDecoration.none);
@@ -157,13 +157,13 @@ TextStyle button2() {
 TextStyle tag1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(10),
-          fontWeight: FontWeight.w900,
+          fontSize: 10,
+          fontWeight: FontWeight.w800,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(13),
-          fontWeight: FontWeight.w700,
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
           letterSpacing: 1.5,
           decoration: TextDecoration.none);
 }
@@ -172,13 +172,13 @@ TextStyle tag1() {
 TextStyle tag2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(10),
-          fontWeight: FontWeight.w900,
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
-          fontSize: accessibility.responsiveTextSize(13),
-          fontWeight: FontWeight.w600,
+          fontSize: 13,
+          fontWeight: FontWeight.w400,
           letterSpacing: 1.0,
           decoration: TextDecoration.none);
 }

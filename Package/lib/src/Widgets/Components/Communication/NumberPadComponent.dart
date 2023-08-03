@@ -54,7 +54,7 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
   Widget createNumberButton(int number) {
     double responsiveNumButtonSize() {
       double responsiveSize = 0;
-      var width = size.logicalWidth();
+      var width = MediaQuery.of(context).size.width;
 
       if (width < 600 || width > 1000) {
         // Desktop & mobile sizing.
@@ -81,8 +81,9 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
       ),
     );
 
-    return GestureDetector(
-      onTap: () {
+    return UniversalGestureDetector(
+      node: FocusNode(),
+      onDetect: () {
         setState(() {
           widget.inputtedCode.add(number);
         });
@@ -156,8 +157,8 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
     );
 
     var desktopLayout = SizedBox(
-      height: size.layoutItemHeight(1, size.logicalScreenSize()),
-      width: size.layoutItemWidth(2, size.logicalScreenSize()) * 0.8,
+      height: size.layoutItemHeight(1, MediaQuery.of(context).size),
+      width: size.layoutItemWidth(2, MediaQuery.of(context).size) * 0.8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -169,6 +170,8 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
       ),
     );
 
-    return size.isDesktopDisplay() == true ? desktopLayout : mobileLayout;
+    return size.isDesktopDisplay(MediaQuery.of(context).size) == true
+        ? desktopLayout
+        : mobileLayout;
   }
 }

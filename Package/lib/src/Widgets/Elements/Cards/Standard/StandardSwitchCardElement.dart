@@ -56,7 +56,7 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),

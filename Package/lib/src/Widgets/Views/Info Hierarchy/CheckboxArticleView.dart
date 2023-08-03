@@ -42,10 +42,10 @@ class CheckboxArticleView extends StatefulWidget {
 
 class _CheckboxArticleViewState extends State<CheckboxArticleView> {
   var isEnabled = false;
-  var screenSize = size.logicalScreenSize();
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     var switchComponent = SwitchComponent(() {
       setState(() {
         isEnabled == true;

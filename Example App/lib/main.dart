@@ -2,7 +2,7 @@ import 'testingAppLibrary.dart';
 
 void main() {
   var resourceBranding = AureusBranding(
-      fontFamily: 'Exo',
+      fontFamily: 'Exo 2',
       lightModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [
             palette.black(),
@@ -72,93 +72,86 @@ void main() {
       privacyPolicy: 'privacyPolicy');
 
   var resourceNavigation = AureusNavigationTree(
-      splashScreen: SplashScreenView(onLaunch: () => {}),
-      homeScreen: GenerationLandingPage(),
-      settings: SettingsView(
-        settingSections: [
-          SettingSection(
-            sectionTitle: "Section 1",
-            sectionItems: [
-              SettingItem.standardButton(
-                  standardButton: StandardButtonElement(
-                      decorationVariant: decorationPriority.standard,
-                      buttonTitle: "Open accessibility page",
-                      buttonHint: "This button opens an accessibility page.",
-                      buttonAction: () => {})),
-              SettingItem.standardIconButton(
-                  standardIconButton: StandardIconButtonElement(
-                      decorationVariant: decorationPriority.standard,
-                      buttonTitle: "Open accessibility page",
-                      buttonIcon: Assets.alertmessage,
-                      buttonHint: "This button opens an accessibility page.",
-                      buttonAction: () => {})),
-            ],
-          ),
-          SettingSection(
-            sectionTitle: "Section 2",
-            sectionItems: [
-              SettingItem.standardSwitchCard(
-                  standardSwitchCard: StandardSwitchCardElement(
-                      cardLabel: "Switch Card",
-                      onEnable: () => {
-                            notificationMaster.sendAlertNotificationRequest(
-                              "Switch card enabled.",
-                              Assets.alertmessage,
-                            )
-                          },
-                      onDisable: () => {
-                            notificationMaster.sendAlertNotificationRequest(
-                              "Switch card disabled.",
-                              Assets.alertmessage,
-                            )
-                          })),
-              SettingItem.standardSwitchCard(
-                  standardSwitchCard: StandardSwitchCardElement(
-                      cardLabel: "Switch Card",
-                      onEnable: () => {
-                            notificationMaster.sendAlertNotificationRequest(
-                              "Switch card enabled.",
-                              Assets.alertmessage,
-                            )
-                          },
-                      onDisable: () => {
-                            notificationMaster.sendAlertNotificationRequest(
-                              "Switch card disabled.",
-                              Assets.alertmessage,
-                            )
-                          })),
-            ],
-          ),
-        ],
-      ),
-      onboardingLanding: OnboardingLandingView(),
-      onboardingDemo: OnboardingDemoView(
-        toolItems: [
-          testingTool,
-        ],
-      ),
-      onboardingInformation: OnboardingInformationView(onboardingDetails: [
-        onboardingInfo1,
-        onboardingInfo2,
-        onboardingInfo3
-      ]),
-      termsOfService: ArticleViewElement(
-          title: "Terms of Service", subheader: "subheader", body: "body"),
-      privacyPolicy: ArticleViewElement(
-          title: "Privacy Policy", subheader: "subheader", body: "body"),
-      signIn: SignInView(
-        onSignIn: () => {
-          notificationMaster.sendAlertNotificationRequest(
-              "", Assets.alertmessage)
-        },
-        onSignup: () => {},
-        onResetInformation: () => {},
-        usernameTextController: textEditor,
-        passwordTextController: textEditor,
-      ),
-      signUp: OnboardingLandingView(),
-      helpCenter: HelpCenterView(helpCenter: helpCenterTest),
-      contactSupport: HelpCenterView(helpCenter: helpCenterTest));
+    splashScreen: SplashScreenView(onLaunch: () => {}),
+    homeScreen: GenerationLandingPage(),
+    settings: SettingsView(
+      settingSections: [
+        SettingSection(
+          sectionTitle: "Section 1",
+          sectionItems: [
+            SettingItem.standardButton(
+                standardButton: StandardButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: "Open accessibility page",
+                    buttonHint: "This button opens an accessibility page.",
+                    buttonAction: () => {})),
+            SettingItem.standardIconButton(
+                standardIconButton: StandardIconButtonElement(
+                    decorationVariant: decorationPriority.standard,
+                    buttonTitle: "Open accessibility page",
+                    buttonIcon: Assets.alertmessage,
+                    buttonHint: "This button opens an accessibility page.",
+                    buttonAction: () => {})),
+          ],
+        ),
+        SettingSection(
+          sectionTitle: "Section 2",
+          sectionItems: [
+            SettingItem.standardSwitchCard(
+                standardSwitchCard: StandardSwitchCardElement(
+                    cardLabel: "Switch Card",
+                    onEnable: () => {
+                          notificationMaster.sendAlertNotificationRequest(
+                            "Switch card enabled.",
+                            Assets.alertmessage,
+                          )
+                        },
+                    onDisable: () => {
+                          notificationMaster.sendAlertNotificationRequest(
+                            "Switch card disabled.",
+                            Assets.alertmessage,
+                          )
+                        })),
+            SettingItem.standardSwitchCard(
+                standardSwitchCard: StandardSwitchCardElement(
+                    cardLabel: "Switch Card",
+                    onEnable: () => {
+                          notificationMaster.sendAlertNotificationRequest(
+                            "Switch card enabled.",
+                            Assets.alertmessage,
+                          )
+                        },
+                    onDisable: () => {
+                          notificationMaster.sendAlertNotificationRequest(
+                            "Switch card disabled.",
+                            Assets.alertmessage,
+                          )
+                        })),
+          ],
+        ),
+      ],
+    ),
+    onboardingLanding: OnboardingLandingView(),
+    onboardingDemo: OnboardingDemoView(
+      toolItems: [
+        testingTool,
+      ],
+    ),
+    onboardingInformation: OnboardingInformationView(
+        onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3]),
+    signIn: SignInView(
+      onSignIn: () => {
+        notificationMaster.sendAlertNotificationRequest("", Assets.alertmessage)
+      },
+      onSignup: () => {},
+      onResetInformation: () => {},
+      usernameTextController: textEditor,
+      passwordTextController: textEditor,
+    ),
+    signUp: OnboardingLandingView(),
+    helpCenter: HelpCenterView(helpCenter: helpCenterTest),
+    contactSupport: HelpCenterView(helpCenter: helpCenterTest),
+  );
 
   packageVariables = AureusResource(
       resourceBranding: resourceBranding,
@@ -204,8 +197,11 @@ class AureusTestApp extends StatelessWidget {
         context);
 
     return MaterialApp(
-        home: LandingPage(),
-        theme: new ThemeData(scaffoldBackgroundColor: coloration.sameColor()));
+      home: LandingPage(),
+      theme: new ThemeData(
+        scaffoldBackgroundColor: coloration.sameColor(),
+      ),
+    );
   }
 }
 

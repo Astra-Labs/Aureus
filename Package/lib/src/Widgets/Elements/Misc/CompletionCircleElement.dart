@@ -53,7 +53,7 @@ class _CompletionCircleElementState extends State<CompletionCircleElement>
 
   @override
   Widget build(BuildContext context) {
-    var dynamicSize = size.responsiveSize(120);
+    var dynamicSize = size.responsiveSize(120, MediaQuery.of(context).size);
 
     var circularProgressIndicator = CircularProgressIndicator(
         backgroundColor: coloration.inactiveColor(),

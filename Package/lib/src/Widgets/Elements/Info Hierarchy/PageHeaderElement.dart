@@ -78,7 +78,7 @@ class PageHeaderElement extends StatelessWidget {
         textStyle: heading2(),
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var pageHeaderContent = Column(
       children: [

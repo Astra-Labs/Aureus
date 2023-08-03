@@ -69,7 +69,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
         textDirection: TextDirection.ltr,
         query: MediaQuery.of(context));
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     var standardButtonContent = ClipRect(
       child: FloatingContainerElement(
@@ -102,7 +102,7 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
           child: standardButtonContent,
         ));
 
-    return Semantics.fromProperties(
+    return InteractiveSemanticsWrapper(
       properties: SemanticsWrapper.button(
           isEnabled: isButtonEnabled,
           label: widget.buttonTitle,

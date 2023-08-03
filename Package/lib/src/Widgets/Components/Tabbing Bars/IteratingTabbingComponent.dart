@@ -38,7 +38,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
     List<TabObject> tabItems = [];
     List<Widget> tabButtons = [];
 
-    var screenSize = size.logicalScreenSize();
+    var screenSize = MediaQuery.of(context).size;
 
     for (var element in widget.itemTitles) {
       var currentIndex = widget.itemTitles.indexOf(element);
@@ -234,7 +234,7 @@ class _IteratingTabbingComponentState extends State<IteratingTabbingComponent> {
               decoration: CardBackingDecoration(
                       decorationVariant: decorationPriority.inactive)
                   .buildBacking(),
-              child: size.isDesktopDisplay()
+              child: size.isDesktopDisplay(MediaQuery.of(context).size)
                   ? mobileInformationCard
                   : webInformationCard)),
     );

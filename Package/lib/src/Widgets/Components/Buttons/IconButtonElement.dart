@@ -104,8 +104,9 @@ class _IconButtonElementState extends State<IconButtonElement> {
           )),
     ));
 
-    var iconButtonElementInteractor = GestureDetector(
-        onTap: () {
+    var iconButtonElementInteractor = UniversalGestureDetector(
+        node: FocusNode(),
+        onDetect: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();
             widget.buttonAction();
@@ -119,8 +120,7 @@ class _IconButtonElementState extends State<IconButtonElement> {
           child: iconButtonElementContent,
         ));
 
-    return Semantics.fromProperties(
-      excludeSemantics: true,
+    return InteractiveSemanticsWrapper(
       properties: SemanticsWrapper.button(
           isEnabled: isButtonEnabled,
           label: 'Icon Button',
