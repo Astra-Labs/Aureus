@@ -62,6 +62,8 @@ class _SensationsSubviewState extends State<SensationsSubview> {
       children: [
         HeadingOneText("Sensations", decorationPriority.standard),
         SizedBox(height: 10),
+        DividerElement(),
+        SizedBox(height: 10),
         Wrap(
           alignment: WrapAlignment.start,
           runAlignment: WrapAlignment.spaceEvenly,
