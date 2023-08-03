@@ -78,6 +78,7 @@ class _ViewsSubviewState extends State<ViewsSubview> {
     ], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
+      hasExitBar: true,
       decorationVariant: decorationPriority.important,
       builder: viewBuilder,
       showQuickActionBar: false,
