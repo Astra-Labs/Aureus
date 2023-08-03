@@ -110,15 +110,12 @@ class ButtonBackingDecoration extends BaseBackingDecoration {
       // item is inverted to have colors of the opposite mode.
       case decorationPriority.inverted:
         {
-          decorationCornerRadius = BorderRadius.circular(20.0);
-          decorationBorder = palette.universalBorder();
-
-          decorationGradient = palette.brightness() == Brightness.light
-              ? palette.lightGradient()
-              : palette.darkGradient();
-          decorationHaze = palette.brightness() == Brightness.light
-              ? palette.darkShadow()
-              : palette.lightShadow();
+          decorationFill = palette.brightness() == Brightness.light
+              ? palette.darkModeFill()
+              : palette.lightModeFill();
+          decorationBorder = palette.brightness() == Brightness.light
+              ? palette.darkModeBorder()
+              : palette.lightModeBorder();
           break;
         }
     }

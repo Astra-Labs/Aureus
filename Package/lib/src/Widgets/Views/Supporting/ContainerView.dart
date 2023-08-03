@@ -127,7 +127,7 @@ class _ContainerViewState extends State<ContainerView>
           feedback: actionBarWidget,
           onDraggableCanceled: (velocity, offset) {
             setState(() {
-              RenderBox? renderBox = context.findRenderObject() as RenderBox;
+              //RenderBox? renderBox = context.findRenderObject() as RenderBox;
               position = offset;
             });
           });
@@ -219,25 +219,25 @@ class _ContainerViewState extends State<ContainerView>
     }
 
     var exitBarContent = Scaffold(
-      backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              const ExitBarComponent(),
-              containerContent(),
-            ],
-          );
-        },
+      body: SingleChildScrollView(
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const ExitBarComponent(),
+                containerContent(),
+              ],
+            );
+          },
+        ),
       ),
     );
 
     var nonExitBarContent = Scaffold(
-      backgroundColor: Colors.transparent,
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: (LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return containerContent();

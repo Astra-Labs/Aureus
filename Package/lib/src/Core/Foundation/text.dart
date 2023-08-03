@@ -158,12 +158,12 @@ TextStyle tag1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
           fontSize: 10,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.w800,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
           fontSize: 13,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           letterSpacing: 1.5,
           decoration: TextDecoration.none);
 }
@@ -173,12 +173,12 @@ TextStyle tag2() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
           fontSize: 10,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
           fontSize: 13,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w400,
           letterSpacing: 1.0,
           decoration: TextDecoration.none);
 }
