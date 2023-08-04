@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:aureus/aureus.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 /// @nodoc
 import 'package:flutter/material.dart';
@@ -27,21 +29,40 @@ class ExitBarComponent extends StatefulWidget {
 }
 
 class _ExitBarComponentState extends State<ExitBarComponent> {
+  //because the bar breaks from current backing build conventions due
+  //to safety reasons, we have a custom variable that simply returns a
+  //color instead of .buildBacking();
+
+  String url = 'https://www.google.com';
+
+  Color barBacking() {
+    return palette.brightness() == Brightness.light
+        ? palette.white()
+        : palette.black();
+  }
+
+  void exitUser() {
+    if (kIsWeb) {
+      launchUrl(Uri.parse(url), webOnlyWindowName: '_self');
+    } else {
+      exit(1);
+    }
+  }
+
+  double exitBarHeight(double textHeight, TargetPlatform platform) {
+    if (platform == TargetPlatform.iOS) {
+      return textHeight * 5;
+    } else {
+      return textHeight * 3;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    //because the bar breaks from current backing build conventions due
-    //to safety reasons, we have a custom variable that simply returns a
-    //color instead of .buildBacking();
-    Color barBacking() {
-      return palette.brightness() == Brightness.light
-          ? palette.white()
-          : palette.black();
-    }
+    var currentPlatform = Theme.of(context).platform;
 
     Alignment barAlignment() {
       //centers items on bottom if the user is on a mobile device
-
-      var currentPlatform = Theme.of(context).platform;
 
       if (currentPlatform == TargetPlatform.android ||
           currentPlatform == TargetPlatform.iOS) {
@@ -71,13 +92,17 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
           SmolButtonElement(
               decorationVariant: decorationPriority.important,
               buttonTitle: 'Exit now.',
-              buttonHint: 'Closes ',
-              buttonAction: () => {exit(1)})
+              buttonHint: 'Closes the application.',
+              buttonAction: () => {
+                    exitUser(),
+                  })
         ]);
 
     var exitBarContainer = Container(
         constraints: BoxConstraints(
-            minHeight: accessibilitySizing.height * 3, minWidth: screenWidth),
+            minHeight:
+                exitBarHeight(accessibilitySizing.height, currentPlatform),
+            minWidth: screenWidth),
         child: Align(
           alignment: barAlignment(),
           child: ConstrainedBox(

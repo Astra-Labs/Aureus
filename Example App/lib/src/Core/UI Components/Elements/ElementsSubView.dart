@@ -45,6 +45,7 @@ class _ElementsSubviewState extends State<ElementsSubview> {
     ], containerVariant: wrapperVariants.stackScroll);
 
     return ContainerView(
+      hasExitBar: true,
       decorationVariant: decorationPriority.important,
       builder: viewBuilder,
       showQuickActionBar: false,

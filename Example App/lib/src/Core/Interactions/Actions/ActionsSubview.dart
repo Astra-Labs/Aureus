@@ -45,6 +45,8 @@ class _ActionsSubviewState extends State<ActionsSubview> {
     var viewBuilder = ContainerWrapperElement(children: [
       HeadingOneText("Actions", decorationPriority.standard),
       SizedBox(height: 10),
+      DividerElement(),
+      SizedBox(height: 10),
       Wrap(
         alignment: WrapAlignment.start,
         runAlignment: WrapAlignment.spaceEvenly,

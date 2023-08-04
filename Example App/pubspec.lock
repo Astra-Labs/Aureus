@@ -23,7 +23,7 @@ packages:
       path: "/Users/amandasouthworth/Desktop/astra/Aureus/Package"
       relative: false
     source: path
-    version: "0.0.12"
+    version: "0.0.13"
   boolean_selector:
     dependency: transitive
     description:
@@ -680,10 +680,10 @@ packages:
     dependency: "direct main"
     description:
       name: url_launcher
-      sha256: eb1e00ab44303d50dd487aab67ebc575456c146c6af44422f9c13889984c00f3
+      sha256: "781bd58a1eb16069412365c98597726cd8810ae27435f04b3b4d3a470bacd61e"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.11"
+    version: "6.1.12"
   url_launcher_android:
     dependency: transitive
     description:
@@ -822,4 +822,4 @@ packages:
     version: "1.0.0"
 sdks:
   dart: ">=3.0.0 <4.0.0"
-  flutter: ">=3.3.0"
+  flutter: ">=3.10.0"

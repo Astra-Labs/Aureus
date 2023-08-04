@@ -244,7 +244,7 @@ class LandingPage extends StatelessWidget {
           decorationVariant: decorationPriority.standard,
           buttonHint: "Download on pub.dev",
           buttonTitle: "Download on pub.dev",
-          buttonIcon: Assets.window,
+          buttonIcon: Assets.next,
           buttonAction: () =>
               {launchInBrowser('https://pub.dev/packages/aureus/install')}),
     ];
