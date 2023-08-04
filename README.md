@@ -1,11 +1,11 @@
 # Meet Aureus
-#### (In beta) open-source design system library for user safety critical applications.
+#### Open-source design system library for user-safety critical applications (in beta)
+
+![Aureus Demo Image](https://static1.squarespace.com/static/5d2619b3e3281d0001fef721/t/64cd55bab9efe5389c6b717a/1691178434185/AureusDemoVideo.png)
 
 [![Hippocratic License HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV](https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV&labelColor=5e2751&color=bc8c3d)](https://firstdonoharm.dev/version/3/0/cl-eco-extr-ffd-media-mil-soc-sv.html)
 
 Meet Aureus, a privacy, accessibility, and safety-focused design system built in Flutter for non-profit software development. 
-
-![Aureus Demo Image](https://static1.squarespace.com/static/5d2619b3e3281d0001fef721/t/64cd55bab9efe5389c6b717a/1691178434185/AureusDemoVideo.png)
 
 Originally developed for internal use at Astra Labs, Aureus is designed to quickly build quality software that serves vulnerable communities. In our years of developing at Astra, we've run into crucial problems designing for specifically at-risk populations.
 
