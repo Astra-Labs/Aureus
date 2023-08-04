@@ -1,6 +1,6 @@
 name: aureus
 description: An open-source design system for non-profits to quickly develop user safety critical applications.
-version: 0.0.12
+version: 0.0.14
 homepage: https://withaureus.org/
 documentation: https://github.com/Astra-Labs/Aureus/
 
@@ -23,6 +23,7 @@ dependencies:
   just_audio: ^0.9.20
   shared_preferences: ^2.0.13
   perichron: ^1.0.0
+  url_launcher: ^6.1.12
 
 flutter:
   assets:
