@@ -2,7 +2,6 @@
 - Added functionality to exit bar for Everine
 - Extended ExitBar height for iPhones due to the Notchi Boi
 
-
 ## 0.0.13
 - Decreased thiccness of font weight for Tag text styles 
 - Improved the contrast of alert controllers for accessibility

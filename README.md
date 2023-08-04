@@ -5,9 +5,17 @@
 
 Meet Aureus, a privacy, accessibility, and safety-focused design system built in Flutter for non-profit software development. 
 
+![Aureus Applications](./Example App/assets/Dark Mode - Preview.png)
+
 Originally developed for internal use at Astra Labs, Aureus is designed to quickly build quality software that serves vulnerable communities. In our years of developing at Astra, we've run into crucial problems designing for specifically at-risk populations.
 
 When you're working in tough / crisis situations, a lot of industry design patterns do not truly take into account the fragility and level of caution required. Our goal is to help build some insight into how our resources work, and to hopefully be a good example of scalable, high-impact, and ethical software.
+
+#### See Aureus in action at: 
+* [Aureus' Example App](https://withaureus.org/)
+* [Everine - A non-profit resource DB](https://witheverine.org/)
+* [Aetheria Landing Page](https://withaetheria.org/)
+* [Verena Landing Page](https://withverena.org/)
 
 ---------------------
 
