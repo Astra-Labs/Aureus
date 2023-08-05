@@ -50,7 +50,8 @@ class _ExitBarComponentState extends State<ExitBarComponent> {
   }
 
   double exitBarHeight(double textHeight, TargetPlatform platform) {
-    if (platform == TargetPlatform.iOS) {
+    if (platform == TargetPlatform.iOS && kIsWeb == false) {
+      // Returns an extended height only for iPhones not on web.
       return textHeight * 5;
     } else {
       return textHeight * 3;
