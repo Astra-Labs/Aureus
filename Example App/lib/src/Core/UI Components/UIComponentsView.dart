@@ -16,12 +16,12 @@ class AureusComponentsView extends NavBarComponent {
                 tabTitle: 'Elements',
                 tabController: ElementsSubview(),
                 accessibilityHint: 'Changes selected tab to "Elements" page.',
-                tabIcon: Assets.paperplane),
+                tabIcon: Assets.more1),
             ControllerTabObject(
                 tabTitle: 'Views',
                 tabController: ViewsSubview(),
                 accessibilityHint: 'Changes selected tab to "Views" page.',
-                tabIcon: Assets.paperplane),
+                tabIcon: Assets.more2),
           ],
         );
 }

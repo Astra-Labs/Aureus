@@ -1,3 +1,6 @@
+## 0.0.15
+- Fixing ExitBar height bug
+
 ## 0.0.14
 - Added functionality to exit bar for Everine
 - Extended ExitBar height for iPhones due to the Notchi Boi
