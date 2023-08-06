@@ -1,3 +1,7 @@
+## 0.0.17
+- Undoing 0.0.16 fix because it created another bug.. :,-(
+- Bumped the font weight up
+
 ## 0.0.16
 - FIXING THIS STUPID SMOLBUTTONELEMENT SIZING BUG AAAAAAA
 
