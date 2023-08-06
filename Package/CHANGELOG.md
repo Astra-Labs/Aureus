@@ -1,3 +1,6 @@
+## 0.0.16
+- FIXING THIS STUPID SMOLBUTTONELEMENT SIZING BUG AAAAAAA
+
 ## 0.0.15
 - Fixing ExitBar height bug
 

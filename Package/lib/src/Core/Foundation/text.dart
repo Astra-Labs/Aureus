@@ -158,13 +158,13 @@ TextStyle tag1() {
   return accessibility.accessFeatures.boldText == true
       ? GoogleFonts.getFont(fontChoice,
           fontSize: 10,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w600,
           letterSpacing: 0.4,
           decoration: TextDecoration.none)
       : GoogleFonts.getFont(fontChoice,
           fontSize: 13,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 1.5,
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1.3,
           decoration: TextDecoration.none);
 }
 
