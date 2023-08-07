@@ -62,15 +62,6 @@ class GenerationLandingPage extends StatelessWidget {
       throw ('Unexpected platform brightness issue. Please check the implementation.');
     }
 
-    return Scaffold(
-        body: size.isDesktopDisplay(screenSize)
-            ? mobileLandingView(
-                landscapeBacking: landscapeBackgroundImage(),
-                uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems)
-            : webLandingView(
-                landscapeBacking: landscapeBackgroundImage(),
-                uiOverlay: landingUIOverlayImage(),
-                actionButtons: buttonItems));
+    return Container();
   }
 }

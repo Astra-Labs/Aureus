@@ -5,21 +5,25 @@ void main() {
       fontFamily: 'Exo 2',
       lightModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [
-            palette.black(),
-            Colors.black87,
+            Color.fromRGBO(26, 28, 45, 1.0),
+            Color.fromRGBO(16, 6, 45, 1.0),
           ]),
           accentColor: palette.black(),
-          primaryImage: Image(image: AssetImage('assets/Light-Fluid.png')),
-          secondaryImage: Image(image: AssetImage('assets/Light-Blur.png')),
+          primaryImage:
+              Image(image: AssetImage('assets/AUREUS-light-fluid.png')),
+          secondaryImage:
+              Image(image: AssetImage('assets/AUREUS-light-blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Light Mode.png'))),
       darkModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [
-            Color.fromARGB(255, 243, 237, 241),
-            palette.white(),
+            Color.fromRGBO(201, 197, 226, 1.0),
+            Color.fromRGBO(214, 199, 246, 1.0),
           ]),
           accentColor: palette.white(),
-          primaryImage: Image(image: AssetImage('assets/Dark-Fluid.png')),
-          secondaryImage: Image(image: AssetImage('assets/Dark-Blur.png')),
+          primaryImage:
+              Image(image: AssetImage('assets/AUREUS-dark-fluid.png')),
+          secondaryImage:
+              Image(image: AssetImage('assets/AUREUS-dark-blur.png')),
           logo: Image(image: AssetImage('assets/Icon - Dark Mode.png'))));
 
   var quickActionItems2 = [
@@ -171,23 +175,19 @@ class AureusTestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var darkImageCache = [
-      "assets/Dark-Fluid.png",
-      "assets/Dark-Blur.png",
+      "assets/AUREUS-dark-fluid.png",
+      "assets/AUREUS-dark-blur.png",
       "assets/Icon - Dark Mode.png",
       "assets/Dark Mode - Preview.png",
       "assets/Dark-Mode-Demo.png",
-      "assets/Import-Sample-Dark-Mode.png",
-      "assets/Landing-Example-Dark-Mode.png",
     ];
 
     var lightImageCache = [
-      "assets/Light-Fluid.png",
-      "assets/Light-Blur.png",
+      "assets/AUREUS-light-fluid.png",
+      "assets/AUREUS-light-blur.png",
       "assets/Icon - Light Mode.png",
       "assets/Light Mode - Preview.png",
       "assets/Light-Mode-Demo.png",
-      "assets/Import-Sample-Light-Mode.png",
-      "assets/Landing-Example-Light-Mode.png",
     ];
 
     precacheImages(
@@ -251,9 +251,9 @@ class LandingPage extends StatelessWidget {
 
     return LandingPageView(
       lightModeLandscapeBacking:
-          Image(image: AssetImage('assets/Light-Blur.png')),
+          Image(image: AssetImage('assets/AUREUS-light-fluid.png')),
       darkModeLandscapeBacking:
-          Image(image: AssetImage('assets/Dark-Blur.png')),
+          Image(image: AssetImage('assets/AUREUS-dark-fluid.png')),
       lightModeUIOverlay:
           Image(image: AssetImage('assets/Light Mode - Preview.png')),
       darkModeUIOverlay:
