@@ -72,10 +72,9 @@ class _SmolButtonElementState extends State<SmolButtonElement> {
         child: FloatingContainerElement(
       child: Container(
           constraints: BoxConstraints(
-              minHeight: minimumButtonTextSize.height + 20,
-              maxHeight: minimumButtonTextSize.height + 20,
-              maxWidth: minimumButtonTextSize.width + 30,
-              minWidth: minimumButtonTextSize.width + 30),
+              maxHeight: minimumButtonTextSize.height * 1.7,
+              minWidth: minimumButtonTextSize.width * 1.5,
+              maxWidth: minimumButtonTextSize.width * 1.7),
           decoration: buttonDecoration,
           child: Center(
               child: TagOneText(widget.buttonTitle, widget.decorationVariant))),

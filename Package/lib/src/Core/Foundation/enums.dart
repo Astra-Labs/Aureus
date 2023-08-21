@@ -132,6 +132,7 @@ enum dataAccess {
   health,
   sensors,
   storage,
+  mediaGallery,
 }
 
 /// {@template aureus.adaptiveInput}

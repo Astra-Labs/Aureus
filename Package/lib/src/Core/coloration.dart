@@ -74,7 +74,7 @@ class Coloration {
   /// Returns inactive color for the mode.
   Color inactiveColor() {
     return palette.brightness() == Brightness.light
-        ? palette.iron().withOpacity(0.2)
-        : palette.melt().withOpacity(0.3);
+        ? palette.iron().withOpacity(0.10)
+        : palette.lavender().withOpacity(0.50);
   }
 }

@@ -50,7 +50,6 @@ part 'src/Core/Tools/ToolsList.dart';
 
 //  ------------------------- LANDING
 part 'src/Core/Landing/HomeNavigation.dart';
-part 'src/Core/Landing/LandingPageView.dart';
 part 'src/Core/Landing/Resource Generation/GenerationTool.dart';
 part 'src/Core/Landing/Resource Generation/GenerationLandingView.dart';
 

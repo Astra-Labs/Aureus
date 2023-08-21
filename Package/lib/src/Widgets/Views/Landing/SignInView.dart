@@ -127,7 +127,13 @@ class _SignInViewState extends State<SignInView> {
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.fullScreen,
-      children: [topRow, const Spacer(), middleRow, const Spacer(), bottomRow],
+      children: [
+        topRow,
+        const Spacer(),
+        middleRow,
+        const Spacer(),
+        bottomRow,
+      ],
     );
 
     return ContainerView(

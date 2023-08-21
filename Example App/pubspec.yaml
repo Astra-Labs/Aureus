@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   golden_toolkit: ^0.12.0
   url_launcher: ^6.0.18
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -44,17 +45,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets: 
-    - assets/Dark-Blur.png
-    - assets/Dark-Fluid.png
+    - assets/AUREUS-dark-blur.png
+    - assets/AUREUS-dark-fluid.png
     - assets/Icon - Dark Mode.png
     - assets/Dark Mode - Preview.png
     - assets/Light Mode - Preview.png
-    - assets/Light-Blur.png
-    - assets/Light-Fluid.png
+    - assets/AUREUS-light-blur.png
+    - assets/AUREUS-light-fluid.png
     - assets/Icon - Light Mode.png
     - assets/Dark-Mode-Demo.png
-    - assets/Import-Sample-Dark-Mode.png
-    - assets/Landing-Example-Dark-Mode.png
     - assets/Light-Mode-Demo.png
-    - assets/Import-Sample-Light-Mode.png
-    - assets/Landing-Example-Light-Mode.png
+

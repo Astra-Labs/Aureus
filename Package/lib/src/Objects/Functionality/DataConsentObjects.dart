@@ -77,6 +77,11 @@ class DataConsent {
           request = await Permission.sensors.request();
           break;
         }
+      case dataAccess.mediaGallery:
+        {
+          request = await Permission.mediaLibrary.request();
+          break;
+        }
       case dataAccess.storage:
         {
           request = await Permission.storage.request();
@@ -178,6 +183,15 @@ class DataConsent {
         permissionDescription: permissionUsage,
         permissionIcon: Assets.expand,
         onPermissionOptIn: () => {Permission.storage.request()});
+  }
+
+  /// A DPO that represents sensor data access.
+  DataPermissionObject mediaGalleryPermission(String permissionUsage) {
+    return DataPermissionObject(
+        permissionName: 'Media Gallery',
+        permissionDescription: permissionUsage,
+        permissionIcon: Assets.camera,
+        onPermissionOptIn: () => {Permission.mediaLibrary.request()});
   }
 
   /// A function that sends an error message to the user, telling them
