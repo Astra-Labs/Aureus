@@ -56,9 +56,21 @@ class _LandingPageViewState extends State<LandingPageView> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          HeadingTwoText(
-              "I'm ${resourceValues.name}", decorationPriority.standard),
-          const SizedBox(height: 4.0),
+          Row(
+            children: [
+              HeadingTwoText(
+                  "I'm ${resourceValues.name}", decorationPriority.standard),
+              const Spacer(),
+              SizedBox(
+                width: 30,
+                height: 30,
+                child: coloration.resourceLogo(),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20.0),
+          const DividerElement(),
+          const SizedBox(height: 20.0),
           HeadingOneText(
               resourceValues.mission ?? "", decorationPriority.standard)
         ]);
@@ -90,7 +102,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                     BorderSide(color: coloration.inactiveColor(), width: 1.0))),
         child: Padding(
           padding: EdgeInsets.all(
-              size.widthOf(weight: sizingWeight.w1, area: screenSize)),
+              size.widthOf(weight: sizingWeight.w0, area: screenSize)),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +111,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                 BodyOneText(
                     '${resourceValues.name} is run by ${resourceValues.developerName}',
                     decorationPriority.standard),
-                const SizedBox(width: 30.0),
+                const SizedBox(height: 15, width: 30.0),
                 widget.onGiveFeedback != null
                     ? SmolButtonElement(
                         decorationVariant: decorationPriority.standard,
@@ -121,32 +133,28 @@ class _LandingPageViewState extends State<LandingPageView> {
             border: Border(
                 top:
                     BorderSide(color: coloration.inactiveColor(), width: 1.0))),
-        child: SizedBox(
-          width: screenSize.width,
-          height: screenSize.height * 0.15,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
-            child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  BodyOneText(
-                      '${resourceValues.name} is run by ${resourceValues.developerName}.',
-                      decorationPriority.standard),
-                  Row(
-                    children: [
-                      widget.onGiveFeedback != null
-                          ? SmolButtonElement(
-                              decorationVariant: decorationPriority.standard,
-                              buttonTitle: 'Give Feedback',
-                              buttonHint: 'Opens the place to give feedback.',
-                              buttonAction: () => {})
-                          : const SizedBox(width: 10.0),
-                    ],
-                  )
-                ]),
-          ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                BodyOneText(
+                    '${resourceValues.name} is run by ${resourceValues.developerName}.',
+                    decorationPriority.standard),
+                Row(
+                  children: [
+                    widget.onGiveFeedback != null
+                        ? SmolButtonElement(
+                            decorationVariant: decorationPriority.standard,
+                            buttonTitle: 'Give Feedback',
+                            buttonHint: 'Opens the place to give feedback.',
+                            buttonAction: () => {})
+                        : const SizedBox(width: 10.0),
+                  ],
+                )
+              ]),
         ));
 
     var mobileView = SingleChildScrollView(
@@ -214,23 +222,43 @@ class _LandingPageViewState extends State<LandingPageView> {
       ],
     );
 
+    var halfGlassPane = FloatingContainerElement(
+      child: Container(
+        height: size.isDesktopDisplay(screenSize)
+            ? screenSize.height * 0.33
+            : screenSize.height * 0.50,
+        width: screenSize.width,
+        decoration: ButtonBackingDecoration(
+          variant: buttonDecorationVariants.edgedRectangle,
+          decorationVariant: decorationPriority.inactive,
+        ).buildBacking(),
+      ),
+    );
+
     return Scaffold(
       body: Container(
-          constraints: BoxConstraints(
-              minHeight: screenSize.height,
-              maxHeight: screenSize.height,
-              minWidth: screenSize.width,
-              maxWidth: screenSize.width),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: landscapeBacking.image,
-              fit: BoxFit.cover,
-            ),
+        constraints: BoxConstraints(
+            minHeight: screenSize.height,
+            maxHeight: screenSize.height,
+            minWidth: screenSize.width,
+            maxWidth: screenSize.width),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: landscapeBacking.image,
+            fit: BoxFit.cover,
           ),
-          child: SizedBox(
-              width: screenSize.width,
-              height: screenSize.height,
-              child: size.isDesktopDisplay(screenSize) ? webView : mobileView)),
+        ),
+        child: SizedBox(
+          width: screenSize.width,
+          height: screenSize.height,
+          child: Stack(
+            children: [
+              Align(alignment: Alignment.bottomCenter, child: halfGlassPane),
+              size.isDesktopDisplay(screenSize) ? webView : mobileView,
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
