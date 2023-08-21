@@ -8,14 +8,10 @@ import 'package:flutter/material.dart';
 /// {@subCategory Views}
 /// {@image <image alt='' src=''>}
 
-/*--------- SPLASH SCREEN VIEW ----------*/
-/// A templatized splash screen view. This is the first view your users should
-/// see, and where you should run any downloading / onboarding logic checks.
+/*--------- BENEFITS VIEW ----------*/
+///
 
 class BenefitsPageView extends StatefulWidget {
-  /// A function that the splash screen should run after the animation has completed.
-  /// This should be where you navigate to the next page, and do any logic in determing
-  /// if the user has completed the onboarding process or not.
   final Map<IconData, String> benefits;
 
   const BenefitsPageView({
