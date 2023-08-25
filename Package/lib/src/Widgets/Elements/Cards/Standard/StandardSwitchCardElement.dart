@@ -79,7 +79,11 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
                           child: BodyOneText(
                               widget.cardLabel, decorationPriority.standard),
                         ),
-                        SwitchComponent(widget.onEnable, widget.onDisable)
+                        SwitchComponent(
+                          widget.onEnable,
+                          widget.onDisable,
+                          isSwitchEnabled: widget.isSwitchEnabled,
+                        )
                       ]),
                 ))),
       ),

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 /// {@category Widgets}
 /// {@subCategory Elements}
 /// {@image <image alt='' src=''>}
+///
 
 /*--------- COMPLEX CARD ----------*/
 /// An extremely detailed card meant to give the most amount of information about

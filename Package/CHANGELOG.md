@@ -1,3 +1,8 @@
+## 0.0.19
+- Making some items on the OnboardingLandingView more optional
+- Updating some widget switches
+- 
+
 ## 0.0.18
 - Adding new DataAccess to represent gallery storage for Verena 
 

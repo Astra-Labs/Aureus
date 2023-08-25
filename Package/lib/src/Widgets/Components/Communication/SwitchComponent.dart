@@ -16,7 +16,8 @@ class SwitchComponent extends StatefulWidget {
   VoidCallback? onEnable;
   VoidCallback? onDisable;
 
-  SwitchComponent(this.onEnable, this.onDisable);
+  SwitchComponent(this.onEnable, this.onDisable,
+      {this.isSwitchEnabled = false});
 
   @override
   _SwitchComponentState createState() => _SwitchComponentState();

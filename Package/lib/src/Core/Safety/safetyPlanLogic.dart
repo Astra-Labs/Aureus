@@ -32,7 +32,6 @@ class Safety {
   /// certain functionality on every single page. This is helpful if you have
   /// 'emergency' features that need to be accessed on every page (e.g: dealing
   ///  with suicidal users who may emergency access a tool).
-
   final bool? isActionBarDevEnabled;
 
   /// If you do want a quick action bar to appear on every screen, these are
@@ -41,15 +40,20 @@ class Safety {
   /// is to limit these to really sensitive resources that need to be close at all times
   final List<TabObject>? quickActionItems;
 
-  const Safety(
-      {required this.frequencyUsage,
-      required this.eligiblePlanOptions,
-      this.isActionBarDevEnabled = false,
-      this.quickActionItems = const []});
+  const Safety({
+    required this.frequencyUsage,
+    required this.eligiblePlanOptions,
+    this.isActionBarDevEnabled = false,
+    this.quickActionItems = const [],
+  });
 
   /// Takes a list of fallbacks (options that a specific piece of code violates,
   /// and the desired fallback to complete instead). You should use this to check
   /// if the piece of code you wrote violated a SafetyPlan request.
+  ///
+  ///   IMPORTANT: if the parent widget does not subclass from [AureusNotificationMaster],
+  ///   the notificationManager will not be able to show a widget. If you're only using Material,
+  ///   you should probably only the 'executable code' fallback.
   ///
   ///  To use an action SafetyCheck, provide:
   ///   - fallbackItems: A list of rules that you may violate, and the fallback code you want to execute
@@ -84,17 +88,22 @@ class Safety {
                 detailMetaData.retrieveDetails(element.safetyOption).name;
 
             // Creates an alert controller object to show to the user.
-            var disabledAlertControllerObject = AlertControllerObject.singleAction(
-                onCancellation: () => {},
-                alertTitle: "Blocked Action",
-                alertBody:
-                    "You requested an action that was disabled by your Safety Plan settings. The setting blocking this action is $safetyOption. You can go into your settings to change your Safety Plan settings at any time.",
-                alertIcon: Assets.alertmessage,
-                actions: [
+            var disabledAlertControllerObject =
+                AlertControllerObject.singleAction(
+                    onCancellation: () => {
+                          notificationMaster.resetRequests(),
+                        },
+                    alertTitle: "Blocked Action",
+                    alertBody:
+                        "You requested an action that was disabled by your Safety Plan settings. The setting blocking this action is $safetyOption. You can go into your settings to change your Safety Plan settings at any time.",
+                    alertIcon: Assets.alertmessage,
+                    actions: [
                   AlertControllerAction(
                       actionName: "Okay.",
                       actionSeverity: AlertControllerActionSeverity.standard,
-                      onSelection: () => {}),
+                      onSelection: () => {
+                            notificationMaster.resetRequests(),
+                          }),
                 ]);
 
             notificationMaster
@@ -133,9 +142,10 @@ class Safety {
 /// After that, you interact with the Safety Plan by using the actionSafetyCheck function in SafetyPlan
 
 class _SafetyPlanStorageLayer {
-  /// initializes a storage layer in FlutterSecureStorage
+  /// initializes a storage layer in Perichron
   final _storage = PerichronStorageLayer();
 
+  // TODO: Rewrite into a map with the enum as the key instead of this switch statement
   /// Switches the option into the relevant key for writing / retrival
   String safetyPlanKey(SafetyPlanOptions option) {
     switch (option) {
@@ -231,7 +241,7 @@ class _SafetyPlanStorageLayer {
 
 /// An enum for you to choose a fallback option if the user's safety plan
 /// settings are violated
-///
+
 enum SafetyFallBackOptions {
   /// Shows an alert controller telling the user an action cannot be completed
   /// because of their settings
@@ -429,25 +439,29 @@ class _PlanModificationLoadingViewState
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the screen and the alert controller confirmation.
-            notificationMaster.sendAlertControllerRequest(
+            if (snapshot.hasData == true) {
+              notificationMaster.sendAlertControllerRequest(
                 AlertControllerObject.singleAction(
-                    onCancellation: () => {},
-                    alertTitle: "Safety Plan Enabled",
-                    alertBody:
-                        "Your safety plan settings have been enabled, encrypted, and saved.",
-                    alertIcon: Assets.yes,
-                    actions: [
-                  AlertControllerAction(
-                      actionName: "Ok!",
-                      actionSeverity: AlertControllerActionSeverity.standard,
-                      onSelection: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => widget.exitPoint,
-                                ))
-                          })
-                ]));
+                  onCancellation: () => {},
+                  alertTitle: "Safety Plan Enabled",
+                  alertBody:
+                      "Your safety plan settings have been enabled, encrypted, and saved.",
+                  alertIcon: Assets.yes,
+                  actions: [
+                    AlertControllerAction(
+                        actionName: "Ok!",
+                        actionSeverity: AlertControllerActionSeverity.standard,
+                        onSelection: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => widget.exitPoint,
+                                  ))
+                            })
+                  ],
+                ),
+              );
+            }
             return const Column(
               children: [],
             );

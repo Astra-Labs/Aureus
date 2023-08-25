@@ -12,7 +12,14 @@ import 'package:flutter/material.dart';
 /// This landing view gets autopopulated with the data from [AureusNavigationTree].
 
 class OnboardingLandingView extends StatefulWidget {
-  const OnboardingLandingView();
+  /// A list of [StandardIconButtonElement]s that represent the main
+  /// Calls To Action that you want the user to take. These should be limited to
+  /// 1 or 2 of the most important things on the landing page.
+  final List<StandardIconButtonElement> actionButtons;
+
+  const OnboardingLandingView({
+    required this.actionButtons,
+  });
 
   @override
   _OnboardingLandingViewState createState() => _OnboardingLandingViewState();
@@ -48,48 +55,11 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
             ],
           ),
           const Spacer(),
-          Wrap(
-            runSpacing: 8.0,
-            children: [
-              StandardIconButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonTitle: 'Try out tools',
-                  buttonHint: "Opens demo tool page",
-                  buttonIcon: Assets.expand,
-                  buttonAction: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  resourceValues.onboardingDemo!,
-                            ))
-                      }),
-              StandardIconButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonTitle: 'See the features',
-                  buttonHint: "Opens feauture information page",
-                  buttonIcon: Assets.phone,
-                  buttonAction: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  resourceValues.onboardingInfo!,
-                            ))
-                      }),
-              StandardIconButtonElement(
-                  decorationVariant: decorationPriority.standard,
-                  buttonTitle: 'Get started',
-                  buttonHint: "Takes you to onboarding",
-                  buttonIcon: Assets.next,
-                  buttonAction: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => resourceValues.signUp!,
-                            ))
-                      })
-            ],
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: widget.actionButtons,
           ),
           const Spacer(),
         ]);
