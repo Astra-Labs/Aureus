@@ -56,23 +56,19 @@ class _LandingPageViewState extends State<LandingPageView> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              HeadingTwoText(
-                  "I'm ${resourceValues.name}", decorationPriority.standard),
-              const Spacer(),
-              SizedBox(
-                width: 30,
-                height: 30,
-                child: coloration.resourceLogo(),
-              ),
-            ],
+          const Spacer(),
+          SizedBox(
+            width: 40,
+            height: 40,
+            child: coloration.resourceLogo(),
           ),
           const SizedBox(height: 20.0),
-          const DividerElement(),
+          HeadingTwoText(
+              "I'm ${resourceValues.name}", decorationPriority.standard),
           const SizedBox(height: 20.0),
           HeadingOneText(
-              resourceValues.mission ?? "", decorationPriority.standard)
+              resourceValues.mission ?? "", decorationPriority.standard),
+          const Spacer(),
         ]);
 
     Image homeScreenOverlay = palette.brightness() == Brightness.light
@@ -91,37 +87,36 @@ class _LandingPageViewState extends State<LandingPageView> {
     );
 
     Container mobilePageFooter = Container(
-        width: screenSize.width,
-        decoration: BoxDecoration(
-            color: coloration
-                .decorationColor(
-                    decorationVariant: decorationPriority.important)
-                .withOpacity(0.85),
-            border: Border(
-                top:
-                    BorderSide(color: coloration.inactiveColor(), width: 1.0))),
-        child: Padding(
-          padding: EdgeInsets.all(
-              size.widthOf(weight: sizingWeight.w0, area: screenSize)),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                BodyOneText(
-                    '${resourceValues.name} is run by ${resourceValues.developerName}',
-                    decorationPriority.standard),
-                const SizedBox(height: 15, width: 30.0),
-                widget.onGiveFeedback != null
-                    ? SmolButtonElement(
-                        decorationVariant: decorationPriority.standard,
-                        buttonTitle: 'Give Feedback',
-                        buttonHint: 'Opens the place to give feedback.',
-                        buttonAction: () => {})
-                    : const SizedBox(width: 10.0),
-                const SizedBox(width: 30.0),
-              ]),
-        ));
+      width: screenSize.width,
+      decoration: BoxDecoration(
+          color: coloration
+              .decorationColor(decorationVariant: decorationPriority.important)
+              .withOpacity(0.85),
+          border: Border(
+              top: BorderSide(color: coloration.inactiveColor(), width: 1.0))),
+      child: Padding(
+        padding: EdgeInsets.all(
+            size.widthOf(weight: sizingWeight.w0, area: screenSize)),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              BodyOneText(
+                  '${resourceValues.name} is run by ${resourceValues.developerName}',
+                  decorationPriority.standard),
+              const SizedBox(height: 15, width: 30.0),
+              widget.onGiveFeedback != null
+                  ? SmolButtonElement(
+                      decorationVariant: decorationPriority.standard,
+                      buttonTitle: 'Give Feedback',
+                      buttonHint: 'Opens the place to give feedback.',
+                      buttonAction: () => {})
+                  : const SizedBox(width: 10.0),
+              const SizedBox(width: 30.0),
+            ]),
+      ),
+    );
 
     Container webPageFooter = Container(
         width: screenSize.width,
@@ -224,13 +219,11 @@ class _LandingPageViewState extends State<LandingPageView> {
 
     var halfGlassPane = FloatingContainerElement(
       child: Container(
-        height: size.isDesktopDisplay(screenSize)
-            ? screenSize.height * 0.33
-            : screenSize.height * 0.50,
-        width: screenSize.width,
+        height: screenSize.height,
+        width: screenSize.width * 0.50,
         decoration: ButtonBackingDecoration(
           variant: buttonDecorationVariants.edgedRectangle,
-          decorationVariant: decorationPriority.inactive,
+          decorationVariant: decorationPriority.standard,
         ).buildBacking(),
       ),
     );
@@ -253,7 +246,7 @@ class _LandingPageViewState extends State<LandingPageView> {
           height: screenSize.height,
           child: Stack(
             children: [
-              Align(alignment: Alignment.bottomCenter, child: halfGlassPane),
+              Align(alignment: Alignment.centerLeft, child: halfGlassPane),
               size.isDesktopDisplay(screenSize) ? webView : mobileView,
             ],
           ),

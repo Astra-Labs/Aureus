@@ -1,7 +1,7 @@
 ## 0.0.19
 - Making some items on the OnboardingLandingView more optional
 - Updating some widget switches
-- 
+- Changing the orientation of the ugly glass sheet that was on our landing page
 
 ## 0.0.18
 - Adding new DataAccess to represent gallery storage for Verena 
