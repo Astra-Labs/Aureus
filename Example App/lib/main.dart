@@ -135,7 +135,22 @@ void main() {
         ),
       ],
     ),
-    onboardingLanding: OnboardingLandingView(),
+    onboardingLanding: OnboardingLandingView(
+      actionButtons: [
+        StandardIconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: "",
+            buttonIcon: Icons.abc,
+            buttonHint: "Yoot.",
+            buttonAction: () => {}),
+        StandardIconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: "",
+            buttonIcon: Icons.abc,
+            buttonHint: "Yeet.",
+            buttonAction: () => {}),
+      ],
+    ),
     onboardingDemo: OnboardingDemoView(
       toolItems: [
         testingTool,
@@ -152,7 +167,22 @@ void main() {
       usernameTextController: textEditor,
       passwordTextController: textEditor,
     ),
-    signUp: OnboardingLandingView(),
+    signUp: OnboardingLandingView(
+      actionButtons: [
+        StandardIconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: "",
+            buttonIcon: Icons.abc,
+            buttonHint: "Yoot.",
+            buttonAction: () => {}),
+        StandardIconButtonElement(
+            decorationVariant: decorationPriority.standard,
+            buttonTitle: "",
+            buttonIcon: Icons.abc,
+            buttonHint: "Yeet.",
+            buttonAction: () => {}),
+      ],
+    ),
     helpCenter: HelpCenterView(helpCenter: helpCenterTest),
     contactSupport: HelpCenterView(helpCenter: helpCenterTest),
   );

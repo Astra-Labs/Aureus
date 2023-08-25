@@ -96,7 +96,22 @@ class viewMetaData {
 class exampleAppViews {
   // ONBOARDING --------------------------------
 
-  var onboardingLandingView = OnboardingLandingView();
+  var onboardingLandingView = OnboardingLandingView(
+    actionButtons: [
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: "",
+          buttonIcon: Icons.abc,
+          buttonHint: "Yoot.",
+          buttonAction: () => {}),
+      StandardIconButtonElement(
+          decorationVariant: decorationPriority.standard,
+          buttonTitle: "",
+          buttonIcon: Icons.abc,
+          buttonHint: "Yeet.",
+          buttonAction: () => {}),
+    ],
+  );
   var onboardingDemoView = OnboardingDemoView(toolItems: []);
   var onboardingInformationView = OnboardingInformationView(
     onboardingDetails: [onboardingInfo1, onboardingInfo2, onboardingInfo3],
