@@ -35,13 +35,14 @@ class LandingPageView extends StatefulWidget {
   /// open an email.
   final VoidCallback? onGiveFeedback;
 
-  const LandingPageView(
-      {required this.lightModeLandscapeBacking,
-      required this.darkModeLandscapeBacking,
-      required this.lightModeUIOverlay,
-      required this.darkModeUIOverlay,
-      required this.actionButtons,
-      this.onGiveFeedback});
+  const LandingPageView({
+    required this.lightModeLandscapeBacking,
+    required this.darkModeLandscapeBacking,
+    required this.lightModeUIOverlay,
+    required this.darkModeUIOverlay,
+    required this.actionButtons,
+    this.onGiveFeedback,
+  });
 
   @override
   _LandingPageViewState createState() => _LandingPageViewState();
@@ -223,7 +224,7 @@ class _LandingPageViewState extends State<LandingPageView> {
         width: screenSize.width * 0.50,
         decoration: ButtonBackingDecoration(
           variant: buttonDecorationVariants.edgedRectangle,
-          decorationVariant: decorationPriority.standard,
+          decorationVariant: decorationPriority.inactive,
         ).buildBacking(),
       ),
     );

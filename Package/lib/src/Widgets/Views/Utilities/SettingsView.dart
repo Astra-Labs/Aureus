@@ -56,6 +56,10 @@ class _SettingsViewState extends State<SettingsView> {
           case SettingItemType.standardSwitchCard:
             child = sectionItem.standardSwitchCard!;
             break;
+
+          case SettingItemType.futureBuilder:
+            child = sectionItem.futureBuilder!;
+            break;
         }
 
         sectionChildren.add(

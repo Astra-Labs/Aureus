@@ -1,4 +1,5 @@
 import 'package:aureus/aureus.dart';
+import 'package:flutter/material.dart';
 
 /// {@category Objects}
 /// {@image <image alt='' src=''>}
@@ -21,6 +22,7 @@ enum SettingItemType {
   standardSwitchCard,
   standardButton,
   standardIconButton,
+  futureBuilder,
 }
 
 /// An item that's linked to a button, or a switch. This makes up the content of
@@ -40,6 +42,8 @@ class SettingItem {
   /// A standard icon button to act on.
   StandardIconButtonElement? standardIconButton;
 
+  FutureBuilder? futureBuilder;
+
   SettingItem.standardSwitchCard(
       {required this.standardSwitchCard,
       this.itemType = SettingItemType.standardSwitchCard})
@@ -54,4 +58,9 @@ class SettingItem {
       {required this.standardIconButton,
       this.itemType = SettingItemType.standardIconButton})
       : assert(standardIconButton != null);
+
+  SettingItem.futureBuilder(
+      {required this.futureBuilder,
+      this.itemType = SettingItemType.futureBuilder})
+      : assert(futureBuilder != null);
 }

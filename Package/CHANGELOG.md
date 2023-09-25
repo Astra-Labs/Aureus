@@ -1,5 +1,7 @@
 ## 0.0.20
 - Adding a FutureBuilder component to the settings item so a setting can be linked to an async action
+- Removing mandatory widgets from the AureusNavigationTree so 
+people can use it for leaner applications in the future. 
 
 ## 0.0.19
 - Making some items on the OnboardingLandingView more optional
