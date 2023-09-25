@@ -17,7 +17,11 @@ class SettingSection {
       : assert(sectionTitle != '' && sectionItems.length >= 1);
 }
 
-enum SettingItemType { standardSwitchCard, standardButton, standardIconButton }
+enum SettingItemType {
+  standardSwitchCard,
+  standardButton,
+  standardIconButton,
+}
 
 /// An item that's linked to a button, or a switch. This makes up the content of
 /// a [SettingSection]

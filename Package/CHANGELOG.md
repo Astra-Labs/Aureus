@@ -1,3 +1,6 @@
+## 0.0.20
+- Adding a FutureBuilder component to the settings item so a setting can be linked to an async action
+
 ## 0.0.19
 - Making some items on the OnboardingLandingView more optional
 - Updating some widget switches

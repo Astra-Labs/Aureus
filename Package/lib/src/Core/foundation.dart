@@ -151,47 +151,47 @@ class AureusInformation {
 
 class AureusNavigationTree {
   /// A splash screen with what users first see.
-  final Widget splashScreen;
+  final Widget? splashScreen;
 
   /// The entry point into your software.
   final Widget homeScreen;
 
   /// A sign up screen
-  final Widget signUp;
+  final Widget? signUp;
 
   /// A sign in screen.
-  final Widget signIn;
+  final Widget? signIn;
 
   /// Where your settings are.
-  final Widget settings;
+  final Widget? settings;
 
   /// Where your users land for onboarding. (For use in [OnboardingLandingView])
-  final Widget onboardingLanding;
+  final Widget? onboardingLanding;
 
   /// The entry point into your software. (For use in [OnboardingLandingView])
-  final Widget onboardingInformation;
+  final Widget? onboardingInformation;
 
   ///  The entry point into your software. (For use in [OnboardingLandingView])
-  final Widget onboardingDemo;
+  final Widget? onboardingDemo;
 
   /// A templated help center that addresses common questions / concerns from users.
-  final Widget helpCenter;
+  final Widget? helpCenter;
 
   ///  A 'contact us' page or form (if you have programmed one).
   ///  If this is blank, Aureus will default to sending people to your support email.
-  final Widget contactSupport;
+  final Widget? contactSupport;
 
   const AureusNavigationTree(
-      {required this.splashScreen,
+      {this.splashScreen,
       required this.homeScreen,
-      required this.settings,
-      required this.onboardingLanding,
-      required this.onboardingDemo,
-      required this.onboardingInformation,
-      required this.signIn,
-      required this.signUp,
-      required this.helpCenter,
-      required this.contactSupport});
+      this.settings,
+      this.onboardingLanding,
+      this.onboardingDemo,
+      this.onboardingInformation,
+      this.signIn,
+      this.signUp,
+      this.helpCenter,
+      this.contactSupport});
 }
 
 /*--------- AUREUS VALUE MAP ----------*/
