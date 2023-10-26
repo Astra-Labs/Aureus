@@ -24,11 +24,12 @@ class StandardSwitchCardElement extends StatefulWidget {
   /// Whether or not a card is switched on.
   bool isSwitchEnabled = false;
 
-  StandardSwitchCardElement(
-      {required this.cardLabel,
-      required this.onEnable,
-      required this.onDisable,
-      this.isSwitchEnabled = false});
+  StandardSwitchCardElement({
+    required this.cardLabel,
+    required this.onEnable,
+    required this.onDisable,
+    this.isSwitchEnabled = false,
+  });
 
   @override
   _StandardSwitchCardElementState createState() =>
@@ -80,8 +81,14 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
                               widget.cardLabel, decorationPriority.standard),
                         ),
                         SwitchComponent(
-                          widget.onEnable,
-                          widget.onDisable,
+                          () {
+                            widget.onEnable();
+                            toggleSwitch(true);
+                          },
+                          () {
+                            widget.onDisable();
+                            toggleSwitch(false);
+                          },
                           isSwitchEnabled: widget.isSwitchEnabled,
                         )
                       ]),

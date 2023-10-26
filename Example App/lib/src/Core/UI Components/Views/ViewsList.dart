@@ -100,13 +100,13 @@ class exampleAppViews {
     actionButtons: [
       StandardIconButtonElement(
           decorationVariant: decorationPriority.standard,
-          buttonTitle: "",
+          buttonTitle: "Hi!",
           buttonIcon: Icons.abc,
           buttonHint: "Yoot.",
           buttonAction: () => {}),
       StandardIconButtonElement(
           decorationVariant: decorationPriority.standard,
-          buttonTitle: "",
+          buttonTitle: "Yo!",
           buttonIcon: Icons.abc,
           buttonHint: "Yeet.",
           buttonAction: () => {}),

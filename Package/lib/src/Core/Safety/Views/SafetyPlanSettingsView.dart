@@ -1,7 +1,4 @@
-import 'package:aureus/aureus.dart';
-
-/// @nodoc
-import 'package:flutter/material.dart';
+part of aureus_safety_plan;
 
 /// {@category Widgets}
 /// {@subCategory Views}
@@ -19,35 +16,46 @@ class SafetyPlanSettingsView extends StatefulWidget {
 }
 
 class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
-  Safety productSafetyObject = const Safety(
-      frequencyUsage: SafetyPlanFrequency.singleUse,
-      eligiblePlanOptions: [
-        SafetyPlanOptions.disableNotifications,
-        SafetyPlanOptions.failedPasscodeDataDeletion
-      ]);
+  late Safety safetyObject;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (resourceValues.safetySettings?.eligiblePlanOptions == null) {}
+  }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> eligibleOptionCards = [];
 
-    for (var element in productSafetyObject.eligiblePlanOptions) {
-      eligibleOptionCards.add(Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
-        child: StandardSwitchCardElement(
-            onEnable: () => {},
-            onDisable: () => {},
-            cardLabel: Safety.detailMetaData.retrieveDetails(element).name),
-      ));
+    for (var element in resourceValues.safetySettings!.eligiblePlanOptions) {
+      eligibleOptionCards.add(
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
+          child: StandardSwitchCardElement(
+            isSwitchEnabled: true,
+            onEnable: () => {
+              _SafetyPlanStorageLayer()._writeSetting(element, true),
+            },
+            onDisable: () => {
+              _SafetyPlanStorageLayer()._writeSetting(element, false),
+            },
+            cardLabel: Safety.detailMetaData.retrieveDetails(element).name,
+          ),
+        ),
+      );
     }
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,
       children: [
         PageHeaderElement.withExit(
-            pageTitle: 'Safety Plan Settings',
-            onPageExit: () => {
-                  Navigator.pop(context),
-                }),
+          pageTitle: 'Safety Plan Settings',
+          onPageExit: () => {
+            Navigator.pop(context),
+          },
+        ),
         Column(
           children: eligibleOptionCards,
         ),

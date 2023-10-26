@@ -1,3 +1,11 @@
+## 0.0.21
+- Removed the additional info button on settings page
+- Adding a check of navigation tree to see if help center is set before showing button
+- More reworking of example app
+- Reworked the safety file structure to be clearer so it's not just in one file
+- Fixed toggle switch bug and more state bugs within SafetyPlan views 
+- Added renderer reminder to README regarding the foresaken icon rendering issues 
+
 ## 0.0.20
 - Adding a FutureBuilder component to the settings item so a setting can be linked to an async action
 - Removing mandatory widgets from the AureusNavigationTree so 
