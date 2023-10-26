@@ -23,7 +23,7 @@ packages:
       path: "/Users/amandasouthworth/Desktop/astra/Aureus/Package"
       relative: false
     source: path
-    version: "0.0.18"
+    version: "0.0.21"
   boolean_selector:
     dependency: transitive
     description:

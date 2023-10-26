@@ -91,17 +91,7 @@ class _SettingsViewState extends State<SettingsView> {
       settingRows.add(sectionColumn);
     }
 
-    var standardButtonElement = StandardButtonElement(
-        decorationVariant: decorationPriority.standard,
-        buttonTitle:
-            'learn more about ${packageVariables!.resourceInformation.name}.',
-        buttonHint:
-            "Shows terms of service, licenses, developer information, and more.",
-        buttonAction: () => {
-              showAboutDialog(context: context),
-            });
-
-    var standardButtonElement2 = StandardButtonElement(
+    var safetyPlanSettingsButton = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
         buttonTitle: 'modify Safety Plan settings.',
         buttonHint: "Takes you to modify your safety plan.",
@@ -113,7 +103,7 @@ class _SettingsViewState extends State<SettingsView> {
                   )),
             });
 
-    var standardButtonElement3 = StandardButtonElement(
+    var helpCenterButton = StandardButtonElement(
         decorationVariant: decorationPriority.standard,
         buttonTitle: 'Use the help center.',
         buttonHint:
@@ -139,11 +129,11 @@ class _SettingsViewState extends State<SettingsView> {
           const SizedBox(height: 20.0),
           const TabSubheaderElement(title: 'I want to'),
           const SizedBox(height: 20.0),
-          standardButtonElement3,
+          safetyPlanSettingsButton,
           const SizedBox(height: 10.0),
-          standardButtonElement2,
-          const SizedBox(height: 10.0),
-          standardButtonElement
+          resourceValues.navigation?.helpCenter == null
+              ? helpCenterButton
+              : const SizedBox(height: 1),
         ]);
 
     return ContainerView(

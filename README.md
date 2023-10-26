@@ -1,7 +1,5 @@
 # Meet Aureus
-#### Open-source design system library for user-safety critical applications (in beta)
-
-![Aureus Demo Image](https://static1.squarespace.com/static/5d2619b3e3281d0001fef721/t/64cd55bab9efe5389c6b717a/1691178434185/AureusDemoVideo.png)
+#### (In beta) open-source design system library for user safety critical applications.
 
 [![Hippocratic License HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV](https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-CL-ECO-EXTR-FFD-MEDIA-MIL-SOC-SV&labelColor=5e2751&color=bc8c3d)](https://firstdonoharm.dev/version/3/0/cl-eco-extr-ffd-media-mil-soc-sv.html)
 
@@ -10,12 +8,6 @@ Meet Aureus, a privacy, accessibility, and safety-focused design system built in
 Originally developed for internal use at Astra Labs, Aureus is designed to quickly build quality software that serves vulnerable communities. In our years of developing at Astra, we've run into crucial problems designing for specifically at-risk populations.
 
 When you're working in tough / crisis situations, a lot of industry design patterns do not truly take into account the fragility and level of caution required. Our goal is to help build some insight into how our resources work, and to hopefully be a good example of scalable, high-impact, and ethical software.
-
-#### See Aureus in action at: 
-* [Aureus' Example App](https://withaureus.org/)
-* [Everine - A non-profit resource DB](https://witheverine.org/)
-* [Aetheria Landing Page](https://withaetheria.org/)
-* [Verena Landing Page](https://withverena.org/)
 
 ---------------------
 
@@ -134,6 +126,16 @@ void main() {
  runApp(AureusTestApp());
 }
 
+```
+
+---------------------
+
+## Web Builds
+
+Note: If you are building a web app using Aureus, a current bug prevents icons from rendering on Desktop if you do not specify a renderer. If you would like to use the built-in icons with Aureus, please specify the renderer as HTML to make sure everything loads. 
+
+```
+flutter build web --web-renderer html
 ```
 
 ---------------------

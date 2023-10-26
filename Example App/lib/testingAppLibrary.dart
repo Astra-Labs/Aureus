@@ -5,7 +5,6 @@ import 'package:aureus/aureus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/main.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 // EXPORTS (owo) ->
 export 'package:aureus/aureus.dart';

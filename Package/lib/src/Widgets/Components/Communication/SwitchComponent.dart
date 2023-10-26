@@ -16,18 +16,25 @@ class SwitchComponent extends StatefulWidget {
   VoidCallback? onEnable;
   VoidCallback? onDisable;
 
-  SwitchComponent(this.onEnable, this.onDisable,
-      {this.isSwitchEnabled = false});
+  SwitchComponent(
+    this.onEnable,
+    this.onDisable, {
+    this.isSwitchEnabled = false,
+  });
 
   @override
   _SwitchComponentState createState() => _SwitchComponentState();
 }
 
 class _SwitchComponentState extends State<SwitchComponent> {
+  bool isOn = false;
+
   @override
   void initState() {
     sensation.prepare();
     super.initState();
+
+    isOn = widget.isSwitchEnabled;
   }
 
   @override
@@ -37,22 +44,23 @@ class _SwitchComponentState extends State<SwitchComponent> {
   }
 
   void toggleSwitch(bool value) {
-    if (widget.isSwitchEnabled == false) {
-      if (widget.onEnable != null) {
-        widget.onEnable!();
-      }
+    setState(() {
+      widget.isSwitchEnabled = value;
+      isOn = value;
+    });
+
+    if (value == true) {
       setState(() {
-        widget.isSwitchEnabled = true;
-        //uses the sensory library to make an enabled noise.
+        if (widget.onEnable != null) {
+          widget.onEnable!();
+        }
         sensation.createSensation(sensationType.enable);
       });
-    } else {
-      if (widget.onDisable != null) {
-        widget.onDisable!();
-      }
+    } else if (value == false) {
       setState(() {
-        widget.isSwitchEnabled = false;
-        //uses the sensory library to make an disable noise.
+        if (widget.onDisable != null) {
+          widget.onDisable!();
+        }
         sensation.createSensation(sensationType.disable);
       });
     }
@@ -61,8 +69,10 @@ class _SwitchComponentState extends State<SwitchComponent> {
   @override
   Widget build(BuildContext context) {
     return Switch(
-      onChanged: toggleSwitch,
-      value: widget.isSwitchEnabled,
+      onChanged: (bool value) {
+        toggleSwitch(value);
+      },
+      value: isOn,
       activeColor: coloration.contrastColor(),
       activeTrackColor: coloration.accentColor(),
       inactiveThumbColor: coloration.accentColor(),

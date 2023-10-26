@@ -1,13 +1,17 @@
 library aureus_safety_plan;
 
-/// @nodoc
 import 'package:flutter/material.dart';
-
-/// {@category Safety}
-
 import 'package:aureus/aureus.dart';
 import 'package:perichron/perichron.dart';
 
-part 'safetyOptionsDetails.dart';
-part 'safetyPlanLogic.dart';
-part 'safetyPlanEnums.dart';
+part 'Views/PlanModificationLoadingView.dart';
+part 'Views/SafetyPlanFunctionalityView.dart';
+part 'Views/SafetyPlanSettingsView.dart';
+
+part 'Objects/SafetyPlanFallback.dart';
+part 'Objects/SafetyPlanObject.dart';
+
+part 'Metadata/SafetyPlanEnums.dart';
+part 'Metadata/SafetyOptionsDetails.dart';
+
+part 'SafetyLogic.dart';

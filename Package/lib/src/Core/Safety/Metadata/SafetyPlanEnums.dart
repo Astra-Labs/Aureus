@@ -46,3 +46,15 @@ enum SafetyPlanOptions {
   /// keeps track of all of the failed log in attempts for the user to review.
   logFailedAttempts
 }
+
+/// An enum for you to choose a fallback option if the user's safety plan
+/// settings are violated
+
+enum SafetyFallBackOptions {
+  /// Shows an alert controller telling the user an action cannot be completed
+  /// because of their settings
+  errorController,
+
+  /// Runs an alternate piece of code
+  alternateCode
+}

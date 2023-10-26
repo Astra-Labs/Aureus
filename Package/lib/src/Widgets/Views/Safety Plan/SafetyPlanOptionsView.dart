@@ -25,6 +25,24 @@ class SafetyPlanOptionsView extends StatefulWidget {
 class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
   List<SafetyPlanOptions> userSelectedOptions = [];
 
+  void editElement(bool add, SafetyPlanOptions element) {
+    if (add == true) {
+      setState(
+        () {
+          userSelectedOptions.add(element);
+        },
+      );
+    } else {
+      if (userSelectedOptions.contains(element) == true) {
+        setState(
+          () {
+            userSelectedOptions.remove(element);
+          },
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     List<StandardSwitchCardElement> eligibleOptionCards = [];
@@ -32,14 +50,16 @@ class _SafetyPlanOptionsViewState extends State<SafetyPlanOptionsView> {
     var safety = resourceValues.safetySettings!;
 
     for (var element in safety.eligiblePlanOptions) {
-      eligibleOptionCards.add(StandardSwitchCardElement(
-          onEnable: () => {
-                userSelectedOptions.add(element),
-              },
-          onDisable: () => {
-                userSelectedOptions.remove(element),
-              },
-          cardLabel: Safety.detailMetaData.retrieveDetails(element).name));
+      eligibleOptionCards.add(
+        StandardSwitchCardElement(
+            onEnable: () => {
+                  editElement(true, element),
+                },
+            onDisable: () => {
+                  editElement(false, element),
+                },
+            cardLabel: Safety.detailMetaData.retrieveDetails(element).name),
+      );
     }
 
     var align = Align(

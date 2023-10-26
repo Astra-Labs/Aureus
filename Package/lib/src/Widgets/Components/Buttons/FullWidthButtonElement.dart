@@ -39,6 +39,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   late Animation _gradient1;
   late Animation _gradient2;
   late decorationPriority buttonPriority;
+  var opacity = 0.0;
 
   AureusStylization currentStyle = palette.brightness() == Brightness.light
       ? packageVariables!.resourceBranding.lightModeStyle
@@ -48,6 +49,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
   void initState() {
     buttonPriority = widget.currentVariant;
 
+    opacity = 1.0;
     sensation.prepare();
 
     _controller =
@@ -79,6 +81,7 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
 
   @override
   void dispose() {
+    opacity = 0.0;
     _controller.dispose();
     sensation.dispose();
     super.dispose();
@@ -147,7 +150,10 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
           label: widget.buttonTitle,
           hint: widget.buttonHint,
           isMutuallyExclusive: false),
-      child: fullWidthButtonInteractor,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 5000),
+        child: Opacity(opacity: opacity, child: fullWidthButtonInteractor),
+      ),
     );
   }
 }

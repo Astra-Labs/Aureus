@@ -130,6 +130,16 @@ void main() {
 
 ---------------------
 
+## Web Builds
+
+Note: If you are building a web app using Aureus, a current bug prevents icons from rendering on Desktop if you do not specify a renderer. If you would like to use the built-in icons with Aureus, please specify the renderer as HTML to make sure everything loads. 
+
+```
+flutter build web --web-renderer html
+```
+
+---------------------
+
 ## Links
 
 * [You can find Aureus' example app running here](https://withaureus.org/)

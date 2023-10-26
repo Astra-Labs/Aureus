@@ -2,7 +2,7 @@ import 'testingAppLibrary.dart';
 
 void main() {
   var resourceBranding = AureusBranding(
-      fontFamily: 'Exo 2',
+      fontFamily: 'Exo',
       lightModeStyle: AureusStylization(
           contrastGradient: LinearGradient(colors: [
             Color.fromRGBO(26, 28, 45, 1.0),
@@ -139,13 +139,13 @@ void main() {
       actionButtons: [
         StandardIconButtonElement(
             decorationVariant: decorationPriority.standard,
-            buttonTitle: "",
+            buttonTitle: "YEE HAW",
             buttonIcon: Icons.abc,
             buttonHint: "Yoot.",
             buttonAction: () => {}),
         StandardIconButtonElement(
             decorationVariant: decorationPriority.standard,
-            buttonTitle: "",
+            buttonTitle: "HEEEE",
             buttonIcon: Icons.abc,
             buttonHint: "Yeet.",
             buttonAction: () => {}),

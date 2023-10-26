@@ -4,16 +4,16 @@ library aureus;
 /* Where the widgets that Aureus builds from the objects are contained */
 
 export 'src/Core/foundation.dart';
-export 'src/Core/accessibility.dart';
-export 'src/Core/coloration.dart';
-export 'src/Core/Safety/safetyLib.dart';
+export 'src/Core/Foundation/accessibility.dart';
+export 'src/Core/Foundation/UI/coloration.dart';
+export 'src/Core/Safety/SafetyLib.dart';
 
-export 'src/Core/Foundation/animation.dart';
-export 'src/Core/Foundation/palette.dart';
-export 'src/Core/Foundation/sensory.dart';
-export 'src/Core/Foundation/sizing.dart';
-export 'src/Core/Foundation/text.dart';
-export 'src/Core/Foundation/decorations.dart';
+export 'src/Core/Foundation/UI/animation.dart';
+export 'src/Core/Foundation/UI/palette.dart';
+export 'src/Core/Foundation/UI/sensory.dart';
+export 'src/Core/Foundation/UI/sizing.dart';
+export 'src/Core/Foundation/UI/text.dart';
+export 'src/Core/Foundation/UI/decorations.dart';
 export 'src/Core/Foundation/enums.dart';
 
 /* ------------------ OBJECTS -------------------- */
@@ -177,7 +177,6 @@ export 'src/Widgets/Views/Misc/PoetryGradientView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptionsView.dart';
 export 'src/Widgets/Views/Safety Plan/SafetyPlanLogInAuditView.dart';
-export 'src/Widgets/Views/Safety Plan/SafetyPlanSettingsView.dart';
 
 // -------------------------- Tool Library
 export 'src/Widgets/Views/Tool Library/ToolDetailView.dart';
