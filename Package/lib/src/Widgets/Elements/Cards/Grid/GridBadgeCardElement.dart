@@ -20,10 +20,14 @@ class GridBadgeCardElement extends StatelessWidget {
   /// An icon that describes the card.
   final IconData cardIcon;
 
-  const GridBadgeCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.cardIcon});
+  VoidCallback? onTap;
+
+  GridBadgeCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.cardIcon,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +74,20 @@ class GridBadgeCardElement extends StatelessWidget {
           )),
     );
 
-    return gridBadgeContainer;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: GestureDetector(
+              onTap: () => {
+                onTap!(),
+              },
+              child: gridBadgeContainer,
+            ))
+        : gridBadgeContainer;
   }
 }

@@ -23,11 +23,15 @@ class DetailBadgeCardElement extends StatelessWidget {
   /// An icon that describes the card.
   final IconData cardIcon;
 
-  const DetailBadgeCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.cardBody,
-      required this.cardIcon});
+  VoidCallback? onTap;
+
+  DetailBadgeCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.cardBody,
+    required this.cardIcon,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +64,20 @@ class DetailBadgeCardElement extends StatelessWidget {
               padding: const EdgeInsets.all(13.0), child: detailBadgeContent)),
     );
 
-    return detailBadgeContainer;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: GestureDetector(
+              onTap: () => {
+                onTap!(),
+              },
+              child: detailBadgeContainer,
+            ))
+        : detailBadgeContainer;
   }
 }

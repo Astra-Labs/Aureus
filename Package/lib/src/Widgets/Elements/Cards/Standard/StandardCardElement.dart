@@ -17,8 +17,13 @@ class StandardCardElement extends StatelessWidget {
   /// The text for the main header of the card.
   final String cardLabel;
 
-  StandardCardElement(
-      {required this.decorationVariant, required this.cardLabel});
+  VoidCallback? onTap;
+
+  StandardCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,19 +49,20 @@ class StandardCardElement extends StatelessWidget {
           )),
     );
 
-    var focusContent = Focus(
-        onFocusChange: (inFocus) => {
-              if (inFocus == true)
-                {
-                  decorationVariant = decorationPriority.important,
-                }
-              else
-                {
-                  decorationVariant = decorationPriority.standard,
-                }
-            },
-        child: standardCardContainer);
-
-    return focusContent;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: GestureDetector(
+              onTap: () => {
+                onTap!(),
+              },
+              child: standardCardContainer,
+            ))
+        : standardCardContainer;
   }
 }

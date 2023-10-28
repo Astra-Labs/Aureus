@@ -63,36 +63,38 @@ class _StandardSwitchCardElementState extends State<StandardSwitchCardElement> {
       padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
       child: FloatingContainerElement(
         child: SizedBox(
-            width: size.layoutItemWidth(1, screenSize),
-            height: minimumLabelTextSize.height * 3,
-            child: Container(
-                decoration: LayerBackingDecoration(
-                        decorationVariant: decorationPriority.inactive)
-                    .buildBacking(),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Flexible(
-                          child: BodyOneText(
-                              widget.cardLabel, decorationPriority.standard),
-                        ),
-                        SwitchComponent(
-                          () {
-                            widget.onEnable();
-                            toggleSwitch(true);
-                          },
-                          () {
-                            widget.onDisable();
-                            toggleSwitch(false);
-                          },
-                          isSwitchEnabled: widget.isSwitchEnabled,
-                        )
-                      ]),
-                ))),
+          width: size.layoutItemWidth(1, screenSize),
+          height: minimumLabelTextSize.height * 3,
+          child: Container(
+            decoration: LayerBackingDecoration(
+                    decorationVariant: decorationPriority.inactive)
+                .buildBacking(),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Flexible(
+                      child: BodyOneText(
+                          widget.cardLabel, decorationPriority.standard),
+                    ),
+                    SwitchComponent(
+                      () {
+                        widget.onEnable();
+                        toggleSwitch(true);
+                      },
+                      () {
+                        widget.onDisable();
+                        toggleSwitch(false);
+                      },
+                      isSwitchEnabled: widget.isSwitchEnabled,
+                    )
+                  ]),
+            ),
+          ),
+        ),
       ),
     );
   }

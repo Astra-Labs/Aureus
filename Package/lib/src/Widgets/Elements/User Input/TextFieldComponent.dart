@@ -93,6 +93,14 @@ class StandardTextFieldComponent extends StatelessWidget {
       ),
     );
 
-    return container;
+    return isEnabled == true
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.textField(
+              label: hintText,
+              hint: hintText,
+              isEditable: isEnabled,
+            ),
+            child: container)
+        : container;
   }
 }

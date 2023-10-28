@@ -25,11 +25,15 @@ class ComplexCardElement extends StatelessWidget {
   /// A carousel that provides metadata about something.
   final Map<String, IconData> cardDetailCarousel;
 
-  const ComplexCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.cardBody,
-      required this.cardDetailCarousel});
+  VoidCallback? onTap;
+
+  ComplexCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.cardBody,
+    required this.cardDetailCarousel,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +66,20 @@ class ComplexCardElement extends StatelessWidget {
                 padding: const EdgeInsets.all(13.0),
                 child: complexCardContent)));
 
-    return complexCardContainer;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: GestureDetector(
+              onTap: () => {
+                onTap!(),
+              },
+              child: complexCardContainer,
+            ))
+        : complexCardContainer;
   }
 }

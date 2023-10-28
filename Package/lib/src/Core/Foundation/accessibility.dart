@@ -55,6 +55,16 @@ class SemanticsWrapper extends SemanticsProperties {
       : assert(label != ""),
         super(label: label, header: true, readOnly: true);
 
+  SemanticsWrapper.card({
+    required isEnabled,
+    required label,
+  })  : assert(isEnabled != null && label != ""),
+        super(
+          label: label,
+          enabled: isEnabled,
+          focusable: isEnabled,
+        );
+
   /// Wrapper that governs a button
   SemanticsWrapper.button(
       {required this.isEnabled,
@@ -76,19 +86,14 @@ class SemanticsWrapper extends SemanticsProperties {
   /// Wrapper that governs a toggle
   SemanticsWrapper.toggle(
       {required this.isEnabled,
-      required label,
-      required hint,
       required this.isToggled,
       required this.isMutuallyExclusive})
       : assert(isEnabled != null &&
-            hint != "" &&
-            label != "" &&
             isToggled != null &&
             isMutuallyExclusive != null),
         super(
-            label: label,
             enabled: isEnabled,
-            hint: hint,
+            hint: "Enables and disables toggle",
             toggled: isToggled,
             focusable: isEnabled,
             inMutuallyExclusiveGroup: isMutuallyExclusive);
@@ -104,22 +109,17 @@ class SemanticsWrapper extends SemanticsProperties {
             focusable: true);
 
   /// Wrapper that governs a text field with one line
-  SemanticsWrapper.textField(
-      {required label,
-      required hint,
-      value = 'Blank text field',
-      required this.isEditable,
-      required this.isSelected})
-      : assert(isEditable != null &&
-            hint != "" &&
-            label != "" &&
-            isSelected != null),
+  SemanticsWrapper.textField({
+    required label,
+    required hint,
+    value = 'Blank text field',
+    required this.isEditable,
+  })  : assert(isEditable != null && hint != "" && label != ""),
         super(
             multiline: false,
             label: label,
             enabled: isEditable,
             focusable: isEditable,
-            selected: isSelected,
             readOnly: isEditable == true ? false : true,
             hint: hint,
             value: value);
@@ -129,7 +129,6 @@ class SemanticsWrapper extends SemanticsProperties {
       {required label,
       required hint,
       value = 'Blank text view',
-      required this.isSelected,
       required this.isEditable})
       : assert(isEditable != null && hint != "" && label != ""),
         super(
@@ -137,7 +136,6 @@ class SemanticsWrapper extends SemanticsProperties {
             label: label,
             enabled: isEditable,
             focusable: isEditable,
-            selected: isSelected,
             readOnly: isEditable == true ? false : true,
             hint: hint,
             value: value);

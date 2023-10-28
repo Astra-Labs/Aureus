@@ -54,6 +54,7 @@ class _InteractiveSemanticsWrapperState
       ),
       child: Focus(
         onFocusChange: (focused) {
+          print(focused);
           if (focused == true) {
             showBorder();
           } else {

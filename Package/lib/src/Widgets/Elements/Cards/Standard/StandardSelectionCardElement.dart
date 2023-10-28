@@ -125,8 +125,6 @@ class _StandardSelectionCardElementState
     var semantics = Semantics.fromProperties(
       properties: SemanticsWrapper.toggle(
           isEnabled: widget.isEnabled,
-          label: widget.cardLabel,
-          hint: 'Enables or disables ${widget.cardLabel}',
           isToggled: widget.isCardSelected,
           isMutuallyExclusive: false),
       child: inkWell,
