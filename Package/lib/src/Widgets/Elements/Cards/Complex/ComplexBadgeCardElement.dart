@@ -85,12 +85,11 @@ class ComplexBadgeCardElement extends StatelessWidget {
                   : true,
               label: cardLabel,
             ),
-            child: GestureDetector(
-              onTap: () => {
-                onTap!(),
-              },
-              child: complexBadgeContainer,
-            ))
+            child: complexBadgeContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
         : complexBadgeContainer;
   }
 }

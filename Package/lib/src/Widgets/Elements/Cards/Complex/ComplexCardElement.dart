@@ -74,8 +74,8 @@ class ComplexCardElement extends StatelessWidget {
                   : true,
               label: cardLabel,
             ),
-            child: GestureDetector(
-              onTap: () => {
+            child: UniversalGestureDetector(
+              onDetect: () => {
                 onTap!(),
               },
               child: complexCardContainer,

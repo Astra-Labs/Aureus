@@ -72,8 +72,8 @@ class DetailBadgeCardElement extends StatelessWidget {
                   : true,
               label: cardLabel,
             ),
-            child: GestureDetector(
-              onTap: () => {
+            child: UniversalGestureDetector(
+              onDetect: () => {
                 onTap!(),
               },
               child: detailBadgeContainer,

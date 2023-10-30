@@ -90,12 +90,11 @@ class CategoryIconDetailCardElement extends StatelessWidget {
                   : true,
               label: cardLabel,
             ),
-            child: GestureDetector(
-              onTap: () => {
-                onTap!(),
-              },
-              child: categoryIconDetailContainer,
-            ))
+            child: categoryIconDetailContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
         : categoryIconDetailContainer;
   }
 }

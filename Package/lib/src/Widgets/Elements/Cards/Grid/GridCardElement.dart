@@ -64,12 +64,11 @@ class GridCardElement extends StatelessWidget {
                   : true,
               label: cardLabel,
             ),
-            child: GestureDetector(
-              onTap: () => {
-                onTap!(),
-              },
-              child: gridCardContainer,
-            ))
+            child: gridCardContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
         : gridCardContainer;
   }
 }

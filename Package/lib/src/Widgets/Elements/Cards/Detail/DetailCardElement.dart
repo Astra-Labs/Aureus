@@ -64,12 +64,11 @@ class DetailCardElement extends StatelessWidget {
                   : true,
               label: cardLabel,
             ),
-            child: GestureDetector(
-              onTap: () => {
-                onTap!(),
-              },
-              child: detailCardContainer,
-            ))
+            child: detailCardContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
         : detailCardContainer;
   }
 }

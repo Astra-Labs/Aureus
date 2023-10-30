@@ -81,9 +81,13 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
       ),
     );
 
-    return UniversalGestureDetector(
-      node: FocusNode(),
-      onDetect: () {
+    return InteractiveSemanticsWrapper(
+      properties: SemanticsWrapper.button(
+          isEnabled: true,
+          label: number.toString,
+          hint: 'Inputs $number',
+          isMutuallyExclusive: false),
+      onInteract: () {
         setState(() {
           widget.inputtedCode.add(number);
         });

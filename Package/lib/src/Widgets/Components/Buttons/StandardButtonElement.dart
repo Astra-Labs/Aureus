@@ -87,8 +87,8 @@ class _StandardButtonElementState extends State<StandardButtonElement> {
       ),
     );
 
-    var standardButtonInteractor = GestureDetector(
-        onTap: () {
+    var standardButtonInteractor = UniversalGestureDetector(
+        onDetect: () {
           if (isButtonEnabled == true) {
             createButtonInteraction();
             widget.buttonAction();

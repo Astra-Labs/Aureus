@@ -130,7 +130,10 @@ class _StandardAccordionCardElementState
     return InteractiveSemanticsWrapper(
       properties:
           SemanticsWrapper.card(isEnabled: true, label: widget.cardLabel),
-      child: GestureDetector(onTap: _onItemTapped, child: accordionCard),
+      child: UniversalGestureDetector(
+        onDetect: _onItemTapped,
+        child: accordionCard,
+      ),
     );
   }
 }
