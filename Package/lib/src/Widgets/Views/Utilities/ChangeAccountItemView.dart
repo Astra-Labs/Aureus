@@ -73,7 +73,8 @@ class _ChangeAccountItemViewState extends State<ChangeAccountItemView> {
     var headerText = Row(
       children: [
         HeadingOneText(
-            "Change " + widget.itemTitle, decorationPriority.standard),
+            data: "Change " + widget.itemTitle,
+            textColor: decorationPriority.standard),
         const Spacer(),
         IconButtonElement(
             decorationVariant: decorationPriority.standard,

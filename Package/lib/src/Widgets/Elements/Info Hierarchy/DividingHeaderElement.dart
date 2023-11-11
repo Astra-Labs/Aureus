@@ -29,7 +29,8 @@ class DividingHeaderElement extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          HeadingOneText(headerText, decorationPriority.standard),
+          HeadingOneText(
+              data: headerText, textColor: decorationPriority.standard),
           const SizedBox(height: 10.0),
           BodyOneText(subheaderText, decorationPriority.standard),
           const SizedBox(height: 10.0),

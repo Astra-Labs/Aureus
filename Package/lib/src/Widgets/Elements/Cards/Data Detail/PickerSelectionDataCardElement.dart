@@ -9,14 +9,14 @@ import 'package:flutter/cupertino.dart';
 /// For use with a [DataDetailView], allows the user to read and
 /// write a single selection from a picker of multiple selections.
 
-class TimePickerDataCardElement extends DataDetailCard {
+class PickerDataCardElement extends DataDetailCard {
   /// All options available to a user.
   List<String> allOptions;
 
   /// The string that the user has selected as their choice.
   String? userSelectedOption;
 
-  TimePickerDataCardElement({
+  PickerDataCardElement({
     required dataLabel,
     required onFinishEditing,
     required this.allOptions,

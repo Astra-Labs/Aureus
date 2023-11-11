@@ -68,7 +68,8 @@ class _LandingPageViewState extends State<LandingPageView> {
               "I'm ${resourceValues.name}", decorationPriority.standard),
           const SizedBox(height: 20.0),
           HeadingOneText(
-              resourceValues.mission ?? "", decorationPriority.standard),
+              data: resourceValues.mission ?? "",
+              textColor: decorationPriority.standard),
           const Spacer(),
         ]);
 

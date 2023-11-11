@@ -108,8 +108,9 @@ class _ToolNextStepsViewState extends State<ToolNextStepsView> {
         const Spacer(),
         SizedBox(width: 60.0, height: 60.0, child: coloration.resourceLogo()),
         const SizedBox(height: 20.0),
-        HeadingOneText('You did a great job with ${tool.toolName}',
-            decorationPriority.standard),
+        HeadingOneText(
+            data: 'You did a great job with ${tool.toolName}',
+            textColor: decorationPriority.standard),
         const SizedBox(height: 40.0),
         const DividerElement(),
         const SizedBox(height: 40.0),

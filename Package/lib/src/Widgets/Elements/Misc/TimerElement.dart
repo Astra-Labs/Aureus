@@ -148,7 +148,7 @@ class _TimerElementState extends State<TimerElement>
             ),
           ),
         ),
-        HeadingOneText(timeString, decorationPriority.standard)
+        HeadingOneText(data: timeString, textColor: decorationPriority.standard)
       ]),
     );
 

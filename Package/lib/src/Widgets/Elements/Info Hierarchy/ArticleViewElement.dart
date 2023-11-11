@@ -32,7 +32,7 @@ class ArticleViewElement extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const SizedBox(height: 10.0),
-        HeadingOneText(title, decorationPriority.standard),
+        HeadingOneText(data: title, textColor: decorationPriority.standard),
         const SizedBox(height: 10.0),
         SubheaderText(subheader, decorationPriority.standard),
         const SizedBox(height: 10.0),

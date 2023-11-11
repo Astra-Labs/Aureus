@@ -4,6 +4,7 @@
 - Added a Card semantics wrappers
 - Embedded optional gesture recognizer with focus element within cards 
 - Added SemanticsWrappers to text views and fields
+- Renamed TimePickerDataCardElement to PickerDataCardElement to fix a mistake.
 
 ## 0.0.21
 - Removed the additional info button on settings page

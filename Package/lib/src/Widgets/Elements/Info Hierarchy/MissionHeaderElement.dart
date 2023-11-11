@@ -26,8 +26,10 @@ class MissionHeaderElement extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          HeadingOneText(altTitle != null ? altTitle! : 'How can I help?',
-              decorationPriority.standard),
+          HeadingOneText(
+            data: altTitle != null ? altTitle! : 'How can I help?',
+            textColor: decorationPriority.standard,
+          ),
           const Spacer(),
           SizedBox(
               width: responsiveSize,

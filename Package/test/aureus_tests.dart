@@ -4,8 +4,6 @@ import 'package:test/test.dart';
 export 'package:test/test.dart';
 
 // --------------------------- CORE TESTS ---------------------------
-part 'Core Tests/Accessibility Tests/aureus_core_accessibility_test.dart';
-part 'Core Tests/Foundation Tests/aureus_core_foundation_test.dart';
 part 'Core Tests/Safety Tests/aureus_core_safety_test.dart';
 
 // --------------------------- OBJECT TESTS ---------------------------

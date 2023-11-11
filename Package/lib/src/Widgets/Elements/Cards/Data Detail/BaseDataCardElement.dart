@@ -24,10 +24,11 @@ class BaseDataDetailCard extends StatefulWidget {
   /// What the children of the card are.
   final List<Widget> detailChildren;
 
-  const BaseDataDetailCard(
-      {required this.isBeingEdited,
-      required this.detailLabel,
-      required this.detailChildren});
+  const BaseDataDetailCard({
+    required this.isBeingEdited,
+    required this.detailLabel,
+    required this.detailChildren,
+  });
 
   @override
   _BaseDataDetailCardState createState() => _BaseDataDetailCardState();
@@ -38,29 +39,29 @@ class _BaseDataDetailCardState extends State<BaseDataDetailCard> {
   Widget build(BuildContext context) {
     //checks if widget is actively engaged, and returns proper layout.
     return FloatingContainerElement(
-        child: Container(
-            decoration: CardBackingDecoration(
-                    decorationVariant: widget.isBeingEdited == true
-                        ? decorationPriority.standard
-                        : decorationPriority.inactive)
-                .buildBacking(),
-            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-            child: Center(
-              child: Column(
+      child: Container(
+        decoration: CardBackingDecoration(
+                decorationVariant: widget.isBeingEdited == true
+                    ? decorationPriority.standard
+                    : decorationPriority.inactive)
+            .buildBacking(),
+        padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TagOneText(widget.detailLabel, decorationPriority.standard),
+            const SizedBox(height: 10.0),
+            Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TagOneText(widget.detailLabel, decorationPriority.standard),
-                  const SizedBox(height: 10.0),
-                  Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: widget.detailChildren),
-                  const SizedBox(height: 10.0),
-                ],
-              ),
-            )));
+                children: widget.detailChildren),
+            const SizedBox(height: 10.0),
+          ],
+        ),
+      ),
+    );
   }
 }
