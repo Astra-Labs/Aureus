@@ -75,35 +75,34 @@ class _NavBarComponentState extends State<NavBarComponent> {
 
     var navBarComponent = Positioned(
       bottom: 25,
-      child: ClipRRect(
-        child: FloatingContainerElement(
-            child: Container(
-                constraints: BoxConstraints(
-                    maxWidth: size.layoutItemWidth(1, screenSize)),
-                decoration: CardBackingDecoration(
-                        decorationVariant: decorationPriority.inverted)
-                    .buildBacking()
-                    .copyWith(borderRadius: BorderRadius.circular(60)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 5),
-                    navigationBar,
-                  ],
-                ))),
+      child: Container(
+        constraints:
+            BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inverted)
+            .buildBacking()
+            .copyWith(borderRadius: BorderRadius.circular(60)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 5),
+            navigationBar,
+          ],
+        ),
       ),
     );
 
     var navBarContainer = Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: coloration.primaryImage().image,
-            fit: BoxFit.cover,
-          ),
-        ));
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: coloration.primaryImage().image,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
 
     var navBarScaffold = Scaffold(
       backgroundColor: Colors.transparent,
