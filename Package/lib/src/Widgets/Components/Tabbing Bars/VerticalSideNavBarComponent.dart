@@ -57,7 +57,8 @@ class _VerticalSideNavBarComponentState
       var currentTab = widget.tabItems[currentIndex];
 
       railItems.add(NavigationRailDestination(
-        icon: Icon(currentTab.tabIcon, color: coloration.inactiveColor()),
+        icon: Icon(currentTab.tabIcon,
+            color: coloration.contrastColor().withOpacity(0.4)),
         selectedIcon: Icon(currentTab.tabIcon, color: coloration.accentColor()),
         label: TagOneText(currentTab.tabTitle, decorationPriority.standard),
       ));

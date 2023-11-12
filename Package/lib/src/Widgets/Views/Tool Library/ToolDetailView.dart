@@ -107,7 +107,9 @@ class _ToolDetailViewState extends State<ToolDetailView> {
                     badgeIcon: tool.toolIcon,
                     badgePriority: decorationPriority.important),
                 const SizedBox(height: 15.0),
-                HeadingOneText(tool.toolName, decorationPriority.standard),
+                HeadingOneText(
+                    data: tool.toolName,
+                    textColor: decorationPriority.standard),
                 const SizedBox(height: 40.0),
                 floatingContainerElement,
                 const Spacer(),

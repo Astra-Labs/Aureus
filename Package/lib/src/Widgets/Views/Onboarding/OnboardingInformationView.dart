@@ -183,7 +183,8 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
               buttonPriority: buttonSize.secondary,
             )),
         HeadingOneText(
-            "Meet ${resourceValues.name}.", decorationPriority.standard),
+            data: "Meet ${resourceValues.name}.",
+            textColor: decorationPriority.standard),
         informationCard,
       ],
     );

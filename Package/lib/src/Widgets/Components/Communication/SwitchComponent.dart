@@ -68,15 +68,19 @@ class _SwitchComponentState extends State<SwitchComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return Switch(
-      onChanged: (bool value) {
-        toggleSwitch(value);
-      },
-      value: isOn,
-      activeColor: coloration.contrastColor(),
-      activeTrackColor: coloration.accentColor(),
-      inactiveThumbColor: coloration.accentColor(),
-      inactiveTrackColor: coloration.inactiveColor(),
+    return InteractiveSemanticsWrapper(
+      properties: SemanticsWrapper.toggle(
+          isEnabled: true, isToggled: isOn, isMutuallyExclusive: false),
+      child: Switch(
+        onChanged: (bool value) {
+          toggleSwitch(value);
+        },
+        value: isOn,
+        activeColor: coloration.contrastColor(),
+        activeTrackColor: coloration.accentColor(),
+        inactiveThumbColor: coloration.accentColor(),
+        inactiveTrackColor: coloration.inactiveColor(),
+      ),
     );
   }
 }

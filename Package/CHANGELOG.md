@@ -1,3 +1,13 @@
+## 0.0.22 
+- Removed a duplicate items bug in SafetyPlanFunctionalityView
+- Added a small button to Checkbox Article View
+- Added a Card semantics wrappers
+- Embedded optional gesture recognizer with focus element within cards 
+- Added SemanticsWrappers to text views and fields
+- Renamed TimePickerDataCardElement to PickerDataCardElement to fix a mistake.
+- Adding initial wave of tests to up the test coverage 
+- Trading the half-pane glass element on the landing page with a gradient to text legibility
+
 ## 0.0.21
 - Removed the additional info button on settings page
 - Adding a check of navigation tree to see if help center is set before showing button

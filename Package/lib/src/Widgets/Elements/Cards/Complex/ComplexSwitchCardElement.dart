@@ -27,12 +27,13 @@ class ComplexSwitchCardElement extends StatelessWidget {
   /// A [VoidCallback] to run when the switch is disabled.
   final VoidCallback onDisable;
 
-  const ComplexSwitchCardElement(
-      {required this.cardLabel,
-      required this.cardBody,
-      required this.cardIcon,
-      required this.onEnable,
-      required this.onDisable});
+  const ComplexSwitchCardElement({
+    required this.cardLabel,
+    required this.cardBody,
+    required this.cardIcon,
+    required this.onEnable,
+    required this.onDisable,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,14 +65,16 @@ class ComplexSwitchCardElement extends StatelessWidget {
         child: Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
       child: Container(
-          width: size.layoutItemWidth(1, screenSize),
-          decoration: CardBackingDecoration(
-                  decorationVariant: decorationPriority.inactive)
-              .buildBacking(),
-          clipBehavior: Clip.antiAlias,
-          child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: complexSwitchContent)),
+        width: size.layoutItemWidth(1, screenSize),
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inactive)
+            .buildBacking(),
+        clipBehavior: Clip.antiAlias,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: complexSwitchContent,
+        ),
+      ),
     ));
 
     return complexSwitchContainer;

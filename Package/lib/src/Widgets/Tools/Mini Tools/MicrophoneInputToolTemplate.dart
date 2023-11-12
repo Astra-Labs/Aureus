@@ -242,7 +242,8 @@ class _MicrophoneInputCardState extends State<_MicrophoneInputCard>
           ),
         ),
         HeadingOneText(
-            formatHHMMSS(_recordDuration), decorationPriority.standard)
+            data: formatHHMMSS(_recordDuration),
+            textColor: decorationPriority.standard)
       ]),
     );
 

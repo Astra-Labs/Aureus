@@ -78,7 +78,8 @@ class _LoadingCircleElementState extends State<LoadingCircleElement>
         height: 200.0,
         child: Stack(alignment: Alignment.center, children: [
           floatingContainerElement,
-          HeadingOneText('Loading', decorationPriority.standard)
+          const HeadingOneText(
+              data: 'Loading', textColor: decorationPriority.standard)
         ]),
       ),
     );

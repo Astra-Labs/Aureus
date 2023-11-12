@@ -29,12 +29,13 @@ class CheckboxArticleView extends StatefulWidget {
   /// An action that should happen when the user agrees and presses 'Finish'
   final VoidCallback onFinish;
 
-  const CheckboxArticleView(
-      {required this.articleTitle,
-      required this.articleSubheader,
-      required this.articleBody,
-      required this.checkboxDescription,
-      required this.onFinish});
+  const CheckboxArticleView({
+    required this.articleTitle,
+    required this.articleSubheader,
+    required this.articleBody,
+    required this.checkboxDescription,
+    required this.onFinish,
+  });
 
   @override
   _CheckboxArticleViewState createState() => _CheckboxArticleViewState();
@@ -66,6 +67,15 @@ class _CheckboxArticleViewState extends State<CheckboxArticleView> {
             .buildBacking(),
         child: Row(
           children: [
+            IconButtonElement(
+                decorationVariant: decorationPriority.standard,
+                buttonIcon: Assets.back,
+                buttonHint: "Takes you to the previous page",
+                buttonAction: () => {
+                      Navigator.pop(context),
+                    },
+                buttonPriority: buttonSize.secondary),
+            const SizedBox(height: 10),
             BodyOneText(
                 widget.checkboxDescription, decorationPriority.standard),
             const Spacer(),

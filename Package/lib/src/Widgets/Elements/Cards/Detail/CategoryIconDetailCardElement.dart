@@ -23,11 +23,15 @@ class CategoryIconDetailCardElement extends StatelessWidget {
   /// An icon that describes the card.
   final IconData cardIcon;
 
-  const CategoryIconDetailCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.cardBody,
-      required this.cardIcon});
+  VoidCallback? onTap;
+
+  CategoryIconDetailCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.cardBody,
+    required this.cardIcon,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +82,19 @@ class CategoryIconDetailCardElement extends StatelessWidget {
           )),
     );
 
-    return categoryIconDetailContainer;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: categoryIconDetailContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
+        : categoryIconDetailContainer;
   }
 }

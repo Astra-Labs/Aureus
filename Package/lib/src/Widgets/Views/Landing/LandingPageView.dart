@@ -68,7 +68,8 @@ class _LandingPageViewState extends State<LandingPageView> {
               "I'm ${resourceValues.name}", decorationPriority.standard),
           const SizedBox(height: 20.0),
           HeadingOneText(
-              resourceValues.mission ?? "", decorationPriority.standard),
+              data: resourceValues.mission ?? "",
+              textColor: decorationPriority.standard),
           const Spacer(),
         ]);
 
@@ -218,15 +219,18 @@ class _LandingPageViewState extends State<LandingPageView> {
       ],
     );
 
-    var halfGlassPane = FloatingContainerElement(
-      child: Container(
-        height: screenSize.height,
-        width: screenSize.width * 0.50,
-        decoration: ButtonBackingDecoration(
-          variant: buttonDecorationVariants.edgedRectangle,
-          decorationVariant: decorationPriority.inactive,
-        ).buildBacking(),
-      ),
+    var halfGlassPane = Container(
+      height: screenSize.height,
+      width: screenSize.width * 0.50,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [
+          coloration.sameColor(),
+          coloration.sameColor().withOpacity(0.0),
+        ],
+      )),
     );
 
     return Scaffold(

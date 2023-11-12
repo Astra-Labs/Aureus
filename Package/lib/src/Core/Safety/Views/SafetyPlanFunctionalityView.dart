@@ -87,9 +87,8 @@ class _SafetyPlanFunctionalityViewState
   }
 
   @override
-  Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
+  void initState() {
+    super.initState();
     for (var element in widget.userSelectedOptions) {
       var safetyObject = Safety.detailMetaData.retrieveDetails(element);
       optionCards.add(
@@ -105,6 +104,11 @@ class _SafetyPlanFunctionalityViewState
             cardIcon: safetyObject.icon),
       );
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
 
     ContainerWrapperElement selectionViewLayout = ContainerWrapperElement(
         containerVariant: wrapperVariants.fullScreen,

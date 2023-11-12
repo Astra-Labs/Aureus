@@ -20,10 +20,14 @@ class GridCardElement extends StatelessWidget {
   /// The size of the grid the card is meant to size into.
   final Size gridSize;
 
-  const GridCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.gridSize});
+  VoidCallback? onTap;
+
+  GridCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.gridSize,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +56,19 @@ class GridCardElement extends StatelessWidget {
           )),
     );
 
-    return gridCardContainer;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: gridCardContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
+        : gridCardContainer;
   }
 }

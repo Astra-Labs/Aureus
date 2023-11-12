@@ -95,6 +95,14 @@ class _TextViewComponentState extends State<TextViewComponent> {
       ),
     );
 
-    return textView;
+    return widget.isEnabled == true
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.textView(
+              label: widget.prompt,
+              hint: widget.hintText,
+              isEditable: true,
+            ),
+            child: textView)
+        : textView;
   }
 }

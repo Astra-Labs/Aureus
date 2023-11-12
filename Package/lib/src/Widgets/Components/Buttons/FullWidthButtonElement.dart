@@ -128,21 +128,12 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
         child: Center(
             child: ButtonOneText(widget.buttonTitle, widget.currentVariant)));
 
-    var fullWidthButtonInteractor = UniversalGestureDetector(
-        node: FocusNode(),
-        onDetect: () {
-          if (isButtonEnabled == true) {
-            createButtonInteraction();
-            widget.buttonAction();
-          }
-        },
-        child: PulseShadowElement(
-          pulseWidth: screenWidth,
-          isActive: widget.currentVariant == decorationPriority.important
-              ? true
-              : false,
-          child: fullWidthButtonContent,
-        ));
+    var fullWidthButtonInteractor = PulseShadowElement(
+      pulseWidth: screenWidth,
+      isActive:
+          widget.currentVariant == decorationPriority.important ? true : false,
+      child: fullWidthButtonContent,
+    );
 
     return InteractiveSemanticsWrapper(
       properties: SemanticsWrapper.button(
@@ -150,6 +141,12 @@ class _FullWidthButtonElementState extends State<FullWidthButtonElement>
           label: widget.buttonTitle,
           hint: widget.buttonHint,
           isMutuallyExclusive: false),
+      onInteract: () {
+        if (isButtonEnabled == true) {
+          createButtonInteraction();
+          widget.buttonAction();
+        }
+      },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 5000),
         child: Opacity(opacity: opacity, child: fullWidthButtonInteractor),

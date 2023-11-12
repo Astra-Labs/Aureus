@@ -51,7 +51,8 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
               HeadingThreeText(
                   "I'm ${resourceValues.name}", decorationPriority.standard),
               HeadingOneText(
-                  resourceValues.mission ?? "", decorationPriority.standard)
+                  data: resourceValues.mission ?? "",
+                  textColor: decorationPriority.standard)
             ],
           ),
           const Spacer(),

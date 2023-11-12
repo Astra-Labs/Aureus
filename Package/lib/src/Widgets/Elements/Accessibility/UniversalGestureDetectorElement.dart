@@ -1,6 +1,6 @@
 /// @nodoc
+import 'package:aureus/aureus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 /// {@category Widgets}
 /// {@subCategory Elements}
@@ -11,14 +11,11 @@ import 'package:flutter/services.dart';
 /// that those with assistive tech can navigate
 
 class UniversalGestureDetector extends StatefulWidget {
-  /// The item that will have a 'floating glass' look behind it.
   final VoidCallback onDetect;
-  final FocusNode node;
   final Widget child;
 
   const UniversalGestureDetector({
     required this.onDetect,
-    required this.node,
     required this.child,
   });
 
@@ -28,20 +25,66 @@ class UniversalGestureDetector extends StatefulWidget {
 }
 
 class _UniversalGestureDetectorState extends State<UniversalGestureDetector> {
+  Color borderColor = Colors.transparent;
+
+  void hideBorder() {
+    setState(() {
+      borderColor = Colors.transparent.withAlpha(0);
+    });
+  }
+
+  void showBorder() {
+    setState(() {
+      borderColor = coloration.accentColor();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return RawKeyboardListener(
-      focusNode: FocusNode(),
-      onKey: (event) {
-        if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
-          print('ENTER DETECTED');
-          //widget.onDetect();
-        }
+    return GestureDetector(
+      onTap: () {
+        widget.onDetect();
       },
-      child: GestureDetector(
-        onTap: widget.onDetect,
-        child: widget.child,
+      child: FocusableActionDetector(
+        onShowFocusHighlight: (isFocused) => {
+          isFocused ? showBorder() : hideBorder(),
+        },
+        actions: <Type, Action<Intent>>{
+          ActivateIntent: CallbackAction<Intent>(
+            onInvoke: (Intent intent) => widget.onDetect(),
+          ),
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              style: BorderStyle.solid,
+              color: borderColor,
+            ),
+          ),
+          child: widget.child,
+        ),
       ),
     );
   }
 }
+
+/*
+
+focusNode: FocusNode(onKey: (node, event) {
+        if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+          return KeyEventResult
+              .handled; // prevent passing the event into the TextField
+        }
+        return KeyEventResult.ignored; // pass the event to the TextField
+      }),
+      onKey: (event) {
+        if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+          // Do something
+          widget.onDetect();
+        } else if (event.isKeyPressed(LogicalKeyboardKey.tab)) {
+          //shoud move focus to the next node
+          FocusScope.of(context).nextFocus();
+        }
+      },
+
+*/

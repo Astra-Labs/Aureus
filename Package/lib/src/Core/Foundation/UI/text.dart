@@ -2,6 +2,7 @@ import 'package:aureus/aureus.dart';
 
 /// @nodoc
 import 'package:flutter/material.dart';
+import 'package:flutter_gradient_animation_text/flutter_gradient_animation_text.dart';
 
 /// @nodoc
 import 'package:google_fonts/google_fonts.dart';
@@ -209,14 +210,34 @@ class TitleCase {
   }
 }
 
-/// A text class that uses the heading one text style
-class HeadingOneText extends Text {
-  HeadingOneText(String data, decorationPriority textColor)
-      : super(data,
-            style: heading1().copyWith(
-                color:
-                    coloration.decorationColor(decorationVariant: textColor)),
-            semanticsLabel: data);
+class HeadingOneText extends StatelessWidget {
+  final String data;
+  final decorationPriority textColor;
+
+  const HeadingOneText({
+    required this.data,
+    required this.textColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GradientAnimationText(
+      text: Text(data,
+          style: heading1().copyWith(
+              color: coloration.decorationColor(decorationVariant: textColor)),
+          semanticsLabel: data),
+      colors: [
+        coloration.contrastColor().withOpacity(0.9),
+        coloration.contrastColor().withOpacity(0.8),
+        coloration.contrastColor().withOpacity(0.7),
+        coloration.contrastColor().withOpacity(0.4),
+        coloration.contrastColor().withOpacity(0.7),
+        coloration.contrastColor().withOpacity(0.9),
+        //coloration.contrastColor().withOpacity(0.3),
+      ],
+      duration: const Duration(seconds: 6),
+    );
+  }
 }
 
 /// A text class that uses the heading two text style

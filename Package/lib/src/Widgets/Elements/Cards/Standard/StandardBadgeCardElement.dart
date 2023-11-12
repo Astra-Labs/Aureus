@@ -22,10 +22,14 @@ class StandardBadgeCardElement extends StatelessWidget {
   /// An icon that describes the card.
   final IconData cardIcon;
 
-  StandardBadgeCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.cardIcon});
+  VoidCallback? onTap;
+
+  StandardBadgeCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.cardIcon,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,19 +62,19 @@ class StandardBadgeCardElement extends StatelessWidget {
           )),
     );
 
-    var focusContent = Focus(
-        onFocusChange: (inFocus) => {
-              if (inFocus == true)
-                {
-                  decorationVariant = decorationPriority.important,
-                }
-              else
-                {
-                  decorationVariant = decorationPriority.standard,
-                }
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: standardBadgeContainer,
+            onInteract: () => {
+              onTap!(),
             },
-        child: standardBadgeContainer);
-
-    return focusContent;
+          )
+        : standardBadgeContainer;
   }
 }

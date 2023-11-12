@@ -27,12 +27,16 @@ class ComplexBadgeCardElement extends StatelessWidget {
   /// An icon that describes the card.
   final IconData cardIcon;
 
-  const ComplexBadgeCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.cardBody,
-      required this.cardDetailCarousel,
-      required this.cardIcon});
+  VoidCallback? onTap;
+
+  ComplexBadgeCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.cardBody,
+    required this.cardDetailCarousel,
+    required this.cardIcon,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +77,19 @@ class ComplexBadgeCardElement extends StatelessWidget {
                 padding: const EdgeInsets.all(13.0),
                 child: complexBadgeContent)));
 
-    return complexBadgeContainer;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: complexBadgeContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
+        : complexBadgeContainer;
   }
 }

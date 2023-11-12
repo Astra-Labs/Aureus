@@ -127,6 +127,13 @@ class _StandardAccordionCardElementState
       ),
     );
 
-    return GestureDetector(onTap: _onItemTapped, child: accordionCard);
+    return InteractiveSemanticsWrapper(
+      properties:
+          SemanticsWrapper.card(isEnabled: true, label: widget.cardLabel),
+      child: UniversalGestureDetector(
+        onDetect: _onItemTapped,
+        child: accordionCard,
+      ),
+    );
   }
 }

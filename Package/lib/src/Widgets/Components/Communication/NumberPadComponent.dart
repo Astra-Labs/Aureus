@@ -81,9 +81,13 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
       ),
     );
 
-    return UniversalGestureDetector(
-      node: FocusNode(),
-      onDetect: () {
+    return InteractiveSemanticsWrapper(
+      properties: SemanticsWrapper.button(
+          isEnabled: true,
+          label: '$number',
+          hint: 'Inputs $number',
+          isMutuallyExclusive: false),
+      onInteract: () {
         setState(() {
           widget.inputtedCode.add(number);
         });
@@ -94,12 +98,6 @@ class _NumberPadComponentState extends State<NumberPadComponent> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> digitButtons = [];
-
-    for (var element in digits) {
-      digitButtons.add(createNumberButton(element));
-    }
-
     var entryFieldBox = FloatingContainerElement(
       child: Container(
           decoration: InputBackingDecoration().buildBacking(),

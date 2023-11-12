@@ -49,8 +49,10 @@ class _NavBarComponentState extends State<NavBarComponent> {
       //checks to see if current index matches index of tab item. if yes, it's enabled.
 
       var tabItem = BottomNavigationBarItem(
-        icon: Icon(element.tabIcon,
-            size: size.responsiveSize(38.0, MediaQuery.of(context).size)),
+        icon: Icon(
+          element.tabIcon,
+          size: size.responsiveSize(38.0, MediaQuery.of(context).size),
+        ),
         label: element.accessibilityHint,
         tooltip: element.accessibilityHint,
         backgroundColor: Colors.transparent,
@@ -64,7 +66,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
       type: BottomNavigationBarType.fixed,
       elevation: 0,
       selectedItemColor: coloration.contrastColor(),
-      unselectedItemColor: coloration.inactiveColor(),
+      unselectedItemColor: coloration.contrastColor().withOpacity(0.2),
       showSelectedLabels: false,
       showUnselectedLabels: false,
       backgroundColor: Colors.transparent,
@@ -75,35 +77,34 @@ class _NavBarComponentState extends State<NavBarComponent> {
 
     var navBarComponent = Positioned(
       bottom: 25,
-      child: ClipRRect(
-        child: FloatingContainerElement(
-            child: Container(
-                constraints: BoxConstraints(
-                    maxWidth: size.layoutItemWidth(1, screenSize)),
-                decoration: CardBackingDecoration(
-                        decorationVariant: decorationPriority.inactive)
-                    .buildBacking()
-                    .copyWith(borderRadius: BorderRadius.circular(60)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 5),
-                    navigationBar,
-                  ],
-                ))),
+      child: Container(
+        constraints:
+            BoxConstraints(maxWidth: size.layoutItemWidth(1, screenSize)),
+        decoration: CardBackingDecoration(
+                decorationVariant: decorationPriority.inverted)
+            .buildBacking()
+            .copyWith(borderRadius: BorderRadius.circular(60)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 5),
+            navigationBar,
+          ],
+        ),
       ),
     );
 
     var navBarContainer = Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: coloration.primaryImage().image,
-            fit: BoxFit.cover,
-          ),
-        ));
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: coloration.primaryImage().image,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
 
     var navBarScaffold = Scaffold(
       backgroundColor: Colors.transparent,

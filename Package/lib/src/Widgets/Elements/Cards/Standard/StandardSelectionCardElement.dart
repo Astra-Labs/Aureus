@@ -114,24 +114,24 @@ class _StandardSelectionCardElementState
           )),
     );
 
-    var inkWell = GestureDetector(
-      onTap: widget.isEnabled == true ? toggleCard : () => {},
-      child: SizedBox(
-          width: size.layoutItemWidth(4, screenSize),
-          height: size.layoutItemHeight(6, screenSize),
-          child: floatingContainerElement),
-    );
+    var cardContainer = SizedBox(
+        width: size.layoutItemWidth(4, screenSize),
+        height: size.layoutItemHeight(6, screenSize),
+        child: floatingContainerElement);
 
     var semantics = Semantics.fromProperties(
       properties: SemanticsWrapper.toggle(
           isEnabled: widget.isEnabled,
-          label: widget.cardLabel,
-          hint: 'Enables or disables ${widget.cardLabel}',
           isToggled: widget.isCardSelected,
           isMutuallyExclusive: false),
-      child: inkWell,
     );
 
-    return semantics;
+    return InteractiveSemanticsWrapper(
+      properties: semantics.properties,
+      child: cardContainer,
+      onInteract: () => {
+        widget.isEnabled == true ? toggleCard : () => {},
+      },
+    );
   }
 }

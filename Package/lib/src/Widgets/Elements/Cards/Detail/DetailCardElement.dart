@@ -20,10 +20,14 @@ class DetailCardElement extends StatelessWidget {
   /// The text for the body content underneath the header.
   final String cardBody;
 
-  const DetailCardElement(
-      {required this.decorationVariant,
-      required this.cardLabel,
-      required this.cardBody});
+  VoidCallback? onTap;
+
+  DetailCardElement({
+    required this.decorationVariant,
+    required this.cardLabel,
+    required this.cardBody,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +56,19 @@ class DetailCardElement extends StatelessWidget {
               padding: const EdgeInsets.all(13.0), child: detailCardContent)),
     );
 
-    return detailCardContainer;
+    return onTap != null
+        ? InteractiveSemanticsWrapper(
+            properties: SemanticsWrapper.card(
+              isEnabled: decorationVariant == decorationPriority.inactive
+                  ? false
+                  : true,
+              label: cardLabel,
+            ),
+            child: detailCardContainer,
+            onInteract: () => {
+              onTap!(),
+            },
+          )
+        : detailCardContainer;
   }
 }
