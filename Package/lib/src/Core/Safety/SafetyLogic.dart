@@ -6,6 +6,15 @@ part of aureus_safety_plan;
 
 /// A class that contains data regarding how to handle creating a
 /// Safety Plan for the user.
+///
+
+enum SafetyStorageLayer {
+  logInAttempts,
+}
+
+Map<SafetyStorageLayer, String> safetyStorageKeys = {
+  SafetyStorageLayer.logInAttempts: 'logInAttempts'
+};
 
 class Safety {
   /// A map that contains Safety Plan options that ALL software can complete.
@@ -115,9 +124,9 @@ class Safety {
   }
 
   /// An interface to record failed log-in attempts for users to look back at.
-  void recordFailedLogInAttempt() {
+  Future<void> recordFailedLogInAttempt() async {
     var date = DateTime.now();
-    _SafetyPlanStorageLayer().writeLogIn(date.toString());
+    await _SafetyPlanStorageLayer().writeLogIn(date.toString());
   }
 
   Future<List<String>> readAllFailedLogInAttempts() async {
@@ -195,7 +204,14 @@ class _SafetyPlanStorageLayer {
     Map<SafetyPlanOptions, bool> settings = {};
 
     for (var element in SafetyPlanOptions.values) {
-      settings.addEntries([MapEntry(element, await _readSetting(element))]);
+      settings.addEntries(
+        [
+          MapEntry(
+            element,
+            await _readSetting(element),
+          )
+        ],
+      );
     }
 
     return settings;
@@ -208,14 +224,14 @@ class _SafetyPlanStorageLayer {
     }
   }
 
-  var logInKey = "";
-
   /// Reads ALL failed log in attempts
   Future<List<String>> get readFailedLogInAttempts async {
     // pull settings from local storage here
     List<String> attempts = [];
 
-    var data = _storage.readItem(logInKey);
+    var data = _storage.readItem(
+      safetyStorageKeys[SafetyStorageLayer.logInAttempts]!,
+    );
 
     // Waits for the future to complete, and then separates them based
     // on the "+" symbol into their attempts.
@@ -230,9 +246,12 @@ class _SafetyPlanStorageLayer {
     // to determine the separate attempts, since you can only write single strings
     // to the local storage.
 
-    var previousAttempts = await _storage.readItem(logInKey);
-    var updatedAttempts = previousAttempts ?? "" + logInData;
+    var previousAttempts = await _storage.readItem(
+      safetyStorageKeys[SafetyStorageLayer.logInAttempts]!,
+    );
+    var updatedAttempts = previousAttempts ?? " " + logInData;
 
-    await _storage.addItem(logInKey, updatedAttempts);
+    await _storage.addItem(
+        safetyStorageKeys[SafetyStorageLayer.logInAttempts]!, updatedAttempts);
   }
 }

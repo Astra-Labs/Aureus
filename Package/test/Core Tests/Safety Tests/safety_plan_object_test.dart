@@ -2,6 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:aureus/aureus.dart';
 
 void main() {
+  setUp(() => {
+        TestWidgetsFlutterBinding.ensureInitialized(),
+      });
+
   group('SafetyPlanObject', () {
     test('throws an error if settings length is not less than 0', () {
       // Arrange

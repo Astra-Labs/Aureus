@@ -2,6 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:aureus/aureus.dart';
 
 void main() {
+  setUp(() => {
+        TestWidgetsFlutterBinding.ensureInitialized(),
+      });
   test('SafetyPlanFallback constructor should create an instance', () {
     const safetyOption = SafetyPlanOptions.disableNotifications;
     const fallbackOption = SafetyFallBackOptions.alternateCode;

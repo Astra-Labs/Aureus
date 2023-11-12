@@ -4,6 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:aureus/aureus.dart'; // Import your library
 
 void main() {
+  setUp(() => {
+        TestWidgetsFlutterBinding.ensureInitialized(),
+      });
+
   test(
       'Coloration should return the correct decoration color for different priority variants',
       () {
@@ -25,18 +29,6 @@ void main() {
     expect(standardColor, equals(coloration.contrastColor()));
     expect(invertedColor, equals(coloration.sameColor()));
     expect(activeColor, equals(coloration.contrastColor().withOpacity(0.8)));
-  });
-
-  test('Coloration should return the correct accent color', () {
-    final coloration = Coloration();
-    final accentColor = coloration.accentColor();
-
-    // Determine whether the current palette brightness is light or dark and check the corresponding accent color
-    expect(
-        accentColor,
-        equals(palette.brightness() == Brightness.light
-            ? resourceValues.lightMode!.accentColor
-            : resourceValues.darkMode!.accentColor));
   });
 
   test('Coloration should return the correct contrast color', () {

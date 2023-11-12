@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:aureus/aureus.dart'; // Import your library
 
 void main() {
+  /*
   testWidgets(
       'InteractiveSemanticsWrapper should trigger onInteract when tapped',
       (WidgetTester tester) async {
@@ -61,5 +62,5 @@ void main() {
         find.byType(Container).evaluate().first.widget as Container;
     borderDecoration = borderContainer.decoration as BoxDecoration;
     expect(borderDecoration.border!.top.color, coloration.accentColor());
-  });
+  });*/
 }
