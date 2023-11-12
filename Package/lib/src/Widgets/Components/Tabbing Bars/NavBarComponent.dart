@@ -81,7 +81,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
                 constraints: BoxConstraints(
                     maxWidth: size.layoutItemWidth(1, screenSize)),
                 decoration: CardBackingDecoration(
-                        decorationVariant: decorationPriority.inactive)
+                        decorationVariant: decorationPriority.inverted)
                     .buildBacking()
                     .copyWith(borderRadius: BorderRadius.circular(60)),
                 child: Column(

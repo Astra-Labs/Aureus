@@ -5,6 +5,8 @@
 - Embedded optional gesture recognizer with focus element within cards 
 - Added SemanticsWrappers to text views and fields
 - Renamed TimePickerDataCardElement to PickerDataCardElement to fix a mistake.
+- Adding initial wave of tests to up the test coverage 
+- Trading the half-pane glass element on the landing page with a gradient to text legibility
 
 ## 0.0.21
 - Removed the additional info button on settings page
