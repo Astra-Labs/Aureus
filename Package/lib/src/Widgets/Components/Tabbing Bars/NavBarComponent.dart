@@ -49,8 +49,10 @@ class _NavBarComponentState extends State<NavBarComponent> {
       //checks to see if current index matches index of tab item. if yes, it's enabled.
 
       var tabItem = BottomNavigationBarItem(
-        icon: Icon(element.tabIcon,
-            size: size.responsiveSize(38.0, MediaQuery.of(context).size)),
+        icon: Icon(
+          element.tabIcon,
+          size: size.responsiveSize(38.0, MediaQuery.of(context).size),
+        ),
         label: element.accessibilityHint,
         tooltip: element.accessibilityHint,
         backgroundColor: Colors.transparent,
@@ -64,7 +66,7 @@ class _NavBarComponentState extends State<NavBarComponent> {
       type: BottomNavigationBarType.fixed,
       elevation: 0,
       selectedItemColor: coloration.contrastColor(),
-      unselectedItemColor: coloration.inactiveColor(),
+      unselectedItemColor: coloration.contrastColor().withOpacity(0.2),
       showSelectedLabels: false,
       showUnselectedLabels: false,
       backgroundColor: Colors.transparent,

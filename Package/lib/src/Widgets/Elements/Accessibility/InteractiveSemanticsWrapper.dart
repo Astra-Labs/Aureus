@@ -40,49 +40,17 @@ class InteractiveSemanticsWrapper extends StatefulWidget {
 
 class _InteractiveSemanticsWrapperState
     extends State<InteractiveSemanticsWrapper> {
-  Color borderColor = Colors.transparent;
-
-  void hideBorder() {
-    setState(() {
-      borderColor = Colors.transparent.withAlpha(0);
-    });
-  }
-
-  void showBorder() {
-    setState(() {
-      borderColor = coloration.accentColor();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(2.0),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: borderColor,
-        ),
-      ),
-      child: Focus(
-        onFocusChange: (focused) {
-          print(focused);
-          if (focused == true) {
-            showBorder();
-          } else {
-            hideBorder();
-          }
-        },
-        child: Semantics.fromProperties(
-          properties: widget.properties,
-          child: widget.onInteract == null
-              ? widget.child
-              : UniversalGestureDetector(
-                  onDetect: () {
-                    widget.onInteract!();
-                  },
-                  child: widget.child),
-        ),
-      ),
+    return Semantics.fromProperties(
+      properties: widget.properties,
+      child: widget.onInteract == null
+          ? widget.child
+          : UniversalGestureDetector(
+              onDetect: () {
+                widget.onInteract!();
+              },
+              child: widget.child),
     );
   }
 }
