@@ -148,6 +148,7 @@ export 'src/Widgets/Components/Tabbing Bars/VerticalSideNavBarComponent.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingDemoView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingInformationView.dart';
 export 'src/Widgets/Views/Onboarding/OnboardingLandingView.dart';
+export 'src/Widgets/Views/Onboarding/OnboardingSimpShareView.dart';
 
 // -------------------------- Utilities
 export 'src/Widgets/Views/Utilities/DataConsentView.dart';

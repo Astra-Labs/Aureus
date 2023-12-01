@@ -222,10 +222,11 @@ class HeadingOneText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GradientAnimationText(
-      text: Text(data,
-          style: heading1().copyWith(
-              color: coloration.decorationColor(decorationVariant: textColor)),
-          semanticsLabel: data),
+      text: Text(
+        data,
+        style: heading1(),
+        semanticsLabel: data,
+      ),
       colors: [
         coloration.contrastColor().withOpacity(0.9),
         coloration.contrastColor().withOpacity(0.8),
