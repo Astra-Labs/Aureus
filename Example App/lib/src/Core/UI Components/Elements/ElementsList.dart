@@ -96,7 +96,8 @@ Map<String, Widget> aureusElements = {
 
 //where all text related items in aureus are initiated for testing
 
-Text text1 = HeadingOneText('Heading One', decorationPriority.standard);
+Widget text1 =
+    HeadingOneText(data: 'Heading One', textColor: decorationPriority.standard);
 Text text2 = HeadingTwoText('Heading Two', decorationPriority.standard);
 Text text3 = HeadingThreeText('Heading Three', decorationPriority.standard);
 Text text4 = HeadingFourText('Heading Four', decorationPriority.standard);
@@ -108,7 +109,7 @@ Text text9 = ButtonTwoText('Button Two', decorationPriority.standard);
 Text text10 = TagOneText('Tag One', decorationPriority.standard);
 Text text11 = TagTwoText('Tag Two', decorationPriority.standard);
 
-List<Text> textTesting = [
+List<Widget> textTesting = [
   text1,
   text2,
   text3,

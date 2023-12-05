@@ -18,18 +18,19 @@ class _ViewsSubviewState extends State<ViewsSubview> {
 
       // Iterating through the top level of categories to make a sub-carousel
       for (var viewData in viewRow.value) {
-        var cardElement = Focus(
-            child: GestureDetector(
-                onTap: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => viewData.view,
-                          ))
-                    },
-                child: StandardCardElement(
-                    decorationVariant: decorationPriority.standard,
-                    cardLabel: viewData.viewTitle)));
+        var cardElement = StandardCardElement(
+          decorationVariant: decorationPriority.standard,
+          cardLabel: viewData.viewTitle,
+          onTap: (() {
+            print('i am being tapped');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => viewData.view,
+              ),
+            );
+          }),
+        );
 
         tempCards
             .add(Padding(padding: EdgeInsets.all(8.0), child: cardElement));
@@ -72,7 +73,7 @@ class _ViewsSubviewState extends State<ViewsSubview> {
   @override
   Widget build(BuildContext context) {
     var viewBuilder = ContainerWrapperElement(children: [
-      HeadingOneText("Views", decorationPriority.standard),
+      HeadingOneText(data: "Views", textColor: decorationPriority.standard),
       SizedBox(height: 10),
       viewList(),
     ], containerVariant: wrapperVariants.stackScroll);

@@ -15,6 +15,10 @@ Map<String, List<viewMetaData>> aureusViewsCategory = {
       viewTitle: "Onboarding Demo",
       view: views.onboardingDemoView,
     ),
+    viewMetaData(
+      viewTitle: "Onboarding Simp Ask",
+      view: views.simpShareView,
+    ),
   ],
   "Landing": [
     viewMetaData(
@@ -27,7 +31,7 @@ Map<String, List<viewMetaData>> aureusViewsCategory = {
     ),
     viewMetaData(
       viewTitle: "Landing Page",
-      view: LandingPage(),
+      view: views.onboardingLandingView,
     ),
   ],
   "Safety Plan": [
@@ -254,6 +258,18 @@ class exampleAppViews {
     "",
     "",
   ]);
+
+  var simpShareView = OnboardingSimpSharingView(
+    simpMessage: "Hi, will you simp for us by sharing this online?",
+    onSimpAgree: () => {
+      notificationMaster.sendAlertNotificationRequest(
+          'Thank you for agreeing!', Assets.back),
+    },
+    onSimpDeny: () => {
+      notificationMaster.sendAlertNotificationRequest(
+          'Why didnt u agree :-(', Assets.back),
+    },
+  );
 }
 
 /* VIEWS */

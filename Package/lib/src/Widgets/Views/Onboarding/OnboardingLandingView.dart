@@ -26,44 +26,59 @@ class OnboardingLandingView extends StatefulWidget {
 }
 
 class _OnboardingLandingViewState extends State<OnboardingLandingView> {
+  List<Widget> buttons = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    for (var element in widget.actionButtons) {
+      buttons.add(Padding(
+        padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
+        child: element,
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.fullScreen,
-        children: [
-          const Spacer(),
-          Center(
-            child: SizedBox(
-                height: 65.0,
-                width: 65.0,
-                child: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                  image: coloration.resourceLogo().image,
-                  fit: BoxFit.contain,
-                )))),
-          ),
-          const Spacer(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeadingThreeText(
-                  "I'm ${resourceValues.name}", decorationPriority.standard),
-              HeadingOneText(
-                  data: resourceValues.mission ?? "",
-                  textColor: decorationPriority.standard)
-            ],
-          ),
-          const Spacer(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.min,
-            children: widget.actionButtons,
-          ),
-          const Spacer(),
-        ]);
+      containerVariant: wrapperVariants.fullScreen,
+      children: [
+        const Spacer(),
+        Center(
+          child: SizedBox(
+              height: 65.0,
+              width: 65.0,
+              child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                image: coloration.resourceLogo().image,
+                fit: BoxFit.contain,
+              )))),
+        ),
+        const Spacer(),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HeadingThreeText(
+                "I'm ${resourceValues.name}", decorationPriority.standard),
+            HeadingOneText(
+                data: resourceValues.mission ?? "",
+                textColor: decorationPriority.standard)
+          ],
+        ),
+        const Spacer(),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
+          children: widget.actionButtons,
+        ),
+        const Spacer(),
+      ],
+    );
 
     return ContainerView(
       decorationVariant: decorationPriority.important,

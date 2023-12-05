@@ -13,12 +13,10 @@ class _ActionsSubviewState extends State<ActionsSubview> {
   var actionsList = ContainerActionsList();
 
   Widget returnCard(String title, VoidCallback action) {
-    return GestureDetector(
+    return StandardCardElement(
+      decorationVariant: decorationPriority.standard,
+      cardLabel: title,
       onTap: action,
-      child: StandardCardElement(
-        decorationVariant: decorationPriority.standard,
-        cardLabel: title,
-      ),
     );
   }
 
@@ -43,7 +41,7 @@ class _ActionsSubviewState extends State<ActionsSubview> {
     ];
 
     var viewBuilder = ContainerWrapperElement(children: [
-      HeadingOneText("Actions", decorationPriority.standard),
+      HeadingOneText(data: "Actions", textColor: decorationPriority.standard),
       SizedBox(height: 10),
       DividerElement(),
       SizedBox(height: 10),
