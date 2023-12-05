@@ -18,12 +18,14 @@ linter:
   rules:
     # For production code. Never edit this. 
     file_names: false
+    avoid_print: true
 
     # For debugging code. Comment these out when you're ready to 
     # make a new PR or release a new version of Aureus.  
     use_key_in_widget_constructors: false
-    avoid_print: false
+    
     overridden_fields: false
+    
     
 
 # Additional information about this file can be found at

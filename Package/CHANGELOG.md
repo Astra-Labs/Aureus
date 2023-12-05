@@ -1,3 +1,8 @@
+## 0.0.23
+- Adds OnboardingSimpView
+- Fixing bug with OnboardingInformationView
+- Fixing bug with OnboardingLandingView
+
 ## 0.0.22 
 - Removed a duplicate items bug in SafetyPlanFunctionalityView
 - Added a small button to Checkbox Article View

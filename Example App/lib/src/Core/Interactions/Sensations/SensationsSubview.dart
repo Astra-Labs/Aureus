@@ -11,12 +11,10 @@ class SensationsSubview extends StatefulWidget {
 
 class _SensationsSubviewState extends State<SensationsSubview> {
   Widget returnCard(String title, VoidCallback action) {
-    return GestureDetector(
+    return StandardCardElement(
+      decorationVariant: decorationPriority.standard,
+      cardLabel: title,
       onTap: action,
-      child: StandardCardElement(
-        decorationVariant: decorationPriority.standard,
-        cardLabel: title,
-      ),
     );
   }
 
@@ -60,7 +58,8 @@ class _SensationsSubviewState extends State<SensationsSubview> {
 
     var viewBuilder = ContainerWrapperElement(
       children: [
-        HeadingOneText("Sensations", decorationPriority.standard),
+        HeadingOneText(
+            data: "Sensations", textColor: decorationPriority.standard),
         SizedBox(height: 10),
         DividerElement(),
         SizedBox(height: 10),

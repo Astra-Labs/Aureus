@@ -34,8 +34,38 @@ class OnboardingSimpSharingView extends StatefulWidget {
 class _OnboardingSimpSharingViewState extends State<OnboardingSimpSharingView> {
   @override
   Widget build(BuildContext context) {
+    var header = HeadingOneText(
+        data: widget.simpMessage, textColor: decorationPriority.standard);
+
+    var yesButton = StandardIconButtonElement(
+      decorationVariant: decorationPriority.important,
+      buttonTitle: "Yes, I will.",
+      buttonHint: "Agrees to the ask.",
+      buttonAction: widget.onSimpAgree,
+      buttonIcon: Assets.yes,
+    );
+
+    var noButton = StandardIconButtonElement(
+      decorationVariant: decorationPriority.standard,
+      buttonTitle: "No, I won't.",
+      buttonHint: "Disagrees to the ask.",
+      buttonAction: widget.onSimpDeny,
+      buttonIcon: Assets.no,
+    );
+
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-        containerVariant: wrapperVariants.fullScreen, children: const []);
+      containerVariant: wrapperVariants.fullScreen,
+      children: [
+        const Spacer(),
+        header,
+        const Spacer(),
+        const SizedBox(height: 10),
+        yesButton,
+        const SizedBox(height: 10),
+        noButton,
+        const Spacer(),
+      ],
+    );
 
     return ContainerView(
       decorationVariant: decorationPriority.important,

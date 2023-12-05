@@ -52,7 +52,8 @@ class _InteractionsSubviewState extends State<InteractionsSubview> {
 
     var viewBuilder = ContainerWrapperElement(
       children: [
-        HeadingOneText("Interactions", decorationPriority.standard),
+        HeadingOneText(
+            data: "Interactions", textColor: decorationPriority.standard),
         SizedBox(height: 10),
         interactions.buttonBackingTest,
       ],

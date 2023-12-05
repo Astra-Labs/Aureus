@@ -5,7 +5,6 @@ class GenerationLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
     var generationToolCarousel = ToolDetailView(
       parentTool: GenerationTool(),
       onUseTool: () {

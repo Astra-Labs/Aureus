@@ -39,7 +39,7 @@ class _ElementsSubviewState extends State<ElementsSubview> {
         });
 
     var viewBuilder = ContainerWrapperElement(children: [
-      HeadingOneText("Elements", decorationPriority.standard),
+      HeadingOneText(data: "Elements", textColor: decorationPriority.standard),
       SizedBox(height: 10),
       elementsList
     ], containerVariant: wrapperVariants.stackScroll);

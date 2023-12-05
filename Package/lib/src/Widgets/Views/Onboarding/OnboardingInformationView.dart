@@ -160,8 +160,6 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
 
     Widget informationCard = FloatingContainerElement(
       child: Container(
-          padding: EdgeInsets.all(
-              size.widthOf(weight: sizingWeight.w0, area: screenSize) / 2),
           decoration: CardBackingDecoration(
                   decorationVariant: decorationPriority.inactive)
               .buildBacking(),
@@ -171,20 +169,25 @@ class _OnboardingInformationViewState extends State<OnboardingInformationView> {
     );
 
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
-      containerVariant: wrapperVariants.stackScroll,
+      containerVariant: wrapperVariants.fullScreen,
       children: [
-        Align(
-            alignment: Alignment.topRight,
-            child: IconButtonElement(
+        Row(
+          children: [
+            HeadingOneText(
+                data: "Meet ${resourceValues.name}.",
+                textColor: decorationPriority.standard),
+            const Spacer(),
+            IconButtonElement(
               decorationVariant: decorationPriority.standard,
               buttonIcon: Assets.no,
               buttonHint: 'Return to onboarding landing',
-              buttonAction: () => {Navigator.pop(context)},
+              buttonAction: () => {
+                Navigator.pop(context),
+              },
               buttonPriority: buttonSize.secondary,
-            )),
-        HeadingOneText(
-            data: "Meet ${resourceValues.name}.",
-            textColor: decorationPriority.standard),
+            ),
+          ],
+        ),
         informationCard,
       ],
     );
