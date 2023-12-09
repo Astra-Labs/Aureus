@@ -1,3 +1,6 @@
+## 0.0.24
+- Fixing landing buttons bug with OnboardingLandingView
+
 ## 0.0.23
 - Adds OnboardingSimpView
 - Fixing bug with OnboardingInformationView

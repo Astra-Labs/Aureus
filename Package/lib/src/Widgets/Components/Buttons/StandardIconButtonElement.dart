@@ -79,27 +79,30 @@ class _StandardIconButtonElementState extends State<StandardIconButtonElement> {
 
     var standardIconButtonContent = FloatingContainerElement(
       child: SizedBox(
-          width: size.layoutItemWidth(1, screenSize),
-          height: minimumButtonTextSize.height + 45,
-          child: Container(
-              decoration: buttonDecoration,
-              child: Center(
-                  child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ButtonTwoText(widget.buttonTitle, widget.decorationVariant),
-                    Icon(widget.buttonIcon,
-                        color: coloration.decorationColor(
-                            decorationVariant: widget.decorationVariant),
-                        semanticLabel: widget.buttonTitle,
-                        size: 30.0)
-                  ],
-                ),
-              )))),
+        width: size.layoutItemWidth(1, screenSize),
+        height: minimumButtonTextSize.height + 45,
+        child: Container(
+          decoration: buttonDecoration,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  ButtonTwoText(widget.buttonTitle, widget.decorationVariant),
+                  Icon(widget.buttonIcon,
+                      color: coloration.decorationColor(
+                          decorationVariant: widget.decorationVariant),
+                      semanticLabel: widget.buttonTitle,
+                      size: 30.0)
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
 
     var standardIconButtonInteractor = GestureDetector(
