@@ -74,7 +74,7 @@ class _OnboardingLandingViewState extends State<OnboardingLandingView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
-          children: widget.actionButtons,
+          children: buttons,
         ),
         const Spacer(),
       ],
