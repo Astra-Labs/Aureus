@@ -1,3 +1,6 @@
+## 0.0.25
+- Adding new icons 
+
 ## 0.0.24
 - Fixing landing buttons bug with OnboardingLandingView
 
