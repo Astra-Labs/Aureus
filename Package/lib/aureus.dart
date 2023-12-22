@@ -173,6 +173,7 @@ export 'src/Widgets/Views/Supporting/NotificationOverlayView.dart';
 
 // -------------------------- Misc
 export 'src/Widgets/Views/Misc/PoetryGradientView.dart';
+export 'src/Widgets/Views/Misc/TransmissionView.dart';
 
 // -------------------------- Safety Plan
 export 'src/Widgets/Views/Safety Plan/SafetyPlanOptInView.dart';
