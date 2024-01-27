@@ -249,16 +249,17 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
         buttonAction: () => {Navigator.pop(context)});
 
     var completeButton = StandardIconButtonElement(
-        decorationVariant: decorationPriority.standard,
-        buttonTitle: "Complete",
-        buttonHint: "Finishes prompt.",
-        buttonIcon: Assets.yes,
-        buttonAction: () => {
-              toolTemplateMaster.notifyObserverForward(),
-              Navigator.of(context).popUntil((_) => popCount++ >= 2),
-              notificationMaster.sendAlertNotificationRequest(
-                  "Camera tool completed.", Assets.camera)
-            });
+      decorationVariant: decorationPriority.standard,
+      buttonTitle: "Complete",
+      buttonHint: "Finishes prompt.",
+      buttonIcon: Assets.yes,
+      buttonAction: () => {
+        toolTemplateMaster.notifyObserverForward(),
+        Navigator.of(context).popUntil((_) => popCount++ >= 2),
+        notificationMaster.sendAlertNotificationRequest(
+            "Camera tool completed.", Assets.camera)
+      },
+    );
 
     var controlBar = SizedBox(
         width: size.layoutItemWidth(1, screenSize),
@@ -321,17 +322,18 @@ class _CameraReviewCardState extends State<_CameraReviewCard> {
     );
 
     return ContainerView(
-        decorationVariant: decorationPriority.standard,
-        hasBackgroundImage: false,
-        takesFullWidth: true,
-        builder: ContainerWrapperElement(
-            takesFullWidth: true,
-            children: [
-              SizedBox(
-                  width: screenSize.width,
-                  height: screenSize.height,
-                  child: imageStack)
-            ],
-            containerVariant: wrapperVariants.fullScreen));
+      decorationVariant: decorationPriority.standard,
+      hasBackgroundImage: false,
+      takesFullWidth: true,
+      builder: ContainerWrapperElement(
+          takesFullWidth: true,
+          children: [
+            SizedBox(
+                width: screenSize.width,
+                height: screenSize.height,
+                child: imageStack)
+          ],
+          containerVariant: wrapperVariants.fullScreen),
+    );
   }
 }

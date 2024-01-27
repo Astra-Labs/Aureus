@@ -152,50 +152,29 @@ class _SafetyPlanStorageLayer {
   /// initializes a storage layer in Perichron
   final _storage = PerichronStorageLayer();
 
-  // TODO: Rewrite into a map with the enum as the key instead of this switch statement
-  /// Switches the option into the relevant key for writing / retrival
-  String safetyPlanKey(SafetyPlanOptions option) {
-    switch (option) {
-      case SafetyPlanOptions.onlyNeccessaryEmails:
-        return 'onlyNeccessaryEmails';
-
-      case SafetyPlanOptions.disableNotifications:
-        return 'disableNotifications';
-
-      case SafetyPlanOptions.disableBiometrics:
-        return 'disableBiometrics';
-
-      case SafetyPlanOptions.enable2FA:
-        return 'enable2FA';
-
-      case SafetyPlanOptions.localDataStorage:
-        return 'localDataStorage';
-
-      case SafetyPlanOptions.failedPasscodeDataDeletion:
-        return 'failedPasscodeDataDeletion';
-
-      case SafetyPlanOptions.exitBar:
-        return 'exitBar';
-
-      case SafetyPlanOptions.disableScreenshots:
-        return 'disableScreenshots';
-
-      case SafetyPlanOptions.logFailedAttempts:
-        return 'logFailedAttempts';
-    }
-  }
+  Map<SafetyPlanOptions, String> safetyPlanKeys = {
+    SafetyPlanOptions.onlyNeccessaryEmails: 'onlyNeccessaryEmails',
+    SafetyPlanOptions.disableNotifications: 'disableNotifications',
+    SafetyPlanOptions.disableBiometrics: 'disableBiometrics',
+    SafetyPlanOptions.enable2FA: "enable2FA",
+    SafetyPlanOptions.localDataStorage: 'localDataStorage',
+    SafetyPlanOptions.failedPasscodeDataDeletion: 'failedPasscodeDataDeletion',
+    SafetyPlanOptions.exitBar: 'exitBar',
+    SafetyPlanOptions.disableScreenshots: 'disableScreenshots',
+    SafetyPlanOptions.logFailedAttempts: 'logFailedAttempts',
+  };
 
   // READ / WRITE SETTINGS
 
   /// Reads a setting
   Future<bool> _readSetting(SafetyPlanOptions option) async {
-    final settings = _storage.readItem(safetyPlanKey(option));
+    final settings = _storage.readItem(safetyPlanKeys[option]!);
     return settings.toString() == "true" ? true : false;
   }
 
   /// Writes a setting
   Future<void> _writeSetting(SafetyPlanOptions option, bool isEnabled) async {
-    await _storage.addItem(safetyPlanKey(option), isEnabled.toString());
+    await _storage.addItem(safetyPlanKeys[option]!, isEnabled.toString());
   }
 
   /// Reads ALL settings
@@ -249,9 +228,34 @@ class _SafetyPlanStorageLayer {
     var previousAttempts = await _storage.readItem(
       safetyStorageKeys[SafetyStorageLayer.logInAttempts]!,
     );
-    var updatedAttempts = previousAttempts ?? " " + logInData;
+
+    // Decodes the JSON saved to the storage layer
+    var jsonDecodedString = jsonDecode(previousAttempts!);
+    var logInObject = LogInAttempsObject.fromJson(jsonDecodedString);
+
+    // Adds the attempts
+    logInObject.attempts.add(logInData);
+
+    // Re-encodes to save it
+    var encodedItem = jsonEncode(logInObject);
 
     await _storage.addItem(
-        safetyStorageKeys[SafetyStorageLayer.logInAttempts]!, updatedAttempts);
+        safetyStorageKeys[SafetyStorageLayer.logInAttempts]!, encodedItem);
   }
+}
+
+class LogInAttempsObject {
+  List<String> attempts;
+
+  LogInAttempsObject({required this.attempts});
+
+  factory LogInAttempsObject.fromJson(Map<String, List<String>> json) {
+    return LogInAttempsObject(
+      attempts: json['attempts'] as List<String>,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'attempts': attempts,
+      };
 }

@@ -44,7 +44,8 @@ class _ContainerWrapperElementState extends State<ContainerWrapperElement> {
                 crossAxisAlignment: WrapCrossAlignment.start,
                 runSpacing:
                     size.responsiveSize(20.0, MediaQuery.of(context).size),
-                children: widget.children))
+                children: widget.children),
+          )
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

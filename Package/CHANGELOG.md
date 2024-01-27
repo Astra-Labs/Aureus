@@ -1,5 +1,6 @@
 ## 0.0.25
 - Adding new icons 
+- Implementing changes to SafetyPlan functionality, and refactoring for better readability
 
 ## 0.0.24
 - Fixing landing buttons bug with OnboardingLandingView

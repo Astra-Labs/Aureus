@@ -17,17 +17,11 @@ class SafetyPlanSettingsView extends StatefulWidget {
 
 class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
   late Safety safetyObject;
+  List<Widget> eligibleOptionCards = [];
 
   @override
   void initState() {
     super.initState();
-
-    if (resourceValues.safetySettings?.eligiblePlanOptions == null) {}
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    List<Widget> eligibleOptionCards = [];
 
     for (var element in resourceValues.safetySettings!.eligiblePlanOptions) {
       eligibleOptionCards.add(
@@ -36,17 +30,32 @@ class _SafetyPlanSettingsViewState extends State<SafetyPlanSettingsView> {
           child: StandardSwitchCardElement(
             isSwitchEnabled: true,
             onEnable: () => {
-              _SafetyPlanStorageLayer()._writeSetting(element, true),
+              writeSettingToStorage(element, true),
             },
             onDisable: () => {
-              _SafetyPlanStorageLayer()._writeSetting(element, false),
+              writeSettingToStorage(element, false),
             },
             cardLabel: Safety.detailMetaData.retrieveDetails(element).name,
           ),
         ),
       );
     }
+  }
 
+  void showUpdatedConfirmation(SafetyPlanOptions option) {
+    var description = Safety.detailMetaData.retrieveDetails(option).name +
+        "has been updated!";
+    notificationMaster.sendAlertNotificationRequest(description, Assets.lock);
+  }
+
+  void writeSettingToStorage(SafetyPlanOptions option, bool state) {
+    _SafetyPlanStorageLayer()
+        ._writeSetting(option, state)
+        .then((value) => showUpdatedConfirmation(option));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     ContainerWrapperElement viewLayout = ContainerWrapperElement(
       containerVariant: wrapperVariants.stackScroll,
       children: [

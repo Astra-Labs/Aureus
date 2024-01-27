@@ -1,5 +1,6 @@
 library aureus_safety_plan;
 
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:aureus/aureus.dart';
 import 'package:perichron/perichron.dart';

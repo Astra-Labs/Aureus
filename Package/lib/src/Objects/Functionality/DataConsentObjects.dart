@@ -97,16 +97,21 @@ class DataConsent {
         permissionName: 'Camera',
         permissionDescription: permissionUsage,
         permissionIcon: Assets.camera,
-        onPermissionOptIn: () => {Permission.camera.request()});
+        onPermissionOptIn: () => {
+              Permission.camera.request(),
+            });
   }
 
   /// A DPO that represents microphone access.
   DataPermissionObject microphoneAccessPermission(String permissionUsage) {
     return DataPermissionObject(
-        permissionName: 'Microphone',
-        permissionDescription: permissionUsage,
-        permissionIcon: Assets.play,
-        onPermissionOptIn: () => {Permission.microphone.request()});
+      permissionName: 'Microphone',
+      permissionDescription: permissionUsage,
+      permissionIcon: Assets.play,
+      onPermissionOptIn: () => {
+        Permission.microphone.request(),
+      },
+    );
   }
 
   /// A DPO that represents location access.
